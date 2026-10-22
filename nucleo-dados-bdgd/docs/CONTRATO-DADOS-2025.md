@@ -102,3 +102,9 @@ Enviar primeiro `inventario_2025.csv`, `cobertura_2025.json`, `RELATORIO.md` e u
 Incrementar `schema_version` ao mudar o formato. Registrar `release_id`, versão do DDA, hash da fonte, hora de ingestão, testes, versão do código e responsável. Imutabilidade dos snapshots homologados e troca atômica do snapshot ativo.
 
 Responsável pela aplicação: Núcleo de Dados da BDGD — desenvolvido por Arthur Henrique Lima.
+
+## Regra de comparabilidade com o BI VPE (2024)
+
+O BI VPE já existente utiliza **31/12/2024**; este portal usa **31/12/2025**. O BI anterior serve somente de **referência metodológica** (definições, fórmulas, indicadores, filtros e estrutura), nunca como gabarito quantitativo para o ano de 2025. Diferenças entre as quantidades 2024 e 2025 são esperadas e **não podem bloquear** a publicação de dados 2025 que reconciliem com seus próprios GDBs.
+
+No relatório QA, manter `validacao_metodologica_vpe_2024` e `reconciliacao_origem_bdgd_2025` como registros distintos; o segundo é critério obrigatório de números. Para um KPI, homologar fórmula/escopo e reconciliar agregação e fonte **da mesma competência 2025**. Auditoria de mudanças 2024→2025 seria projeto separado, sem misturar dados no portal inicial.
