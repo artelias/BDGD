@@ -59,7 +59,7 @@ Colunas obrigatórias: `dist,sigla,nome,grupo_economico,data_base,fonte_url,sha2
 Colunas obrigatórias: `entidade,nome_exibicao,familia,metrica,unidade,regra`. Ex.: `SSDMT` com `metrica=extensao_km` somente após homologar a regra; uma entidade não deve aparecer duas vezes.
 
 ### `ativos_agregados.csv`
-Colunas mínimas: `dist,entidade,data_base,dimensoes_json,quantidade,extensao_km,potencia_kva`. `dimensoes_json` é JSON objeto com **códigos de dimensão permitidos** (sem identificadores pessoais/ativos). Valores métricos inexistentes: célula vazia (`NULL`), e NÃO zero. Métrica de comprimento não é contagem de segmentos. Campos `quantidade`, `extensao_km` e `potencia_kva` não podem ser negativos. Para agregações complexas (médias, distintos), declarar sua semântica em `entidades.csv` e os componentes adicionais com regras homologadas.
+Colunas mínimas: `dist,entidade,data_base,dimensoes_json,quantidade,quantidade_registros,quantidade_cod_id_distinto,extensao_km,potencia_kva,status_qualidade,motivo_qualidade`. `dimensoes_json` é JSON objeto com **códigos de dimensão permitidos** (sem identificadores pessoais/ativos). Valores métricos inexistentes: célula vazia (`NULL`), e NÃO zero. Métrica de comprimento não é contagem de segmentos. `quantidade_registros` e `quantidade_cod_id_distinto` são indicadores distintos e nunca devem ser trocados sem rotular. Para UCBT/UCMT/UCAT, a contagem única não é aditiva entre dimensões sobrepostas: permitir recálculo por `DIST + entidade + COD_ID` no ETL e impedir rollups de contagens distintas sem comprovar partições disjuntas. `status_qualidade` é um de `aprovado`, `alerta`, `bloqueado`, `em_validacao`, `nao_aplicavel`. `motivo_qualidade` é preenchido nos bloqueios. Campos `quantidade`, `extensao_km` e `potencia_kva` não podem ser negativos. Para agregações complexas (médias, distintos), declarar sua semântica em `entidades.csv` e os componentes adicionais com regras homologadas.
 
 ### `matriz_empresas_2025.csv`
 Uma linha por `DIST`, com coluna `dist`, `data_base` e as colunas das métricas **com unidade explícita** para cada entidade (por exemplo, `UCBT__quantidade`, `SSDMT__extensao_km`). Unidades diferentes não devem ser somadas. Ausente/não homologado: célula vazia + registro de cobertura; zero apenas se realmente auditado. A matriz deve reconciliar com o fato agregado no nível de DIST + entidade + métrica.
@@ -89,7 +89,7 @@ Respostas incluem `release_id`, `data_base`, `fonte`, `unidade`, `status_cobertu
 3. Nenhuma linha agregada contém `COD_ID`, `NUM_CDC` ou identificador pessoal; a lista de campos bloqueados deve ser ampliada por análise de privacidade.
 4. Cada `DIST` publicado tem proveniência `URL`, SHA-256 da fonte e evidência de validação 2025.
 5. Não usar 0 para entidade ausente. `N/D` é estado próprio.
-6. QA de totalizações com tolerâncias documentadas; falha bloqueia publicação.
+6. QA de totalizações com tolerâncias documentadas; falha bloqueia publicação do indicador afetado, sem transformar métrica ausente/bloqueada em zero. KPIs nacionais só incluem medidas homologadas e deixam claro a cobertura.
 7. Entidade reporta unidade e fórmula; KPI só agrega grandezas homogêneas.
 8. ARAT corresponde a geometria poligonal oficial; sem centroide artificial.
 9. License/ODbL e atribuição ANEEL revisadas antes de publicação.
