@@ -86,9 +86,6 @@ var companies=[
  ['COPEL','Copel Distribuição','Copel','PR',2025,4.85,'285,364 313,384 345,399 312,421 267,415 242,386'],
  ['CELESC','Celesc Distribuição','Celesc','SC',2025,3.45,'267,415 312,421 300,444 263,454 238,428'],
  ['LIGHT','Light','Light','RJ',2025,3.64,'404,344 458,315 447,353 400,365'],
- ['AMAZ','Amazonas Energia','Outras','AM',2024,1.15,'73,93 151,53 200,91 156,157 87,167 54,170 36,137'],
- ['EQAP','Equatorial Amapá','Equatorial','AP',2024,.30,'360,54 399,53 399,92 360,91'],
- ['RORA','Roraima Energia','Outras','RR',2024,.28,'151,33 199,21 220,35 200,91 151,53']
 ].map(function(a,i){return{id:a[0],name:a[1],group:a[2],uf:a[3],base:a[4],scale:a[5],polygon:a[6],index:i};});
 var colors={'Energisa':'#2c7be8','Equatorial':'#e0aa53','Neoenergia':'#27a68c','Cemig':'#927bd1','CPFL Energia':'#8376d9','Enel':'#d47c95','Copel':'#529dcb','Celesc':'#66a5be','Light':'#bd85cc','Outras':'#8b98ab'};
 var values={group:'',company:'',uf:'',base:'',family:'',area:'',phase:'',install:'',type:''};
@@ -124,7 +121,7 @@ function optionData(){
  select(E('uf'),unique(companies.map(function(c){return c.uf;})).map(function(s){return[s,s];}),'Todo o Brasil',values.uf);
  var cands=companies.filter(function(c){return(!values.group||c.group===values.group)&&(!values.uf||c.uf===values.uf);}).sort(function(a,b){return a.name.localeCompare(b.name,'pt-BR');});
  select(E('company'),cands.map(function(c){return[c.id,c.name];}),'Todas as distribuidoras',values.company);
- select(E('base'),[['2025','2025 · simulação'],['2024','2024 · simulação']],'Última disponível por empresa',values.base);
+ select(E('base'),[['2025','31/12/2025 · demonstração']],'31/12/2025 · competência única',values.base);
  select(E('family'),familyInfo.map(function(f){return[f.id,f.name];}),'Todas as famílias',values.family);
  select(E('area'),[['Urbana','Urbana'],['Rural','Rural']],'Urbana e rural',values.area);
  select(E('phase'),[['Monofásico','Monofásico'],['Bifásico','Bifásico'],['Trifásico','Trifásico']],'Todas as configurações',values.phase);
