@@ -60,6 +60,9 @@ create table if not exists public.dda_dominio (
 );
 
 -- Granularidade: snapshot × entidade × combinação válida de dimensões.
+-- NOTA: quantidade_cod_id_distinto só pode ser somada entre partições comprovadamente disjuntas;
+-- divergência de atributos por COD_ID exige chave canônica ou consulta específica.
+-- Potência suspeita permanece nula nas visões publicadas, com status/motivo de QA.
 -- dimensoes contém códigos internos de domínio, traduzidos para descrições
 -- pela API/consulta de dim_dominio. API publica nomes descritivos.
 create table if not exists public.ativo_agregado (
@@ -68,11 +71,18 @@ create table if not exists public.ativo_agregado (
  dimensoes jsonb not null default '{}'::jsonb,
  dimensoes_hash text not null,
  quantidade bigint,
+ quantidade_registros bigint,
+ quantidade_cod_id_distinto bigint,
  extensao_km numeric(20,5),
  potencia_kva numeric(22,5),
+ status_qualidade text not null default 'em_validacao'
+   check (status_qualidade in ('aprovado','alerta','bloqueado','em_validacao','nao_aplicavel')),
+ motivo_qualidade text,
  outros_indicadores jsonb,
  primary key(snapshot_id, entidade, dimensoes_hash),
  check (quantidade is null or quantidade >= 0),
+ check (quantidade_registros is null or quantidade_registros >= 0),
+ check (quantidade_cod_id_distinto is null or quantidade_cod_id_distinto >= 0),
  check (extensao_km is null or extensao_km >= 0),
  check (potencia_kva is null or potencia_kva >= 0)
 );
