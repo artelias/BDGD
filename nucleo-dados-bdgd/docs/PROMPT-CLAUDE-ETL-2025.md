@@ -71,3 +71,17 @@ TESTES MÍNIMOS: (a) **100% dos snapshots publicados são 2025-12-31**, (b) cada
 Ao terminar **cada etapa**, informe o que está concluído, a quantidade real de distribuidoras 2025 encontradas, volumes por entidade, URLs consultadas, arquivos produzidos, falhas e próximos itens. Não afirme conclusão nacional caso tenha apenas processado uma amostra. Se 2025 ainda não estiver publicado para determinadas empresas, registre fato verificável, sem trocar por 2024.
 
 **Não criar serviço pago, não publicar produção, não alterar main e não usar credenciais sem instrução explícita.** O ChatGPT fará integração web e banco quando receber os agregados e o relatório.
+
+
+## Atualização obrigatória após o piloto de 3 GDBs (22/10/2026)
+
+Antes de prosseguir com as outras 96 bases, leia estes documentos mais recentes no MESMO diretório de projeto:
+
+- `docs/DECISOES-PILOTO-2025.md` — decisões vinculantes após o diagnóstico do piloto.
+- `docs/CONTRATO-DADOS-2025.md` — pacote interoperável com a aplicação web, incluindo métricas brutas/distintas e campos de QA.
+- `database/schema.sql` — esquema atualizado com `quantidade_registros`, `quantidade_cod_id_distinto`, `status_qualidade` e `motivo_qualidade`.
+- `etl/validate-publication.mjs` e `etl/tests/smoke.mjs` — validação estrutural de publicação.
+
+**Decisão:** prosseguir em lotes pequenos (3–5 empresas), sem consumir toda a RAM/disco. Preservar staging e ZIPs localmente; não subir arquivos individuais. Os totais de UCs são diferentes dos registros brutos, e potência anômala de geração não deve ser corrigida por corte arbitrário. Enviar primeiro os quatro artefatos do inventário/piloto para revisão, depois validar o contrato com dados reais.
+
+Se for possível, usar `pyogrio.open_arrow(..., use_pyarrow=True, batch_size=65536)` para ler batches sem materializar camadas inteiras; configurar memória/threads/tamanho de swap do DuckDB explicitamente, ajustando aos ~8 GB físicos da máquina.
