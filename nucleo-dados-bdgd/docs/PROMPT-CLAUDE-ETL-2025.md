@@ -89,3 +89,18 @@ Se for possível, usar `pyogrio.open_arrow(..., use_pyarrow=True, batch_size=655
 ## REGRA ADICIONAL — BI VPE 2024 NÃO É GABARITO DE NÚMEROS 2025
 
 O usuário esclareceu explicitamente: **o Power BI VPE de referência foi feito com BDGD DATA_BASE = 31/12/2024**; o pipeline nacional aqui é **exclusivamente DATA_BASE = 31/12/2025**. Nunca usar o valor numérico de qualquer medida do VPE 2024 como valor esperado para dados 2025 nem interromper downloads/agregações quando houver divergência entre exercícios. Utilizar BI VPE apenas para entender o método de cálculo, medidas, universo, tratamento de entidades e filtros. Validar resultados de 2025 **contra a própria GDB 2025**, com reconciliação direta e auditoria de relacionamentos e chaves. Não misturar 2024/2025 para "fazer bater". Separar no relatório `validacao_metodologica_vpe_2024` de `reconciliacao_origem_bdgd_2025`. Regras e modelos que mudaram de 2024 para 2025 precisam de adaptação e registro da diferença metodológica, nunca ajuste artificial de números.
+
+
+## ADENDO DE INTEGRAÇÃO — CONTRATO 1.1.0 (TOTAIS + FACETAS)
+
+Após o segundo diagnóstico, o ChatGPT **aceitou sua sugestão de separar** os fatos totais das agregações DDA. Consulte antes de montar o pacote: [MODELO-FATOS-FACETAS-2025.md](MODELO-FATOS-FACETAS-2025.md) e a versão atualizada de [CONTRATO-DADOS-2025.md](CONTRATO-DADOS-2025.md).
+
+1. **Não refazer GDBs por conta desse contrato.** Reaproveitar staging local e checkpoints. Continue a extração nacional em lotes; é possível gerar cubos DDA a partir das partições locais.
+2. `ativos_agregados.csv`: uma linha por `DIST×entidade` (`dimensoes_json={}`), sem distinções DDA; matriz é derivada apenas desse arquivo.
+3. `ativos_facetas.csv`: grupos independentes por `facet_id` e métricas; `facetas_catalogo.csv`: listas de atributos, unidade, cobertura, disjunção e autorização de rollup; não somar cubos entre si.
+4. `COUNT(DISTINCT)` no filtro: contar no conjunto filtrado ou faceta conjunta válida; nunca adicionar distintas de categorias em conflito. Em caso de duplicidade de `COD_ID` com atributos conflitantes, marcar `particao_disjunta=nao` e proibir rollup da métrica; um filtro exato pode ser exibido só se auditado.
+5. Para `UG*` e `UNTRMT/EQTRMT`, sem correção automática de `POT_INST`/`POT_NOM`/DDA. Preservar campo e unidade originais no staging privado, bloquear exclusivamente indicador de potência não homologado, mantendo contagens auditadas disponíveis.
+6. O contrato de intercâmbio com facetas usa `schema_version=1.1.0`; o piloto antigo `1.0.0` continua aceito só para totais. Executar `node etl/tests/smoke.mjs` e `node etl/validate-publication.mjs <pasta>` no PC e enviar stdout/stderr.
+7. Nenhuma comparação quantitativa com BI VPE de 2024. Validar somente com BDGD 2025.
+
+**Não alterar main.** Se for publicar em branch separada, enviar apenas scripts, inventário, relatório, manifest e agregados/ARAT públicos **depois de revisão de privacidade e licença**. Não publicar GDBs, staging Parquet nem segredos.
