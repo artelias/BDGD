@@ -82,7 +82,7 @@ Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem
 
 **M5 — Operação**: Vercel público, monitoramento de latência/custo, testes, auditoria de licença, calendário de atualização e documentação.
 
-**M6 — Histórico para ML (futuro, após M5)**: inventariar dados históricos comparáveis, idealmente 2019–2025, com ETL segregado do dashboard oficial 2025, sem mistura de competências.
+**M6 — Histórico para ML (futuro, após M5)**: inventariar dados históricos comparáveis, prioritariamente **2022–2025**, com ETL segregado do dashboard oficial 2025, sem mistura de competências.
 
 **M7 — Séries históricas harmonizadas (futuro)**: construir série anual por DIST, entidade e métrica, tratar evolução de DDA/layout, comparabilidade, mudanças de DIST e grupos econômicos com vigência.
 
@@ -130,8 +130,11 @@ Objetivo: gerar previsões de crescimento por **distribuidora, grupo econômico 
 
 Treinamento/inferência fora do website, com **Python e DuckDB em máquina local autorizada (CPU)**. O site receberá apenas CSV/JSON ou tabelas PostgreSQL de **previsões sumarizadas e aprovadas**; não é necessário fazer upload de modelo treinado, GDBs históricos, Parquets privados ou COD_ID. A solução poderá inicialmente usar assets JSON estáticos se os agregados forem pequenos.
 
-**Restrição científica:** a única competência 2025 não é série temporal; não treinar/apresentar ML de crescimento quadrienal somente com esse snapshot. Para inferência temporal é necessário histórico de anos comparáveis (idealmente 2019–2025 ou janela disponível), com mudanças de layout/DDA, fusões de distribuidoras e vigência de grupos econômicos documentadas. Onde não houver histórico suficiente, mostrar `previsao_indisponivel`, sem fabricar confiança ou resultados. Comparar com modelos-base e utilizar validação temporal retrospectiva, não divisão aleatória dos anos.
+**Restrição científica:** a única competência 2025 não é série temporal; não treinar/apresentar ML de crescimento quadrienal somente com esse snapshot. Para inferência temporal é necessário histórico de anos comparáveis (**2022–2025** como janela de referência, ou **2023–2025** somente para análises exploratórias se 2022 for incompatível), com mudanças de layout/DDA, fusões de distribuidoras e vigência de grupos econômicos documentadas. Onde não houver histórico suficiente, mostrar `previsao_indisponivel`, sem fabricar confiança ou resultados. Comparar com modelos-base e utilizar validação temporal retrospectiva, não divisão aleatória dos anos.
 
 **Documento normativo completo:** [MODULO-PREDITIVO-ML.md](MODULO-PREDITIVO-ML.md) — granularidade e fontes, classificação, backtesting, hierarquia distribuidora/grupo/Brasil, formatos públicos, experiência no dashboard, critérios de aceite e roadmap M6–M10.
+
+
+**Regra de janela histórica (atualizada em 22/10/2026):** devido às mudanças do Manual BDGD ao redor de 2021/2022, começar **somente com 2022, 2023, 2024 e 2025** no estudo de previsão. Não ampliar automaticamente para 2019–2021. O Manual Revisão 1 tem vigência em 02/01/2022, mas ainda é preciso reconciliar versões, métricas, chaves e DDA entre 2022–2025. Se 2022 não passar na validação, pode-se explorar 2023–2025 para descrição/cenários, sem prometer treinamento preditivo robusto. Quatro pontos anuais por série não são quatro milhões de pontos temporais: mesmo com muitas empresas e ativos, validação de horizonte 3–4 anos permanece frágil. Treinamento pooled/hierárquico só se houver ganho verificável sobre baselines. Para projeções 2028/2029 sem backtest adequado, apresentar limitações, premissas ou marcar indisponível.
 
 **Prioridade vigente:** terminar M1–M5, sem atrasar download, reconciliação, ARAT e construção do dashboard oficial 2025. Não realizar download de histórico ou criação de infraestrutura paga sem autorização específica.
