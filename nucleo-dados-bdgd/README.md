@@ -23,12 +23,13 @@ Depois abra `http://localhost:8000`. Nenhuma dependência, autenticação, banco
 - `database/schema.sql` — desenho inicial do banco PostgreSQL/Supabase.
 - `docs/PLANO-GERAL.md` — arquitetura, fases, decisões e critérios de aceite.
 - `etl/README.md` — especificação da ingestão, extração ARAT, DDA e agregação.
+- `docs/PROMPT-CLAUDE-ETL-2025.md` — instruções operacionais completas para processamento local da competência **31/12/2025**.
 
 ## Operação final prevista
 
 **Ingestão**: arquivo Geodatabase de cada distribuidora nos dados abertos da ANEEL, validado com o Manual BDGD e PRODIST 10.
 
-**Normalização**: extrair entidades, identificar `DIST` e última `DATA_BASE`, validar vínculo e cardinalidade, aplicar DDA e grupo econômico.
+**Normalização**: extrair entidades, identificar `DIST` e `DATA_BASE = 2025-12-31` exclusivamente, validar vínculo e cardinalidade, aplicar DDA e grupo econômico.
 
 **Agregação**: Python + GDAL/GeoPandas + DuckDB/Polars; fatos agregados por entidade e dimensões DDA aplicáveis, medidas aditivas e medidas distintas homologadas.
 
@@ -44,7 +45,7 @@ Depois abra `http://localhost:8000`. Nenhuma dependência, autenticação, banco
 
 ## Próximas dependências
 
-1. Disponibilidade dos arquivos geográficos oficiais ARAT nacionais (ou acesso legítimo ao repositório ANEEL).
+1. Disponibilidade de Geodatabases oficiais **com DATA_BASE = 31/12/2025** por distribuidora; não completar lacunas com 2024/2026. ARAT oficial somente dessas mesmas bases.
 2. Disponibilidade dos catálogos de vínculos e DDA do IA Builder (não estão neste protótipo).
 3. Inventário confiável das páginas, medidas e tabelas do `BI_BDGD_VPE.pbix` e avaliação de replicabilidade.
 4. Instância de banco PostgreSQL gerenciado (não provisionada; preços/permissões devem ser aprovados).
