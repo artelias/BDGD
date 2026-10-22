@@ -12,7 +12,7 @@ const deny = /(^|_)(cod_id|num_cdc|cpf|cnpj|nome_consumidor|endereco_consumidor|
 const required = {
   distribuidoras: ['dist', 'sigla', 'nome', 'grupo_economico', 'data_base', 'fonte_url', 'sha256', 'status'],
   entidades: ['entidade', 'nome_exibicao', 'familia', 'metrica', 'unidade', 'regra'],
-  fatos: ['dist', 'entidade', 'data_base', 'dimensoes_json', 'quantidade', 'extensao_km', 'potencia_kva'],
+  fatos: ['dist', 'entidade', 'data_base', 'dimensoes_json', 'quantidade', 'quantidade_registros', 'quantidade_cod_id_distinto', 'extensao_km', 'potencia_kva', 'status_qualidade', 'motivo_qualidade'],
   matriz: ['dist', 'data_base'],
   qa: ['dist', 'entidade', 'metrica', 'valor_origem', 'valor_agregado', 'diferenca', 'tolerancia', 'status']
 };
@@ -128,10 +128,13 @@ function main(){
     if(!dists.has(r.dist))problem(k+': DIST não catalogado');
     if(!entitySet.has(r.entidade))problem(k+': entidade desconhecida');
     try{const dims=JSON.parse(r.dimensoes_json);if(!dims||Array.isArray(dims)||typeof dims!=='object')problem(k+': dimensoes_json não objeto');else if(Object.keys(dims).some(x=>deny.test(x)))problem(k+': dimensão individualizada');}catch(e){problem(k+': dimensoes_json inválido');}
-    for(const m of ['quantidade','extensao_km','potencia_kva']){
+    if(!['aprovado','alerta','bloqueado','em_validacao','nao_aplicavel'].includes(r.status_qualidade))problem(k+': status_qualidade inválido');
+    if(r.status_qualidade==='bloqueado'&&!r.motivo_qualidade)problem(k+': indicador bloqueado sem motivo');
+    for(const m of ['quantidade','quantidade_registros','quantidade_cod_id_distinto','extensao_km','potencia_kva']){
       const n=parseNumber(r[m],k+' '+m);
       if(n!==null){const key=r.dist+'|'+r.entidade+'|'+m;byFact.set(key,(byFact.get(key)||0)+n);}
     }
+    if(r.quantidade_registros!==''&&r.quantidade_cod_id_distinto!==''&&Number(r.quantidade_cod_id_distinto)>Number(r.quantidade_registros))problem(k+': distintos excedem registros');
   }
   const seenMat=new Set();
   for(const r of loaded.matriz.records){
