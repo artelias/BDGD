@@ -80,7 +80,7 @@ function validateGeojson(filepath,dists){
     if(f.type!=='Feature'||!['Polygon','MultiPolygon'].includes(kind)) {problem(filepath+': feição '+i+' não é polígono ARAT');continue;}
     if(!dists.has(String(f.properties?.dist)))problem(filepath+': DIST fora do catálogo na feição '+i);
     if(f.properties?.data_base!==EXPECTED_DATE)problem(filepath+': ARAT fora de 2025 na feição '+i);
-    walk(f.geometry.coordinates,kind==='Polygon'?3:4);
+    walk(f.geometry.coordinates,kind==='Polygon'?2:3);
   }
 }
 function main(){
