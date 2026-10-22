@@ -4,7 +4,7 @@
 
 Portal nacional, público e sem autenticação, que reproduza indicadores homologados do BI VPE, incluindo grupo econômico, mantendo a navegação interativa por empresa, família e atributos DDA, e adicionando mapa ARAT nacional.
 
-**Regras de produto**: filtros descritivos (não códigos BDGD), sem dados brutos no browser, última `DATA_BASE` disponível por `DIST`, métricas e grandezas explícitas, comparações auditáveis, acessibilidade e tema claro/escuro.
+**Regras de produto**: filtros descritivos (não códigos BDGD), sem dados brutos no browser, **somente `DATA_BASE = 31/12/2025`** para toda distribuidora elegível, sem usar anos anteriores ou posteriores como alternativa, métricas e grandezas explícitas, comparações auditáveis, acessibilidade e tema claro/escuro.
 
 ## 2. Restrições não negociáveis
 
@@ -13,7 +13,8 @@ Portal nacional, público e sem autenticação, que reproduza indicadores homolo
 - Não somar métricas heterogêneas (km, MVA, quantidades) e não somar `DISTINCT COUNT` entre agrupamentos que se sobrepõem.
 - Não agregar antes de eliminar N:N indevidos e definir nível de granularidade por fato.
 - Não exibir rótulos de domínio sem a versão do catálogo DDA de origem.
-- Não mostrar comparações entre anos como diretamente equivalentes sem indicar cobertura e versão da BDGD.
+- Escopo temporal inicial estrito: **31/12/2025**. Não inserir 2024/2026, mesmo que a empresa só possua esses anos; registrar ausência 2025 como cobertura não disponível.
+- Publicação e atualização do arquivo não equivalem à data-base: confirmar `DATA_BASE` no arquivo/metadado e validar conteúdo.
 - Grupo econômico é temporal: controlar controlador vigente em cada data-base.
 
 ## 3. Stack decidida
@@ -70,7 +71,7 @@ Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem
 
 **M0 — Protótipo (iniciado)**: UI pública estática, polígonos *apenas ilustrativos*, filtros, matriz e comparador demonstrativos.
 
-**M1 — Auditoria de fontes**: catálogo nacional `DIST → último GDB/DATA_BASE`, qualidade por entidade, DDA versionado, grupos econômicos e acessos ao IA Builder, levantamento PBIX VPE.
+**M1 — Auditoria de fontes 2025**: catálogo nacional `DIST → GDB com DATA_BASE = 2025-12-31`, sem fallback; registrar empresas faltantes, qualidade por entidade, DDA versionado, grupos econômicos e acessos ao IA Builder, levantamento PBIX VPE.
 
 **M2 — ETL homologado**: ingestão incremental, vínculos, DDA, cálculo de medidas, validação de `COD_ID`, publicação de `fact_ativo_agg`.
 
@@ -82,7 +83,7 @@ Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem
 
 ## 9. Critérios de aceite
 
-- 100% das distribuidoras publicadas correspondem aos recursos oficiais selecionados e exibem data-base e fonte.
+- 100% das distribuidoras publicadas correspondem a arquivos oficiais efetivamente validados com `DATA_BASE = 2025-12-31`, e exibem fonte, checksum e cobertura; ausências não se tornam zeros.
 - 100% das entidades previstas no escopo ficam visíveis, com ausência explicitamente identificada (nunca zero implícito).
 - ARAT oficial é polígono; seleção respeita `DIST` e suporta fragmentos e sobreposição.
 - Totais homologados por entidade e empresa têm reconciliação exata ou tolerância previamente aprovada (extensão/geometria).
