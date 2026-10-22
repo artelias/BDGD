@@ -18,7 +18,9 @@ output-publicavel/2025-12-31/
   grupos_economicos.csv
   dist_grupo.csv
   dda_descricoes.csv
-  ativos_agregados.csv           # ou lotes declarados no manifest
+  ativos_agregados.csv           # fato TOTAL, 1 linha por DIST + entidade
+  ativos_facetas.csv             # cubos DDA conjuntos e separados dos totais
+  facetas_catalogo.csv           # faceta, dimensões e regras de aditividade
   matriz_empresas_2025.csv
   qa_reconciliacao.csv
   geo/arat_2025_<DIST>.geojson   # POLÍGONOS ARAT, não centróides
@@ -32,7 +34,7 @@ Arquivos CSV: UTF-8, separador **vírgula**, cabeçalho na 1ª linha, aspas RFC 
 
 ```json
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "release_id": "bdgd-2025-12-31-<HASH_OU_VERSAO>",
   "data_base": "2025-12-31",
   "status": "homologado",
@@ -43,6 +45,8 @@ Arquivos CSV: UTF-8, separador **vírgula**, cabeçalho na 1ª linha, aspas RFC 
     "distribuidoras": "distribuidoras.csv",
     "entidades": "entidades.csv",
     "fatos": "ativos_agregados.csv",
+    "facetas": "ativos_facetas.csv",
+    "facetas_catalogo": "facetas_catalogo.csv",
     "matriz": "matriz_empresas_2025.csv",
     "arat": ["geo/arat_2025_6600.geojson"]
   },
@@ -58,8 +62,22 @@ Colunas obrigatórias: `dist,sigla,nome,grupo_economico,data_base,fonte_url,sha2
 ### `entidades.csv`
 Colunas obrigatórias: `entidade,nome_exibicao,familia,metrica,unidade,regra`. Ex.: `SSDMT` com `metrica=extensao_km` somente após homologar a regra; uma entidade não deve aparecer duas vezes.
 
-### `ativos_agregados.csv`
+### `ativos_agregados.csv` — APENAS TOTAIS
+**Grão obrigatório:** uma única linha por `DIST + entidade` para a competência 2025; `dimensoes_json` deve ser exatamente `{}`. Não colocar várias linhas por atributo DDA aqui: elas duplicariam a reconciliação contra a matriz.
+
 Colunas mínimas: `dist,entidade,data_base,dimensoes_json,quantidade,quantidade_registros,quantidade_cod_id_distinto,extensao_km,potencia_kva,status_qualidade,motivo_qualidade`. `dimensoes_json` é JSON objeto com **códigos de dimensão permitidos** (sem identificadores pessoais/ativos). Valores métricos inexistentes: célula vazia (`NULL`), e NÃO zero. Métrica de comprimento não é contagem de segmentos. `quantidade_registros` e `quantidade_cod_id_distinto` são indicadores distintos e nunca devem ser trocados sem rotular. Para UCBT/UCMT/UCAT, a contagem única não é aditiva entre dimensões sobrepostas: permitir recálculo por `DIST + entidade + COD_ID` no ETL e impedir rollups de contagens distintas sem comprovar partições disjuntas. `status_qualidade` é um de `aprovado`, `alerta`, `bloqueado`, `em_validacao`, `nao_aplicavel`. `motivo_qualidade` é preenchido nos bloqueios. Campos `quantidade`, `extensao_km` e `potencia_kva` não podem ser negativos. Para agregações complexas (médias, distintos), declarar sua semântica em `entidades.csv` e os componentes adicionais com regras homologadas.
+
+### `facetas_catalogo.csv` e `ativos_facetas.csv` — RECORTES DDA
+
+**Documento técnico normativo:** [MODELO-FATOS-FACETAS-2025.md](MODELO-FATOS-FACETAS-2025.md). Estes dois arquivos são separados do fato-total e **não podem ser somados ao total-base**.
+
+`facetas_catalogo.csv` exige colunas `facet_id,entidade,dimensoes_json,metrica,unidade,cobertura,particao_disjunta,permite_rollup,status_qualidade`. O campo `dimensoes_json` contém array JSON dos atributos oficiais, e não valores. `permite_rollup=sim` somente se `cobertura=completa`, `particao_disjunta=sim` e `status_qualidade=aprovado` para a métrica.
+
+`ativos_facetas.csv` exige colunas `dist,entidade,data_base,facet_id,dimensoes_json,metrica,valor,unidade,status_qualidade,motivo_qualidade`. O campo `dimensoes_json` contém objeto JSON com exatamente os atributos do `facet_id`, e seus códigos DDA verificados. A granularidade é `DIST + entidade + facet_id + dimensoes_json + metrica`.
+
+A API selecionará **um único cubo conjunto compatível** com o conjunto completo dos filtros pedidos. Não multiplicar porcentagens de tabelas marginais. Se a faceta não tiver cobertura, disjunção ou QA apropriados para a métrica, retornar `N/D` + motivo, não estimar.
+
+**Versões:** `schema_version=1.0.0` ainda é aceito para um pacote piloto de totais sem facetas; `1.1.0` inclui os dois arquivos de facetas e é o contrato-alvo do frontend real.
 
 ### `matriz_empresas_2025.csv`
 Uma linha por `DIST`, com coluna `dist`, `data_base` e as colunas das métricas **com unidade explícita** para cada entidade (por exemplo, `UCBT__quantidade`, `SSDMT__extensao_km`). Unidades diferentes não devem ser somadas. Ausente/não homologado: célula vazia + registro de cobertura; zero apenas se realmente auditado. A matriz deve reconciliar com o fato agregado no nível de DIST + entidade + métrica.
