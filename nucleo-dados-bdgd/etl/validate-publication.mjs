@@ -14,7 +14,9 @@ const required = {
   entidades: ['entidade', 'nome_exibicao', 'familia', 'metrica', 'unidade', 'regra'],
   fatos: ['dist', 'entidade', 'data_base', 'dimensoes_json', 'quantidade', 'quantidade_registros', 'quantidade_cod_id_distinto', 'extensao_km', 'potencia_kva', 'status_qualidade', 'motivo_qualidade'],
   matriz: ['dist', 'data_base'],
-  qa: ['dist', 'entidade', 'metrica', 'valor_origem', 'valor_agregado', 'diferenca', 'tolerancia', 'status']
+  qa: ['dist', 'entidade', 'metrica', 'valor_origem', 'valor_agregado', 'diferenca', 'tolerancia', 'status'],
+  facetas_catalogo: ['facet_id', 'entidade', 'dimensoes_json', 'metrica', 'unidade', 'cobertura', 'particao_disjunta', 'permite_rollup', 'status_qualidade'],
+  facetas: ['dist', 'entidade', 'data_base', 'facet_id', 'dimensoes_json', 'metrica', 'valor', 'unidade', 'status_qualidade', 'motivo_qualidade']
 };
 function problem(msg) { errors.push(msg); }
 function readUtf8(file) { return fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''); }
