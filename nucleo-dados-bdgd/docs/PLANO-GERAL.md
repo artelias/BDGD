@@ -82,6 +82,16 @@ Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem
 
 **M5 — Operação**: Vercel público, monitoramento de latência/custo, testes, auditoria de licença, calendário de atualização e documentação.
 
+**M6 — Histórico para ML (futuro, após M5)**: inventariar dados históricos comparáveis, idealmente 2019–2025, com ETL segregado do dashboard oficial 2025, sem mistura de competências.
+
+**M7 — Séries históricas harmonizadas (futuro)**: construir série anual por DIST, entidade e métrica, tratar evolução de DDA/layout, comparabilidade, mudanças de DIST e grupos econômicos com vigência.
+
+**M8 — Modelos preditivos e classificação (futuro)**: comparar baselines com ML, validar por backtesting temporal, classificar trajetórias e projetar **2026–2029** com intervalos de incerteza e regras de coerência empresa/grupo/Brasil.
+
+**M9 — Módulo web preditivo (futuro)**: publicar apenas previsões sumarizadas, qualidade e metadados; nova aba "Inteligência Preditiva", comparativos históricos e futuros, cenários e exportação.
+
+**M10 — Monitoramento e atualização (futuro)**: retreinamento após novas competências homologadas, avaliação de erro real versus previsto, versionamento e alertas de mudanças estruturais.
+
 ## 9. Critérios de aceite
 
 - 100% das distribuidoras publicadas correspondem a arquivos oficiais efetivamente validados com `DATA_BASE = 2025-12-31`, e exibem fonte, checksum e cobertura; ausências não se tornam zeros.
@@ -111,3 +121,17 @@ Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem
 - **Nunca bloquear um release ou uma distribuidora porque os números de 2025 divergem dos indicadores de 2024.** Divergência histórica pode motivar investigação, mas não é falha automática de QA.
 - Não criar um backfill 2024 nem misturar competências no portal para satisfazer a paridade com VPE.
 - Evidenciar no relatório de qualidade duas categorias separadas: `validacao_metodologica_vpe_2024` e `reconciliacao_origem_bdgd_2025`. A primeira verifica regras, a segunda números e integridade de 2025.
+
+## 12. Evolução posterior: Inteligência Preditiva e previsões 2026–2029
+
+**Incluída no escopo, mas não iniciada.** O portal público atual continuará usando exclusivamente `DATA_BASE=31/12/2025`; séries históricas anteriores serão adquiridas e processadas **em módulo separado após o dashboard 2025 estar pronto**, com métricas temporalmente harmonizadas.
+
+Objetivo: gerar previsões de crescimento por **distribuidora, grupo econômico e país**, por entidade, unidade e métrica, com classificação da trajetória histórica, comparativos futuros A/B, cenários e intervalos de incerteza para **2026, 2027, 2028 e 2029**. São **projeções estatísticas**, nunca dados reais da ANEEL.
+
+Treinamento/inferência fora do website, com **Python e DuckDB em máquina local autorizada (CPU)**. O site receberá apenas CSV/JSON ou tabelas PostgreSQL de **previsões sumarizadas e aprovadas**; não é necessário fazer upload de modelo treinado, GDBs históricos, Parquets privados ou COD_ID. A solução poderá inicialmente usar assets JSON estáticos se os agregados forem pequenos.
+
+**Restrição científica:** a única competência 2025 não é série temporal; não treinar/apresentar ML de crescimento quadrienal somente com esse snapshot. Para inferência temporal é necessário histórico de anos comparáveis (idealmente 2019–2025 ou janela disponível), com mudanças de layout/DDA, fusões de distribuidoras e vigência de grupos econômicos documentadas. Onde não houver histórico suficiente, mostrar `previsao_indisponivel`, sem fabricar confiança ou resultados. Comparar com modelos-base e utilizar validação temporal retrospectiva, não divisão aleatória dos anos.
+
+**Documento normativo completo:** [MODULO-PREDITIVO-ML.md](MODULO-PREDITIVO-ML.md) — granularidade e fontes, classificação, backtesting, hierarquia distribuidora/grupo/Brasil, formatos públicos, experiência no dashboard, critérios de aceite e roadmap M6–M10.
+
+**Prioridade vigente:** terminar M1–M5, sem atrasar download, reconciliação, ARAT e construção do dashboard oficial 2025. Não realizar download de histórico ou criação de infraestrutura paga sem autorização específica.
