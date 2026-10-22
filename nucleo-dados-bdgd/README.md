@@ -23,6 +23,7 @@ Depois abra `http://localhost:8000`. Nenhuma dependência, autenticação, banco
 - `database/schema.sql` — desenho inicial do banco PostgreSQL/Supabase.
 - `docs/PLANO-GERAL.md` — arquitetura, fases, decisões e critérios de aceite.
 - `etl/README.md` — especificação da ingestão, extração ARAT, DDA e agregação.
+- `docs/MODELO-FATOS-FACETAS-2025.md` — grão dos totais e cubos DDA, sem duplicação de medidas; esquema 1.1.0.
 - `docs/PROMPT-CLAUDE-ETL-2025.md` — instruções operacionais completas para processamento local da competência **31/12/2025**.
 
 ## Operação final prevista
