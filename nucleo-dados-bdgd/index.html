@@ -20,7 +20,7 @@
     </nav>
     <div class="toptools"><span class="demo-pill"><span class="live-dot"></span> DEMONSTRAÇÃO</span><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro e escuro" title="Alternar tema">☾</button></div>
   </header>
-  <div class="disclosure">PROTÓTIPO CONCEITUAL <span>·</span> NÚMEROS FICTÍCIOS <span>·</span> POLÍGONOS ILUSTRATIVOS, NÃO ARAT OFICIAL</div>
+  <div class="disclosure">PROTÓTIPO CONCEITUAL <span>·</span> DATA-BASE 31/12/2025 <span>·</span> NÚMEROS FICTÍCIOS <span>·</span> POLÍGONOS NÃO OFICIAIS</div>
   <div class="page">
     <aside class="sidebar">
       <div class="sidebar-title"><div><div class="eyebrow">RECORTES INTERATIVOS</div><h2>Filtros</h2></div><button type="button" class="link-button" id="clear">Limpar tudo</button></div>
@@ -29,7 +29,7 @@
         <label>Grupo econômico<select id="group"></select></label>
         <label>Distribuidora<select id="company"></select></label>
         <label>UF<select id="uf"></select></label>
-        <label>Data-base<select id="base"></select></label>
+        <label>Data-base (recorte exclusivo)<select id="base"></select></label>
       </section>
       <section class="filter-group">
         <h3><span>02</span> Ativos</h3>
@@ -98,7 +98,7 @@
         <div class="compare-info">Quantidades e quilômetros são tratados por entidade separadamente; não se somam grandezas diferentes. Variação indisponível quando o denominador é zero.</div></article>
       </section>
       <section id="methodology" class="lower-section"><div class="section-heading"><div><div class="eyebrow">TRANSPARÊNCIA</div><h2>Como os dados serão publicados.</h2></div></div><div class="method-grid">
-        <article class="card method"><b>01 · Fonte</b><h3>Dados abertos ANEEL</h3><p>Última DATA_BASE válida por distribuidora, com rastreabilidade da origem e controle de versões.</p></article>
+        <article class="card method"><b>01 · Fonte</b><h3>Dados abertos ANEEL</h3><p>Competência única de 31/12/2025: incluir apenas distribuidoras com GDB dessa data comprovado, preservando origem e hash. Sem substituição por outras competências.</p></article>
         <article class="card method"><b>02 · Processamento</b><h3>Vínculos e DDA</h3><p>ETL Python, resolução de cardinalidade, domínio descritivo, verificações de integridade e agregações.</p></article>
         <article class="card method"><b>03 · Publicação</b><h3>Camada pública leve</h3><p>Polígonos ARAT simplificados e fatos agregados. APIs paginadas e com cache, sem Parquet bruto no browser.</p></article>
       </div></section>
