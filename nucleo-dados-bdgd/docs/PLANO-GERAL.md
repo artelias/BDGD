@@ -53,7 +53,8 @@ Cada resposta inclui `version_id`, `data_base` por distribuidora, `filtro_aplica
 - `dim_entidade` (código e designação da BDGD, família e regra de métrica)
 - `dim_dominio_dda` (versão, atributo, código interno, descrição amigável)
 - `snapshot_bdgd` (DIST, DATA_BASE, origem, checksum, data_ingestao, publicado)
-- `fact_ativo_agg` (snapshot_id, entidade, dimensões DDA normalizadas, quantidade, extensão_km, potencia_kva)
+- `fact_ativo_agg` (snapshot_id, entidade; uma linha TOTAL, sem dimensão DDA)
+- `fact_facetas_dda` e `facetas_catalogo` (cubos conjuntos por DIMENSÕES DDA, com cobertura, disjunção, métrica e regras de rollup explicitamente validadas)
 - `arat_publicada` (snapshot, geometria simplificada por fragmento/polígono, source_checksum)
 - `controle_qualidade` (validação, totais de origem/agregado, estado)
 
