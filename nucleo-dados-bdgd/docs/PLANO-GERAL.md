@@ -2,7 +2,7 @@
 
 ## 1. Objetivo e escopo
 
-Portal nacional, público e sem autenticação, que reproduza indicadores homologados do BI VPE, incluindo grupo econômico, mantendo a navegação interativa por empresa, família e atributos DDA, e adicionando mapa ARAT nacional.
+Portal nacional, público e sem autenticação, que reaproveite as definições metodológicas do BI VPE de 2024, mas sem exigir paridade de resultados (o portal tem base 2025), incluindo grupo econômico, mantendo a navegação interativa por empresa, família e atributos DDA, e adicionando mapa ARAT nacional.
 
 **Regras de produto**: filtros descritivos (não códigos BDGD), sem dados brutos no browser, **somente `DATA_BASE = 31/12/2025`** para toda distribuidora elegível, sem usar anos anteriores ou posteriores como alternativa, métricas e grandezas explícitas, comparações auditáveis, acessibilidade e tema claro/escuro.
 
@@ -100,3 +100,13 @@ Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem
 - Geometria ARAT pode ter múltiplos fragmentos, buracos e sobreposição; fusão exige decisão de negócio.
 - Custo de storage e consultas nacionais; monitorar limites do plano contratado.
 - Publicação da BDGD derivada: cumprir licença ODbL e requisitos de privacidade.
+
+## 11. Separação obrigatória entre BI VPE 2024 e BDGD 2025
+
+**Esclarecimento do responsável pelo projeto em 22/10/2026:** o BI VPE de referência foi construído com a BDGD **DATA_BASE = 31/12/2024**, ao passo que este portal utilizará **exclusivamente DATA_BASE = 31/12/2025**. **Não existe critério de aceite de igualdade numérica entre os dois exercícios.**
+
+- **Validar estrutura e metodologia com o BI VPE 2024:** definições de KPIs, fórmulas, filtros, unidades, classificação de entidades, regras DDA e semântica de relacionamentos. Ajustar normas/layout para 2025 quando houver evolução.
+- **Validar quantitativamente com a BDGD 2025:** contagens e medidas da própria GDB com competência 31/12/2025, vínculos, chaves `DIST + COD_ID`, reconciliação de registros versus contagens distintas, extensões/potências e totalizações entre grupos.
+- **Nunca bloquear um release ou uma distribuidora porque os números de 2025 divergem dos indicadores de 2024.** Divergência histórica pode motivar investigação, mas não é falha automática de QA.
+- Não criar um backfill 2024 nem misturar competências no portal para satisfazer a paridade com VPE.
+- Evidenciar no relatório de qualidade duas categorias separadas: `validacao_metodologica_vpe_2024` e `reconciliacao_origem_bdgd_2025`. A primeira verifica regras, a segunda números e integridade de 2025.
