@@ -31,3 +31,16 @@ Executar ETL fora do ambiente Vercel (runner com armazenamento temporário sufic
 ## Teste obrigatório por amostra
 
 Selecionar 3 distribuidoras de diferentes grupos; calcular relatórios brutos de UCBT, EQTRMT, SSDMT, SUB e ARAT; comparar valores com agregados por todas as dimensões; testar filtros combinados e a comparação grupo×grupo.
+
+
+## Atualização: separação de TOTAL e facetas DDA (contrato 1.1.0)
+
+Após o segundo piloto, o Claude identificou que somar múltiplos agregados DDA para reconstruir a matriz produziria duplicidade. **Decisão homologada:**
+
+- `ativos_agregados.csv` terá **exatamente uma linha por DIST×entidade** e `dimensoes_json={}`; matriz e KPIs sem filtro técnico vêm dessa base.
+- `ativos_facetas.csv` terá os cubos de `DIST×entidade×facet_id×combinação DDA×métrica`, separados do total.
+- `facetas_catalogo.csv` declarará a combinação de atributos, unidade, cobertura, disjunção e permissão de rollup específica para a métrica.
+- Uma faceta pode ser filtrada pontualmente se a contagem para a interseção tiver sido calculada diretamente; **não** realizar soma entre valores de categorias sobrepostas, nem produto de percentuais marginais. `COUNT(DISTINCT)` não se soma sem prova de partição disjunta.
+- Compromissos completos em [docs/MODELO-FATOS-FACETAS-2025.md](../docs/MODELO-FATOS-FACETAS-2025.md). Validador estrutural agora aceita `1.0.0` para piloto só de totais e `1.1.0` com cubos DDA.
+
+**Testes locais sem dependências de pacote:** `node etl/tests/smoke.mjs`. Validar resultado na máquina/CI antes de declarar aprovado.
