@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Núcleo de Dados da BDGD — protótipo analítico de infraestrutura elétrica brasileira.">
+  <title>Núcleo de Dados da BDGD · Atlas nacional</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand"><div class="brand-icon" aria-hidden="true">▤</div><div><b>Núcleo de Dados</b><small>DA BDGD</small></div></div>
+    <nav aria-label="Navegação principal">
+      <button type="button" class="tab active" data-scroll="overview">Panorama</button>
+      <button type="button" class="tab" data-scroll="assets">Ativos por empresa</button>
+      <button type="button" class="tab" data-scroll="compare">Comparador</button>
+      <button type="button" class="tab" data-scroll="methodology">Metodologia</button>
+    </nav>
+    <div class="toptools"><span class="demo-pill"><span class="live-dot"></span> DEMONSTRAÇÃO</span><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro e escuro" title="Alternar tema">☾</button></div>
+  </header>
+  <div class="disclosure">PROTÓTIPO CONCEITUAL <span>·</span> NÚMEROS FICTÍCIOS <span>·</span> POLÍGONOS ILUSTRATIVOS, NÃO ARAT OFICIAL</div>
+  <div class="page">
+    <aside class="sidebar">
+      <div class="sidebar-title"><div><div class="eyebrow">RECORTES INTERATIVOS</div><h2>Filtros</h2></div><button type="button" class="link-button" id="clear">Limpar tudo</button></div>
+      <section class="filter-group">
+        <h3><span>01</span> Institucional</h3>
+        <label>Grupo econômico<select id="group"></select></label>
+        <label>Distribuidora<select id="company"></select></label>
+        <label>UF<select id="uf"></select></label>
+        <label>Data-base<select id="base"></select></label>
+      </section>
+      <section class="filter-group">
+        <h3><span>02</span> Ativos</h3>
+        <label>Família de ativos<select id="family"></select></label>
+        <label>Busca por entidade<input type="search" id="entitySearch" placeholder="Ex.: transformador, rede, medidor"></label>
+      </section>
+      <section class="filter-group">
+        <h3><span>03</span> Atributos traduzidos <span class="tag">DDA</span></h3>
+        <p>Campos amigáveis e dependentes da família de ativos; códigos internos não são exibidos.</p>
+        <label>Localização<select id="area"></select></label>
+        <label>Configuração de fases<select id="phase"></select></label>
+        <label>Forma de instalação<select id="install"></select></label>
+        <label>Categoria patrimonial<select id="type"></select></label>
+        <div class="tip" id="dda-notice">Selecione uma família de ativos para mostrar filtros técnicos aplicáveis.</div>
+      </section>
+      <div class="sidebar-status"><span class="live-dot"></span><div>Camada analítica agregada<small>Sem leitura de Parquets no navegador</small></div></div>
+    </aside>
+    <main class="main">
+      <section class="hero">
+        <div class="eyebrow accent">OBSERVATÓRIO NACIONAL DA DISTRIBUIÇÃO</div>
+        <h1>O Brasil elétrico.<br><span>Uma nova perspectiva.</span></h1>
+        <p>Explore regiões de atuação, compare grupos econômicos e investigue cada família de ativos com descrições claras e filtros dinâmicos.</p>
+      </section>
+      <section id="overview">
+        <div class="section-heading"><div><div class="eyebrow">VISÃO NACIONAL</div><h2 id="view-title">Panorama do Brasil</h2></div><div class="live-label"><span class="live-dot"></span> Recorte interativo · dados demonstrativos</div></div>
+        <div class="kpis" id="kpis"></div>
+        <div class="top-grid">
+          <article class="card map-card">
+            <div class="card-heading"><div><div class="eyebrow">MAPA DE ÁREAS DE ATUAÇÃO</div><h3>Distribuidoras no Brasil</h3><p>Passe o mouse sobre uma área e clique para filtrar o painel.</p></div><span class="chip">ARAT · modelo visual</span></div>
+            <div class="map-area" id="mapArea">
+              <svg id="map" viewBox="0 0 640 485" role="img" aria-label="Áreas de atuação ilustrativas, interativas, por distribuidora">
+                <defs><linearGradient id="terrain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edf5fc"/><stop offset="1" stop-color="#d6e5f6"/></linearGradient>
+                <clipPath id="brazilClip"><path d="M197 26L173 16 142 38 112 40 92 66 57 71 49 115 27 152 40 196 78 205 108 222 143 213 168 242 178 286 203 310 221 348 236 404 263 443 287 450 311 411 312 371 342 346 369 343 403 329 426 290 456 287 482 245 501 217 511 176 541 155 567 130 557 101 538 85 511 75 486 48 452 53 421 34 392 45 360 32 337 48 303 60 277 44 248 47 220 35Z"/></clipPath></defs>
+                <path d="M197 26L173 16 142 38 112 40 92 66 57 71 49 115 27 152 40 196 78 205 108 222 143 213 168 242 178 286 203 310 221 348 236 404 263 443 287 450 311 411 312 371 342 346 369 343 403 329 426 290 456 287 482 245 501 217 511 176 541 155 567 130 557 101 538 85 511 75 486 48 452 53 421 34 392 45 360 32 337 48 303 60 277 44 248 47 220 35Z" fill="url(#terrain)" stroke="#a7c2dd" stroke-width="2"/>
+                <g id="area-polygons" clip-path="url(#brazilClip)"></g>
+              </svg>
+              <div id="map-tooltip" class="map-tooltip" hidden></div>
+              <div class="map-compass">N ↑</div>
+            </div>
+            <div class="map-legend" id="legend"></div>
+            <p class="map-foot">As formas são uma simulação visual. Serão substituídas pelos polígonos ARAT oficiais simplificados da BDGD, inclusive multipolígonos e sobreposições.</p>
+          </article>
+          <article class="card focus-card">
+            <div class="card-heading"><div><div class="eyebrow">RESUMO DO RECORTE</div><h3 id="focus-name">Brasil</h3></div><span class="chip blue">Interativo</span></div>
+            <div id="focus" class="focus-data"></div>
+            <div class="focus-help" id="focus-help">Selecione uma área no mapa para visualizar a distribuidora.</div>
+          </article>
+        </div>
+        <div class="two-grid">
+          <article class="card"><div class="card-heading"><div><div class="eyebrow">RANKING</div><h3>Distribuidoras em destaque</h3></div><span id="ranking-caption" class="chip"></span></div><div id="ranking" class="ranking"></div></article>
+          <article class="card"><div class="card-heading"><div><div class="eyebrow">ESTRUTURA DO MERCADO</div><h3>Participação por grupo econômico</h3></div><span class="chip">Recorte atual</span></div><div id="shares" class="shares"></div></article>
+        </div>
+      </section>
+      <section id="assets" class="lower-section">
+        <div class="section-heading"><div><div class="eyebrow">CATÁLOGO ANALÍTICO</div><h2>Todos os ativos por empresa.</h2><p>Uma matriz horizontal de entidades com quantidades e extensões. Selecione uma família para aplicar filtros DDA.</p></div><button type="button" id="export-csv" class="primary-btn">Exportar CSV ↓</button></div>
+        <div id="tiles" class="tiles"></div>
+        <article class="card data-card"><div class="card-heading"><div><div class="eyebrow">MATRIZ NACIONAL</div><h3>Ativos e entidades por distribuidora</h3><p>Role horizontalmente para visualizar todas as entidades.</p></div><span id="matrix-count" class="chip"></span></div><div class="table-scroll"><table id="matrix"><thead></thead><tbody></tbody></table></div></article>
+      </section>
+      <section id="compare" class="lower-section">
+        <div class="section-heading"><div><div class="eyebrow">BENCHMARK</div><h2>Comparador completo.</h2><p>Empresa × empresa, grupo × grupo ou combinação entre eles, com todas as entidades lado a lado.</p></div></div>
+        <article class="card compare-card"><div class="compare-controls">
+          <div><label for="side-a-type">Recorte A</label><select id="side-a-type"><option value="group">Grupo econômico</option><option value="company">Distribuidora</option></select><select id="side-a"></select></div>
+          <div class="versus">VS</div>
+          <div><label for="side-b-type">Recorte B</label><select id="side-b-type"><option value="group">Grupo econômico</option><option value="company">Distribuidora</option></select><select id="side-b"></select></div>
+        </div><div class="table-scroll"><table id="comparison-matrix"><thead><tr><th>Família / entidade</th><th id="col-a">Grupo A</th><th id="col-b">Grupo B</th><th>Diferença A − B</th><th>Variação relativa a B</th></tr></thead><tbody></tbody></table></div>
+        <div class="compare-info">Quantidades e quilômetros são tratados por entidade separadamente; não se somam grandezas diferentes. Variação indisponível quando o denominador é zero.</div></article>
+      </section>
+      <section id="methodology" class="lower-section"><div class="section-heading"><div><div class="eyebrow">TRANSPARÊNCIA</div><h2>Como os dados serão publicados.</h2></div></div><div class="method-grid">
+        <article class="card method"><b>01 · Fonte</b><h3>Dados abertos ANEEL</h3><p>Última DATA_BASE válida por distribuidora, com rastreabilidade da origem e controle de versões.</p></article>
+        <article class="card method"><b>02 · Processamento</b><h3>Vínculos e DDA</h3><p>ETL Python, resolução de cardinalidade, domínio descritivo, verificações de integridade e agregações.</p></article>
+        <article class="card method"><b>03 · Publicação</b><h3>Camada pública leve</h3><p>Polígonos ARAT simplificados e fatos agregados. APIs paginadas e com cache, sem Parquet bruto no browser.</p></article>
+      </div></section>
+      <footer class="footer"><strong>Núcleo de Dados da BDGD</strong><span>Desenvolvido por Arthur Henrique Lima · Núcleo de Dados da BDGD</span><small>Protótipo técnico · Não afiliado à ANEEL · Dados fictícios</small></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>
