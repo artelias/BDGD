@@ -59,7 +59,8 @@ create table if not exists public.dda_dominio (
  unique (versao, entidade, atributo, codigo_interno)
 );
 
--- Granularidade: snapshot × entidade × combinação válida de dimensões.
+-- Granularidade TOTAL: snapshot × entidade, exatamente UMA linha por entidade/snapshot.
+-- As facetas DDA ficam em tabela separada, evitando somá-las aos totais nacionais.
 -- NOTA: quantidade_cod_id_distinto só pode ser somada entre partições comprovadamente disjuntas;
 -- divergência de atributos por COD_ID exige chave canônica ou consulta específica.
 -- Potência suspeita permanece nula nas visões publicadas, com status/motivo de QA.
@@ -68,8 +69,8 @@ create table if not exists public.dda_dominio (
 create table if not exists public.ativo_agregado (
  snapshot_id bigint not null references public.snapshot_bdgd(id),
  entidade text not null references public.entidade(codigo),
- dimensoes jsonb not null default '{}'::jsonb,
- dimensoes_hash text not null,
+ dimensoes jsonb not null default '{}'::jsonb check (dimensoes = '{}'::jsonb),
+ dimensoes_hash text not null default 'total' check (dimensoes_hash='total'),
  quantidade bigint,
  quantidade_registros bigint,
  quantidade_cod_id_distinto bigint,
@@ -79,7 +80,7 @@ create table if not exists public.ativo_agregado (
    check (status_qualidade in ('aprovado','alerta','bloqueado','em_validacao','nao_aplicavel')),
  motivo_qualidade text,
  outros_indicadores jsonb,
- primary key(snapshot_id, entidade, dimensoes_hash),
+ primary key(snapshot_id, entidade),
  check (quantidade is null or quantidade >= 0),
  check (quantidade_registros is null or quantidade_registros >= 0),
  check (quantidade_cod_id_distinto is null or quantidade_cod_id_distinto >= 0),
@@ -88,6 +89,43 @@ create table if not exists public.ativo_agregado (
 );
 create index if not exists ativo_agregado_snapshot_entidade_idx on public.ativo_agregado(snapshot_id, entidade);
 create index if not exists ativo_agregado_dimensoes_gin_idx on public.ativo_agregado using gin(dimensoes jsonb_path_ops);
+
+-- Catálogo dos cubos de dimensões DDA verificadas e das métricas permitidas.
+-- Facetas são OPCIONAIS para piloto 1.0.0 e obrigatórias quando a API aceita filtros DDA reais.
+create table if not exists public.faceta_catalogo (
+ facet_id text not null,
+ entidade text not null references public.entidade(codigo),
+ metrica text not null check(metrica in ('quantidade','quantidade_registros','quantidade_cod_id_distinto','extensao_km','potencia_kva')),
+ unidade text not null,
+ atributos jsonb not null check (jsonb_typeof(atributos)='array'),
+ cobertura text not null check (cobertura in ('completa','parcial','desconhecida')),
+ particao_disjunta boolean not null default false,
+ permite_rollup boolean not null default false,
+ status_qualidade text not null check (status_qualidade in ('aprovado','alerta','bloqueado','em_validacao','nao_aplicavel')),
+ primary key(facet_id, entidade, metrica),
+ check (not permite_rollup or (cobertura='completa' and particao_disjunta and status_qualidade='aprovado'))
+);
+
+-- Esta é uma cubagem condicional. Não usar em SUM junto com ativo_agregado:
+-- apenas um facet_id por consulta, com combinação de atributos previamente validada.
+create table if not exists public.ativo_faceta (
+ snapshot_id bigint not null references public.snapshot_bdgd(id),
+ entidade text not null references public.entidade(codigo),
+ facet_id text not null,
+ metrica text not null,
+ dimensoes jsonb not null check (jsonb_typeof(dimensoes)='object'),
+ dimensoes_hash text not null,
+ valor numeric(24,6),
+ unidade text not null,
+ status_qualidade text not null check (status_qualidade in ('aprovado','alerta','bloqueado','em_validacao','nao_aplicavel')),
+ motivo_qualidade text,
+ primary key(snapshot_id, entidade, facet_id, metrica, dimensoes_hash),
+ foreign key(facet_id, entidade, metrica) references public.faceta_catalogo(facet_id, entidade, metrica),
+ check (valor is null or valor>=0),
+ check (status_qualidade!='bloqueado' or motivo_qualidade is not null)
+);
+create index if not exists ativo_faceta_snapshot_facet_idx on public.ativo_faceta(snapshot_id, entidade, facet_id, metrica);
+create index if not exists ativo_faceta_dimensoes_gin_idx on public.ativo_faceta using gin(dimensoes jsonb_path_ops);
 
 -- Publicar geometrias poligonais simplificadas separadas em partes.
 -- Geometria bruta deve permanecer no processamento privado, nunca nesta tabela.
@@ -111,6 +149,8 @@ alter table public.snapshot_bdgd enable row level security;
 alter table public.entidade enable row level security;
 alter table public.dda_dominio enable row level security;
 alter table public.ativo_agregado enable row level security;
+alter table public.faceta_catalogo enable row level security;
+alter table public.ativo_faceta enable row level security;
 alter table public.arat_simplificada enable row level security;
 
 -- Não habilitar anon direto sobre fatos/ARAT antes de aprovar licenciamento,
