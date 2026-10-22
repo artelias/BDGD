@@ -26,3 +26,7 @@
 - Verificação externa regulatória: [ANEEL — MMGD](https://www.gov.br/aneel/pt-br/assuntos/geracao-distribuida/) e [Lei 14.300/2022](https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm).
 
 **Próxima transferência Claude → ChatGPT:** `inventario_2025.csv`, `cobertura_2025.json`, `RELATORIO_COBERTURA_2025.md`, pacote-piloto sanitizado, código de ETL (sem segredos) e evidências de QA, pelo GitHub em branch própria ou arquivo anexo. **Não adianta enviar caminhos D:\ locais como se eu pudesse acessá-los daqui.**
+
+## Correção de referência numérica do BI VPE
+
+O usuário esclareceu que o **BI VPE é de 2024**, e **não** deve bater numericamente com a carga do portal baseada em **2025**. Portanto, os resultados do BI VPE são consultados apenas para reproduzir/avaliar **método, fórmula, definições de métricas, dimensões e regras**, ajustados quando necessário para o layout 2025. Não comparar os números de 2025 com os resultados do BI VPE como condição de aceite. A reconciliação obrigatória é `GDB 2025 → agregados 2025 → matriz e KPIs 2025`. Caso um KPI VPE 2024 dependa de cálculo que não se aplica ao layout atual, documentar a incompatibilidade e homologar a versão 2025 sem forçar igualdade histórica.
