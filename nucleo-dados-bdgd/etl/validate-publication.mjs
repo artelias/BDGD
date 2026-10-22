@@ -88,7 +88,7 @@ function main(){
   const file=safeFile(ROOT,'manifest.json');
   if(!fs.existsSync(file)) {console.error('manifest.json ausente');process.exitCode=2;return;}
   let manifest;try{manifest=JSON.parse(readUtf8(file));}catch(e){console.error('manifest.json inválido: '+e.message);process.exitCode=2;return;}
-  if(manifest.schema_version!=='1.0.0')problem('schema_version não homologada: '+manifest.schema_version);
+  if(!['1.0.0','1.1.0'].includes(manifest.schema_version))problem('schema_version não suportada: '+manifest.schema_version);
   if(manifest.data_base!==EXPECTED_DATE)problem('Manifesto contém data-base incompatível');
   if(!manifest.release_id||!manifest.generated_at||!manifest.dda_version)problem('Manifesto sem release_id/generated_at/dda_version');
   if(!Array.isArray(manifest.sources))problem('Manifesto não lista sources');
@@ -123,11 +123,15 @@ function main(){
     if(!/^[0-9a-f]{64}$/i.test(r.sha256||''))problem('Fonte sem SHA-256 válido: '+r.dist);
   }
   const byFact=new Map();
+  const seenFacts=new Set();
   for(const [i,r] of loaded.fatos.records.entries()){
     const k='fatos linha '+(i+2);ensureDate(r,k);
     if(!dists.has(r.dist))problem(k+': DIST não catalogado');
     if(!entitySet.has(r.entidade))problem(k+': entidade desconhecida');
-    try{const dims=JSON.parse(r.dimensoes_json);if(!dims||Array.isArray(dims)||typeof dims!=='object')problem(k+': dimensoes_json não objeto');else if(Object.keys(dims).some(x=>deny.test(x)))problem(k+': dimensão individualizada');}catch(e){problem(k+': dimensoes_json inválido');}
+    const factKey=r.dist+'|'+r.entidade;
+    if(seenFacts.has(factKey))problem(k+': fato TOTAL duplicado por DIST e entidade (categorias DDA devem ficar em ativos_facetas.csv)');
+    seenFacts.add(factKey);
+    try{const dims=JSON.parse(r.dimensoes_json);if(!dims||Array.isArray(dims)||typeof dims!=='object'||Object.keys(dims).length)problem(k+': fato-base exige dimensoes_json = {}. Facetas devem ficar separadas.');}catch(e){problem(k+': dimensoes_json inválido');}
     if(!['aprovado','alerta','bloqueado','em_validacao','nao_aplicavel'].includes(r.status_qualidade))problem(k+': status_qualidade inválido');
     if(r.status_qualidade==='bloqueado'&&!r.motivo_qualidade)problem(k+': indicador bloqueado sem motivo');
     for(const m of ['quantidade','quantidade_registros','quantidade_cod_id_distinto','extensao_km','potencia_kva']){
@@ -145,13 +149,99 @@ function main(){
     for(const [k,v] of Object.entries(r)){
       if(k==='dist'||k==='data_base'||v==='')continue;
       const parts=k.split('__');
-      if(parts.length!==2||!entitySet.has(parts[0])||!['quantidade','extensao_km','potencia_kva'].includes(parts[1])){problem('matriz: coluna inesperada '+k);continue;}
+      if(parts.length!==2||!entitySet.has(parts[0])||!['quantidade','quantidade_registros','quantidade_cod_id_distinto','extensao_km','potencia_kva'].includes(parts[1])){problem('matriz: coluna inesperada '+k);continue;}
       const n=parseNumber(v,'matriz '+r.dist+' '+k);
       const fromFact=byFact.get(r.dist+'|'+parts[0]+'|'+parts[1]);
+      if(n!==null&&fromFact===undefined)problem('Matriz tem valor sem fato-base correspondente: '+r.dist+' '+k);
       if(n!==null&&fromFact!==undefined&&Math.abs(n-fromFact)>Math.max(1e-5,Math.abs(fromFact)*1e-8))problem('Matriz não reconcilia: '+r.dist+' '+k+' ('+n+' vs '+fromFact+')');
     }
   }
   if(seenMat.size!==dists.size)problem('Quantidade de distribuidoras difere entre matriz e catálogo');
+
+  // O contrato 1.1.0 habilita cubos DDA independentes; 1.0.0 é compatibilidade piloto sem facetas.
+  if(manifest.schema_version==='1.0.0'&&(declared.facetas||declared.facetas_catalogo))
+    problem('Para arquivos de facetas é necessário schema_version 1.1.0');
+  if(manifest.schema_version==='1.1.0'){
+    if(!declared.facetas||!declared.facetas_catalogo)problem('schema 1.1.0 exige files.facetas e files.facetas_catalogo');
+    const specs=loadCSV(ROOT,declared.facetas_catalogo||'facetas_catalogo.csv','facetas_catalogo');
+    const cubes=loadCSV(ROOT,declared.facetas||'ativos_facetas.csv','facetas');
+    const specsByKey=new Map();
+    const facetRowsByKey=new Map();
+    const seenFacetRows=new Set();
+    const validMetrics=new Set(['quantidade','quantidade_registros','quantidade_cod_id_distinto','extensao_km','potencia_kva']);
+    const validStates=new Set(['aprovado','alerta','bloqueado','em_validacao','nao_aplicavel']);
+    for(const [i,s] of specs.records.entries()){
+      const where='facetas_catalogo linha '+(i+2);
+      const sk=[s.facet_id,s.entidade,s.metrica].join('|');
+      if(!s.facet_id||specsByKey.has(sk))problem(where+': facet_id/entidade/metrica vazio ou duplicado');
+      if(!entitySet.has(s.entidade))problem(where+': entidade desconhecida');
+      if(!validMetrics.has(s.metrica))problem(where+': métrica inválida');
+      if(!['completa','parcial','desconhecida'].includes(s.cobertura))problem(where+': cobertura inválida');
+      if(!['sim','nao'].includes(s.particao_disjunta)||!['sim','nao'].includes(s.permite_rollup))problem(where+': rollup/disjunção exige sim ou nao');
+      if(!validStates.has(s.status_qualidade))problem(where+': status de qualidade inválido');
+      let dims=[];
+      try{dims=JSON.parse(s.dimensoes_json);
+        if(!Array.isArray(dims)||!dims.length||dims.some(k=>typeof k!=='string'||!k.trim()||deny.test(k))||new Set(dims).size!==dims.length){
+          problem(where+': lista de dimensões inválida ou individualizada');dims=[];
+        }
+      }catch(e){problem(where+': dimensoes_json inválido');}
+      if(s.permite_rollup==='sim'&&
+        (s.cobertura!=='completa'||s.particao_disjunta!=='sim'||s.status_qualidade!=='aprovado'))
+        problem(where+': rollup permitido sem cobertura completa, partição disjunta e QA aprovado');
+      specsByKey.set(sk,{spec:s,dims:dims.slice().sort()});
+    }
+    for(const [i,row] of cubes.records.entries()){
+      const where='ativos_facetas linha '+(i+2);
+      ensureDate(row,where);
+      if(!dists.has(row.dist))problem(where+': DIST não catalogado');
+      if(!entitySet.has(row.entidade))problem(where+': entidade desconhecida');
+      const sk=[row.facet_id,row.entidade,row.metrica].join('|');
+      const spec=specsByKey.get(sk);
+      if(!spec){problem(where+': facet_id/entidade/metrica ausente do catálogo');continue;}
+      if(!validStates.has(row.status_qualidade))problem(where+': status de qualidade inválido');
+      if(row.status_qualidade==='bloqueado'&&!row.motivo_qualidade)problem(where+': bloqueio sem motivo');
+      if(row.unidade!==spec.spec.unidade)problem(where+': unidade divergente do catálogo');
+      let dims={};
+      try{
+        dims=JSON.parse(row.dimensoes_json);
+        if(!dims||Array.isArray(dims)||typeof dims!=='object')throw Error('esperado objeto');
+        const keys=Object.keys(dims).sort();
+        if(keys.length!==spec.dims.length||keys.some((k,j)=>k!==spec.dims[j]))
+          problem(where+': chaves das dimensões divergentes do catálogo');
+        if(Object.values(dims).some(v=>v===null||typeof v==='object'||v===''))
+          problem(where+': código de dimensão nulo/complexo/vazio');
+      }catch(e){problem(where+': dimensoes_json inválido');continue;}
+      const rk=[row.dist,sk,JSON.stringify(Object.fromEntries(Object.entries(dims).sort(([a],[b])=>a.localeCompare(b))))].join('|');
+      if(seenFacetRows.has(rk))problem(where+': combinação de faceta duplicada');
+      seenFacetRows.add(rk);
+      const val=parseNumber(row.valor,where+' valor');
+      if(row.status_qualidade==='bloqueado'&&val!==null)
+        problem(where+': valor não pode ser exposto em faceta bloqueada');
+      if(val!==null&&row.metrica.startsWith('quantidade')&&!Number.isInteger(val))
+        problem(where+': contagem deve ser inteira');
+      const summaryKey=row.dist+'|'+sk;
+      const summary=facetRowsByKey.get(summaryKey)||{sum:0,count:0,allApproved:true};
+      if(val!==null){summary.sum+=val;summary.count++;}
+      if(row.status_qualidade!=='aprovado'||val===null)summary.allApproved=false;
+      facetRowsByKey.set(summaryKey,summary);
+    }
+    for(const [key,summary] of facetRowsByKey.entries()){
+      const firstSep=key.indexOf('|'),dist=key.slice(0,firstSep),sk=key.slice(firstSep+1),spec=specsByKey.get(sk);
+      if(!spec||spec.spec.permite_rollup!=='sim')continue;
+      if(!summary.allApproved){warnings.push('Faceta '+key+' contém valores não aprovados: rollup indisponível');continue;}
+      const metrica=spec.spec.metrica,entidade=spec.spec.entidade;
+      const total=byFact.get(dist+'|'+entidade+'|'+metrica);
+      if(total===undefined){warnings.push('Faceta '+key+' não possui fato-base para reconciliar');continue;}
+      if(Math.abs(summary.sum-total)>Math.max(1e-5,Math.abs(total)*1e-8))
+        problem('Faceta declarada completa/disjunta não reconcilia com total-base: '+key+' ('+summary.sum+' vs '+total+')');
+    }
+    if(manifest.status==='homologado'){
+      for(const sk of specsByKey.keys())if(!Array.from(facetRowsByKey.keys()).some(k=>k.endsWith('|'+sk)))
+        warnings.push('Catálogo de faceta sem linhas: '+sk);
+    }
+    console.log('DDA | Facetas definidas: '+specsByKey.size+' | Linhas: '+cubes.records.length);
+  }
+
   for(const r of loaded.qa.records){if(!dists.has(r.dist))problem('QA: DIST não encontrado '+r.dist);if(r.status==='falha')problem('Falha de reconciliação registrada: '+r.dist+'/'+r.entidade+'/'+r.metrica);}
   const arat=declared.arat||[];
   if(!Array.isArray(arat))problem('files.arat deve ser lista de caminhos');
