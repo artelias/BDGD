@@ -29,7 +29,7 @@ try{
  w('manifest.json',JSON.stringify(base));
  w('distribuidoras.csv','dist,sigla,nome,grupo_economico,data_base,fonte_url,sha256,status\n6600,EPB,Empresa teste,Energisa,2025-12-31,https://dadosabertos.aneel.gov.br/teste,'+sha+',publicado\n');
  w('entidades.csv','entidade,nome_exibicao,familia,metrica,unidade,regra\nUCBT,Consumidores BT,consumidores,quantidade,un.,contagem_sem_duplicidade\n');
- w('ativos_agregados.csv','dist,entidade,data_base,dimensoes_json,quantidade,extensao_km,potencia_kva\n6600,UCBT,2025-12-31,"{""classe"":""residencial""}",10,,\n');
+ w('ativos_agregados.csv','dist,entidade,data_base,dimensoes_json,quantidade,quantidade_registros,quantidade_cod_id_distinto,extensao_km,potencia_kva,status_qualidade,motivo_qualidade\n6600,UCBT,2025-12-31,"{""classe"":""residencial""}",10,12,10,,,aprovado,\n');
  w('matriz_empresas_2025.csv','dist,data_base,UCBT__quantidade\n6600,2025-12-31,10\n');
  w('qa_reconciliacao.csv','dist,entidade,metrica,valor_origem,valor_agregado,diferenca,tolerancia,status\n6600,UCBT,quantidade,10,10,0,0,ok\n');
  w('geo/arat_2025_6600.geojson',JSON.stringify(arat));
