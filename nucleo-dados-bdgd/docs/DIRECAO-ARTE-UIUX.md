@@ -4,12 +4,26 @@
 
 ## 1. Princípios visuais
 
-- Design de **produto de dados premium**, com qualidade editorial: referências de execução/clareza como Linear, Vercel e Observable (inspiração conceitual, **sem copiar layouts, marcas, assets, ícones ou design systems**).
+- **REFERÊNCIA VISUAL PRINCIPAL: experiência de produto Apple**, especialmente princípios de Apple Maps (mapa protagonista + painel contextual), Apple Health (dados objetivos, tendências e clareza) e macOS/iPadOS (navegação discreta, profundidade leve, refinamento de estados). Usar como **inspiração de qualidade**, sem copiar screenshots, componentes proprietários, marcas, logotipos, interfaces pixel a pixel ou assets protegidos. A identidade final deve ser específica do Núcleo de Dados da BDGD.
 - Hierarquia forte, tipografia precisa, ritmos consistentes, composições sob medida por página, espaço negativo intencional, alinhamento óptico, bordas sutis e sombras econômicas.
 - Evitar aparência "AI-generated": cartões idênticos em grid infinito, formas/gradientes neon decorativos, blobs, glassmorphism excessivo, ícones desnecessários, muitos badges coloridos, títulos grandiloquentes, texto prolixo, gráficos aleatórios e efeitos em todos os componentes.
 - Escolher uma tipografia contemporânea coerente de **licença permitida** (sugestão: **Instrument Sans para UI + IBM Plex Mono somente para códigos/valores técnicos**, se funcionarem bem no render). Usar `font-variant-numeric: tabular-nums` nas tabelas e KPIs. Não subir arquivos de fonte sem licença nem depender de serviços externos proibidos.
 - Paleta autoral profissional: fundo neutro levemente quente/frio, textos grafite, superfícies discretamente distintas, **1 acento cromático principal** e cores semânticas limitadas (qualidade/alerta/indisponível). Modo escuro projetado de fato, **não simples inversão de luminosidade**.
 - Componentes refinados e compactos, voltados a leitura e exploração de indicadores: tipografia de dados, alinhamento por casas decimais, unidades claras, densidade adequada, truncamentos previsíveis, tooltips verdadeiramente úteis.
+
+## 1.1. Linguagem Apple-inspired — refinada e original
+
+**Requisito do responsável: "algo como um Apple design".** A execução deve transmitir calma visual, precisão tipográfica, hierarquia imediata e microinterações que parecem físicas e naturais; o foco visual continua nos **dados verdadeiros**.
+
+- **Estética:** superfícies off-white/prateadas, fundo cinza muito suave, divisores finos, texto grafite e acento azul ou verde escolhido de forma consistente; dark mode antracite profundo com materiais próprios. Nada de gradientes neon, caixas glass exageradas, sobreposição confusa ou cartões repetidos.
+- **Tipografia:** usar stack de sistema `-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` com fallback competente (sem redistribuir San Francisco nem fontes proprietárias). Grandes indicadores com algarismos tabulares, rótulos discretos e números fáceis de comparar.
+- **Profundidade:** camadas e materiais translúcidos apenas no topo/painéis flutuantes, com fallback sólido, contraste AA e `backdrop-filter` progressivo. Painéis de dados extensos permanecem preferencialmente opacos e altamente legíveis.
+- **Mapas:** ARAT 2025 verdadeira como conteúdo principal, contextualizada por um painel lateral/bottom sheet inspirado na dinâmica de Apple Maps; seleção de polígonos, zoom de encaixe e detalhes correlatos fluidos.
+- **Interações:** componentes táteis com alvos de pelo menos cerca de 44×44 CSS px para ações principais, foco visível, teclado completo, hover distinto de estado selecionado, menus com geometria consistente e scroll natural.
+- **Motion:** transições e springs discretas, easing orgânico, sem bounce caricatural, sem blur pesado em cada mudança. Navegação, sidebar, cards expandidos, modais, filtros DDA, gráficos, mapa e troca A/B devem ter transições próprias **motivadas pela interação**. `prefers-reduced-motion` respeitado.
+- **Conteúdo e hierarquia:** estilo Apple não significa interface com pouca informação; compatibilizar uma visão panorâmica respirada com uma matriz densa, filtrável e profissional. A informação extensa deve estar disponível sem afundar o usuário em cartões decorativos.
+- **Originalidade:** produzir um sistema de componentes próprio (tamanhos, paleta, gestos, semântica e layout), evitando imitar screenshots e sem usar imagens, trademarks, ícones privativos ou textos de UI da Apple.
+- **Critério de avaliação visual:** interface deve parecer um produto premium de engenharia de dados, **não um clone de macOS nem um painel genérico gerado por IA**. Revisar em screenshots reais desktop/tablet/mobile, em temas claro/escuro, antes de homologar.
 
 ## 2. Design system implementado em código
 
