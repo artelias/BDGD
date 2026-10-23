@@ -19,19 +19,13 @@ O proprietário **confirmou que o PBIX do BI VPE de referência NÃO está na m�
 
 **Esta instrução prevalece sobre frases anteriores que pudessem sugerir obrigatoriedade de localizar o PBIX antes de desenvolver indicadores BDGD normativos.**
 
-## ALERTA SOBRE SUBCONTAGEM — TUC 0/00/000, TIP_UNID E QTD (23/10/2026)
+## DECISÃO MAIS RECENTE — TUC: SEGUIR ESCOPO ORIGINAL, SEM ESTUDO ADICIONAL DE 00 (23/10/2026)
 
-O responsável teme corretamente que filtros `TUC=XXX` deixem ativos válidos fora da contagem. Um **script operacional anterior fornecido pelo proprietário** contém a regra `CHAVE(COM+UC) = SUM(QTD WHERE TUC=160 OU (TUC em {0,00,000,vazio} E TIP_UNID no conjunto específico))`. A versão `CHAVE(UC)` considera apenas a TUC 160. **Não é prova de regra do PBIX**, mas evidência suficiente para exigir auditoria de `00` antes de publicar categorias finais.
+O proprietário **retirou explicitamente da execução atual** a investigação suplementar de `TUC=0/00/000/vazio`, `TIP_UNID` e `SUM(QTD)` oriunda de um script operacional anterior. **NÃO iniciar essa auditoria, NÃO aumentar o escopo nem interromper o Claude.** O tema poderá ser discutido em uma futura revisão, apenas mediante novo pedido.
 
-**Ler e executar** [ALERTA-METRICAS-TUC-00-QTD-CHAVES.md](ALERTA-METRICAS-TUC-00-QTD-CHAVES.md). Pontos críticos:
-- Não incluir todos os registros `TUC 00` numa categoria: checar `TIP_UNID`, entidade, vínculo e semântica QTD.
-- Não confundir `SUM(QTD)` no consolidado intermediário com `COUNT(*)`/distinct no GDB.
-- Não transportar filtro `PROPRIEDADE=PD` do script para a visão nacional sem declarar e validar recorte.
-- Investigar os campos reais da BDGD 2025 e construir reconciliador `classificado` vs `zero/não informado` com alertas e possíveis contagens residuais por métrica; auditar postes, medidores, transformadores, chaves **individualmente**.
-- Não bloquear execução por ausência de PBIX. Não utilizar projeções nem ML do script antigo; seu uso é somente evidência descritiva histórica.
-- Publicar indicadores de negócio compostos **apenas** onde relação da origem, filtros e distinção física estão comprovados; com campo necessário ausente, exibir N/D e evidência, não número fabricado.
+**Manter a abordagem original já aprovada:** indicadores patrimoniais por TUC, A1–A6 e entidades da BDGD onde existirem regras normativas e dados homologados. Preservar as checagens habituais de qualidade, N/D e coerência física; jamais inventar classificações ou equiparar `COUNT(*)` a contagem física sem evidência.
 
-Esta regra é **prioritária para o comparador e o benchmarking**, porque um ranking de grupos ou distribuidoras que ignore ativos legitimamente contados no universo seria enganoso.
+Esta decisão prevalece sobre comentários/instruções mais antigos da issue #5 ou PR #4 que exigiam uma auditoria específica de TUC 00. O restante da revisão R2, o ETL final, o preview e os critérios de release permanecem inalterados.
 
 ## 0. Fontes, escopo, coordenação de trabalho e limites
 
