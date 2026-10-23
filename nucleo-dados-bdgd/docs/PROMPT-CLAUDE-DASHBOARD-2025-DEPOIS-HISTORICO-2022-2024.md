@@ -1,3 +1,5 @@
+> **INSTRUÇÃO ATUALIZADA DE RELEASE (23/10/2026):** a revisão R2 e o limite de ações Vercel agora são regidos por [PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md](PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md). **O Claude NÃO deve publicar nem promover produção.** Deve entregar PR, CI, QA e preview para que o ChatGPT faça auditoria e publicação apenas mediante comando posterior explícito do proprietário. Essa regra prevalece sobre quaisquer instruções antigas deste documento que autorizassem deploy em produção automaticamente.
+
 # PROMPT MESTRE CLAUDE — entregar dashboard BDGD 2025 e, após publicação, continuar ETL histórico 2022–2024
 
 **Instrução do proprietário do projeto:** execute as etapas abaixo, com código, testes, GitHub e publicação de site quando puder ser feita com segurança e sem custo adicional. Você está no mesmo PC Windows que executa BDGD 2025 e que foi usado pelo Codex para piloto 2022–2024. **Não construa nem treine modelos preditivos nesta execução.**
@@ -62,7 +64,7 @@ Se publicação estiver bloqueada por autenticação/permissão, **não inventar
 
 Converter o protótipo HTML demonstrativo em aplicação profissional, conforme `PLANO-GERAL.md`, preferencialmente **Next.js + TypeScript + React + Lucide + MapLibre GL + ECharts**. Avaliar viabilidade de manter aplicação estática bem construída como passo intermediário caso o provisionamento do banco esteja bloqueado, mas entregar código testado e arquitetura expansível. Não apagar recursos funcionais da interface anterior antes de substituí-los por equivalentes.
 
-**Identidade do site: `Núcleo de Dados da BDGD`, atribuição no rodapé `Desenvolvido por Arthur Henrique Lima`.** **O padrão de UI/UX exigido é premium, minimalista, sofisticado e autoral, com motion design e microinterações personalizadas**, sem aparência genérica de template ou de painel gerado por IA. Essa é uma exigência de aceitação, não sugestão estética. **LEIA E EXECUTE INTEGRALMENTE**: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md). Nele estão especificados design tokens, tipografia, paleta light/dark própria, composição sob medida, animações, comportamentos do mapa e gráficos, acessibilidade, screenshots e rodadas de refinamento.
+**Identidade do site: `Núcleo de Dados da BDGD`, atribuição no rodapé `Desenvolvido por Arthur Henrique Elias de Lima`.** **O padrão de UI/UX exigido é premium, minimalista, sofisticado e autoral, com motion design e microinterações personalizadas**, sem aparência genérica de template ou de painel gerado por IA. Essa é uma exigência de aceitação, não sugestão estética. **LEIA E EXECUTE INTEGRALMENTE**: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md). Nele estão especificados design tokens, tipografia, paleta light/dark própria, composição sob medida, animações, comportamentos do mapa e gráficos, acessibilidade, screenshots e rodadas de refinamento.
 
 Páginas / seções mínimas:
 
@@ -162,3 +164,22 @@ Antes de classificar o dashboard como concluído:
 - Não realizar tarefas simultâneas pesadas no HD/RAM compartilhado; durante download 2025, prioridade para frontend/código e testes leves.
 - Manter logs, checkpoints e estado reproduzível. Se limite de sessão encerrar, faça commit do que for seguro, registre `ESTADO-EXECUCAO.md` com próximas ações e único comando de retomada. **Não declarar concluído o que não está concluído.**
 - Uma atualização útil por etapa: alterações reais, testes executados, erros e URLs verificadas. No relatório final, separar Fase A e Fase B.
+
+
+## ATUALIZAÇÃO R2 SOLICITADA PELO RESPONSÁVEL — 23/10/2026
+
+**Ler integralmente e executar de forma escalonada:** [REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md](REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md). Acompanhamento: [issue #5](https://github.com/artelias/BDGD/issues/5).
+
+Objetivo: o dashboard não deve ser apenas uma coleção de entidades técnicas. Deve oferecer **indicadores de negócio compostos, agrupamentos semânticos de ativos, explicabilidade matemática sob demanda, filtros ricos e comparativos de participação contextualizados**.
+
+**Fase A / BDGD 2025:** 
+1. Mover fórmulas cruas de destaque para "Como é calculado?" + glossário de indicadores, preservando detalhamento técnico.
+2. Explorar por conceito (ex.: Transformadores) com presets TUC/atributos e indicação de fontes EQ*/UN*; os filtros 565/570, A1–A6, status e demais regras precisam ser verificados contra **medidas reais do BI VPE 2024** e normas da competência antes de calcular. Não confundir linha BDGD, equipamento e unidade, nem somar populações repetidas.
+3. `/explorar/`: inventário de todos os atributos/relacionamentos, com filtros somente se cubo/vínculo homologado. Para alta tensão investigar SSDAT↔CTAT/SUB/CONJ e recortes de linha/circuito AT, sem deduzir relações não comprovadas.
+4. Participação de uma categoria **dentro do grupo** e participação desse grupo **na mesma categoria Brasil**, com denominadores, unidades, qualidade e cobertura idênticos; percentuais nacionais só com universo suficientemente completo.
+5. Matriz com multi-seleção de entidades e presets por conceito, além de famílias, grupo e DIST; eventuais filtros DDA com aplicabilidade explícita e CSV do recorte.
+6. Panorama orientado a negócio, com indicadores explicáveis e navegáveis; preservar poligonais ARAT oficiais, qualidade e identidade Apple-inspired.
+
+**Fase B / 2022–2025:** depois de extrair, auditar e harmonizar a sucessão de distribuidoras (EPB/EBO etc.), ativar a nova aba **Evolução histórica** com tabela anual **já calculada** de 2022, 2023, 2024 e 2025, variações absolutas e percentuais, seleção simples de empresa/grupo/indicadores, sem exploração DDA complexa. Durante a Fase A, pode criar a rota em estado "dados históricos em preparação" sem números inventados. Não iniciar ML, previsões ou cenários.
+
+**Ordem e segurança:** terminar o release técnico 2025 e não antecipar produção com GDBs faltantes. Implementar R2 em incrementos testados na branch/PR corretos, preferencialmente após a homologação 2025 se o ETL final exigir toda a RAM/disco. Não alterar `main`, não forçar merges, não publicar dados privados. Documentar explicitamente pendências de métricas do BI quando o PBIX/DAX não estiver disponível.

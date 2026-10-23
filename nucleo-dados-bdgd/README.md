@@ -32,6 +32,7 @@ O protótipo estático original (`index.html`, `app.js`, `styles.css`) permanece
 - `database/schema.sql` — desenho inicial do banco PostgreSQL/Supabase.
 - `docs/PLANO-GERAL.md` — arquitetura, fases, decisões e critérios de aceite.
 - `docs/DIRECAO-ARTE-UIUX.md` — especificação obrigatória de UI/UX premium, identidade visual autoral, animações e microinterações personalizadas, acessibilidade, screenshots e refinamento.
+- `docs/REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md` — revisão de negócio do portal: métricas do BI, exploração por conceitos/TUC, filtros adicionais, participação dupla, matriz configurável e evolução histórica real 2022–2025.
 - `docs/MODULO-PREDITIVO-ML.md` — **fase futura** de aprendizado de máquina, classificação e previsões 2026–2029; treinamento ainda não iniciado.
 - `docs/PROMPT-CODEX-HISTORICO-2022-2024.md` — **ETL histórico autorizado em paralelo**, na mesma máquina Windows do Claude, sem misturar dados com o dashboard oficial 2025.
 - `docs/PROMPT-CLAUDE-DASHBOARD-2025-DEPOIS-HISTORICO-2022-2024.md` — **plano mestre de execução delegado ao Claude**: concluir ETL e dashboard real 2025, GitHub/preview/deploy autorizado e, só depois, ETL histórico 2022–2024 e sucessões empresariais; sem ML.
@@ -67,7 +68,7 @@ O protótipo estático original (`index.html`, `app.js`, `styles.css`) permanece
 
 ## Autoria
 
-Desenvolvido por **Arthur Henrique Lima** — **Núcleo de Dados da BDGD**.
+Desenvolvido por **Arthur Henrique Elias de Lima** — **Núcleo de Dados da BDGD**.
 
 ## Fontes e atribuição
 
@@ -78,3 +79,5 @@ Desenvolvido por **Arthur Henrique Lima** — **Núcleo de Dados da BDGD**.
 Este projeto não é um produto oficial da ANEEL.
 
 - `docs/HARMONIZACAO-SUCESSAO-2022-2025.md` — séries históricas originais e série derivada do perímetro 2025 para incorporar predecessoras sem inflar crescimento; recorte **somente 2022–2025**.
+
+- `docs/PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md` — contrato executivo atual: melhorias R2 implementadas pelo Claude até preview; produção somente após auditoria ChatGPT e autorização expressa do proprietário.

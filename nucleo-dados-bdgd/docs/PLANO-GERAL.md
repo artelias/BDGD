@@ -157,3 +157,14 @@ A comparação longitudinal precisará de **duas séries:** (a) número oficial 
 A autorização de incorporação pela ANEEL (REA 12.687) é de 13/09/2022; operação formalizada em 30/04/2023. Diferenciar vigência societária de ano-base da GDB. Todo evento precisa de fonte, data, perímetro e QA. Ver [HARMONIZACAO-SUCESSAO-2022-2025.md](HARMONIZACAO-SUCESSAO-2022-2025.md).
 
 **Essa etapa prepara os futuros modelos ML:** não confundir salto de série decorrente da mudança de perímetro com crescimento orgânico. Treinamento continua pendente.
+
+
+## 14. Revisão R2 — indicadores de negócio, exploração funcional e evolução anual
+
+**Solicitação em 23/10/2026**: um painel voltado tanto ao setor técnico quanto a mercados/investidores, com navegação por **conceitos de negócio** além das entidades BDGD, indicadores com regras de TUC/A1–A6 e vínculos físicos/documentados, fórmulas sob demanda, Matriz dinâmica e visão dupla de representatividade (% dentro do grupo e % do grupo na categoria Brasil). Incluir atributos contextualizados de circuitos/linhas AT quando os vínculos (SSDAT/CTAT e relacionados) forem homologados.
+
+A **nova aba Evolução histórica** será descritiva e terá tabela pronta de 2022–2025 por empresa/grupo/indicador, sem exigir filtros técnicos DDA. Ela só mostrará séries reais após homologação de métricas e sucessões de concessões; durante a extração histórica poderá mostrar estado de preparação. Não é um módulo preditivo.
+
+Documento completo e critérios de aceite: [REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md](REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md); acompanhamento [issue #5](https://github.com/artelias/BDGD/issues/5). A R2 deve respeitar a prioridade de finalizar a carga e release oficial 2025.
+
+**Responsabilidades finais de release (23/10/2026):** [PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md](PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md) — Claude executa código/QA/preview, ChatGPT audita e publica produção somente com nova autorização.
