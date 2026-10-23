@@ -94,6 +94,14 @@ Páginas / seções mínimas:
 
 Ao lado de cada KPI e exportação incluir fonte, status e data-base. **Nenhum número real pode ter fallback silencioso para amostras fictícias.** Quando sem dados, apresentar estado vazio/indisponível.
 
+### A3.0 — Direção principal definida pelo responsável: experiência inspirada na Apple
+
+**A principal referência visual desejada é o padrão de acabamento da Apple.** Referenciar princípios de Apple Maps, Apple Health e macOS/iPadOS, **sem copiar os produtos**. Criar uma aplicação de dados própria, com layout de aparência calma e premium, fundo e superfícies neutras, bordas quase imperceptíveis, tipografia de sistema com hierarquia editorial, acento cromático comedido, clareza das métricas e efeitos de profundidade leves apenas onde fizerem sentido.
+
+**O requisito não é só usar um tema semelhante.** Desenvolva animações fluidas e microinterações sob medida nos filtros, menus, navegação, painéis do mapa ARAT, seleção de empresa/grupo, gráficos e comparador; respostas imediatas, transições físicas discretas, painéis contextuais semelhantes no comportamento (não na cópia visual) ao Apple Maps, atenção à ergonomia de smartphone e suporte a redução de movimento. **Evite aparência genérica de IA, templating de cards, glassmorphism exagerado, neons, bordas decorativas e animações gratuitas.**
+
+Design e funções precisam atingir a mesma qualidade **mesmo sem deploy na Vercel**: rodar, revisar screenshots e interações em desktop/mobile e light/dark, refinar e versionar o resultado localmente no GitHub. [Especificação visual completa](DIRECAO-ARTE-UIUX.md).
+
 ### A3.1 — Critério obrigatório de design refinado
 
 Antes de classificar o dashboard como concluído:
