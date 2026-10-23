@@ -134,7 +134,9 @@ Se a saída pública agregada couber em arquivos compactos, usar JSON/CSV/Parque
 - **M9 — Publicação preditiva:** pacote público sumarizado + API/tabelas (ou JSON estático) + aba preditiva, comparação futura e documentação.
 - **M10 — Operação:** re-treino anual ao incorporar nova BDGD, monitoramento da precisão, drift, mudanças societárias e novas versões de métrica.
 
-**Condição de início:** homologação e publicação do dashboard 2025; planejamento técnico pode ser revisado antes. **Não executar coleta histórica ou treinamento automaticamente nesta fase**, a menos que o responsável autorize separadamente.
+**Atualização de execução (22/10/2026):** o responsável **autorizou explicitamente iniciar agora a ETAPA DE INVENTÁRIO, DOWNLOAD, PROCESSAMENTO E HARMONIZAÇÃO HISTÓRICA DE 2022–2024 no PC de casa via Codex**, em paralelo à finalização do dashboard 2025, sem depender de concluir M5. A autorização **não** abrange iniciar treinamento de modelos ML, publicar previsões ou alterar o dashboard oficial. Histórico e checkpoints separados, controle de qualidade e transferência para GitHub via branch/PR privados de dados brutos.
+
+**Condição de início do treinamento e da aba preditiva:** após homologação da fonte histórica, critérios estatísticos aprovados e liberação específica posterior. Prompt de execução autorizado: [PROMPT-CODEX-HISTORICO-2022-2024.md](PROMPT-CODEX-HISTORICO-2022-2024.md) e [issue #3](https://github.com/artelias/BDGD/issues/3).
 
 ## 10. Segurança, custo e licenciamento
 
