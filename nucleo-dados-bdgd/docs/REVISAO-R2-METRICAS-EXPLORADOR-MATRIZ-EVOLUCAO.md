@@ -4,6 +4,12 @@
 
 **Referência operacional em revisão:** PR https://github.com/artelias/BDGD/pull/4, branch `feat/dashboard-bdgd-2025`. O projeto base está em `feat/nucleo-dados-bdgd-portal`. Não alterar a main, não mudar produção sem release homologado.
 
+## Nota de execução aprovada: PBIX de referência ausente (23/10/2026)
+
+O proprietário informou que **o PBIX não está no PC do Claude**. A auditoria do BI VPE 2024 é uma **atividade futura de paridade**, não um bloqueio geral à R2 nem ao processamento/publicação de indicadores **independentes, comprovados pelas fontes oficiais BDGD/MCPSE/DDA e QA**. O Claude deve preparar o catálogo de métricas e o arquivo `MATRIZ-PARIDADE-METRICAS-VPE-2024.md`, identificando paridade como `NAO_AVALIADA_PBIX_AUSENTE`, sem preencher DAX/filtros do BI por suposição. Continuar todos os ajustes visuais, UX, dados/facetas e indicadores que tenham definições normativas verificáveis; somente regras não comprováveis sem o BI permanecem bloqueadas individualmente. **Não declarar paridade com o BI** nem usar o BI 2024 como valores da BDGD 2025.
+
+Detalhamento operacional obrigatório: [PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md](PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md).
+
 ## Diagnóstico verificado no código atual
 
 - `web/src/components/pages/Matriz.tsx`: alterna métrica principal/quantidade/registros/distintos e filtra famílias, distribuidora/UF, grupo. **Não oferece escolha múltipla livre de entidades nem recortes técnicos por cubos diretamente na matriz.**
