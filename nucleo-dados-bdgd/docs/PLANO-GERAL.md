@@ -74,6 +74,8 @@ O dashboard deverá ter **identidade visual própria, minimalista, sofisticada e
 
 Critérios normativos detalhados: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md).
 
+**Referência estética predominante definida pelo usuário:** filosofia de design da Apple (Apple Maps, Apple Health, macOS/iPadOS), com tipografia de sistema, materiais e hierarquia discretos, refinamento visual, motion natural e interações contextuais personalizadas. Referência apenas de experiência: identidade própria, não clonagem de telas/ativos nem aparência genérica de IA. O refinamento de UI e UX é requisito de aceitação, independentemente de sucesso na publicação Vercel.
+
 ## 8. Roadmap
 
 **M0 — Protótipo (iniciado)**: UI pública estática, polígonos *apenas ilustrativos*, filtros, matriz e comparador demonstrativos.
