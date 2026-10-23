@@ -1,6 +1,7 @@
 "use client";
 import { Download, Search } from "lucide-react";
 import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { BrandMark } from "@/components/ui/Brand";
 import { Button } from "@/components/ui/Button";
 import { EmptyState, LoadingBlock, Tip, useToast } from "@/components/ui/Feedback";
@@ -18,6 +19,13 @@ export default function Design() {
   const toast = useToast();
   const [seg, setSeg] = useState("a");
   const [pick, setPick] = useState("1");
+  const reduceMotion = useReducedMotion();
+  const [motionKey, setMotionKey] = useState(0);
+  const [motionTab, setMotionTab] = useState<"ativos" | "redes" | "conectividade">("ativos");
+  const [motionEnabled, setMotionEnabled] = useState(true);
+  const animate = motionEnabled && !reduceMotion;
+  const enter = animate ? { opacity: 0, y: 16 } : false;
+  const reveal = animate ? { opacity: 1, y: 0 } : undefined;
   return (
     <div style={{ display: "grid", gap: 36, maxWidth: 980 }}>
       <meta name="robots" content="noindex" />
@@ -65,6 +73,66 @@ export default function Design() {
         </div>
         <LoadingBlock lines={3} />
         <EmptyState title="Combinação indisponível">Estado vazio com orientação útil, sem estimativa.</EmptyState>
+      </section>
+
+      <section style={{ display: "grid", gap: 16 }} aria-labelledby="motion-design-title">
+        <div>
+          <div className="eyebrow">Motion design system · laboratório</div>
+          <h2 id="motion-design-title" className="headline" style={{ marginTop: 8 }}>Animações e transições</h2>
+          <p className="lede" style={{ marginTop: 8 }}>Demonstrações de interface com dados ilustrativos. Movimento comunica mudança de contexto; nunca substitui indicadores, legendas ou estados de qualidade.</p>
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center" }}>
+          <Button variant="primary" onClick={() => setMotionKey((v) => v + 1)}>Reproduzir animação</Button>
+          <label style={{ display: "inline-flex", alignItems: "center", gap: 8, fontSize: ".9rem" }}>
+            <input type="checkbox" checked={motionEnabled} onChange={(e) => setMotionEnabled(e.target.checked)} />
+            Habilitar animações
+          </label>
+          {reduceMotion && <Pill tone="warn">Movimento reduzido no dispositivo</Pill>}
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))", gap: 12 }}>
+          {[
+            { title: "Entrada de cartão", label: "Surgimento suave com deslocamento curto", delay: 0 },
+            { title: "Hierarquia progressiva", label: "Atraso discreto entre informações", delay: .12 },
+            { title: "Confirmação de contexto", label: "Estado atualizado sem efeito excessivo", delay: .24 },
+          ].map((item) => (
+            <motion.article
+              key={item.title + motionKey}
+              initial={enter}
+              animate={reveal}
+              transition={{ duration: animate ? .42 : 0, delay: animate ? item.delay : 0, ease: [0.22, 1, 0.36, 1] }}
+              style={{ border: "1px solid var(--hairline)", borderRadius: 14, padding: 20, background: "var(--surface)" }}
+            >
+              <div className="eyebrow">Componente</div>
+              <h3 style={{ margin: "12px 0 6px", fontWeight: 650 }}>{item.title}</h3>
+              <p className="muted" style={{ margin: 0, fontSize: ".9rem" }}>{item.label}</p>
+            </motion.article>
+          ))}
+        </div>
+        <div style={{ border: "1px solid var(--hairline)", borderRadius: 16, padding: 20 }}>
+          <h3 style={{ fontWeight: 650, marginBottom: 12 }}>Transição entre famílias de ativos</h3>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }} role="group" aria-label="Família demonstrativa">
+            {(["ativos", "redes", "conectividade"] as const).map((tab) => (
+              <button key={tab} type="button" aria-pressed={motionTab === tab} onClick={() => setMotionTab(tab)}
+                style={{ border: "1px solid var(--hairline)", borderRadius: 100, padding: "8px 14px", background: motionTab === tab ? "var(--surface-2)" : "transparent", color: "var(--text)", cursor: "pointer", fontWeight: motionTab === tab ? 650 : 400 }}>
+                {tab === "ativos" ? "Ativos" : tab === "redes" ? "Redes" : "Conectividade"}
+              </button>
+            ))}
+          </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div key={motionTab} initial={animate ? { opacity: 0, x: 12 } : false} animate={{ opacity: 1, x: 0 }} exit={animate ? { opacity: 0, x: -12 } : undefined}
+              transition={{ duration: animate ? .22 : 0 }}
+              style={{ minHeight: 82 }} aria-live="polite">
+              <div className="eyebrow">Exemplo de transição · sem valores reais</div>
+              <h4 style={{ margin: "8px 0 6px", fontSize: "1.2rem" }}>
+                {motionTab === "ativos" ? "Transformadores e equipamentos" : motionTab === "redes" ? "Extensão e capacidade de redes" : "Vínculos elétricos verificados"}
+              </h4>
+              <p className="muted" style={{ margin: 0 }}>
+                {motionTab === "ativos" ? "Contagens patrimoniais sem duplicidade UN*/EQ*." : motionTab === "redes" ? "Comprimento declarado, tensão e capacidade instalada." : "SUB → CTMT → transformação → UC, somente com relações auditadas."}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <p className="caption">Parâmetros iniciais: entrada 420 ms, transição de contexto 220 ms, deslocamento até 16 px. Respeitar prefers-reduced-motion, foco de teclado, legibilidade e estabilidade do layout. Esses parâmetros são propostas do design system, não medições de desempenho.</p>
       </section>
     </div>
   );
