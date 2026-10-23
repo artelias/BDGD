@@ -1,9 +1,10 @@
 "use client";
-import { Info, Search, X } from "lucide-react";
+import { Download, Info, Search, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useMemo, useState } from "react";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
-import { DataError, EmptyState, LoadingBlock, Tip } from "@/components/ui/Feedback";
+import { Button } from "@/components/ui/Button";
+import { DataError, downloadText, EmptyState, LoadingBlock, Tip, useToast } from "@/components/ui/Feedback";
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { Pill, Value } from "@/components/ui/Value";
@@ -11,7 +12,7 @@ import { groupColor } from "@/lib/colors";
 import { displayName, type Dataset } from "@/lib/dataset";
 import { useData, useFacets } from "@/lib/data-context";
 import { availableCodes, combinableWith, describe, distribution, facetValue, singleAttributes } from "@/lib/facets";
-import { fmt, fmtCompact, fmtShare, METRIC_LABEL, METRIC_UNIT } from "@/lib/format";
+import { fmt, fmtCompact, fmtShare, METRIC_LABEL, METRIC_UNIT, toCSV } from "@/lib/format";
 import { useTheme } from "@/lib/theme";
 import type { FacetData, Metric, Scope } from "@/lib/types";
 import { parseSide, useQueryPatch, useQueryState } from "@/lib/url-state";
@@ -128,7 +129,7 @@ function ExplorarReady({ ds }: { ds: Dataset }) {
 
           {facets.loading && <LoadingBlock lines={4} label="Carregando cubos DDA" />}
           {facets.error && <EmptyState title="Recortes DDA indisponíveis" tone="warn">{facets.error}</EmptyState>}
-          {facets.data && <FacetExplorer key={ent} data={facets.data} dists={dists} ent={ent} a1={a1} c1={c1} a2={a2} metQ={metQ} setMet={setMet} patch={patch} defaultMetric={E.metrica} />}
+          {facets.data && <FacetExplorer key={ent} data={facets.data} dists={dists} ent={ent} a1={a1} c1={c1} a2={a2} metQ={metQ} setMet={setMet} patch={patch} defaultMetric={E.metrica} scopeKey={scope.tipo === "brasil" ? "brasil" : `${scope.tipo}-${scope.id}`} />}
         </div>
       </div>
       <style>{`.mobileEnt{display:none}@media (max-width:1100px){.mobileEnt{display:block}}`}</style>
@@ -136,10 +137,11 @@ function ExplorarReady({ ds }: { ds: Dataset }) {
   );
 }
 
-function FacetExplorer({ data, dists, ent, a1, c1, a2, metQ, setMet, patch, defaultMetric }: {
+function FacetExplorer({ data, dists, ent, a1, c1, a2, metQ, setMet, patch, defaultMetric, scopeKey }: {
   data: FacetData; dists: Set<number>; ent: string; a1: string; c1: string; a2: string; metQ: string; setMet: (v: string | null) => void;
-  patch: (p: Record<string, string | null>, push?: boolean) => void; defaultMetric: Metric;
+  patch: (p: Record<string, string | null>, push?: boolean) => void; defaultMetric: Metric; scopeKey: string;
 }) {
+  const toast = useToast();
   const attrs = singleAttributes(data);
   if (!attrs.length) return <EmptyState title="Sem atributos DDA para esta entidade">A entidade não possui campos com domínio DDA mapeado no catálogo M10; os totais acima continuam válidos.</EmptyState>;
   const A1 = attrs.includes(a1) ? a1 : attrs[0];
@@ -155,6 +157,12 @@ function FacetExplorer({ data, dists, ent, a1, c1, a2, metQ, setMet, patch, defa
   const dist = distribution(data, target, metric, dists, A2 ? { [A1]: C1 } : undefined);
   const selectedValue = C1 && !A2 ? facetValue(data, { [A1]: C1 }, metric, dists) : null;
   const total = dist.categories.reduce((x, c) => x + (c.v ?? 0), 0);
+  const exportCSV = () => {
+    const name = `bdgd_2025-12-31_${ent}_${target}${A2 ? `_dado-${A1}-${C1}` : ""}_${metric}_${scopeKey}.csv`.replace(/[^\w.-]+/g, "-");
+    downloadText(name, toCSV(["data_base", "entidade", "cubo", "filtro", "atributo", "codigo_dda", "descricao", "metrica", "unidade", "valor", "dists_com_valor", "dists_nd"],
+      dist.categories.map((c) => ["2025-12-31", ent, dist.facet?.id ?? "", A2 ? `${A1}=${C1}` : "", target, c.code, c.label, metric, METRIC_UNIT[metric], c.v, c.n, c.nd])));
+    toast(`${name} exportado`);
+  };
 
   return (
     <section aria-label="Recortes DDA">
@@ -211,6 +219,7 @@ function FacetExplorer({ data, dists, ent, a1, c1, a2, metQ, setMet, patch, defa
           </div>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
             {dist.status === "ok" && <Pill tone={dist.covered < dists.size ? "warn" : "default"} title="Distribuidoras do escopo para as quais este cubo foi calculado">Cubo: {dist.covered} de {dists.size} DIST</Pill>}
+            {dist.status === "ok" && <Button size="sm" onClick={exportCSV} data-testid="explorar-csv"><Download size={13} /> CSV</Button>}
             {!dist.additive && dist.categories.length > 0 && <Pill tone="warn" title="Um mesmo COD_ID pode estar em mais de uma categoria (registros históricos AT/DS com atributos diferentes).">Categorias se sobrepõem · não somar</Pill>}
           </div>
         </div>

@@ -313,7 +313,22 @@ def main():
            "autoria": "Nucleo de Dados da BDGD - desenvolvido por Arthur Henrique Lima",
            "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID, sem registros individuais, sem dados de consumidores.",
            "checksums": {}}
-    man["release_id"] = f"bdgd-2025-12-31-{'v1' if completo else 'parcial'}-{len(ok)}d-" + hashlib.sha256("".join(sorted(x["sha256"] for x in dists)).encode()).hexdigest()[:10]
+    criterios = {
+        "todas_elegiveis_processadas": completo,
+        "reconciliacao_origem_sem_falhas": all(q["status"] != "falha" for q in qa),
+        "facetas_exatas_decimal": all(exatas.values()),
+        "arat_valida_em_todas": all(a_.get("status") == "ok" and a_.get("valida_saida") for a_ in arat_qa),
+        "grupos_com_fonte_ou_nao_confirmado": all((d["grupo_economico"] == "nao_confirmado") or (d["dist"] in dist_grp) for d in dists),
+        "sem_colunas_individuais": True,
+    }
+    homologado = all(criterios.values())
+    man["status"] = "homologado" if homologado else "parcial"
+    man["quality"]["status"] = "aprovado" if homologado else "em_validacao"
+    man["homologacao"] = {"tipo": "tecnica_automatizada", "criterios": criterios,
+                          "metricas": "ver metricas_homologacao.csv (homologada, com ressalvas, nao homologada)",
+                          "revisao_manual_recomendada": ["semantica de potencia UG* (N/D)", "regra UC v2 em DIST com mais de um registro ativado",
+                                                         "licenca/atribuicao ANEEL", "grupos nao confirmados (cooperativas e municipais)"]}
+    man["release_id"] = f"bdgd-2025-12-31-{'v1' if homologado else 'parcial'}-{len(ok)}d-" + hashlib.sha256("".join(sorted(x["sha256"] for x in dists)).encode()).hexdigest()[:10]
     contrato = {"schema_version": "1.1.0", "arquivos": {p.name: next(csv.reader(open(p, encoding="utf-8"))) for p in sorted(TMP.glob("*.csv"))},
                 "geo": {"padrao": "geo/arat_2025_<DIST>.geojson", "crs": "EPSG:4326", "propriedades": {"dist": "integer", "data_base": "YYYY-MM-DD", "source_item_id": "string"}},
                 "convencoes": {"vazio": "N/D (metrica inexistente, bloqueada ou nao homologada); nunca zero implicito", SEM: "categoria de registros sem codigo DDA informado"}}

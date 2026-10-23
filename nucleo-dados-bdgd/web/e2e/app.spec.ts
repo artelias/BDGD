@@ -70,6 +70,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.getByTestId("attr2-TEN_FORN")).toHaveAttribute("aria-disabled", "true");
     await page.getByTestId("attr2-CLAS_SUB").click();
     await expect(page).toHaveURL(/a2=CLAS_SUB/);
+    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("explorar-csv").click()]);
+    expect(dl.suggestedFilename()).toMatch(/^bdgd_2025-12-31_UCBT_CLAS_SUB_dado-ARE_LOC-/);
   });
 
   test("tema persiste após recarregar", async ({ page }) => {
