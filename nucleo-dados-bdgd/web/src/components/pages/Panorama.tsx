@@ -11,6 +11,7 @@ import { Explain } from "@/components/ui/Explain";
 import { DataError, LoadingBlock, Tip } from "@/components/ui/Feedback";
 import { Pill, StatusDot, Ticker, Value } from "@/components/ui/Value";
 import { nomeNegocio } from "@/lib/catalogo";
+import { marcosDaDistribuidora } from "@/lib/marcos-distribuidoras";
 import { groupColor } from "@/lib/colors";
 import { displayName, type Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
@@ -269,6 +270,7 @@ const DETAIL = PANORAMA_IDS;
 function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; onBack: () => void; theme: "light" | "dark" }) {
   const d = ds.dist(dist)!;
   const g = d.grupo_status === "verificado" ? ds.grupo(d.grupo) : null;
+  const marcos = marcosDaDistribuidora(dist);
   return (
     <>
       <div className={s.panelHead}>
@@ -311,14 +313,22 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
             <Link href={`/explorar/?escopo=dist:${dist}`} style={{ display: "contents" }}><Button style={{ width: "100%", gridColumn: "1 / -1" }} tabIndex={-1}><Layers3 size={15} /> Explorar ativos</Button></Link>
           </div>
         </div>
-        <div className={s.section}>
-          <h3 className={s.sectionTitle}>Destaques da distribuidora</h3>
-          <div className={s.prov}>
-            <strong>Alimentadores:</strong> {fmtCompact(panoramaValue(ds, panoramaIndicador("alimentadores")!, [dist]).v, "quantidade")}<br />
-            <strong>Transformadores de distribuição:</strong> {fmtCompact(panoramaValue(ds, panoramaIndicador("trdist565")!, [dist]).v, "quantidade")}<br />
-            <strong>Grupo:</strong> {g?.nome ?? "Não confirmado"}<br />
+        {marcos.length > 0 && (
+          <div className={s.section} data-testid="marcos-distribuidora">
+            <h3 className={s.sectionTitle}>Destaques da distribuidora · 2025</h3>
+            <p className="caption" style={{ marginBottom: 12 }}>Marcos com fonte identificada; o ano do resultado pode ser diferente do ano da divulgação.</p>
+            {marcos.map((m) => (
+              <article key={m.titulo} style={{ marginBottom: 14 }}>
+                <strong>{m.titulo}</strong>
+                <p className="caption" style={{ marginTop: 4 }}>{m.descricao}</p>
+                <a href={m.fonte} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4, minHeight: 24 }}>
+                  {m.fonteNome} <ExternalLink size={12} aria-hidden />
+                </a>
+                <div className="caption">Referência {m.anoReferencia} · divulgado em {m.dataDivulgacao.split("-").reverse().join("/")}</div>
+              </article>
+            ))}
           </div>
-        </div>
+        )}
         <div className={s.section} style={{ borderBottom: 0 }}>
           <h3 className={s.sectionTitle}>Proveniência</h3>
           <div className={s.prov}>
