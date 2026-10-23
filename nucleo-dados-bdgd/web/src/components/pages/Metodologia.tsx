@@ -84,7 +84,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="cobertura" className={s.sec}>
             <h2>Cobertura</h2>
             <p>O universo considera toda distribuidora que já publicou BDGD no catálogo (2016–2025). Ausência de arquivo 2025 é um estado próprio, nunca zero.</p>
-            <div className={s.scroll}>
+            <div className={s.scroll} tabIndex={0} role="region" aria-label="Tabela rolável">
               <table className={s.tbl}>
                 <thead><tr><th>DIST</th><th>Distribuidora</th><th>Situação 2025</th><th>Observação</th></tr></thead>
                 <tbody>
@@ -117,7 +117,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="homologacao" className={s.sec}>
             <h2>Homologação por métrica</h2>
             <p>Critério: reconciliação exata entre o agregado e uma leitura independente do GDB (contagens e somas) em cada distribuidora, mais o estado de qualidade por DIST. {nh.homologada ?? 0} métricas homologadas, {nh.homologada_com_ressalvas ?? 0} com ressalvas e {nh.nao_homologada ?? 0} não homologadas.</p>
-            <div className={s.scroll}>
+            <div className={s.scroll} tabIndex={0} role="region" aria-label="Tabela rolável">
               <table className={s.tbl}>
                 <thead><tr><th>Entidade</th><th>Métrica</th><th>Situação</th><th className="r">DIST com valor</th><th className="r">N/D</th><th className="r">Alertas</th><th className="r">Reconciliações</th></tr></thead>
                 <tbody>
@@ -162,7 +162,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
             <p>Controlador vigente em 31/12/2025, comprovado por publicação oficial da holding ou ato do regulador. Mudanças concluídas depois da data-base não alteram 2025 (por exemplo, as transferências da Amazonas Energia e da Roraima Energia ao grupo J&F, concluídas em abril de 2026). Sem fonte verificável, a distribuidora fica “não confirmado” e não entra em somas de grupo.</p>
             <table className={s.tbl}>
               <thead><tr><th>Grupo</th><th>Controlador</th><th className="r">DIST</th><th>Fonte</th></tr></thead>
-              <tbody>{ds.grupos.map((g) => <tr key={g.id}><td style={{ fontWeight: 600 }}>{g.nome}</td><td className="caption">{g.controlador}</td><td className="r num">{ds.groupDists(g.id).length}</td><td className="caption">{g.fontes.map((f, i) => <div key={f}><a href={f} target="_blank" rel="noreferrer">fonte {i + 1}</a></div>)}</td></tr>)}</tbody>
+              <tbody>{ds.grupos.map((g) => <tr key={g.id}><td style={{ fontWeight: 600 }}>{g.nome}</td><td className="caption">{g.controlador}</td><td className="r num">{ds.groupDists(g.id).length}</td><td className="caption">{g.fontes.map((f, i) => <div key={f}><a className={s.srcLink} href={f} target="_blank" rel="noreferrer">fonte {i + 1}</a></div>)}</td></tr>)}</tbody>
             </table>
             <p className="caption">{ds.dists.filter((d) => d.grupo_status !== "verificado").length} distribuidoras processadas sem grupo confirmado (municipais, independentes e cooperativas). Consulta às fontes em {ds.grupos[0]?.consultado_em}.</p>
           </section>

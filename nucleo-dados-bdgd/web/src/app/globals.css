@@ -17,7 +17,7 @@
   /* texto grafite */
   --text: #1b1b19;
   --text-2: #5b5b56;
-  --text-3: #8b8b85;
+  --text-3: #6a6a64;
   --text-on-accent: #ffffff;
   /* acento único */
   --accent: #2b55d6;
@@ -25,16 +25,16 @@
   --accent-soft: rgba(43, 85, 214, 0.1);
   --accent-ring: rgba(43, 85, 214, 0.35);
   /* estados */
-  --ok: #2c7a4b;
+  --ok: #256b41;
   --ok-soft: rgba(44, 122, 75, 0.11);
-  --warn: #a8620d;
+  --warn: #8f4f08;
   --warn-soft: rgba(168, 98, 13, 0.12);
-  --nd: #8b8b85;
+  --nd: #6a6a64;
   --nd-soft: rgba(110, 110, 104, 0.11);
   --danger: #b5382a;
   /* comparador: lados com identidade própria, sem juízo de valor */
   --side-a: #2b55d6;
-  --side-b: #b4572a;
+  --side-b: #a04a20;
   /* mapa */
   --map-water: #e6e8e8;
   --map-land: #f7f7f4;
@@ -85,7 +85,7 @@
   --hairline-strong: rgba(255, 255, 255, 0.14);
   --text: #ececea;
   --text-2: #a7a9ad;
-  --text-3: #75787e;
+  --text-3: #8f9298;
   --accent: #7d97ff;
   --accent-hover: #93a9ff;
   --accent-soft: rgba(125, 151, 255, 0.14);
@@ -93,9 +93,9 @@
   --text-on-accent: #0b0d14;
   --ok: #5fbf86;
   --ok-soft: rgba(95, 191, 134, 0.14);
-  --warn: #e3a54a;
+  --warn: #ebb35e;
   --warn-soft: rgba(227, 165, 74, 0.15);
-  --nd: #8a8d93;
+  --nd: #969aa0;
   --nd-soft: rgba(138, 141, 147, 0.14);
   --danger: #f07e6e;
   --side-a: #7d97ff;

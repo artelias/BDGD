@@ -38,4 +38,4 @@ npx playwright test  # E2E contra out/ servido em :3211 (desktop + celular)
 node scripts/shots.mjs http://localhost:3210 docs/screenshots   # capturas claro/escuro, desktop/celular
 ```
 
-Deploy: qualquer CDN estática. Na Vercel, projeto com *Root Directory* `nucleo-dados-bdgd/web`, framework Next.js, saída `out` (ver `vercel.json`).
+Deploy: qualquer CDN estática. Na Vercel, projeto com *Root Directory* `nucleo-dados-bdgd/web` e framework Next.js; o builder detecta `output: "export"` (não definir Output Directory).
