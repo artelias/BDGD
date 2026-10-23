@@ -146,3 +146,12 @@ Se a saída pública agregada couber em arquivos compactos, usar JSON/CSV/Parque
 - Forecast não é dado regulatório nem previsão oficial da ANEEL; divulgar metodologia, fonte e limitações.
 
 **Autoria da aplicação:** Arthur Henrique Lima — Núcleo de Dados da BDGD.
+
+
+## Adendo: estabilidade de perímetro da distribuidora (recorte 2022–2025)
+
+**Escopo fechado:** usar somente dados de **2022, 2023, 2024 e 2025**; não ampliar para 2020 ou 2021. Para uma sucessora existente em 2025, observar dois conjuntos distintos: (i) dados originais publicados por DIST em cada ano e (ii) **série derivada de perímetro comparável à concessão vigente em 2025**. Antes de treinar, harmonizar incorporadas/cisões/transferências com vigência, cobertura geográfica, chaves e métricas consistentes.
+
+Exemplo confirmado: **EBO → EPB**, autorização ANEEL em 13/09/2022, incorporação formalizada em 30/04/2023. A EPB atual abrange áreas anteriormente separadas. A série 2022 possivelmente exigirá consolidação de predecessoras apenas quando provadas equivalência de metricas e disjunção; a série 2023 exige auditoria do ano de transição e deduplicação. O salto de incorporação não deve ser aprendido como crescimento orgânico. Outros eventos devem ser pesquisados sem pressupor que um grupo empresarial equivale a uma única concessão.
+
+Para ML por grupo/distribuidora, marcar `perimetro_referencia=2025`, incluir proveniência e QA, preservar série original separada e descartar/bloquear séries sem comparabilidade demonstrada. A regra detalhada é [HARMONIZACAO-SUCESSAO-2022-2025.md](HARMONIZACAO-SUCESSAO-2022-2025.md). Esse requisito não autoriza treinar modelos agora.
