@@ -32,6 +32,18 @@ class TestIasc(unittest.TestCase):
         self.assertEqual(rows, [])
         self.assertEqual(qa["rejeitados"][0]["motivo"], "resultado_iasc_ausente_ou_duplicado")
 
+    def test_conflito_com_registro_nao_verificado_bloqueia(self):
+        conflito = {**MAP[0], "cnpj": "12345678000100", "status": "pendente"}
+        rows, qa = preparar(BASE, MAP + [conflito], 2025)
+        self.assertEqual(rows, [])
+        self.assertEqual(qa["rejeitados"][0]["motivo"], "correspondencia_ambigua")
+
+    def test_mesmo_cnpj_em_outra_dist_pendente_bloqueia(self):
+        conflito = {**MAP[0], "dist": "6601", "status": "pendente"}
+        rows, qa = preparar(BASE, MAP + [conflito], 2025)
+        self.assertEqual(rows, [])
+        self.assertEqual(qa["rejeitados"][0]["motivo"], "correspondencia_ambigua")
+
     def test_numerico(self):
         self.assertIsNone(pontuacao("N/D"))
         self.assertIsNone(pontuacao("200"))
