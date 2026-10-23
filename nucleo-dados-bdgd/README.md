@@ -22,6 +22,7 @@ Depois abra `http://localhost:8000`. Nenhuma dependência, autenticação, banco
 - `vercel.json` — cabeçalhos para distribuição estática.
 - `database/schema.sql` — desenho inicial do banco PostgreSQL/Supabase.
 - `docs/PLANO-GERAL.md` — arquitetura, fases, decisões e critérios de aceite.
+- `docs/DIRECAO-ARTE-UIUX.md` — especificação obrigatória de UI/UX premium, identidade visual autoral, animações e microinterações personalizadas, acessibilidade, screenshots e refinamento.
 - `docs/MODULO-PREDITIVO-ML.md` — **fase futura** de aprendizado de máquina, classificação e previsões 2026–2029; treinamento ainda não iniciado.
 - `docs/PROMPT-CODEX-HISTORICO-2022-2024.md` — **ETL histórico autorizado em paralelo**, na mesma máquina Windows do Claude, sem misturar dados com o dashboard oficial 2025.
 - `docs/PROMPT-CLAUDE-DASHBOARD-2025-DEPOIS-HISTORICO-2022-2024.md` — **plano mestre de execução delegado ao Claude**: concluir ETL e dashboard real 2025, GitHub/preview/deploy autorizado e, só depois, ETL histórico 2022–2024 e sucessões empresariais; sem ML.
