@@ -91,7 +91,7 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page).not.toHaveURL(/dist=|grupo=/);
   });
 
-  test("R2 panorama: KPIs sem transbordo, explicação e N/D justificado", async ({ page }) => {
+  test("R3 panorama: dez KPIs, cálculo explicado e total nacional não parcial", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByTestId("kpi-uc")).toBeVisible();
     const over = await page.locator('[data-testid^="kpi-"]').evaluateAll((els) => els.map((e) => e.parentElement!).filter((k) => k.scrollWidth > k.clientWidth + 1).length);
@@ -101,12 +101,13 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await page.getByRole("button", { name: "Ver cálculo técnico" }).click();
     await expect(page.getByRole("dialog", { name: /Rede de média tensão/ })).toContainText("COMP");
     await page.keyboard.press("Escape");
-    await expect(page.getByTestId("nd-uc")).toContainText(/distribuidoras? sem valor homologado/);
-    await page.getByTestId("nd-uc-why").click();
-    await expect(page.getByRole("dialog").last()).toContainText("DIST");
+    await expect(page.locator('[data-testid="kpi-uc"]').locator("..")).toContainText("Total indisponível");
+    await expect(page.locator('[data-testid^="kpi-"]')).toHaveCount(10);
+    await expect(page.getByTestId("kpi-trdist565")).toBeVisible();
+    await expect(page.getByTestId("kpi-trforca570")).toBeVisible();
     await page.getByTestId("kpi-picker").click();
     await page.getByRole("button", { name: "Redes", exact: true }).click();
-    await expect(page.getByTestId("kpi-ramlig")).toBeVisible();
+    await expect(page.getByTestId("kpi-ssdat")).toBeVisible();
   });
 
   test("R2 rodapé: autoria e contato", async ({ page }) => {
