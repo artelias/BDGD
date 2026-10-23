@@ -111,3 +111,10 @@ describe("formatação e comparação", () => {
     expect(toCSV(["a", "b"], [["x,y", null]])).toBe('a,b\n"x,y",\n');
   });
 });
+
+describe("cobertura do cubo e rótulos", () => {
+  it("informa quantos DISTs do escopo o cubo cobre", () => {
+    expect(distribution(facets, "ARE_LOC", "quantidade_registros", new Set([1, 2, 3])).covered).toBe(2);
+    expect(distribution(facets, "FAS_CON", "quantidade_registros", new Set([1, 2, 3]), { ARE_LOC: "UB" }).covered).toBe(1);
+  });
+});

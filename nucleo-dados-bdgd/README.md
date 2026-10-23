@@ -2,7 +2,7 @@
 
 Protótipo de uma aplicação pública para explorar ativos da Base de Dados Geográfica da Distribuidora (BDGD), com visual clean, tema claro/escuro, mapa de áreas de atuação, filtros descritivos de DDA, matriz de ativos por empresa e comparador de distribuidoras/grupos econômicos.
 
-> **IMPORTANTE**: este repositório contém somente dados demonstrativos. Os números, datas-base e polígonos do MVP NÃO são dados oficiais. Não utilizar para análises regulatórias.
+> **IMPORTANTE**: o protótipo estático original (`index.html`/`app.js`) usa dados demonstrativos. O app em `web/` usa somente agregados derivados das BDGDs oficiais de 31/12/2025, com cobertura, regras e estado de homologação declarados; não é produto oficial da ANEEL.
 
 ## Executar o protótipo
 
@@ -14,7 +14,16 @@ python -m http.server 8000
 
 Depois abra `http://localhost:8000`. Nenhuma dependência, autenticação, banco, token ou Parquet são necessários para o protótipo.
 
-## Estrutura
+## Aplicação real (2025-12-31)
+
+- `web/` — dashboard Next.js com dados reais do pacote público 2025-12-31 (ver `web/README.md` e `web/DESIGN.md`).
+- `etl/bdgd2025/` — pipeline local que gera o pacote (ver `etl/bdgd2025/README.md`).
+- `output-publicavel/2025-12-31/` — pacote público validado (contrato 1.1.0), quando versionado.
+- `docs/REVISAO-VISUAL.md` — rodadas de revisão visual com capturas reais.
+
+O protótipo estático original (`index.html`, `app.js`, `styles.css`) permanece abaixo como referência histórica, com dados fictícios.
+
+## Estrutura (protótipo original)
 
 - `index.html` — interface acessível com seções Panorama, Ativos, Comparador e Metodologia.
 - `styles.css` — design responsivo, visual limpo e paleta claro/escuro.

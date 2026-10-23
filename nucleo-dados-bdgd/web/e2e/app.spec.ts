@@ -15,6 +15,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.getByRole("heading", { name: "Panorama Brasil" })).toBeVisible();
     await expect(page.getByTestId("map-ready")).toHaveAttribute("data-ready", "true", { timeout: 60_000 });
     await expect(page.locator("canvas.maplibregl-canvas")).toBeVisible();
+    // regressão: o contêiner do mapa precisa ocupar o palco (ordem de CSS em produção)
+    expect(await page.locator("canvas.maplibregl-canvas").evaluate((c) => c.clientHeight)).toBeGreaterThan(400);
     await expect(page.getByTestId("kpi-ssdmt")).not.toContainText("N/D");
     await page.getByTestId("panel-search").fill("CEA");
     await page.getByTestId("dist-31").click();

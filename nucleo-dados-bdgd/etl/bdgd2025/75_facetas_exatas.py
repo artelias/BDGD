@@ -70,7 +70,9 @@ def main():
     K = E.Conhecimento()
     ds = sorted((p.parent.name.split("=")[1] for p in PROC.glob("DIST=*/_OK")), key=int)
     if a.dists: ds = [d for d in ds if d in a.dists.split(",")]
-    con = duckdb.connect(); con.execute(f"SET threads=2; SET memory_limit='2GB'; SET temp_directory='{(R / 'tmp_duckdb').as_posix()}'")
+    import os
+    th, mem = os.environ.get("BDGD_DUCKDB_THREADS", "2"), os.environ.get("BDGD_DUCKDB_MEM", "2GB")
+    con = duckdb.connect(); con.execute(f"SET threads={th}; SET memory_limit='{mem}'; SET temp_directory='{(R / 'tmp_duckdb').as_posix()}'")
     for d in ds:
         dst = PROC / f"DIST={d}" / "facetas_v2.csv"
         if dst.exists() and not a.forcar: continue

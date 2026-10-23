@@ -33,6 +33,8 @@ export interface Distribution {
   categories: Category[];
   /** soma das categorias só é um total quando a partição é disjunta e completa */
   additive: boolean;
+  /** DISTs do escopo presentes no cubo (cobertura do recorte) */
+  covered: number;
 }
 
 export const SEM_CODIGO = "SEM_CODIGO";
@@ -95,13 +97,16 @@ export function facetValue(data: FacetData, filter: FacetFilter, metric: Metric,
 export function distribution(data: FacetData, attr: string, metric: Metric, dists: Set<number>, given?: FacetFilter): Distribution {
   const attrs = [attr, ...Object.keys(given ?? {})];
   const facet = findFacet(data, attrs);
-  if (!facet) return { status: "combinacao_nao_suportada", categories: [], additive: false };
+  if (!facet) return { status: "combinacao_nao_suportada", categories: [], additive: false, covered: 0 };
   const spec = facet.metricas[metric];
-  if (!spec) return { status: "metrica_indisponivel", facet, categories: [], additive: false };
+  if (!spec) return { status: "metrica_indisponivel", facet, categories: [], additive: false, covered: 0 };
+  const present = new Set<number>();
   const i = facet.dims.indexOf(attr);
   const acc = new Map<string, Category>();
   for (const [dist, codes, vals, sts] of data.rows[facet.id] ?? []) {
-    if (!dists.has(dist) || !rowMatches(codes, facet.dims, given ?? {})) continue;
+    if (!dists.has(dist)) continue;
+    present.add(dist);
+    if (!rowMatches(codes, facet.dims, given ?? {})) continue;
     const code = codes[i];
     const c = acc.get(code) ?? { code, label: describe(data, attr, code), v: null, n: 0, nd: 0, alerta: 0 };
     const st = sts[metric]; const val = vals[metric];
@@ -110,7 +115,11 @@ export function distribution(data: FacetData, attr: string, metric: Metric, dist
     acc.set(code, c);
   }
   const categories = [...acc.values()].sort((a, b) => (b.v ?? -1) - (a.v ?? -1));
-  return { status: categories.length ? "ok" : "sem_dados", facet, categories, additive: spec.rollup && spec.disjunta };
+  // códigos distintos com a mesma descrição no DDA recebem o código para desambiguar
+  const seen = new Map<string, number>();
+  for (const c of categories) seen.set(c.label, (seen.get(c.label) ?? 0) + 1);
+  for (const c of categories) if ((seen.get(c.label) ?? 0) > 1) c.label = `${c.label} · ${c.code}`;
+  return { status: categories.length ? "ok" : "sem_dados", facet, categories, additive: spec.rollup && spec.disjunta, covered: present.size };
 }
 
 /** Códigos existentes de `attr` (para facetas em cascata), restritos ao escopo e a um filtro já aplicado. */

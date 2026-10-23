@@ -22,7 +22,7 @@ import s from "@/app/panorama.module.css";
 
 const ALERT_LABEL: Record<string, string> = {
   potencia_UG_acima_75kW: "Potência de geração acima de 75 kW em registros de BT (preservada, não somada)",
-  uc_cod_id_inconsistente: "Consumidores com COD_ID repetido",
+  uc_cod_id_ativo_duplicado: "Consumidores com mais de um registro ativado por COD_ID (quantidade N/D)",
   uc_sobreposicao_entre_entidades: "COD_ID presente em mais de uma entidade UC",
   filtro_indisponivel: "Filtro por circuito/subestação indisponível por chaves órfãs",
   divergencia_potencia: "Potência divergente entre unidade e equipamento transformador",

@@ -158,7 +158,16 @@ def main():
                                     "dimensoes_json": json.dumps({a_: str(c_) for a_, c_ in sorted(dims.items())}, ensure_ascii=False), "metrica": m, "valor": fmt(v),
                                     "unidade": {"extensao_km": "km", "potencia_kva": "kVA"}.get(m, "itens"), "status_qualidade": s2, "motivo_qualidade": mo2})
         qa += rd(pd_ / "qa_reconciliacao.csv")
-        alertas += rd(pd_ / "alertas.csv"); comp += rd(pd_ / "complementares.csv"); vinc += rd(pd_ / "qa_vinculos.csv")
+        for a in rd(pd_ / "alertas.csv"):
+            if a["tipo"] == "uc_cod_id_inconsistente":   # alerta da regra v1: reavaliado pela regra UC v2
+                x = v2.get(a["entidade"])
+                if x and x["valida"]: continue            # repeticoes sao historico AT/DS no ano, nao conflito
+                if x: a.update(tipo="uc_cod_id_ativo_duplicado", detalhe="; ".join(x["motivos"]), acao="quantidade N/D; registros e distintos publicados")
+            alertas.append(a)
+        for e, x in v2.items():   # todo caso invalido pela regra v2 tem alerta, mesmo sem alerta na v1
+            if not x["valida"] and not any(a["dist"] == d and a["entidade"] == e and a["tipo"] == "uc_cod_id_ativo_duplicado" for a in alertas):
+                alertas.append({"dist": d, "entidade": e, "tipo": "uc_cod_id_ativo_duplicado", "detalhe": "; ".join(x["motivos"]), "acao": "quantidade N/D; registros e distintos publicados"})
+        comp += rd(pd_ / "complementares.csv"); vinc += rd(pd_ / "qa_vinculos.csv")
         ddaqa += rd(pd_ / "qa_dda.csv"); filtros += rd(pd_ / "disponibilidade_filtros.csv")
         aq = json.loads((pd_ / "arat_qa.json").read_text(encoding="utf-8")); arat_qa.append(aq)
         if aq["status"] == "ok": shutil.copyfile(pd_ / "arat.geojson", TMP / "geo" / f"arat_2025_{d}.geojson")

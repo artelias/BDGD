@@ -90,7 +90,6 @@ export const AratMap = forwardRef<AratMapHandle, {
                 "fill-opacity": ["case", ["boolean", ["feature-state", "dim"], false], 0.16, ["boolean", ["feature-state", "sel"], false], 0.86, 0.6],
                 "fill-opacity-transition": { duration: 320 },
               } },
-              { id: "arat-hachura", type: "fill", source: "arat", filter: ["==", ["get", "g"], "nao_confirmado"], paint: { "fill-pattern": "hachura", "fill-opacity": ["case", ["boolean", ["feature-state", "dim"], false], 0.25, 1] } },
               { id: "ufs", type: "line", source: "ufs", paint: { "line-color": cssVar("--map-uf"), "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.5, 7, 1.1], "line-dasharray": [2, 2] } },
               { id: "arat-linha", type: "line", source: "arat", paint: { "line-color": theme === "dark" ? "rgba(13,14,16,0.85)" : "rgba(255,255,255,0.9)", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.35, 8, 1.2] } },
               { id: "arat-hover", type: "line", source: "arat", paint: {
@@ -104,12 +103,6 @@ export const AratMap = forwardRef<AratMapHandle, {
         m = mm;
         map.current = mm;
         mm.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
-        mm.on("styleimagemissing", (e) => {
-          if (e.id === "hachura" && !mm.hasImage("hachura")) {
-            const r = window.devicePixelRatio || 1;
-            mm.addImage("hachura", hatch(document.documentElement.dataset.theme === "dark" ? "#9aa0a8" : "#6f716b", r), { pixelRatio: r });
-          }
-        });
         const setHover = (id: number | null) => {
           if (hovered.current === id) return;
           if (hovered.current !== null) mm.setFeatureState({ source: "arat", id: hovered.current }, { hover: false });
@@ -127,7 +120,14 @@ export const AratMap = forwardRef<AratMapHandle, {
           const f = mm.queryRenderedFeatures(e.point, { layers: ["arat-fill"] })[0];
           cb.current.onSelect(f ? Number(f.properties?.d) : null);
         });
-        mm.on("load", () => alive && setReady(true));
+        mm.on("load", () => {
+          // hachura para "grupo não confirmado": imagem criada antes da camada que a usa
+          const r = window.devicePixelRatio || 1;
+          if (!mm.hasImage("hachura")) mm.addImage("hachura", hatch(document.documentElement.dataset.theme === "dark" ? "#9aa0a8" : "#6f716b", r), { pixelRatio: r });
+          mm.addLayer({ id: "arat-hachura", type: "fill", source: "arat", filter: ["==", ["get", "g"], "nao_confirmado"],
+            paint: { "fill-pattern": "hachura", "fill-opacity": ["case", ["boolean", ["feature-state", "dim"], false], 0.25, 1] } }, "ufs");
+          if (alive) setReady(true);
+        });
       } catch (e) {
         if (alive) setFailed((e as Error).message);
       }

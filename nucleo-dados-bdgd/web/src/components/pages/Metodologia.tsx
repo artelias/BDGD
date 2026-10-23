@@ -17,7 +17,7 @@ const SECS = [
 
 const ALERTA: Record<string, string> = {
   potencia_UG_acima_75kW: "Registros de unidades geradoras com POT_INST acima de 75 kW em BT (inclui sistemas SIGFI cujo valor não se comporta como kW). Valores preservados; potência de geração publicada como N/D.",
-  uc_cod_id_inconsistente: "Consumidores com mais de um registro ativado para o mesmo COD_ID (regra UC v2). Quantidade N/D; registros e distintos publicados.",
+  uc_cod_id_ativo_duplicado: "Consumidores com mais de um registro ativado para o mesmo COD_ID (regra UC v2). Quantidade N/D; registros e distintos publicados.",
   uc_sobreposicao_entre_entidades: "COD_ID presente em mais de uma entidade UC (BT, MT, AT). Por isso o total de consumidores usa a união de códigos por distribuidora.",
   filtro_indisponivel: "Chaves de circuito/subestação que não existem na tabela de destino (> 5% de órfãos). O filtro fica indisponível; contagens independentes seguem válidas.",
   divergencia_potencia: "Potência total das unidades transformadoras diverge mais de 5% da potência dos equipamentos (via DDA). As duas visões não são somadas.",

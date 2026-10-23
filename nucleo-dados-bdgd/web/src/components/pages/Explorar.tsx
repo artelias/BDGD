@@ -209,7 +209,10 @@ function FacetExplorer({ data, dists, ent, a1, c1, a2, metQ, setMet, patch, defa
             <div className="headline" style={{ fontSize: "1rem" }}>{label(target)}{A2 ? <span className="faint"> · dado {label(A1)} = {describe(data, A1, C1)}</span> : null}</div>
             <div className="caption">{METRIC_LABEL[metric]} ({METRIC_UNIT[metric]}) por categoria · {dist.facet?.id}</div>
           </div>
-          {!dist.additive && dist.categories.length > 0 && <Pill tone="warn" title="Um mesmo COD_ID pode estar em mais de uma categoria (registros históricos AT/DS com atributos diferentes).">Categorias se sobrepõem · não somar</Pill>}
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+            {dist.status === "ok" && <Pill tone={dist.covered < dists.size ? "warn" : "default"} title="Distribuidoras do escopo para as quais este cubo foi calculado">Cubo: {dist.covered} de {dists.size} DIST</Pill>}
+            {!dist.additive && dist.categories.length > 0 && <Pill tone="warn" title="Um mesmo COD_ID pode estar em mais de uma categoria (registros históricos AT/DS com atributos diferentes).">Categorias se sobrepõem · não somar</Pill>}
+          </div>
         </div>
         {dist.status === "combinacao_nao_suportada" ? <EmptyState title="Combinação indisponível">Não há cubo conjunto calculado para estes atributos. Nenhuma estimativa é exibida.</EmptyState>
           : dist.status !== "ok" ? <EmptyState title="Sem dados no recorte">Nenhuma distribuidora do escopo possui esta entidade com o atributo informado.</EmptyState>
