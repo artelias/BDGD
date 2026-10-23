@@ -84,7 +84,9 @@ def preparar(iasc: list[dict], depara: list[dict], ano: int) -> tuple[list[dict]
 
 def ler_csv(path: Path) -> list[dict]:
     with path.open("r", encoding="utf-8-sig", newline="") as f:
-        return list(csv.DictReader(f, delimiter=";" if ";" in f.readline() else ","))
+        primeira_linha = f.readline()
+        f.seek(0)
+        return list(csv.DictReader(f, delimiter=";" if ";" in primeira_linha else ","))
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
