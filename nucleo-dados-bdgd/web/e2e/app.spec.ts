@@ -102,7 +102,7 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.getByRole("dialog", { name: /Rede de média tensão/ })).toContainText("COMP");
     await page.keyboard.press("Escape");
     await expect(page.locator('[data-testid="kpi-uc"]').locator("..")).toContainText("Total indisponível");
-    await expect(page.locator('[data-testid^="kpi-"]')).toHaveCount(10);
+    await expect(page.locator('button[data-testid^="kpi-"]:not([data-testid="kpi-picker"])')).toHaveCount(10);
     await expect(page.getByTestId("kpi-trdist565")).toBeVisible();
     await expect(page.getByTestId("kpi-trforca570")).toBeVisible();
     await page.getByTestId("kpi-picker").click();
