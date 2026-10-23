@@ -1,6 +1,6 @@
 # Revisão funcional R2 — Métricas, explorações, matriz e evolução histórica (2022–2025)
 
-**Solicitação do responsável em 23/10/2026.** Desenho para o portal *Núcleo de Dados da BDGD*. **Implementar primeiro as melhorias 2025 verificáveis; ativar a evolução anual somente com histórico 2022–2024 reconciliado e perímetros comparáveis à BDGD 2025.** Não treinar modelos de previsão nem apresentar projeções.
+**Especificação já consolidada no [PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md](PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md).** **Solicitação do responsável em 23/10/2026.** Desenho para o portal *Núcleo de Dados da BDGD*. **Implementar primeiro as melhorias 2025 verificáveis; ativar a evolução anual somente com histórico 2022–2024 reconciliado e perímetros comparáveis à BDGD 2025.** Não treinar modelos de previsão nem apresentar projeções.
 
 **Referência operacional em revisão:** PR https://github.com/artelias/BDGD/pull/4, branch `feat/dashboard-bdgd-2025`. O projeto base está em `feat/nucleo-dados-bdgd-portal`. Não alterar a main, não mudar produção sem release homologado.
 
@@ -199,4 +199,4 @@ Manter banco opcional; agregados públicos versionados podem ficar em JSON está
 - [ ] Variações/participações com denominador zero, incompatível ou dados incompletos retornam N/D com motivo.
 - [ ] Unit test + E2E + CI passam, com tratamento de mobile, foco e motion reduzido; app não apresenta números fictícios como oficiais.
 
-**Autoria:** Arthur Henrique Lima. **Data:** 23/10/2026.
+**Autoria:** Arthur Henrique Elias de Lima. **Data:** 23/10/2026.
