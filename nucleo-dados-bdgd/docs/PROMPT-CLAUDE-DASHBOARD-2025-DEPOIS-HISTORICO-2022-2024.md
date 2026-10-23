@@ -1,3 +1,5 @@
+> **INSTRUÇÃO ATUALIZADA DE RELEASE (23/10/2026):** a revisão R2 e o limite de ações Vercel agora são regidos por [PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md](PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md). **O Claude NÃO deve publicar nem promover produção.** Deve entregar PR, CI, QA e preview para que o ChatGPT faça auditoria e publicação apenas mediante comando posterior explícito do proprietário. Essa regra prevalece sobre quaisquer instruções antigas deste documento que autorizassem deploy em produção automaticamente.
+
 # PROMPT MESTRE CLAUDE — entregar dashboard BDGD 2025 e, após publicação, continuar ETL histórico 2022–2024
 
 **Instrução do proprietário do projeto:** execute as etapas abaixo, com código, testes, GitHub e publicação de site quando puder ser feita com segurança e sem custo adicional. Você está no mesmo PC Windows que executa BDGD 2025 e que foi usado pelo Codex para piloto 2022–2024. **Não construa nem treine modelos preditivos nesta execução.**
@@ -62,7 +64,7 @@ Se publicação estiver bloqueada por autenticação/permissão, **não inventar
 
 Converter o protótipo HTML demonstrativo em aplicação profissional, conforme `PLANO-GERAL.md`, preferencialmente **Next.js + TypeScript + React + Lucide + MapLibre GL + ECharts**. Avaliar viabilidade de manter aplicação estática bem construída como passo intermediário caso o provisionamento do banco esteja bloqueado, mas entregar código testado e arquitetura expansível. Não apagar recursos funcionais da interface anterior antes de substituí-los por equivalentes.
 
-**Identidade do site: `Núcleo de Dados da BDGD`, atribuição no rodapé `Desenvolvido por Arthur Henrique Lima`.** **O padrão de UI/UX exigido é premium, minimalista, sofisticado e autoral, com motion design e microinterações personalizadas**, sem aparência genérica de template ou de painel gerado por IA. Essa é uma exigência de aceitação, não sugestão estética. **LEIA E EXECUTE INTEGRALMENTE**: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md). Nele estão especificados design tokens, tipografia, paleta light/dark própria, composição sob medida, animações, comportamentos do mapa e gráficos, acessibilidade, screenshots e rodadas de refinamento.
+**Identidade do site: `Núcleo de Dados da BDGD`, atribuição no rodapé `Desenvolvido por Arthur Henrique Elias de Lima`.** **O padrão de UI/UX exigido é premium, minimalista, sofisticado e autoral, com motion design e microinterações personalizadas**, sem aparência genérica de template ou de painel gerado por IA. Essa é uma exigência de aceitação, não sugestão estética. **LEIA E EXECUTE INTEGRALMENTE**: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md). Nele estão especificados design tokens, tipografia, paleta light/dark própria, composição sob medida, animações, comportamentos do mapa e gráficos, acessibilidade, screenshots e rodadas de refinamento.
 
 Páginas / seções mínimas:
 
