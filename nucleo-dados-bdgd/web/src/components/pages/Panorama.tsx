@@ -315,7 +315,7 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
         </div>
         {marcos.length > 0 && (
           <div className={s.section} data-testid="marcos-distribuidora">
-            <h3 className={s.sectionTitle}>Destaques da distribuidora · 2025</h3>
+            <h3 className={s.sectionTitle}>Destaques da distribuidora</h3>
             <p className="caption" style={{ marginBottom: 12 }}>Marcos com fonte identificada; o ano do resultado pode ser diferente do ano da divulgação.</p>
             {marcos.map((m) => (
               <article key={m.titulo} style={{ marginBottom: 14 }}>
