@@ -345,7 +345,7 @@ function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; di
           <Explain title={k.nome} tecnico={k.tecnico} ressalva={k.ressalva} cobertura={coberturaTexto(a)} testId={`explain-${k.id}`}>{k.explicacao}</Explain>
         </span>
       </div>
-      {a.partial && <div className={s.kpiNd}><span className={s.ndNote}>Total indisponível para o recorte · <Link href="/metodologia/#qualidade">Ver cobertura</Link></span></div>}
+      {a.partial && <div className={s.kpiNd}><span className={s.ndNote}>Total indisponível para o recorte · <Link href="/metodologia/#qualidade" style={{ display: "inline-flex", alignItems: "center", minHeight: 24, paddingInline: 4 }}>Ver cobertura</Link></span></div>}
     </div>
   );
 }
