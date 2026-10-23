@@ -59,7 +59,7 @@ Depois abra `http://localhost:8000`. Nenhuma dependência, autenticação, banco
 
 ## Autoria
 
-Desenvolvido por **Arthur Henrique Lima** — **Núcleo de Dados da BDGD**.
+Desenvolvido por **Arthur Henrique Elias de Lima** — **Núcleo de Dados da BDGD**.
 
 ## Fontes e atribuição
 
@@ -70,3 +70,5 @@ Desenvolvido por **Arthur Henrique Lima** — **Núcleo de Dados da BDGD**.
 Este projeto não é um produto oficial da ANEEL.
 
 - `docs/HARMONIZACAO-SUCESSAO-2022-2025.md` — séries históricas originais e série derivada do perímetro 2025 para incorporar predecessoras sem inflar crescimento; recorte **somente 2022–2025**.
+
+- `docs/PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md` — contrato executivo atual: melhorias R2 implementadas pelo Claude até preview; produção somente após auditoria ChatGPT e autorização expressa do proprietário.
