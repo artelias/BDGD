@@ -217,13 +217,13 @@ function FacetExplorer({ ds, data, dists, brasil, scope, ent, a1, c1, a2, metQ, 
   /** A1 do MCPSE depende do TUC: com TUC fixado, usa a descrição daquele TUC. */
   const desc = (attr: string, code: string) => {
     if (attr === "A1" && A1 === "TUC" && C1 && data.a1PorTuc?.[C1]?.[code]) return data.a1PorTuc[C1][code];
-    if (attr === "TUC" && code === "000") return "TUC 000 (não classificado)";
+    if (attr === "TUC" && code !== "SEM_CODIGO" && !data.descricoes.TUC?.[code]) return `Código ${code} (sem correspondência no MCPSE)`;
     return describe(data, attr, code);
   };
 
   const target = A2 || A1;
   const dist = distribution(data, target, metric, dists, A2 ? { [A1]: C1 } : undefined);
-  for (const c of dist.categories) if (target === "A1" || (target === "TUC" && c.code === "000")) c.label = desc(target, c.code);
+  for (const c of dist.categories) if (target === "A1" || target === "TUC") c.label = desc(target, c.code);
   const selectedValue = C1 && !A2 ? facetValue(data, { [A1]: C1 }, metric, dists) : null;
   const total = dist.categories.reduce((x, c) => x + (c.v ?? 0), 0);
   const comEnt = (set: Set<number>) => [...set].filter((d) => ds.hasEntity(d, ent)).length;
@@ -285,6 +285,8 @@ function FacetExplorer({ ds, data, dists, brasil, scope, ent, a1, c1, a2, metQ, 
         <p className={p.note}><Info size={14} /><span>{label(A1)} = {desc(A1, C1)}: <b className="num">{fmt(selectedValue.v, metric)} {METRIC_UNIT[metric]}</b> em {selectedValue.n} distribuidora(s){selectedValue.nd ? `, ${selectedValue.nd} sem valor homologado` : ""}.</span></p>
       )}
 
+      {A1 === "TUC" && C1 && !A2 && <Vinculos ds={ds} ent={ent} tuc={C1} dists={dists} nome={desc("TUC", C1)} />}
+
       {part && (
         <div className={s.part} data-testid="participacao">
           <div className={s.partCell}>
@@ -342,6 +344,21 @@ function FacetExplorer({ ds, data, dists, brasil, scope, ent, a1, c1, a2, metQ, 
       </div>
       <p className="caption" style={{ marginTop: 10 }}>Descrições: Dicionário de Dados ANEEL (DDA), MCPSE (TUC e A1, Res. ANEEL 674/2015) e IBGE (municípios). Códigos sem correspondência aparecem como “sem descrição”; “Sem código informado” agrupa registros sem valor no campo.</p>
     </section>
+  );
+}
+
+/** Equipamentos do TUC e as instalações (UN*) distintas que ocupam: um equipamento não é uma instalação. */
+function Vinculos({ ds, ent, tuc, dists, nome }: { ds: Dataset; ent: string; tuc: string; dists: Set<number>; nome: string }) {
+  const v = ds.raw.vinculosTuc;
+  if (!v) return null;
+  let eq = 0, vinc = 0, un = 0, n = 0;
+  for (const [d, e, t, equip, , vinculados, unidades] of v.rows) if (e === ent && t === tuc && dists.has(d)) { eq += equip; vinc += vinculados; un += unidades; n++; }
+  if (!n) return null;
+  const dest = (v.destinos[ent] ?? []).join(", ");
+  return (
+    <p className={p.note} data-testid="vinculos-tuc"><Info size={14} aria-hidden />
+      <span>{nome}: <b className="num">{fmt(eq)}</b> equipamentos, dos quais <b className="num">{fmt(vinc)}</b> apontam para uma instalação existente ({dest}), ocupando <b className="num">{fmt(un)}</b> instalações distintas em {n} distribuidora{n === 1 ? "" : "s"}. Equipamentos e instalações não são somados.</span>
+    </p>
   );
 }
 

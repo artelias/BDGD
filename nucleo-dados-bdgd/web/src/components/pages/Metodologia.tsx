@@ -201,7 +201,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="vpe" className={s.sec}>
             <h2>Relação com o BI VPE 2024</h2>
             <p>O BI VPE usa a BDGD de 31/12/2024 e serve apenas como referência metodológica (definições, filtros, estrutura). Não é gabarito quantitativo: os números deste portal são reconciliados exclusivamente com as BDGDs de 31/12/2025.</p>
-            <p>A matriz de paridade entre as métricas deste portal e as do BI VPE está <b>bloqueada</b>: o arquivo do BI não está disponível no ambiente de processamento. Nenhuma equivalência entre TUC/A1 e os filtros do BI é afirmada até essa auditoria.</p>
+            <p>A paridade entre as métricas deste portal e as do BI VPE <b>ainda não foi avaliada</b>, porque o arquivo do BI não está disponível. Isso não afeta a qualidade dos indicadores publicados, que são auditados diretamente na BDGD 2025; apenas nenhuma equivalência com medidas do BI é afirmada.</p>
           </section>
 
           <section id="privacidade" className={s.sec}>

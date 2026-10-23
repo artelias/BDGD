@@ -146,6 +146,7 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await page.getByTestId("preset-tuc-EQTRMT-565").click();
     await expect(page).toHaveURL(/c1=565/);
     await expect(page.getByTestId("participacao")).toBeVisible();
+    await expect(page.getByTestId("vinculos-tuc")).toContainText("instalações distintas");
     await expect(page.getByTestId("part-escopo")).toHaveText(/%|N\/D/);
     await expect(page.getByTestId("inventario-atributos")).toContainText("Filtrável agora");
   });
