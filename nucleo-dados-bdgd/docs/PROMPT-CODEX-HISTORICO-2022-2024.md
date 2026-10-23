@@ -4,7 +4,7 @@
 
 Atue como engenheiro de dados sênior e desenvolvedor Python especializado em SIG, File Geodatabase, GDAL/pyogrio, DuckDB, validação estatística e GitHub. Execute **neste PC local** a descoberta, download, inspeção, transformação, agregação e auditoria das BDGDs oficiais com datas-base **31/12/2022, 31/12/2023 e 31/12/2024**, de todas as distribuidoras que efetivamente possuam essas competências. Ao finalizar, **publique scripts, contratos, inventários e relatórios não sensíveis em uma branch própria no GitHub**, com commits e PR, e devolva os links para o usuário compartilhar com ChatGPT e Claude.
 
-A BDGD de **31/12/2025 está sendo processada por OUTRO agente/máquina**. NÃO baixar 2025 novamente, NÃO alterá-la, NÃO sobrescrever checkpoints de 2025, NÃO modificar a `main` nem a branch do portal `feat/nucleo-dados-bdgd-portal`. Este trabalho é separado e tem finalidade futura de **séries históricas comparáveis e módulo preditivo**, não de preencher a tela atual com números misturados.
+**Correção confirmada pelo responsável:** o Codex e o Claude estão no **MESMO COMPUTADOR WINDOWS**, e os scripts/dados 2025 do Claude estão em `D:\NUCLEO_BDGD_2025`. Faça inspeção real dessa pasta; **reaproveite código, configuração, testes e catálogos somente após verificação**, em uma cópia independente. A BDGD 2025 pode ainda estar em processamento: NÃO interromper o processo, NÃO baixar 2025 novamente, NÃO modificar arquivos, checkpoints ou ambiente 2025, NÃO alterar `main` nem a branch do portal `feat/nucleo-dados-bdgd-portal`. O histórico 2022–2024 fica segregado para o futuro módulo preditivo.
 
 ### Repositório a utilizar
 
@@ -17,20 +17,26 @@ A BDGD de **31/12/2025 está sendo processada por OUTRO agente/máquina**. NÃO 
 
 Fonte primária: https://dadosabertos.aneel.gov.br/dataset/base-de-dados-geografica-da-distribuidora-bdgd e respectivo repositório ArcGIS da ANEEL. Confirmar URLs na própria API/portal antes de acessar. Não deduzir URLs individuais nem usar download de sites não oficiais. A fonte publica GDB por distribuidora; a origem pode ser ZIP.
 
-## Condição crítica: scripts Python do Claude podem NÃO estar neste computador
+## Condição confirmada: Claude e Codex compartilham o mesmo PC, scripts e discos
 
-O relatório anterior informou scripts `D:\NUCLEO_BDGD_2025\scripts\bdgd_etl.py` e `D:\NUCLEO_BDGD_2025\scripts\run_lote.py` numa máquina Windows. Contudo, ao conferir o GitHub, os arquivos **não estavam versionados** na branch do portal. Este Codex pode estar em **outra máquina**. Portanto:
-1. Inspecionar primeiro discos, pasta de trabalho, clones locais, acesso aos scripts 2025, ambiente Python e permissões Git.
-2. Se scripts e manifest de 2025 **estiverem presentes e utilizáveis**, ler código e testes, e **reutilizar/parametrizar com cuidado**, sempre copiando para pasta separada e isolando `DATA_BASE` por ano. Não alterar o processo 2025 que esteja rodando.
-3. Se scripts não estiverem presentes, NÃO pressupor que existem e NÃO afirmar reutilização. Criar pipeline 2022–2024 a partir de especificações e informações verificadas, documentando claramente essa decisão. Usar ferramentas disponíveis no PC e ambiente isolado.
-4. Não solicitar novo login/token via mensagem pública; caso seja necessário autenticar no GitHub, seguir fluxo seguro do `gh auth login` ou credencial existente, sem registrar secrets em código/log.
+O responsável esclareceu que os dois agentes usam **a mesma máquina Windows**. A pasta de trabalho do Claude é **`D:\NUCLEO_BDGD_2025`**, contendo os scripts esperados `scripts\bdgd_etl.py` e `scripts\run_lote.py`, inventário de 2025, catálogos e eventuais checkpoints. **Inspecione a existência e conteúdo em disco; não assuma que todos os arquivos foram concluídos.**
+
+1. **Primeiro leia, sem modificar**, os scripts 2025, checkpoints, manifest, logs de execução e arquivos de configuração reais. Se qualquer arquivo estiver ocupado por um processo ativo, não force acesso nem bloqueie processamento.
+2. Faça uma **cópia apenas dos scripts, schemas, testes e catálogos não sensíveis** necessários, para **`D:\NUCLEO_BDGD_2022_2024`**; adapte a cópia para parametrizar `DATA_BASE` e isolar `ano\DIST\entidade`. Nunca executar `run_lote.py` de 2025 apontando para o diretório original.
+3. **Reutilizar `bdgd_etl.py` e `run_lote.py` é a estratégia padrão**, desde que confirmados e tecnicamente compatíveis. Não copiar ZIPs/GDBs/Parquets de 2025, não alterar checkpoints 2025, nem mover/excluir arquivos do Claude. **Não duplicar nem baixar GDB 2025.**
+4. Os catálogos IA Builder em `GEOIA_DATA_HUB/knowledge/` devem ser localizados na própria máquina, conferidos por hash/versão e lidos como referência, mantendo versões históricas do DDA quando necessárias. Não presumir um catálogo atual adequado a 2022–2024.
+5. Criar um **venv novo** para o histórico na pasta independente; não reutilizar ou modificar `D:\NUCLEO_BDGD_2025\.venv` em funcionamento, e não mover `.venv` entre pastas Windows (caminhos absolutos podem ser embutidos).
+6. O PC tem aproximadamente **8 GB RAM**, **C: SSD ~500 GB com grande parte ocupada** e **D: HD de 1 TB**. Escolher a localização final **após medir espaço real livre**, pensando em descompressão temporária e pico de disco dos GDBs. **Priorizar D: para downloads/GDB/Parquet/temp/checkpoints** e C: somente para cache temporário limitado, após verificar folga e sem prejudicar o Windows. Não assumir espaço disponível pelo tamanho total da unidade.
+7. Operar somente nos **diretórios de trabalho/documentos do projeto**, ferramentas de desenvolvimento e ambientes isolados autorizados. Não modificar sistema, arquivos pessoais ou projetos não relacionados; não apagar arquivos da BDGD 2025.
+8. Se GitHub exigir autenticação, preferir `gh auth login` por fluxo interativo seguro ou sessão existente; nunca salvar tokens no Git, arquivos públicos ou logs. Se os scripts esperados não existirem, reportar a evidência e implementar equivalente **apenas na área 2022–2024**, sem adulterar o original.
+
 
 ## Passo 0 — inspeção e segurança
 
-- Identificar SO, versão Python, CPU/RAM, espaço em disco por unidade, rede e Git/gh; escolher diretório de dados **fora** do clone e em unidade com espaço suficiente. Criar venv específico para processamento histórico com GDAL/pyogrio e DuckDB, pyarrow, shapely/pyproj conforme necessidade.
+- Identificar SO, versão Python, CPU/RAM, **espaço livre real em C: e D:**, rede e Git/gh; usar preferencialmente **`D:\NUCLEO_BDGD_2022_2024` para históricos** e clone/código em subpasta separada, sem compartilhar staging/checkpoints do Claude. Criar venv específico para processamento histórico com GDAL/pyogrio e DuckDB, pyarrow, shapely/pyproj conforme necessidade. Usar temp do DuckDB em D: e pequenos caches no SSD C: apenas se houver margem comprovada e limites de tamanho.
 - Nunca carregar todas as bases nem todos os anos na RAM simultaneamente; priorizar streaming, batches, arquivos colunares locais, spill de DuckDB, índices por `DIST,DATA_BASE,entidade`, e checkpoint por distribuidora/ano.
 - Inspecionar arquivos `.gitignore`/Git LFS antes de criar pastas. Nenhum bruto, GDB/ZIP, Parquet de staging ou identificador individual entra no GitHub. Não versionar credenciais ou logs com segredos.
-- Não mexer em processos Python em execução, principalmente um eventual ETL BDGD 2025; não encerrar serviços e não elevar privilégios desnecessariamente.
+- Não mexer em processos Python em execução, principalmente o ETL BDGD 2025 que pode ainda estar ativo na mesma máquina. **Concorrência com o Claude pode saturar o único HD D:** medir recursos e controlar throttling: se 2025 ainda processa GDBs grandes, priorizar inicialmente inventário e leitura leve; aguardar capacidade de I/O antes de downloads/conversões históricos pesados. Não encerrar serviços, não alterar agendamentos nem elevar privilégios desnecessariamente.
 
 ## Passo 1 — inventário nacional ANEEL com paginação e rastreabilidade
 
@@ -54,7 +60,7 @@ O relatório anterior informou scripts `D:\NUCLEO_BDGD_2025\scripts\bdgd_etl.py`
 ## Passo 3 — semântica e harmonização 2022–2025
 
 - Referência obrigatória: Manual BDGD/PRODIST vigente à data de cada GDB; **NÃO assumir que estruturas, atributos, TUC/A1..A6, DDA ou 43 entidades são idênticos de 2022 a 2025**.
-- Os catálogos do IA Builder podem existir em outra máquina. Se estiverem disponíveis, verificar hashes/versões e utilizar o que for compatível. Se ausentes, não inventar domínios; usar documentação pública e marcar `nao_homologado` quando necessário.
+- Os catálogos do IA Builder **podem estar na mesma máquina** em `GEOIA_DATA_HUB/knowledge/`; localizá-los dentro do ambiente autorizado e verificar hashes/versões antes de usar. Não modificar os arquivos de origem. Uma versão M10/Rev.5 atual pode não ser adequada a 2022–2024; validar versões históricas e declarar domínios não homologados quando faltar correspondência.
 - Para chaves e vínculos, usar `DIST + COD_ID` **por entidade e ano**, com verificação de N:N e duplicações. Não criar falsa identidade longitudinal dos ativos sem verificar persistência de COD_ID entre anos.
 - Tratar métricas separadas, com mesmo método que foi definido para 2025: `quantidade_registros`, `quantidade_cod_id_distinto`, `quantidade` (somente quando homologada), `extensao_km`, `potencia_kva`. Uma linha TOTAL por `DIST × DATA_BASE × entidade`; facetas DDA separadas e apenas se houver interpretação/cobertura verificáveis. Não misturar fatos e facetas para somar.
 - Tratar dados suspeitos do mesmo modo que o piloto 2025: `UG*` e SIGFI: unidade e potência podem ser incompatíveis; `UNTRMT` vs `EQTRMT`: não somar duas visões do mesmo equipamento; `COD_ID` duplicado/conflitante: preservar registros e distintos; `CTMT` órfão: bloquear apenas a faceta/cálculo comprometido.
