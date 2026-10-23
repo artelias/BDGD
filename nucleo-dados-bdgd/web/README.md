@@ -1,6 +1,6 @@
 # Núcleo de Dados da BDGD — aplicação web
 
-Portal público, sem login, dos agregados BDGD com **DATA_BASE = 31/12/2025**. Desenvolvido por **Arthur Henrique Lima**. Projeto independente, não oficial da ANEEL.
+Portal público, sem login, dos agregados BDGD com **DATA_BASE = 31/12/2025**. Desenvolvido por **Arthur Henrique Elias de Lima** ([Arthur.henrique.elias@gmail.com](mailto:Arthur.henrique.elias@gmail.com)). Fonte dos dados: ANEEL — BDGD (Dados Abertos).
 
 ## Arquitetura (custo zero, sem servidor)
 

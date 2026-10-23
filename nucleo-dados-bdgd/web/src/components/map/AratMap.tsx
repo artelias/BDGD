@@ -160,8 +160,14 @@ export const AratMap = forwardRef<AratMapHandle, {
   useEffect(() => {
     const m = map.current; if (!m || !ready) return;
     const det = m.getSource("detalhe") as GeoJSONSource;
+    const prev = selRef.current;
     selRef.current = selected;
-    if (selected === null) { det.setData({ type: "FeatureCollection", features: [] }); return; }
+    if (selected === null) {
+      det.setData({ type: "FeatureCollection", features: [] });
+      // desmarcar (segundo clique, clique no vazio ou "Ver Brasil") devolve o enquadramento nacional
+      if (prev !== null) m.fitBounds(BR_BOUNDS, { padding: pad(), duration: cb.current.reduceMotion ? 0 : 900, essential: false });
+      return;
+    }
     let alive = true;
     load<GeoJSON.FeatureCollection>(`geo/arat/${selected}.json`).then((fc) => {
       if (!alive || selRef.current !== selected) return;

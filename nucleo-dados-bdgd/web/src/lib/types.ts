@@ -88,6 +88,10 @@ export interface IndexData {
   cobertura: Cobertura[];
   filtrosIndisponiveis: FiltroIndisponivel[];
   homologacao: Homologacao[];
+  /** R2: equipamentos (EQ*) por TUC e unidades físicas distintas vinculadas (EQ -> UN), por DIST */
+  vinculosTuc?: { cols: string[]; destinos: Record<string, string[]>; rows: Array<[number, string, string, number, number, number, number]> };
+  /** nomes MCPSE (Res. ANEEL 674/2015) dos TUC presentes */
+  tucNomes?: Record<string, string>;
 }
 
 export interface FacetMetricSpec { unidade: string; rollup: boolean; disjunta: boolean; cobertura: string; status: Status }
@@ -102,6 +106,10 @@ export interface FacetData {
   atributos: Record<string, { rotulo: string; descricao: string }>;
   rows: Record<string, FacetRow[]>;
   motivos: Record<string, string>;
+  /** descrição MCPSE do A1 por TUC (o mesmo código A1 tem significado diferente em cada TUC) */
+  a1PorTuc?: Record<string, Record<string, string>>;
+  /** todos os campos do Manual BDGD para a entidade e o que é possível fazer com cada um hoje */
+  inventario?: Array<{ campo: string; descricao: string; classe: "filtravel" | "requer_cubo" | "requer_juncao" | "nao_publicavel"; motivo: string }>;
 }
 
 export interface Qualidade {
@@ -110,6 +118,7 @@ export interface Qualidade {
   ucRegraV2: Array<{ dist: number; entidade: string; registros: number; distintos: number; ativados: number; valida: boolean; motivos: string }>;
   alertas: Array<{ dist: number; entidade: string; tipo: string; detalhe: string }>;
   reconciliacao: Record<string, number>;
+  municipios?: Array<{ dist: number; entidade: string; municipios: number; codigosForaIbge: number; registrosForaIbge: number; registrosSemCodigo: number; registros: number }>;
 }
 
 export type Scope = { tipo: "brasil" } | { tipo: "grupo"; id: string } | { tipo: "dist"; id: number };

@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { DataError, LoadingBlock } from "@/components/ui/Feedback";
 import { Pill } from "@/components/ui/Value";
+import { CONCEITOS, INDICADORES } from "@/lib/catalogo";
 import type { Dataset } from "@/lib/dataset";
 import { useData, useQualidade } from "@/lib/data-context";
 import { fmt, fmtDate, METRIC_LABEL } from "@/lib/format";
@@ -11,7 +12,7 @@ import p from "./pages.module.css";
 import s from "./metodologia.module.css";
 
 const SECS = [
-  ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["homologacao", "Homologação por métrica"],
+  ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["dicionario", "Dicionário de indicadores"], ["homologacao", "Homologação por métrica"],
   ["qualidade", "Qualidade e alertas"], ["grupos", "Grupos econômicos"], ["dda", "DDA e vínculos"], ["vpe", "BI VPE 2024"], ["privacidade", "Privacidade e licença"], ["reproducao", "Reprodutibilidade"],
 ] as const;
 
@@ -114,6 +115,31 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
             </dl>
           </section>
 
+          <section id="dicionario" className={s.sec}>
+            <h2>Dicionário de indicadores · Como é calculado?</h2>
+            <p>Cada indicador do painel em linguagem direta, com o cálculo técnico e as ressalvas. Os nomes de negócio são os mesmos usados no Panorama, na Matriz e no Comparador.</p>
+            {CONCEITOS.filter((c) => INDICADORES.some((i) => i.conceito === c.id)).map((c) => (
+              <div key={c.id}>
+                <h3>{c.nome}</h3>
+                <dl>
+                  {INDICADORES.filter((i) => i.conceito === c.id).map((i) => (
+                    <div key={i.id} className={s.rule} id={`ind-${i.id}`}>
+                      <dt>{i.nome}<div className="caption mono" style={{ fontWeight: 400, marginTop: 2 }}>{i.ent ?? "UCBT+UCMT+UCAT"} · {METRIC_LABEL[i.metric]}</div></dt>
+                      <dd>{i.explicacao}<div className="mono caption" style={{ marginTop: 6 }}>{i.tecnico}</div>{i.ressalva && <div className="caption" style={{ marginTop: 4, color: "var(--warn)" }}>{i.ressalva}</div>}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+            <h3>Recortes patrimoniais (TUC) e municípios</h3>
+            <dl>
+              <div className={s.rule}><dt>TUC e A1</dt><dd>Tipo de Unidade de Cadastro e Tipo de Bem conforme o MCPSE (Res. ANEEL 674/2015), lidos diretamente dos campos <span className="mono">TUC</span> e <span className="mono">A1</span> dos equipamentos (EQ*), barramentos e estruturas. O mesmo código A1 tem significado diferente em cada TUC, por isso só é descrito com o TUC fixado. Equipamentos podem apontar para a mesma instalação (UN*): o pacote publica, por TUC, quantos equipamentos têm vínculo válido e quantas instalações distintas eles ocupam.</dd></div>
+              <div className={s.rule}><dt>Município</dt><dd>Código IBGE do campo <span className="mono">MUN</span>, presente em consumidores, geração, instalações (UN*), iluminação pública e estruturas. Redes (SSD*) não têm o campo: recorte municipal de rede exigiria junção espacial e não é publicado. Códigos fora da tabela IBGE ficam sem nome e são contados na qualidade.</dd></div>
+              <div className={s.rule}><dt>Participação</dt><dd>Duas proporções no mesmo cubo e na mesma medida: a categoria dentro do recorte e o recorte dentro do Brasil. Ficam N/D se o cubo não cobre todas as distribuidoras que têm o ativo, se as categorias se sobrepõem ou se algum valor não está homologado.</dd></div>
+              <div className={s.rule}><dt>Radar · Benchmark</dt><dd>Em cada eixo, A e a referência são divididos pelo valor da referência (lado B, total Brasil, maior grupo ou maior distribuidora): a referência fica em 100% e A pode passar de 100%. Eixos sem valor de algum lado saem do gráfico. Volume maior não significa desempenho melhor.</dd></div>
+            </dl>
+          </section>
+
           <section id="homologacao" className={s.sec}>
             <h2>Homologação por métrica</h2>
             <p>Critério: reconciliação exata entre o agregado e uma leitura independente do GDB (contagens e somas) em cada distribuidora, mais o estado de qualidade por DIST. {nh.homologada ?? 0} métricas homologadas, {nh.homologada_com_ressalvas ?? 0} com ressalvas e {nh.nao_homologada ?? 0} não homologadas.</p>
@@ -175,12 +201,13 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="vpe" className={s.sec}>
             <h2>Relação com o BI VPE 2024</h2>
             <p>O BI VPE usa a BDGD de 31/12/2024 e serve apenas como referência metodológica (definições, filtros, estrutura). Não é gabarito quantitativo: os números deste portal são reconciliados exclusivamente com as BDGDs de 31/12/2025.</p>
+            <p>A matriz de paridade entre as métricas deste portal e as do BI VPE está <b>bloqueada</b>: o arquivo do BI não está disponível no ambiente de processamento. Nenhuma equivalência entre TUC/A1 e os filtros do BI é afirmada até essa auditoria.</p>
           </section>
 
           <section id="privacidade" className={s.sec}>
             <h2>Privacidade e licença</h2>
             <p>{rel.privacidade} Nenhum arquivo GDB, Parquet ou identificador individual é publicado. {rel.licenca}</p>
-            <p>Projeto independente, sem vínculo oficial com a ANEEL. {rel.autoria}.</p>
+            <p>Agregados calculados a partir dos dados abertos da ANEEL (BDGD). Desenvolvido por Arthur Henrique Elias de Lima · <a href="mailto:Arthur.henrique.elias@gmail.com">Arthur.henrique.elias@gmail.com</a>.</p>
           </section>
 
           <section id="reproducao" className={s.sec}>

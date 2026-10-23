@@ -61,3 +61,11 @@
   .tableWrap { max-height: calc(100dvh - var(--topbar-h) - 190px); margin: 0 -16px; border-radius: 0; border-left: 0; border-right: 0; }
   .distCell { min-width: 150px; max-width: 170px; }
 }
+
+/* R2: filtros ativos e itens desabilitados com explicação */
+.chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -6px 0 14px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; border-radius: var(--r-pill); border: 1px solid var(--hairline-strong); background: var(--surface); color: var(--text); font-size: var(--fs-caption); font-weight: 580; }
+.chip:hover { border-color: var(--text); }
+.linkBtn { display: inline-flex; align-items: center; gap: 4px; border: 0; background: transparent; color: var(--accent); font-size: var(--fs-caption); font-weight: 600; padding: 4px 2px; min-height: 24px; }
+.linkBtn:hover { text-decoration: underline; text-underline-offset: 3px; }
+.disabledChip { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 10px; border-radius: var(--r-sm); border: 1px dashed var(--hairline-strong); color: var(--text-3); font-size: var(--fs-label); cursor: help; white-space: nowrap; }

@@ -28,6 +28,18 @@
 .splitB { background: var(--side-b); transition: flex-grow var(--dur-3) var(--ease-out); }
 .cov { font-size: var(--fs-caption); color: var(--text-3); }
 .hideSm { }
+.chartHead { display: flex; align-items: center; justify-content: space-between; gap: 10px 16px; flex-wrap: wrap; margin-bottom: 6px; }
+.radar { margin: 28px 0; padding: 20px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); }
+.radarHead { display: flex; flex-direction: column; gap: 12px; }
+.radarCtl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; max-width: 100%; }
+.radarBody { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 20px; margin-top: 14px; align-items: start; }
+.radarChart { min-width: 0; }
+.radarTable { width: 100%; border-collapse: collapse; font-size: var(--fs-caption); font-variant-numeric: tabular-nums; }
+.radarTable th, .radarTable td { padding: 8px 6px; border-bottom: 1px solid var(--hairline); text-align: right; vertical-align: top; }
+.radarTable thead th { color: var(--text-3); font-weight: 560; white-space: nowrap; }
+.radarTable th[scope="row"], .radarTable thead th:first-child { text-align: left; font-weight: 580; color: var(--text); }
+.radarTable .lider { text-align: left; }
+.over { color: var(--side-a); }
 
 @media (max-width: 900px) {
   .sides { grid-template-columns: minmax(0, 1fr); }
@@ -35,4 +47,8 @@
   .table th { top: var(--topbar-h); }
   .hideSm { display: none; }
   .split { width: 64px; }
+  .radar { padding: 16px 14px; }
+  .radarCtl { align-items: stretch; width: 100%; overflow-x: auto; }
+  .radarBody { grid-template-columns: minmax(0, 1fr); }
+  .radarTable .lider { display: none; }
 }

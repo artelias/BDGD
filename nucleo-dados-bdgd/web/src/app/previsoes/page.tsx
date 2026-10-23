@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ChartSpline } from "lucide-react";
 
-export const metadata: Metadata = { title: "Inteligência preditiva" };
+export const metadata: Metadata = { title: "Previsões" };
 
 const ETAPAS = [
   ["Histórico 2022–2024", "Extração das BDGDs de 31/12/2022, 2023 e 2024 com o mesmo rigor de validação da competência 2025."],
@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <div style={{ maxWidth: 760 }}>
       <div className="eyebrow">Roteiro · sem resultados calculados</div>
-      <h1 className="display" style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 14 }}><ChartSpline size={34} strokeWidth={1.6} color="var(--accent)" aria-hidden /> Inteligência preditiva</h1>
+      <h1 className="display" style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 14 }}><ChartSpline size={34} strokeWidth={1.6} color="var(--accent)" aria-hidden /> Previsões</h1>
       <p className="lede" style={{ marginTop: 10 }}>
         Este módulo está em planejamento. O portal publica exclusivamente dados da BDGD de 31/12/2025; nenhuma previsão, tendência ou série histórica é exibida aqui, e os dados de 2022–2024 não entram no painel 2025.
       </p>

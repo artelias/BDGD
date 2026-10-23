@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 
 // WCAG 2.2 A/AA (axe-core) nas páginas principais, nos dois temas. O canvas do mapa fica fora (não é texto).
 for (const theme of ["light", "dark"] as const) {
-  for (const path of ["/", "/matriz/", "/comparar/", "/explorar/?ent=UCBT", "/metodologia/"]) {
+  for (const path of ["/", "/matriz/", "/comparar/?grafico=valores", "/explorar/?ent=EQTRMT&a1=TUC&c1=565&escopo=grupo:energisa", "/evolucao/", "/metodologia/"]) {
     test(`acessibilidade ${theme} ${path}`, async ({ page }) => {
       await page.emulateMedia({ colorScheme: theme, reducedMotion: "reduce" });
       await page.goto(path);

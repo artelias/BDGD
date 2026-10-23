@@ -1,42 +1,48 @@
+import { INDICADOR_PADRAO, INDICADORES, type Indicador } from "./catalogo";
 import type { Aggregate, Dataset } from "./dataset";
-import type { Metric } from "./types";
 
-export interface KpiDef {
-  key: string;
-  label: string;
-  ent: string | null; // null = composto (consumidores)
-  metric: Metric;
-  regra: string;
-  nota?: string;
-}
+/** Indicadores do panorama vêm do catálogo semântico (nome de negócio + explicação + cálculo técnico sob demanda). */
+export type KpiDef = Indicador;
+export const KPIS: KpiDef[] = INDICADOR_PADRAO.map((id) => INDICADORES.find((i) => i.id === id)!);
+export const ALL_KPIS: KpiDef[] = INDICADORES;
 
-/** Indicadores do panorama: cada um reporta entidade, métrica, unidade e regra. Grandezas heterogêneas nunca são somadas. */
-export const KPIS: KpiDef[] = [
-  { key: "uc", label: "Unidades consumidoras", ent: null, metric: "quantidade",
-    regra: "Soma, por DIST, da união de COD_ID distintos de UCBT, UCMT e UCAT (as entidades podem compartilhar códigos). DISTs com UC não validadas pela regra v2 ficam N/D." },
-  { key: "ssdmt", label: "Rede de média tensão", ent: "SSDMT", metric: "extensao_km", regra: "SUM(COMP)/1000 dos segmentos SSDMT — comprimento declarado na BDGD." },
-  { key: "ssdbt", label: "Rede de baixa tensão", ent: "SSDBT", metric: "extensao_km", regra: "SUM(COMP)/1000 dos segmentos SSDBT — comprimento declarado na BDGD." },
-  { key: "untrmt", label: "Transformadores de distribuição", ent: "UNTRMT", metric: "quantidade", regra: "COUNT(*) de unidades transformadoras de média tensão (UNTRMT)." },
-  { key: "eqtrmt", label: "Potência de transformação MT", ent: "EQTRMT", metric: "potencia_kva",
-    regra: "SUM do código POT_NOM de EQTRMT traduzido pela tabela DDA TPOTAPRT (kVA).", nota: "Não somar com UNTRMT: as duas entidades descrevem a mesma população." },
-  { key: "ugbt", label: "Geração conectada em BT", ent: "UGBT", metric: "quantidade", regra: "COUNT(*) de unidades geradoras de baixa tensão.", nota: "Potência instalada N/D: POT_INST não homologado." },
-];
-
-export const SECONDARY: KpiDef[] = [
-  { key: "ssdat", label: "Rede de alta tensão", ent: "SSDAT", metric: "extensao_km", regra: "SUM(COMP)/1000 de SSDAT." },
-  { key: "sub", label: "Subestações", ent: "SUB", metric: "quantidade", regra: "COUNT(*) de SUB." },
-  { key: "ponnot", label: "Estruturas (pontos notáveis)", ent: "PONNOT", metric: "quantidade", regra: "COUNT(*) de PONNOT." },
-  { key: "pip", label: "Pontos de iluminação pública", ent: "PIP", metric: "quantidade", regra: "COUNT(*) de PIP." },
-  { key: "ugmt", label: "Geração conectada em MT", ent: "UGMT", metric: "quantidade", regra: "COUNT(*) de UGMT." },
-  { key: "ctmt", label: "Circuitos de média tensão", ent: "CTMT", metric: "quantidade", regra: "COUNT(*) de CTMT." },
-];
-
-export const ALL_KPIS = [...KPIS, ...SECONDARY];
-
-export function kpiValue(ds: Dataset, k: KpiDef, dists: number[]): Aggregate {
+export function kpiValue(ds: Dataset, k: Pick<Indicador, "ent" | "metric">, dists: number[]): Aggregate {
   return k.ent === null ? ds.consumidores(dists) : ds.aggregate(dists, k.ent, k.metric);
 }
 
-export function kpiPerDist(ds: Dataset, k: KpiDef, dist: number): number | null {
+export function kpiPerDist(ds: Dataset, k: Pick<Indicador, "ent" | "metric">, dist: number): number | null {
   return kpiValue(ds, k, [dist]).v;
+}
+
+/** Texto de cobertura humano: quantas distribuidoras entraram e quantas ficaram sem valor. */
+export function coberturaTexto(a: Aggregate) {
+  if (a.total <= 1) return a.n ? "Valor reconciliado com o GDB de origem" : "Sem valor homologado nesta distribuidora";
+  const partes = [`${a.n} de ${a.total} distribuidoras com valor`];
+  if (a.nd) partes.push(`${a.nd} sem valor homologado`);
+  if (a.ausentes) partes.push(`${a.ausentes} sem esse tipo de ativo no cadastro`);
+  return partes.join(" · ");
+}
+
+export interface NdItem { dist: number; sigla: string; motivo: string }
+
+/** Quais distribuidoras do recorte ficaram sem valor homologado e por quê (motivo do pacote, nunca inventado). */
+export function ndDetalhe(ds: Dataset, k: Pick<Indicador, "ent" | "metric">, dists: number[]): NdItem[] {
+  const out: NdItem[] = [];
+  for (const d of dists) {
+    const sigla = ds.dist(d)?.sigla.replaceAll("_", " ") ?? `DIST ${d}`;
+    if (k.ent === null) {
+      const bad = ["UCBT", "UCMT", "UCAT"].map((e) => ds.cell(d, e, "quantidade")).find((c) => c && c.v === null);
+      const u = ds.raw.complementares["uc_uniao_distinta"]?.[String(d)]?.["UC*"];
+      if (bad) out.push({ dist: d, sigla, motivo: bad.motivo || "Quantidade de consumidores não homologada" });
+      else if (!u || u[0] === null) out.push({ dist: d, sigla, motivo: "União de códigos de consumidor indisponível" });
+      continue;
+    }
+    const c = ds.cell(d, k.ent, k.metric);
+    if (c && (c.v === null || c.status === "b")) out.push({ dist: d, sigla, motivo: c.motivo || "Valor não homologado" });
+  }
+  return out;
+}
+
+export function ndFrase(n: number) {
+  return n === 1 ? "1 distribuidora sem valor homologado" : `${n} distribuidoras sem valor homologado`;
 }

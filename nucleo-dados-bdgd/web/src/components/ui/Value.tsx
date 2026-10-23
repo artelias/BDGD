@@ -35,7 +35,8 @@ export function Ticker({ v, metric, unit, compact }: { v: number | null; metric:
   if (v === null) return <span ref={ref} className={`${s.value} ${s.nd}`}>{ND}</span>;
   const disp = f(shown === null ? v : (Number.isInteger(v) ? Math.round(shown) : shown), metric);
   return (
-    <span ref={ref} className={s.value} aria-label={final} title={final}>
+    <span ref={ref} className={s.value} title={final}>
+      <span className="sr-only">{final}</span>
       <span aria-hidden>{disp.value}</span>
       {(unit ?? disp.unit) && <span className={s.unit} aria-hidden>{unit ?? disp.unit}</span>}
     </span>

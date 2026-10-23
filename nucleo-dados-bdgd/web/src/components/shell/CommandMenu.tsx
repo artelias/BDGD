@@ -22,9 +22,10 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
   const items = useMemo<Item[]>(() => {
     const pages: Item[] = [
       { key: "p-pan", group: "Páginas", label: "Panorama Brasil", href: "/", icon: FileText, kw: "mapa arat kpi" },
-      { key: "p-mat", group: "Páginas", label: "Matriz nacional de ativos", href: "/matriz/", icon: FileText, kw: "tabela" },
+      { key: "p-mat", group: "Páginas", label: "Matriz nacional", href: "/matriz/", icon: FileText, kw: "tabela" },
+      { key: "p-evo", group: "Páginas", label: "Evolução histórica", href: "/evolucao/", icon: FileText, kw: "historico 2022 2023 2024 serie" },
       { key: "p-cmp", group: "Páginas", label: "Comparador", href: "/comparar/", icon: FileText, kw: "comparar a b" },
-      { key: "p-exp", group: "Páginas", label: "Entidades e DDA", href: "/explorar/", icon: FileText, kw: "filtros facetas" },
+      { key: "p-exp", group: "Páginas", label: "Explorar ativos", href: "/explorar/", icon: FileText, kw: "filtros facetas entidades dda tuc" },
       { key: "p-met", group: "Páginas", label: "Metodologia e qualidade", href: "/metodologia/", icon: FileText, kw: "fontes qa" },
     ];
     if (data.status !== "ready") return pages;

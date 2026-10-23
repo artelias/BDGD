@@ -53,3 +53,23 @@
   .fact:nth-child(2) { border-right: 0; }
   .fact:nth-child(-n + 2) { border-bottom: 1px solid var(--hairline); }
 }
+
+/* R2 */
+.scopeBar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 22px; padding: 10px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); }
+.advToggle { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: var(--r-pill); border: 1px solid var(--hairline); background: transparent; color: var(--text-2); font-size: var(--fs-caption); font-weight: 580; }
+.advToggle[aria-pressed="true"] { color: var(--text); border-color: var(--text); }
+.entTxt { min-width: 0; flex: 1; line-height: 1.35; }
+.ent .entCode { min-width: 0; margin-left: auto; }
+.part { display: grid; grid-template-columns: 1fr 1fr auto; gap: 1px; margin: 12px 0 4px; border: 1px solid var(--hairline); border-radius: var(--r-lg); background: var(--hairline); }
+.partCell { background: var(--surface); padding: 14px 16px; min-width: 0; }
+.partCell:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); }
+.partNote { background: var(--surface); padding: 12px; display: flex; align-items: flex-start; border-radius: 0 var(--r-lg) var(--r-lg) 0; }
+.inv { margin-top: 24px; padding: 16px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); }
+.invList { list-style: none; margin: 12px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 20px; }
+.invList li { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 7px 0; border-top: 1px solid var(--hairline); font-size: var(--fs-label); }
+.invName { min-width: 0; color: var(--text-2); line-height: 1.35; }
+@media (max-width: 700px) {
+  .part { grid-template-columns: 1fr; }
+  .partCell:first-child { border-radius: var(--r-lg) var(--r-lg) 0 0; }
+  .partNote { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+}

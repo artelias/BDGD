@@ -9,8 +9,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: { default: "Núcleo de Dados da BDGD", template: "%s · Núcleo de Dados da BDGD" },
-  description: "Agregados públicos da Base de Dados Geográfica da Distribuidora (BDGD/ANEEL), data-base 31/12/2025: áreas de atuação, ativos por entidade, grupos econômicos e comparações. Desenvolvido por Arthur Henrique Lima.",
-  authors: [{ name: "Arthur Henrique Lima" }],
+  description: "Agregados públicos da Base de Dados Geográfica da Distribuidora (BDGD/ANEEL), data-base 31/12/2025: áreas de atuação, ativos por entidade, grupos econômicos e comparações. Desenvolvido por Arthur Henrique Elias de Lima.",
+  authors: [{ name: "Arthur Henrique Elias de Lima", url: "mailto:Arthur.henrique.elias@gmail.com" }],
   applicationName: "Núcleo de Dados da BDGD",
 };
 

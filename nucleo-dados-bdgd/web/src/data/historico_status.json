@@ -1,0 +1,40 @@
+{
+ "gerado_em": "2026-10-23",
+ "fonte": "progresso do ETL histórico (branch feat/bdgd-historico-2022-2024), somente contagens de execução; nenhum valor de ativo",
+ "estado": "pausado para priorizar a homologação 2025",
+ "anos": [
+  {
+   "ano": 2022,
+   "data_base": "2022-12-31",
+   "publicadas": 102,
+   "elegiveis": 99,
+   "processadas": 74,
+   "quarentena": 4,
+   "reconciliacao_falhas": 0,
+   "homologadas": 0,
+   "sem_publicacao": 12
+  },
+  {
+   "ano": 2023,
+   "data_base": "2023-12-31",
+   "publicadas": 101,
+   "elegiveis": 89,
+   "processadas": 62,
+   "quarentena": 7,
+   "reconciliacao_falhas": 0,
+   "homologadas": 0,
+   "sem_publicacao": 13
+  },
+  {
+   "ano": 2024,
+   "data_base": "2024-12-31",
+   "publicadas": 97,
+   "elegiveis": 97,
+   "processadas": 76,
+   "quarentena": 0,
+   "reconciliacao_falhas": 0,
+   "homologadas": 0,
+   "sem_publicacao": 17
+  }
+ ]
+}

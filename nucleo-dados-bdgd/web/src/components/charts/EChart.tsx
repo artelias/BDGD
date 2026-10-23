@@ -5,12 +5,12 @@ import { useTheme } from "@/lib/theme";
 
 type EchartsModule = typeof import("echarts/core");
 let mod: Promise<EchartsModule> | null = null;
-/** Carrega só os módulos usados (barras, grade, tooltip, aria) — sem o pacote completo. */
+/** Carrega só os módulos usados (barras, radar, grade, tooltip, aria) — sem o pacote completo. */
 function loadEcharts() {
   if (!mod) {
     mod = (async () => {
       const [core, charts, comps, renderers] = await Promise.all([import("echarts/core"), import("echarts/charts"), import("echarts/components"), import("echarts/renderers")]);
-      core.use([charts.BarChart, comps.GridComponent, comps.TooltipComponent, comps.AriaComponent, comps.MarkLineComponent, renderers.SVGRenderer]);
+      core.use([charts.BarChart, charts.RadarChart, comps.RadarComponent, comps.LegendComponent, comps.GridComponent, comps.TooltipComponent, comps.AriaComponent, comps.MarkLineComponent, renderers.SVGRenderer]);
       return core;
     })();
   }

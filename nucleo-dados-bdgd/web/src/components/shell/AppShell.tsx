@@ -1,5 +1,5 @@
 "use client";
-import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, Layers3, Map as MapIcon, Monitor, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
+import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Monitor, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -14,17 +14,23 @@ import { useTheme, type ThemePref } from "@/lib/theme";
 import { CommandMenu } from "./CommandMenu";
 import s from "./shell.module.css";
 
-const NAV = [
+type NavItem = { href: string; label: string; short?: string; icon: typeof MapIcon; tag?: string; mobileMore?: boolean };
+const NAV: NavItem[] = [
   { href: "/", label: "Panorama", icon: MapIcon },
-  { href: "/matriz/", label: "Matriz de ativos", short: "Matriz", icon: Table2 },
+  { href: "/matriz/", label: "Matriz nacional", short: "Matriz", icon: Table2 },
+  { href: "/evolucao/", label: "Evolução histórica", short: "Evolução", icon: History, mobileMore: true },
   { href: "/comparar/", label: "Comparador", short: "Comparar", icon: GitCompareArrows },
-  { href: "/explorar/", label: "Entidades e DDA", short: "Explorar", icon: Layers3 },
+  { href: "/explorar/", label: "Explorar ativos", short: "Explorar", icon: Layers3 },
 ];
-const NAV2 = [
+const TABS = NAV.filter((n) => !n.mobileMore);
+const MORE = [...NAV.filter((n) => n.mobileMore)];
+export const AUTOR = "Arthur Henrique Elias de Lima";
+export const CONTATO = "Arthur.henrique.elias@gmail.com";
+const NAV2: NavItem[] = [
   { href: "/metodologia/", label: "Metodologia e qualidade", short: "Metodologia", icon: BookOpen },
-  { href: "/previsoes/", label: "Inteligência preditiva", short: "Previsões", icon: ChartSpline, tag: "Futuro" },
+  { href: "/previsoes/", label: "Previsões", short: "Previsões", icon: ChartSpline, tag: "Futuro" },
 ];
-const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional de ativos", "/comparar/": "Comparador", "/explorar/": "Entidades e DDA", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Inteligência preditiva", "/design/": "Sistema de componentes" };
+const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional de ativos", "/evolucao/": "Evolução histórica", "/comparar/": "Comparador", "/explorar/": "Explorar ativos", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Previsões", "/design/": "Sistema de componentes" };
 
 const THEME_NEXT: Record<ThemePref, ThemePref> = { system: "light", light: "dark", dark: "system" };
 const THEME_LABEL: Record<ThemePref, string> = { system: "Tema do sistema", light: "Tema claro", dark: "Tema escuro" };
@@ -79,7 +85,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const rel = data.status === "ready" ? data.ds.raw.release : null;
   const parcial = rel ? rel.status !== "homologado" : false;
 
-  const navLink = (n: (typeof NAV)[number] & { tag?: string }) => {
+  const navLink = (n: NavItem) => {
     const on = isActive(path, n.href);
     const Icon = n.icon;
     return (
@@ -107,7 +113,8 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className={s.sideMeta}>
             <div>Data-base <strong>31/12/2025</strong></div>
             {rel && <div>{rel.cobertura.processadas} de {rel.cobertura.com_gdb_2025} distribuidoras</div>}
-            <div>Desenvolvido por <strong>Arthur Henrique Lima</strong></div>
+            <div>Desenvolvido por <strong>{AUTOR}</strong></div>
+            <a href={`mailto:${CONTATO}`} className={s.sideMail}><Mail size={12} aria-hidden /> Contato</a>
           </div>
           <Button variant="ghost" icon onClick={toggle} aria-label={collapsed ? "Expandir navegação" : "Recolher navegação"} aria-expanded={!collapsed} style={{ alignSelf: collapsed ? "center" : "flex-start" }}>
             {collapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
@@ -126,7 +133,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <span className={s.basePill} title={rel ? `Release ${rel.release_id}` : undefined}>
             <span className={s.liveDot} data-ok={!parcial} aria-hidden />
             <span className={s.baseLabel}>Data-base</span> <b>{fmtDate("2025-12-31")}</b>
-            {rel && parcial && <span className={s.baseLabel}>· parcial</span>}
+            {rel && parcial && <span className={s.baseLabel}>· em validação</span>}
           </span>
           <ThemeButton />
         </header>
@@ -134,13 +141,13 @@ export function AppShell({ children }: { children: ReactNode }) {
         <main id="conteudo" className={s.content} tabIndex={-1}>{children}</main>
 
         <footer className={s.footer}>
-          <span>Desenvolvido por <strong>Arthur Henrique Lima</strong> · Núcleo de Dados da BDGD</span>
-          <span>Fonte: <a href="https://dadosabertos-aneel.opendata.arcgis.com/search?tags=distribuicao" target="_blank" rel="noreferrer">ANEEL — BDGD (dados abertos)</a> · Projeto independente, não oficial da ANEEL</span>
+          <span data-testid="autoria">Desenvolvido por <strong>{AUTOR}</strong> · <a href={`mailto:${CONTATO}`} data-testid="contato">{CONTATO}</a></span>
+          <span>Fonte: <a href="https://dadosabertos-aneel.opendata.arcgis.com/search?tags=distribuicao" target="_blank" rel="noreferrer">ANEEL — BDGD (Dados Abertos)</a></span>
         </footer>
       </div>
 
       <nav className={s.tabbar} aria-label="Navegação">
-        {NAV.map((n) => {
+        {TABS.map((n) => {
           const on = isActive(path, n.href); const Icon = n.icon;
           return (
             <Link key={n.href} href={n.href} className={s.tab} aria-current={on ? "page" : undefined}>
@@ -148,7 +155,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Link>
           );
         })}
-        <button className={s.tab} onClick={() => setMore(true)} aria-haspopup="dialog" aria-current={NAV2.some((n) => isActive(path, n.href)) ? "page" : undefined}>
+        <button className={s.tab} onClick={() => setMore(true)} aria-haspopup="dialog" aria-current={[...MORE, ...NAV2].some((n) => isActive(path, n.href)) ? "page" : undefined}>
           <Ellipsis size={21} strokeWidth={1.8} aria-hidden />Mais
         </button>
       </nav>
@@ -161,7 +168,7 @@ export function AppShell({ children }: { children: ReactNode }) {
               transition={{ type: "spring", stiffness: 420, damping: 40 }} drag="y" dragConstraints={{ top: 0, bottom: 0 }} dragElastic={{ top: 0, bottom: 0.6 }}
               onDragEnd={(_, i) => { if (i.offset.y > 80 || i.velocity.y > 500) setMore(false); }}>
               <div className={s.sheetHandle} aria-hidden />
-              {NAV2.map((n) => { const Icon = n.icon; return <Link key={n.href} href={n.href} className={s.moreItem}><Icon size={19} aria-hidden />{n.label}{n.tag && <span className={s.navTag}>{n.tag}</span>}</Link>; })}
+              {[...MORE, ...NAV2].map((n) => { const Icon = n.icon; return <Link key={n.href} href={n.href} className={s.moreItem}><Icon size={19} aria-hidden />{n.label}{n.tag && <span className={s.navTag}>{n.tag}</span>}</Link>; })}
               <div className={s.moreItem} style={{ justifyContent: "space-between" }}>Tema <ThemeButton /></div>
               <Button variant="ghost" onClick={() => setMore(false)} style={{ width: "100%", marginTop: 4 }}><X size={16} /> Fechar</Button>
             </motion.div>

@@ -8,10 +8,12 @@ import { DataError, downloadText, LoadingBlock, useToast } from "@/components/ui
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { Value } from "@/components/ui/Value";
+import { RadarBenchmark } from "./RadarBenchmark";
+import { nomeNegocio } from "@/lib/catalogo";
 import { groupColor } from "@/lib/colors";
 import { displayName, type Aggregate, type Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
-import { diff, fmt, fmtPct, METRIC_UNIT, toCSV } from "@/lib/format";
+import { diff, fmt, fmtCompact, fmtPct, METRIC_UNIT, toCSV } from "@/lib/format";
 import { useTheme } from "@/lib/theme";
 import type { Entidade, Metric, Scope } from "@/lib/types";
 import { parseSide, useQueryPatch, useQueryState } from "@/lib/url-state";
@@ -56,6 +58,7 @@ function CompararReady({ ds }: { ds: Dataset }) {
   const [fam, setFam] = useQueryState("familia", "todas");
   const [modo, setModo] = useQueryState("metrica", "principal");
   const [ordem, setOrdem] = useState<"familia" | "diferenca">("familia");
+  const [vista, setVista] = useQueryState("grafico", "pct");
   const swapCtl = useAnimationControls();
 
   // chaves canônicas em texto (imutáveis): seleção inválida na URL cai para os dois maiores grupos
@@ -94,6 +97,27 @@ function CompararReady({ ds }: { ds: Dataset }) {
       yAxis: { type: "category", inverse: true, data: rr.map((r) => r.e.id), axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: t.text2, fontFamily: t.font, fontSize: 11 } },
       series: [{ type: "bar", barWidth: 10, data: rr.map((r) => ({ value: Math.max(-1.5, Math.min(r.d.rel!, 3)), itemStyle: { color: r.d.rel! >= 0 ? t.sideA : t.sideB, borderRadius: 3 } })),
         markLine: { silent: true, symbol: "none", lineStyle: { color: t.text3, type: "solid" }, data: [{ xAxis: 0 }], label: { show: false } } }],
+    };
+  };
+  /** Barras espelhadas: A à esquerda, B à direita, cada linha na escala do maior dos dois (unidades diferentes entre linhas). */
+  const buildMirror = (t: ChartTokens) => {
+    const rr = rows.filter((r) => r.a.v !== null && r.b.v !== null && Math.max(r.a.v, r.b.v) > 0).slice(0, 18);
+    const m = (r: (typeof rr)[number]) => Math.max(r.a.v!, r.b.v!);
+    const lab = (v: number | null, met: Metric) => fmtCompact(v, met);
+    return {
+      grid: { left: 8, right: 8, top: 26, bottom: 8, containLabel: true },
+      legend: { top: 0, right: 0, itemWidth: 10, itemHeight: 10, textStyle: { color: t.text2, fontFamily: t.font, fontSize: 11 }, data: [`A · ${label(A)}`, `B · ${label(B)}`] },
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" }, backgroundColor: t.surface, borderColor: t.hairline, textStyle: { color: t.text, fontFamily: t.font, fontSize: 12 },
+        formatter: (q: Array<{ dataIndex: number }>) => { const r = rr[q[0].dataIndex]; return `<b>${r.e.nome}</b> (${r.e.id})<br/>A: ${fmt(r.a.v, r.met)} ${METRIC_UNIT[r.met]}<br/>B: ${fmt(r.b.v, r.met)} ${METRIC_UNIT[r.met]}`; } },
+      xAxis: { type: "value", min: -1.35, max: 1.35, axisLabel: { show: false }, splitLine: { show: false } },
+      yAxis: { type: "category", inverse: true, data: rr.map((r) => r.e.id), axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: t.text2, fontFamily: t.font, fontSize: 11 } },
+      series: [
+        { name: `A · ${label(A)}`, type: "bar", stack: "x", barWidth: 10, data: rr.map((r) => ({ value: -r.a.v! / m(r), itemStyle: { color: t.sideA, borderRadius: [3, 0, 0, 3] } })),
+          label: { show: true, position: "left", color: t.text2, fontFamily: t.font, fontSize: 10, formatter: (q: { dataIndex: number }) => lab(rr[q.dataIndex].a.v, rr[q.dataIndex].met) } },
+        { name: `B · ${label(B)}`, type: "bar", stack: "x", barWidth: 10, data: rr.map((r) => ({ value: r.b.v! / m(r), itemStyle: { color: t.sideB, borderRadius: [0, 3, 3, 0] } })),
+          label: { show: true, position: "right", color: t.text2, fontFamily: t.font, fontSize: 10, formatter: (q: { dataIndex: number }) => lab(rr[q.dataIndex].b.v, rr[q.dataIndex].met) },
+          markLine: { silent: true, symbol: "none", lineStyle: { color: t.text3, type: "solid" }, data: [{ xAxis: 0 }], label: { show: false } } },
+      ],
     };
   };
 
@@ -143,15 +167,22 @@ function CompararReady({ ds }: { ds: Dataset }) {
         <Segmented label="Família" value={fam} onChange={setFam} options={[{ value: "todas", label: "Todas" }, ...ds.familias.filter((f) => f !== "Área de atuação").map((f) => ({ value: f, label: f }))]} />
         <span className={p.spacer} />
         <Segmented label="Métrica" size="sm" value={modo} onChange={setModo} options={[{ value: "principal", label: "Principal" }, { value: "quantidade", label: "Quantidade" }]} />
-        <Segmented label="Ordenar" size="sm" value={ordem} onChange={setOrdem} options={[{ value: "familia", label: "Por família" }, { value: "diferenca", label: "Maior diferença" }]} />
+        <Segmented label="Ordenar" size="sm" value={ordem} onChange={setOrdem} options={[{ value: "familia", label: "Por família funcional" }, { value: "diferenca", label: "Maiores diferenças" }]} />
         <Button variant="ghost" onClick={share}><Link2 size={15} /> Link</Button>
         <Button variant="primary" onClick={exportCSV} data-testid="comparar-csv"><Download size={15} /> CSV</Button>
       </div>
 
-      <section className={p.note} style={{ display: "block" }} aria-label="Diferença relativa por entidade">
-        <div className="label" style={{ marginBottom: 4 }}>A em relação a B, por entidade (Δ% = (A − B) / B; omitidas quando B = 0 ou N/D)</div>
-        <EChart build={build} height={Math.max(180, Math.min(18, rows.filter((r) => r.d.rel !== null).length) * 22 + 30)} ariaLabel="Diferença relativa entre A e B por entidade" testId="chart-comparacao" />
+      <section className={p.note} style={{ display: "block" }} aria-label="Diferença entre A e B por entidade">
+        <div className={s.chartHead}>
+          <div className="label">{vista === "valores" ? "Valores de A e B lado a lado (cada linha na escala do maior valor; omitidas quando algum lado é N/D)" : "A em relação a B, por entidade (Δ% = (A − B) / B; omitidas quando B = 0 ou N/D)"}</div>
+          <Segmented label="Tipo de gráfico" size="sm" value={vista} onChange={setVista} options={[{ value: "pct", label: "Diferença (%)" }, { value: "valores", label: "Valores A × B" }]} />
+        </div>
+        {vista === "valores"
+          ? <EChart key="mirror" build={buildMirror} height={Math.max(200, Math.min(18, rows.filter((r) => r.a.v !== null && r.b.v !== null).length) * 24 + 44)} ariaLabel="Valores de A e B em barras espelhadas" testId="chart-espelhado" />
+          : <EChart key="pct" build={build} height={Math.max(180, Math.min(18, rows.filter((r) => r.d.rel !== null).length) * 22 + 30)} ariaLabel="Diferença relativa entre A e B por entidade" testId="chart-comparacao" />}
       </section>
+
+      <RadarBenchmark ds={ds} A={A} B={B} />
 
       <table className={s.table} data-testid="comparar-tabela">
         <thead>
@@ -173,7 +204,7 @@ function CompararReady({ ds }: { ds: Dataset }) {
             return [
               head ? <tr key={`f-${r.e.familia}`} className={s.famRow}><td colSpan={8}>{r.e.familia}</td></tr> : null,
               <tr key={r.e.id}>
-                <td><span className={s.entCode}>{r.e.id}</span><span className={s.entName}>{r.e.nome}</span>{r.e.naoSomarCom && <span className="caption"> · não somar com {r.e.naoSomarCom}</span>}</td>
+                <td><span className={s.entCode}>{r.e.id}</span><span className={s.entName}>{nomeNegocio(r.e.id, r.e.nome)}</span>{r.e.naoSomarCom && <span className="caption"> · não somar com {r.e.naoSomarCom}</span>}</td>
                 <td className="faint">{METRIC_UNIT[r.met]}</td>
                 <td className={s.vA}><Value v={r.a.v} metric={r.met} unitOverride="" /></td>
                 <td className={s.vB}><Value v={r.b.v} metric={r.met} unitOverride="" /></td>
