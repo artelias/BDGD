@@ -20,7 +20,10 @@ const required = {
   matriz: ['dist', 'data_base'],
   qa: ['dist', 'entidade', 'metrica', 'valor_origem', 'valor_agregado', 'diferenca', 'tolerancia', 'status'],
   facetas_catalogo: ['facet_id', 'entidade', 'dimensoes_json', 'metrica', 'unidade', 'cobertura', 'particao_disjunta', 'permite_rollup', 'status_qualidade'],
-  facetas: ['dist', 'entidade', 'data_base', 'facet_id', 'dimensoes_json', 'metrica', 'valor', 'unidade', 'status_qualidade', 'motivo_qualidade']
+  facetas: ['dist', 'entidade', 'data_base', 'facet_id', 'dimensoes_json', 'metrica', 'valor', 'unidade', 'status_qualidade', 'motivo_qualidade'],
+  conceitos_cubos: ['dist', 'data_base', 'conceito', 'cubo', 'entidade', 'chave', 'quantidade', 'extensao_km', 'potencia_kva'],
+  ativos_totais: ['dist', 'data_base', 'ativo', 'conceito', 'medida', 'unidade', 'valor', 'status', 'motivo'],
+  inventario: ['dist', 'data_base', 'chave', 'nome']
 };
 function problem(msg) { errors.push(msg); }
 function readUtf8(file) { return fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''); }
@@ -246,6 +249,57 @@ function main(){
         warnings.push('Catálogo de faceta sem linhas: '+sk);
     }
     console.log('DDA | Facetas definidas: '+specsByKey.size+' | Linhas: '+cubes.records.length);
+  }
+
+  // R3: conceitos de ativo. Recalcula cada total por ativo a partir do cubo principal (mesmo filtro do catálogo),
+  // exige que todos os cubos de um conceito somem o mesmo total por fonte e reconcilia ativos de entidade única com o fato-base.
+  if(declared.conceitos_cubos){
+    const cat=JSON.parse(readUtf8(safeFile(ROOT,declared.conceitos_catalogo)));
+    const cub=loadCSV(ROOT,declared.conceitos_cubos,'conceitos_cubos');
+    const tot=loadCSV(ROOT,declared.ativos_totais,'ativos_totais');
+    const sums=new Map(), perCube=new Map(), meds=['quantidade','extensao_km','potencia_kva'];
+    for(const [i,r] of cub.records.entries()){
+      const where='conceitos/cubos linha '+(i+2);
+      ensureDate(r,where);
+      if(!dists.has(r.dist))problem(where+': DIST não catalogado');
+      const c=cat.conceitos[r.conceito];
+      if(!c||!c.cubos[r.cubo]){problem(where+': conceito/cubo fora do catálogo');continue;}
+      let k;try{k=JSON.parse(r.chave);}catch(e){problem(where+': chave inválida');continue;}
+      if(!Array.isArray(k)||k.length!==c.cubos[r.cubo].length)problem(where+': chave com dimensões divergentes do catálogo');
+      const vals=meds.map(m=>parseNumber(r[m],where+' '+m));
+      if(vals[0]!==null&&!Number.isInteger(vals[0]))problem(where+': contagem deve ser inteira');
+      const ck=r.dist+'|'+r.conceito+'|'+r.cubo+'|'+r.entidade, cs=perCube.get(ck)||[0,0,0];
+      vals.forEach((v,j)=>{cs[j]+=v??0;});perCube.set(ck,cs);
+      if(r.cubo==='principal'){const key=r.dist+'|'+r.conceito;if(!sums.has(key))sums.set(key,[]);sums.get(key).push({k,vals,ent:r.entidade});}
+    }
+    for(const [ck,cs] of perCube){
+      const [d,c,cubo,e]=ck.split('|');if(cubo==='principal'||cubo==='municipio')continue;
+      const ref=perCube.get(d+'|'+c+'|principal|'+e);
+      if(!ref||cs.some((v,j)=>Math.abs(v-ref[j])>Math.max(1e-6,Math.abs(ref[j])*1e-12)))problem('Cubo '+ck+' não soma o mesmo total do cubo principal');
+    }
+    const ativos=new Map(cat.ativos.map(a=>[a.id,a]));
+    const entidadeUnica={rede_bt:'SSDBT',rede_mt:'SSDMT',rede_at:'SSDAT',ramais:'RAMLIG',medidores:'EQME',reguladores:'EQRE',subestacoes:'SUB',alimentadores:'CTMT',circuitos_at:'CTAT',conjuntos:'CONJ',barramentos:'BAR'};
+    let checked=0;
+    for(const [i,t] of tot.records.entries()){
+      const where='ativos_totais linha '+(i+2);
+      ensureDate(t,where);
+      const a=ativos.get(t.ativo);if(!a){problem(where+': ativo fora do catálogo');continue;}
+      const v=parseNumber(t.valor,where);
+      if(v===null){if(t.status==='aprovado')problem(where+': valor vazio com status aprovado');continue;}
+      if(t.status==='bloqueado')problem(where+': valor exposto com status bloqueado');
+      const dims=cat.conceitos[a.conceito].cubos.principal, j=meds.indexOf(t.medida);
+      const rows=(sums.get(t.dist+'|'+a.conceito)||[]).filter(r=>Object.entries(a.filtro).every(([dim,vs])=>vs.includes(r.k[dims.indexOf(dim)])));
+      const s=rows.reduce((x,r)=>x+(r.vals[j]??0),0);
+      if(Math.abs(s-v)>Math.max(1e-6,Math.abs(v)*1e-12))problem(where+': total do ativo não reconcilia com o cubo ('+v+' vs '+s+')');
+      const ent=entidadeUnica[t.ativo];
+      if(ent&&t.medida===a.medida){const f=byFact.get(t.dist+'|'+ent+'|'+t.medida);if(f!==undefined&&Math.abs(f-v)>Math.max(1e-5,Math.abs(f)*1e-9))problem(where+': ativo de entidade única diverge do fato-base '+ent+' ('+v+' vs '+f+')');}
+      checked++;
+    }
+    for(const ref of Object.values(declared.inventarios||{})){
+      const inv=loadCSV(ROOT,ref,'inventario');
+      for(const [i,r] of inv.records.entries()){ensureDate(r,ref+' linha '+(i+2));if(!dists.has(r.dist))problem(ref+': DIST não catalogado');}
+    }
+    console.log('R3 | Conceitos: '+Object.keys(cat.conceitos).length+' | Linhas de cubo: '+cub.records.length+' | Totais por ativo conferidos: '+checked);
   }
 
   for(const r of loaded.qa.records){if(!dists.has(r.dist))problem('QA: DIST não encontrado '+r.dist);if(r.status==='falha')problem('Falha de reconciliação registrada: '+r.dist+'/'+r.entidade+'/'+r.metrica);}
