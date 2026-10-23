@@ -1,0 +1,15 @@
+.filterBtn { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; border: 1px solid transparent; background: transparent; color: var(--text-3); flex: none; transition: color var(--dur-1), background-color var(--dur-1), border-color var(--dur-1); }
+.filterBtn:hover { color: var(--text); background: var(--surface-hover); }
+.filterBtn[data-on="true"] { color: var(--accent); background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+.filterBtn:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent-ring); }
+.pop { position: fixed; z-index: 220; padding: 12px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); box-shadow: var(--shadow-3); }
+.popHead { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; font-size: var(--fs-label); }
+.close { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 0; background: transparent; color: var(--text-3); }
+.close:hover { background: var(--surface-hover); color: var(--text); }
+.popBody { display: flex; flex-direction: column; gap: 10px; }
+.popDims { display: flex; flex-direction: column; gap: 6px; }
+.popDims > div > div > button { width: 100%; max-width: none !important; }
+.linkBtn { align-self: flex-start; border: 0; background: transparent; color: var(--accent); font-size: var(--fs-caption); font-weight: 600; padding: 4px 0; }
+.colTop { display: flex; align-items: flex-start; justify-content: flex-end; gap: 4px; }
+.colTag { display: inline-block; margin-top: 3px; padding: 1px 6px; border-radius: var(--r-pill); background: var(--accent-soft); color: var(--accent); font-size: 0.625rem; font-weight: 640; letter-spacing: 0.02em; }
+@media (max-width: 640px) { .pop { left: 12px !important; right: 12px; width: auto !important; } }

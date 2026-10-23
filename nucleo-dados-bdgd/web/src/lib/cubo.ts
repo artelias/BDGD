@@ -89,6 +89,22 @@ export function agregar(cd: ConceitoData, r: Recorte, m: MedidaConceito, dists: 
   return { v: n ? v : null, n, nd, dists: new Set(porDist.keys()) };
 }
 
+/** Valor por DIST numa única passada (mesma regra de agregar): null = N/D na medida; ausente do mapa = ativo inexistente. */
+export function agregarPorDist(cd: ConceitoData, r: Recorte, m: MedidaConceito): Map<number, number | null> | null {
+  const cid = escolherCubo(cd, dimsDoRecorte(r));
+  if (!cid) return null;
+  const match = matcher(cd, cid, r), pm = posMedida(cd, cid, m);
+  if (!match || pm < 0) return null;
+  const porDist = new Map<number, number | null>();
+  for (const row of cd.cubos[cid].rows) {
+    const d = row[0] as number, v = row[pm];
+    if (!match(row) || v === -1) { if (!porDist.has(d) && v !== -1) porDist.set(d, 0); continue; }
+    const cur = porDist.get(d);
+    porDist.set(d, v === null || cur === null ? null : (cur ?? 0) + v);
+  }
+  return porDist;
+}
+
 export function rotulo(cd: ConceitoData, dim: string, code: string, r?: Recorte): string {
   if (dim === "a1") {
     const tipos = r?.filtro.tipo;

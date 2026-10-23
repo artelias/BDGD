@@ -54,3 +54,19 @@ export const useFacets = (ent: string | null) => useAsset<FacetData>(ent ? `face
 export const useQualidade = () => useAsset<Qualidade>("qualidade.json");
 export const useConceito = (id: string | null) => useAsset<ConceitoData>(id ? `conceitos/${id}.json` : null);
 export const useInventario = (dist: number | null) => useAsset<InventarioData>(dist !== null ? `inventario/${dist}.json` : null);
+
+/** Vários conceitos ao mesmo tempo (ex.: colunas filtradas da Matriz); só carrega os ids pedidos. */
+export function useConceitos(ids: string[]) {
+  const key = [...new Set(ids)].sort().join(",");
+  const [st, set] = useState<{ key: string; data: Record<string, ConceitoData>; error?: string }>({ key: "", data: {} });
+  useEffect(() => {
+    if (!key) return;
+    let alive = true;
+    Promise.all(key.split(",").map((id) => load<ConceitoData>(`conceitos/${id}.json`).then((d) => [id, d] as const)))
+      .then((pairs) => alive && set({ key, data: Object.fromEntries(pairs) }))
+      .catch((e: Error) => alive && set({ key, data: {}, error: e.message }));
+    return () => { alive = false; };
+  }, [key]);
+  if (!key) return { loading: false, data: {} as Record<string, ConceitoData> };
+  return { loading: st.key !== key, data: st.key === key ? st.data : {}, error: st.key === key ? st.error : undefined };
+}

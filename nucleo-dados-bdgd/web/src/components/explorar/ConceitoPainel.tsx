@@ -8,7 +8,7 @@ import { downloadText, EmptyState, LoadingBlock, useToast } from "@/components/u
 import { MultiPick, type MultiOption } from "@/components/ui/MultiPick";
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
-import { ativo, recorteDe, ROTULO_MEDIDA, UNIDADE } from "@/lib/ativos";
+import { ativo, ESSENCIAIS, recorteDe, ROTULO_MEDIDA, UNIDADE } from "@/lib/ativos";
 import { agregar, dimsCompativeis, distribuicao, escolherCubo, escreverRecorte, foraDoCubo, juntar, lerRecorte, participacao, rotulo, type Recorte } from "@/lib/cubo";
 import type { Dataset } from "@/lib/dataset";
 import { useConceito } from "@/lib/data-context";
@@ -20,21 +20,6 @@ import { EntidadeTecnica } from "./EntidadeTecnica";
 import { InventarioObjetos } from "./InventarioObjetos";
 import s from "./explorar.module.css";
 
-/** Características mais úteis por conceito (as demais ficam em "Mais características"). */
-const ESSENCIAIS: Record<string, string[]> = {
-  consumidores: ["nivel", "classe", "situacao", "area", "fases"],
-  geradores: ["nivel", "situacao", "fases"],
-  iluminacao: ["lampada", "area", "situacao"],
-  redes: ["nivel", "fases", "area", "instalacao"],
-  ramais: ["fases", "area", "instalacao"],
-  transformadores: ["tipo", "a1", "fases", "area", "potencia_nominal"],
-  seccionamento: ["a1", "fases", "nivel", "area"],
-  reguladores: ["nivel", "tipo_regulador", "fases"],
-  compensacao: ["tipo", "nivel", "area"],
-  medidores: ["tecnologia", "a1", "fases"],
-  estruturas: ["tipo_estrutura", "material", "area"],
-  subestacoes: ["propriedade"], alimentadores: ["tensao_nominal"], circuitos_at: ["tensao_nominal"], barramentos: ["tensao_nominal"], bays: ["tipo_bay"],
-};
 const pct = (x: number | null | undefined) => (x === null || x === undefined ? "N/D" : `${(x * 100).toLocaleString("pt-BR", { maximumFractionDigits: x < 0.001 ? 3 : 1 })}%`);
 const comUnidade = (v: number | null | undefined, m: MedidaConceito, compact = false) =>
   v === null || v === undefined ? "N/D" : `${compact ? fmtCompact(v, m) : fmt(v, m)}${m === "quantidade" ? "" : compact ? "" : ` ${UNIDADE[m]}`}`;

@@ -88,3 +88,41 @@ test.describe("R3 — Explorar ativos por conceito", () => {
     expect(txt).toContain("extensao_km,km");
   });
 });
+
+test.describe("R3 — Matriz Nacional por ativo", () => {
+  test("sem controles globais de medida; colunas por ativo com unidade própria", async ({ page }) => {
+    await page.goto("/matriz/");
+    await expect(page.getByRole("heading", { name: "Matriz Nacional" })).toBeVisible();
+    await expect(page.getByRole("radiogroup", { name: "Medida" })).toHaveCount(0);
+    const t = page.getByTestId("matriz-tabela");
+    await expect(t.getByRole("button", { name: /^Transformadores de distribuição/ })).toBeVisible();
+    await expect(t.getByRole("button", { name: /^Área de atuação/ })).toHaveCount(0);
+  });
+
+  test("filtro dentro da coluna = mesmo recorte do Explorar", async ({ page }) => {
+    await page.goto("/matriz/?ativos=religadores&cf=religadores~area:NU&dists=4950");
+    await expect(page.getByTestId("total-religadores")).not.toHaveText(/N\/D/);
+    const m = num(await page.getByTestId("total-religadores").innerText());
+    await page.goto("/explorar/?ativo=religadores&escopo=dists&dists=4950&f=area:NU");
+    expect(await valor(page)).toBe(m);
+  });
+
+  test("filtro pela interface marca a coluna e aparece nos chips; CSV traz recorte", async ({ page }) => {
+    await page.goto("/matriz/?ativos=trafo_dist,consumidores");
+    await page.getByTestId("filtro-col-trafo_dist").click();
+    await page.getByTestId("col-filtro-area").click();
+    await page.getByRole("button", { name: /Urbano/ }).first().click();
+    await expect.poll(() => decodeURIComponent(page.url())).toContain("cf=trafo_dist~area:");
+    await expect(page.getByTestId("matriz-chips")).toContainText("Transformadores de distribuição");
+    await page.keyboard.press("Escape");
+    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("matriz-csv").click()]);
+    const txt = Buffer.concat(await (await dl.createReadStream()).toArray()).toString("utf-8");
+    expect(txt.split(/\r?\n/)[0].replace(/^﻿/, "")).toBe("data_base,versao,dist,sigla,grupo_economico,grupo_status,ativo,nome_ativo,medida,unidade,recorte,valor,status,motivo,regra");
+    expect(txt).toContain("area:");
+  });
+
+  test("medida alternativa por coluna (potência)", async ({ page }) => {
+    await page.goto("/matriz/?ativos=trafo_dist&cm=trafo_dist~potencia_kva");
+    await expect(page.getByTestId("matriz-tabela")).toContainText("kVA");
+  });
+});

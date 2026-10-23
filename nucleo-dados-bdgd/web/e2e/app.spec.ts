@@ -43,8 +43,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
       const t = await row.innerText();
       if (!t.startsWith("Total")) expect(t).toMatch(/Energisa/);
     }
-    await table.getByRole("button", { name: /SSDMT/ }).click();
-    await expect(page).toHaveURL(/ordem=SSDMT/);
+    await table.getByRole("button", { name: /^Rede de média tensão/ }).click();
+    await expect(page).toHaveURL(/ordem=rede_mt/);
     const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("matriz-csv").click()]);
     expect(dl.suggestedFilename()).toMatch(/^bdgd_2025-12-31_matriz_.*\.csv$/);
   });
@@ -101,19 +101,6 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("footer")).not.toContainText("Projeto independente");
     await expect(page.locator("footer")).toContainText("ANEEL — BDGD (Dados Abertos)");
     await expect(page.locator("#dicionario")).toBeAttached();
-  });
-
-  test("R2 matriz: medida Extensão só com tipos aplicáveis, UF e chips", async ({ page }) => {
-    await page.goto("/matriz/?metrica=extensao_km&ufs=SC");
-    const table = page.getByTestId("matriz-tabela");
-    await expect(table).toBeVisible();
-    await expect(table.getByRole("button", { name: /SSDMT/ })).toBeVisible();
-    await expect(table.getByRole("button", { name: /UCBT/ })).toHaveCount(0);
-    await expect(page.getByTestId("matriz-chips")).toContainText("UF: SC");
-    for (const row of (await table.locator("tbody tr").all()).slice(1)) expect(await row.innerText()).toMatch(/SC/);
-    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("matriz-csv").click()]);
-    const csv = await (await dl.createReadStream()).toArray();
-    expect(Buffer.concat(csv).toString("utf-8").split(/\r?\n/)[0]).toContain("data_base,versao,dist,sigla,grupo_economico,grupo_status,entidade,tipo_de_ativo,metrica,unidade,valor,status,motivo,regra,cobertura_recorte");
   });
 
   test("R2 comparador: barras espelhadas e radar com benchmark acima de 100%", async ({ page }) => {

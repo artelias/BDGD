@@ -41,3 +41,19 @@ export function statusAtivo(ds: Dataset, id: string, dist: number, medida?: Medi
   const r = ds.raw.ativosTotais?.[id]?.[medida ?? a?.medida ?? "quantidade"]?.find((x) => x[0] === dist);
   return r ? { v: r[1], status: r[2], motivo: r[3] } : null;
 }
+
+/** Características mais úteis por conceito (as demais ficam em "Mais características"). */
+export const ESSENCIAIS: Record<string, string[]> = {
+  consumidores: ["nivel", "classe", "situacao", "area", "fases"],
+  geradores: ["nivel", "situacao", "fases"],
+  iluminacao: ["lampada", "area", "situacao"],
+  redes: ["nivel", "fases", "area", "instalacao"],
+  ramais: ["fases", "area", "instalacao"],
+  transformadores: ["tipo", "a1", "fases", "area", "potencia_nominal"],
+  seccionamento: ["a1", "fases", "nivel", "area"],
+  reguladores: ["nivel", "tipo_regulador", "fases"],
+  compensacao: ["tipo", "nivel", "area"],
+  medidores: ["tecnologia", "a1", "fases"],
+  estruturas: ["tipo_estrutura", "material", "area"],
+  subestacoes: ["propriedade"], alimentadores: ["tensao_nominal"], circuitos_at: ["tensao_nominal"], barramentos: ["tensao_nominal"], bays: ["tipo_bay"],
+};
