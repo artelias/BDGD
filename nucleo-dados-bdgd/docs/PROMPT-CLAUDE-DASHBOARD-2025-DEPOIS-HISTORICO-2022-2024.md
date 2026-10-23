@@ -102,6 +102,13 @@ Ao lado de cada KPI e exportação incluir fonte, status e data-base. **Nenhum n
 
 Design e funções precisam atingir a mesma qualidade **mesmo sem deploy na Vercel**: rodar, revisar screenshots e interações em desktop/mobile e light/dark, refinar e versionar o resultado localmente no GitHub. [Especificação visual completa](DIRECAO-ARTE-UIUX.md).
 
+### A3.0.1 — Biblioteca opcional de microinterações recomendada pelo responsável
+
+Consultar **https://21st.dev/** ao implementar componentes interativos com React/TypeScript/Tailwind. O site oferece código e demonstrações de botões, menus, componentes animados e padrões de UI. Selecionar criteriosamente recursos que sejam úteis para a navegação e exploração da BDGD; usar como inspiração ou adaptar componentes individuais, **não importar templates completos** nem descaracterizar a proposta Apple-inspired, minimalista, sofisticada e autoral.
+
+Leia a seção de integração em [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md). Antes de copiar qualquer implementação, conferir **licença do componente, dependências, acessibilidade, responsividade, custo de bundle, suporte a `prefers-reduced-motion` e conformidade com o design system**. Evitar animações gratuitas, partículas, shaders/WebGL decorativos e superfícies chamativas que disputem atenção com os dados. Não instalar serviços pagos nem chaves 21st.dev.
+
+ 
 ### A3.1 — Critério obrigatório de design refinado
 
 Antes de classificar o dashboard como concluído:
