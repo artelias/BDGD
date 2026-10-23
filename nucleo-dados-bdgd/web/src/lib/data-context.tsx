@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { Dataset } from "./dataset";
-import type { FacetData, IndexData, Qualidade } from "./types";
+import type { ConceitoData, FacetData, IndexData, InventarioData, Qualidade } from "./types";
 
 export const DATA_BASE = "2025-12-31";
 export const DATA_ROOT = `/data/${DATA_BASE}`;
@@ -52,3 +52,5 @@ export function useAsset<T>(path: string | null) {
 
 export const useFacets = (ent: string | null) => useAsset<FacetData>(ent ? `facetas/${ent}.json` : null);
 export const useQualidade = () => useAsset<Qualidade>("qualidade.json");
+export const useConceito = (id: string | null) => useAsset<ConceitoData>(id ? `conceitos/${id}.json` : null);
+export const useInventario = (dist: number | null) => useAsset<InventarioData>(dist !== null ? `inventario/${dist}.json` : null);

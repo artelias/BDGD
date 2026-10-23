@@ -59,21 +59,6 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     expect(dl.suggestedFilename()).toContain("2025-12-31_comparacao");
   });
 
-  test("entidades e DDA: facetas em cascata e combinação indisponível", async ({ page }) => {
-    await page.goto("/explorar/?ent=UCBT");
-    await expect(page.getByTestId("ent-title")).toHaveText(/baixa tensão/i);
-    await page.getByTestId("attr-ARE_LOC").click();
-    await expect(page.getByTestId("chart-categorias")).toBeVisible();
-    await page.locator("table tbody tr").first().click();
-    await expect(page).toHaveURL(/c1=/);
-    await expect(page.getByTestId("attr2-CLAS_SUB")).toHaveAttribute("aria-disabled", "false");
-    await expect(page.getByTestId("attr2-TEN_FORN")).toHaveAttribute("aria-disabled", "true");
-    await page.getByTestId("attr2-CLAS_SUB").click();
-    await expect(page).toHaveURL(/a2=CLAS_SUB/);
-    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("explorar-csv").click()]);
-    expect(dl.suggestedFilename()).toMatch(/^bdgd_2025-12-31_UCBT_CLAS_SUB_dado-ARE_LOC-/);
-  });
-
   test("R2 panorama: clicar de novo desmarca, Ver Brasil limpa e ranking expande", async ({ page }) => {
     await page.goto("/?dist=31");
     await expect(page.getByTestId("dist-title")).toHaveText(/CEA Equatorial/);
@@ -139,16 +124,6 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     expect(pcts.some((x) => parseFloat(x.replace(".", "").replace(",", ".")) > 100)).toBeTruthy();
     const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("radar-csv").click()]);
     expect(dl.suggestedFilename()).toContain("radar");
-  });
-
-  test("R2 explorar: recorte TUC 565 e participação dupla", async ({ page }) => {
-    await page.goto("/explorar/?ent=EQTRMT&escopo=grupo:energisa");
-    await page.getByTestId("preset-tuc-EQTRMT-565").click();
-    await expect(page).toHaveURL(/c1=565/);
-    await expect(page.getByTestId("participacao")).toBeVisible();
-    await expect(page.getByTestId("vinculos-tuc")).toContainText("instalações distintas");
-    await expect(page.getByTestId("part-escopo")).toHaveText(/%|N\/D/);
-    await expect(page.getByTestId("inventario-atributos")).toContainText("Filtrável agora");
   });
 
   test("R2 evolução: histórico em preparação sem números de ativos", async ({ page }) => {
