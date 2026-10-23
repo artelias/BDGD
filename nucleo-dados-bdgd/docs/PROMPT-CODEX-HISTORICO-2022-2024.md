@@ -118,3 +118,21 @@ Montar relatório de **painel balanceado por DIST e entidade** para 2022–2025:
 4. Não pedir autorização para passos técnicos rotineiros já autorizados neste prompt (inventariar, baixar fontes públicas e processar localmente), mas **não criar infraestrutura paga, não alterar main, não enviar dados brutos/sensíveis e não fazer deploy**.
 
 **Importante:** a seleção 2022–2024 é para projeto preditivo posterior. A versão atual do site permanece ancorada **exclusivamente em 2025**. Os dados históricos não passam automaticamente a ser dados oficiais do portal, nem o primeiro treinamento está autorizado nesta tarefa.
+
+
+## ADENDO OBRIGATÓRIO — escopo 2022–2024 e consolidação histórica 2025 (sem 2020/2021)
+
+O responsável **confirmou o escopo de download somente 2022, 2023 e 2024**. Não buscar nem processar GDBs de 2020 ou 2021. A competência 2025 já é processada pelo Claude na mesma máquina, e será usada mais adiante como referência comparativa, sem rebaixar/copiar o bruto.
+
+**NOVO REQUISITO:** a série temporal 2022–2025 não pode se limitar a buscar valores pelo mesmo DIST quando ocorreu incorporação, cisão, transferência ou mudança de área de concessão. Tratar a diferença entre **empresa/grupo econômico**, **concessão/território** e **DIST**. Construir ponte auditável de distribuidoras predecessoras para o perímetro da distribuidora sucessora em 2025.
+
+Ler **integralmente**: [HARMONIZACAO-SUCESSAO-2022-2025.md](HARMONIZACAO-SUCESSAO-2022-2025.md).
+
+- Caso obrigatório: **Energisa Borborema (EBO) incorporada pela Energisa Paraíba (EPB)**. A ANEEL autorizou em 13/09/2022 (REA 12.687); a incorporação foi formalizada em 30/04/2023. **Não presumir DIST da EBO:** localizar nos GDBs/catalogo e conferir BASE/ARAT. Para a série comparável com EPB 2025, em 2022 pode ser necessário adicionar EPB+EBO quando os conjuntos forem provadamente disjuntos e as métricas harmonizadas. Em 2023, verificar se EPB já traz ambas as concessões antes de somar EBO; **não duplicar**.
+- Mapear outros eventos relevantes em 2022–2025 de forma sistemática; documentar atos oficiais, vigências, origem/destino, perímetro/área transferido e cobertura por ano.
+- Preservar a **série histórica original por DIST** e criar **série comparável ao perímetro 2025**, ambas com rótulos e QA distintos. Não reescrever os dados de origem.
+- Criar os cinco artefatos descritos no documento: `eventos_sucessao_distribuidoras.csv`, `ponte_perimetro_2025.csv`, `regras_comparabilidade_historica.csv`, `serie_historica_perimetro_2025.csv`, `qa_sucessao.csv`.
+- `COUNT(DISTINCT)` e demais métricas não são automaticamente aditivas entre concessionárias; investigar colisões de COD_ID e sobreposição territorial, harmonizar unidades/DDA/definição de ativos. Para transferências parciais, jamais somar todo o DIST origem como se fosse integralmente incorporado.
+- O Codex já iniciou piloto e inventário de 2022–2024: **continue dos checkpoints; não reinicie nem rebaixe** por causa deste requisito. Pode implementar sucessões como passo pós-ETL de agregados, documentando lacunas.
+
+**Limite de atuação:** essa harmonização não autoriza treinar ML agora nem ampliar anos históricos além de 2022–2025.
