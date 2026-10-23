@@ -317,7 +317,6 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
             <strong>Alimentadores:</strong> {fmtCompact(panoramaValue(ds, panoramaIndicador("alimentadores")!, [dist]).v, "quantidade")}<br />
             <strong>Transformadores de distribuição:</strong> {fmtCompact(panoramaValue(ds, panoramaIndicador("trdist565")!, [dist]).v, "quantidade")}<br />
             <strong>Grupo:</strong> {g?.nome ?? "Não confirmado"}<br />
-            <span className="faint">Destaques calculados exclusivamente sobre dados cadastrais homologáveis de 2025. IASC será incluído apenas após validação do vínculo oficial por distribuidora e ano.</span>
           </div>
         </div>
         <div className={s.section} style={{ borderBottom: 0 }}>
@@ -504,12 +503,11 @@ function Inventory({ ds, dists }: { ds: Dataset; dists: number[] }) {
 
 function InvLine({ ds, dists, ent, nome, metric, regra }: { ds: Dataset; dists: number[]; ent: string; nome: string; metric: Metric; regra: string }) {
   const a = ds.aggregate(dists, ent, metric);
-  const nd = a.nd ? ndDetalhe(ds, { ent, metric }, dists) : [];
   return (
     <div className={s.entLine}>
       <Link href={`/explorar/?ent=${ent}`} title={regra}>{nomeNegocio(ent, nome)}<span className="mono faint" style={{ marginLeft: 6, fontSize: "0.6875rem" }}>{ent}</span></Link>
-      <span className="num" style={{ textAlign: "right" }}>{fmtCompact(a.v, metric)}</span>
-      {nd.length > 0 && <span className={s.entNd}><NdNote items={nd} /></span>}
+      <span className="num" style={{ textAlign: "right" }}>{fmtCompact(a.partial || a.ausentes > 0 ? null : a.v, metric)}</span>
+      {(a.partial || a.ausentes > 0) && <span className={s.entNd}><Link href="/metodologia/#qualidade">Valor não disponível para todo o recorte · ver cobertura</Link></span>}
     </div>
   );
 }
