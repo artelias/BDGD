@@ -36,7 +36,7 @@ Antes de repetir centenas de estilos, definir tokens reais e documentados:
 
 ## 3. Layout e navegação
 
-- Identidade "Núcleo de Dados da BDGD" + assinatura **"Desenvolvido por Arthur Henrique Lima"**, sem se apresentar como produto oficial ANEEL.
+- Identidade "Núcleo de Dados da BDGD" + assinatura **"Desenvolvido por Arthur Henrique Elias de Lima"**, sem se apresentar como produto oficial ANEEL.
 - Desktop: navegação lateral recolhível com transição delicada, cabeçalho compacto e área de análise ampla; não deixar as tabelas esmagadas pelo menu.
 - Mobile: navegação ergonomicamente acessível, sheet/drawer com overlay, filtros em painel de aplicação explícita, tabelas roláveis sem quebrar cabeçalho e sem depender de hover.
 - Página Panorama: foco em um **mapa nacional ARAT real** e composição de KPIs/gráficos **não repetitiva**. A seleção no mapa realça distribuidora, filtra estatísticas e expõe contexto verificável.
