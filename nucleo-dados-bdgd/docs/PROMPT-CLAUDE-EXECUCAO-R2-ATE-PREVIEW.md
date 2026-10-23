@@ -5,6 +5,20 @@
 **Decisão do responsável:** 23/10/2026  
 **Contrato de entrega:** Claude termina 2025, implementa revisões aprovadas, testa, publica apenas preview e entrega PR + evidências; **não promove produção**. ChatGPT (em nova conversa/turno e mediante autorização do usuário) audita PR, release e preview e então cuida da publicação em produção.
 
+## ATUALIZAÇÃO DE CONTEXTO — PBIX NÃO DISPONÍVEL NO PC DO CLAUDE (23/10/2026)
+
+O proprietário **confirmou que o PBIX do BI VPE de referência NÃO está na máquina do Claude**. Essa ausência é **conhecida** e **NÃO deve bloquear** a finalização do ETL 2025, a R2, os filtros DDA/TUC comprovados, o preview ou a entrega do PR. **Não voltar a perguntar onde está o PBIX, não fingir que o leu e não afirmar equivalência ao BI sem evidência.**
+
+**Procedimento obrigatório substitutivo:**
+1. **Desenvolver as métricas BDGD 2025 independentemente do BI** a partir do Manual BDGD aplicável, MCPSE, DDA oficial, schema e valores reais de staging/GDB, relacionamento EQ↔UN validado por DIST + DATA_BASE, regras de grão, deduplicação e QA. Para TUC 565/570 e classificações A1–A6, confirmar códigos e atributos na fonte normativa e nos dados antes de construir o preset. A falta do PBIX **não autoriza atalhos metodológicos**.
+2. Criar `docs/MATRIZ-PARIDADE-METRICAS-VPE-2024.md` como **matriz de referência aguardando BI**. Documentar para cada indicador: `metric_id`, conceito, entidades/joins, TUC e atributos, definição BDGD independente, unidade, regra SQL/ETL, QA 2025, fonte normativa e `paridade_BI_VPE = NAO_AVALIADA_PBIX_AUSENTE`. Não inventar nomes DAX, medidas Power Query nem filtros internos do BI.
+3. Separar **(a) indicador auditado diretamente na BDGD 2025** de **(b) paridade com indicador do BI de referência**. O primeiro pode aparecer no dashboard, desde que esteja rigorosamente homologado por dados/normas e não traga o rótulo de equivalência ao BI. O segundo somente após receber arquivo PBIX ou extração fidedigna de suas medidas e regras.
+4. Presets de negócio cujo significado possa ser provado independentemente (ex.: TUC real validada, agregação correta sem dupla contagem) podem ser habilitados com legenda clara. **Somente os indicadores que dependerem exclusivamente de regras desconhecidas do PBIX** ficam N/D ou "definição pendente" com razão, sem impedir os demais.
+5. **Gate de produção:** a falta de PBIX não transforma todos os dados BDGD 2025 em "não homologados"; o que é mandatório é QA independente para o indicador **efetivamente publicado**. O relatório de handoff deve separar `QA_BDGD_2025` de `PARIDADE_BI_VPE`, deixando o segundo explicitamente pendente para atualização posterior.
+6. Nunca usar o BI VPE de 2024 como fonte numérica da competência 2025, nem criar valores fictícios para suplência. Manter o código preparado para integrar as regras do BI quando o proprietário fornecer o arquivo em outra etapa.
+
+**Esta instrução prevalece sobre frases anteriores que pudessem sugerir obrigatoriedade de localizar o PBIX antes de desenvolver indicadores BDGD normativos.**
+
 ## 0. Fontes, escopo, coordenação de trabalho e limites
 
 **Ler integralmente antes de alterar código:**
