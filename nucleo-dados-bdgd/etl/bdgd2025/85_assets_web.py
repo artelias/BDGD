@@ -84,6 +84,9 @@ index = {
     "homologacao": [{"entidade": h["entidade"], "metrica": h["metrica"], "status": h["status_homologacao"], "comValor": int(h["dists_com_valor"]),
                      "nd": int(h["dists_nd"]), "alerta": int(h["dists_alerta"]), "recOk": int(h["reconciliacoes_ok"]), "criterio": h["criterio"]} for h in homol],
 }
+index["vinculosTuc"] = {"cols": ["dist", "entidade", "tuc", "equipamentos", "com_vinculo", "vinculados", "unidades_distintas"], "destinos": {},
+                        "rows": [[int(v["dist"]), v["entidade"], v["tuc"], int(v["equipamentos"]), int(v["com_vinculo"]), int(v["vinculados"]), int(v["unidades_distintas"])] for v in rd("indicadores_vinculos_tuc.csv")]}
+for v in rd("indicadores_vinculos_tuc.csv"): index["vinculosTuc"]["destinos"][v["entidade"]] = v["destinos"].split("+") if v["destinos"] else []
 s_idx = dump(OUT / "index.json", index)
 
 # --- qualidade (pagina de metodologia)
@@ -95,6 +98,8 @@ qa = {"alertasPorTipo": {}, "arat": [{"dist": int(k), **{c: num(v) if c not in (
       "reconciliacao": {}}
 for a in alert: qa["alertasPorTipo"][a["tipo"]] = qa["alertasPorTipo"].get(a["tipo"], 0) + 1
 for r in rd("qa_reconciliacao.csv"): qa["reconciliacao"][r["status"]] = qa["reconciliacao"].get(r["status"], 0) + 1
+qa["municipios"] = [{"dist": int(m["dist"]), "entidade": m["entidade"], "municipios": int(m["municipios"]), "codigosForaIbge": int(m["codigos_fora_ibge"]),
+                      "registrosForaIbge": int(m["registros_fora_ibge"]), "registrosSemCodigo": int(m["registros_sem_codigo"]), "registros": int(m["registros"])} for m in rd("qa_municipios.csv")]
 dump(OUT / "qualidade.json", qa)
 
 # --- facetas por entidade (compacto)
@@ -126,13 +131,48 @@ with open(PKG / "ativos_facetas.csv", encoding="utf-8") as fh:
         row = rows.setdefault(key, [int(r["dist"]), codes, {}, {}])
         row[2][r["metrica"]] = num(r["valor"]); row[3][r["metrica"]] = ST[r["status_qualidade"]]
         if r["motivo_qualidade"]: e["motivos"][f"{r['dist']}|{r['metrica']}"] = r["motivo_qualidade"]
+# R2: nomes oficiais de municipio (IBGE) e de TUC/A1 (MCPSE, Res. ANEEL 674/2015); codigo sem correspondencia fica sem nome
+KN = pathlib.Path(os.environ.get("BDGD_KNOWLEDGE", "C:/GEOIA/GEOIA_DATA_HUB/knowledge"))
+UF_COD = {"11": "RO", "12": "AC", "13": "AM", "14": "RR", "15": "PA", "16": "AP", "17": "TO", "21": "MA", "22": "PI", "23": "CE", "24": "RN", "25": "PB", "26": "PE", "27": "AL",
+          "28": "SE", "29": "BA", "31": "MG", "32": "ES", "33": "RJ", "35": "SP", "41": "PR", "42": "SC", "43": "RS", "50": "MS", "51": "MT", "52": "GO", "53": "DF"}
+ibge = {str(m["id"]): f"{m['nome']} ({UF_COD.get(str(m['id'])[:2], '?')})" for m in json.load(open(PKG.parents[1] / "referencias" / "ibge" / "municipios.json", encoding="utf-8"))}
+mc = json.load(open(KN / "MCPSE_TUC_ATTRIBUTE_CATALOG_V2.json", encoding="utf-8"))["tucs"]
+cap = lambda s: (s[:1].upper() + s[1:].lower()).replace("sf6", "SF6") if s else s
+tuc_desc = {t_["tuc"]: cap(t_["description"]) for t_ in mc}
+a1_tuc = {t_["tuc"]: {v["code"]: cap(v["description"]) for v in t_.get("a1_values", [])} for t_ in mc}
+campos = {e["entity"]: e["fields"] for e in SCH["entities"]}
+NAO_PUB = {"COD_ID", "DIST", "PAC", "LGRD", "BRR", "CEP", "DESCR", "DAT_CON", "CEG_GD", "NOME", "DAT_IMO", "DAT_CON"}
+def inventario(ent, filtraveis):
+    """Inventario de atributos: o que ja filtra, o que exige cubo novo, junção validada ou nao pode ser publicado."""
+    out = []
+    for f in campos.get(ent, []):
+        n, ty = f["name"], f.get("normalized_type")
+        if n in filtraveis: c, m = "filtravel", "cubo exato calculado no ETL 2025"
+        elif n in NAO_PUB or ty == "TEXT": c, m = "nao_publicavel", "identificador, endereco, data ou texto livre: sem agregacao publicavel"
+        elif ty == "ENTITY_LINK": c, m = "requer_juncao", f"vinculo com {f.get('pattern') or 'outra entidade'}: exige juncao validada"
+        elif ty in ("DECIMAL", "INTEGER"): c, m = "requer_cubo", "medida numerica: exige agregacao e semantica homologadas"
+        else: c, m = "requer_cubo", "codigo com dominio: cubo ainda nao calculado"
+        out.append({"campo": n, "descricao": f.get("description", ""), "classe": c, "motivo": m})
+    return out
 tam = {}
 for ent, e in porent.items():
     attrs = sorted({a for f in e["facets"].values() for a in f["dims"]})
-    obj = {"entidade": ent, "facets": list(e["facets"].values()), "descricoes": {a: desc.get(ent, {}).get(a, {}) for a in attrs},
+    ds_ = {a: desc.get(ent, {}).get(a, {}) for a in attrs}
+    if "MUN" in attrs: ds_["MUN"] = {c: ibge[c] for f in e["rows"].get(f"{ent}.MUN", {}).values() for c in f[1] if c in ibge}
+    if "TUC" in attrs: ds_["TUC"] = {**{c: tuc_desc[c] for fr in e["rows"].values() for r_ in fr.values() for c in r_[1] if c in tuc_desc}, **ds_.get("TUC", {})}
+    obj = {"entidade": ent, "facets": list(e["facets"].values()), "descricoes": ds_,
            "atributos": {a: {"rotulo": rotulo(campo_desc.get((ent, a), ""), a), "descricao": campo_desc.get((ent, a), "")} for a in attrs},
            "rows": {fid: list(v.values()) for fid, v in e["rows"].items()}, "motivos": e["motivos"]}
+    if f"{ent}.A1+TUC" in e["facets"]:
+        tucs = {r_[1][f["dims"].index("TUC")] for f in [e["facets"][f"{ent}.A1+TUC"]] for r_ in e["rows"].get(f"{ent}.A1+TUC", {}).values()}
+        obj["a1PorTuc"] = {k: a1_tuc[k] for k in sorted(tucs) if a1_tuc.get(k)}
+    obj["inventario"] = inventario(ent, set(attrs))
+    if "MUN" in attrs: obj["atributos"]["MUN"]["rotulo"] = "Município"
+    if "TUC" in attrs: obj["atributos"]["TUC"]["rotulo"] = "Tipo de unidade de cadastro (TUC)"
+    if "A1" in attrs: obj["atributos"]["A1"]["rotulo"] = "Tipo de bem (A1 do TUC)"
     tam[ent] = dump(OUT / "facetas" / f"{ent}.json", obj)
+index["tucNomes"] = {k: tuc_desc[k] for k in sorted({r[2] for r in index["vinculosTuc"]["rows"]}) if k in tuc_desc}
+s_idx = dump(OUT / "index.json", index)
 listing = {"arquivos": sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*.json"))}
 dump(OUT / "assets.json", {**listing, "release_id": man["release_id"], "geo_visualizacao": "ARAT oficial 2025 com simplificacao adicional de 0,008 grau para a vista nacional; detalhe por DIST usa o arquivo do pacote"})
 print(json.dumps({"index_kb": s_idx // 1024, "brasil_kb": size_br // 1024, "facetas_mb": round(sum(tam.values()) / 1e6, 2), "maior_faceta": max(tam.items(), key=lambda x: x[1])}, ensure_ascii=False))

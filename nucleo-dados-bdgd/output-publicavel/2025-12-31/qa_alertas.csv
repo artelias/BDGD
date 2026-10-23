@@ -1,0 +1,327 @@
+dist,entidade,tipo,detalhe,acao
+26,UC*,uc_sobreposicao_entre_entidades,"9 COD_ID em mais de uma entidade UC (soma 360523, uniao 360514)",KPI familia UC usa a uniao distinta; nao somar entidades
+26,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/15584 registros com POT_INST>75 (max 100.0),valores preservados no staging; potencia publica N/D; sem corte
+26,UGBT,potencia_UG_acima_75kW,TIP_SIST=SIGFI: 6806/8569 registros com POT_INST>75 (max 7777.0),valores preservados no staging; potencia publica N/D; sem corte
+26,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 61/153 registros com POT_INST>75 (max 33120.0),valores preservados no staging; potencia publica N/D; sem corte
+31,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 11/116 registros com POT_INST>75 (max 697.8632),valores preservados no staging; potencia publica N/D; sem corte
+31,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 346500 kVA vs EQTRAT 633800 kVA (+82.9%),visoes sobrepostas; nao somar
+31,*,filtro_indisponivel,CTMT (55.947% orfaos); CTMT (55.954% orfaos); CTMT (57.692% orfaos); CTMT (59.563% orfaos); CTMT (59.574% orfaos); CTMT (60.709% orfaos); CTMT (60.972% orfaos); CTMT (61.155% orfaos); CTMT (61.413% orfaos); CTMT (61.428% orfaos); CTMT (64.813% orfaos); CTMT (66.379% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+32,UC*,uc_sobreposicao_entre_entidades,"47 COD_ID em mais de uma entidade UC (soma 758811, uniao 758764)",KPI familia UC usa a uniao distinta; nao somar entidades
+32,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 14/58282 registros com POT_INST>75 (max 420.0),valores preservados no staging; potencia publica N/D; sem corte
+32,UGBT,potencia_UG_acima_75kW,TIP_SIST=SIGFI: 874/1488 registros com POT_INST>75 (max 11828.0),valores preservados no staging; potencia publica N/D; sem corte
+32,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 283/639 registros com POT_INST>75 (max 8000.0),valores preservados no staging; potencia publica N/D; sem corte
+32,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 13/13 registros com POT_INST>75 (max 498750.0),valores preservados no staging; potencia publica N/D; sem corte
+37,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 72/86123 registros com POT_INST>75 (max 3000.0),valores preservados no staging; potencia publica N/D; sem corte
+37,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 373/1604 registros com POT_INST>75 (max 3600.0),valores preservados no staging; potencia publica N/D; sem corte
+37,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/2 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+37,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 6294867 kVA vs EQTRMT 5554588 kVA (-11.8%),visoes sobrepostas; nao somar
+37,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 2466500 kVA vs EQTRAT 3049300 kVA (+23.6%),visoes sobrepostas; nao somar
+38,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 22/81587 registros com POT_INST>75 (max 2500.0),valores preservados no staging; potencia publica N/D; sem corte
+38,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 237/1090 registros com POT_INST>75 (max 3120.0),valores preservados no staging; potencia publica N/D; sem corte
+38,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 3/10 registros com POT_INST>75 (max 113.93),valores preservados no staging; potencia publica N/D; sem corte
+38,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 4460574 kVA vs EQTRMT 3894989 kVA (-12.7%),visoes sobrepostas; nao somar
+38,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 1833250 kVA vs EQTRAT 1935250 kVA (+5.6%),visoes sobrepostas; nao somar
+39,UC*,uc_sobreposicao_entre_entidades,"199 COD_ID em mais de uma entidade UC (soma 4153221, uniao 4153022)",KPI familia UC usa a uniao distinta; nao somar entidades
+39,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 57/133142 registros com POT_INST>75 (max 1512.988),valores preservados no staging; potencia publica N/D; sem corte
+39,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 943/1651 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+39,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 13/13 registros com POT_INST>75 (max 42000.0),valores preservados no staging; potencia publica N/D; sem corte
+39,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 2739600 kVA vs EQTRAT 4153900 kVA (+51.6%),visoes sobrepostas; nao somar
+39,UCMT,uc_cod_id_ativo_duplicado,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+40,UCBT,uc_cod_id_ativo_duplicado,18 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+40,UCMT,uc_cod_id_ativo_duplicado,211 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+40,UC*,uc_sobreposicao_entre_entidades,"114 COD_ID em mais de uma entidade UC (soma 1828684, uniao 1828570)",KPI familia UC usa a uniao distinta; nao somar entidades
+40,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 4075/118177 registros com POT_INST>75 (max 17910.22222222),valores preservados no staging; potencia publica N/D; sem corte
+40,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1163/1974 registros com POT_INST>75 (max 62852.58090909),valores preservados no staging; potencia publica N/D; sem corte
+40,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 18/18 registros com POT_INST>75 (max 33600.0),valores preservados no staging; potencia publica N/D; sem corte
+43,UCAT,uc_cod_id_ativo_duplicado,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+43,UC*,uc_sobreposicao_entre_entidades,"240 COD_ID em mais de uma entidade UC (soma 4666690, uniao 4666450)",KPI familia UC usa a uniao distinta; nao somar entidades
+43,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2605/162938 registros com POT_INST>75 (max 5745.8),valores preservados no staging; potencia publica N/D; sem corte
+43,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2462/5211 registros com POT_INST>75 (max 375484.0),valores preservados no staging; potencia publica N/D; sem corte
+43,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 37/40 registros com POT_INST>75 (max 50000.0),valores preservados no staging; potencia publica N/D; sem corte
+43,UNTRMT,POT_NOM_provavel_MVA,"5 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+44,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 13/48517 registros com POT_INST>75 (max 2500.0),valores preservados no staging; potencia publica N/D; sem corte
+44,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 214/895 registros com POT_INST>75 (max 2500.0),valores preservados no staging; potencia publica N/D; sem corte
+44,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 1804000 kVA vs EQTRAT 1242500 kVA (-31.1%),visoes sobrepostas; nao somar
+46,UC*,uc_sobreposicao_entre_entidades,"3 COD_ID em mais de uma entidade UC (soma 176235, uniao 176232)",KPI familia UC usa a uniao distinta; nao somar entidades
+46,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 20/49 registros com POT_INST>75 (max 450.0),valores preservados no staging; potencia publica N/D; sem corte
+47,UC*,uc_sobreposicao_entre_entidades,"385 COD_ID em mais de uma entidade UC (soma 7486943, uniao 7486558)",KPI familia UC usa a uniao distinta; nao somar entidades
+47,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 4524/301265 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+47,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2975/5601 registros com POT_INST>75 (max 2400000.0),valores preservados no staging; potencia publica N/D; sem corte
+47,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 34/34 registros com POT_INST>75 (max 108600.0),valores preservados no staging; potencia publica N/D; sem corte
+47,UNTRMT,POT_NOM_provavel_MVA,"166 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+51,UC*,uc_sobreposicao_entre_entidades,"4 COD_ID em mais de uma entidade UC (soma 90709, uniao 90705)",KPI familia UC usa a uniao distinta; nao somar entidades
+51,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/1943 registros com POT_INST>75 (max 86.65),valores preservados no staging; potencia publica N/D; sem corte
+51,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 18/22 registros com POT_INST>75 (max 11250.0),valores preservados no staging; potencia publica N/D; sem corte
+51,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/2 registros com POT_INST>75 (max 32833.0),valores preservados no staging; potencia publica N/D; sem corte
+63,UC*,uc_sobreposicao_entre_entidades,"4 COD_ID em mais de uma entidade UC (soma 5236776, uniao 5236772)",KPI familia UC usa a uniao distinta; nao somar entidades
+63,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1049/288154 registros com POT_INST>75 (max 397535.0),valores preservados no staging; potencia publica N/D; sem corte
+63,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 854/3866 registros com POT_INST>75 (max 3960000.0),valores preservados no staging; potencia publica N/D; sem corte
+63,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 68/76 registros com POT_INST>75 (max 3000000.0),valores preservados no staging; potencia publica N/D; sem corte
+63,UNTRMT,POT_NOM_provavel_MVA,"21 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+63,*,filtro_indisponivel,CONJ (7.243% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+69,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 27/21658 registros com POT_INST>75 (max 80055.0),valores preservados no staging; potencia publica N/D; sem corte
+69,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 90/432 registros com POT_INST>75 (max 18006.0),valores preservados no staging; potencia publica N/D; sem corte
+69,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 10/11 registros com POT_INST>75 (max 107590.0),valores preservados no staging; potencia publica N/D; sem corte
+69,UNTRMT,POT_NOM_provavel_MVA,"49 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+69,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 1984048 kVA vs EQTRMT 2365824 kVA (+19.2%),visoes sobrepostas; nao somar
+82,UC*,uc_sobreposicao_entre_entidades,"10 COD_ID em mais de uma entidade UC (soma 62092, uniao 62082)",KPI familia UC usa a uniao distinta; nao somar entidades
+82,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 15/30 registros com POT_INST>75 (max 278.0),valores preservados no staging; potencia publica N/D; sem corte
+83,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 8/10 registros com POT_INST>75 (max 1500.0),valores preservados no staging; potencia publica N/D; sem corte
+86,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/342 registros com POT_INST>75 (max 100.0),valores preservados no staging; potencia publica N/D; sem corte
+86,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 61448 kVA vs EQTRMT 46868 kVA (-23.7%),visoes sobrepostas; nao somar
+87,UC*,uc_sobreposicao_entre_entidades,"6 COD_ID em mais de uma entidade UC (soma 42481, uniao 42475)",KPI familia UC usa a uniao distinta; nao somar entidades
+87,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 16/2175 registros com POT_INST>75 (max 150.0),valores preservados no staging; potencia publica N/D; sem corte
+87,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 34/69 registros com POT_INST>75 (max 8750.0),valores preservados no staging; potencia publica N/D; sem corte
+87,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+88,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+95,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 37577, uniao 37572)",KPI familia UC usa a uniao distinta; nao somar entidades
+95,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 6/3916 registros com POT_INST>75 (max 111.2),valores preservados no staging; potencia publica N/D; sem corte
+95,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 6/33 registros com POT_INST>75 (max 225.0),valores preservados no staging; potencia publica N/D; sem corte
+103,UC*,uc_sobreposicao_entre_entidades,"6 COD_ID em mais de uma entidade UC (soma 42011, uniao 42005)",KPI familia UC usa a uniao distinta; nao somar entidades
+103,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/2916 registros com POT_INST>75 (max 80.0),valores preservados no staging; potencia publica N/D; sem corte
+103,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 10/45 registros com POT_INST>75 (max 3750.0),valores preservados no staging; potencia publica N/D; sem corte
+369,UC*,uc_sobreposicao_entre_entidades,"72 COD_ID em mais de uma entidade UC (soma 819699, uniao 819627)",KPI familia UC usa a uniao distinta; nao somar entidades
+369,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 24/58145 registros com POT_INST>75 (max 280.0),valores preservados no staging; potencia publica N/D; sem corte
+369,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 312/1036 registros com POT_INST>75 (max 5300.0),valores preservados no staging; potencia publica N/D; sem corte
+370,UC*,uc_sobreposicao_entre_entidades,"351 COD_ID em mais de uma entidade UC (soma 242750, uniao 242399)",KPI familia UC usa a uniao distinta; nao somar entidades
+370,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 7/9079 registros com POT_INST>75 (max 220.0),valores preservados no staging; potencia publica N/D; sem corte
+370,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 41/164 registros com POT_INST>75 (max 46400.0),valores preservados no staging; potencia publica N/D; sem corte
+370,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 8/8 registros com POT_INST>75 (max 214128.0),valores preservados no staging; potencia publica N/D; sem corte
+370,*,filtro_indisponivel,SUB (8.333% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+371,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 19/143534 registros com POT_INST>75 (max 2500.0),valores preservados no staging; potencia publica N/D; sem corte
+371,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 1/1434 registros com POT_INST>75 (max 110.0),valores preservados no staging; potencia publica N/D; sem corte
+371,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 2/8 registros com POT_INST>75 (max 200.0),valores preservados no staging; potencia publica N/D; sem corte
+371,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 276/2048 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+371,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 5/5 registros com POT_INST>75 (max 1847.662),valores preservados no staging; potencia publica N/D; sem corte
+371,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 9375730 kVA vs EQTRMT 8804667 kVA (-6.1%),visoes sobrepostas; nao somar
+371,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 6780000 kVA vs EQTRAT 4848375 kVA (-28.5%),visoes sobrepostas; nao somar
+380,UCMT,uc_cod_id_ativo_duplicado,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+380,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 4/81103 registros com POT_INST>75 (max 2500.0),valores preservados no staging; potencia publica N/D; sem corte
+380,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 464/1500 registros com POT_INST>75 (max 8736.0),valores preservados no staging; potencia publica N/D; sem corte
+380,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 18/18 registros com POT_INST>75 (max 240000.0),valores preservados no staging; potencia publica N/D; sem corte
+381,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 9/11320 registros com POT_INST>75 (max 112.0),valores preservados no staging; potencia publica N/D; sem corte
+381,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 30/51 registros com POT_INST>75 (max 2000.0),valores preservados no staging; potencia publica N/D; sem corte
+381,UCMT,uc_cod_id_ativo_duplicado,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+382,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 40/57523 registros com POT_INST>75 (max 7000.0),valores preservados no staging; potencia publica N/D; sem corte
+382,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 501/670 registros com POT_INST>75 (max 16560.0),valores preservados no staging; potencia publica N/D; sem corte
+382,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 12/12 registros com POT_INST>75 (max 677530.0),valores preservados no staging; potencia publica N/D; sem corte
+383,UCMT,uc_cod_id_ativo_duplicado,71 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+383,UC*,uc_sobreposicao_entre_entidades,"89 COD_ID em mais de uma entidade UC (soma 2892621, uniao 2892532)",KPI familia UC usa a uniao distinta; nao somar entidades
+383,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 27/119565 registros com POT_INST>75 (max 459.1),valores preservados no staging; potencia publica N/D; sem corte
+383,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 319/693 registros com POT_INST>75 (max 5500.0),valores preservados no staging; potencia publica N/D; sem corte
+385,UCBT,uc_cod_id_ativo_duplicado,8 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+385,UCMT,uc_cod_id_ativo_duplicado,2 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+385,UC*,uc_sobreposicao_entre_entidades,"4 COD_ID em mais de uma entidade UC (soma 3076632, uniao 3076628)",KPI familia UC usa a uniao distinta; nao somar entidades
+385,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 1181/167423 registros com POT_INST>75 (max 75000.0),valores preservados no staging; potencia publica N/D; sem corte
+385,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 728/1091 registros com POT_INST>75 (max 9052.4),valores preservados no staging; potencia publica N/D; sem corte
+385,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 61/64 registros com POT_INST>75 (max 50111.5),valores preservados no staging; potencia publica N/D; sem corte
+390,UCBT,uc_cod_id_ativo_duplicado,24 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+390,UCMT,uc_cod_id_ativo_duplicado,1151 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+390,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 9002146, uniao 9002145)",KPI familia UC usa a uniao distinta; nao somar entidades
+390,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 165/42451 registros com POT_INST>75 (max 38270.53),valores preservados no staging; potencia publica N/D; sem corte
+390,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 79/340 registros com POT_INST>75 (max 30181.699),valores preservados no staging; potencia publica N/D; sem corte
+390,UCAT,uc_cod_id_ativo_duplicado,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+391,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 220/381 registros com POT_INST>75 (max 4278.0),valores preservados no staging; potencia publica N/D; sem corte
+391,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/1 registros com POT_INST>75 (max 56050.0),valores preservados no staging; potencia publica N/D; sem corte
+396,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 3254367, uniao 3254362)",KPI familia UC usa a uniao distinta; nao somar entidades
+396,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 531/283360 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+396,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 554/5221 registros com POT_INST>75 (max 450000.0),valores preservados no staging; potencia publica N/D; sem corte
+396,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 15/40 registros com POT_INST>75 (max 50000.0),valores preservados no staging; potencia publica N/D; sem corte
+396,UNTRMT,POT_NOM_provavel_MVA,"16 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+398,UC*,uc_sobreposicao_entre_entidades,"12 COD_ID em mais de uma entidade UC (soma 40997, uniao 40985)",KPI familia UC usa a uniao distinta; nao somar entidades
+398,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 13/65 registros com POT_INST>75 (max 1480.0),valores preservados no staging; potencia publica N/D; sem corte
+398,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/1 registros com POT_INST>75 (max 3750.0),valores preservados no staging; potencia publica N/D; sem corte
+399,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 5/28 registros com POT_INST>75 (max 1000.0),valores preservados no staging; potencia publica N/D; sem corte
+400,UC*,uc_sobreposicao_entre_entidades,"3 COD_ID em mais de uma entidade UC (soma 17530, uniao 17527)",KPI familia UC usa a uniao distinta; nao somar entidades
+400,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/26 registros com POT_INST>75 (max 348.3),valores preservados no staging; potencia publica N/D; sem corte
+400,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 108840 kVA vs EQTRMT 83650 kVA (-23.1%),visoes sobrepostas; nao somar
+401,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/12 registros com POT_INST>75 (max 1500.0),valores preservados no staging; potencia publica N/D; sem corte
+404,UCBT,uc_cod_id_ativo_duplicado,22 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+404,UCMT,uc_cod_id_ativo_duplicado,5 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+404,UC*,uc_sobreposicao_entre_entidades,"78 COD_ID em mais de uma entidade UC (soma 1275747, uniao 1275669)",KPI familia UC usa a uniao distinta; nao somar entidades
+404,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 42/150451 registros com POT_INST>75 (max 300.0),valores preservados no staging; potencia publica N/D; sem corte
+404,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 970/2069 registros com POT_INST>75 (max 48000.0),valores preservados no staging; potencia publica N/D; sem corte
+404,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 33/35 registros com POT_INST>75 (max 384000.0),valores preservados no staging; potencia publica N/D; sem corte
+405,UC*,uc_sobreposicao_entre_entidades,"267 COD_ID em mais de uma entidade UC (soma 1886034, uniao 1885767)",KPI familia UC usa a uniao distinta; nao somar entidades
+405,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 162/218666 registros com POT_INST>75 (max 43400.0),valores preservados no staging; potencia publica N/D; sem corte
+405,UGBT,potencia_UG_acima_75kW,TIP_SIST=SIGFI: 2715/2717 registros com POT_INST>75 (max 1872.0),valores preservados no staging; potencia publica N/D; sem corte
+405,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1916/3766 registros com POT_INST>75 (max 35000.0),valores preservados no staging; potencia publica N/D; sem corte
+405,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 43/43 registros com POT_INST>75 (max 529200.0),valores preservados no staging; potencia publica N/D; sem corte
+504,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 16235, uniao 16230)",KPI familia UC usa a uniao distinta; nao somar entidades
+504,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 6/62 registros com POT_INST>75 (max 1500.0),valores preservados no staging; potencia publica N/D; sem corte
+527,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 8835, uniao 8833)",KPI familia UC usa a uniao distinta; nao somar entidades
+527,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 5/17 registros com POT_INST>75 (max 270.0),valores preservados no staging; potencia publica N/D; sem corte
+598,UC*,uc_sobreposicao_entre_entidades,"3 COD_ID em mais de uma entidade UC (soma 25957, uniao 25954)",KPI familia UC usa a uniao distinta; nao somar entidades
+598,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 71/1976 registros com POT_INST>75 (max 179.76),valores preservados no staging; potencia publica N/D; sem corte
+598,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 38/78 registros com POT_INST>75 (max 5994.0),valores preservados no staging; potencia publica N/D; sem corte
+598,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 30000 kVA vs EQTRAT 0 kVA (-100.0%),visoes sobrepostas; nao somar
+598,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+2351,UCBT,uc_cod_id_ativo_duplicado,1005 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+2351,UCMT,uc_cod_id_ativo_duplicado,36 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+2351,UC*,uc_sobreposicao_entre_entidades,"98 COD_ID em mais de uma entidade UC (soma 59593, uniao 59495)",KPI familia UC usa a uniao distinta; nao somar entidades
+2351,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 31/3885 registros com POT_INST>75 (max 1000.0),valores preservados no staging; potencia publica N/D; sem corte
+2351,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 26/82 registros com POT_INST>75 (max 75000.0),valores preservados no staging; potencia publica N/D; sem corte
+2351,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 799603 kVA vs EQTRMT 2776658 kVA (+247.3%),visoes sobrepostas; nao somar
+2351,UNTRAT,POT_NOM_provavel_MVA,"2 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+2351,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 190050 kVA vs EQTRAT 255000 kVA (+34.2%),visoes sobrepostas; nao somar
+2381,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 29699, uniao 29697)",KPI familia UC usa a uniao distinta; nao somar entidades
+2381,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 11/84 registros com POT_INST>75 (max 4500.0),valores preservados no staging; potencia publica N/D; sem corte
+2763,UC*,uc_sobreposicao_entre_entidades,"16 COD_ID em mais de uma entidade UC (soma 15349, uniao 15333)",KPI familia UC usa a uniao distinta; nao somar entidades
+2763,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 19/45 registros com POT_INST>75 (max 8500.0),valores preservados no staging; potencia publica N/D; sem corte
+2763,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/3 registros com POT_INST>75 (max 22700.0),valores preservados no staging; potencia publica N/D; sem corte
+2783,UC*,uc_sobreposicao_entre_entidades,"3 COD_ID em mais de uma entidade UC (soma 8096, uniao 8093)",KPI familia UC usa a uniao distinta; nao somar entidades
+2783,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/421 registros com POT_INST>75 (max 110.0),valores preservados no staging; potencia publica N/D; sem corte
+2783,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/4 registros com POT_INST>75 (max 1000.0),valores preservados no staging; potencia publica N/D; sem corte
+2866,UCBT,uc_cod_id_ativo_duplicado,355462 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+2866,UCMT,uc_cod_id_ativo_duplicado,202 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+2866,UC*,uc_sobreposicao_entre_entidades,"53 COD_ID em mais de uma entidade UC (soma 5508587, uniao 5508534)",KPI familia UC usa a uniao distinta; nao somar entidades
+2866,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 86/237795 registros com POT_INST>75 (max 500.0),valores preservados no staging; potencia publica N/D; sem corte
+2866,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2993/3077 registros com POT_INST>75 (max 2653645.0),valores preservados no staging; potencia publica N/D; sem corte
+2866,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 34/34 registros com POT_INST>75 (max 120168.0),valores preservados no staging; potencia publica N/D; sem corte
+2866,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 26224412 kVA vs EQTRMT 29711458 kVA (+13.3%),visoes sobrepostas; nao somar
+2866,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 12269630 kVA vs EQTRAT 13345000 kVA (+8.8%),visoes sobrepostas; nao somar
+2937,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 2044280, uniao 2044275)",KPI familia UC usa a uniao distinta; nao somar entidades
+2937,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 84/49771 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+2937,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 236/569 registros com POT_INST>75 (max 420000.0),valores preservados no staging; potencia publica N/D; sem corte
+2937,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/3 registros com POT_INST>75 (max 49000.0),valores preservados no staging; potencia publica N/D; sem corte
+2937,UNTRMT,POT_NOM_provavel_MVA,"2 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+3223,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 12/37 registros com POT_INST>75 (max 10000.0),valores preservados no staging; potencia publica N/D; sem corte
+3627,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 17693, uniao 17688)",KPI familia UC usa a uniao distinta; nao somar entidades
+4248,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/68 registros com POT_INST>75 (max 112.0),valores preservados no staging; potencia publica N/D; sem corte
+4248,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/4 registros com POT_INST>75 (max 300.0),valores preservados no staging; potencia publica N/D; sem corte
+4248,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+4950,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 67/382291 registros com POT_INST>75 (max 3000.0),valores preservados no staging; potencia publica N/D; sem corte
+4950,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2690/4380 registros com POT_INST>75 (max 35200.0),valores preservados no staging; potencia publica N/D; sem corte
+4950,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 158/159 registros com POT_INST>75 (max 188300.0),valores preservados no staging; potencia publica N/D; sem corte
+4950,UNTRMT,POT_NOM_provavel_MVA,"56 unidades com POT_NOM x1000 = potencia do EQ via DDA (valor parece estar em MVA, nao kVA)",valor preservado; potencia exibida com alerta
+4950,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 26776015 kVA vs EQTRAT 38112675 kVA (+42.3%),visoes sobrepostas; nao somar
+5160,UCBT,uc_cod_id_ativo_duplicado,58942 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+5160,UCMT,uc_cod_id_ativo_duplicado,7 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+5160,UC*,uc_sobreposicao_entre_entidades,"2362 COD_ID em mais de uma entidade UC (soma 1189404, uniao 1187042)",KPI familia UC usa a uniao distinta; nao somar entidades
+5160,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 183/33615 registros com POT_INST>75 (max 3463.0),valores preservados no staging; potencia publica N/D; sem corte
+5160,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 486/1091 registros com POT_INST>75 (max 30000.0),valores preservados no staging; potencia publica N/D; sem corte
+5160,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/2 registros com POT_INST>75 (max 127000.0),valores preservados no staging; potencia publica N/D; sem corte
+5216,UCBT,uc_cod_id_ativo_duplicado,7 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+5216,UC*,uc_sobreposicao_entre_entidades,"25 COD_ID em mais de uma entidade UC (soma 951959, uniao 951934)",KPI familia UC usa a uniao distinta; nao somar entidades
+5216,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 23/74130 registros com POT_INST>75 (max 225.0),valores preservados no staging; potencia publica N/D; sem corte
+5216,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 225/624 registros com POT_INST>75 (max 27500.0),valores preservados no staging; potencia publica N/D; sem corte
+5216,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 12/12 registros com POT_INST>75 (max 75000.0),valores preservados no staging; potencia publica N/D; sem corte
+5216,UNTRMT/EQTRMT,divergencia_potencia,UNTRMT 10111898 kVA vs EQTRMT 33515713 kVA (+231.4%),visoes sobrepostas; nao somar
+5343,UC*,uc_sobreposicao_entre_entidades,"3 COD_ID em mais de uma entidade UC (soma 24517, uniao 24514)",KPI familia UC usa a uniao distinta; nao somar entidades
+5343,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/3083 registros com POT_INST>75 (max 108.0),valores preservados no staging; potencia publica N/D; sem corte
+5343,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 9/25 registros com POT_INST>75 (max 253.9),valores preservados no staging; potencia publica N/D; sem corte
+5343,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5345,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 7359, uniao 7354)",KPI familia UC usa a uniao distinta; nao somar entidades
+5345,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/5 registros com POT_INST>75 (max 150.0),valores preservados no staging; potencia publica N/D; sem corte
+5345,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5346,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/221 registros com POT_INST>75 (max 90.0),valores preservados no staging; potencia publica N/D; sem corte
+5346,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/7 registros com POT_INST>75 (max 100.0),valores preservados no staging; potencia publica N/D; sem corte
+5346,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5351,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 4056, uniao 4054)",KPI familia UC usa a uniao distinta; nao somar entidades
+5351,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5352,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 17863, uniao 17862)",KPI familia UC usa a uniao distinta; nao somar entidades
+5352,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 7/1227 registros com POT_INST>75 (max 144.3),valores preservados no staging; potencia publica N/D; sem corte
+5352,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/3 registros com POT_INST>75 (max 113.3),valores preservados no staging; potencia publica N/D; sem corte
+5352,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5353,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 21433, uniao 21432)",KPI familia UC usa a uniao distinta; nao somar entidades
+5353,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5355,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 4077, uniao 4076)",KPI familia UC usa a uniao distinta; nao somar entidades
+5355,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/345 registros com POT_INST>75 (max 110.16),valores preservados no staging; potencia publica N/D; sem corte
+5355,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5356,UC*,uc_sobreposicao_entre_entidades,"4 COD_ID em mais de uma entidade UC (soma 7357, uniao 7353)",KPI familia UC usa a uniao distinta; nao somar entidades
+5356,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 11/33 registros com POT_INST>75 (max 290.0),valores preservados no staging; potencia publica N/D; sem corte
+5363,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 7303, uniao 7301)",KPI familia UC usa a uniao distinta; nao somar entidades
+5363,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/440 registros com POT_INST>75 (max 110.0),valores preservados no staging; potencia publica N/D; sem corte
+5363,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5364,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 17360, uniao 17358)",KPI familia UC usa a uniao distinta; nao somar entidades
+5364,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/15 registros com POT_INST>75 (max 200.0),valores preservados no staging; potencia publica N/D; sem corte
+5365,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/4 registros com POT_INST>75 (max 330.0),valores preservados no staging; potencia publica N/D; sem corte
+5366,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/123 registros com POT_INST>75 (max 100000.0),valores preservados no staging; potencia publica N/D; sem corte
+5367,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 24150, uniao 24149)",KPI familia UC usa a uniao distinta; nao somar entidades
+5367,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 4/6 registros com POT_INST>75 (max 170.0),valores preservados no staging; potencia publica N/D; sem corte
+5367,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5368,UC*,uc_sobreposicao_entre_entidades,"42 COD_ID em mais de uma entidade UC (soma 19721, uniao 19679)",KPI familia UC usa a uniao distinta; nao somar entidades
+5368,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/469 registros com POT_INST>75 (max 150.0),valores preservados no staging; potencia publica N/D; sem corte
+5368,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 16/48 registros com POT_INST>75 (max 2000.0),valores preservados no staging; potencia publica N/D; sem corte
+5369,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 5002, uniao 5000)",KPI familia UC usa a uniao distinta; nao somar entidades
+5369,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5370,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 7/734 registros com POT_INST>75 (max 12810.0),valores preservados no staging; potencia publica N/D; sem corte
+5371,UC*,uc_sobreposicao_entre_entidades,"34 COD_ID em mais de uma entidade UC (soma 12507, uniao 12473)",KPI familia UC usa a uniao distinta; nao somar entidades
+5372,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/1 registros com POT_INST>75 (max 300.0),valores preservados no staging; potencia publica N/D; sem corte
+5372,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5373,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/69 registros com POT_INST>75 (max 112.5),valores preservados no staging; potencia publica N/D; sem corte
+5373,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5374,UC*,uc_sobreposicao_entre_entidades,"6 COD_ID em mais de uma entidade UC (soma 9694, uniao 9688)",KPI familia UC usa a uniao distinta; nao somar entidades
+5374,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/903 registros com POT_INST>75 (max 150.0),valores preservados no staging; potencia publica N/D; sem corte
+5374,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 9/17 registros com POT_INST>75 (max 360.0),valores preservados no staging; potencia publica N/D; sem corte
+5374,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5375,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 4900, uniao 4899)",KPI familia UC usa a uniao distinta; nao somar entidades
+5375,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/9 registros com POT_INST>75 (max 200.0),valores preservados no staging; potencia publica N/D; sem corte
+5375,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5377,UC*,uc_sobreposicao_entre_entidades,"3 COD_ID em mais de uma entidade UC (soma 7526, uniao 7523)",KPI familia UC usa a uniao distinta; nao somar entidades
+5378,UC*,uc_sobreposicao_entre_entidades,"4 COD_ID em mais de uma entidade UC (soma 15758, uniao 15754)",KPI familia UC usa a uniao distinta; nao somar entidades
+5378,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 5/1007 registros com POT_INST>75 (max 110.0),valores preservados no staging; potencia publica N/D; sem corte
+5378,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 43/107 registros com POT_INST>75 (max 1000.0),valores preservados no staging; potencia publica N/D; sem corte
+5379,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 34461, uniao 34460)",KPI familia UC usa a uniao distinta; nao somar entidades
+5381,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/353 registros com POT_INST>75 (max 76.0),valores preservados no staging; potencia publica N/D; sem corte
+5381,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/1 registros com POT_INST>75 (max 250.0),valores preservados no staging; potencia publica N/D; sem corte
+5381,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5382,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 7206, uniao 7205)",KPI familia UC usa a uniao distinta; nao somar entidades
+5382,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5384,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 2228, uniao 2227)",KPI familia UC usa a uniao distinta; nao somar entidades
+5384,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5385,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 16446, uniao 16445)",KPI familia UC usa a uniao distinta; nao somar entidades
+5385,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/7 registros com POT_INST>75 (max 480.0),valores preservados no staging; potencia publica N/D; sem corte
+5385,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+5386,UC*,uc_sobreposicao_entre_entidades,"5 COD_ID em mais de uma entidade UC (soma 17280, uniao 17275)",KPI familia UC usa a uniao distinta; nao somar entidades
+5697,UCBT,uc_cod_id_ativo_duplicado,1030 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado,quantidade N/D; registros e distintos publicados
+5697,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 3572533, uniao 3572532)",KPI familia UC usa a uniao distinta; nao somar entidades
+5697,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 61/166934 registros com POT_INST>75 (max 9750.0),valores preservados no staging; potencia publica N/D; sem corte
+5697,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1438/4011 registros com POT_INST>75 (max 191900.0),valores preservados no staging; potencia publica N/D; sem corte
+5697,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 46/46 registros com POT_INST>75 (max 191890.0),valores preservados no staging; potencia publica N/D; sem corte
+5707,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 14/61479 registros com POT_INST>75 (max 648.6775),valores preservados no staging; potencia publica N/D; sem corte
+5707,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 201/1793 registros com POT_INST>75 (max 1710.0),valores preservados no staging; potencia publica N/D; sem corte
+5707,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 2945000 kVA vs EQTRAT 8112025 kVA (+175.5%),visoes sobrepostas; nao somar
+6072,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 3472755, uniao 3472754)",KPI familia UC usa a uniao distinta; nao somar entidades
+6072,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1138/1998 registros com POT_INST>75 (max 5000.0),valores preservados no staging; potencia publica N/D; sem corte
+6585,UC*,uc_sobreposicao_entre_entidades,"30 COD_ID em mais de uma entidade UC (soma 711859, uniao 711829)",KPI familia UC usa a uniao distinta; nao somar entidades
+6585,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 83/37487 registros com POT_INST>75 (max 49375.0),valores preservados no staging; potencia publica N/D; sem corte
+6585,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 148/383 registros com POT_INST>75 (max 29232.0),valores preservados no staging; potencia publica N/D; sem corte
+6585,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 16/16 registros com POT_INST>75 (max 87048.0),valores preservados no staging; potencia publica N/D; sem corte
+6585,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 1460145 kVA vs EQTRAT 1340285 kVA (-8.2%),visoes sobrepostas; nao somar
+6587,UC*,uc_sobreposicao_entre_entidades,"63 COD_ID em mais de uma entidade UC (soma 976114, uniao 976051)",KPI familia UC usa a uniao distinta; nao somar entidades
+6587,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 9/21322 registros com POT_INST>75 (max 112.0),valores preservados no staging; potencia publica N/D; sem corte
+6587,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 106/413 registros com POT_INST>75 (max 8000.0),valores preservados no staging; potencia publica N/D; sem corte
+6587,UGAT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 6/6 registros com POT_INST>75 (max 34500.0),valores preservados no staging; potencia publica N/D; sem corte
+6600,UC*,uc_sobreposicao_entre_entidades,"89 COD_ID em mais de uma entidade UC (soma 2134433, uniao 2134344)",KPI familia UC usa a uniao distinta; nao somar entidades
+6600,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 33/45936 registros com POT_INST>75 (max 150.0),valores preservados no staging; potencia publica N/D; sem corte
+6600,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 386/1301 registros com POT_INST>75 (max 5704.0),valores preservados no staging; potencia publica N/D; sem corte
+6603,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 8269, uniao 8267)",KPI familia UC usa a uniao distinta; nao somar entidades
+6603,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+6609,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/9 registros com POT_INST>75 (max 90.0),valores preservados no staging; potencia publica N/D; sem corte
+6610,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/181 registros com POT_INST>75 (max 117.0),valores preservados no staging; potencia publica N/D; sem corte
+6610,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/1 registros com POT_INST>75 (max 100.0),valores preservados no staging; potencia publica N/D; sem corte
+6897,UC*,uc_sobreposicao_entre_entidades,"6 COD_ID em mais de uma entidade UC (soma 13447, uniao 13441)",KPI familia UC usa a uniao distinta; nao somar entidades
+6897,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 4/1497 registros com POT_INST>75 (max 180.0),valores preservados no staging; potencia publica N/D; sem corte
+6897,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 16/27 registros com POT_INST>75 (max 300.0),valores preservados no staging; potencia publica N/D; sem corte
+6897,*,filtro_indisponivel,SUB (100.0% orfaos),filtro marcado indisponivel_por_qualidade; contagens independentes mantidas
+6898,UC*,uc_sobreposicao_entre_entidades,"9 COD_ID em mais de uma entidade UC (soma 18870, uniao 18861)",KPI familia UC usa a uniao distinta; nao somar entidades
+6898,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/1285 registros com POT_INST>75 (max 260.0),valores preservados no staging; potencia publica N/D; sem corte
+6898,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 20/60 registros com POT_INST>75 (max 2500.0),valores preservados no staging; potencia publica N/D; sem corte
+7016,UC*,uc_sobreposicao_entre_entidades,"2 COD_ID em mais de uma entidade UC (soma 9929, uniao 9927)",KPI familia UC usa a uniao distinta; nao somar entidades
+7016,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/733 registros com POT_INST>75 (max 280.0),valores preservados no staging; potencia publica N/D; sem corte
+7016,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 1/6 registros com POT_INST>75 (max 280.0),valores preservados no staging; potencia publica N/D; sem corte
+7019,UC*,uc_sobreposicao_entre_entidades,"656 COD_ID em mais de uma entidade UC (soma 947388, uniao 946732)",KPI familia UC usa a uniao distinta; nao somar entidades
+7019,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 2/11128 registros com POT_INST>75 (max 92.1987),valores preservados no staging; potencia publica N/D; sem corte
+7019,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 1/1400 registros com POT_INST>75 (max 83.2726),valores preservados no staging; potencia publica N/D; sem corte
+7019,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 146/205 registros com POT_INST>75 (max 43430.2),valores preservados no staging; potencia publica N/D; sem corte
+7019,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_ISOLADA: 33/58 registros com POT_INST>75 (max 14516.7),valores preservados no staging; potencia publica N/D; sem corte
+7019,UNTRAT/EQTRAT,divergencia_potencia,UNTRAT 3245300 kVA vs EQTRAT 3445300 kVA (+6.2%),visoes sobrepostas; nao somar
+7371,UC*,uc_sobreposicao_entre_entidades,"30 COD_ID em mais de uma entidade UC (soma 77688, uniao 77658)",KPI familia UC usa a uniao distinta; nao somar entidades
+7371,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 93/7521 registros com POT_INST>75 (max 111.55),valores preservados no staging; potencia publica N/D; sem corte
+7371,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 77/150 registros com POT_INST>75 (max 517.0),valores preservados no staging; potencia publica N/D; sem corte
+7467,UC*,uc_sobreposicao_entre_entidades,"7 COD_ID em mais de uma entidade UC (soma 18093, uniao 18086)",KPI familia UC usa a uniao distinta; nao somar entidades
+7467,UGBT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 3/1225 registros com POT_INST>75 (max 110.0),valores preservados no staging; potencia publica N/D; sem corte
+7467,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 27/69 registros com POT_INST>75 (max 1300.0),valores preservados no staging; potencia publica N/D; sem corte
+11825,UC*,uc_sobreposicao_entre_entidades,"1 COD_ID em mais de uma entidade UC (soma 2418, uniao 2417)",KPI familia UC usa a uniao distinta; nao somar entidades
+11825,UGMT,potencia_UG_acima_75kW,TIP_SIST=RD_INTERLIG: 8/10 registros com POT_INST>75 (max 300.0),valores preservados no staging; potencia publica N/D; sem corte

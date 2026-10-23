@@ -84,6 +84,9 @@ def main():
     disj = {}   # (facet_id, ent, metrica) -> todos os DIST disjuntos?
     met_status = {}
     exatas = {}
+    r2_dists, mun_qa, vinc_tuc = set(), {}, []
+    ibge_p = R / "referencias" / "ibge" / "municipios.json"
+    ibge = {str(m["id"]): m for m in json.loads(ibge_p.read_text(encoding="utf-8"))} if ibge_p.exists() else {}
     for d in ok:
         pd_ = PROC / f"DIST={d}"
         v2 = uc_v2(d)
@@ -133,6 +136,25 @@ def main():
             for r in rd(pd_ / "facetas.csv"):
                 dims = json.loads(r["dimensoes_json"]); (attr, code), = dims.items()
                 porfacet.setdefault((r["entidade"], f"{r['entidade']}.{attr}"), []).append(({attr: code if code not in ("", None) else SEM}, r))
+        # R2: municipio (MUN), TUC e A1+TUC, lidos dos campos reais do GDB (76_facetas_r2.py)
+        if (pd_ / "facetas_r2.csv").exists():
+            r2_dists.add(d)
+            for r in rd(pd_ / "facetas_r2.csv"):
+                dims = json.loads(r["dimensoes_json"])
+                porfacet.setdefault((r["entidade"], r["facet_id"]), []).append((dims, {
+                    "quantidade_registros": r["n"], "quantidade_cod_id_distinto": r["nd"], "extensao_km": r["extensao_km"], "potencia_kva": r["potencia_kva"]}))
+                if "MUN" in dims:
+                    c = dims["MUN"]; ok_ = c in ibge
+                    q = mun_qa.setdefault((d, r["entidade"]), {"dist": d, "entidade": r["entidade"], "municipios": 0, "codigos_fora_ibge": 0, "registros_fora_ibge": 0, "registros_sem_codigo": 0, "registros": 0})
+                    q["registros"] += int(r["n"])
+                    if c == SEM: q["registros_sem_codigo"] += int(r["n"])
+                    elif ok_: q["municipios"] += 1
+                    else: q["codigos_fora_ibge"] += 1; q["registros_fora_ibge"] += int(r["n"])
+            vj = pd_ / "vinculos_tuc.json"
+            if vj.exists():
+                for e, x in json.loads(vj.read_text(encoding="utf-8")).items():
+                    for tuc, y in sorted(x["por_tuc"].items()):
+                        vinc_tuc.append({"dist": d, "data_base": DB, "entidade": e, "tuc": tuc, "campo_vinculo": x["campo_vinculo"], "destinos": "+".join(x["destinos"]), **y})
         for (e, fid), rows in porfacet.items():
             mets = ["quantidade"] + (["quantidade_registros", "quantidade_cod_id_distinto"] if e in UC else []) + \
                    (["extensao_km"] if e in EXT else []) + (["potencia_kva"] if e in POT else [])
@@ -210,6 +232,11 @@ def main():
                     "permite_rollup": "sim" if (part == "sim" and st == "aprovado") else "nao", "status_qualidade": st,
                     "regra": ("COUNT(DISTINCT COD_ID) por categoria; " if uc_dist else "") + ("SEM_CODIGO = registro sem codigo DDA informado" )})
     w("facetas_catalogo.csv", cat, ["facet_id", "entidade", "dimensoes_json", "metrica", "unidade", "cobertura", "particao_disjunta", "permite_rollup", "status_qualidade", "regra"])
+
+    # ---- R2: qualidade do codigo de municipio e vinculos equipamento -> unidade por TUC
+    w("qa_municipios.csv", sorted(mun_qa.values(), key=lambda r: (int(r["dist"]), r["entidade"])),
+      ["dist", "entidade", "municipios", "codigos_fora_ibge", "registros_fora_ibge", "registros_sem_codigo", "registros"])
+    w("indicadores_vinculos_tuc.csv", vinc_tuc, ["dist", "data_base", "entidade", "tuc", "campo_vinculo", "destinos", "equipamentos", "com_vinculo", "vinculados", "unidades_distintas"])
 
     # ---- distribuidoras, grupos, cobertura
     aq = {a["dist"]: a for a in arat_qa}
@@ -310,7 +337,7 @@ def main():
                       "transformacao": "UNTRMT e EQTRMT sao visoes da mesma populacao; nunca somar"},
            "conhecimento_ia_builder": {f["file"]: f["sha256_copy"] for f in lock["files"]},
            "licenca": "Dados derivados da BDGD/ANEEL (dados abertos). Atribuicao: Agencia Nacional de Energia Eletrica - ANEEL. Projeto nao oficial.",
-           "autoria": "Nucleo de Dados da BDGD - desenvolvido por Arthur Henrique Lima",
+           "autoria": "Nucleo de Dados da BDGD - desenvolvido por Arthur Henrique Elias de Lima",
            "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID, sem registros individuais, sem dados de consumidores.",
            "checksums": {}}
     criterios = {
@@ -319,6 +346,7 @@ def main():
         "facetas_exatas_decimal": all(exatas.values()),
         "arat_valida_em_todas": all(a_.get("status") == "ok" and a_.get("valida_saida") for a_ in arat_qa),
         "grupos_com_fonte_ou_nao_confirmado": all((d["grupo_economico"] == "nao_confirmado") or (d["dist"] in dist_grp) for d in dists),
+        "facetas_r2_municipio_tuc_em_todas": len(r2_dists) == len(ok),
         "sem_colunas_individuais": True,
     }
     homologado = all(criterios.values())
