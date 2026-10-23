@@ -166,3 +166,5 @@ A autorização de incorporação pela ANEEL (REA 12.687) é de 13/09/2022; oper
 A **nova aba Evolução histórica** será descritiva e terá tabela pronta de 2022–2025 por empresa/grupo/indicador, sem exigir filtros técnicos DDA. Ela só mostrará séries reais após homologação de métricas e sucessões de concessões; durante a extração histórica poderá mostrar estado de preparação. Não é um módulo preditivo.
 
 Documento completo e critérios de aceite: [REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md](REVISAO-R2-METRICAS-EXPLORADOR-MATRIZ-EVOLUCAO.md); acompanhamento [issue #5](https://github.com/artelias/BDGD/issues/5). A R2 deve respeitar a prioridade de finalizar a carga e release oficial 2025.
+
+**Responsabilidades finais de release (23/10/2026):** [PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md](PROMPT-CLAUDE-EXECUCAO-R2-ATE-PREVIEW.md) — Claude executa código/QA/preview, ChatGPT audita e publica produção somente com nova autorização.
