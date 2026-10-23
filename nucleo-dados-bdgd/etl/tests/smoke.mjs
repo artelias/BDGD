@@ -59,6 +59,17 @@ try {
   write('ativos_agregados.csv',baseFacts());
   expectOk('Restaurar base sem facetas');
 
+  // Regressão: a métrica agregada quantidade_cod_id_distinto é permitida, identificadores continuam bloqueados.
+  write('ativos_agregados.csv',baseFacts().replace('motivo_qualidade\n','motivo_qualidade,cod_id\n').replace('aprovado,\n','aprovado,,X1\n'));
+  expectFailure(/coluna potencialmente individualizada/,'Bloquear coluna cod_id no fato');
+  write('ativos_agregados.csv',baseFacts());
+  write('matriz_empresas_2025.csv',matrix().replace('UCBT__quantidade_cod_id_distinto','UCBT__cod_id'));
+  expectFailure(/coluna potencialmente individualizada/,'Bloquear coluna de identificador na matriz');
+  write('matriz_empresas_2025.csv',matrix().replace('UCBT__quantidade_cod_id_distinto','UCBT__quantidade_cod_id_distinto_bruto'));
+  expectFailure(/coluna potencialmente individualizada/,'Isenção somente pelo nome exato da métrica');
+  write('matriz_empresas_2025.csv',matrix());
+  expectOk('Métrica quantidade_cod_id_distinto no fato e na matriz');
+
   const facetManifest=structuredClone(base);
   facetManifest.schema_version='1.1.0';
   facetManifest.files.facetas='ativos_facetas.csv';

@@ -9,6 +9,10 @@ const ROOT = process.argv[2] ? path.resolve(process.argv[2]) : null;
 const errors = [];
 const warnings = [];
 const deny = /(^|_)(cod_id|num_cdc|cpf|cnpj|nome_consumidor|endereco_consumidor|numero_medidor|matricula|id_cliente)(_|$)/i;
+// Métrica agregada exigida pelo contrato (contagem, não identificador). Isenta apenas pelo nome exato,
+// opcionalmente prefixado pela entidade na matriz (ex.: UCBT__quantidade_cod_id_distinto).
+const aggregateMetric = /^(?:[A-Z0-9]+__)?quantidade_cod_id_distinto$/;
+const isIndividualColumn = h => !aggregateMetric.test(h) && deny.test(h);
 const required = {
   distribuidoras: ['dist', 'sigla', 'nome', 'grupo_economico', 'data_base', 'fonte_url', 'sha256', 'status'],
   entidades: ['entidade', 'nome_exibicao', 'familia', 'metrica', 'unidade', 'regra'],
@@ -43,7 +47,7 @@ function parseCsv(content, name) {
   if(value!==''||current.length){current.push(value.replace(/\r$/, ''));rows.push(current);}
   if(!rows.length){problem(name+': CSV vazio');return {headers:[],records:[]};}
   const headers=rows.shift();
-  if(headers.some(h=>deny.test(h)))problem(name+': contém coluna potencialmente individualizada');
+  if(headers.some(isIndividualColumn))problem(name+': contém coluna potencialmente individualizada');
   const records=rows.filter(r=>r.some(v=>v!=='')).map((r,index)=>{
     if(r.length!==headers.length)problem(name+': número de colunas divergente na linha '+(index+2));
     return Object.fromEntries(headers.map((h,i)=>[h,r[i]??'']));

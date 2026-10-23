@@ -1,0 +1,14 @@
+.mapBox { position: relative; width: 100%; height: 100%; min-height: 420px; border-radius: var(--r-xl); overflow: hidden; background: var(--map-water); box-shadow: 0 0 0 1px var(--hairline); isolation: isolate; }
+.canvas { position: absolute; inset: 0; }
+.mapLoading { position: absolute; inset: 0; z-index: 2; }
+.mapError { position: absolute; inset: auto 16px 16px 16px; z-index: 3; padding: 12px 14px; border-radius: var(--r-md); background: var(--surface); box-shadow: var(--shadow-2); font-size: var(--fs-label); color: var(--text-2); }
+
+/* dica de hover: segue o cursor sem cobrir o polígono */
+.hoverTip {
+  position: absolute; z-index: 5; pointer-events: none; transform: translate(-50%, calc(-100% - 14px));
+  padding: 8px 11px; border-radius: var(--r-md); background: var(--material); backdrop-filter: blur(18px) saturate(1.5); -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  border: 1px solid var(--hairline); box-shadow: var(--shadow-2); white-space: nowrap; font-size: var(--fs-label); line-height: 1.35;
+}
+.hoverTip b { font-weight: 640; }
+.hoverTip span { color: var(--text-2); font-size: var(--fs-caption); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .hoverTip { background: var(--surface); } }
