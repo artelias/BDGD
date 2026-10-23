@@ -92,6 +92,39 @@ Atualmente `Matriz.tsx` usa família, grupo e busca de distribuidoras. Propor **
 - CSV exporta **exatamente o recorte exibido**, incluindo cabeçalho de `data_base,metrica,unidade,regra,versao,cobertura,status,descricao_filtro` e documenta colunas indisponíveis. Compartilhar filtros via URL.
 - UX Apple-inspired: manter tabela premium com colunas congeladas, popover de seleção pesquisável, chips removíveis, foco por teclado, light/dark, mobile scroll e motion discreto.
 
+
+## 4.1 Decisão adicional APROVADA — Radar com benchmark nacional por indicador
+
+**Deliberação posterior do proprietário:** o gráfico de radar/aranha deve integrar o Comparador como **terceira visualização**, preservando (1) o gráfico atual, aprovado, e (2) as barras espelhadas. Esta decisão **substitui a ressalva anterior de deixar radar para o futuro**. **Não implementar antes da revisão coordenada das telas**; registrar para o Claude na entrega R2.
+
+### Modos de referência
+
+- **Grupo A × Grupo B**: os dois grupos selecionados livremente e comparados no mesmo conjunto de indicadores homologados.
+- **Grupo/empresa × Benchmark Brasil**: para **cada indicador** `m`, obter `B_m = MAX_g(v(g,m))` entre os grupos econômicos de 2025 **com fonte verificada, mesmo conceito, método, data-base, unidade e cobertura válida**. Portanto, o benchmark pode ser formado por grupos **diferentes em cada eixo**. O tooltip mostra `nome_do_lider`, `valor_benchmark`, `valor_do_grupo_selecionado`, `proporcao` e `cobertura`; empates são exibidos explicitamente.
+- **Grupo/empresa × Brasil total**: opção independente, com total nacional por indicador `T_m = SUM_{DIST elegiveis} v(DIST,m)`; **não confundir com benchmark**. Não somar grupo + suas integrantes duas vezes, e não assumir que membros sem grupo verificado são zero; total Brasil e soma dos grupos podem ter coberturas distintas. A referência "Brasil" no seletor deve deixar claro **"Brasil — total nacional"** ou **"Brasil — líder de cada indicador"**.
+- Permitir **empresa × empresa**, **grupo × grupo**, empresa × grupo e empresa/grupo × benchmark quando as grandezas/denominadores forem compatíveis. O benchmark pedido **prioriza líderes entre grupos**, mas pode futuramente oferecer "líder entre distribuidoras" como universo separado e explicitamente rotulado; não misturar rankings de grupos e DIST.
+
+### Normalização obrigatória do radar
+
+- Eixos representam **conceitos e métricas diferentes** (ex.: quantidade de transformadores de força, km de rede MT, potência de transformação); NÃO desenhar valores brutos heterogêneos em um mesmo radial.
+- No modo **benchmark**: `radar_percent(A,m) = 100 × v(A,m) / B_m` e `radar_percent(benchmark,m)=100`, somente para `B_m>0`, valores válidos e conceito homogêneo. Exemplo **fictício**: transformadores de força Energisa 1.500 e grupo líder Cemig 2.000 → **75% do benchmark**, com valor absoluto no tooltip.
+- Para **grupo A × grupo B**, priorizar a escala nacional de benchmarks por eixo `B_m` como referência **externa idêntica para os dois grupos**, ambos desenhados como proporção da mesma escala. Não normalizar cada grupo por seu próprio máximo (produziria comparação enganosa). Sinalizar se algum grupo escolhido superar benchmark devido a recálculo/cobertura distinta, corrigindo universo antes de exibir.
+- Para **Brasil total**, a escala pode ser o valor nacional `T_m`, novamente igual nos dois lados e explicada. Em modo benchmark líderes, usar `B_m` por indicador; nenhum destes percentuais deve ser chamado de participação de mercado sem denominação apropriada.
+- Grupos com **cobertura insuficiente**, atributos TUC não homologados, métricas não aditivas, categoria sem universo válido ou denominador zero: exibir N/D e **retirar eixo do radar com indicação visível**, em vez de converter N/D em zero. Não ligar silenciosamente vértices através de lacunas.
+- **Mais ativos não significam melhor desempenho/eficiência**. Intitular este modo "**Maior volume por indicador — benchmark nacional**", evitando "`melhor`" no sentido qualitativo; um benchmark de eficiência seria outro estudo com métricas técnicas comparáveis.
+- Não somar UN*+EQ* do mesmo objeto, TUC 565/570 não homologados ou categorias DDA sobrepostas para construir benchmark.
+
+### Requisitos de UX
+
+- Terceira opção claramente rotulada `Radar · Benchmark` ao lado do gráfico principal e de `Barras espelhadas` (pode haver segmented control ou tabs).
+- Campo **Comparar** e campo **Com** independentes e pesquisáveis, com opções grupo, distribuidora, `Brasil — total nacional`, `Benchmark Brasil — líder por indicador` (conforme regra).
+- Seleção de 4 a 8 eixos de negócio (default 5–6), com indicador e unidade no detalhe; tela vazia se não houver mínimo de 3 eixos homologados. Predefinições `Transformação`, `Redes`, `Operação` só se existirem indicadores homologados de interesse.
+- Legenda A/B consistente com os cartões (A à esquerda, B à direita), benchmark no tom visual próprio (não fingir ser empresa), hover/foco por eixo mostrando liderança e valores brutos. Animar transição com suavidade e respeitar `prefers-reduced-motion`.
+- Alternativa **tabela acessível** com valores, unidade, proporção % e líderes; mobile legível, leitores de tela e exportação CSV do benchmark e da métrica por categoria.
+- Exibir a base de comparação `31/12/2025` e a definição do universo de grupos comparados; no futuro a visão histórica só poderá utilizar benchmarks por competência/perímetro corretamente harmonizado.
+
+**Teste mínimo de aceitação (dados sintéticos rotulados):** grupo A com 1.500 transformadores de força, líder com 2.000 → eixo A=75%, eixo benchmark=100%; líder do próximo eixo pertence a outro grupo sem afetar o primeiro; grupo A versus B usa mesma escala por eixo; indisponível → N/D, não 0; `Brasil total` não é `MAX_grupo`. Nenhum número sintético deve chegar ao release público.
+
 ## 5. Panorama Brasil — revisão sem poluição visual
 
 - Dar prioridade ao mapa ARAT, composição de indicadores verificáveis e navegação por ativos/conceitos, não apenas siglas técnicas.
