@@ -62,7 +62,7 @@ Se publicação estiver bloqueada por autenticação/permissão, **não inventar
 
 Converter o protótipo HTML demonstrativo em aplicação profissional, conforme `PLANO-GERAL.md`, preferencialmente **Next.js + TypeScript + React + Lucide + MapLibre GL + ECharts**. Avaliar viabilidade de manter aplicação estática bem construída como passo intermediário caso o provisionamento do banco esteja bloqueado, mas entregar código testado e arquitetura expansível. Não apagar recursos funcionais da interface anterior antes de substituí-los por equivalentes.
 
-**Identidade do site: `Núcleo de Dados da BDGD`, atribuição no rodapé `Desenvolvido por Arthur Henrique Lima`.** Visual moderno corporativo, clean, acessível, tema claro/escuro, menu lateral recolhível e layout adaptado ao mobile.
+**Identidade do site: `Núcleo de Dados da BDGD`, atribuição no rodapé `Desenvolvido por Arthur Henrique Lima`.** **O padrão de UI/UX exigido é premium, minimalista, sofisticado e autoral, com motion design e microinterações personalizadas**, sem aparência genérica de template ou de painel gerado por IA. Essa é uma exigência de aceitação, não sugestão estética. **LEIA E EXECUTE INTEGRALMENTE**: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md). Nele estão especificados design tokens, tipografia, paleta light/dark própria, composição sob medida, animações, comportamentos do mapa e gráficos, acessibilidade, screenshots e rodadas de refinamento.
 
 Páginas / seções mínimas:
 
@@ -93,6 +93,15 @@ Páginas / seções mínimas:
 - Registrar no roadmap/menu opcional como `Em planejamento`, sem apresentar resultados calculados, sem treinar ML, sem usar dados 2022–2024 no dashboard 2025.
 
 Ao lado de cada KPI e exportação incluir fonte, status e data-base. **Nenhum número real pode ter fallback silencioso para amostras fictícias.** Quando sem dados, apresentar estado vazio/indisponível.
+
+### A3.1 — Critério obrigatório de design refinado
+
+Antes de classificar o dashboard como concluído:
+- Entregar **direção de arte** com paleta, tipografia, hierarquia, grids e regras de interação, evitando glassmorphism/gradientes/neons genéricos, cards repetitivos e aparente template de IA.
+- Implementar **microinterações sob medida** nas transições de páginas, menu lateral, mapa ARAT real, filtros DDA em cascata, seletores, estados carregando/vazio/erro, tooltips, comparador e gráficos; movimentação elegante e informativa (aprox. 180–280 ms para transições pequenas), com `prefers-reduced-motion` respeitado.
+- Testar e **inspecionar screenshots reais** do produto nas quatro páginas principais, desktop/mobile, temas light/dark; executar **duas rodadas de revisão visual** e corrigir espaçamentos, alinhamento, tipografia, interatividade e contraste.
+- A aparência deve ser de um **produto de dados profissional e singular**, não um mockup estático nem template pronto; a animação nunca pode comprometer precisão, performance ou acessibilidade.
+- A impossibilidade de fazer deploy na Vercel **não reduz o escopo de design**: o produto precisa funcionar localmente com a experiência completa.
 
 ## FASE A4 — backend, GitHub, infraestrutura e publicação
 
