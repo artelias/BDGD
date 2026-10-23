@@ -88,6 +88,26 @@ Criar uma **linguagem de movimento consistente** que ajude a compreender transi�
 
 **Gate:** considerar a Fase A incompleta se só existir estrutura técnica sem design refinado, se animações forem meramente decorativas, se os gráficos/ARAT não forem interativos, ou se a interface não funcionar/for ilegível em smartphone.
 
+## 7.1. Catálogo complementar 21st.dev — seleção criteriosa de componentes
+
+**Referência adicional indicada pelo responsável:** https://21st.dev/ — biblioteca de componentes React/TypeScript, geralmente com Tailwind e padrões shadcn/ui, que disponibiliza previews e código para adaptação ao projeto. **Não substitui a direção de arte Apple-inspired, nem significa instalar um template inteiro.**
+
+Antes de criar do zero qualquer microinteração, o Claude poderá investigar o catálogo de componentes de navegação, botões, menus, popovers, transições, números animados, skeleton/loading e estados vazios e escolher **apenas o que melhorar a experiência real de análise BDGD**. Exemplos adequados:
+- número animado de KPI (`Number Ticker` ou equivalente), somente quando for compreensível e não distorcer números de origem;
+- microinterações de botão/foco/hover e revelações curtas com propósito;
+- menus e painéis de filtros que preservem teclado e acessibilidade;
+- transições contextuais em navegação, facetas, comparador e painéis do mapa (sem substituir MapLibre/ARAT e sem animações 3D custosas).
+
+**Procedimento obrigatório antes de incorporar componentes externos:**
+1. Abrir a página do componente selecionado e inspecionar **código real, autor, versão, licença específica** e dependências (não presumir que todos usam MIT ou a mesma licença).
+2. Avaliar acessibilidade, `prefers-reduced-motion`, contraste, suporte touch/teclado e custo de bundle. Rejeitar efeitos excessivos, WebGL de fundo, partículas, animações infinitas ou bibliotecas pesadas sem valor analítico demonstrado.
+3. Adaptar cores, tipografia, radius, easing e elementos ao **design system próprio do Núcleo BDGD**; não copiar bloco inteiro sem revisão. Código importado deve ser legível, mantido no repositório e acompanhado da atribuição/licença exigida.
+4. Não vincular runtime ao serviço 21st.dev, nem colocar credenciais/API key no repositório; instalações CLI/MCP só com ferramentas legítimas e nenhum plano pago sem autorização.
+5. Testar componente adaptado no design real, inclusive light/dark, mobile, dados reais/ND, teclado e redução de movimento; remover se tornar a interface genérica ou comprometer desempenho.
+
+**Prioridade visual:** qualidade de interação inspirada na Apple; **21st.dev é um catálogo opcional de blocos de implementação**, jamais a identidade visual do produto.
+
+
 ## 8. Limites éticos e funcionais
 
 - Não inventar dados, grupos ou dimensões para preencher telas; a identidade visual deve funcionar igualmente com `N/D` e cobertura parcial.
