@@ -68,6 +68,12 @@ Linhas: distribuidoras; dimensões institucionais: grupo econômico, UF, data-ba
 
 Recorte A e B independentes: distribuidora ou grupo. Todas as entidades aparecem em linhas com unidade + valor A + valor B + diferença + variação %. Quociente percentual indisponível quando B=0; quando dados-base diferem, exibir advertência.
 
+## 7.1. Direção de arte e padrão de experiência (obrigatório)
+
+O dashboard deverá ter **identidade visual própria, minimalista, sofisticada e editorial**, não aparência genérica de template/IA. Implementar design system com tokens semânticos light/dark, tipografia refinada, composição deliberada e microinterações funcionais (mapa, filtros, comparador, tabelas, navegação e gráficos). O motion design deve ter transições sutis e coerentes, nunca efeitos decorativos excessivos; respeitar `prefers-reduced-motion`, contraste e interatividade por teclado. Avaliar screenshots reais das telas em desktop/smartphone e refinar em pelo menos duas passagens. **Deploy não é condição para concluir refinamento visual**, que também precisa funcionar localmente.
+
+Critérios normativos detalhados: [DIRECAO-ARTE-UIUX.md](DIRECAO-ARTE-UIUX.md).
+
 ## 8. Roadmap
 
 **M0 — Protótipo (iniciado)**: UI pública estática, polígonos *apenas ilustrativos*, filtros, matriz e comparador demonstrativos.
