@@ -30,7 +30,7 @@ const NAV2: NavItem[] = [
   { href: "/metodologia/", label: "Metodologia e qualidade", short: "Metodologia", icon: BookOpen },
   { href: "/previsoes/", label: "Previsões", short: "Previsões", icon: ChartSpline, tag: "Futuro" },
 ];
-const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional de ativos", "/evolucao/": "Evolução histórica", "/comparar/": "Comparador", "/explorar/": "Explorar ativos", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Previsões", "/design/": "Sistema de componentes" };
+const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional", "/evolucao/": "Evolução histórica", "/comparar/": "Comparador", "/explorar/": "Explorar ativos", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Previsões", "/design/": "Sistema de componentes" };
 
 const THEME_NEXT: Record<ThemePref, ThemePref> = { system: "light", light: "dark", dark: "system" };
 const THEME_LABEL: Record<ThemePref, string> = { system: "Tema do sistema", light: "Tema claro", dark: "Tema escuro" };
