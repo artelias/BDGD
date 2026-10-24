@@ -7,29 +7,56 @@ A decisao sobre qual publicacao usar NAO e tomada aqui. equivalencia_duplicatas.
   - registros, atributos, TUC/A1-A6, codigos DDA, vinculos e geometria identicos      -> equivalentes;
   - qualquer diferenca ou comparacao impossivel                                     -> revisao humana (pendente).
 Totais iguais nos ativos nao comprovam equivalencia.
-Uso: duplicatas_historico.py [--memory-mb 768]"""
+Correcao de memoria (24/10/2026): usa pipeline_antijoin.py, copia do pipeline.py em que a checagem de vinculos
+NOT IN (mark join, sem uso de disco) virou LEFT JOIN contra chaves DISTINCT (mesmo resultado, pode usar disco).
+O pipeline.py original fica intacto para nao invalidar o hash dos checkpoints ja concluidos; os checkpoints novos
+registram o hash do pipeline_antijoin.py. --retentar-oom tambem reprocessa itens 'candidato' que falharam por
+OutOfMemoryException (o failure.json anterior e preservado como failure.oom_anterior.json).
+Uso: duplicatas_historico.py [--memory-mb 768] [--retentar-oom]"""
 import argparse, csv, json, os, sys, traceback
 from pathlib import Path
 
 HROOT = Path(os.environ.get("BDGD_HIST_ROOT", "D:/NUCLEO_BDGD_2022_2024"))
 sys.path.insert(0, str(HROOT / "repo" / "nucleo-dados-bdgd" / "historico"))
 import run as R          # noqa: E402  (lock, resource_gate, completed, checkpoint, atomic_json, now)
-import pipeline as P     # noqa: E402
+import pipeline_antijoin as P     # noqa: E402
+import hashlib             # noqa: E402
+SHA_P = hashlib.sha256(Path(P.__file__).read_bytes()).hexdigest()
+
+
+def feito(row):
+    """Concluido pelo pipeline original (R.completed) ou pelo pipeline_antijoin."""
+    if R.completed(HROOT, row): return True
+    ck = R.checkpoint(HROOT, row)
+    if not ck.exists(): return False
+    rec = json.loads(ck.read_text(encoding="utf-8"))
+    return rec.get("item_id") == row["item_id"] and rec.get("data_base") == row["data_base"] and rec.get("reconciliation_failures") == 0 and rec.get("pipeline_sha256") == SHA_P
+
+
+def falha_oom(row):
+    f = R.checkpoint(HROOT, row).parent / "failure.json"
+    return f.exists() and json.loads(f.read_text(encoding="utf-8")).get("error_type") == "OutOfMemoryException"
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--memory-mb", type=int, default=768); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument("--memory-mb", type=int, default=768); ap.add_argument("--retentar-oom", action="store_true"); a = ap.parse_args()
     inv = HROOT / "inventario" / "inventario_historico_2022_2024.csv"
-    rows = [r for r in R.csv_read(inv) if r["status"] == "revisao_pendente"]
+    todos = R.csv_read(inv)
+    rows = [r for r in todos if r["status"] == "revisao_pendente"]
+    if a.retentar_oom:
+        oom = [r for r in todos if r["status"] == "candidato" and not feito(r) and falha_oom(r)]
+        for r in oom:
+            f = R.checkpoint(HROOT, r).parent / "failure.json"; f.replace(f.with_name("failure.oom_" + R.now().replace(":", "").replace("+", "_") + ".json"))
+        rows += oom
     rows.sort(key=lambda r: (int(r["tamanho_bytes"] or 0), r["ano"], r["dist"]))
     with R.lock(HROOT):
         for row in rows:
-            if R.completed(HROOT, row) or (R.checkpoint(HROOT, row).parent / "failure.json").exists():
+            if feito(row) or (R.checkpoint(HROOT, row).parent / "failure.json").exists():
                 continue
             mem = min(a.memory_mb, 128) if int(row["tamanho_bytes"] or 0) <= 20 * 1024 ** 2 else a.memory_mb
             if not R.resource_gate(HROOT, row, True, mem):
                 return
-            print(f"START duplicata {row['ano']}/{row['dist']} {row['item_id']}", flush=True)
+            print(f"START {row['status']} {row['ano']}/{row['dist']} {row['item_id']}", flush=True)
             try:
                 P.process(row, HROOT, mem)
             except Exception as exc:

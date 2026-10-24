@@ -70,14 +70,20 @@ Totais nacionais (2025):
 
 ETL histórico (runner do Codex) retomado com checkpoints, sem reprocessar 2025. Na estabilização, o limite do DuckDB caiu para 768 MB (`run.py --wait --memory-mb 768`, log `logs/run5.stdout.log`), porque a reserva de RAM de 1.024 + 384 MB travava o runner em `RESOURCE WAIT`.
 
-| Competência | No início da R3 | Estabilização (24/10/2026, série intermediária) |
+| Competência | No início da R3 | Fechamento do processamento (24/10/2026) |
 |---|---|---|
-| 2022 | 74/99 processadas | 84 de 102 publicações validadas · 4 com BASE de outra competência · 11 itens no runner · 3 pares de publicação múltipla aguardando |
-| 2023 | 62/89 | 71 de 101 validadas · 7 com BASE de outra competência · 11 itens no runner · 12 pares aguardando |
-| 2024 | 76/97 | 86 de 97 validadas · 11 itens no runner |
+| 2022 | 74/99 processadas | 95 de 102 validadas · 5 com BASE de outra competência · 2 pares sem equivalência (decisão humana) |
+| 2023 | 62/89 | 83 de 101 validadas · 7 com BASE de outra competência · 11 pares sem equivalência (decisão humana) |
+| 2024 | 76/97 | 97 de 97 validadas (completo tecnicamente) |
 | 2025 | — | 99/99, homologado |
 
-A série é intermediária: no fechamento faltavam 33 itens no runner (~60 GB, os maiores com 2 a 4 GB) e as 30 publicações múltiplas (~10 GB). O processamento segue sozinho, em série, por `etl/bdgd2025/cadeia_historico.sh`: runner, depois duplicatas, 78, equivalência integral, 79 e validador.
+**Nenhum item em falha.** Todos os itens publicados foram processados ou têm motivo documentado (`qa_itens_auditoria.csv`, por ano/DIST/item: registros, hash do pipeline, origem ArcGIS, SHA-256 da fonte, estado na série e motivo).
+
+**Memória:** 8 itens grandes (Enel SP 390 e Neoenergia Coelba 47 em 2022–2024; Cemig-D 4950 em 2023–2024) estouravam 768 MB na checagem de vínculos órfãos (`NOT IN` sem uso de disco). A consulta foi reescrita como `LEFT JOIN` contra chaves `DISTINCT`, com resultado idêntico, conferido em 2 distribuidoras de controle. Mesmo assim, esses itens só concluíram com DuckDB a 1.536 MB, necessidade registrada nos `failure.oom_*.json` preservados. A correção ficou em `pipeline_antijoin.py` (cópia em `etl/bdgd2025/historico_patch/`). O `pipeline.py` original segue intacto, porque o runner valida o hash dele em cada checkpoint. Checkpoints: 261 do original (`d1811842211b`) e 40 do `pipeline_antijoin.py` (`e348a1afa64d`), todos íntegros. Uma tentativa de alterar o `pipeline.py` levou o runner a reprocessar tudo; foi interrompida após 3 itens pequenos (Cersad), já registrados com o novo hash.
+
+**Equatorial GO 2022 (6072):** o ZIP traz dois GDBs (`Enel_GO_…` e `Equatorial_GO_…`). `equivalencia_gdb_duplo.py` comprovou equivalência integral nas 43 camadas (esquema, contagem, atributos e geometria). O item foi processado com o GDB do controlador vigente, e a escolha está registrada em `gdb_escolhido.json` (evidência: `evidencia_6072_gdb_duplo.json`).
+
+**Consistência temporal** (`qa_consistencia_temporal.csv`): de 5.904 pares ano-a-ano validados, 238 têm variação acima de 50% ou indo a/de zero. Destes, 20 são explicados por quebra de classificação marcada e 218 ficam para revisão: geradores (GD em expansão), ativos de contagem pequena e transformadores de medida. **Por isso nenhuma competência histórica é declarada homologada**; 2024 está completo tecnicamente, com sinais a revisar.
 
 - **Mesma regra:** `78_conceitos_historico.py` aplica o próprio `77_conceitos.py` ao Parquet histórico, sem cópia de regras.
 - **Quebra de classificação:** `79_serie_historica.py` marca quando a parcela sem TUC muda mais de 10 p.p. Exemplo: CEA, chaves de 3.697 em 2022 para 19.131 em 2024, efeito de recadastro e não de crescimento físico.

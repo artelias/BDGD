@@ -22,7 +22,7 @@ def main():
         try: cur = json.loads((H / "current.json").read_text(encoding="utf-8"))
         except Exception: cur = {}
         novos = []
-        for f in sorted((H / "logs").glob("run6.*.log")) + sorted(pathlib.Path("D:/NUCLEO_BDGD_2025/logs").glob("dup*.log")):
+        for f in sorted((H / "logs").glob("run[67].*.log")) + sorted(pathlib.Path("D:/NUCLEO_BDGD_2025/logs").glob("dup*.log")):
             linhas = f.read_text(encoding="utf-8", errors="replace").splitlines()
             ini = vistos.get(f, 0); vistos[f] = len(linhas)
             novos += [f"{f.name}: {l[:200]}" for l in linhas[ini:] if PADRAO.search(l)]
