@@ -103,16 +103,6 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("#dicionario")).toBeAttached();
   });
 
-  test("R2 comparador: barras espelhadas e radar com benchmark acima de 100%", async ({ page }) => {
-    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial&grafico=valores&ref=bench_dists");
-    await expect(page.getByTestId("chart-espelhado")).toBeVisible();
-    await expect(page.getByTestId("radar-tabela")).toBeVisible();
-    const pcts = await page.locator('[data-testid^="radar-pct-"]').allInnerTexts();
-    expect(pcts.some((x) => parseFloat(x.replace(".", "").replace(",", ".")) > 100)).toBeTruthy();
-    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("radar-csv").click()]);
-    expect(dl.suggestedFilename()).toContain("radar");
-  });
-
   test("R2 evolução: histórico em preparação sem números de ativos", async ({ page }) => {
     await page.goto("/evolucao/");
     await expect(page.getByTestId("historico-preparacao")).toBeVisible();

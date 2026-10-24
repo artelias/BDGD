@@ -126,3 +126,39 @@ test.describe("R3 — Matriz Nacional por ativo", () => {
     await expect(page.getByTestId("matriz-tabela")).toContainText("kVA");
   });
 });
+
+test.describe("R3 — Comparador com abas e filtros compartilhados", () => {
+  test("três abas alternativas; só a selecionada é renderizada", async ({ page }) => {
+    await page.goto("/comparar/");
+    await expect(page.getByTestId("comparar-tabela")).toBeVisible();
+    await expect(page.getByTestId("radar")).toHaveCount(0);
+    await page.getByRole("radio", { name: "Gráficos" }).click();
+    await expect(page.getByTestId("chart-comparacao")).toBeVisible();
+    await expect(page.getByTestId("comparar-tabela")).toHaveCount(0);
+    await page.getByRole("radio", { name: "Valores A × B" }).click();
+    await expect(page.getByTestId("chart-espelhado")).toBeVisible();
+    await page.getByRole("radio", { name: "Radar" }).click();
+    await expect(page.getByTestId("radar-tabela")).toBeVisible();
+    await expect(page).toHaveURL(/aba=radar/);
+  });
+
+  test("o mesmo recorte vale para A e B: A = valor do Explorar no grupo", async ({ page }) => {
+    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial&ativo=religadores&f=area:NU");
+    const linhaTotal = page.getByTestId("comparar-tabela").locator("tbody tr").first();
+    const a = num(await linhaTotal.locator("td").nth(2).innerText());
+    await page.goto("/explorar/?ativo=religadores&escopo=grupo:energisa&f=area:NU");
+    expect(await valor(page)).toBe(a);
+  });
+
+  test("benchmark recalculado após o filtro (acima de 100% permitido)", async ({ page }) => {
+    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial&ativo=transformadores&f=area:NU&aba=radar&ref=bench_dists");
+    await expect(page.getByTestId("radar-tabela")).toBeVisible();
+    const sem = await page.locator('[data-testid^="radar-pct-"]').allInnerTexts();
+    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial&ativo=transformadores&aba=radar&ref=bench_dists");
+    const com = await page.locator('[data-testid^="radar-pct-"]').allInnerTexts();
+    expect(sem.join()).not.toBe(com.join());
+    expect(sem.some((x) => num(x) > 100)).toBeTruthy();
+    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("radar-csv").click()]);
+    expect(dl.suggestedFilename()).toContain("radar");
+  });
+});

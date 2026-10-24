@@ -105,6 +105,28 @@ export function agregarPorDist(cd: ConceitoData, r: Recorte, m: MedidaConceito):
   return porDist;
 }
 
+/** Valor por categoria de `dim` e por DIST (uma passada), para comparar A, B e benchmarks no mesmo recorte. */
+export function porDistPorCategoria(cd: ConceitoData, dim: string, r: Recorte, m: MedidaConceito): Map<string, Map<number, number | null>> | null {
+  const cid = escolherCubo(cd, [...dimsDoRecorte(r), dim]);
+  if (!cid) return null;
+  const match = matcher(cd, cid, r), pm = posMedida(cd, cid, m), pd = cd.cubos[cid].dims.indexOf(dim) + 1;
+  if (!match || pm < 0) return null;
+  const out = new Map<string, Map<number, number | null>>();
+  const presentes = new Set<number>();
+  for (const row of cd.cubos[cid].rows) {
+    const d = row[0] as number, v = row[pm];
+    if (v !== -1) presentes.add(d);
+    if (!match(row) || v === -1) continue;
+    const code = cd.valores[dim][row[pd] as number];
+    let mm = out.get(code); if (!mm) { mm = new Map(); out.set(code, mm); }
+    const cur = mm.get(d);
+    mm.set(d, v === null || cur === null ? null : (cur ?? 0) + v);
+  }
+  // DIST com o ativo, mas sem a categoria, vale zero (não é ausência)
+  for (const mm of out.values()) for (const d of presentes) if (!mm.has(d)) mm.set(d, 0);
+  return out;
+}
+
 export function rotulo(cd: ConceitoData, dim: string, code: string, r?: Recorte): string {
   if (dim === "a1") {
     const tipos = r?.filtro.tipo;
