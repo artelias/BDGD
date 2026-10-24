@@ -1,5 +1,5 @@
 "use client";
-import { ArrowLeft, Check, ChevronDown, ExternalLink, GitCompareArrows, Layers3, Locate, Search, SlidersHorizontal, Table2, TriangleAlert, X } from "lucide-react";
+import { ArrowLeft, Check, ChevronDown, ExternalLink, GitCompareArrows, Layers3, Locate, Search, SlidersHorizontal, Table2, X } from "lucide-react";
 import { AnimatePresence, motion, useAnimationControls, type PanInfo } from "motion/react";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -10,27 +10,21 @@ import { Button } from "@/components/ui/Button";
 import { Explain } from "@/components/ui/Explain";
 import { DataError, LoadingBlock, Tip } from "@/components/ui/Feedback";
 import { Pill, StatusDot, Ticker, Value } from "@/components/ui/Value";
-import { indicador, INDICADOR_PADRAO, INDICADORES, nomeNegocio, PRESETS_INDICADORES } from "@/lib/catalogo";
+import { nomeNegocio } from "@/lib/catalogo";
+import { marcosDaDistribuidora } from "@/lib/marcos-distribuidoras";
 import { groupColor } from "@/lib/colors";
 import { displayName, type Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
 import { fmt, fmtArea, fmtCompact, METRIC_UNIT } from "@/lib/format";
-import { coberturaTexto, kpiValue, ndDetalhe, ndFrase, type KpiDef, type NdItem } from "@/lib/kpis";
+import { coberturaTexto } from "@/lib/kpis";
+import { PANORAMA_IDS, PANORAMA_KPIS, PANORAMA_PRESETS, panoramaIndicador, panoramaValue, type PanoramaKpi as KpiDef } from "@/lib/panorama-r3";
 import { useMediaQuery, useStoredValue } from "@/lib/hooks";
 import { useTheme, useReducedMotion } from "@/lib/theme";
 import type { Metric, Scope } from "@/lib/types";
 import { useQueryPatch, useQueryState } from "@/lib/url-state";
 import s from "@/app/panorama.module.css";
 
-const ALERT_LABEL: Record<string, string> = {
-  potencia_UG_acima_75kW: "Potência de geração acima de 75 kW em registros de BT (preservada, não somada)",
-  uc_cod_id_ativo_duplicado: "Consumidores com mais de um registro ativo pelo mesmo código (quantidade N/D)",
-  uc_sobreposicao_entre_entidades: "Mesmo código de consumidor em mais de uma tabela de consumidores",
-  filtro_indisponivel: "Filtro por circuito/subestação indisponível por chaves órfãs",
-  divergencia_potencia: "Potência divergente entre unidade e equipamento transformador",
-  POT_NOM_provavel_MVA: "Potência de unidade transformadora aparentemente em MVA",
-};
-const MAX_KPIS = 8;
+const MAX_KPIS = 10;
 const RANK_TOP = 12;
 
 function useIsMobile() { return useMediaQuery("(max-width: 900px)"); }
@@ -58,7 +52,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
   const [distQ] = useQueryState("dist");
   const [grupoQ] = useQueryState("grupo");
   const [kpiQ, setKpi] = useQueryState("indicador", "ssdmt");
-  const [kpiIdsRaw, setKpiIds] = useStoredValue("bdgd.panorama.indicadores", INDICADOR_PADRAO.join(","));
+  const [kpiIdsRaw, setKpiIds] = useStoredValue("bdgd.panorama.r3.indicadores", PANORAMA_IDS.join(","));
   const patch = useQueryPatch();
   const mapRef = useRef<AratMapHandle>(null);
   const [hover, setHover] = useState<HoverInfo | null>(null);
@@ -70,10 +64,10 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
   const scopeDists = useMemo(() => ds.scopeDists(scope), [ds, scope.tipo, selected, grupo]); // eslint-disable-line react-hooks/exhaustive-deps
   const highlight = useMemo(() => (grupo ? new Set(ds.groupDists(grupo).map((d) => d.dist)) : null), [ds, grupo]);
   const kpis = useMemo(() => {
-    const ids = kpiIdsRaw.split(",").filter((id) => indicador(id));
-    return (ids.length ? ids : INDICADOR_PADRAO).slice(0, MAX_KPIS).map((id) => indicador(id)!);
+    const ids = kpiIdsRaw.split(",").filter((id) => panoramaIndicador(id));
+    return (ids.length ? ids : PANORAMA_IDS).slice(0, MAX_KPIS).map((id) => panoramaIndicador(id)!);
   }, [kpiIdsRaw]);
-  const kpi = indicador(kpiQ) ?? kpis[0];
+  const kpi = panoramaIndicador(kpiQ) ?? kpis[0];
   const rel = ds.raw.release;
 
   // Clicar de novo na mesma distribuidora (ou fora dos polígonos) volta ao enquadramento nacional.
@@ -105,8 +99,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
           <div className="eyebrow">BDGD · ANEEL · data-base 31/12/2025</div>
           <h1 className="display" style={{ marginTop: 8 }}>Panorama Brasil</h1>
           <p className="lede">
-            Ativos de <b className="num">{rel.cobertura.processadas}</b> distribuidoras, a partir da BDGD 2025 publicada pela ANEEL.
-            {" "}Distribuidoras sem publicação desta competência aparecem como ausentes, nunca como zero.
+            Explore os ativos cadastrados pelas <b className="num">{rel.cobertura.processadas}</b> distribuidoras com BDGD publicada em 2025. <Link href="/metodologia/#qualidade">Cobertura e metodologia</Link>.
           </p>
           {!homologado && (
             <p className={s.notice} data-testid="aviso-validacao">
@@ -128,7 +121,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
         <AnimatePresence>
           {hover && !mobile && (() => {
             const d = ds.dist(hover.dist); if (!d) return null; const g = d.grupo_status === "verificado" ? ds.grupo(d.grupo) : null;
-            const v = kpiValue(ds, kpi, [d.dist]).v;
+            const v = panoramaValue(ds, kpi, [d.dist]).v;
             return (
               <motion.div key="tip" className={mapStyles.hoverTip} style={{ left: hover.x, top: hover.y }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.12 }}>
                 <b>{displayName(d)}</b> <span>{d.nome !== d.sigla ? d.nome : `DIST ${d.dist}`}</span><br />
@@ -178,7 +171,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
                             <div className={s.rowName}>{displayName(d)}</div>
                             <div className={s.rowMeta}>DIST {d.dist}{d.ufs.length ? ` · ${d.ufs.join(", ")}` : ""}</div>
                           </span>
-                          <span className={s.rowVal}>{fmtCompact(kpiValue(ds, kpi, [d.dist]).v, kpi.metric)}</span>
+                          <span className={s.rowVal}>{fmtCompact(panoramaValue(ds, kpi, [d.dist]).v, kpi.metric)}</span>
                         </button>
                       </li>
                     ))}
@@ -272,19 +265,18 @@ function GroupNote({ ds, id }: { ds: Dataset; id: string }) {
   );
 }
 
-const DETAIL = ["uc", "ssdmt", "ssdbt", "untrmt", "eqtrmt", "ugbt", "sub", "ssdat"];
+const DETAIL = PANORAMA_IDS;
 
 function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; onBack: () => void; theme: "light" | "dark" }) {
   const d = ds.dist(dist)!;
   const g = d.grupo_status === "verificado" ? ds.grupo(d.grupo) : null;
-  const alerts = Object.entries(d.alertas);
-  const filtros = ds.raw.filtrosIndisponiveis.filter((f) => f.dist === dist);
+  const marcos = marcosDaDistribuidora(dist);
   return (
     <>
       <div className={s.panelHead}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <button className={s.back} onClick={onBack} data-testid="panel-back"><ArrowLeft size={15} /> Brasil</button>
-          <Pill tone={alerts.length ? "warn" : "ok"}>{alerts.length ? `${alerts.reduce((a, [, n]) => a + n, 0)} alertas de qualidade` : "Sem alertas"}</Pill>
+          
         </div>
         <h2 className={s.dTitle} data-testid="dist-title">{displayName(d)}</h2>
         {d.nome && d.nome !== d.sigla && <div className="caption" style={{ marginBottom: 4 }}>{d.nome}</div>}
@@ -304,13 +296,12 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
       <div className={s.panelBody}>
         <div className={s.metrics} style={{ margin: 0 }}>
           {DETAIL.map((id) => {
-            const def = indicador(id)!; const a = kpiValue(ds, def, [dist]);
-            const c = def.ent ? ds.cell(dist, def.ent, def.metric) : null;
+            const def = panoramaIndicador(id)!; const a = panoramaValue(ds, def, [dist]);
             return (
               <div key={id} className={s.metric}>
-                <div className={s.metricLabel}>{def.nome}{c && c.status !== "a" && <StatusDot status={c.status} />}</div>
+                <div className={s.metricLabel}>{def.nome}</div>
                 <div className={s.metricValue}><Value v={a.v} metric={def.metric} /></div>
-                {a.v === null && <div className={s.metricNd}>{c?.motivo || (def.ent && !c ? "Sem esse tipo de ativo no arquivo" : "Valor não homologado")}</div>}
+                {a.v === null && <div className={s.metricNd}>Dado indisponível; consulte a metodologia.</div>}
               </div>
             );
           })}
@@ -322,13 +313,20 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
             <Link href={`/explorar/?escopo=dist:${dist}`} style={{ display: "contents" }}><Button style={{ width: "100%", gridColumn: "1 / -1" }} tabIndex={-1}><Layers3 size={15} /> Explorar ativos</Button></Link>
           </div>
         </div>
-        {(alerts.length > 0 || filtros.length > 0) && (
-          <div className={s.section}>
-            <h3 className={s.sectionTitle}>Qualidade dos dados</h3>
-            <ul className={s.alertList}>
-              {alerts.map(([t, n]) => <li key={t}><TriangleAlert size={12} color="var(--warn)" aria-hidden /><span>{ALERT_LABEL[t] ?? t}{n > 1 ? ` (${n})` : ""}</span></li>)}
-            </ul>
-            <div className="caption" style={{ marginTop: 8 }}>Alertas não bloqueiam indicadores independentes corretos. <Link href="/metodologia/#qualidade" style={{ color: "var(--accent)" }}>Detalhes</Link></div>
+        {marcos.length > 0 && (
+          <div className={s.section} data-testid="marcos-distribuidora">
+            <h3 className={s.sectionTitle}>Destaques da distribuidora</h3>
+            <p className="caption" style={{ marginBottom: 12 }}>Marcos com fonte identificada; o ano do resultado pode ser diferente do ano da divulgação.</p>
+            {marcos.map((m) => (
+              <article key={m.titulo} style={{ marginBottom: 14 }}>
+                <strong>{m.titulo}</strong>
+                <p className="caption" style={{ marginTop: 4 }}>{m.descricao}</p>
+                <a href={m.fonte} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 4, minHeight: 24 }}>
+                  {m.fonteNome} <ExternalLink size={12} aria-hidden />
+                </a>
+                <div className="caption">Referência {m.anoReferencia} · divulgado em {m.dataDivulgacao.split("-").reverse().join("/")}</div>
+              </article>
+            ))}
           </div>
         )}
         <div className={s.section} style={{ borderBottom: 0 }}>
@@ -344,28 +342,8 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
   );
 }
 
-/** Explica, em linguagem direta, quem ficou sem valor e por quê. */
-function NdNote({ items, testId }: { items: NdItem[]; testId?: string }) {
-  if (!items.length) return null;
-  const motivos = [...new Set(items.map((i) => i.motivo))];
-  return (
-    <span className={s.ndNote} data-testid={testId}>
-      {ndFrase(items.length)}
-      <Explain title={ndFrase(items.length)} label="Por quê?" testId={testId ? `${testId}-why` : undefined}
-        ressalva="Essas distribuidoras ficam fora da soma. O total mostrado representa apenas as que têm valor homologado.">
-        <span style={{ display: "block" }}>{motivos.length === 1 ? motivos[0] : "Motivos registrados no pacote:"}</span>
-        <ul className={s.ndList}>
-          {items.slice(0, 12).map((i) => <li key={i.dist}><b>{i.sigla}</b> <span className="faint">DIST {i.dist}</span>{motivos.length > 1 ? <> · {i.motivo}</> : null}</li>)}
-          {items.length > 12 && <li className="faint">e mais {items.length - 12}</li>}
-        </ul>
-      </Explain>
-    </span>
-  );
-}
-
 function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; dists: number[]; active: boolean; onClick: () => void }) {
-  const a = kpiValue(ds, k, dists);
-  const nd = useMemo(() => ndDetalhe(ds, k, dists), [ds, k, dists]);
+  const a = panoramaValue(ds, k, dists);
   return (
     <div className={s.kpi} data-active={active}>
       <button className={s.kpiHit} aria-pressed={active} onClick={onClick} data-testid={`kpi-${k.id}`} aria-label={`${k.nome}: usar nos gráficos abaixo`} />
@@ -377,7 +355,7 @@ function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; di
           <Explain title={k.nome} tecnico={k.tecnico} ressalva={k.ressalva} cobertura={coberturaTexto(a)} testId={`explain-${k.id}`}>{k.explicacao}</Explain>
         </span>
       </div>
-      {nd.length > 0 && <div className={s.kpiNd}><NdNote items={nd} testId={`nd-${k.id}`} /></div>}
+      {a.partial && <div className={s.kpiNd}><span className={s.ndNote}>Total indisponível para o recorte · <Link href="/metodologia/#qualidade" style={{ display: "inline-flex", alignItems: "center", minHeight: 24, paddingInline: 4 }}>Ver cobertura</Link></span></div>}
     </div>
   );
 }
@@ -405,14 +383,14 @@ function KpiPicker({ ids, onChange }: { ids: string[]; onChange: (ids: string[])
           <motion.div className={s.picker} role="dialog" aria-label="Escolher indicadores" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -2 }} transition={{ duration: 0.16 }}>
             <div className={s.pickerHead}>Conjuntos prontos</div>
             <div className={s.pickerPresets}>
-              {PRESETS_INDICADORES.map((p) => {
+              {PANORAMA_PRESETS.map((p) => {
                 const on = p.ids.join(",") === ids.join(",");
                 return <button key={p.id} className={s.presetBtn} aria-pressed={on} onClick={() => onChange(p.ids)}>{p.nome}</button>;
               })}
             </div>
             <div className={s.pickerHead}>Indicadores <span className="faint">({ids.length} de até {MAX_KPIS})</span></div>
             <ul className={s.pickerList}>
-              {INDICADORES.map((i) => {
+              {PANORAMA_KPIS.map((i) => {
                 const on = ids.includes(i.id);
                 return (
                   <li key={i.id}>
@@ -435,18 +413,18 @@ function unitOf(m: Metric) { return METRIC_UNIT[m] ? ` ${METRIC_UNIT[m]}` : ""; 
 
 function GroupBlock({ ds, kpi, theme, grupo, onGroup }: { ds: Dataset; kpi: KpiDef; theme: "light" | "dark"; grupo: string | null; onGroup: (g: string | null) => void }) {
   const rows = useMemo(() => {
-    const r = ds.grupos.map((g) => ({ id: g.id, nome: g.nome, a: kpiValue(ds, kpi, ds.groupDists(g.id).map((d) => d.dist)) }));
+    const r = ds.grupos.map((g) => ({ id: g.id, nome: g.nome, a: panoramaValue(ds, kpi, ds.groupDists(g.id).map((d) => d.dist)) }));
     r.sort((x, y) => (y.a.v ?? -1) - (x.a.v ?? -1));
     return r;
   }, [ds, kpi]);
-  const sem = useMemo(() => kpiValue(ds, kpi, ds.dists.filter((d) => d.grupo_status !== "verificado").map((d) => d.dist)), [ds, kpi]);
+  const sem = useMemo(() => panoramaValue(ds, kpi, ds.dists.filter((d) => d.grupo_status !== "verificado").map((d) => d.dist)), [ds, kpi]);
   const build = useCallback((t: import("@/components/charts/EChart").ChartTokens) => ({
     grid: { left: 4, right: 70, top: 6, bottom: 6, containLabel: true },
     tooltip: { trigger: "item", backgroundColor: t.surface, borderColor: t.hairline, textStyle: { color: t.text, fontFamily: t.font, fontSize: 12 },
       formatter: (p: { dataIndex: number }) => { const r = rows[p.dataIndex]; return `<b>${r.nome}</b><br/>${fmt(r.a.v, kpi.metric)}${unitOf(kpi.metric)}<br/><span style="opacity:.7">${r.a.n} distribuidora(s) com valor${r.a.nd ? ` · ${r.a.nd} sem valor homologado` : ""}</span>`; } },
     xAxis: { type: "value", show: false },
     yAxis: { type: "category", inverse: true, data: rows.map((r) => r.nome), axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: t.text2, fontFamily: t.font, fontSize: 12 } },
-    series: [{ type: "bar", barWidth: 12, data: rows.map((r) => ({ value: r.a.v ?? 0, itemStyle: { color: groupColor(r.id, theme), opacity: grupo && grupo !== r.id ? 0.3 : 1, borderRadius: 4 } })),
+    series: [{ type: "bar", barWidth: 12, data: rows.map((r) => ({ value: r.a.v, itemStyle: { color: groupColor(r.id, theme), opacity: grupo && grupo !== r.id ? 0.3 : 1, borderRadius: 4 } })),
       label: { show: true, position: "right", color: t.text2, fontFamily: t.font, fontSize: 11, formatter: (p: { dataIndex: number }) => fmtCompact(rows[p.dataIndex].a.v, kpi.metric) } }],
   }), [rows, kpi, theme, grupo]);
   return (
@@ -470,7 +448,7 @@ function RankingBlock({ ds, kpi, dists, selected, onSelect, theme }: { ds: Datas
   const [all, setAll] = useState(false);
   const sec = useRef<HTMLElement>(null);
   const list = useRef<HTMLOListElement>(null);
-  const rows = useMemo(() => dists.map((d) => ({ d: ds.dist(d)!, v: kpiValue(ds, kpi, [d]).v })).sort((a, b) => (b.v ?? -1) - (a.v ?? -1)), [ds, kpi, dists]);
+  const rows = useMemo(() => dists.map((d) => ({ d: ds.dist(d)!, v: panoramaValue(ds, kpi, [d]).v })).sort((a, b) => (b.v ?? -1) - (a.v ?? -1)), [ds, kpi, dists]);
   const max = rows[0]?.v ?? 1;
   const shown = all ? rows : rows.slice(0, RANK_TOP);
   const nd = rows.filter((r) => r.v === null).length;
@@ -535,12 +513,11 @@ function Inventory({ ds, dists }: { ds: Dataset; dists: number[] }) {
 
 function InvLine({ ds, dists, ent, nome, metric, regra }: { ds: Dataset; dists: number[]; ent: string; nome: string; metric: Metric; regra: string }) {
   const a = ds.aggregate(dists, ent, metric);
-  const nd = a.nd ? ndDetalhe(ds, { ent, metric }, dists) : [];
   return (
     <div className={s.entLine}>
       <Link href={`/explorar/?ent=${ent}`} title={regra}>{nomeNegocio(ent, nome)}<span className="mono faint" style={{ marginLeft: 6, fontSize: "0.6875rem" }}>{ent}</span></Link>
-      <span className="num" style={{ textAlign: "right" }}>{fmtCompact(a.v, metric)}</span>
-      {nd.length > 0 && <span className={s.entNd}><NdNote items={nd} /></span>}
+      <span className="num" style={{ textAlign: "right" }}>{fmtCompact(a.partial || a.ausentes > 0 ? null : a.v, metric)}</span>
+      {(a.partial || a.ausentes > 0) && <span className={s.entNd}><Link href="/metodologia/#qualidade">Valor não disponível para todo o recorte · ver cobertura</Link></span>}
     </div>
   );
 }
