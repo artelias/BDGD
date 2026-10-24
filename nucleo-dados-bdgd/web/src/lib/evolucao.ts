@@ -18,6 +18,15 @@ export const ESTADO: Record<string, string> = {
   r: "mais de uma publicação válida (revisão pendente)", p: "processamento histórico em andamento", d: "arquivo de outra competência", s: "sem publicação da ANEEL neste ano",
 };
 
+/** Status do ano na cobertura: "homologado" (decisão humana registrada, hoje só 2025), "completo_tecnico" (todas as
+ * publicações elegíveis validadas pelas regras automáticas, sem homologação humana) e "parcial". */
+export const STATUS_ANO: Record<string, string> = { homologado: "homologado", completo_tecnico: "completo (validação automática)", parcial: "em validação" };
+
+/** Ano com todas as publicações elegíveis validadas: o agregado Brasil pode ser exibido (homologado ou completo técnico). */
+export function anoCompleto(statusAno: string | undefined) {
+  return statusAno === "homologado" || statusAno === "completo_tecnico";
+}
+
 export interface Ponto { ano: number; v: number | null; estado: string; quebra: boolean }
 export interface Serie { id: string; nome: string; pontos: Ponto[]; nota?: string }
 

@@ -32,7 +32,14 @@ for (const [nome, ka] of [["serie_ativos_original.csv", "ano"], ["serie_ativos_p
     if (r.valor !== "" && !/^\d+(\.\d+)?$/.test(r.valor)) erros.push(`${w}: valor numérico inválido`);
   }
 }
-for (const c of man.cobertura ?? []) if (c.status_ano.startsWith("homologado") && c.pendentes > 0) erros.push(`ano ${c.ano} homologado com pendências`);
+// "homologado" exige decisão humana registrada (hoje só 2025); "completo_tecnico" = todas as publicações elegíveis validadas
+// pelas regras automáticas, sem homologação. Status antigo "homologado_tecnico" não é mais aceito.
+const STATUS_ANO = new Set(["homologado", "completo_tecnico", "parcial"]);
+for (const c of man.cobertura ?? []) {
+  if (!STATUS_ANO.has(c.status_ano)) erros.push(`ano ${c.ano}: status_ano inválido ${c.status_ano}`);
+  if (c.status_ano !== "parcial" && c.pendentes > 0) erros.push(`ano ${c.ano} ${c.status_ano} com pendências`);
+  if (c.status_ano === "homologado" && c.ano !== 2025) erros.push(`ano ${c.ano} marcado homologado sem decisão humana registrada`);
+}
 if (webFile) {
   const web = JSON.parse(fs.readFileSync(webFile, "utf8"));
   if (web.versao_regra !== man.versao_regra || web.gerado_em !== man.gerado_em) erros.push("asset web gerado de outro pacote histórico");

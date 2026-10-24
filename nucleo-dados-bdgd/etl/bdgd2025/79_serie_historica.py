@@ -189,7 +189,7 @@ def main():
                               "origens_incluidas": "+".join(str(p["dist_origem"]) for p in origens if p["status_qualidade"] == "validado"),
                               "comparabilidade": "quebra_perimetro" if any(p["evento_id"] for p in origens) else ("quebra_classificacao" if (d, ano, a["id"]) in comp else "comparavel"),
                               "perimetro_referencia": 2025, "modelo": "consolidado_comparavel", "motivo": mo})
-    # ---- cobertura por ano e manifesto (ano homologado so com todas as elegiveis validadas)
+    # ---- cobertura por ano e manifesto (completo_tecnico so com todas as elegiveis validadas; homologado exige decisao humana)
     cob = []
     for ano in ANOS:
         ds_ano = {k[0] for k in cel if k[1] == ano and cel[k]["status"] not in ("sem_publicacao",)}
@@ -197,7 +197,7 @@ def main():
         pend = {k[0] for k in cel if k[1] == ano and cel[k]["status"] in ("nao_processado", "revisao_pendente")}
         div = {k[0] for k in cel if k[1] == ano and cel[k]["status"] == "competencia_divergente"}
         cob.append({"ano": ano, "publicadas": len(ds_ano), "validadas": len(val), "pendentes": len(pend), "competencia_divergente": len(div),
-                    "status_ano": "homologado" if ano == 2025 else ("homologado_tecnico" if not pend and val else "parcial")})
+                    "status_ano": "homologado" if ano == 2025 else ("completo_tecnico" if not pend and val else "parcial")})  # completo_tecnico: validacao automatica, sem homologacao humana
     OUT.mkdir(parents=True, exist_ok=True)
     def w(nome, rows):
         cols = list(rows[0].keys()) if rows else []

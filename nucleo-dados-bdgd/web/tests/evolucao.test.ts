@@ -1,6 +1,6 @@
 // Evolução 2022–2025 com fixtures SINTÉTICAS (não são dados BDGD).
 import { describe, expect, it } from "vitest";
-import { anoAno, indexar, indice100, painelBalanceado, serieDist, serieSoma, variacao, type CelulaSerie } from "@/lib/evolucao";
+import { anoAno, anoCompleto, indexar, indice100, painelBalanceado, serieDist, serieSoma, STATUS_ANO, variacao, type CelulaSerie } from "@/lib/evolucao";
 
 const anos = [2022, 2023, 2024, 2025];
 const cel: CelulaSerie[] = [
@@ -45,5 +45,16 @@ describe("variações", () => {
   });
   it("índice base 100", () => {
     expect(indice100(serieDist(idx, 1, anos, "A")).pontos.map((p) => Math.round(p.v!))).toEqual([100, 110, 121, 133]);
+  });
+});
+
+describe("status do ano", () => {
+  it("completo técnico libera o agregado, mas não é rotulado como homologado", () => {
+    expect(anoCompleto("homologado")).toBe(true);
+    expect(anoCompleto("completo_tecnico")).toBe(true);
+    expect(anoCompleto("parcial")).toBe(false);
+    expect(anoCompleto("homologado_tecnico")).toBe(false);
+    expect(anoCompleto(undefined)).toBe(false);
+    expect(STATUS_ANO.completo_tecnico).not.toMatch(/homologado/);
   });
 });

@@ -13,7 +13,7 @@ import { ativos as listaAtivos, UNIDADE } from "@/lib/ativos";
 import type { Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
 import { distsDoEscopo, escreverEscopo, lerEscopo, rotuloEscopo, type Escopo } from "@/lib/escopo";
-import { anoAno, ESTADO, indexar, indice100, painelBalanceado, serieDist, serieSoma, variacao, type Serie, type SerieData } from "@/lib/evolucao";
+import { anoAno, anoCompleto, ESTADO, indexar, indice100, painelBalanceado, serieDist, serieSoma, STATUS_ANO, variacao, type Serie, type SerieData } from "@/lib/evolucao";
 import { fmt, fmtCompact, toCSV } from "@/lib/format";
 import { useQueryPatch, useQueryState } from "@/lib/url-state";
 import p from "./pages.module.css";
@@ -64,7 +64,7 @@ function EvolucaoReady({ ds, sd }: { ds: Dataset; sd: SerieData }) {
     const todas = [...idx.keys()];
     if (escopo.modo === "brasil") {
       const br = serieSoma(idx, todas, anos, "brasil", "Brasil");
-      br.pontos = br.pontos.map((pt) => (sd.cobertura.find((c) => c.ano === pt.ano)?.status_ano.startsWith("homologado") ? pt : { ...pt, v: null, estado: "p" }));
+      br.pontos = br.pontos.map((pt) => (anoCompleto(sd.cobertura.find((c) => c.ano === pt.ano)?.status_ano) ? pt : { ...pt, v: null, estado: "p" }));
       const painel = painelBalanceado(idx, todas, anos);
       return [{ ...br, nota: "somente anos com todas as publicações validadas" },
         { ...serieSoma(idx, painel, anos, "painel", `Painel balanceado (${painel.length} distribuidoras)`), nota: "distribuidoras com os quatro anos validados para este ativo" }];
@@ -135,8 +135,8 @@ function EvolucaoReady({ ds, sd }: { ds: Dataset; sd: SerieData }) {
         {sd.cobertura.map((c) => (
           <div key={c.ano} role="listitem" className={s.ano} data-status={c.status_ano}>
             <div className={s.anoNum}>31/12/{c.ano}</div>
-            <div className={s.anoSt}>{c.status_ano === "homologado" ? "homologado" : c.status_ano === "homologado_tecnico" ? "validado" : "em validação"}</div>
-            <div className={s.anoFoot}>{c.validadas} de {c.publicadas} publicações validadas{c.pendentes ? ` · ${c.pendentes} em processamento` : ""}</div>
+            <div className={s.anoSt}>{STATUS_ANO[c.status_ano] ?? "em validação"}</div>
+            <div className={s.anoFoot}>{c.validadas} de {c.publicadas} publicações validadas{c.pendentes ? ` · ${c.pendentes} pendente${c.pendentes > 1 ? "s" : ""}` : ""}</div>
             <div className={s.bar}><span style={{ transform: `scaleX(${c.publicadas ? c.validadas / c.publicadas : 0})` }} /></div>
           </div>
         ))}
