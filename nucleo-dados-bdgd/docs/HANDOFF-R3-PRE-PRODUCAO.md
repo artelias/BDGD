@@ -160,4 +160,6 @@ Teste com dados reais da DIST 11825 (`etl/bdgd2025/tests/teste_equivalencia_real
 | `output-historico/2022-2025/qa_sucessao.csv` (`EPB_EBO_2023`) | Inclusão da EBO 2022 no perímetro da EPB. Depende do par de publicações da EPB 2023 |
 | `cobertura_por_ano.csv` (`competencia_divergente`: 2022 = 4, 2023 = 7) | Arquivos publicados com BASE.DAT_FNL de outra competência. Ficam fora, a menos que haja republicação |
 | `web/public/data/2025-12-31/inventario/*.json` | Publicação de códigos e nomes de SUB, CTMT, CTAT e CONJ (dado público da BDGD, nenhum dado de consumidor) |
+| Pacote 2025, Equatorial GO (6072), consumidores = 23.203 | No GDB oficial de 31/12/2025, 3.449.443 UCBT têm `SIT_ATIV='DS'` e só 13.492 têm `'AT'` (2024: 3,47 mi ativas). A regra UC v3 conta só `AT`, então o valor segue a regra mas indica provável erro de cadastro da fonte. Decidir: manter com alerta, marcar `bloqueado` ou consultar a ANEEL. Afeta o total Brasil 2025 e a série |
+| `qa_consistencia_temporal.csv` (218 sinais) | Revisar antes de homologar 2022–2024. Exemplos: Coopera 28.141 → 225 consumidores (2024→2025); Enel CE 2,41 mi → 3,98 mi; Energisa PB 2023 = 0 |
 | PR #6: `Metodologia.tsx` e Panorama (mapa) | Corrigir as 4 falhas de E2E/axe do PR #6 antes da integração (frente do ChatGPT; não alterada aqui) |
