@@ -54,7 +54,7 @@ Pasta `output-historico/2022-2025/` (validada por `etl/validate-serie-historica.
 | `eventos_sucessao.csv`, `ponte_perimetro_2025.csv`, `qa_sucessao.csv` | EPB(6600) ← EBO(6611) e EMR(6585) ← ENF(6612), com fontes oficiais e prova por conjuntos |
 | `cobertura_por_ano.csv`, `manifest.json` | publicadas, validadas e pendentes por ano; ano `homologado` só sem pendências |
 
-**Estados:** `validado`, `ausente` (ativo inexistente: N/D, nunca zero), `campo_ausente`, `bloqueado`, `revisao_pendente` (mais de uma publicação válida no ano), `nao_processado`, `competencia_divergente`, `sem_publicacao`.
+**Estados:** `validado`, `ausente` (ativo inexistente: N/D, nunca zero), `campo_ausente`, `bloqueado`, `revisao_pendente` (mais de uma publicação válida no ano sem equivalência integral comprovada; ver `qa_publicacoes_multiplas.csv`), `nao_processado`, `competencia_divergente`, `sem_publicacao`.
 
 **Para previsões:** usar somente células `validado` e `comparavel`. Tratar `quebra_classificacao` e `quebra_perimetro` como quebra estrutural, não como crescimento. Equipamentos (ativos TUC) e instalações (UNTRMT/UNTRAT no fato-base) ficam em linhas separadas e nunca são somados. Grupos econômicos em 2022–2024 usam a composição de 2025, identificada como tal.
 

@@ -68,33 +68,31 @@ Totais nacionais (2025):
 
 ## 4. Evolução histórica — estado real
 
-ETL histórico (runner do Codex) retomado nesta sessão com checkpoints (`run.py --wait --memory-mb 1024`), sem reprocessar 2025.
+ETL histórico (runner do Codex) retomado com checkpoints, sem reprocessar 2025. Na estabilização, o limite do DuckDB caiu para 768 MB (`run.py --wait --memory-mb 768`, log `logs/run5.stdout.log`), porque a reserva de RAM de 1.024 + 384 MB travava o runner em `RESOURCE WAIT`.
 
-| Competência | No início da R3 | No fechamento deste handoff (validadas pela regra 2025) |
+| Competência | No início da R3 | Estabilização (24/10/2026, série intermediária) |
 |---|---|---|
-| 2022 | 74/99 processadas | 81 de 102 publicações validadas · 4 com BASE de outra competência · restante em processamento ou revisão |
-| 2023 | 62/89 | 55 de 101 validadas · 7 com BASE de outra competência |
-| 2024 | 76/97 | 0 de 97 na série (o runner tem 84 itens processados; o adaptador 78 ainda os percorre) |
+| 2022 | 74/99 processadas | 84 de 102 publicações validadas · 4 com BASE de outra competência · 11 itens no runner · 3 pares de publicação múltipla aguardando |
+| 2023 | 62/89 | 71 de 101 validadas · 7 com BASE de outra competência · 11 itens no runner · 12 pares aguardando |
+| 2024 | 76/97 | 86 de 97 validadas · 11 itens no runner |
 | 2025 | — | 99/99, homologado |
+
+A série é intermediária: no fechamento faltavam 33 itens no runner (~60 GB, os maiores com 2 a 4 GB) e as 30 publicações múltiplas (~10 GB). O processamento segue sozinho, em série, por `etl/bdgd2025/cadeia_historico.sh`: runner, depois duplicatas, 78, equivalência integral, 79 e validador.
 
 - **Mesma regra:** `78_conceitos_historico.py` aplica o próprio `77_conceitos.py` ao Parquet histórico, sem cópia de regras.
 - **Quebra de classificação:** `79_serie_historica.py` marca quando a parcela sem TUC muda mais de 10 p.p. Exemplo: CEA, chaves de 3.697 em 2022 para 19.131 em 2024, efeito de recadastro e não de crescimento físico.
-- **Publicações múltiplas:** com mais de uma publicação válida no ano, a célula fica em revisão pendente, sem escolha automática.
+- **Publicações múltiplas (regra revisada pelo responsável em 24/10/2026):** totais idênticos nos 26 ativos **não** provam equivalência. Duas publicações do mesmo DIST/ano só são tratadas como uma quando o SHA-256 é igual ou quando `equivalencia_duplicatas.py` comprova, entidade por entidade, que coincidem: esquema, número de registros, identidade dos COD_ID, impressões por grupo de atributos (identidade, TUC/MCPSE, DDA, vínculos CTMT/SUB/CONJ/PAC/UNI_TR e demais), registro completo e geometria (WKB lido do GDB original). O OBJECTID é ignorado. A impressão de cada conjunto é (n, soma mod 2^64, XOR) de blake2b-64 por registro. Sem prova integral, a célula fica em `revisao_pendente` para decisão humana, e o detalhe vai para `qa_publicacoes_multiplas.csv` e `proc/ANO/DIST/equivalencia_duplicatas.json`. Enquanto algum item do par não foi processado, a célula fica `nao_processado`; nunca se usa uma publicação isolada do par.
 - **Sucessões verificadas nos dados:**
   - EMR ← ENF (2022): os 5 conjuntos da ENF já estão na EMR. A ENF **não é somada**, e a EMR 2022 representa o perímetro (587.601 UCs ativas).
   - EPB ← EBO (2022): conjuntos disjuntos (8 e 67), mas a absorção em 2023 ainda não foi verificada porque a EPB 2023 tem duas publicações. Fica **pendente**.
 - **Grupos 2022–2024:** sempre na composição de 2025, identificada na tela.
 - **Agregado comparável:** o "painel balanceado" usa só distribuidoras com os quatro anos validados. O "Brasil" só aparece em anos homologados.
 
-**Para completar as séries:** deixar o runner terminar (`D:\NUCLEO_BDGD_2022_2024`, log `logs/run4.stdout.log`); para pausar com segurança, criar `STOP_REQUESTED`. Depois:
-```powershell
-& D:\NUCLEO_BDGD_2025\.venv\Scripts\python.exe D:\NUCLEO_BDGD_2025\scripts\78_conceitos_historico.py
-& D:\NUCLEO_BDGD_2025\.venv\Scripts\python.exe D:\NUCLEO_BDGD_2025\scripts\79_serie_historica.py
-node nucleo-dados-bdgd/etl/validate-serie-historica.mjs nucleo-dados-bdgd/output-historico/2022-2025 nucleo-dados-bdgd/web/public/data/historico/serie.json
-```
-e copiar `D:\NUCLEO_BDGD_2025\output-historico\2022-2025` para o repositório. Também falta resolver as publicações múltiplas (revisão pendente) com critério documentado.
+**Para completar as séries:** deixar a cadeia terminar (`D:\NUCLEO_BDGD_2025\logs\cadeia_historico.log`; memória e erros DuckDB em `logs\monitor_historico.log`). Para pausar com segurança, criar `D:\NUCLEO_BDGD_2022_2024\STOP_REQUESTED`. Depois, copiar `D:\NUCLEO_BDGD_2025\output-historico\2022-2025` e `web/public/data/historico/serie.json` para o repositório e rodar `validate-serie-historica.mjs`. Para refazer manualmente, a ordem é: `duplicatas_historico.py` (venv do histórico, `--memory-mb 768`), `78_conceitos_historico.py`, `equivalencia_duplicatas.py`, `79_serie_historica.py` e o validador.
 
 ## 5. Testes (local, antes do commit final)
+
+Rodada de estabilização (24/10/2026, árvore deste commit): ESLint e TypeScript sem erros · Vitest 57/57 · smoke do contrato OK · validador 2025 OK (somente avisos conhecidos de rollup de potência EQTRAT) · release dos assets igual ao manifesto, `data_base` 2025-12-31 · validador da série histórica OK · build OK · Playwright + axe 45/45. A rodada anterior está abaixo.
 
 | Etapa | Resultado |
 |---|---|
@@ -126,3 +124,20 @@ e copiar `D:\NUCLEO_BDGD_2025\output-historico\2022-2025` para o repositório. T
 - Preview de `54baa30` (`dpl_47Z52ZjmY3GFu8tmg5mU7oTXUov1`) READY e verificado com navegador autenticado em 8 rotas R3: nenhuma resposta 4xx/5xx, nenhum erro de console, release homologado servido. Os previews dos commits seguintes saem automaticamente na mesma URL da branch.
 - CI: workflow `nucleo-bdgd-web.yml` com gates obrigatórios do pacote 2025 e da série histórica.
 - Rollback: não promover o preview. O último estado R2 é `d54f7d3`.
+
+## 10. Compatibilidade com o PR #6 (sem merge)
+- Simulação feita com `git merge-tree --write-tree` entre esta branch e `feat/chatgpt-r3-panorama-iasc-previsoes` (`4db9cc9`, base comum `d54f7d3`): **nenhum conflito textual**. O único arquivo editado pelos dois lados é `web/e2e/app.spec.ts`, mesclado automaticamente.
+- Árvore combinada testada num worktree descartável, já removido, sem commit em nenhuma branch: TypeScript e ESLint sem erros · Vitest 66/66 · build estático OK · Playwright + axe **41/45**.
+- As 4 falhas também acontecem **no PR #6 sozinho** (`4db9cc9`) e não nesta branch sozinha, e o job "Lint, tipos, testes, build e E2E" do PR #6 está em falha no GitHub:
+  - axe `dlitem` (serious) em `/metodologia/`, claro e escuro: `#modelo-matematico … > dt` fora de `<dl>` em `Metodologia.tsx`;
+  - `map-ready` fica `false` no Panorama (testes "mapa ARAT, KPIs e seleção" e "clique fora das áreas volta ao Brasil").
+- Dependências entre as frentes: o PR #6 consome `public/data/2025-12-31/*` (pacote 2025 inalterado) e não lê `conceitos/`, `inventario/` nem `historico/serie.json`. As rotas `/explorar`, `/matriz`, `/comparar` e `/evolucao` são deste PR e funcionam na árvore combinada.
+
+## 11. Arquivos que precisam de decisão humana
+| Arquivo | Decisão |
+|---|---|
+| `output-historico/2022-2025/qa_publicacoes_multiplas.csv` (+ `proc/ANO/DIST/equivalencia_duplicatas.json` no staging) | Pares sem equivalência integral comprovada: escolher a publicação, ou manter fora da série |
+| `output-historico/2022-2025/qa_sucessao.csv` (`EPB_EBO_2023`) | Inclusão da EBO 2022 no perímetro da EPB. Depende do par de publicações da EPB 2023 |
+| `cobertura_por_ano.csv` (`competencia_divergente`: 2022 = 4, 2023 = 7) | Arquivos publicados com BASE.DAT_FNL de outra competência. Ficam fora, a menos que haja republicação |
+| `web/public/data/2025-12-31/inventario/*.json` | Publicação de códigos e nomes de SUB, CTMT, CTAT e CONJ (dado público da BDGD, nenhum dado de consumidor) |
+| PR #6: `Metodologia.tsx` e Panorama (mapa) | Corrigir as 4 falhas de E2E/axe do PR #6 antes da integração (frente do ChatGPT; não alterada aqui) |

@@ -16,6 +16,17 @@ Pipeline que gera o pacote público `output-publicavel/2025-12-31/` (contrato **
 
 Pilotos históricos (superados por `bdgd_etl.py`) estão em `piloto/`, para auditoria.
 
+### Série histórica 2022–2024 (pacote separado; nunca entra no pacote 2025)
+
+| Script | O que faz |
+|---|---|
+| `historico/run.py` (runner do staging 2022–2024) | Download, validação de competência e Parquet por ano/DIST/item; processa apenas itens `candidato`. |
+| `duplicatas_historico.py` | Processa, com o mesmo pipeline e sob o lock do runner, as publicações múltiplas do mesmo ano/DIST (`revisao_pendente`). |
+| `78_conceitos_historico.py` | Aplica a regra de conceitos de 2025 (`77_conceitos.py`) a cada item histórico. |
+| `equivalencia_duplicatas.py` | Equivalência integral entre publicações com SHA-256 diferente: esquema, contagem, identidade COD_ID, impressões por grupo de atributos (identidade, TUC/MCPSE, DDA, vínculos, demais), registro completo e geometria (WKB do GDB original). OBJECTID ignorado. Sem prova integral → decisão humana. |
+| `79_serie_historica.py` | `output-historico/2022-2025`: série original, perímetro 2025, sucessões, cobertura, publicações múltiplas, manifesto. |
+| `monitor_historico.py`, `cadeia_historico.sh` | Monitor de RAM/RSS e erros DuckDB (limite 768 MB); cadeia serial após o runner. |
+
 ## Regras implementadas
 
 - **Competência única** 2025-12-31; DIST sem GDB 2025 fica `sem_publicacao_2025` (nunca preenchido com outro ano).

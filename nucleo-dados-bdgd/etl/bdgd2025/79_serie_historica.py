@@ -48,7 +48,7 @@ def main():
     inv = rd(H / "inventario" / "inventario_historico_2022_2024.csv")
     nomes = {int(x["dist"]): x["empresa"] for x in inv}
     for d in rd(PKG / "distribuidoras.csv"): nomes[int(d["dist"])] = d["nome"]
-    cel, pop, itens_ok = {}, {}, {}
+    cel, pop, itens_ok, multiplas = {}, {}, {}, []
     # ---- 2022-2024: estado por DIST/ano a partir do inventario, checkpoints e conceitos_r3
     for ano in ANOS[:-1]:
         pubs = {}
@@ -63,9 +63,35 @@ def main():
                 if (pasta / "conceitos_r3.json").exists(): validos.append(it)
                 else: pendentes.append(it)
             base = {"item_id": "", "source_sha256": "", "motivo": ""}
+            equivalente = None
+            if len(pubs.get(d, [])) > 1 and len(validos) <= 1:
+                # par ainda incompleto (item em processamento) ou com item de outra competencia: registrado, sem decisao
+                multiplas.append({"ano": ano, "dist": d, "itens": "+".join(sorted(validos)), "pendentes_ou_falhas": "+".join(pendentes + divergentes), "sha256_distintos": "",
+                                  "ativos_divergentes": "", "diferencas_integrais": "comparacao integral nao executada",
+                                  "decisao": "aguarda processamento de todos os itens" if pendentes else "demais itens com BASE.DAT_FNL de outra competencia: item valido unico"})
+            if len(validos) > 1:
+                js = {it: json.loads((H / "proc" / str(ano) / str(d) / it / "conceitos_r3.json").read_text(encoding="utf-8")) for it in validos}
+                shas = {j["source_sha256"] for j in js.values()}
+                difs = [a_["id"] for a_ in ativos if len({json.dumps(j["ativos"][a_["id"]]["valor"]) for j in js.values()}) > 1]
+                # equivalencia integral comprovada por equivalencia_duplicatas.py (SHA-256 igual, ou registros, atributos, TUC, DDA,
+                # vinculos e geometria identicos); totais iguais nos ativos NAO bastam (decisao do responsavel, 24/10/2026)
+                eqf = H / "proc" / str(ano) / str(d) / "equivalencia_duplicatas.json"
+                eqj = json.loads(eqf.read_text(encoding="utf-8")) if eqf.exists() else None
+                ok_eq = bool(eqj and eqj.get("equivalente") and sorted(eqj.get("itens", [])) == sorted(validos))
+                crit = eqj["criterio"] if ok_eq else ""
+                multiplas.append({"ano": ano, "dist": d, "itens": "+".join(sorted(validos)), "pendentes_ou_falhas": "+".join(pendentes + divergentes), "sha256_distintos": len(shas),
+                                  "ativos_divergentes": ",".join(difs), "diferencas_integrais": "; ".join((eqj or {}).get("diferencas", [])[:12]) if eqj else "comparacao integral nao executada",
+                                  "decisao": f"equivalentes: {crit}" if crit else "revisao humana: equivalencia integral nao comprovada"})
+                if crit and not pendentes: equivalente = sorted(validos)[0]
+                if pendentes: base["motivo"] = "publicacoes multiplas: item restante em processamento"
             if not pubs.get(d): st = "sem_publicacao"
-            elif len(validos) > 1: st = "revisao_pendente"; base["motivo"] = f"{len(validos)} publicacoes validas para a competencia"
-            elif len(validos) == 1:
+            elif len(pubs[d]) > 1 and pendentes:
+                st = "nao_processado"; base["motivo"] = "publicacoes multiplas: comparacao aguarda o processamento de todos os itens"
+            elif len(validos) > 1 and not equivalente:
+                st = "revisao_pendente" if not pendentes else "nao_processado"
+                base["motivo"] = base["motivo"] or f"{len(validos)} publicacoes validas sem equivalencia integral comprovada: decisao humana"
+            elif len(validos) == 1 or equivalente:
+                if equivalente: validos = [equivalente]
                 j = json.loads((H / "proc" / str(ano) / str(d) / validos[0] / "conceitos_r3.json").read_text(encoding="utf-8"))
                 itens_ok[(d, ano)] = j
                 for cid, p in j["populacao"].items(): pop[(d, ano, cid)] = p
@@ -179,6 +205,7 @@ def main():
             wr = csv.DictWriter(f, cols, lineterminator="\n"); wr.writeheader(); wr.writerows(rows)
     w("serie_ativos_original.csv", orig); w("serie_ativos_perimetro_2025.csv", perim); w("ponte_perimetro_2025.csv", ponte)
     w("eventos_sucessao.csv", EVENTOS); w("qa_sucessao.csv", qa_suc); w("cobertura_por_ano.csv", cob)
+    w("qa_publicacoes_multiplas.csv", multiplas)
     w("populacao_conceitos.csv", [{"dist": d, "ano": a, "conceito": c, **p} for (d, a, c), p in sorted(pop.items())])
     man = {"escopo": "BDGD 2022-2025, mesma regra de ativos de 2025", "versao_regra": CFG["versao"], "gerado_em": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
            "cobertura": cob, "estados": ["validado", "ausente", "campo_ausente", "bloqueado", "revisao_pendente", "nao_processado", "competencia_divergente", "sem_publicacao"],
