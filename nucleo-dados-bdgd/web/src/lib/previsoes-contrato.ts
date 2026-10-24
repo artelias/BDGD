@@ -23,6 +23,21 @@ export interface SerieFisica {
   perimetroBridgeId: string | null;
 }
 
+export interface EvidenciaValidacao {
+  protocoloId: string;
+  versaoCodigo: string;
+  dataCorteTreino: string;
+  numeroObservacoes: number;
+  numeroOrigensTeste: number;
+  baselineId: string;
+  metricaErro: "mae" | "rmse" | "wape";
+  erroModelo: number;
+  erroBaseline: number;
+  coberturaHistorica: number;
+  fontesHomologadas: boolean;
+  perimetroReconciliado: boolean;
+}
+
 export interface ResultadoPrevisao {
   modo: ModoResultado;
   perspectiva: Perspectiva;
@@ -41,18 +56,30 @@ export interface ResultadoPrevisao {
   modeloEstado: EstadoModelo;
   versaoDados: string;
   hipoteseCenario?: string;
+  evidenciaValidacao?: EvidenciaValidacao;
 }
 
 /** Falha fechada: sem evidência de validação não há previsão publicável. */
 export function previsaoPublicavel(p: ResultadoPrevisao): boolean {
   if (p.modo !== "previsao_validada" || p.modeloEstado !== "validado") return false;
-  if (!p.modeloId || !p.versaoDados || !p.perimetroId || !p.conceitoId || !p.unidade) return false;
+  if (!p.modeloId?.trim() || !p.versaoDados?.trim() || !p.perimetroId?.trim() || !p.conceitoId?.trim() || !p.unidade?.trim() || !p.metrica?.trim()) return false;
+  if (typeof p.dist !== "number" && p.dist !== "brasil") return false;
+  if (typeof p.dist === "number" && (!Number.isInteger(p.dist) || p.dist <= 0)) return false;
+  const ev = p.evidenciaValidacao;
+  if (!ev || !ev.protocoloId?.trim() || !ev.versaoCodigo?.trim() || !ev.baselineId?.trim()) return false;
+  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(ev.dataCorteTreino) || !Number.isFinite(Date.parse(ev.dataCorteTreino))) return false;
+  if (!Number.isInteger(ev.numeroObservacoes) || ev.numeroObservacoes < 5) return false;
+  if (!Number.isInteger(ev.numeroOrigensTeste) || ev.numeroOrigensTeste < 2) return false;
+  if (!["mae", "rmse", "wape"].includes(ev.metricaErro)) return false;
+  if (!Number.isFinite(ev.erroModelo) || ev.erroModelo < 0 || !Number.isFinite(ev.erroBaseline) || ev.erroBaseline <= 0 || ev.erroModelo >= ev.erroBaseline) return false;
+  if (!Number.isFinite(ev.coberturaHistorica) || ev.coberturaHistorica !== 1) return false;
+  if (!ev.fontesHomologadas || !ev.perimetroReconciliado) return false;
   if (!Number.isInteger(p.anoOrigem) || !Number.isInteger(p.anoAlvo) || p.anoAlvo <= p.anoOrigem) return false;
   if (p.valor === null || !Number.isFinite(p.valor)) return false;
   if (p.limiteInferior !== null && (!Number.isFinite(p.limiteInferior) || p.limiteInferior > p.valor)) return false;
   if (p.limiteSuperior !== null && (!Number.isFinite(p.limiteSuperior) || p.limiteSuperior < p.valor)) return false;
   if (p.limiteInferior !== null && p.limiteSuperior !== null && p.limiteInferior > p.limiteSuperior) return false;
-  if (p.resultado !== "capex" && p.valor < 0) return false;
+  if (p.valor < 0 || (p.limiteInferior !== null && p.limiteInferior < 0)) return false;
   return true;
 }
 
