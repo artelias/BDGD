@@ -176,6 +176,7 @@ function EvolucaoReady({ ds, sd }: { ds: Dataset; sd: SerieData }) {
               : <EChart build={buildLinhas} height={340} ariaLabel={`Evolução de ${a.nome} de 2022 a 2025; os valores estão na tabela`} testId="chart-linhas" />}
           </motion.div>
         </AnimatePresence>
+        <div className={s.scroll} tabIndex={0} role="region" aria-label="Tabela da série">
         <table className={s.table} data-testid="evo-tabela">
           <caption className="sr-only">Valores anuais de {a.nome} ({unidade})</caption>
           <thead><tr><th scope="col">Série</th>{anos.map((y) => <th key={y} scope="col">{y}</th>)}<th scope="col">Variação</th><th scope="col">CAGR</th></tr></thead>
@@ -193,7 +194,8 @@ function EvolucaoReady({ ds, sd }: { ds: Dataset; sd: SerieData }) {
             ); })}
           </tbody>
         </table>
-        <p className={s.note}><Info size={13} aria-hidden /><span>N/D: ano sem valor validado (passe o mouse para ver o motivo). <Flag size={11} aria-hidden /> quebra de comparabilidade: a variação nesse ano não é tratada como crescimento. Unidade: {UNIDADE[a.medida]}.</span></p>
+        </div>
+        <p className={s.note}><Info size={13} aria-hidden /><span>N/D: ano sem valor validado (passe o mouse para ver o motivo). A bandeira marca quebra de comparabilidade: a variação nesse ano não é tratada como crescimento. Unidade: {UNIDADE[a.medida]}.</span></p>
       </section>
 
       {visao === "perimetro" && (
@@ -205,7 +207,7 @@ function EvolucaoReady({ ds, sd }: { ds: Dataset; sd: SerieData }) {
               return (
                 <li key={e.evento_id}>
                   <b>{nomeD(e.dist_origem)} → {nomeD(e.dist_destino_2025)}</b> · incorporação efetivada em {e.data_efetivacao.split("-").reverse().join("/")}
-                  <div className="caption">{pts.length ? pts.map((x) => `${x.ano_base}: ${x.status_qualidade === "validado" ? "somada (conjuntos sem sobreposição)" : "não somada (sem prova de disjunção)"}`).join(" · ") : "predecessora ainda em processamento: não somada"}</div>
+                  <div className="caption">{pts.length ? pts.map((x) => `${x.ano_base}: ${x.status_qualidade === "validado" ? "somada (conjuntos sem sobreposição)" : x.status_qualidade === "ja_incluida" ? "já contida na sucessora (não somada, para não duplicar)" : "não somada (sem prova de disjunção ou absorção)"}`).join(" · ") : "predecessora ainda em processamento: não somada"}</div>
                 </li>
               );
             })}

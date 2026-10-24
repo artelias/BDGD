@@ -100,3 +100,5 @@
 .searchMini:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .searchMini button { border: 0; background: transparent; color: inherit; display: inline-flex; }
 .card[aria-pressed="true"] .cardSub, .card[aria-pressed="true"] .cardName { color: var(--text-2); }
+.tableScroll { overflow-x: auto; overscroll-behavior-x: contain; }
+.tableScroll:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent-ring); border-radius: var(--r-sm); }

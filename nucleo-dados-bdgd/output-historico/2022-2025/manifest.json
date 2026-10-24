@@ -1,7 +1,7 @@
 {
  "escopo": "BDGD 2022-2025, mesma regra de ativos de 2025",
  "versao_regra": "r3-1",
- "gerado_em": "2026-10-24T00:21:26+00:00",
+ "gerado_em": "2026-10-24T00:31:34+00:00",
  "cobertura": [
   {
    "ano": 2022,
@@ -14,8 +14,8 @@
   {
    "ano": 2023,
    "publicadas": 101,
-   "validadas": 2,
-   "pendentes": 92,
+   "validadas": 55,
+   "pendentes": 39,
    "competencia_divergente": 7,
    "status_ano": "parcial"
   },
@@ -54,12 +54,12 @@
  },
  "privacidade": "somente agregados por DIST/ano/ativo; nenhum identificador individual",
  "checksums": {
-  "cobertura_por_ano.csv": "6b04aaf143be5e37ccbbdb80e745b27afd84847a7426b3e8a34f2173e77427e0",
+  "cobertura_por_ano.csv": "cefe2447d155efdf2937ac61af34f828fd992bd1162b1e034ae623340f5bdf63",
   "eventos_sucessao.csv": "d006a4d8e6969a85490dc73db61c6d25d13cb8df12087197cd02aaaa2cf44443",
-  "ponte_perimetro_2025.csv": "1fe80d9f3baa557e2706962e65b87f4bbd4b58862f35f1a181559a255ba28154",
-  "populacao_conceitos.csv": "e660fd9f57d7f8c893ddfe19ff93b2213d593e341434738545c34faa45c325b7",
-  "qa_sucessao.csv": "a0d2b5bdf44282c2a1aac0615eea0b884cb37e31a227aa30e77ec5567efe9c08",
-  "serie_ativos_original.csv": "d80d1c5e54f9ee82a06f0fac4693610f8ee76e808ab8c973065b24751d16c313",
-  "serie_ativos_perimetro_2025.csv": "d91ed1adb4730c7b6e0aafb9a69491552fb407cdc3f9fe61ea7b823c67815bef"
+  "ponte_perimetro_2025.csv": "887aaf1693569609990a210b0e0e5cefdb6844343224ea05be1ef93173221d5a",
+  "populacao_conceitos.csv": "a23b3ebb832a441152ab8c2f40c5a5ea4525d03427fdf84e41e23949e34026a6",
+  "qa_sucessao.csv": "a7617e0825d7eaca70b3c68812ee03b6473012bc169d249d0aed4526a10f35ab",
+  "serie_ativos_original.csv": "310175a93b45d2311fcde2e8d6008e38b9e55e006e06aee6e5dbf56db0f9c35c",
+  "serie_ativos_perimetro_2025.csv": "a63a41dd5a9576a6dc719e8f34b1a23d9e0b354f934df09ae8999665451e5958"
  }
 }

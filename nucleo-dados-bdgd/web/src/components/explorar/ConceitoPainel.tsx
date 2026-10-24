@@ -233,6 +233,7 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
           {!dist || dist.categorias.length === 0 ? <EmptyState title="Sem dados no recorte">Nenhuma distribuidora do escopo tem este ativo com as características escolhidas.</EmptyState> : (
             <>
               <Barras data={dist.categorias.slice(0, 14)} m={m} onPick={(code) => por === cardsDim ? patch({ c: cardSel === code ? null : code, por: null }) : setFiltro(por, (user.filtro[por] ?? []).includes(code) ? [] : [code])} />
+              <div className={s.tableScroll} tabIndex={0} role="region" aria-label="Tabela de categorias">
               <table className={s.table} data-testid="tabela-categorias">
                 <caption className="sr-only">{ROTULO_MEDIDA[m]} por {rot(por)} em {escopoNome}</caption>
                 <thead><tr><th scope="col">{rot(por)}</th><th scope="col">{ROTULO_MEDIDA[m]} ({unidade})</th><th scope="col">No recorte</th>{!brasil && <th scope="col">Do Brasil</th>}<th scope="col">Distribuidoras</th></tr></thead>
@@ -250,6 +251,7 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
                   ))}
                 </tbody>
               </table>
+              </div>
               <p className={s.note}><Info size={13} aria-hidden /><span>“No recorte”: parte de cada categoria no total mostrado. {!brasil && "“Do Brasil”: parte do escopo no total brasileiro da mesma categoria. "}Clique numa linha para filtrar.</span></p>
             </>
           )}

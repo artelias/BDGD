@@ -24,3 +24,4 @@
 .note svg { flex: none; margin-top: 2px; }
 .suc { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; font-size: var(--fs-label); }
 @media (max-width: 760px) { .anos { grid-template-columns: repeat(2, minmax(0, 1fr)); } .table { font-size: var(--fs-caption); } }
+.scroll { overflow-x: auto; }

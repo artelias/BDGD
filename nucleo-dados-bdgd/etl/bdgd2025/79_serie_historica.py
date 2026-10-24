@@ -125,11 +125,14 @@ def main():
                 continue
             inter = len(o & s) if s is not None else None
             absorvida = prox is not None and len(o & prox) / max(1, len(o)) >= 0.9
+            contida = s is not None and len(o) > 0 and inter == len(o)
             ok = s is not None and inter == 0 and absorvida
-            st = "validado" if ok else "pendente"
+            # origem ja contida no destino no mesmo ano: o destino ja representa o perimetro; somar duplicaria
+            st = "ja_incluida" if contida else ("validado" if ok else "pendente")
             prova = f"CONJ origem={len(o)}, destino={len(s) if s is not None else 'N/D'}, intersecao={inter}; conjuntos da origem presentes no destino em {ano + 1}: {len(o & prox) if prox is not None else 'N/D'}"
             ponte.append({"ano_base": ano, "dist_origem": ev["dist_origem"], "dist_destino_2025": ev["dist_destino_2025"], "evento_id": ev["evento_id"],
-                          "criterio_inclusao": "predecessora incorporada; areas disjuntas por conjunto e absorcao confirmada no ano seguinte", "status_qualidade": st, "prova_disjuncao": prova})
+                          "criterio_inclusao": "conjuntos da predecessora ja contidos no destino: nao somar" if st == "ja_incluida" else "predecessora incorporada; areas disjuntas por conjunto e absorcao confirmada no ano seguinte",
+                          "status_qualidade": st, "prova_disjuncao": prova})
             qa_suc.append({"evento_id": ev["evento_id"], "ano_base": ano, "dist_destino_2025": ev["dist_destino_2025"], "dist_origem": ev["dist_origem"], "conj_origem": len(o),
                            "conj_destino": len(s) if s is not None else "", "intersecao": inter if inter is not None else "", "absorcao_ano_seguinte": absorvida, "status": st})
     # ---- series
@@ -143,7 +146,7 @@ def main():
     for d in destinos:
         for ano in ANOS:
             origens = [p for p in ponte if p["dist_destino_2025"] == d and p["ano_base"] == ano and (p["dist_origem"] == d or p["evento_id"])]
-            pend = [p for p in origens if p["status_qualidade"] != "validado"]
+            pend = [p for p in origens if p["status_qualidade"] not in ("validado", "ja_incluida")]
             for a in ativos:
                 partes = [cel.get((p["dist_origem"], ano, a["id"])) for p in origens if p["status_qualidade"] == "validado"]
                 partes = [x for x in partes if x]

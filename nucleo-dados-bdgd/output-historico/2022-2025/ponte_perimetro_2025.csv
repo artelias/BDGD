@@ -396,4 +396,4 @@ ano_base,dist_origem,dist_destino_2025,evento_id,criterio_inclusao,status_qualid
 2024,11825,11825,,mesma DIST,validado,n/a
 2025,11825,11825,,mesma DIST,validado,n/a
 2022,6611,6600,EPB_EBO_2023,predecessora incorporada; areas disjuntas por conjunto e absorcao confirmada no ano seguinte,pendente,"CONJ origem=8, destino=67, intersecao=0; conjuntos da origem presentes no destino em 2023: N/D"
-2022,6612,6585,EMR_ENF_2022,predecessora incorporada; areas disjuntas por conjunto e absorcao confirmada no ano seguinte,pendente,"CONJ origem=5, destino=44, intersecao=5; conjuntos da origem presentes no destino em 2023: N/D"
+2022,6612,6585,EMR_ENF_2022,conjuntos da predecessora ja contidos no destino: nao somar,ja_incluida,"CONJ origem=5, destino=44, intersecao=5; conjuntos da origem presentes no destino em 2023: N/D"
