@@ -162,3 +162,33 @@ test.describe("R3 — Comparador com abas e filtros compartilhados", () => {
     expect(dl.suggestedFilename()).toContain("radar");
   });
 });
+
+test.describe("R3 — Evolução histórica 2022–2025", () => {
+  test("três modos de escopo, situação por ano e nenhum ano preenchido artificialmente", async ({ page }) => {
+    await page.goto("/evolucao/");
+    await expect(page.getByTestId("anos")).toContainText("31/12/2022");
+    await expect(page.getByTestId("anos")).toContainText("homologado");
+    for (const m of ["Brasil", "Grupo", "Distribuidoras"]) await expect(page.getByRole("radio", { name: m, exact: true }).first()).toBeVisible();
+    await expect(page.getByTestId("evo-tabela")).toBeVisible();
+    // células de anos não validados aparecem como N/D, nunca como zero
+    const cells = await page.getByTestId("evo-tabela").locator("tbody td").allInnerTexts();
+    expect(cells.some((c) => c.trim() === "0")).toBeFalsy();
+  });
+
+  test("multi-distribuidoras: uma linha por distribuidora e CSV com estado de cada ano", async ({ page }) => {
+    await page.goto("/evolucao/?escopo=dists&dists=26,31&ativo=consumidores");
+    await expect(page.getByTestId("evo-tabela").locator("tbody tr")).toHaveCount(2);
+    await expect(page.getByTestId("chart-linhas")).toBeVisible();
+    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("evo-csv").click()]);
+    const txt = Buffer.concat(await (await dl.createReadStream()).toArray()).toString("utf-8");
+    expect(txt).toContain("estado");
+    expect(txt).toMatch(/validado|em andamento|sem publicação/);
+  });
+
+  test("grupo usa composição de 2025 e mapa de calor como alternativa", async ({ page }) => {
+    await page.goto("/evolucao/?escopo=grupo:energisa&ativo=rede_mt&layout=calor");
+    await expect(page.getByTestId("evo-tabela")).toContainText("composição de 2025");
+    await page.getByRole("radio", { name: "Perímetro de 2025" }).click();
+    await expect(page.getByTestId("sucessoes")).toContainText("Energisa Borborema");
+  });
+});

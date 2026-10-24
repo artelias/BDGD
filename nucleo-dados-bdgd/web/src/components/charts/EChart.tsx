@@ -10,7 +10,7 @@ function loadEcharts() {
   if (!mod) {
     mod = (async () => {
       const [core, charts, comps, renderers] = await Promise.all([import("echarts/core"), import("echarts/charts"), import("echarts/components"), import("echarts/renderers")]);
-      core.use([charts.BarChart, charts.RadarChart, comps.RadarComponent, comps.LegendComponent, comps.GridComponent, comps.TooltipComponent, comps.AriaComponent, comps.MarkLineComponent, renderers.SVGRenderer]);
+      core.use([charts.BarChart, charts.RadarChart, charts.LineChart, charts.HeatmapChart, comps.RadarComponent, comps.LegendComponent, comps.VisualMapComponent, comps.GridComponent, comps.TooltipComponent, comps.AriaComponent, comps.MarkLineComponent, renderers.SVGRenderer]);
       return core;
     })();
   }

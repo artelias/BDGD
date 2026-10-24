@@ -103,12 +103,6 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("#dicionario")).toBeAttached();
   });
 
-  test("R2 evolução: histórico em preparação sem números de ativos", async ({ page }) => {
-    await page.goto("/evolucao/");
-    await expect(page.getByTestId("historico-preparacao")).toBeVisible();
-    await expect(page.getByTestId("historico-progresso")).toContainText("31/12/2022");
-  });
-
   test("R2 mapa: clique fora das áreas volta ao Brasil", async ({ page }) => {
     await page.goto("/?dist=5697"); // Celesc: litoral de SC, canto inferior direito do quadro é oceano
     await expect(page.getByTestId("map-ready")).toHaveAttribute("data-ready", "true", { timeout: 60_000 });

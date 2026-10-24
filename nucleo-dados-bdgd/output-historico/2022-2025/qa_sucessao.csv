@@ -1,0 +1,3 @@
+evento_id,ano_base,dist_destino_2025,dist_origem,conj_origem,conj_destino,intersecao,absorcao_ano_seguinte,status
+EPB_EBO_2023,2022,6600,6611,8,67,0,False,pendente
+EMR_ENF_2022,2022,6585,6612,5,44,5,False,pendente
