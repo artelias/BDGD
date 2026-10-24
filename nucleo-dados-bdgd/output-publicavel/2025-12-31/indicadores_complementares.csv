@@ -1,0 +1,1084 @@
+dist,entidade,indicador,unidade,valor,status,motivo
+26,UC*,uc_uniao_distinta,COD_ID,360514,alerta,soma_por_entidade=360523; sobreposicao=9
+26,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=15584; soma_original=154121.74; max=100.0; >75=1; nulos_ou_nao_positivos=3
+26,UGBT,POT_INST_original_kW[TIP_SIST=SIGFI],"kW (original, nao homologado)",,bloqueado,registros=8569; soma_original=2953952.00; max=7777.0; >75=6806; nulos_ou_nao_positivos=0
+26,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=153; soma_original=67054.94; max=33120.0; >75=61; nulos_ou_nao_positivos=0
+26,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+26,UNCRMT,potencia_kvar,kVAr,310800.0,aprovado,sem_mapeamento_DDA=0/234
+26,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+26,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,49722,aprovado,casam_exatamente=49705; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+26,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,35,aprovado,casam_exatamente=35; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+26,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,294711,aprovado,
+26,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,1150,aprovado,
+26,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+31,UC*,uc_uniao_distinta,COD_ID,304005,aprovado,soma_por_entidade=304005; sobreposicao=0
+31,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=12365; soma_original=18148.52; max=49.999; >75=0; nulos_ou_nao_positivos=0
+31,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=116; soma_original=4031.63; max=697.8632; >75=11; nulos_ou_nao_positivos=0
+31,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=1.00; max=1.0; >75=0; nulos_ou_nao_positivos=0
+31,UNCRAT,potencia_kvar,kVAr,10500.0,aprovado,sem_mapeamento_DDA=0/1
+31,UNCRMT,potencia_kvar,kVAr,151350.0,aprovado,sem_mapeamento_DDA=0/141
+31,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+31,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,15097,aprovado,casam_exatamente=15044; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.0%
+31,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,32,alerta,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+82.9%
+31,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,269790,aprovado,
+31,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,1147,aprovado,
+31,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,2,aprovado,
+32,UC*,uc_uniao_distinta,COD_ID,758764,alerta,soma_por_entidade=758811; sobreposicao=47
+32,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=58282; soma_original=544978.20; max=420.0; >75=14; nulos_ou_nao_positivos=29
+32,UGBT,POT_INST_original_kW[TIP_SIST=SIGFI],"kW (original, nao homologado)",,bloqueado,registros=1488; soma_original=442688.00; max=11828.0; >75=874; nulos_ou_nao_positivos=0
+32,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=639; soma_original=162874.74; max=8000.0; >75=283; nulos_ou_nao_positivos=1
+32,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=13; soma_original=665524.00; max=498750.0; >75=13; nulos_ou_nao_positivos=0
+32,UNCRAT,potencia_kvar,kVAr,54000.0,aprovado,sem_mapeamento_DDA=0/10
+32,UNCRMT,potencia_kvar,kVAr,192811.0,aprovado,sem_mapeamento_DDA=0/272
+32,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+32,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,94822,aprovado,casam_exatamente=94776; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.0%
+32,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,81,aprovado,casam_exatamente=79; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+32,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,676104,aprovado,
+32,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,2367,aprovado,
+32,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,14,aprovado,
+37,UC*,uc_uniao_distinta,COD_ID,3472238,aprovado,soma_por_entidade=3472238; sobreposicao=0
+37,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=86123; soma_original=835241.76; max=3000.0; >75=72; nulos_ou_nao_positivos=0
+37,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1604; soma_original=157123.98; max=3600.0; >75=373; nulos_ou_nao_positivos=0
+37,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2; soma_original=10000.00; max=5000.0; >75=2; nulos_ou_nao_positivos=0
+37,UNCRAT,potencia_kvar,kVAr,48500.0,aprovado,sem_mapeamento_DDA=0/26
+37,UNCRMT,potencia_kvar,kVAr,425250.0,aprovado,sem_mapeamento_DDA=0/1136
+37,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+37,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,169288,alerta,casam_exatamente=169028; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-11.8%
+37,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,200,alerta,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+23.6%
+37,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,2850060,aprovado,
+37,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,7086,aprovado,
+37,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,18,aprovado,
+38,UC*,uc_uniao_distinta,COD_ID,1759051,aprovado,soma_por_entidade=1759051; sobreposicao=0
+38,UGBT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=585; soma_original=4223.61; max=75.0; >75=0; nulos_ou_nao_positivos=0
+38,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=81587; soma_original=621881.78; max=2500.0; >75=22; nulos_ou_nao_positivos=0
+38,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1090; soma_original=111241.13; max=3120.0; >75=237; nulos_ou_nao_positivos=0
+38,UGMT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=10; soma_original=636.99; max=113.93; >75=3; nulos_ou_nao_positivos=0
+38,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=9; soma_original=0.71; max=0.2065; >75=0; nulos_ou_nao_positivos=0
+38,UNCRAT,potencia_kvar,kVAr,30600.0,aprovado,sem_mapeamento_DDA=0/9
+38,UNCRMT,potencia_kvar,kVAr,227200.0,aprovado,sem_mapeamento_DDA=0/471
+38,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+38,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,95776,alerta,casam_exatamente=95597; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-12.7%
+38,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,124,alerta,casam_exatamente=16; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+5.6%
+38,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1563497,aprovado,
+38,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,4218,aprovado,
+38,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,25,aprovado,
+39,UC*,uc_uniao_distinta,COD_ID,4153022,alerta,soma_por_entidade=4153221; sobreposicao=199
+39,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=133142; soma_original=188585.60; max=1512.988; >75=57; nulos_ou_nao_positivos=1
+39,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1651; soma_original=369768.90; max=5000.0; >75=943; nulos_ou_nao_positivos=0
+39,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=13; soma_original=329100.00; max=42000.0; >75=13; nulos_ou_nao_positivos=0
+39,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+39,UNCRMT,potencia_kvar,kVAr,1326912.0,aprovado,sem_mapeamento_DDA=0/864
+39,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+39,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,173008,aprovado,casam_exatamente=172944; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+39,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,223,alerta,casam_exatamente=12; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+51.6%
+39,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3969655,aprovado,
+39,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,9391,alerta,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+39,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,72,aprovado,
+40,UC*,uc_uniao_distinta,COD_ID,1828570,alerta,soma_por_entidade=1828684; sobreposicao=114
+40,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=118177; soma_original=7471898.54; max=17910.22222222; >75=4075; nulos_ou_nao_positivos=63
+40,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1974; soma_original=684152.61; max=62852.58090909; >75=1163; nulos_ou_nao_positivos=47
+40,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=18; soma_original=444260.00; max=33600.0; >75=18; nulos_ou_nao_positivos=0
+40,UNCRAT,potencia_kvar,kVAr,28800.0,aprovado,sem_mapeamento_DDA=0/4
+40,UNCRMT,potencia_kvar,kVAr,666900.0,aprovado,sem_mapeamento_DDA=0/438
+40,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+40,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,72390,aprovado,casam_exatamente=71852; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.4%
+40,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,111,aprovado,casam_exatamente=109; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.4%
+40,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1559049,alerta,18 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+40,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,5163,alerta,211 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+40,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,23,aprovado,
+43,UC*,uc_uniao_distinta,COD_ID,4666450,alerta,soma_por_entidade=4666690; sobreposicao=240
+43,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=162938; soma_original=3214280.86; max=5745.8; >75=2605; nulos_ou_nao_positivos=55
+43,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5211; soma_original=2394629.07; max=375484.0; >75=2462; nulos_ou_nao_positivos=154
+43,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=40; soma_original=860119.85; max=50000.0; >75=37; nulos_ou_nao_positivos=0
+43,UNCRAT,potencia_kvar,kVAr,3600.0,aprovado,sem_mapeamento_DDA=0/2
+43,UNCRMT,potencia_kvar,kVAr,1228000.0,aprovado,sem_mapeamento_DDA=0/752
+43,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+43,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,209374,alerta,casam_exatamente=203774; provavel_POT_NOM_em_MVA_na_unidade=5; sem_mapeamento_DDA=0; dif_total_kVA=+2.0%
+43,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,273,aprovado,casam_exatamente=264; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.6%
+43,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3704694,aprovado,
+43,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,16116,aprovado,
+43,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,98,alerta,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+44,UC*,uc_uniao_distinta,COD_ID,1562113,aprovado,soma_por_entidade=1562113; sobreposicao=0
+44,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=48517; soma_original=400082.80; max=2500.0; >75=13; nulos_ou_nao_positivos=0
+44,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=895; soma_original=100326.43; max=2500.0; >75=214; nulos_ou_nao_positivos=1
+44,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5; soma_original=11.03; max=4.2068; >75=0; nulos_ou_nao_positivos=0
+44,UNCRAT,potencia_kvar,kVAr,5400.0,aprovado,sem_mapeamento_DDA=0/1
+44,UNCRMT,potencia_kvar,kVAr,282236.0,aprovado,sem_mapeamento_DDA=0/270
+44,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+44,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,45703,aprovado,casam_exatamente=45320; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.7%
+44,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,102,alerta,casam_exatamente=23; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-31.1%
+44,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1391281,aprovado,
+44,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,3669,aprovado,
+44,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,25,aprovado,
+46,UC*,uc_uniao_distinta,COD_ID,176232,alerta,soma_por_entidade=176235; sobreposicao=3
+46,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1951; soma_original=19604.91; max=75.0; >75=0; nulos_ou_nao_positivos=0
+46,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=49; soma_original=4850.10; max=450.0; >75=20; nulos_ou_nao_positivos=0
+46,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+46,UNCRMT,potencia_kvar,kVAr,19900.0,aprovado,sem_mapeamento_DDA=0/67
+46,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+46,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,11349,aprovado,casam_exatamente=11299; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+46,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,18,aprovado,casam_exatamente=18; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+46,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,174415,aprovado,
+46,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,207,aprovado,
+46,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,6,aprovado,
+47,UC*,uc_uniao_distinta,COD_ID,7486558,alerta,soma_por_entidade=7486943; sobreposicao=385
+47,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=301265; soma_original=8723592.75; max=5000.0; >75=4524; nulos_ou_nao_positivos=32
+47,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5601; soma_original=13583328.67; max=2400000.0; >75=2975; nulos_ou_nao_positivos=25
+47,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=34; soma_original=798732.00; max=108600.0; >75=34; nulos_ou_nao_positivos=0
+47,UNCRAT,potencia_kvar,kVAr,36000.0,aprovado,sem_mapeamento_DDA=0/5
+47,UNCRMT,potencia_kvar,kVAr,1681900.0,aprovado,sem_mapeamento_DDA=0/1459
+47,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+47,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,386346,alerta,casam_exatamente=384671; provavel_POT_NOM_em_MVA_na_unidade=166; sem_mapeamento_DDA=0; dif_total_kVA=+3.3%
+47,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,501,aprovado,casam_exatamente=484; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.4%
+47,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,6173582,aprovado,
+47,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,22096,aprovado,
+47,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,107,aprovado,
+51,UC*,uc_uniao_distinta,COD_ID,90705,alerta,soma_por_entidade=90709; sobreposicao=4
+51,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1943; soma_original=15336.09; max=86.65; >75=1; nulos_ou_nao_positivos=0
+51,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=22; soma_original=18784.68; max=11250.0; >75=18; nulos_ou_nao_positivos=0
+51,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2; soma_original=40233.00; max=32833.0; >75=2; nulos_ou_nao_positivos=0
+51,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+51,UNCRMT,potencia_kvar,kVAr,69600.0,aprovado,sem_mapeamento_DDA=0/54
+51,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+51,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,3385,aprovado,casam_exatamente=3328; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+51,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,9,aprovado,casam_exatamente=5; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+2.8%
+51,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,88728,aprovado,
+51,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,198,aprovado,
+51,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,2,aprovado,
+63,UC*,uc_uniao_distinta,COD_ID,5236772,alerta,soma_por_entidade=5236776; sobreposicao=4
+63,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=288154; soma_original=13782047.41; max=397535.0; >75=1049; nulos_ou_nao_positivos=96
+63,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3866; soma_original=17998312.74; max=3960000.0; >75=854; nulos_ou_nao_positivos=0
+63,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=76; soma_original=31764140.00; max=3000000.0; >75=68; nulos_ou_nao_positivos=8
+63,UNCRAT,potencia_kvar,kVAr,1283200.0,aprovado,sem_mapeamento_DDA=0/144
+63,UNCRMT,potencia_kvar,kVAr,1464900.0,aprovado,sem_mapeamento_DDA=0/2093
+63,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+63,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,242286,alerta,casam_exatamente=240917; provavel_POT_NOM_em_MVA_na_unidade=21; sem_mapeamento_DDA=0; dif_total_kVA=-0.8%
+63,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,477,aprovado,casam_exatamente=433; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+63,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,5120863,aprovado,
+63,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,26223,aprovado,
+63,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,199,aprovado,
+69,UC*,uc_uniao_distinta,COD_ID,531080,aprovado,soma_por_entidade=531080; sobreposicao=0
+69,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=21658; soma_original=188491.25; max=80055.0; >75=27; nulos_ou_nao_positivos=9
+69,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=432; soma_original=71974.25; max=18006.0; >75=90; nulos_ou_nao_positivos=0
+69,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=11; soma_original=450514.92; max=107590.0; >75=10; nulos_ou_nao_positivos=0
+69,UNCRAT,potencia_kvar,kVAr,1200.0,aprovado,sem_mapeamento_DDA=0/2
+69,UNCRMT,potencia_kvar,kVAr,146950.0,aprovado,sem_mapeamento_DDA=0/291
+69,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+69,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,45391,alerta,casam_exatamente=45244; provavel_POT_NOM_em_MVA_na_unidade=49; sem_mapeamento_DDA=0; dif_total_kVA=+19.2%
+69,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,82,aprovado,casam_exatamente=68; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.3%
+69,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,521501,aprovado,
+69,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,2833,aprovado,
+69,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,19,aprovado,
+82,UC*,uc_uniao_distinta,COD_ID,62082,alerta,soma_por_entidade=62092; sobreposicao=10
+82,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1078; soma_original=10434.34; max=75.0; >75=0; nulos_ou_nao_positivos=0
+82,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=30; soma_original=2776.31; max=278.0; >75=15; nulos_ou_nao_positivos=0
+82,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+82,UNCRMT,potencia_kvar,kVAr,870.0,aprovado,sem_mapeamento_DDA=0/4
+82,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+82,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,5176,aprovado,casam_exatamente=5127; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.7%
+82,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,2,aprovado,casam_exatamente=2; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+82,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,60002,aprovado,
+82,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,263,aprovado,
+82,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+83,UC*,uc_uniao_distinta,COD_ID,9383,aprovado,soma_por_entidade=9383; sobreposicao=0
+83,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=565; soma_original=4676.00; max=75.0; >75=0; nulos_ou_nao_positivos=0
+83,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=10; soma_original=3311.00; max=1500.0; >75=8; nulos_ou_nao_positivos=0
+83,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+83,UNCRMT,potencia_kvar,kVAr,4800.0,aprovado,sem_mapeamento_DDA=0/12
+83,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+83,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,755,aprovado,casam_exatamente=755; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+83,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,8958,aprovado,
+83,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,38,aprovado,
+83,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+86,UC*,uc_uniao_distinta,COD_ID,8659,aprovado,soma_por_entidade=8659; sobreposicao=0
+86,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=342; soma_original=3191.94; max=100.0; >75=2; nulos_ou_nao_positivos=1
+86,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+86,UNCRMT,potencia_kvar,kVAr,1500.0,aprovado,sem_mapeamento_DDA=0/3
+86,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+86,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,499,alerta,casam_exatamente=489; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-23.7%
+86,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7714,aprovado,
+86,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,35,aprovado,
+86,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,1,aprovado,
+87,UC*,uc_uniao_distinta,COD_ID,42475,alerta,soma_por_entidade=42481; sobreposicao=6
+87,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2175; soma_original=30309.22; max=150.0; >75=16; nulos_ou_nao_positivos=0
+87,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=69; soma_original=37050.68; max=8750.0; >75=34; nulos_ou_nao_positivos=0
+87,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+87,UNCRMT,potencia_kvar,kVAr,11400.0,aprovado,sem_mapeamento_DDA=0/20
+87,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+87,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,4014,aprovado,casam_exatamente=3920; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-1.7%
+87,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,41589,aprovado,
+87,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,283,aprovado,
+87,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+88,UC*,uc_uniao_distinta,COD_ID,4359,aprovado,soma_por_entidade=4359; sobreposicao=0
+88,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=180; soma_original=1292.03; max=72.0; >75=0; nulos_ou_nao_positivos=0
+88,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+88,UNCRMT,potencia_kvar,kVAr,300.0,aprovado,sem_mapeamento_DDA=0/1
+88,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+88,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,116,aprovado,casam_exatamente=115; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.4%
+88,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4029,aprovado,
+88,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,37,aprovado,
+88,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+95,UC*,uc_uniao_distinta,COD_ID,37572,alerta,soma_por_entidade=37577; sobreposicao=5
+95,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3916; soma_original=26129.64; max=111.2; >75=6; nulos_ou_nao_positivos=0
+95,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=33; soma_original=2195.95; max=225.0; >75=6; nulos_ou_nao_positivos=0
+95,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+95,UNCRMT,potencia_kvar,kVAr,2100.0,aprovado,sem_mapeamento_DDA=0/8
+95,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+95,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,866,aprovado,casam_exatamente=827; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+95,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,1,aprovado,casam_exatamente=1; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+95,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,36112,aprovado,
+95,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,129,aprovado,
+95,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+103,UC*,uc_uniao_distinta,COD_ID,42005,alerta,soma_por_entidade=42011; sobreposicao=6
+103,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2916; soma_original=26545.77; max=80.0; >75=1; nulos_ou_nao_positivos=0
+103,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=45; soma_original=7257.78; max=3750.0; >75=10; nulos_ou_nao_positivos=0
+103,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+103,UNCRMT,potencia_kvar,kVAr,8000.0,aprovado,sem_mapeamento_DDA=0/23
+103,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+103,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,5263,aprovado,casam_exatamente=5187; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+103,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,6,aprovado,casam_exatamente=6; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+103,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,40864,aprovado,
+103,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,146,aprovado,
+103,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+369,UC*,uc_uniao_distinta,COD_ID,819627,alerta,soma_por_entidade=819699; sobreposicao=72
+369,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=58145; soma_original=562737.94; max=280.0; >75=24; nulos_ou_nao_positivos=171
+369,UGBT,POT_INST_original_kW[TIP_SIST=SIGFI],"kW (original, nao homologado)",,bloqueado,registros=2529; soma_original=15162.00; max=6.0; >75=0; nulos_ou_nao_positivos=2
+369,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1036; soma_original=177845.40; max=5300.0; >75=312; nulos_ou_nao_positivos=2
+369,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+369,UNCRMT,potencia_kvar,kVAr,479614.0,aprovado,sem_mapeamento_DDA=0/445
+369,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+369,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,153189,aprovado,casam_exatamente=153152; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+3.1%
+369,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,117,aprovado,casam_exatamente=117; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+369,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,710599,aprovado,
+369,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,4602,aprovado,
+369,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,3,aprovado,
+370,UC*,uc_uniao_distinta,COD_ID,242399,alerta,soma_por_entidade=242750; sobreposicao=351
+370,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=9079; soma_original=100321.03; max=220.0; >75=7; nulos_ou_nao_positivos=62
+370,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=164; soma_original=143045.45; max=46400.0; >75=41; nulos_ou_nao_positivos=0
+370,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=8; soma_original=509924.00; max=214128.0; >75=8; nulos_ou_nao_positivos=0
+370,UNCRAT,potencia_kvar,kVAr,117600.0,aprovado,sem_mapeamento_DDA=0/36
+370,UNCRMT,potencia_kvar,kVAr,85325.0,aprovado,sem_mapeamento_DDA=0/185
+370,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+370,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,29605,aprovado,casam_exatamente=29605; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+370,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,29,aprovado,casam_exatamente=29; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+370,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,213691,aprovado,
+370,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,1197,aprovado,
+370,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+371,UC*,uc_uniao_distinta,COD_ID,3217479,aprovado,soma_por_entidade=3217479; sobreposicao=0
+371,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=143534; soma_original=1271733.29; max=2500.0; >75=19; nulos_ou_nao_positivos=0
+371,UGBT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=1434; soma_original=14077.48; max=110.0; >75=1; nulos_ou_nao_positivos=0
+371,UGMT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=8; soma_original=709.76; max=200.0; >75=2; nulos_ou_nao_positivos=0
+371,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2048; soma_original=184468.61; max=5000.0; >75=276; nulos_ou_nao_positivos=0
+371,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5; soma_original=6729.84; max=1847.662; >75=5; nulos_ou_nao_positivos=0
+371,UNCRAT,potencia_kvar,kVAr,99000.0,aprovado,sem_mapeamento_DDA=0/17
+371,UNCRMT,potencia_kvar,kVAr,859270.0,aprovado,sem_mapeamento_DDA=0/1079
+371,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+371,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,235324,alerta,casam_exatamente=234931; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-6.1%
+371,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,225,alerta,casam_exatamente=8; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-28.5%
+371,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3030674,aprovado,
+371,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,10849,aprovado,
+371,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,20,aprovado,
+380,UC*,uc_uniao_distinta,COD_ID,1874855,aprovado,soma_por_entidade=1874855; sobreposicao=0
+380,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=81103; soma_original=873266.36; max=2500.0; >75=4; nulos_ou_nao_positivos=0
+380,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1500; soma_original=270194.52; max=8736.0; >75=464; nulos_ou_nao_positivos=0
+380,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=18; soma_original=1160557.00; max=240000.0; >75=18; nulos_ou_nao_positivos=0
+380,UNCRAT,potencia_kvar,kVAr,748000.0,aprovado,sem_mapeamento_DDA=0/33
+380,UNCRMT,potencia_kvar,kVAr,780900.0,aprovado,sem_mapeamento_DDA=0/1253
+380,UNCRBT,potencia_kvar,kVAr,1530.0,aprovado,sem_mapeamento_DDA=0/34
+380,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,170159,aprovado,casam_exatamente=168151; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.4%
+380,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,163,aprovado,casam_exatamente=93; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+4.1%
+380,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1779638,aprovado,
+380,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,6663,alerta,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+380,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,32,aprovado,
+381,UC*,uc_uniao_distinta,COD_ID,132917,aprovado,soma_por_entidade=132917; sobreposicao=0
+381,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=11320; soma_original=127072.13; max=112.0; >75=9; nulos_ou_nao_positivos=0
+381,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=51; soma_original=15683.00; max=2000.0; >75=30; nulos_ou_nao_positivos=0
+381,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+381,UNCRMT,potencia_kvar,kVAr,43912.0,aprovado,sem_mapeamento_DDA=0/52
+381,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+381,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,24153,aprovado,casam_exatamente=24050; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+381,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,15,aprovado,casam_exatamente=14; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+381,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,128162,aprovado,
+381,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,268,alerta,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+381,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+382,UC*,uc_uniao_distinta,COD_ID,5049058,aprovado,soma_por_entidade=5049058; sobreposicao=0
+382,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=57523; soma_original=549695.35; max=7000.0; >75=40; nulos_ou_nao_positivos=10
+382,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=670; soma_original=321881.53; max=16560.0; >75=501; nulos_ou_nao_positivos=0
+382,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=12; soma_original=2196329.00; max=677530.0; >75=12; nulos_ou_nao_positivos=0
+382,UNCRAT,potencia_kvar,kVAr,299200.0,aprovado,sem_mapeamento_DDA=0/17
+382,UNCRMT,potencia_kvar,kVAr,2069100.0,aprovado,sem_mapeamento_DDA=0/778
+382,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+382,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,101064,aprovado,casam_exatamente=98698; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+382,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,321,aprovado,casam_exatamente=282; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+1.1%
+382,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4031889,aprovado,
+382,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,6971,aprovado,
+382,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,52,aprovado,
+383,UC*,uc_uniao_distinta,COD_ID,2892532,alerta,soma_por_entidade=2892621; sobreposicao=89
+383,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=119565; soma_original=186881.30; max=459.1; >75=27; nulos_ou_nao_positivos=16
+383,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=693; soma_original=111300.20; max=5500.0; >75=319; nulos_ou_nao_positivos=1
+383,UNCRAT,potencia_kvar,kVAr,15000.0,aprovado,sem_mapeamento_DDA=0/1
+383,UNCRMT,potencia_kvar,kVAr,982300.0,aprovado,sem_mapeamento_DDA=0/722
+383,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+383,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,147684,aprovado,casam_exatamente=147478; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+383,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,255,aprovado,casam_exatamente=236; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.3%
+383,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,2755977,aprovado,
+383,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,5176,alerta,71 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+383,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,39,aprovado,
+385,UC*,uc_uniao_distinta,COD_ID,3076628,alerta,soma_por_entidade=3076632; sobreposicao=4
+385,UGBT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=167423; soma_original=4127735.78; max=75000.0; >75=1181; nulos_ou_nao_positivos=0
+385,UGMT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=1091; soma_original=262775.45; max=9052.4; >75=728; nulos_ou_nao_positivos=0
+385,UGAT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=64; soma_original=801091.91; max=50111.5; >75=61; nulos_ou_nao_positivos=0
+385,UNCRAT,potencia_kvar,kVAr,60000.0,aprovado,sem_mapeamento_DDA=0/2
+385,UNCRMT,potencia_kvar,kVAr,808800.0,aprovado,sem_mapeamento_DDA=0/963
+385,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+385,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,219154,aprovado,casam_exatamente=215896; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-1.2%
+385,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,305,aprovado,casam_exatamente=301; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+385,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3028625,alerta,8 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+385,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,12966,alerta,2 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+385,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,101,aprovado,
+390,UC*,uc_uniao_distinta,COD_ID,9002145,alerta,soma_por_entidade=9002146; sobreposicao=1
+390,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=42451; soma_original=388968.28; max=38270.53; >75=165; nulos_ou_nao_positivos=461
+390,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=340; soma_original=140776.20; max=30181.699; >75=79; nulos_ou_nao_positivos=10
+390,UNCRAT,potencia_kvar,kVAr,435000.0,aprovado,sem_mapeamento_DDA=0/24
+390,UNCRMT,potencia_kvar,kVAr,1909200.0,aprovado,sem_mapeamento_DDA=0/1749
+390,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+390,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,238275,aprovado,casam_exatamente=98814; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.8%
+390,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,434,aprovado,casam_exatamente=373; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+1.6%
+390,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,8200754,alerta,24 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+390,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,14079,alerta,1151 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+390,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,188,alerta,1 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+391,UC*,uc_uniao_distinta,COD_ID,2353938,aprovado,soma_por_entidade=2353938; sobreposicao=0
+391,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=36406; soma_original=285387.38; max=75.0; >75=0; nulos_ou_nao_positivos=0
+391,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=381; soma_original=185039.63; max=4278.0; >75=220; nulos_ou_nao_positivos=0
+391,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=56050.00; max=56050.0; >75=1; nulos_ou_nao_positivos=0
+391,UNCRAT,potencia_kvar,kVAr,77100.0,aprovado,sem_mapeamento_DDA=0/6
+391,UNCRMT,potencia_kvar,kVAr,728800.0,aprovado,sem_mapeamento_DDA=0/874
+391,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+391,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,91857,aprovado,casam_exatamente=77195; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+391,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,168,aprovado,casam_exatamente=161; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.6%
+391,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,2197133,aprovado,
+391,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,4843,aprovado,
+391,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,86,aprovado,
+396,UC*,uc_uniao_distinta,COD_ID,3254362,alerta,soma_por_entidade=3254367; sobreposicao=5
+396,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=283360; soma_original=1131561.81; max=5000.0; >75=531; nulos_ou_nao_positivos=145
+396,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5221; soma_original=902055.55; max=450000.0; >75=554; nulos_ou_nao_positivos=3
+396,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=40; soma_original=185929.41; max=50000.0; >75=15; nulos_ou_nao_positivos=25
+396,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+396,UNCRMT,potencia_kvar,kVAr,1137000.0,aprovado,sem_mapeamento_DDA=0/1033
+396,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+396,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,218017,alerta,casam_exatamente=217423; provavel_POT_NOM_em_MVA_na_unidade=16; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+396,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,290,aprovado,casam_exatamente=284; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+396,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3157227,aprovado,
+396,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,21599,aprovado,
+396,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,118,aprovado,
+398,UC*,uc_uniao_distinta,COD_ID,40985,alerta,soma_por_entidade=40997; sobreposicao=12
+398,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3264; soma_original=23296.04; max=75.0; >75=0; nulos_ou_nao_positivos=0
+398,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=65; soma_original=8793.00; max=1480.0; >75=13; nulos_ou_nao_positivos=0
+398,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=3750.00; max=3750.0; >75=1; nulos_ou_nao_positivos=0
+398,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+398,UNCRMT,potencia_kvar,kVAr,13200.0,aprovado,sem_mapeamento_DDA=0/21
+398,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+398,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,2778,aprovado,casam_exatamente=2713; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.2%
+398,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,3,aprovado,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+398,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,40064,aprovado,
+398,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,293,aprovado,
+398,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+399,UC*,uc_uniao_distinta,COD_ID,20677,aprovado,soma_por_entidade=20677; sobreposicao=0
+399,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1912; soma_original=11022.74; max=75.0; >75=0; nulos_ou_nao_positivos=0
+399,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=28; soma_original=3281.32; max=1000.0; >75=5; nulos_ou_nao_positivos=0
+399,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+399,UNCRMT,potencia_kvar,kVAr,4050.0,aprovado,sem_mapeamento_DDA=0/8
+399,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+399,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,642,aprovado,casam_exatamente=621; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.4%
+399,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,1,aprovado,casam_exatamente=1; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+399,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,20409,aprovado,
+399,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,117,aprovado,
+399,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+400,UC*,uc_uniao_distinta,COD_ID,17527,alerta,soma_por_entidade=17530; sobreposicao=3
+400,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1073; soma_original=8935.35; max=74.92; >75=0; nulos_ou_nao_positivos=0
+400,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=26; soma_original=1798.86; max=348.3; >75=3; nulos_ou_nao_positivos=0
+400,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+400,UNCRMT,potencia_kvar,kVAr,9825.0,aprovado,sem_mapeamento_DDA=0/26
+400,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+400,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,2085,alerta,casam_exatamente=2069; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-23.1%
+400,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,5,aprovado,casam_exatamente=5; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+400,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,17226,aprovado,
+400,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,168,aprovado,
+400,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+401,UC*,uc_uniao_distinta,COD_ID,13613,aprovado,soma_por_entidade=13613; sobreposicao=0
+401,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1001; soma_original=6668.64; max=60.0; >75=0; nulos_ou_nao_positivos=0
+401,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=12; soma_original=2457.41; max=1500.0; >75=3; nulos_ou_nao_positivos=0
+401,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+401,UNCRMT,potencia_kvar,kVAr,2400.0,aprovado,sem_mapeamento_DDA=0/6
+401,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+401,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,241,aprovado,casam_exatamente=241; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+401,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,13167,aprovado,
+401,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,39,aprovado,
+401,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+404,UC*,uc_uniao_distinta,COD_ID,1275669,alerta,soma_por_entidade=1275747; sobreposicao=78
+404,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=150451; soma_original=1206442.76; max=300.0; >75=42; nulos_ou_nao_positivos=128
+404,UGBT,POT_INST_original_kW[TIP_SIST=SIGFI],"kW (original, nao homologado)",,bloqueado,registros=2555; soma_original=95.70; max=0.11; >75=0; nulos_ou_nao_positivos=61
+404,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2069; soma_original=549783.06; max=48000.0; >75=970; nulos_ou_nao_positivos=2
+404,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=35; soma_original=900938.95; max=384000.0; >75=33; nulos_ou_nao_positivos=0
+404,UNCRAT,potencia_kvar,kVAr,136720.0,aprovado,sem_mapeamento_DDA=0/23
+404,UNCRMT,potencia_kvar,kVAr,569895.0,aprovado,sem_mapeamento_DDA=0/724
+404,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+404,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,106660,aprovado,casam_exatamente=106473; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.1%
+404,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,115,aprovado,casam_exatamente=93; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.4%
+404,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1137970,alerta,22 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+404,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,6032,alerta,5 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+404,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,38,aprovado,
+405,UC*,uc_uniao_distinta,COD_ID,1885767,alerta,soma_por_entidade=1886034; sobreposicao=267
+405,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=218666; soma_original=2286051.66; max=43400.0; >75=162; nulos_ou_nao_positivos=0
+405,UGBT,POT_INST_original_kW[TIP_SIST=SIGFI],"kW (original, nao homologado)",,bloqueado,registros=2717; soma_original=1001319.00; max=1872.0; >75=2715; nulos_ou_nao_positivos=0
+405,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3766; soma_original=1418913.06; max=35000.0; >75=1916; nulos_ou_nao_positivos=0
+405,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=43; soma_original=2345494.00; max=529200.0; >75=43; nulos_ou_nao_positivos=0
+405,UNCRAT,potencia_kvar,kVAr,154200.0,aprovado,sem_mapeamento_DDA=0/29
+405,UNCRMT,potencia_kvar,kVAr,698340.0,aprovado,sem_mapeamento_DDA=0/884
+405,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+405,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,273401,aprovado,casam_exatamente=273368; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+405,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,177,aprovado,casam_exatamente=174; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.2%
+405,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1667882,aprovado,
+405,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,11396,aprovado,
+405,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,30,aprovado,
+504,UC*,uc_uniao_distinta,COD_ID,16230,alerta,soma_por_entidade=16235; sobreposicao=5
+504,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1309; soma_original=13459.80; max=75.0; >75=0; nulos_ou_nao_positivos=0
+504,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=62; soma_original=7260.74; max=1500.0; >75=6; nulos_ou_nao_positivos=0
+504,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+504,UNCRMT,potencia_kvar,kVAr,7150.0,aprovado,sem_mapeamento_DDA=0/28
+504,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+504,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,4401,aprovado,casam_exatamente=4203; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.3%
+504,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,16073,aprovado,
+504,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,120,aprovado,
+504,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+527,UC*,uc_uniao_distinta,COD_ID,8833,alerta,soma_por_entidade=8835; sobreposicao=2
+527,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=866; soma_original=8048.33; max=75.0; >75=0; nulos_ou_nao_positivos=0
+527,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=17; soma_original=1914.47; max=270.0; >75=5; nulos_ou_nao_positivos=0
+527,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+527,UNCRMT,potencia_kvar,kVAr,5175.0,aprovado,sem_mapeamento_DDA=0/32
+527,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+527,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,3235,aprovado,casam_exatamente=3011; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+1.1%
+527,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,2,aprovado,casam_exatamente=2; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+527,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,8745,aprovado,
+527,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,64,aprovado,
+527,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+598,UC*,uc_uniao_distinta,COD_ID,25954,alerta,soma_por_entidade=25957; sobreposicao=3
+598,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1976; soma_original=30208.56; max=179.76; >75=71; nulos_ou_nao_positivos=0
+598,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=78; soma_original=24039.34; max=5994.0; >75=38; nulos_ou_nao_positivos=0
+598,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+598,UNCRMT,potencia_kvar,kVAr,12430.0,aprovado,sem_mapeamento_DDA=0/46
+598,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+598,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,6008,aprovado,casam_exatamente=5954; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+598,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,0,alerta,casam_exatamente=0; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-100.0%
+598,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,25599,aprovado,
+598,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,257,aprovado,
+598,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+2351,UC*,uc_uniao_distinta,COD_ID,59495,alerta,soma_por_entidade=59593; sobreposicao=98
+2351,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3885; soma_original=69244.06; max=1000.0; >75=31; nulos_ou_nao_positivos=0
+2351,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=82; soma_original=92194.03; max=75000.0; >75=26; nulos_ou_nao_positivos=0
+2351,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2351,UNCRMT,potencia_kvar,kVAr,21325.0,aprovado,sem_mapeamento_DDA=0/74
+2351,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2351,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,19514,alerta,casam_exatamente=2889; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+247.3%
+2351,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,12,alerta,casam_exatamente=7; provavel_POT_NOM_em_MVA_na_unidade=2; sem_mapeamento_DDA=0; dif_total_kVA=+34.2%
+2351,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,58905,alerta,1005 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+2351,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,619,alerta,36 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+2351,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,1,aprovado,
+2381,UC*,uc_uniao_distinta,COD_ID,29697,alerta,soma_por_entidade=29699; sobreposicao=2
+2381,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3948; soma_original=35859.35; max=75.0; >75=0; nulos_ou_nao_positivos=0
+2381,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=84; soma_original=10724.67; max=4500.0; >75=11; nulos_ou_nao_positivos=0
+2381,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2381,UNCRMT,potencia_kvar,kVAr,44650.0,aprovado,sem_mapeamento_DDA=0/74
+2381,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2381,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,7920,aprovado,casam_exatamente=7740; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.2%
+2381,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,4,aprovado,casam_exatamente=4; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+2381,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,28573,aprovado,
+2381,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,424,aprovado,
+2381,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+2763,UC*,uc_uniao_distinta,COD_ID,15333,alerta,soma_por_entidade=15349; sobreposicao=16
+2763,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1005; soma_original=11740.28; max=75.0; >75=0; nulos_ou_nao_positivos=0
+2763,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=45; soma_original=29793.03; max=8500.0; >75=19; nulos_ou_nao_positivos=0
+2763,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3; soma_original=41900.00; max=22700.0; >75=3; nulos_ou_nao_positivos=0
+2763,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2763,UNCRMT,potencia_kvar,kVAr,13437.0,aprovado,sem_mapeamento_DDA=0/28
+2763,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2763,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,5780,aprovado,casam_exatamente=5717; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+2763,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,6,aprovado,casam_exatamente=6; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+2763,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,14964,aprovado,
+2763,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,261,aprovado,
+2763,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+2783,UC*,uc_uniao_distinta,COD_ID,8093,alerta,soma_por_entidade=8096; sobreposicao=3
+2783,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=421; soma_original=6076.62; max=110.0; >75=2; nulos_ou_nao_positivos=0
+2783,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=4; soma_original=1200.00; max=1000.0; >75=1; nulos_ou_nao_positivos=0
+2783,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2783,UNCRMT,potencia_kvar,kVAr,4470.0,aprovado,sem_mapeamento_DDA=0/27
+2783,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2783,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,2654,aprovado,casam_exatamente=2482; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+2783,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7866,aprovado,
+2783,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,40,aprovado,
+2783,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+2866,UC*,uc_uniao_distinta,COD_ID,5508534,alerta,soma_por_entidade=5508587; sobreposicao=53
+2866,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=237795; soma_original=2507559.41; max=500.0; >75=86; nulos_ou_nao_positivos=0
+2866,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3077; soma_original=115419100.00; max=2653645.0; >75=2993; nulos_ou_nao_positivos=4
+2866,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=34; soma_original=1122727.10; max=120168.0; >75=34; nulos_ou_nao_positivos=0
+2866,UNCRAT,potencia_kvar,kVAr,25000.0,aprovado,sem_mapeamento_DDA=0/2
+2866,UNCRMT,potencia_kvar,kVAr,1732400.0,aprovado,sem_mapeamento_DDA=0/1008
+2866,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2866,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,518300,alerta,casam_exatamente=515834; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=57; dif_total_kVA=+13.3%
+2866,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,351,alerta,casam_exatamente=49; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+8.8%
+2866,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,5152731,alerta,355462 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+2866,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,16545,alerta,202 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+2866,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,74,aprovado,
+2937,UC*,uc_uniao_distinta,COD_ID,2044275,alerta,soma_por_entidade=2044280; sobreposicao=5
+2937,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=49771; soma_original=267857.51; max=5000.0; >75=84; nulos_ou_nao_positivos=1
+2937,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=569; soma_original=1996867.31; max=420000.0; >75=236; nulos_ou_nao_positivos=0
+2937,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3; soma_original=55400.00; max=49000.0; >75=3; nulos_ou_nao_positivos=0
+2937,UNCRAT,potencia_kvar,kVAr,586400.0,aprovado,sem_mapeamento_DDA=0/30
+2937,UNCRMT,potencia_kvar,kVAr,523800.0,aprovado,sem_mapeamento_DDA=0/616
+2937,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+2937,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,52976,alerta,casam_exatamente=51964; provavel_POT_NOM_em_MVA_na_unidade=2; sem_mapeamento_DDA=0; dif_total_kVA=-2.2%
+2937,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,129,aprovado,casam_exatamente=127; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+1.4%
+2937,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,2007391,aprovado,
+2937,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,6915,aprovado,
+2937,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,70,aprovado,
+3223,UC*,uc_uniao_distinta,COD_ID,27080,aprovado,soma_por_entidade=27080; sobreposicao=0
+3223,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1710; soma_original=13103.35; max=75.0; >75=0; nulos_ou_nao_positivos=0
+3223,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=37; soma_original=13246.26; max=10000.0; >75=12; nulos_ou_nao_positivos=0
+3223,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+3223,UNCRMT,potencia_kvar,kVAr,9750.0,aprovado,sem_mapeamento_DDA=0/45
+3223,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+3223,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,5550,aprovado,casam_exatamente=5491; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+1.8%
+3223,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,3,aprovado,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+3223,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,26782,aprovado,
+3223,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,131,aprovado,
+3223,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+3627,UC*,uc_uniao_distinta,COD_ID,17688,alerta,soma_por_entidade=17693; sobreposicao=5
+3627,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1351; soma_original=11635.08; max=60.0; >75=0; nulos_ou_nao_positivos=0
+3627,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=20; soma_original=1119.89; max=75.0; >75=0; nulos_ou_nao_positivos=0
+3627,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+3627,UNCRMT,potencia_kvar,kVAr,8100.0,aprovado,sem_mapeamento_DDA=0/32
+3627,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+3627,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,4718,aprovado,casam_exatamente=4379; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.9%
+3627,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,3,aprovado,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+3627,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,17554,aprovado,
+3627,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,90,aprovado,
+3627,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+4248,UC*,uc_uniao_distinta,COD_ID,1165,aprovado,soma_por_entidade=1165; sobreposicao=0
+4248,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=68; soma_original=2556.23; max=112.0; >75=2; nulos_ou_nao_positivos=0
+4248,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=4; soma_original=775.00; max=300.0; >75=3; nulos_ou_nao_positivos=0
+4248,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+4248,UNCRMT,potencia_kvar,kVAr,750.0,aprovado,sem_mapeamento_DDA=0/3
+4248,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+4248,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,704,aprovado,casam_exatamente=684; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+4248,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1130,aprovado,
+4248,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,18,aprovado,
+4248,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+4950,UC*,uc_uniao_distinta,COD_ID,9827789,aprovado,soma_por_entidade=9827789; sobreposicao=0
+4950,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=382291; soma_original=3161958.80; max=3000.0; >75=67; nulos_ou_nao_positivos=2401
+4950,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=4380; soma_original=2420081.94; max=35200.0; >75=2690; nulos_ou_nao_positivos=55
+4950,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=159; soma_original=3328339.35; max=188300.0; >75=158; nulos_ou_nao_positivos=0
+4950,UNCRAT,potencia_kvar,kVAr,1044600.0,aprovado,sem_mapeamento_DDA=0/43
+4950,UNCRMT,potencia_kvar,kVAr,9587900.0,aprovado,sem_mapeamento_DDA=0/2646
+4950,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+4950,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,971599,alerta,casam_exatamente=971521; provavel_POT_NOM_em_MVA_na_unidade=56; sem_mapeamento_DDA=0; dif_total_kVA=+2.1%
+4950,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,994,alerta,casam_exatamente=888; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+42.3%
+4950,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,9457201,aprovado,
+4950,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,19058,aprovado,
+4950,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,273,aprovado,
+5160,UC*,uc_uniao_distinta,COD_ID,1187042,alerta,soma_por_entidade=1189404; sobreposicao=2362
+5160,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=33615; soma_original=347647.41; max=3463.0; >75=183; nulos_ou_nao_positivos=0
+5160,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1091; soma_original=333660.78; max=30000.0; >75=486; nulos_ou_nao_positivos=0
+5160,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=2; soma_original=223447.00; max=127000.0; >75=2; nulos_ou_nao_positivos=0
+5160,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5160,UNCRMT,potencia_kvar,kVAr,667500.0,aprovado,sem_mapeamento_DDA=0/159
+5160,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5160,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,28116,aprovado,casam_exatamente=28116; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5160,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,75,aprovado,casam_exatamente=75; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5160,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1161015,alerta,58942 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+5160,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,5598,alerta,7 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+5160,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,8,aprovado,
+5216,UC*,uc_uniao_distinta,COD_ID,951934,alerta,soma_por_entidade=951959; sobreposicao=25
+5216,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=74130; soma_original=533416.93; max=225.0; >75=23; nulos_ou_nao_positivos=291
+5216,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=624; soma_original=214522.10; max=27500.0; >75=225; nulos_ou_nao_positivos=0
+5216,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=12; soma_original=461278.00; max=75000.0; >75=12; nulos_ou_nao_positivos=0
+5216,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5216,UNCRMT,potencia_kvar,kVAr,299212.0,aprovado,sem_mapeamento_DDA=0/497
+5216,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5216,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,59710,alerta,casam_exatamente=59620; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+231.4%
+5216,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,112,aprovado,casam_exatamente=110; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.0%
+5216,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,896997,alerta,7 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+5216,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,3082,aprovado,
+5216,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,22,aprovado,
+5343,UC*,uc_uniao_distinta,COD_ID,24514,alerta,soma_por_entidade=24517; sobreposicao=3
+5343,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3083; soma_original=23711.99; max=108.0; >75=1; nulos_ou_nao_positivos=0
+5343,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=25; soma_original=2659.20; max=253.9; >75=9; nulos_ou_nao_positivos=0
+5343,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5343,UNCRMT,potencia_kvar,kVAr,17295.0,aprovado,sem_mapeamento_DDA=0/93
+5343,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5343,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,6437,aprovado,casam_exatamente=6371; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5343,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,24038,aprovado,
+5343,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,81,aprovado,
+5343,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5345,UC*,uc_uniao_distinta,COD_ID,7354,alerta,soma_por_entidade=7359; sobreposicao=5
+5345,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=529; soma_original=3237.22; max=66.0; >75=0; nulos_ou_nao_positivos=0
+5345,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5; soma_original=402.00; max=150.0; >75=1; nulos_ou_nao_positivos=0
+5345,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5345,UNCRMT,potencia_kvar,kVAr,1890.0,aprovado,sem_mapeamento_DDA=0/7
+5345,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5345,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,899,aprovado,casam_exatamente=896; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5345,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7196,aprovado,
+5345,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,15,aprovado,
+5345,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5346,UC*,uc_uniao_distinta,COD_ID,6038,aprovado,soma_por_entidade=6038; sobreposicao=0
+5346,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=221; soma_original=2521.67; max=90.0; >75=1; nulos_ou_nao_positivos=0
+5346,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=7; soma_original=377.31; max=100.0; >75=1; nulos_ou_nao_positivos=0
+5346,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5346,UNCRMT,potencia_kvar,kVAr,675.0,aprovado,sem_mapeamento_DDA=0/5
+5346,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5346,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1622,aprovado,casam_exatamente=1621; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5346,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,5822,aprovado,
+5346,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,62,aprovado,
+5346,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5351,UC*,uc_uniao_distinta,COD_ID,4054,alerta,soma_por_entidade=4056; sobreposicao=2
+5351,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=227; soma_original=3584.69; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5351,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5351,UNCRMT,potencia_kvar,kVAr,600.0,aprovado,sem_mapeamento_DDA=0/2
+5351,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5351,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,967,aprovado,casam_exatamente=965; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5351,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4035,aprovado,
+5351,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,3,aprovado,
+5351,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5352,UC*,uc_uniao_distinta,COD_ID,17862,alerta,soma_por_entidade=17863; sobreposicao=1
+5352,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1227; soma_original=13403.93; max=144.3; >75=7; nulos_ou_nao_positivos=0
+5352,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3; soma_original=311.99; max=113.3; >75=3; nulos_ou_nao_positivos=0
+5352,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5352,UNCRMT,potencia_kvar,kVAr,3550.0,aprovado,sem_mapeamento_DDA=0/28
+5352,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5352,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,3014,aprovado,casam_exatamente=3007; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5352,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,16855,aprovado,
+5352,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,17,aprovado,
+5352,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5353,UC*,uc_uniao_distinta,COD_ID,21432,alerta,soma_por_entidade=21433; sobreposicao=1
+5353,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1092; soma_original=8617.88; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5353,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=5; soma_original=235.86; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5353,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5353,UNCRMT,potencia_kvar,kVAr,7200.0,aprovado,sem_mapeamento_DDA=0/9
+5353,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5353,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,819,aprovado,casam_exatamente=815; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+5353,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,20798,aprovado,
+5353,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,62,aprovado,
+5353,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5355,UC*,uc_uniao_distinta,COD_ID,4076,alerta,soma_por_entidade=4077; sobreposicao=1
+5355,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=345; soma_original=7278.02; max=110.16; >75=2; nulos_ou_nao_positivos=0
+5355,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5355,UNCRMT,potencia_kvar,kVAr,3900.0,aprovado,sem_mapeamento_DDA=0/9
+5355,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5355,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,944,aprovado,casam_exatamente=933; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+5355,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4052,aprovado,
+5355,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,9,aprovado,
+5355,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5356,UC*,uc_uniao_distinta,COD_ID,7353,alerta,soma_por_entidade=7357; sobreposicao=4
+5356,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=219; soma_original=3290.70; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5356,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=33; soma_original=3192.29; max=290.0; >75=11; nulos_ou_nao_positivos=0
+5356,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5356,UNCRMT,potencia_kvar,kVAr,1200.0,aprovado,sem_mapeamento_DDA=0/4
+5356,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5356,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,846,aprovado,casam_exatamente=792; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+5356,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,3,aprovado,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5356,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7128,aprovado,
+5356,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,166,aprovado,
+5356,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5363,UC*,uc_uniao_distinta,COD_ID,7301,alerta,soma_por_entidade=7303; sobreposicao=2
+5363,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=440; soma_original=4319.90; max=110.0; >75=1; nulos_ou_nao_positivos=0
+5363,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5363,UNCRMT,potencia_kvar,kVAr,1125.0,aprovado,sem_mapeamento_DDA=0/5
+5363,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5363,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,658,aprovado,casam_exatamente=658; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-3.3%
+5363,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7116,aprovado,
+5363,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,19,aprovado,
+5363,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5364,UC*,uc_uniao_distinta,COD_ID,17358,alerta,soma_por_entidade=17360; sobreposicao=2
+5364,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=662; soma_original=6487.77; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5364,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=15; soma_original=1282.74; max=200.0; >75=3; nulos_ou_nao_positivos=0
+5364,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5364,UNCRMT,potencia_kvar,kVAr,3300.0,aprovado,sem_mapeamento_DDA=0/8
+5364,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5364,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1028,aprovado,casam_exatamente=983; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5364,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,3,aprovado,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5364,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,16778,aprovado,
+5364,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,122,aprovado,
+5364,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5365,UC*,uc_uniao_distinta,COD_ID,18445,aprovado,soma_por_entidade=18445; sobreposicao=0
+5365,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1048; soma_original=8877.85; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5365,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=4; soma_original=855.00; max=330.0; >75=3; nulos_ou_nao_positivos=0
+5365,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5365,UNCRMT,potencia_kvar,kVAr,8100.0,aprovado,sem_mapeamento_DDA=0/12
+5365,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5365,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1100,aprovado,casam_exatamente=1090; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5365,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,1,aprovado,casam_exatamente=0; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+5.0%
+5365,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,17954,aprovado,
+5365,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,31,aprovado,
+5365,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5366,UC*,uc_uniao_distinta,COD_ID,4678,aprovado,soma_por_entidade=4678; sobreposicao=0
+5366,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=123; soma_original=100859.36; max=100000.0; >75=1; nulos_ou_nao_positivos=0
+5366,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5366,UNCRMT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5366,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5366,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,911,aprovado,casam_exatamente=911; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5366,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4189,aprovado,
+5366,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,8,aprovado,
+5366,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5367,UC*,uc_uniao_distinta,COD_ID,24149,alerta,soma_por_entidade=24150; sobreposicao=1
+5367,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=763; soma_original=7695.51; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5367,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=6; soma_original=706.55; max=170.0; >75=4; nulos_ou_nao_positivos=0
+5367,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5367,UNCRMT,potencia_kvar,kVAr,6075.0,aprovado,sem_mapeamento_DDA=0/8
+5367,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5367,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1575,aprovado,casam_exatamente=1574; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5367,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,2,aprovado,casam_exatamente=2; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5367,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,22408,aprovado,
+5367,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,30,aprovado,
+5367,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5368,UC*,uc_uniao_distinta,COD_ID,19679,alerta,soma_por_entidade=19721; sobreposicao=42
+5368,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=469; soma_original=9167.27; max=150.0; >75=2; nulos_ou_nao_positivos=0
+5368,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=48; soma_original=6616.28; max=2000.0; >75=16; nulos_ou_nao_positivos=0
+5368,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5368,UNCRMT,potencia_kvar,kVAr,14025.0,aprovado,sem_mapeamento_DDA=0/26
+5368,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5368,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,2919,aprovado,casam_exatamente=2873; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+5368,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,4,aprovado,casam_exatamente=4; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5368,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,18890,aprovado,
+5368,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,163,aprovado,
+5368,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5369,UC*,uc_uniao_distinta,COD_ID,5000,alerta,soma_por_entidade=5002; sobreposicao=2
+5369,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=480; soma_original=4977.10; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5369,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=75.00; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5369,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5369,UNCRMT,potencia_kvar,kVAr,2450.0,aprovado,sem_mapeamento_DDA=0/7
+5369,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5369,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,782,aprovado,casam_exatamente=768; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.6%
+5369,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4773,aprovado,
+5369,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,28,aprovado,
+5369,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5370,UC*,uc_uniao_distinta,COD_ID,239,aprovado,soma_por_entidade=239; sobreposicao=0
+5370,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=734; soma_original=37061.81; max=12810.0; >75=7; nulos_ou_nao_positivos=0
+5370,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5370,UNCRMT,potencia_kvar,kVAr,14475.0,aprovado,sem_mapeamento_DDA=0/18
+5370,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5370,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,2301,aprovado,casam_exatamente=2181; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.7%
+5370,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,4,aprovado,casam_exatamente=4; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5370,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5370,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,224,aprovado,
+5370,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,1,aprovado,
+5371,UC*,uc_uniao_distinta,COD_ID,12473,alerta,soma_por_entidade=12507; sobreposicao=34
+5371,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=431; soma_original=4424.44; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5371,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=24; soma_original=1105.24; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5371,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5371,UNCRMT,potencia_kvar,kVAr,2000.0,aprovado,sem_mapeamento_DDA=0/7
+5371,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5371,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1099,aprovado,casam_exatamente=1044; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5371,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,2,aprovado,casam_exatamente=2; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5371,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,12141,aprovado,
+5371,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,141,aprovado,
+5371,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,1,aprovado,
+5372,UC*,uc_uniao_distinta,COD_ID,5851,aprovado,soma_por_entidade=5851; sobreposicao=0
+5372,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=245; soma_original=3128.75; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5372,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=300.00; max=300.0; >75=1; nulos_ou_nao_positivos=0
+5372,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5372,UNCRMT,potencia_kvar,kVAr,1200.0,aprovado,sem_mapeamento_DDA=0/7
+5372,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5372,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,741,aprovado,casam_exatamente=725; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+5372,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,5595,aprovado,
+5372,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,20,aprovado,
+5372,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5373,UC*,uc_uniao_distinta,COD_ID,1466,aprovado,soma_por_entidade=1466; sobreposicao=0
+5373,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=69; soma_original=2325.20; max=112.5; >75=1; nulos_ou_nao_positivos=0
+5373,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5373,UNCRMT,potencia_kvar,kVAr,750.0,aprovado,sem_mapeamento_DDA=0/3
+5373,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5373,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,386,aprovado,casam_exatamente=383; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5373,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1435,aprovado,
+5373,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,3,aprovado,
+5373,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5374,UC*,uc_uniao_distinta,COD_ID,9688,alerta,soma_por_entidade=9694; sobreposicao=6
+5374,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=903; soma_original=14476.27; max=150.0; >75=3; nulos_ou_nao_positivos=0
+5374,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=17; soma_original=2031.60; max=360.0; >75=9; nulos_ou_nao_positivos=0
+5374,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5374,UNCRMT,potencia_kvar,kVAr,6000.0,aprovado,sem_mapeamento_DDA=0/9
+5374,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5374,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1486,aprovado,casam_exatamente=1479; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+5374,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,8974,aprovado,
+5374,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,45,aprovado,
+5374,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5375,UC*,uc_uniao_distinta,COD_ID,4899,alerta,soma_por_entidade=4900; sobreposicao=1
+5375,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=242; soma_original=2066.50; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5375,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=9; soma_original=776.67; max=200.0; >75=2; nulos_ou_nao_positivos=0
+5375,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5375,UNCRMT,potencia_kvar,kVAr,3225.0,aprovado,sem_mapeamento_DDA=0/10
+5375,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5375,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,803,aprovado,casam_exatamente=788; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.1%
+5375,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4778,aprovado,
+5375,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,78,aprovado,
+5375,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5377,UC*,uc_uniao_distinta,COD_ID,7523,alerta,soma_por_entidade=7526; sobreposicao=3
+5377,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=207; soma_original=1664.00; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5377,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5377,UNCRMT,potencia_kvar,kVAr,600.0,aprovado,sem_mapeamento_DDA=0/2
+5377,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5377,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,270,aprovado,casam_exatamente=270; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5377,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7171,aprovado,
+5377,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,6,aprovado,
+5377,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5378,UC*,uc_uniao_distinta,COD_ID,15754,alerta,soma_por_entidade=15758; sobreposicao=4
+5378,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1007; soma_original=17366.32; max=110.0; >75=5; nulos_ou_nao_positivos=0
+5378,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=107; soma_original=15747.00; max=1000.0; >75=43; nulos_ou_nao_positivos=0
+5378,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5378,UNCRMT,potencia_kvar,kVAr,16725.0,aprovado,sem_mapeamento_DDA=0/67
+5378,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5378,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,4774,aprovado,casam_exatamente=4663; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.3%
+5378,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,7,aprovado,casam_exatamente=7; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5378,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,14372,aprovado,
+5378,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,479,aprovado,
+5378,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5379,UC*,uc_uniao_distinta,COD_ID,34460,alerta,soma_por_entidade=34461; sobreposicao=1
+5379,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1398; soma_original=10799.06; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5379,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3; soma_original=68.80; max=40.0; >75=0; nulos_ou_nao_positivos=0
+5379,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5379,UNCRMT,potencia_kvar,kVAr,7950.0,aprovado,sem_mapeamento_DDA=0/21
+5379,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5379,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,4150,aprovado,casam_exatamente=4146; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5379,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,34151,aprovado,
+5379,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,13,aprovado,
+5379,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5381,UC*,uc_uniao_distinta,COD_ID,7921,aprovado,soma_por_entidade=7921; sobreposicao=0
+5381,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=353; soma_original=2475.25; max=76.0; >75=1; nulos_ou_nao_positivos=0
+5381,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=250.00; max=250.0; >75=1; nulos_ou_nao_positivos=0
+5381,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5381,UNCRMT,potencia_kvar,kVAr,1545.0,aprovado,sem_mapeamento_DDA=0/11
+5381,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5381,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1686,aprovado,casam_exatamente=1666; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.1%
+5381,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7763,aprovado,
+5381,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,26,aprovado,
+5381,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5382,UC*,uc_uniao_distinta,COD_ID,7205,alerta,soma_por_entidade=7206; sobreposicao=1
+5382,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=108; soma_original=805.69; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5382,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5382,UNCRMT,potencia_kvar,kVAr,1185.0,aprovado,sem_mapeamento_DDA=0/11
+5382,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5382,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,982,aprovado,casam_exatamente=978; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-1.4%
+5382,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,6969,aprovado,
+5382,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,4,aprovado,
+5382,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5384,UC*,uc_uniao_distinta,COD_ID,2227,alerta,soma_por_entidade=2228; sobreposicao=1
+5384,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=153; soma_original=1228.17; max=73.0; >75=0; nulos_ou_nao_positivos=0
+5384,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3; soma_original=199.75; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5384,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5384,UNCRMT,potencia_kvar,kVAr,3150.0,aprovado,sem_mapeamento_DDA=0/9
+5384,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5384,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,868,aprovado,casam_exatamente=860; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5384,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,2118,aprovado,
+5384,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,19,aprovado,
+5384,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5385,UC*,uc_uniao_distinta,COD_ID,16445,alerta,soma_por_entidade=16446; sobreposicao=1
+5385,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1705; soma_original=11732.20; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5385,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=7; soma_original=962.00; max=480.0; >75=2; nulos_ou_nao_positivos=0
+5385,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5385,UNCRMT,potencia_kvar,kVAr,4050.0,aprovado,sem_mapeamento_DDA=0/11
+5385,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5385,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1638,aprovado,casam_exatamente=1638; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5385,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,16140,aprovado,
+5385,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,32,aprovado,
+5385,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5386,UC*,uc_uniao_distinta,COD_ID,17275,alerta,soma_por_entidade=17280; sobreposicao=5
+5386,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=797; soma_original=5041.45; max=75.0; >75=0; nulos_ou_nao_positivos=0
+5386,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=4; soma_original=190.61; max=73.0; >75=0; nulos_ou_nao_positivos=0
+5386,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5386,UNCRMT,potencia_kvar,kVAr,3900.0,aprovado,sem_mapeamento_DDA=0/14
+5386,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5386,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1511,aprovado,casam_exatamente=1506; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5386,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,17128,aprovado,
+5386,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,36,aprovado,
+5386,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5697,UC*,uc_uniao_distinta,COD_ID,3572532,alerta,soma_por_entidade=3572533; sobreposicao=1
+5697,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=166934; soma_original=1581876.82; max=9750.0; >75=61; nulos_ou_nao_positivos=1591
+5697,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=4011; soma_original=1900190.40; max=191900.0; >75=1438; nulos_ou_nao_positivos=75
+5697,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=46; soma_original=1192355.30; max=191890.0; >75=46; nulos_ou_nao_positivos=0
+5697,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5697,UNCRMT,potencia_kvar,kVAr,1605900.0,aprovado,sem_mapeamento_DDA=0/1404
+5697,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5697,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,217756,aprovado,casam_exatamente=217439; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+5697,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,336,aprovado,casam_exatamente=306; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+5697,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3554543,alerta,1030 registros ativados (SIT_ATIV=AT) excedentes para COD_ID ja ativado
+5697,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,17871,aprovado,
+5697,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,119,aprovado,
+5707,UC*,uc_uniao_distinta,COD_ID,2050311,aprovado,soma_por_entidade=2050311; sobreposicao=0
+5707,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=61479; soma_original=389572.76; max=648.6775; >75=14; nulos_ou_nao_positivos=0
+5707,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1793; soma_original=89575.05; max=1710.0; >75=201; nulos_ou_nao_positivos=0
+5707,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5707,UNCRMT,potencia_kvar,kVAr,549445.0,aprovado,sem_mapeamento_DDA=0/471
+5707,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+5707,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,95556,aprovado,casam_exatamente=94907; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.9%
+5707,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,149,alerta,casam_exatamente=36; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+175.5%
+5707,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1966928,aprovado,
+5707,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,13231,aprovado,
+5707,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,46,aprovado,
+6072,UC*,uc_uniao_distinta,COD_ID,3472754,alerta,soma_por_entidade=3472755; sobreposicao=1
+6072,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1998; soma_original=576976.91; max=5000.0; >75=1138; nulos_ou_nao_positivos=0
+6072,UNCRAT,potencia_kvar,kVAr,23200.0,aprovado,sem_mapeamento_DDA=0/4
+6072,UNCRMT,potencia_kvar,kVAr,1087050.0,aprovado,sem_mapeamento_DDA=0/486
+6072,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6072,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,262691,aprovado,casam_exatamente=251317; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-2.3%
+6072,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,265,aprovado,casam_exatamente=249; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+6072,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,13492,aprovado,
+6072,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,9711,aprovado,
+6072,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+6585,UC*,uc_uniao_distinta,COD_ID,711829,alerta,soma_por_entidade=711859; sobreposicao=30
+6585,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=37487; soma_original=678901.48; max=49375.0; >75=83; nulos_ou_nao_positivos=1
+6585,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=383; soma_original=136400.36; max=29232.0; >75=148; nulos_ou_nao_positivos=0
+6585,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=16; soma_original=311738.00; max=87048.0; >75=16; nulos_ou_nao_positivos=0
+6585,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6585,UNCRMT,potencia_kvar,kVAr,241550.0,aprovado,sem_mapeamento_DDA=0/180
+6585,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6585,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,75872,aprovado,casam_exatamente=75754; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+6585,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,71,alerta,casam_exatamente=62; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-8.2%
+6585,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,600066,aprovado,
+6585,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,1212,aprovado,
+6585,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,7,aprovado,
+6587,UC*,uc_uniao_distinta,COD_ID,976051,alerta,soma_por_entidade=976114; sobreposicao=63
+6587,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=21322; soma_original=210715.23; max=112.0; >75=9; nulos_ou_nao_positivos=26
+6587,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=413; soma_original=58186.99; max=8000.0; >75=106; nulos_ou_nao_positivos=1
+6587,UGAT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=6; soma_original=119800.00; max=34500.0; >75=6; nulos_ou_nao_positivos=0
+6587,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6587,UNCRMT,potencia_kvar,kVAr,286100.0,aprovado,sem_mapeamento_DDA=0/433
+6587,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6587,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,57331,aprovado,casam_exatamente=57279; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+4.8%
+6587,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,58,aprovado,casam_exatamente=56; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+6587,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,906073,aprovado,
+6587,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,2102,aprovado,
+6587,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,14,aprovado,
+6600,UC*,uc_uniao_distinta,COD_ID,2134344,alerta,soma_por_entidade=2134433; sobreposicao=89
+6600,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=45936; soma_original=432395.36; max=150.0; >75=33; nulos_ou_nao_positivos=16
+6600,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1301; soma_original=136119.19; max=5704.0; >75=386; nulos_ou_nao_positivos=0
+6600,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6600,UNCRMT,potencia_kvar,kVAr,326400.0,aprovado,sem_mapeamento_DDA=0/163
+6600,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6600,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,88993,aprovado,casam_exatamente=88988; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+6600,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,135,aprovado,casam_exatamente=128; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.1%
+6600,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1897891,aprovado,
+6600,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,4230,aprovado,
+6600,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,26,aprovado,
+6603,UC*,uc_uniao_distinta,COD_ID,8267,alerta,soma_por_entidade=8269; sobreposicao=2
+6603,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=339; soma_original=2044.38; max=75.0; >75=0; nulos_ou_nao_positivos=0
+6603,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=3; soma_original=152.16; max=75.0; >75=0; nulos_ou_nao_positivos=0
+6603,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6603,UNCRMT,potencia_kvar,kVAr,1950.0,aprovado,sem_mapeamento_DDA=0/5
+6603,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6603,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1000,aprovado,casam_exatamente=994; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+1.0%
+6603,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,7971,aprovado,
+6603,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,18,aprovado,
+6603,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+6609,UC*,uc_uniao_distinta,COD_ID,4845,aprovado,soma_por_entidade=4845; sobreposicao=0
+6609,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=420; soma_original=3123.32; max=75.0; >75=0; nulos_ou_nao_positivos=0
+6609,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=9; soma_original=544.00; max=90.0; >75=1; nulos_ou_nao_positivos=0
+6609,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6609,UNCRMT,potencia_kvar,kVAr,1165.0,aprovado,sem_mapeamento_DDA=0/10
+6609,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6609,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1435,aprovado,casam_exatamente=1435; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+6609,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4798,aprovado,
+6609,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,21,aprovado,
+6609,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+6610,UC*,uc_uniao_distinta,COD_ID,3690,aprovado,soma_por_entidade=3690; sobreposicao=0
+6610,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=181; soma_original=1974.74; max=117.0; >75=1; nulos_ou_nao_positivos=0
+6610,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1; soma_original=100.00; max=100.0; >75=1; nulos_ou_nao_positivos=0
+6610,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6610,UNCRMT,potencia_kvar,kVAr,1875.0,aprovado,sem_mapeamento_DDA=0/6
+6610,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6610,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,475,aprovado,casam_exatamente=475; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+6610,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,3560,aprovado,
+6610,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,11,aprovado,
+6610,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+6897,UC*,uc_uniao_distinta,COD_ID,13441,alerta,soma_por_entidade=13447; sobreposicao=6
+6897,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1497; soma_original=30422.88; max=180.0; >75=4; nulos_ou_nao_positivos=0
+6897,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=27; soma_original=4183.87; max=300.0; >75=16; nulos_ou_nao_positivos=0
+6897,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6897,UNCRMT,potencia_kvar,kVAr,2400.0,aprovado,sem_mapeamento_DDA=0/8
+6897,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6897,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,4008,aprovado,casam_exatamente=3963; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.5%
+6897,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,13280,aprovado,
+6897,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,76,aprovado,
+6897,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+6898,UC*,uc_uniao_distinta,COD_ID,18861,alerta,soma_por_entidade=18870; sobreposicao=9
+6898,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1285; soma_original=21331.58; max=260.0; >75=2; nulos_ou_nao_positivos=0
+6898,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=60; soma_original=10516.50; max=2500.0; >75=20; nulos_ou_nao_positivos=0
+6898,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6898,UNCRMT,potencia_kvar,kVAr,6300.0,aprovado,sem_mapeamento_DDA=0/11
+6898,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+6898,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1847,aprovado,casam_exatamente=1831; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=-0.2%
+6898,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,2,aprovado,casam_exatamente=2; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+6898,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,18400,aprovado,
+6898,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,196,aprovado,
+6898,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+7016,UC*,uc_uniao_distinta,COD_ID,9927,alerta,soma_por_entidade=9929; sobreposicao=2
+7016,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=733; soma_original=9864.13; max=280.0; >75=2; nulos_ou_nao_positivos=0
+7016,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=6; soma_original=589.86; max=280.0; >75=1; nulos_ou_nao_positivos=0
+7016,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7016,UNCRMT,potencia_kvar,kVAr,2725.0,aprovado,sem_mapeamento_DDA=0/10
+7016,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7016,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,1373,aprovado,casam_exatamente=1365; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+7016,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,9675,aprovado,
+7016,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,35,aprovado,
+7016,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+7019,UC*,uc_uniao_distinta,COD_ID,946732,alerta,soma_por_entidade=947388; sobreposicao=656
+7019,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=11128; soma_original=37208.39; max=92.1987; >75=2; nulos_ou_nao_positivos=13
+7019,UGBT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=1400; soma_original=5584.07; max=83.2726; >75=1; nulos_ou_nao_positivos=0
+7019,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=205; soma_original=103281.93; max=43430.2; >75=146; nulos_ou_nao_positivos=0
+7019,UGMT,POT_INST_original_kW[TIP_SIST=RD_ISOLADA],"kW (original, nao homologado)",,bloqueado,registros=58; soma_original=36576.81; max=14516.7; >75=33; nulos_ou_nao_positivos=0
+7019,UNCRAT,potencia_kvar,kVAr,18000.0,aprovado,sem_mapeamento_DDA=0/2
+7019,UNCRMT,potencia_kvar,kVAr,1036920.0,aprovado,sem_mapeamento_DDA=0/625
+7019,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7019,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,100371,aprovado,casam_exatamente=100370; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.2%
+7019,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,93,alerta,casam_exatamente=89; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+6.2%
+7019,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,888309,aprovado,
+7019,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,3836,aprovado,
+7019,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,50,aprovado,
+7371,UC*,uc_uniao_distinta,COD_ID,77658,alerta,soma_por_entidade=77688; sobreposicao=30
+7371,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=7521; soma_original=79603.44; max=111.55; >75=93; nulos_ou_nao_positivos=0
+7371,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=150; soma_original=13414.35; max=517.0; >75=77; nulos_ou_nao_positivos=0
+7371,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7371,UNCRMT,potencia_kvar,kVAr,38100.0,aprovado,sem_mapeamento_DDA=0/71
+7371,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7371,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,9670,aprovado,casam_exatamente=9402; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.2%
+7371,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,10,aprovado,casam_exatamente=10; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+7371,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,76931,aprovado,
+7371,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,548,aprovado,
+7371,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+7467,UC*,uc_uniao_distinta,COD_ID,18086,alerta,soma_por_entidade=18093; sobreposicao=7
+7467,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=1225; soma_original=14667.85; max=110.0; >75=3; nulos_ou_nao_positivos=0
+7467,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=69; soma_original=7762.70; max=1300.0; >75=27; nulos_ou_nao_positivos=0
+7467,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7467,UNCRMT,potencia_kvar,kVAr,11100.0,aprovado,sem_mapeamento_DDA=0/25
+7467,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7467,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,3061,aprovado,casam_exatamente=2993; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+7467,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,3,aprovado,casam_exatamente=3; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+7467,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,17598,aprovado,
+7467,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,276,aprovado,
+7467,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+7883,UC*,uc_uniao_distinta,COD_ID,1469,aprovado,soma_por_entidade=1469; sobreposicao=0
+7883,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=51; soma_original=347.97; max=20.0; >75=0; nulos_ou_nao_positivos=0
+7883,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7883,UNCRMT,potencia_kvar,kVAr,300.0,aprovado,sem_mapeamento_DDA=0/1
+7883,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+7883,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,288,aprovado,casam_exatamente=286; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.7%
+7883,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,1407,aprovado,
+7883,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,13,aprovado,
+7883,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+11825,UC*,uc_uniao_distinta,COD_ID,2417,alerta,soma_por_entidade=2418; sobreposicao=1
+11825,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=127; soma_original=5577.96; max=75.0; >75=0; nulos_ou_nao_positivos=0
+11825,UGMT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=10; soma_original=1446.00; max=300.0; >75=8; nulos_ou_nao_positivos=0
+11825,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+11825,UNCRMT,potencia_kvar,kVAr,750.0,aprovado,sem_mapeamento_DDA=0/3
+11825,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
+11825,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,784,aprovado,casam_exatamente=769; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
+11825,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,2322,aprovado,
+11825,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,33,aprovado,
+11825,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,

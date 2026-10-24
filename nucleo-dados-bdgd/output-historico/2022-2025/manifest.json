@@ -1,0 +1,66 @@
+{
+ "escopo": "BDGD 2022-2025, mesma regra de ativos de 2025",
+ "versao_regra": "r3-1",
+ "gerado_em": "2026-10-24T02:02:08+00:00",
+ "cobertura": [
+  {
+   "ano": 2022,
+   "publicadas": 102,
+   "validadas": 84,
+   "pendentes": 14,
+   "competencia_divergente": 4,
+   "status_ano": "parcial"
+  },
+  {
+   "ano": 2023,
+   "publicadas": 101,
+   "validadas": 71,
+   "pendentes": 23,
+   "competencia_divergente": 7,
+   "status_ano": "parcial"
+  },
+  {
+   "ano": 2024,
+   "publicadas": 97,
+   "validadas": 86,
+   "pendentes": 11,
+   "competencia_divergente": 0,
+   "status_ano": "parcial"
+  },
+  {
+   "ano": 2025,
+   "publicadas": 99,
+   "validadas": 99,
+   "pendentes": 0,
+   "competencia_divergente": 0,
+   "status_ano": "homologado"
+  }
+ ],
+ "estados": [
+  "validado",
+  "ausente",
+  "campo_ausente",
+  "bloqueado",
+  "revisao_pendente",
+  "nao_processado",
+  "competencia_divergente",
+  "sem_publicacao"
+ ],
+ "regras": {
+  "valores": "somente celulas validado tem valor; demais ficam vazias (N/D), nunca zero",
+  "brasil": "total nacional so quando todas as publicacoes do ano estao validadas",
+  "perimetro": "predecessoras somadas apenas com prova de disjuncao por CONJ e absorcao no ano seguinte",
+  "quebra_classificacao": "variacao > 10% da parcela sem TUC"
+ },
+ "privacidade": "somente agregados por DIST/ano/ativo; nenhum identificador individual",
+ "checksums": {
+  "cobertura_por_ano.csv": "ff16ac1cd68cbea25cfcad6835b9bf19fd664d79af1b308a29688f632a63bb40",
+  "eventos_sucessao.csv": "d006a4d8e6969a85490dc73db61c6d25d13cb8df12087197cd02aaaa2cf44443",
+  "ponte_perimetro_2025.csv": "887aaf1693569609990a210b0e0e5cefdb6844343224ea05be1ef93173221d5a",
+  "populacao_conceitos.csv": "58b789110aefab44ab995f2b8b75c0f8474b38d42fd198da5b1d8b8103df4bed",
+  "qa_publicacoes_multiplas.csv": "de8eabc37a4fc1049344507c38f70acea06ed143f3602c017d0a6174c761746c",
+  "qa_sucessao.csv": "a7617e0825d7eaca70b3c68812ee03b6473012bc169d249d0aed4526a10f35ab",
+  "serie_ativos_original.csv": "d40eac09ad0ceaed2db3ab2ac54c3d27958690453db7606ef016a231aeeefac9",
+  "serie_ativos_perimetro_2025.csv": "7ae559b484a7376315de7f7049426c3bf3f8048e2a2da7a3869664946c4777ea"
+ }
+}

@@ -1,0 +1,66 @@
+name: Núcleo de Dados BDGD — web 2025
+on:
+  push:
+    branches:
+      - "feat/nucleo-dados-bdgd-portal"
+      - "feat/dashboard-bdgd-2025"
+    paths:
+      - "nucleo-dados-bdgd/web/**"
+      - "nucleo-dados-bdgd/etl/**"
+      - "nucleo-dados-bdgd/output-publicavel/**"
+      - "nucleo-dados-bdgd/output-historico/**"
+      - ".github/workflows/nucleo-bdgd-web.yml"
+  pull_request:
+    paths:
+      - "nucleo-dados-bdgd/web/**"
+      - "nucleo-dados-bdgd/etl/**"
+      - "nucleo-dados-bdgd/output-publicavel/**"
+permissions:
+  contents: read
+concurrency:
+  group: nucleo-bdgd-web-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  web:
+    name: Lint, tipos, testes, build e E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: nucleo-dados-bdgd/web
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Node
+        run: node --version && npm --version
+      - name: Dependências
+        run: npm ci --no-audit --no-fund
+      - name: Auditoria de dependências de produção
+        run: npm audit --omit=dev --audit-level=high
+      - name: Lint
+        run: npm run lint
+      - name: Tipos
+        run: npm run typecheck
+      - name: Testes unitários (semântica de consulta)
+        run: npm test
+      - name: Contrato de dados (smoke)
+        run: node ../etl/tests/smoke.mjs
+      - name: Validar pacote publicado 2025-12-31 (gate obrigatório)
+        run: |
+          test -f ../output-publicavel/2025-12-31/manifest.json || { echo "::error::pacote 2025-12-31 ausente: o gate de release não pode ser pulado"; exit 1; }
+          node ../etl/validate-publication.mjs ../output-publicavel/2025-12-31
+      - name: Assets web derivados do mesmo pacote
+        run: |
+          node -e 'const m=require("../output-publicavel/2025-12-31/manifest.json"),a=require("./public/data/2025-12-31/assets.json"),i=require("./public/data/2025-12-31/index.json");if(a.release_id!==m.release_id||i.release.release_id!==m.release_id||i.release.data_base!=="2025-12-31"){console.error("release_id divergente",m.release_id,a.release_id,i.release.release_id);process.exit(1)}console.log("assets =",m.release_id,"status",m.status)'
+      - name: Validar série histórica 2022-2025 (somente células validadas têm valor)
+        run: node ../etl/validate-serie-historica.mjs ../output-historico/2022-2025 public/data/historico/serie.json
+      - name: Build estático
+        run: npm run build
+      - name: Chromium para E2E
+        run: npx playwright install --with-deps chromium
+      - name: E2E (desktop e celular)
+        env:
+          CI: "1"
+        run: npx playwright test
