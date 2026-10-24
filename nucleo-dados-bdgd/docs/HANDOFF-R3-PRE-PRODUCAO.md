@@ -125,6 +125,20 @@ Rodada de estabilização (24/10/2026, árvore deste commit): ESLint e TypeScrip
 - CI: workflow `nucleo-bdgd-web.yml` com gates obrigatórios do pacote 2025 e da série histórica.
 - Rollback: não promover o preview. O último estado R2 é `d54f7d3`.
 
+### 4.1 Teste real da equivalência integral (24/10/2026)
+A auditoria apontou `struct_pack()` com argumentos posicionais em `digital()`. No DuckDB 2.0.0 instalado, a forma posicional roda quando os argumentos são colunas simples, mas depende da inferência de nomes e não escapava identificadores nem o caminho. Foi substituída por `struct_pack("col" := "col", …)`: colunas em ordem alfabética, aspas internas duplicadas em `ident()` e caminho com aspas simples escapadas em `literal()`. O esquema passou a ser comparado sem depender da ordem das colunas.
+
+Teste com dados reais da DIST 11825 (`etl/bdgd2025/tests/teste_equivalencia_real.py`), numa raiz isolada já apagada. Em todos os casos o SHA-256 dos arquivos é diferente:
+
+| Caso | O que muda | Resultado |
+|---|---|---|
+| A | publicações reais 2023 × 2024 | **divergente**, 111 diferenças em identidade, TUC, DDA, vínculos, demais atributos e geometria |
+| B1 | mesmo GDB reempacotado (outro ZIP) | **equivalente** |
+| E | colunas do Parquet em outra ordem, mesmo conteúdo | **equivalente** |
+| C | TUC de 1 registro de EQTRMT trocado | **divergente** só em `EQTRMT.grupo_tuc_mcpse` e `EQTRMT.registro` |
+| D | 1 ponto de PONNOT deslocado 1e-6° | **divergente** só em `PONNOT.geometria` |
+| B2 | GDB reescrito pelo GDAL, sem edição | **divergente** só na geometria de 10 camadas. As coordenadas mudaram ~1e-9° ao serem regravadas na grade de precisão do GDB, ou seja, é mudança real de bytes da geometria. A regra estrita exige revisão humana nesse caso |
+
 ## 10. Compatibilidade com o PR #6 (sem merge)
 - Simulação feita com `git merge-tree --write-tree` entre esta branch e `feat/chatgpt-r3-panorama-iasc-previsoes` (`4db9cc9`, base comum `d54f7d3`): **nenhum conflito textual**. O único arquivo editado pelos dois lados é `web/e2e/app.spec.ts`, mesclado automaticamente.
 - Árvore combinada testada num worktree descartável, já removido, sem commit em nenhuma branch: TypeScript e ESLint sem erros · Vitest 66/66 · build estático OK · Playwright + axe **41/45**.

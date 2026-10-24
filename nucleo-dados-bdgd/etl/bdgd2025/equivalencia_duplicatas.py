@@ -31,11 +31,22 @@ def grupos(ent, cols):
     return g
 
 
+def ident(c):
+    """Identificador SQL entre aspas duplas, com aspas internas duplicadas."""
+    return '"' + str(c).replace('"', '""') + '"'
+
+
+def literal(v):
+    return "'" + str(v).replace("'", "''") + "'"
+
+
 def digital(con, pq, cols):
+    """(n, soma, xor) do hash por registro do struct NOMEADO das colunas (ordem alfabetica, independente da ordem no arquivo)."""
     if not cols: return None
-    sel = ", ".join(f'"{c}"' for c in cols)
-    n, s, x = con.execute(f"SELECT count(*), sum(h::HUGEINT) % {M64}, bit_xor(h) FROM (SELECT hash(struct_pack({sel})) h FROM (SELECT {sel} FROM read_parquet('{pq}')))").fetchone()
-    return [int(n), str(s), str(x)]
+    campos = ", ".join(f"{ident(c)} := {ident(c)}" for c in sorted(cols))
+    n, s, x = con.execute(f"SELECT count(*), sum(h::HUGEINT) % {M64}, bit_xor(h) FROM "
+                          f"(SELECT hash(struct_pack({campos})) AS h FROM read_parquet({literal(pq)}))").fetchone()
+    return [int(n), str(s or 0), str(x or 0)]
 
 
 def geo_digital(zip_path, layer, idcol):
@@ -73,7 +84,7 @@ def comparar(ano, dist, itens, con):
             pq = pastas[it] / f"{e}.parquet"
             if not pq.exists(): r[it] = {"ausente": True}; continue
             pqs = pq.as_posix()
-            esquema = [(c, t) for c, t, *_ in con.execute(f"DESCRIBE SELECT * FROM read_parquet('{pqs}')").fetchall() if c not in IGNORAR]
+            esquema = sorted((c, t) for c, t, *_ in con.execute(f"DESCRIBE SELECT * FROM read_parquet({literal(pqs)})").fetchall() if c not in IGNORAR)
             cols = [c for c, _ in esquema]
             r[it] = {"esquema": hashlib.sha256(json.dumps(esquema).encode()).hexdigest()[:16],
                      "registro": digital(con, pqs, cols), **{f"grupo_{k}": digital(con, pqs, v) for k, v in grupos(e, cols).items()}}
