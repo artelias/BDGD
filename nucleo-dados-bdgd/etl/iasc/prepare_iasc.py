@@ -44,7 +44,15 @@ def preparar(iasc: list[dict], depara: list[dict], ano: int) -> tuple[list[dict]
                   and r.get("status") == "verificado"
                   and str(r.get("fonte_vinculo", "")).startswith("https://")
                   and cnpj(r.get("cnpj", ""))]
-    # Mesmo um registro não verificado pode denunciar titularidade conflitante: bloquear publicação.\n    conflitos = [r for r in depara if str(r.get("ano", "")) == str(ano) and cnpj(r.get("cnpj", ""))]\n    todas_por_dist = {}\n    todas_por_cnpj = {}\n    for r in conflitos:\n        d, c = str(r.get("dist", "")), cnpj(r.get("cnpj", ""))\n        todas_por_dist.setdefault(d, set()).add(c)\n        todas_por_cnpj.setdefault(c, set()).add(d)\n    por_dist = Counter(str(r["dist"]) for r in candidatos)
+    # Mesmo um registro não verificado pode denunciar titularidade conflitante: bloquear publicação.
+    conflitos = [r for r in depara if str(r.get("ano", "")) == str(ano) and cnpj(r.get("cnpj", ""))]
+    todas_por_dist = {}
+    todas_por_cnpj = {}
+    for r in conflitos:
+        d, c = str(r.get("dist", "")), cnpj(r.get("cnpj", ""))
+        todas_por_dist.setdefault(d, set()).add(c)
+        todas_por_cnpj.setdefault(c, set()).add(d)
+    por_dist = Counter(str(r["dist"]) for r in candidatos)
     por_cnpj = Counter(cnpj(r["cnpj"]) for r in candidatos)
 
     linhas_iasc = {}
@@ -59,7 +67,9 @@ def preparar(iasc: list[dict], depara: list[dict], ano: int) -> tuple[list[dict]
     for r in candidatos:
         dist = str(r["dist"])
         chave = cnpj(r["cnpj"])
-        if (not dist.isdigit() or por_dist[dist] != 1 or por_cnpj[chave] != 1\n                or len(todas_por_dist.get(dist, set())) != 1\n                or len(todas_por_cnpj.get(chave, set())) != 1):
+        if (not dist.isdigit() or por_dist[dist] != 1 or por_cnpj[chave] != 1
+                or len(todas_por_dist.get(dist, set())) != 1
+                or len(todas_por_cnpj.get(chave, set())) != 1):
             rejeitados.append({"dist": dist, "motivo": "correspondencia_ambigua"})
             continue
         linhas = linhas_iasc.get(chave, [])
