@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import s from "./publicacoes-auditadas.module.css";
+import { ParesDivergentes } from "./ParesDivergentes";
 
 type Linha = [
   ano: number, dist: number, empresa: string, itemId: string, uso: string,
@@ -130,6 +131,7 @@ export function PublicacoesAuditadas() {
               </table>
             </div>
           )}
+          <ParesDivergentes />
           <p className={s.rodape}>Fonte: matriz de conformidade BDGD Ordinária, commit {data.sourceCommit}, auditoria concluída em 25/10/2026. Nenhuma versão pendente foi escolhida automaticamente. Publicações inexistentes no catálogo e ativos estruturalmente ausentes são controlados separadamente na matriz de homologação.</p>
         </>
       )}
