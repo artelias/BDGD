@@ -9,6 +9,14 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
     await expect(auditoria).toContainText("26");
     await expect(auditoria).toContainText("14");
     await expect(auditoria.getByRole("row")).toHaveCount(41); // 40 restritas + cabeçalho
+    const pares = page.getByTestId("pares-publicacoes");
+    await pares.locator("summary").click();
+    await expect(pares.getByRole("row")).toHaveCount(14); // 13 pares + cabeçalho
+    await expect(pares).toContainText("Cedrap");
+    const inexistentes = page.getByTestId("publicacoes-inexistentes");
+    await inexistentes.locator("summary").click();
+    await expect(inexistentes.getByRole("row")).toHaveCount(12); // 11 DIST/ano + cabeçalho
+    await expect(inexistentes).toContainText("275 células");
 
     await auditoria.getByRole("combobox", { name: "Situação" }).selectOption("divergentes");
     await expect(auditoria.getByRole("row")).toHaveCount(27);
