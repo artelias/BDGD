@@ -184,6 +184,16 @@ function EvolucaoReady({ ds, sd, h }: { ds: Dataset; sd: SerieData; h: Homologac
         ))}
       </div>
 
+      <details style={{ marginBottom: 14, fontSize: ".86rem", lineHeight: 1.55 }}>
+        <summary style={{ cursor: "pointer", fontWeight: 650 }}>O que são publicações pendentes, bloqueadas ou em quarentena?</summary>
+        <p className="muted" style={{ margin: "8px 0 0" }}>
+          “Quarentena” era o nome usado no relatório antigo para arquivos que não podiam alimentar a série sem verificação
+          adicional. Pode haver duas versões oficiais divergentes, data-base incompatível ou uma inconsistência no conteúdo.
+          Isso não significa que a distribuidora não tenha o ativo: o valor afetado fica N/D, com o motivo identificado.
+          Os demais dados válidos continuam disponíveis. Não é necessário corrigir o GDB nem inventar zeros.
+        </p>
+      </details>
+
       <aside className={s.ressalvas} data-testid="evo-ressalvas" aria-label="Ressalvas de publicação">
         <ShieldCheck size={16} aria-hidden />
         <div>
