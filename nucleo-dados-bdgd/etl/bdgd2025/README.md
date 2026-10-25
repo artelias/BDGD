@@ -13,6 +13,7 @@ Pipeline que gera o pacote público `output-publicavel/2025-12-31/` (contrato **
 | 5 | `75_facetas_exatas.py` | Facetas DDA de 1 dimensão + cubos conjuntos curados (2 dimensões) com somas em `DECIMAL(38,6)` — categorias reconciliam exatamente com o total. |
 | 6 | `80_monta_pacote.py` | Pacote 1.1.0: fato-base, facetas + catálogo de rollup, matriz, distribuidoras, grupos com fonte, DDA, QA, homologação por métrica, ARAT, manifesto com checksums. Aplica a **regra UC v2**. |
 | 7 | `85_assets_web.py` | JSON compacto para o site a partir do pacote validado (sem acesso ao staging). |
+| 8 | `86_homologacao_web.py` | `web/public/data/historico/homologacao.json` a partir de `auditoria/fase4/` (matriz de homologação, conformidade da BASE, sinais, pares e pontes), com o SHA-256 das fontes. Validado por `etl/validate-homologacao-web.mjs` no CI. |
 
 Pilotos históricos (superados por `bdgd_etl.py`) estão em `piloto/`, para auditoria.
 

@@ -1,7 +1,9 @@
 /** Evolução 2022–2025: somente valores observados e validados; nada é preenchido, interpolado ou projetado. */
 
-/** [dist, ano, valor, estado, quebra] — estado: v validado, a ausente, c campo ausente, b bloqueado, r revisão pendente, p não processado, d competência divergente, s sem publicação */
-export type CelulaSerie = [number, number, number | null, string, number];
+/** [dist, ano, valor, estado, quebra, ...extensão da homologação] — estado: v validado, a ausente, c campo ausente, b bloqueado,
+ * r revisão pendente, p não processado, d competência divergente, s sem publicação, x pendente de decisão humana, g agregado não elegível.
+ * A extensão (lib/homologacao: estado de publicação, motivo, flags) é opcional. */
+export type CelulaSerie = [number, number, number | null, string, number, ...Array<string | number>];
 export interface SerieData {
   anos: number[]; gerado_em: string; versao_regra: string;
   cobertura: Array<{ ano: number; publicadas: number; validadas: number; pendentes: number; competencia_divergente: number; status_ano: string }>;
@@ -16,6 +18,7 @@ export interface SerieData {
 export const ESTADO: Record<string, string> = {
   v: "validado", a: "ativo inexistente nesta competência", c: "campo ausente no layout do ano", b: "valor não homologável",
   r: "mais de uma publicação válida (revisão pendente)", p: "processamento histórico em andamento", d: "arquivo de outra competência", s: "sem publicação da ANEEL neste ano",
+  x: "pendente de decisão humana", g: "não é total nacional completo neste ano",
 };
 
 /** Status do ano na cobertura: "homologado" (decisão humana registrada, hoje só 2025), "completo_tecnico" (todas as
@@ -50,6 +53,7 @@ export function serieSoma(idx: ReturnType<typeof indexar>, dists: number[], anos
       const c = idx.get(d)?.get(ano);
       if (!c || c[3] === "s") continue;           // sem publicação no ano: DIST não existia nesta forma (ver perímetro 2025)
       if (c[3] === "a") continue;                 // ativo inexistente: não soma, não bloqueia
+      if (typeof c[7] === "number" && c[7] & 4) continue; // predecessora já contida na sucessora: nunca somar (evita dupla contagem)
       if (c[3] !== "v" || c[2] === null) { falta = true; continue; }
       v += c[2]; algum = true; if (c[4]) quebra = true;
     }

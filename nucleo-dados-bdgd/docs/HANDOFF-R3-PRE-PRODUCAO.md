@@ -172,3 +172,20 @@ Teste com dados reais da DIST 11825 (`etl/bdgd2025/tests/teste_equivalencia_real
 3. **Competência divergente** (2022: 5; 2023: 7, entre eles Cemig-D 2022): aceitar a exclusão desses DIST/anos, ou buscar republicação na ANEEL. Sem isso, o agregado Brasil 2022/2023 permanece incompleto e só o painel balanceado é comparável.
 4. **Sinais temporais** (`qa_sinais_temporais_classificados.csv`): aceitar ou recusar os 154 casos sem evidência suficiente, a começar pelos 77 com base relevante, e confirmar as 25 alterações de classificação como quebra de série.
 5. **Critério do agregado Brasil 2022–2023:** publicar apenas o painel balanceado ou exigir cobertura completa.
+
+## 13. Fase 5A — Evolução integrada à matriz de homologação (24/10/2026)
+- **Dados:** `etl/bdgd2025/86_homologacao_web.py` gera `web/public/data/historico/homologacao.json` a partir dos artefatos versionados em `auditoria/fase4/`, sem reprocessar GDB nem alterar checkpoints. O asset traz o estado de publicação de cada uma das 11.025 células (25 ativos × 441 DIST-ano), os agregados Brasil e painel balanceado, a proveniência por publicação (item ArcGIS, versão, BASE, tag `Extra`, SHA-256), os sinais temporais, os 13 pares e as pontes. Os textos de apresentação são legíveis; a matriz continua sendo a fonte de verdade.
+- **Gate:** `etl/validate-homologacao-web.mjs` (no CI) confere o SHA-256 das fontes, o estado de cada célula, que nenhuma célula não publicável tenha valor, que o Brasil 2022–2023 nunca apareça como total, que somas e painel batam com as células publicáveis (excluída a ENF 2022) e que os 13 pares sigam `PENDENTE`.
+- **Página Evolução:**
+  - seleção de família e ativo;
+  - escopos Brasil, Grupo e Distribuidoras, com comparação de até 8 linhas;
+  - Brasil e painel balanceado vindos da matriz;
+  - selos de estado e ressalvas;
+  - natureza das variações (expansão física × mudança cadastral × classificação × anomalia);
+  - cobertura e qualidade por estado e parcela sem TUC;
+  - proveniência até o catálogo ANEEL;
+  - decisões pendentes, com a recomendação técnica marcada como "não é homologação";
+  - sucessões com a evidência de absorção EPB ← EBO;
+  - CSV com estado, motivo e publicação.
+- **Recortes por TUC/atributos 2022–2024:** não exibidos, porque os cubos históricos não foram homologados. A página indica Explorar (2025).
+- **Capturas:** `docs/screenshots/fase5/`.
