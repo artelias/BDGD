@@ -4,6 +4,9 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import path from "node:path";
 
+// SHA-256 sobre o conteúdo com quebras de linha normalizadas para LF (independe de core.autocrlf / sistema operacional)
+const lf = (b) => Buffer.from(b.toString("latin1").replace(/\r\n/g, "\n"), "latin1");
+
 const [f4, homFile, serieFile] = process.argv.slice(2);
 const hom = JSON.parse(fs.readFileSync(homFile, "utf8"));
 const serie = JSON.parse(fs.readFileSync(serieFile, "utf8"));
@@ -25,7 +28,7 @@ function csv(file) {
 
 // 1) rastreabilidade: SHA-256 das fontes iguais aos arquivos versionados
 for (const [f, h] of Object.entries(hom.fontes ?? {})) {
-  const real = crypto.createHash("sha256").update(fs.readFileSync(path.join(f4, f))).digest("hex");
+  const real = crypto.createHash("sha256").update(lf(fs.readFileSync(path.join(f4, f)))).digest("hex");
   if (real !== h) erros.push(`fonte ${f}: SHA-256 diverge (asset gerado de outra versão)`);
 }
 // 2) 25 ativos e uma célula por (dist, ano, ativo), igual à matriz

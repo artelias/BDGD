@@ -4,6 +4,9 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import path from "node:path";
 
+// SHA-256 sobre o conteúdo com quebras de linha normalizadas para LF (independe de core.autocrlf / sistema operacional)
+const lf = (b) => Buffer.from(b.toString("latin1").replace(/\r\n/g, "\n"), "latin1");
+
 const [dir, matrizFile] = process.argv.slice(2);
 const erros = [];
 function csv(file) {
@@ -19,7 +22,7 @@ function csv(file) {
   const [h, ...d] = rows; return d.filter((r) => r.length > 1).map((r) => Object.fromEntries(h.map((k, i) => [k, r[i] ?? ""])));
 }
 const man = JSON.parse(fs.readFileSync(path.join(dir, "MANIFESTO.json"), "utf8"));
-for (const [f, h] of Object.entries(man.saidas)) if (crypto.createHash("sha256").update(fs.readFileSync(path.join(dir, f))).digest("hex") !== h) erros.push(`${f}: SHA-256 diverge do manifesto`);
+for (const [f, h] of Object.entries(man.saidas)) if (crypto.createHash("sha256").update(lf(fs.readFileSync(path.join(dir, f)))).digest("hex") !== h) erros.push(`${f}: SHA-256 diverge do manifesto`);
 const S = csv(path.join(dir, "serie_fisica_nacional.csv"));
 const ESTADOS = new Set(["observado", "zero_verificado", "ausente", "nao_homologado", "nao_aplicavel", "ruptura"]);
 const OBS = new Set(["observado", "zero_verificado"]);

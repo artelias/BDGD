@@ -19,7 +19,8 @@ RAIZ = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__
 F4, F6 = RAIZ / "auditoria/fase4", RAIZ / "auditoria/fase6"; OUT = RAIZ / "output-historico/contrato-integracao"
 DATA_GERACAO = "2026-10-25"; VERSAO = "contrato-nacional-1.0.0"; REGRA = "r3-1+homologacao-fase6-1"
 rd = lambda p: list(csv.DictReader(open(p, encoding="utf-8-sig")))
-sha = lambda p: hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+# SHA-256 sobre o conteúdo com quebras de linha normalizadas para LF (independe de core.autocrlf / sistema operacional)
+sha = lambda p: hashlib.sha256(pathlib.Path(p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 CAT = json.loads((RAIZ / "etl/bdgd2025/config/conceitos_2025.json").read_text(encoding="utf-8"))
 MED = {a["id"]: a["medida"] for a in CAT["ativos"]}; UNID = {"quantidade": "itens", "extensao_km": "km"}
 MAT = {(r["ano"], r["dist"], r["ativo"]): r for r in rd(F4 / "MATRIZ_HOMOLOGACAO_2022_2025.csv") if r["nivel"] == "DIST"}
@@ -112,7 +113,7 @@ esquema = dict(versao=VERSAO, descricao="Série física nacional BDGD 2022–202
                regras_de_uso=["treinar só com estado observado/zero_verificado", "não somar linhas com nao_somar_em_agregados=true", "cortar a série em ruptura_desde_ano_anterior=true",
                               "fonte_homologada=false não autoriza previsão validada", "agregado Brasil só com cobertura_completa=true; 2022–2023 nunca"],
                estados_ts=["observado", "zero_verificado", "ausente", "nao_homologado", "nao_aplicavel", "ruptura"])
-(OUT / "esquema.json").write_text(json.dumps(esquema, ensure_ascii=False, indent=1), encoding="utf-8")
+(OUT / "esquema.json").write_text(json.dumps(esquema, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 import collections
 cnt = collections.Counter((r["ano"], r["estado"]) for r in linhas)
 cob = {str(y): {e: cnt[(y, e)] for e in ("observado", "zero_verificado", "ausente", "nao_homologado", "nao_aplicavel")} | {
@@ -122,5 +123,5 @@ man = dict(versao=VERSAO, data_geracao=DATA_GERACAO, linhas=len(linhas), agregad
            entradas={str(p.relative_to(RAIZ)).replace("\\", "/"): sha(p) for p in [F4 / "MATRIZ_HOMOLOGACAO_2022_2025.csv", F4 / "MATRIZ_CONFORMIDADE_BDGD_ORDINARIA.csv",
                      F4 / "RANKING_ANOMALIAS_TEMPORAIS.csv", F6 / "INVENTARIO_LACUNAS_NACIONAL.csv", F6 / "CORRECOES_AUSENCIAS.csv", RAIZ / "web/public/data/historico/homologacao.json"]},
            saidas={n: sha(OUT / n) for n in ("serie_fisica_nacional.csv", "agregados_nacionais.csv", "pontes_sucessao.csv", "esquema.json")})
-(OUT / "MANIFESTO.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8")
+(OUT / "MANIFESTO.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 print(f"{VERSAO}: {len(linhas)} linhas, {len(ag)} agregados, {len(pontes)} pontes"); print(json.dumps(cob, ensure_ascii=False))

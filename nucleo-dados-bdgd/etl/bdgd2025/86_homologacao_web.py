@@ -117,7 +117,7 @@ for r in rd(HIS / "populacao_conceitos.csv"):
     q, s = num(r["quantidade"]), num(r["sem_tuc_mcpse"])
     if q and s is not None: sem_tuc[f"{r['dist']}|{r['ano']}|{r['conceito']}"] = round(s / q, 4)
 
-doc = dict(versao="fase6-1", fonte="auditoria/fase4 + auditoria/fase6/CORRECOES_AUSENCIAS.csv", fontes={f: hashlib.sha256((F4 / f).read_bytes()).hexdigest() for f in FONTES},
+doc = dict(versao="fase6-1", fonte="auditoria/fase4 + auditoria/fase6/CORRECOES_AUSENCIAS.csv", fontes={f: hashlib.sha256((F4 / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest() for f in FONTES},
            estados={"H": "homologado", "T": "completo técnico", "R": "apto com ressalvas", "P": "pendente de decisão", "B": "bloqueado", "N": "não disponível"},
            motivos=motivos, celulas=cel, brasil=br, painel=painel, proveniencia=prov, sinais=sinais, pares=pares, pontes=pontes, absorcao_epb=absorcao, sem_tuc=sem_tuc)
 OUT.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
