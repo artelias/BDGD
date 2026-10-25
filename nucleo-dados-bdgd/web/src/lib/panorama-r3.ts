@@ -1,6 +1,7 @@
 import { INDICADORES, type Indicador } from "./catalogo";
 import type { Aggregate, Dataset } from "./dataset";
 import { kpiValue } from "./kpis";
+import estadosContrato from "../../public/data/historico/estados-contrato.json";
 
 /** Panorama R3: somente contratos de exibição; não altera a semântica da Matriz/Explorar. */
 export type PanoramaKpi = Indicador & { tuc?: string; fontesEq?: string[] };
@@ -18,7 +19,10 @@ const equipamento = (id: string, nome: string, tuc: string, fontesEq: string[], 
 });
 
 export const PANORAMA_KPIS: PanoramaKpi[] = [
-  original("uc"), original("ssdmt"), original("ssdbt"), original("ssdat"),
+  { ...original("uc"),
+    explicacao: "Consumidores de baixa, média e alta tensão conforme a regra UC v3 do catálogo: cada unidade é contada por código anonimizado e ponto de conexão, por distribuidora. Ausências e anomalias documentadas continuam sem valor publicável.",
+    tecnico: "ativosTotais.consumidores.quantidade (regra UC v3, COD_ID + PN_CON), sujeito ao estado de publicação 2025 do contrato nacional. Não usa a união legada UC v2 de COD_ID." },
+  original("ssdmt"), original("ssdbt"), original("ssdat"),
   equipamento("trdist565", "Transformadores de distribuição", "565", ["EQTRMT", "EQTRAT"], "Quantidade de equipamentos classificados na TUC 565."),
   equipamento("trforca570", "Transformadores de força", "570", ["EQTRMT", "EQTRAT"], "Quantidade de equipamentos classificados na TUC 570."),
   original("sub"),
@@ -63,9 +67,26 @@ function somaTuc(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
   return { v: n ? v : null, n, nd, ausentes: 0, total: dists.length, alerta, partial: nd > 0 };
 }
 
+/** Usa a mesma definição vigente do catálogo/Explorar e da série histórica.
+ * A união legada de COD_ID não equivale à contagem atual de consumidores ativos. */
+function somaConsumidoresAtivos(ds: Dataset, dists: number[]): Aggregate {
+  const rows = ds.raw.ativosTotais?.consumidores?.quantidade;
+  if (!rows) return kpiValue(ds, { ent: null, metric: "quantidade" }, dists);
+  const valores = new Map(rows.map((r) => [r[0], r]));
+  const estados = new Map(estadosContrato.celulas.consumidores.filter((r) => r[1] === 2025).map((r) => [r[0], r[2]]));
+  let v = 0, n = 0, nd = 0, alerta = 0;
+  for (const d of dists) {
+    const r = valores.get(d);
+    if (!r || r[1] === null || !["a", "l"].includes(r[2]) || !["observado", "zero_verificado"].includes(String(estados.get(d)))) { nd++; continue; }
+    v += r[1]; n++;
+    if (r[2] === "l") alerta++;
+  }
+  return { v: n ? v : null, n, nd, ausentes: 0, total: dists.length, alerta, partial: nd > 0 };
+}
+
 /** Falha fechada: um subconjunto de empresas não é rotulado como total do Brasil/grupo. */
 export function panoramaValue(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
-  const a = k.tuc ? somaTuc(ds, k, dists) : kpiValue(ds, k, dists);
+  const a = k.tuc ? somaTuc(ds, k, dists) : k.ent === null ? somaConsumidoresAtivos(ds, dists) : kpiValue(ds, k, dists);
   if (a.nd > 0 || a.ausentes > 0 || a.total === 0 || coberturaNacionalIncompleta(ds, dists)) return { ...a, v: null, partial: true };
   return a;
 }

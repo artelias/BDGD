@@ -56,4 +56,12 @@ describe("contrato histórico efetivamente publicado", () => {
     expect(eixo.ref).toBeNull();
     expect(eixo.pctA).toBeNull();
   });
+  it("consumidores do Panorama conferem com a definição vigente em todas as 99 distribuidoras", () => {
+    const ds = new Dataset(ler("2025-12-31/index"));
+    const kpi = PANORAMA_KPIS.find((k) => k.id === "uc")!;
+    const indice = new Map(aplicarMatriz(sd.original.consumidores, indiceHom(hom, "consumidores")).filter((r) => r[1] === 2025).map((r) => [r[0], r[2]]));
+    for (const d of ds.dists) expect(panoramaValue(ds, kpi, [d.dist]).v).toBe(indice.get(d.dist) ?? null);
+    expect(panoramaValue(ds, kpi, [26]).v).toBe(295861);
+    expect(panoramaValue(ds, kpi, [5370]).v).toBeNull();
+  });
 });

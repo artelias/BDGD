@@ -77,6 +77,7 @@ test("auditoria: Brasil incompleto permanece N/D na tela e no CSV histórico", a
 
 test("auditoria: EAC/UCAT zero documentado e navegação preserva a distribuidora", async ({ page }) => {
   await page.goto("/?dist=26");
+  await expect(page.getByTestId("kpi-uc").locator("..")).toContainText("295.861");
   const linha = page.locator('a[href*="ent=UCAT"]').locator("..");
   await expect(linha).toContainText("Zero no agregado processado");
   await expect(linha).toContainText("verificação independente pendente");
