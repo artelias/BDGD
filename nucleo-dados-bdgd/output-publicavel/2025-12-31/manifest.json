@@ -1,0 +1,922 @@
+{
+ "schema_version": "1.1.0",
+ "release_id": "bdgd-2025-12-31-v1-99d-2f6fa3879a",
+ "data_base": "2025-12-31",
+ "status": "homologado",
+ "generated_at": "2026-10-23T22:47:15Z",
+ "dda_version": "BDGD_DDA_CATALOG_M10 v1.1",
+ "sources": [
+  {
+   "dist": 26,
+   "url": "https://www.arcgis.com/home/item.html?id=f422f058b473405d9eb39b005c2ba1b3",
+   "sha256": "b3559a9ed7b76704932e122b7c2fef6ba8d61af5f93c5f7a0a1ba51d594b1cc6",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 31,
+   "url": "https://www.arcgis.com/home/item.html?id=d27c3a89f81d4975ba16b06030a97984",
+   "sha256": "5fce8d9f44ca8b744bdb74f0198d4d9af9beb778a4215218d5bed30d0d413dd1",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 32,
+   "url": "https://www.arcgis.com/home/item.html?id=e9a7bd0056174a8da1a5662135056766",
+   "sha256": "791821fb2d91ea797171d4aa9ec92429ec0ca700d2bb6b3c9710e0f93373b1c0",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 37,
+   "url": "https://www.arcgis.com/home/item.html?id=0abd1d2ff8ec4ab8abedbc96979f0946",
+   "sha256": "66b52a454b6d633e8f3bbd7eae46e7a4120eb59b2046e844f09fe95c6708106b",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 38,
+   "url": "https://www.arcgis.com/home/item.html?id=2b040141e900476586c9bbda852cc264",
+   "sha256": "a49ec3cca68abec84f3ce385b73c3005eaf46ec4b21fb5aa1d4be10681954456",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 39,
+   "url": "https://www.arcgis.com/home/item.html?id=c57f0c3389a94f21af1e0df99eca2b4f",
+   "sha256": "259ccadcaa909bfc4e408958f719974b7cdea5a37658719bf6e76328c9c4af34",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 40,
+   "url": "https://www.arcgis.com/home/item.html?id=c48b4751afdf41c29923986308e15f44",
+   "sha256": "9ffd6f8b9734dcfc7db82f209971025057f5fd0429c681f7c3d5d2def513765d",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 43,
+   "url": "https://www.arcgis.com/home/item.html?id=a36b00f67b394ff8977cbacb6d278901",
+   "sha256": "91dbb17016a50b938753ba61f8d99c7d3ceb506a66b0681752359eb393b698e9",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 44,
+   "url": "https://www.arcgis.com/home/item.html?id=cb77602aaeb34bcfa36b822a964dd1a8",
+   "sha256": "8f69fea9972fa35246c741cd09721ceda124ed1d1067ac0006e571b84e1f28bc",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 46,
+   "url": "https://www.arcgis.com/home/item.html?id=f7ef6c74ffe74311bb20ef0b83e4070e",
+   "sha256": "d251b88838a8c42047471022a968af289387f175607ed62801da79de85fe7590",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 47,
+   "url": "https://www.arcgis.com/home/item.html?id=8ec3cae3b0ce4d3c8f6536eedf49c9f3",
+   "sha256": "2a49171fdc86da86fdc5481c234b85f6aaeda35db24cd58cc087e6ca18b7a457",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 51,
+   "url": "https://www.arcgis.com/home/item.html?id=44ccd59a1cba4e019a258b3e58fea420",
+   "sha256": "5a17276584484a2c6cd9eeb5f8b242972dbc7557d184c97d556609fa7c36b09e",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 63,
+   "url": "https://www.arcgis.com/home/item.html?id=9a74b75af3634b06b0967b8acd882386",
+   "sha256": "24a56433f429a9110ba6d6287fec55921a07798165c84a5a85a804b874c70ba4",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 69,
+   "url": "https://www.arcgis.com/home/item.html?id=27d4c45e0074491d94bf6a911b286f84",
+   "sha256": "9ef49a43c464871335f60071f66796529c47d55a41880d9d97154787904598db",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 82,
+   "url": "https://www.arcgis.com/home/item.html?id=082e3f3526254aafbca5ac8ade674e02",
+   "sha256": "e38f1832e6f933576fecd46dcdf1a0ed97fdad9f8f66932d4b253707017dc5f9",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 83,
+   "url": "https://www.arcgis.com/home/item.html?id=cd6c8ecb86c2427493cf4a0d129c2eb4",
+   "sha256": "c72fd562fe0f375f7b7f6c69cc2bfc09d08c0fde2a3cbac54559e629b10a0f19",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 86,
+   "url": "https://www.arcgis.com/home/item.html?id=04a736e95f114c32a56206957a492cba",
+   "sha256": "35a071a48728cd3bf5dbd9aa960026c9f6290f04c3d4abea25038eae476df168",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 87,
+   "url": "https://www.arcgis.com/home/item.html?id=7ebf8b3ffa9145f0b3dbe626dac18f92",
+   "sha256": "c1538280adc12b295966f270b54bd8770cdb2df298e51bcbde3ede3e97e30c44",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 88,
+   "url": "https://www.arcgis.com/home/item.html?id=3587012de8864d98ae8c4cb77902d4e3",
+   "sha256": "51399f96b2a1395e5114bca88c3c9a3ab8ceed5caade28276a97fda250e8da7c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 95,
+   "url": "https://www.arcgis.com/home/item.html?id=35dafef5fcb94c3485ceec799199373d",
+   "sha256": "369bae73a3a60a3ff2a5f7ab3f3b2a83d9cd2c81f6697f1583a910090e80a0e9",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 103,
+   "url": "https://www.arcgis.com/home/item.html?id=26f6d3e8e9f74d89921e74eed6213545",
+   "sha256": "fdbd0addd8a6376fdce3c10571f957648ccd003a3b39fa6b21224535e83ba3f4",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 369,
+   "url": "https://www.arcgis.com/home/item.html?id=23404e39bdc14e92a4d0f087ad84e28b",
+   "sha256": "6cb2cd24cfb77f2ecf82d0f1f0edc05875ca7720ef67728e1663237e10376d13",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 370,
+   "url": "https://www.arcgis.com/home/item.html?id=676f1716658f47a3b5c8fb8c44c702c0",
+   "sha256": "c2f330b3e5797cd0f789e7b22a4aef4c69b70a1fbd29dd4c06bb30e9a36fe1b7",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 371,
+   "url": "https://www.arcgis.com/home/item.html?id=0c8dad27817e42aba122b55511e09359",
+   "sha256": "c1a0dbe77e2099a924d31ca6aad4b710acde99cd2bf1e8926b1ec07944cb7add",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 380,
+   "url": "https://www.arcgis.com/home/item.html?id=1929128a61ba4e10af33178c2d106013",
+   "sha256": "dce112d5f00f03a25e4ae14bb6c8b144802b891f115586d9c914b5c4fd67e9db",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 381,
+   "url": "https://www.arcgis.com/home/item.html?id=7d14b859a5934148bde30b2430546b84",
+   "sha256": "900461025f006fdc87c2ac7778f3125bb9b57c20cd432478b5370b842e43460c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 382,
+   "url": "https://www.arcgis.com/home/item.html?id=430f90486174407aabe3b07f50ca6150",
+   "sha256": "f5a569a8f83eb38706464b6fbdaef1cbe3ed275e238a5f95378c738fae8b0564",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 383,
+   "url": "https://www.arcgis.com/home/item.html?id=32a52a0b29df4b82b9e63362bc927267",
+   "sha256": "013f207c58c013dd92eae53d59e5f5446cb2bbf63e4eeb127dbc3b773a1280c1",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 385,
+   "url": "https://www.arcgis.com/home/item.html?id=0fe22aa2b53c4dacba9b106a10d1c452",
+   "sha256": "ab1d12499552485cdce1aca92f3459bb73af882d2864a5133fd3c92833aa2a90",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 390,
+   "url": "https://www.arcgis.com/home/item.html?id=837ab21a1e684f448df2f73d709b6fd9",
+   "sha256": "7f20489b827a7e3cc5701a955461d56892f7de5f410b54d0dbcd9a038f1216ef",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 391,
+   "url": "https://www.arcgis.com/home/item.html?id=73847c48c58847a7ad6fa725d1d20d51",
+   "sha256": "e98a3440b7da34339338e6cf96a169281947c8bbdf22c339dd15d0f5f87b8fa5",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 396,
+   "url": "https://www.arcgis.com/home/item.html?id=19380ec7194a49409c429a149e2c50be",
+   "sha256": "48b86175c59683f5639dd013e1708a2ef64648ede7771bf91302d7d40f000c68",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 398,
+   "url": "https://www.arcgis.com/home/item.html?id=22d8a085b8264dae8a77983de348fba6",
+   "sha256": "795ffe1cc0313e362ba6d7d58e7a75ce636d1267bd040b1943844b19406c716c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 399,
+   "url": "https://www.arcgis.com/home/item.html?id=bf846d18b9e84fa6991bd76af0fc9f44",
+   "sha256": "f57f42d74773702273ffba791ed5b76168cf5863dd8008972fc3202a749ec41b",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 400,
+   "url": "https://www.arcgis.com/home/item.html?id=e3a518b754ff42fcaf0232003c0b1e9d",
+   "sha256": "1742cd48698f01a040aeec50117e365d294876d9d689cb69247d555636321025",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 401,
+   "url": "https://www.arcgis.com/home/item.html?id=42482341e0d643eeab286de22fc0dff8",
+   "sha256": "cd76b10227dd9b1e7f2ac24881d19dac598615fb50fdda447e070231e4982102",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 404,
+   "url": "https://www.arcgis.com/home/item.html?id=9a1ce360865f4358b31e9fb2d016aac9",
+   "sha256": "e72ef258c71f450c14d947754bd34084a7fb0f176899cee1f7397a78d12c25e2",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 405,
+   "url": "https://www.arcgis.com/home/item.html?id=02a120db1b5149709f8d371c21635adc",
+   "sha256": "a069bada2fae3a783d4e3c9d0a684f3c848698cfbae7ab13b3739b050b18c391",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 504,
+   "url": "https://www.arcgis.com/home/item.html?id=f45db320609b4cbfbe85596901a08e9c",
+   "sha256": "1b176e69eea2e5432403bf84e66f81e5a563eba0a38a3ef0b31d0d6696caae93",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 527,
+   "url": "https://www.arcgis.com/home/item.html?id=bb53870506c9430399ce67634fee17e9",
+   "sha256": "6f7e90b3ceef874142fbbcf22690c63b04331696e4364523d3296f79095b1976",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 598,
+   "url": "https://www.arcgis.com/home/item.html?id=0d8ca0795ce9453fbe779fd69d0334ed",
+   "sha256": "22d254802a145f94af3aa9359149335d1ae08d3f307849ae3f12ce2efd5ad3b9",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 2351,
+   "url": "https://www.arcgis.com/home/item.html?id=fb3fa39c507d45e09abb2608cad0c884",
+   "sha256": "1eaada1e8ffed58652071181224ebca23e63628946d8d7197a822434631aed23",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 2381,
+   "url": "https://www.arcgis.com/home/item.html?id=23305ec9e0044fe0a15f5f696eed7bed",
+   "sha256": "275e37de0d54d708555b3ed08c79d14b8a6dd410512e5d224dee51f6e8f1ba6d",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 2763,
+   "url": "https://www.arcgis.com/home/item.html?id=98c79376fc62406aa26d4bdf959805dc",
+   "sha256": "4ddf6152ad4fbf83b46f73318f64f04b959c2735f71077b0c5f9c653da874ba1",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 2783,
+   "url": "https://www.arcgis.com/home/item.html?id=740a0f26c53f4cacac6ce9588b411e17",
+   "sha256": "e4f9cabc371c530001e966c1d478bf56a675d670d36773af255beab0136b9094",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 2866,
+   "url": "https://www.arcgis.com/home/item.html?id=5b9890585186452c8e78dfac89bf9519",
+   "sha256": "1622efca2ada0c4fcd3588d7082ebb17956b1c8c0f4196553dadaf1cf51ffa07",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 2937,
+   "url": "https://www.arcgis.com/home/item.html?id=75863ef447904bbdacc1435e7f47d43a",
+   "sha256": "b983874267c3780f0360c497a23fa9f3555f85e35343e755e09d964f45a25ebd",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 3223,
+   "url": "https://www.arcgis.com/home/item.html?id=d45242f78ac141b0b896c3fe7b05e12b",
+   "sha256": "7fd6edd82cc7af4b04813c7f8bf565e3cafb35d5ba1a48c0eaee61a18728ca77",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 3627,
+   "url": "https://www.arcgis.com/home/item.html?id=257d8db7726244699e96b1c369ee33b4",
+   "sha256": "dc2bdf6757e3d37c0056b5f33ef61066aa99bf2d4f377816357390a59c3f986f",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 4248,
+   "url": "https://www.arcgis.com/home/item.html?id=4bd95c39d9594542831272b3504bf464",
+   "sha256": "0cbf8581f723ecef93f269b2fc2bee7336157dc794ac8e3c108d547ce2e087af",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 4950,
+   "url": "https://www.arcgis.com/home/item.html?id=750dbf00391b43d2a21a2c92c8f04aa6",
+   "sha256": "b08ed05ae5b6953c88d7bd0b08cea275cfe7b7810d01d495d793891d0d44a14b",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5160,
+   "url": "https://www.arcgis.com/home/item.html?id=b6bfc6df4fb44fb393a0c026cf688ced",
+   "sha256": "1a2fecee669c5014f5d54d6706f7a1f787e9f9c6f66422148f9953c00cd83d34",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5216,
+   "url": "https://www.arcgis.com/home/item.html?id=98af349591824f7fa42662bbda161b90",
+   "sha256": "55b2c542d81e6711ec87d7650a51686299d44b1832792fc931817d0c53984137",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5343,
+   "url": "https://www.arcgis.com/home/item.html?id=9e7247b4310e43a282c59fa451b6c8f5",
+   "sha256": "b72d871391ecab63dfbbb855b96ef87f04642ca082a3317c3d61363af5c08688",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5345,
+   "url": "https://www.arcgis.com/home/item.html?id=325005059a3a4606ac5657a3893827e0",
+   "sha256": "c133983e7d69b30e5813da177b643c4b08f763dedcda5ced264d79ca836e282b",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5346,
+   "url": "https://www.arcgis.com/home/item.html?id=3bc6806896e843b6924697ff60e36a64",
+   "sha256": "8da733f1c4ba007ced1989409f8730d870f3bdb331e8f9612c6de18f099c93fd",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5351,
+   "url": "https://www.arcgis.com/home/item.html?id=7db02f6282484a6ea87e9dfe17f873b8",
+   "sha256": "f26076fa7049f0a69847d805844a15c863ae7c4bf730b5987c87bb1c411f7c8b",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5352,
+   "url": "https://www.arcgis.com/home/item.html?id=29e4883108f64014ad93fdc36c534e28",
+   "sha256": "14febda4b40a0f0ffd5131a4647ac36619ca4d62783a46e2396056cc97345801",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5353,
+   "url": "https://www.arcgis.com/home/item.html?id=e0bf8240fca44b96af37665712302ba0",
+   "sha256": "bf879e937c6d994ebdf3e1501f36bebdd485903e722df86f2c5cc7e749854080",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5355,
+   "url": "https://www.arcgis.com/home/item.html?id=02f295067fb44dae8f1033883e46b131",
+   "sha256": "c2eda5beeaf4f0398ddd5d6e972db77adac982ed40f3df85107543a07b21ad3e",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5356,
+   "url": "https://www.arcgis.com/home/item.html?id=bb2591c4374d4438b61933c4ddec2027",
+   "sha256": "5c0110bf416b0cb89379b474a53d02d9663c427b035c9a3c5f8d917b43e13e09",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5363,
+   "url": "https://www.arcgis.com/home/item.html?id=85f69c5f4e6146a494dff9f89ed46951",
+   "sha256": "e90cf50991e42eff502d955631b91071b3c4ec6a216d2c3776a6f3a76693bc87",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5364,
+   "url": "https://www.arcgis.com/home/item.html?id=1463efbde4c746b38d757c3e360b014f",
+   "sha256": "ee5d2f27e67f6e3c7993b7792c5ac41157ca132f5d1317f562673ad7f37f420a",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5365,
+   "url": "https://www.arcgis.com/home/item.html?id=5017aed0ca224ea299f8ef79741e54e1",
+   "sha256": "f3f0cb02a6d273ec5a8ad22a869ebce8e1659ca119dfee5fd691ff23ab2fe26f",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5366,
+   "url": "https://www.arcgis.com/home/item.html?id=e978cdda3d9443a8b1ef371d565a57a5",
+   "sha256": "e516e6ad1c6a1cd4031f9880c184eae9c57d4ce986ad62b722fe89e5f2ff5c42",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5367,
+   "url": "https://www.arcgis.com/home/item.html?id=d92b1d2d49e4498eb54755bf51acf22d",
+   "sha256": "c9aedc3bf8f669c4f7feff3e99fe64ab332c7ba3a69d3ed192965d903f263b61",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5368,
+   "url": "https://www.arcgis.com/home/item.html?id=e47fc740c78b48039c549e7dfc57bada",
+   "sha256": "c33d7daebdcf375aba09fc252cf74d34bbbc8211398e5f3b10cbb8413c635257",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5369,
+   "url": "https://www.arcgis.com/home/item.html?id=6666637cb9954e0a9daa7f7b3dfde8e4",
+   "sha256": "3d284fcd8c8b55de7364427386883459d27d07e97e99bbef87042e463d4c4115",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5370,
+   "url": "https://www.arcgis.com/home/item.html?id=5d0f7ea5db5d48aeb365998fabaa9db7",
+   "sha256": "5da0502b286b1ec7c8df898a56f2e8ecc1d2c896c139058436e9cfd9606732fb",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5371,
+   "url": "https://www.arcgis.com/home/item.html?id=acfd8bc19135418b857a9df31546a767",
+   "sha256": "4ac8f955140ed1b09c1a1090e2d96bd687bb2e977d2f2bb6d9fcdbf89f209c4e",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5372,
+   "url": "https://www.arcgis.com/home/item.html?id=6bb8589f785e4d6fbdbef075585241bf",
+   "sha256": "4ce63b0620f02724912416800a35f3695a55afee281e2a5a089744c28acf6898",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5373,
+   "url": "https://www.arcgis.com/home/item.html?id=5ae4d37c6cd9401db42aeeff9ef2ae33",
+   "sha256": "89829db1fdfa5a07d82d8183cf979d3e404206994a0707b65387d69a3cbcc78f",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5374,
+   "url": "https://www.arcgis.com/home/item.html?id=02b5591ba172448396d2eada7085cc7f",
+   "sha256": "5a277b5d35f46128bdef4c6144b35b0202a8ac30ef21bdd3bdd9f2dab9a66e3e",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5375,
+   "url": "https://www.arcgis.com/home/item.html?id=c3bfddb418404568bfa7aaf9d00fb136",
+   "sha256": "10e9920e73a1f24e7c66f6adaf1cfa6ec3cf138bc296863195aff4bc3e05f8b5",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5377,
+   "url": "https://www.arcgis.com/home/item.html?id=65ef217d03e14cae9319566a865e81dd",
+   "sha256": "5caba454774a760286e5ae0548385cc8169523ae4b70f73fd7515c0feef8155c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5378,
+   "url": "https://www.arcgis.com/home/item.html?id=f555cfcf974c49ea865fcda4683e2666",
+   "sha256": "8cf717b1c6f07608d0d1418174292deec49256c0bd63f31dd2cac18272d5db76",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5379,
+   "url": "https://www.arcgis.com/home/item.html?id=f00b2115671a4650b7d2c9f806231294",
+   "sha256": "9c52b1820f0d5b0b5fbe627672eb0bb0e4178366c162d249c5c4ffa184decceb",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5381,
+   "url": "https://www.arcgis.com/home/item.html?id=9f4e8fe06934422fa1eb06781496e745",
+   "sha256": "0b1d901a31f07861d1a4cac9bde7b9256a3bce518cb52cfddc523e1829819e77",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5382,
+   "url": "https://www.arcgis.com/home/item.html?id=eba5da7746244f21b55f33caba64d716",
+   "sha256": "55c287b4f785572805c2a1fe067fe52fdac670970e35dccc4490f582816f5a1a",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5384,
+   "url": "https://www.arcgis.com/home/item.html?id=64d310c9547c443887fd6c875fdba17e",
+   "sha256": "25f8f730b729a09255c1521c8d26d488a75eb4c144a5867234d8784360506e62",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5385,
+   "url": "https://www.arcgis.com/home/item.html?id=569cc77bb50a47a598a634fac8a3aef7",
+   "sha256": "3dcfd0f13298a3fca977379dd7d8103cccad53073193d295fc1d8c23561fee18",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5386,
+   "url": "https://www.arcgis.com/home/item.html?id=4389c0d59afa4e03a81ae9f947b604eb",
+   "sha256": "2048df1c8037bdb510e1a990695063788473b9dd35d0899172966e8092b227e5",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5697,
+   "url": "https://www.arcgis.com/home/item.html?id=e04687b14a2843faa045f68d7ade358a",
+   "sha256": "8a83dc12bfe3395c85f2d7ded462d464d8f3bfb3e5e3c2feaa14b389133579b4",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 5707,
+   "url": "https://www.arcgis.com/home/item.html?id=60d304b0a6ba466a9ebbdb70f21a542d",
+   "sha256": "be9a3ca358d7833322fb10782d70b9f055ed54fb87900406cb941cf95ce6f73f",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6072,
+   "url": "https://www.arcgis.com/home/item.html?id=32ecb2c820a742bfbfa077af69c82245",
+   "sha256": "216f85b9b602d83f07b227ea02441b76032b65eca3d429f1b542ef5079f8105c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6585,
+   "url": "https://www.arcgis.com/home/item.html?id=e4127432837e47b48c30c97a2b2dbdb5",
+   "sha256": "ef61a6bcedafcec9858ebfc046dc12a837da5a469fbaa5401c0f136a219e0e0f",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6587,
+   "url": "https://www.arcgis.com/home/item.html?id=6763d91cf46d4562966bd1ad0680f849",
+   "sha256": "374a8a9b4c9a59f2ac61a8a99f88d8dc485fc1dcb0e5e72d6a27c6600ef9b2f9",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6600,
+   "url": "https://www.arcgis.com/home/item.html?id=fedab1bd01f849dfa5167c5ce4e92729",
+   "sha256": "0ffd207c9e9ad2d82affa8749c8253f0637ce2aa5babffb51d1c7761120ee82f",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6603,
+   "url": "https://www.arcgis.com/home/item.html?id=71efcfb7e32847f38bc5ab0d71a9a11c",
+   "sha256": "1b2d853694f56752262c63e750c86b0c0b7b59da1a9473624e50f0837da75af7",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6609,
+   "url": "https://www.arcgis.com/home/item.html?id=7221dd01b4954d9db7e02f0ceede22a4",
+   "sha256": "7bd34f420031cbe232702d2831877fc77dcc18837749ed0bd5739f344ad56a9a",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6610,
+   "url": "https://www.arcgis.com/home/item.html?id=b903ea8e7681427fa4fab638845aa13a",
+   "sha256": "81da4638148e4e1ce49d3707934efbef48610c574bd37087da2a7dd9a759c59c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6897,
+   "url": "https://www.arcgis.com/home/item.html?id=83be9b978c884030b63c611b52a1e41d",
+   "sha256": "c99c444242b7a8a413b3887571b38af11be5f43ef697569da4230bc72845786d",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 6898,
+   "url": "https://www.arcgis.com/home/item.html?id=478ba395b2724a6bb878bec948cc47ac",
+   "sha256": "473bef6abfb63d1d152ed685bba9aab376382d11acf5b953da3c52c9a8d2e7c6",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 7016,
+   "url": "https://www.arcgis.com/home/item.html?id=1594a3ae1b4d442daa81d621c47f02fc",
+   "sha256": "f88143f73ebe2ff165c12f4475be6cb3d0859901ff76a78b798fc27dc480427c",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 7019,
+   "url": "https://www.arcgis.com/home/item.html?id=75dd7b50622d4fef8a4644dd14f3b77e",
+   "sha256": "584800f361b34e19b4822fa3b45d038db718939e66b214480d38a34c1863b29d",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 7371,
+   "url": "https://www.arcgis.com/home/item.html?id=4539da264de84533bc371241a514400d",
+   "sha256": "3c61dc3e38312f3aab1fc19bc9ad0c97eeb47f577200d8752665523383968802",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 7467,
+   "url": "https://www.arcgis.com/home/item.html?id=70d885552ac4448f93d5e032852333af",
+   "sha256": "d369be3cb5146d926561611f9c59facd75edd7476962ff13873842910ffd3e32",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 7883,
+   "url": "https://www.arcgis.com/home/item.html?id=c735e0f76b674cdfbc75eaf3d18c5c04",
+   "sha256": "674b635faba77c23af6f29a73f89cb0097e1a28185867cff26db2c56e9b6db61",
+   "data_base": "2025-12-31"
+  },
+  {
+   "dist": 11825,
+   "url": "https://www.arcgis.com/home/item.html?id=07ccb18515de444396ac1f05ef8fb4b8",
+   "sha256": "e68103e50612e71fa799faf122e021bf04012b08f36a7277ffcf57f4c11ba7af",
+   "data_base": "2025-12-31"
+  }
+ ],
+ "files": {
+  "distribuidoras": "distribuidoras.csv",
+  "entidades": "entidades.csv",
+  "fatos": "ativos_agregados.csv",
+  "facetas": "ativos_facetas.csv",
+  "facetas_catalogo": "facetas_catalogo.csv",
+  "matriz": "matriz_empresas_2025.csv",
+  "conceitos_catalogo": "conceitos/catalogo.json",
+  "conceitos_cubos": "conceitos/cubos.csv",
+  "ativos_totais": "ativos_totais.csv",
+  "inventarios": {
+   "sub": "inventario/subestacoes.csv",
+   "ctmt": "inventario/alimentadores.csv",
+   "ctat": "inventario/circuitos_at.csv",
+   "conj": "inventario/conjuntos.csv"
+  },
+  "arat": [
+   "geo/arat_2025_103.geojson",
+   "geo/arat_2025_11825.geojson",
+   "geo/arat_2025_2351.geojson",
+   "geo/arat_2025_2381.geojson",
+   "geo/arat_2025_26.geojson",
+   "geo/arat_2025_2763.geojson",
+   "geo/arat_2025_2783.geojson",
+   "geo/arat_2025_2866.geojson",
+   "geo/arat_2025_2937.geojson",
+   "geo/arat_2025_31.geojson",
+   "geo/arat_2025_32.geojson",
+   "geo/arat_2025_3223.geojson",
+   "geo/arat_2025_3627.geojson",
+   "geo/arat_2025_369.geojson",
+   "geo/arat_2025_37.geojson",
+   "geo/arat_2025_370.geojson",
+   "geo/arat_2025_371.geojson",
+   "geo/arat_2025_38.geojson",
+   "geo/arat_2025_380.geojson",
+   "geo/arat_2025_381.geojson",
+   "geo/arat_2025_382.geojson",
+   "geo/arat_2025_383.geojson",
+   "geo/arat_2025_385.geojson",
+   "geo/arat_2025_39.geojson",
+   "geo/arat_2025_390.geojson",
+   "geo/arat_2025_391.geojson",
+   "geo/arat_2025_396.geojson",
+   "geo/arat_2025_398.geojson",
+   "geo/arat_2025_399.geojson",
+   "geo/arat_2025_40.geojson",
+   "geo/arat_2025_400.geojson",
+   "geo/arat_2025_401.geojson",
+   "geo/arat_2025_404.geojson",
+   "geo/arat_2025_405.geojson",
+   "geo/arat_2025_4248.geojson",
+   "geo/arat_2025_43.geojson",
+   "geo/arat_2025_44.geojson",
+   "geo/arat_2025_46.geojson",
+   "geo/arat_2025_47.geojson",
+   "geo/arat_2025_4950.geojson",
+   "geo/arat_2025_504.geojson",
+   "geo/arat_2025_51.geojson",
+   "geo/arat_2025_5160.geojson",
+   "geo/arat_2025_5216.geojson",
+   "geo/arat_2025_527.geojson",
+   "geo/arat_2025_5343.geojson",
+   "geo/arat_2025_5345.geojson",
+   "geo/arat_2025_5346.geojson",
+   "geo/arat_2025_5351.geojson",
+   "geo/arat_2025_5352.geojson",
+   "geo/arat_2025_5353.geojson",
+   "geo/arat_2025_5355.geojson",
+   "geo/arat_2025_5356.geojson",
+   "geo/arat_2025_5363.geojson",
+   "geo/arat_2025_5364.geojson",
+   "geo/arat_2025_5365.geojson",
+   "geo/arat_2025_5366.geojson",
+   "geo/arat_2025_5367.geojson",
+   "geo/arat_2025_5368.geojson",
+   "geo/arat_2025_5369.geojson",
+   "geo/arat_2025_5370.geojson",
+   "geo/arat_2025_5371.geojson",
+   "geo/arat_2025_5372.geojson",
+   "geo/arat_2025_5373.geojson",
+   "geo/arat_2025_5374.geojson",
+   "geo/arat_2025_5375.geojson",
+   "geo/arat_2025_5377.geojson",
+   "geo/arat_2025_5378.geojson",
+   "geo/arat_2025_5379.geojson",
+   "geo/arat_2025_5381.geojson",
+   "geo/arat_2025_5382.geojson",
+   "geo/arat_2025_5384.geojson",
+   "geo/arat_2025_5385.geojson",
+   "geo/arat_2025_5386.geojson",
+   "geo/arat_2025_5697.geojson",
+   "geo/arat_2025_5707.geojson",
+   "geo/arat_2025_598.geojson",
+   "geo/arat_2025_6072.geojson",
+   "geo/arat_2025_63.geojson",
+   "geo/arat_2025_6585.geojson",
+   "geo/arat_2025_6587.geojson",
+   "geo/arat_2025_6600.geojson",
+   "geo/arat_2025_6603.geojson",
+   "geo/arat_2025_6609.geojson",
+   "geo/arat_2025_6610.geojson",
+   "geo/arat_2025_6897.geojson",
+   "geo/arat_2025_6898.geojson",
+   "geo/arat_2025_69.geojson",
+   "geo/arat_2025_7016.geojson",
+   "geo/arat_2025_7019.geojson",
+   "geo/arat_2025_7371.geojson",
+   "geo/arat_2025_7467.geojson",
+   "geo/arat_2025_7883.geojson",
+   "geo/arat_2025_82.geojson",
+   "geo/arat_2025_83.geojson",
+   "geo/arat_2025_86.geojson",
+   "geo/arat_2025_87.geojson",
+   "geo/arat_2025_88.geojson",
+   "geo/arat_2025_95.geojson"
+  ]
+ },
+ "quality": {
+  "status": "aprovado",
+  "source_reconciliation": true,
+  "facetas_exatas_decimal": true,
+  "dists_sem_facetas_exatas": []
+ },
+ "cobertura": {
+  "distribuidoras_historicas_consideradas": 114,
+  "com_gdb_2025": 99,
+  "processadas": 99,
+  "quarentena": [],
+  "em_processamento": [],
+  "sem_publicacao_2025": [
+   "70",
+   "71",
+   "72",
+   "73",
+   "75",
+   "84",
+   "386",
+   "397",
+   "2904",
+   "5217",
+   "5274",
+   "5279",
+   "6611",
+   "6612",
+   "6896"
+  ]
+ },
+ "regras": {
+  "uc": "regra UC v2 no fato por entidade; regra UC v3 nos ativos: unidade = (COD_ID anonimizado, PN_CON) com SIT_ATIV = AT, unida entre UCBT/UCMT/UCAT",
+  "potencia_ug": "N/D (POT_INST nao homologado)",
+  "rede": "extensao_km = SUM(COMP)/1000",
+  "transformacao": "UNTRMT e EQTRMT sao visoes da mesma populacao; nunca somar"
+ },
+ "conhecimento_ia_builder": {
+  "BDGD_KNOWLEDGE_CORE_MANIFEST_V1.json": "fa40a4ac02ef8fb06ee6226a3a7308d5e9b3d220e61e425f2bdc2afc80e8f6da",
+  "BDGD_ENTITY_SCHEMA_SEMANTIC_REV5.json": "519cc51b640db6ad3a30121613bed9f7c50976ba80cd378fb7d1c0ce16ef078c",
+  "BDGD_RELATIONSHIPS_AND_DDA_REFS_REV5.json": "61cd3a1e331b2a2e9c1c6f79f000f2617ff182aec1b1445dfbb46afa2a9a9c67",
+  "BDGD_DDA_CATALOG_M10.json": "97784523000c308be171684c3c6f4390f3b657e5854a07b35f6f0840cad1ba11",
+  "BDGD_TUC_EQUIPMENT_RELATIONS_V1.json": "43c19b02e0aaab1c750031fe6ba0dcc04dd421219e37cc70289e57e39606c95c",
+  "MCPSE_TUC_ATTRIBUTE_CATALOG_V2.json": "4dfd2dbf83b2e2b8b3c4844add4cb78e513ba9f3d9e697195fcfbdc61c8766a2",
+  "BDGD_TERM_GLOSSARY_V8.json": "4b33341ba53e8e1d027402867912e61fcb2e7b5c029d483fb1b524c89e1bcb18"
+ },
+ "licenca": "Dados derivados da BDGD/ANEEL (dados abertos). Atribuicao: Agencia Nacional de Energia Eletrica - ANEEL. Projeto nao oficial.",
+ "autoria": "Nucleo de Dados da BDGD - desenvolvido por Arthur Henrique Elias de Lima",
+ "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID de consumidores ou geradores e sem registros individuais. Inventarios por subestacao, alimentador, circuito AT e conjunto usam o codigo e o nome de infraestrutura publicados na BDGD, com contagens agregadas.",
+ "checksums": {
+  "ativos_agregados.csv": "091c583d59db3342ee368a496c8ccf96ea15b7dbf468c1023cfe32f60b0961e4",
+  "ativos_facetas.csv": "47e9fac503e026f2f5181621cbeb2ad144eea76c67c5a93fdedb414c58c6b2d4",
+  "ativos_totais.csv": "e8f31d7ef03f07403c4d95b9b55f2323f71008082fbe1b34fd46dfed68204b2b",
+  "cobertura_distribuidoras.csv": "c237594ff64074e5ef1bb5459f22fa4f58fe9b212fca3d734bc78d51c3c538d7",
+  "conceitos/catalogo.json": "22b815fd9c4fb17aada718d6077724034f40e422394ccfea59895726ca1d94c1",
+  "conceitos/cubos.csv": "29f20404a265c8f5e2c23d9f3f48c769ec6e5a3e410c2f59d1da026510d785dd",
+  "dda_descricoes.csv": "05863d315441cb02a28f2144f6f45a677983fa36f9b97d9a4f59b57d06a34d59",
+  "disponibilidade_filtros.csv": "edef65c86028d80abecf9dbf4e7fe281105609c1317014ea20db13f91ebca5b1",
+  "dist_grupo.csv": "e04b9d884b2d99b16e9bb8a8142f7ea4f03421fe49a96b3f318a273c250dfabb",
+  "distribuidoras.csv": "bcffb1ba32e63cfcaeb17a7b935d8fd72efdc64b66854b20ff5f6c8c2909790c",
+  "entidades.csv": "19286077795ceab8f47d818a8356dc2005ad51b99f4cca8cc29b7aa78c66b531",
+  "facetas_catalogo.csv": "6d57c7e021b6c117c481d7943edbac694894f1f52699598556f892e4eeea73b6",
+  "geo/arat_2025_103.geojson": "7d521e239cf9125839858c7ae5eed58fd66e13ef6a9c9a72846ab0d4300155e1",
+  "geo/arat_2025_11825.geojson": "afc457676933293656b277f56b158fb44e2441acc008dc5e771028ce7b76590c",
+  "geo/arat_2025_2351.geojson": "26d683169fc18f74e6445926d33de0da4c71873657c00fd6efcd9241dfb6cfd8",
+  "geo/arat_2025_2381.geojson": "8d51b57fae21e01bc2c15add7c44a115e2ab736f80f5de0742c25113cbe5c0b2",
+  "geo/arat_2025_26.geojson": "cc77c312f85474324f0f35f9d776c54f2fcc08b2165a504c1e8b1818c8990f0f",
+  "geo/arat_2025_2763.geojson": "f19707c42af2dac546499e17ecf993d41c726d7750df1aee7316aaa2db53aed3",
+  "geo/arat_2025_2783.geojson": "3eb75fa6f30ad0d7b07c02e821a9ec249ffc5cfdebf348dfdc97e262f626b215",
+  "geo/arat_2025_2866.geojson": "586de56a627f63d4b90a5f5dc5262e14bce0d3d52173df77f6f1369b7e769ecd",
+  "geo/arat_2025_2937.geojson": "eea0b5d69a41e512bde6ef20fac03b7fd52832085dd601578dc8b9b6e78e2917",
+  "geo/arat_2025_31.geojson": "a0c47af67b71de2be91fbac369168ac141c815c79f72aaa3492fe4684883c321",
+  "geo/arat_2025_32.geojson": "79e17b1eb56dbae7210f9b9915b89f51875ef022e897e05c5b8c6d49ad6bd11b",
+  "geo/arat_2025_3223.geojson": "2e5b78720bbc1663f133ae5799eab7a3f4bd5449005dd4bf2fabaf90f8d464e2",
+  "geo/arat_2025_3627.geojson": "d09b1b8c538b2c49fa450c23618e0b8fe6620c842d9423ac2b4db97e8913140f",
+  "geo/arat_2025_369.geojson": "d7f2c5c0c0bc8f4e88acf2fa1457050a8af53998e65a4a9630c722d128d6e52f",
+  "geo/arat_2025_37.geojson": "4c0102135771672bca667ddd352973e17ae0434bba7aa818e557e9970b2bedce",
+  "geo/arat_2025_370.geojson": "3b633193f6a1e1223f29d12c544d590a7dd32e7b3ef8965009d85ebb38b8fd43",
+  "geo/arat_2025_371.geojson": "8f39d5ce7f2a7e9a5e7ce1dad9c345b02a245c0e339437967299bde2ea9ee5e8",
+  "geo/arat_2025_38.geojson": "db25ebda25924dc01c0bddc0f5b0aed4ff701ecd8eba805180f09612ccc45473",
+  "geo/arat_2025_380.geojson": "9998b984c7d598084e8508bc3c3ffc27eb98388ec2052451510377775c66a70e",
+  "geo/arat_2025_381.geojson": "87d9257f291846585877484e1dd14c841cc90af1958a0493dfad4ed699cdbe0b",
+  "geo/arat_2025_382.geojson": "42472941e2ed2d0aac842ffcb0fde8fec6c21fbc877469c77df8b26e73135216",
+  "geo/arat_2025_383.geojson": "7c9ffdcfdb01496de22a6bb696479803b93afe63e086ef5c89bede6270cb7491",
+  "geo/arat_2025_385.geojson": "0525baf650a15cdc65fe5a1f928c76cc5f0a50e68ee8b2c294c94218a7168177",
+  "geo/arat_2025_39.geojson": "202ed705903376793d6602d5c85ab960bc37e7d857bd646474e3c8da508d2069",
+  "geo/arat_2025_390.geojson": "fbd2c6f0359e7a49a53fdeac4437c4180f761a30813d5cc1f7e969aeb69da072",
+  "geo/arat_2025_391.geojson": "f103dbe5fecadf66043b4286946a43c40051fcbaa1c30e8c4adae9b8f67912c1",
+  "geo/arat_2025_396.geojson": "7e8b53e773a27bc1f1b3d6d5c8055399d622624d973733ae00baee8c0c4ef02b",
+  "geo/arat_2025_398.geojson": "05fdcaeee900ed788c180cf28366a4afe15a1c26d46529b5f529bb1e6fcc36e9",
+  "geo/arat_2025_399.geojson": "2374540620efaf6c167fc1d41c7e933ffc6c42598768c6aebb69e11a0414f4d0",
+  "geo/arat_2025_40.geojson": "16a01c78c8d217ed1006f6e8764cb064f56dc3b6a5074cce3f497ae5381fcbce",
+  "geo/arat_2025_400.geojson": "60424b87c78987b5a896055932beb707689c74a214b5b93fe29ef8798833440f",
+  "geo/arat_2025_401.geojson": "4c786ac5a467cca830a37a69a7dc11fd274930292df680c6063b4e03b0016857",
+  "geo/arat_2025_404.geojson": "099bba24fd1f1614cb3466c140c90e4356b880e7be209a9f0b0853c465b02d1c",
+  "geo/arat_2025_405.geojson": "33fead5ccc1799f33a42151d92ae4104994b1bc7f467be187d91690824a3b01a",
+  "geo/arat_2025_4248.geojson": "a68e32843772f39b6c117c6c7182f00d89b210cfac3cdaa67e80ed95cf689a4e",
+  "geo/arat_2025_43.geojson": "3d7d90b5220a0c9f8b3dd2b091ef2fe2a8cafaafb184461caeebb5a20f94b065",
+  "geo/arat_2025_44.geojson": "9cfc7713886c8b52dff4ea406d6fa6e445702b52b32da2d7783a000cfc035a46",
+  "geo/arat_2025_46.geojson": "e87ae079514b025a23b8c844d9810f046575bf1ddd24df245e0802ba4ba41852",
+  "geo/arat_2025_47.geojson": "4001bdabee4795745f16fab1d660cead44d0e0ca6d1c7195e347ae1b1b34951a",
+  "geo/arat_2025_4950.geojson": "2d9d033c680ec1843e85f608509bf59606301ae2ed94ab551b2e211c4d1c204e",
+  "geo/arat_2025_504.geojson": "c4ffbb32bc7df1144e0ba59961dabdc469620e6f6b73f28dbd5316608e67fa5a",
+  "geo/arat_2025_51.geojson": "5e39b2766cdd233646c0cfc2a650ee0fbb8b100d8396fad1bf157c4f040cdce5",
+  "geo/arat_2025_5160.geojson": "a8d6224221b9e4ff8a5df953b6a882934709a00fc0a73e22fd089fc2a6f4fe9f",
+  "geo/arat_2025_5216.geojson": "1c7b63a85b9245d58b29de107b4e2b8839e00fa81170504b97a993754a7812fb",
+  "geo/arat_2025_527.geojson": "b4907968d6b37653e96af97d41cae2acc22215390983031bed5d4a4999cc7185",
+  "geo/arat_2025_5343.geojson": "f95c2ee4dade7b288282dc9295a5d766f0684024d4eaa8d6150a08adaaf59ba4",
+  "geo/arat_2025_5345.geojson": "bea6b8bab1d6ed40112f30559b458636c3b7550f402108caba7245062bdca2f8",
+  "geo/arat_2025_5346.geojson": "5a73462a78996c1ef0204b649f0b21162b88d9df411dd3f4d2dba720ba783745",
+  "geo/arat_2025_5351.geojson": "3cfa1270dedf6312737be8a2c57e244abbe87e68775e178dabb4d5d8f5efd998",
+  "geo/arat_2025_5352.geojson": "56529c1ab9bb613bbb9626d835655474de5302ef69873dffa4efc8023d7eb3b0",
+  "geo/arat_2025_5353.geojson": "ed9ce7d7ccb4cc215f91b8e30b9e1e5a1f09da8f284736360b0c37cebc0efd5f",
+  "geo/arat_2025_5355.geojson": "f2347f798f7a1b1a61d2ce4b1795afeb704978f131f790329149cd57e60b1573",
+  "geo/arat_2025_5356.geojson": "bdca0ee14c1bc46c80b76065953b131a370d7b724036159076fca64dafec0f84",
+  "geo/arat_2025_5363.geojson": "6a3bb2baf21756cb5779ec01e4996ca48c7aefc0709325000aad204c261c6d58",
+  "geo/arat_2025_5364.geojson": "b5711df8cfc3bfa6a9f4d8d53a0dfc29ad00073cf3531fed58f020c295afca45",
+  "geo/arat_2025_5365.geojson": "3d16ad52d46ad7fd43b734197c5dcc47d598e85e3dec7f63c7a43be93994a39a",
+  "geo/arat_2025_5366.geojson": "198f0ed970d94d72b0c1576560f08c1dcb1ab6844d73fa4111985b7944866fca",
+  "geo/arat_2025_5367.geojson": "61b0e87ffd5a5487a5dd0adc148aaec8fd2fc3770c5427c4f9f663b8fa480119",
+  "geo/arat_2025_5368.geojson": "91b75730e525f6f6b99fa715b72760dcf9150bc5a485e8d6d1afdbe70add07e3",
+  "geo/arat_2025_5369.geojson": "431543f3cee4330b2bc0a86255acca70f7eb4502ec8ddab2183fc2e4d1e50254",
+  "geo/arat_2025_5370.geojson": "2d5a6e80941a11c4d081ee3374d0d4d9aa5e12474535ab5c6c51aec29cb04e25",
+  "geo/arat_2025_5371.geojson": "6418336f68b8433ef1eca8d3f729269dbec0ca67d16e5f366b1f837be4026974",
+  "geo/arat_2025_5372.geojson": "685e272e9f0ad22e6393fe8cdaf5e24f6fed0566be9f4c51c417b2888b32c259",
+  "geo/arat_2025_5373.geojson": "29b4b06fba7e4dce747c46065b22302b3ab057cbd96d79a34efda7198509e269",
+  "geo/arat_2025_5374.geojson": "b0c6743b93c56eb665826ef67ac8bcd39f402d6b1f237b8fced816d5446188e7",
+  "geo/arat_2025_5375.geojson": "a33784576cf63c5b8d9f9576fae299f37a64d0c5f7bfab6d7a0d47e2ce6ed1a8",
+  "geo/arat_2025_5377.geojson": "f006bc6fdf112ceb15043e57090a32cba5ba40dd1b53850a3fc2a6651a2f9128",
+  "geo/arat_2025_5378.geojson": "089e12d638e0d2ab8ea2278ac6119150b3f411f142d5985193994dfae4dc8b3c",
+  "geo/arat_2025_5379.geojson": "11421aee29d23ee51e1c5ee6352e8f817d1eff6d15affa073f1d36dfde265bbf",
+  "geo/arat_2025_5381.geojson": "ebca7dc2dc4cc41a6759a921c18aa14ea053ebc1ec83d3aec804765e75677d98",
+  "geo/arat_2025_5382.geojson": "0c2a1931c5dcf1fdf211a8dd761ff59999d30d741c970eeb9314d9aedea4b381",
+  "geo/arat_2025_5384.geojson": "a6e6b661460e06c5cae9a8dfe334be0af3d59c1bb9ab98d6dd3b5950e434349b",
+  "geo/arat_2025_5385.geojson": "e6f4c0caa1bdac31d77938e1098f75be765b97006cd78f30ddbd4fd9e6c7de27",
+  "geo/arat_2025_5386.geojson": "8497bca7744127d5f34bcb15c31e40f0f831b5656e854b7a061dde639de9afe6",
+  "geo/arat_2025_5697.geojson": "5261091b690f9727f6a7acceddaca37f75c11c9afac1981dadadd0d901206435",
+  "geo/arat_2025_5707.geojson": "a7ce619e0c604ffbc9189c9b191cd78d017a2c19be06a8fcc20a38b8f3647e84",
+  "geo/arat_2025_598.geojson": "b61c9f69303a8c03047e67ca82b8850a686e7c8da14778631ddc563612ccb878",
+  "geo/arat_2025_6072.geojson": "81d8fd4cdcb68cf99c853e052246fcc38913685b1482e30189fa40f748f41779",
+  "geo/arat_2025_63.geojson": "56fe38e74684e40697c393ebb5e8f986bb059d502fcfa966a0b56a78f669e800",
+  "geo/arat_2025_6585.geojson": "1e0b6c82dbbd3499471ec61571e2d3ba58038c07cdba125300bc1f8ca8b61bdd",
+  "geo/arat_2025_6587.geojson": "574e927f8bbca69e453212c3e51d039f5e647d28d6aeb777d9f529b6a6ddaa3f",
+  "geo/arat_2025_6600.geojson": "696bcb4d925ddc91b8e61942fe1576acf6fc39e5176bdaedbd0d9f7d493c548e",
+  "geo/arat_2025_6603.geojson": "e864aa66d6cc95be82db70cd31e1fb71d0e5bb43e379e76cbdff59b7b6e6324a",
+  "geo/arat_2025_6609.geojson": "c0cc54367a683ba119076e5be0ccd470d49312103a99679b34ea58099de5d0c3",
+  "geo/arat_2025_6610.geojson": "c1e69de4045f18d992381e1f011e1481b204ec4568e74ad79f5aae48cea544e6",
+  "geo/arat_2025_6897.geojson": "31537ec3f71b52f53d1c37bd683e8b59a9d739643492264226064e38a8c48642",
+  "geo/arat_2025_6898.geojson": "d1114e76d6afdf1672ba1954187cc2bec5e38b8605225855fb7a81cdf57f33cc",
+  "geo/arat_2025_69.geojson": "ddc3960ff5faa80d9d5f7b1ba55517c0bf4bae807e5f7a816cad5311d37b667d",
+  "geo/arat_2025_7016.geojson": "2833da9ce49e423a4c55feb39087059943d6ee9d04d5ad570e44b90c3ba2c555",
+  "geo/arat_2025_7019.geojson": "e44e6f98c82f51c413a801270d048149a1d7d1aa6e602e050b35815385575776",
+  "geo/arat_2025_7371.geojson": "3ef456f595013f0b46efb9dc80bcf1bf83e1331a140dbb4ac8505c373c536e23",
+  "geo/arat_2025_7467.geojson": "29a9716ff07cdeeae7474ce47767d06b3ab6c4f8a8e0fb7a7758c00019985549",
+  "geo/arat_2025_7883.geojson": "c0a91fabd4236d74e55ffff1316c5d1ff968949de7b145da441a2e975dea6723",
+  "geo/arat_2025_82.geojson": "712deb0ffc24ecd72cc76dc084fb20c5178b0c8b97370117e7c6104b184e207d",
+  "geo/arat_2025_83.geojson": "cc98805cccfa82f674430dc5dfa2182000a5f45912c84a71ba95de66880f45e3",
+  "geo/arat_2025_86.geojson": "29690975d682672f55e2c49771113dec2565295f5efbead867b73ef788dc5b3f",
+  "geo/arat_2025_87.geojson": "4687c6527ded9b77917c8eaabb24856b4810c42d03b3dd1125f0403fa20baec0",
+  "geo/arat_2025_88.geojson": "2965742f12db457e7c888d8679fec47f996724546d6a9e6c5ac0807748351cc5",
+  "geo/arat_2025_95.geojson": "ebcba019bdd27d1c7199c363f741ba055aa4740a34a41df38126b16ae33e93d8",
+  "grupos_economicos.csv": "22517888e662372050fef4d21e46adfb6d33838b641003a6313bf6ed0cacc3ea",
+  "indicadores_complementares.csv": "3497ae47b220b19c71c2ebb7034a79e5bad3bf3106de7678aea96111914a032f",
+  "indicadores_vinculos_tuc.csv": "2a1bce71fdfc96677ff040d1356388360ca687faf2ba75aedefdbaf43bb45ac7",
+  "inventario/alimentadores.csv": "f699391713cf7819480f35bfedcf336ae0b57f47a7304e6125dccf1bff38e41a",
+  "inventario/circuitos_at.csv": "12af89d1a2c2d3f599ae56c62a30bcc4b97cf4dec4f513d2ef1cd95243bb64f6",
+  "inventario/conjuntos.csv": "e26d83bc2082ce682ba06a66bc1eb8023c81ac35c23de51acc4704df2594aac6",
+  "inventario/subestacoes.csv": "ea05e27790d773e92bf991d5698ed00eb88906768a6d6169388876034fd27eb7",
+  "matriz_empresas_2025.csv": "47fbff58a0c4cc4c7e837dc3051a37071821b3477ce5861740395b03419c7415",
+  "metricas_homologacao.csv": "54b3077ef7873f5a83dcc980737b6efc8bd1a8fb3bd36ba586133ffcb23ef327",
+  "qa_alertas.csv": "2836599ce7c29bd5c49bcaa843be68bb300dfbe7449b87f5f523344c11922667",
+  "qa_arat.csv": "f10ea5bc5a2bb4a98277a0d369369a37d9f702811d4b7bcab89614888cd73874",
+  "qa_conceitos.csv": "0cebee0f1c551b4609a20c0f31b2f1bd1de283ac3b1ec21969b46a76fa1e17b7",
+  "qa_dda_cobertura.csv": "e119a820e6e1e19fb38d0755a585bdf72b7f5deeac90dbb6d4ac8ebc58b236b6",
+  "qa_municipios.csv": "822f5f407a42466685deec1ccadd5f7b88e71279c6d0520bc21f4bbfa25f441f",
+  "qa_reconciliacao.csv": "847f55f449df235b5b5ab0f9a275aed8194952f728e3bfe606e0f110dcdec780",
+  "qa_uc_regra_v2.csv": "183d550b1fb85d0f91df2f7de39aa5bbe58f34765b19326003acaeab757874d8",
+  "qa_uc_regra_v3.csv": "0a2605a1014ae8982007ebbc636ab89d1b05438c12b86fbfb6778d32ef01cb72",
+  "qa_vinculos.csv": "e662c5a179c40b39efe4d42a57cb139479568e6038e050e016d5516dfda0ed3b",
+  "schemas/contrato_publicacao.json": "10845a4a267e28edfe9f13663d984bace7d635de0da2d3a058f36e16a59124df"
+ },
+ "homologacao": {
+  "tipo": "tecnica_automatizada",
+  "criterios": {
+   "todas_elegiveis_processadas": true,
+   "reconciliacao_origem_sem_falhas": true,
+   "facetas_exatas_decimal": true,
+   "arat_valida_em_todas": true,
+   "grupos_com_fonte_ou_nao_confirmado": true,
+   "facetas_r2_municipio_tuc_em_todas": true,
+   "conceitos_r3_em_todas": true,
+   "sem_colunas_individuais": true
+  },
+  "metricas": "ver metricas_homologacao.csv (homologada, com ressalvas, nao homologada)",
+  "revisao_manual_recomendada": [
+   "semantica de potencia UG* (N/D)",
+   "regra UC v2 em DIST com mais de um registro ativado",
+   "licenca/atribuicao ANEEL",
+   "grupos nao confirmados (cooperativas e municipais)"
+  ]
+ }
+}

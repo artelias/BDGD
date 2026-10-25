@@ -1,0 +1,239 @@
+dist,empresa,ativo,medida,de,para,valor_de,valor_para,variacao_pct,comparabilidade,situacao,categoria,evidencia
+31,CEA Equatorial,chaves,quantidade,2022,2023,3697.0,35016.0,847.1,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 87.1% -> 0.0%
+37,Equatorial MA,chaves,quantidade,2022,2023,96958.0,323566.0,233.7,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 66.8% -> 0.0%
+38,Equatorial PI,chaves,quantidade,2022,2023,49820.0,256467.0,414.8,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 79.1% -> 0.0%
+44,Equatorial AL,chaves,quantidade,2022,2023,15016.0,150454.0,902.0,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 88.7% -> 0.0%
+87,Dcelt,chaves,quantidade,2024,2025,3662.0,1732.0,-52.7,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 12.8% -> 59.7%
+371,Equatorial PA,chaves,quantidade,2022,2023,196052.0,472207.0,140.9,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 54.7% -> 0.0%
+2866,Copel-Dis,chaves,quantidade,2023,2024,538721.0,257374.0,-52.2,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 0.0% -> 50.9%
+2866,Copel-Dis,chaves,quantidade,2024,2025,257374.0,432809.0,68.2,comparavel,revisar,alteracao_classificacao,comparabilidade=comparavel; parcela sem TUC 50.9% -> 42.1%
+4950,Cemig-D,chaves,quantidade,2023,2024,380878.0,1346117.0,253.4,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 70.9% -> 3.0%
+4950,Cemig-D,chaves,quantidade,2024,2025,1346117.0,581779.0,-56.8,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 3.0% -> 58.0%
+5160,Neoenergia Brasilia,chaves,quantidade,2022,2023,8170.0,105687.0,1193.6,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 75.9% -> 0.7%
+5377,Cercos,chaves,quantidade,2024,2025,7.0,16.0,128.6,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 98.2% -> 85.0%
+5707,CEEE Equatorial,chaves,quantidade,2022,2023,37824.0,114002.0,201.4,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 64.3% -> 0.0%
+31,CEA Equatorial,disjuntores,quantidade,2022,2023,48.0,144.0,200.0,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 87.1% -> 0.0%
+5160,Neoenergia Brasilia,postes,quantidade,2022,2023,276444.0,428870.0,55.1,comparavel,revisar,alteracao_classificacao,comparabilidade=comparavel; parcela sem TUC 14.1% -> 25.2%
+31,CEA Equatorial,religadores,quantidade,2022,2023,120.0,210.0,75.0,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 87.1% -> 0.0%
+371,Equatorial PA,religadores,quantidade,2022,2023,1390.0,2152.0,54.8,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 54.7% -> 0.0%
+5377,Cercos,religadores,quantidade,2024,2025,0.0,4.0,,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 98.2% -> 85.0%
+5707,CEEE Equatorial,religadores,quantidade,2022,2023,1387.0,2431.0,75.3,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 64.3% -> 0.0%
+371,Equatorial PA,seccionalizadores,quantidade,2022,2023,3.0,12.0,300.0,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 54.7% -> 0.0%
+5160,Neoenergia Brasilia,seccionalizadores,quantidade,2022,2023,11.0,0.0,-100.0,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 75.9% -> 0.7%
+5707,CEEE Equatorial,seccionalizadores,quantidade,2022,2023,0.0,1.0,,quebra_classificacao,explicada (quebra marcada),alteracao_classificacao,comparabilidade=quebra_classificacao; parcela sem TUC 64.3% -> 0.0%
+69,CPFL Santa Cruz,torres,quantidade,2022,2023,163.0,247.0,51.5,comparavel,revisar,alteracao_classificacao,comparabilidade=comparavel; parcela sem TUC 7.9% -> 16.9%
+5160,Neoenergia Brasilia,torres,quantidade,2022,2023,4169.0,1488.0,-64.3,comparavel,revisar,alteracao_classificacao,comparabilidade=comparavel; parcela sem TUC 14.1% -> 25.2%
+44,Equatorial AL,trafo_medida,quantidade,2022,2023,864.0,8493.0,883.0,comparavel,revisar,alteracao_classificacao,comparabilidade=comparavel; parcela sem TUC 9.5% -> 0.0%
+5370,Coopera,consumidores,quantidade,2024,2025,28141.0,225.0,-99.2,comparavel,revisar,anomalia_fonte,"ativo de estoque variou 28,141 -> 225 (fisicamente implausivel em 1 ano)"
+6072,Equatorial GO,consumidores,quantidade,2024,2025,3471824.0,23203.0,-99.3,comparavel,revisar,anomalia_fonte,"ativo de estoque variou 3,471,824 -> 23,203 (fisicamente implausivel em 1 ano)"
+31,CEA Equatorial,alimentadores,quantidade,2024,2025,78.0,38.0,-51.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+400,Nova Palma,alimentadores,quantidade,2022,2023,5.0,8.0,60.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (5 -> 8 unidades): variacao relativa pouco informativa
+5355,Cergapa,alimentadores,quantidade,2024,2025,1.0,4.0,300.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 4 unidades): variacao relativa pouco informativa
+5374,Cooperzem,alimentadores,quantidade,2024,2025,2.0,6.0,200.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (2 -> 6 unidades): variacao relativa pouco informativa
+83,Forcel,bancos_capacitores,quantidade,2022,2023,15.0,39.0,160.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (15 -> 39 unidades): variacao relativa pouco informativa
+87,Dcelt,bancos_capacitores,quantidade,2024,2025,48.0,20.0,-58.3,comparavel,revisar,sem_evidencia_suficiente,base pequena (48 -> 20 unidades): variacao relativa pouco informativa
+383,Enel RJ,bancos_capacitores,quantidade,2023,2024,1204.0,2212.0,83.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2783,Creral,bancos_capacitores,quantidade,2022,2023,37.0,96.0,159.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+4950,Cemig-D,bancos_capacitores,quantidade,2023,2024,5961.0,2545.0,-57.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5353,Cergal,bancos_capacitores,quantidade,2024,2025,24.0,49.0,104.2,comparavel,revisar,sem_evidencia_suficiente,base pequena (24 -> 49 unidades): variacao relativa pouco informativa
+5369,Certrel,bancos_capacitores,quantidade,2022,2023,7.0,24.0,242.9,comparavel,revisar,sem_evidencia_suficiente,base pequena (7 -> 24 unidades): variacao relativa pouco informativa
+5386,Cerim,bancos_capacitores,quantidade,2022,2023,17.0,36.0,111.8,comparavel,revisar,sem_evidencia_suficiente,base pequena (17 -> 36 unidades): variacao relativa pouco informativa
+5707,CEEE Equatorial,bancos_capacitores,quantidade,2022,2023,1437.0,480.0,-66.6,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+6072,Equatorial GO,bancos_capacitores,quantidade,2024,2025,465.0,1157.0,148.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+31,CEA Equatorial,barramentos,quantidade,2022,2023,23.0,49.0,113.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (23 -> 49 unidades): variacao relativa pouco informativa
+31,CEA Equatorial,barramentos,quantidade,2023,2024,49.0,76.0,55.1,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+400,Nova Palma,barramentos,quantidade,2022,2023,3.0,27.0,800.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 27 unidades): variacao relativa pouco informativa
+527,Certhil,barramentos,quantidade,2023,2024,8.0,13.0,62.5,comparavel,revisar,sem_evidencia_suficiente,base pequena (8 -> 13 unidades): variacao relativa pouco informativa
+5160,Neoenergia Brasilia,barramentos,quantidade,2022,2023,162.0,674.0,316.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5365,Cerpalo,barramentos,quantidade,2022,2023,1.0,2.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 2 unidades): variacao relativa pouco informativa
+5697,Celesc-Dis,barramentos,quantidade,2022,2023,655.0,1118.0,70.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+6072,Equatorial GO,barramentos,quantidade,2023,2024,2706.0,1267.0,-53.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7019,Amazonas Energia,barramentos,quantidade,2024,2025,305.0,142.0,-53.4,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5160,Neoenergia Brasilia,chaves,quantidade,2024,2025,81423.0,135440.0,66.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+26,Energisa AC,circuitos_at,quantidade,2022,2023,11.0,17.0,54.5,comparavel,revisar,sem_evidencia_suficiente,base pequena (11 -> 17 unidades): variacao relativa pouco informativa
+63,CPFL Paulista,circuitos_at,quantidade,2022,2023,481.0,206.0,-57.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2937,CPFL Piratininga,circuitos_at,quantidade,2022,2023,144.0,45.0,-68.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7019,Amazonas Energia,circuitos_at,quantidade,2022,2023,59.0,115.0,94.9,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+38,Equatorial PI,conjuntos,quantidade,2023,2024,42.0,68.0,61.9,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7019,Amazonas Energia,conjuntos,quantidade,2024,2025,19.0,30.0,57.9,comparavel,revisar,sem_evidencia_suficiente,base pequena (19 -> 30 unidades): variacao relativa pouco informativa
+39,Enel CE,consumidores,quantidade,2024,2025,2409968.0,3979114.0,65.1,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+46,Sulgipe,disjuntores,quantidade,2022,2023,3.0,6.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 6 unidades): variacao relativa pouco informativa
+51,Dmed,disjuntores,quantidade,2023,2024,138.0,279.0,102.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+385,Neoenergia Elektro,disjuntores,quantidade,2022,2023,497.0,760.0,52.9,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+401,Mux Energia,disjuntores,quantidade,2024,2025,2.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (2 -> 0 unidades): variacao relativa pouco informativa
+527,Certhil,disjuntores,quantidade,2024,2025,4.0,7.0,75.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 7 unidades): variacao relativa pouco informativa
+2763,Ceriluz,disjuntores,quantidade,2024,2025,0.0,2.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 2 unidades): variacao relativa pouco informativa
+2783,Creral,disjuntores,quantidade,2024,2025,0.0,2.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 2 unidades): variacao relativa pouco informativa
+5160,Neoenergia Brasilia,disjuntores,quantidade,2023,2024,1009.0,2036.0,101.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5369,Certrel,disjuntores,quantidade,2022,2023,1.0,3.0,200.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 3 unidades): variacao relativa pouco informativa
+5374,Cooperzem,disjuntores,quantidade,2024,2025,0.0,2.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 2 unidades): variacao relativa pouco informativa
+6072,Equatorial GO,geradores,quantidade,2024,2025,134597.0,1991.0,-98.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+31,CEA Equatorial,iluminacao,quantidade,2022,2023,54910.0,82667.0,50.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+382,Light,iluminacao,quantidade,2024,2025,468881.0,835142.0,78.1,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+4248,Ceral-Dis,iluminacao,quantidade,2022,2023,103.0,202.0,96.1,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5374,Cooperzem,iluminacao,quantidade,2023,2024,5040.0,1545.0,-69.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5374,Cooperzem,iluminacao,quantidade,2024,2025,1545.0,5249.0,239.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5707,CEEE Equatorial,iluminacao,quantidade,2022,2023,114121.0,360014.0,215.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+31,CEA Equatorial,reatores,quantidade,2023,2024,0.0,3.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 3 unidades): variacao relativa pouco informativa
+37,Equatorial MA,reatores,quantidade,2022,2023,35.0,59.0,68.6,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+38,Equatorial PI,reatores,quantidade,2023,2024,0.0,4.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 4 unidades): variacao relativa pouco informativa
+381,Santa Maria,rede_at,extensao_km,2024,2025,106.69266,198.48693,86.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+385,Neoenergia Elektro,rede_at,extensao_km,2022,2023,10821.902762,2494.842701,-76.9,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2763,Ceriluz,rede_at,extensao_km,2023,2024,0.74772,19.35934,2489.1,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 19 unidades): variacao relativa pouco informativa
+5378,Ceripa,rede_at,extensao_km,2024,2025,13.04255,3.18532,-75.6,comparavel,revisar,sem_evidencia_suficiente,base pequena (13 -> 3 unidades): variacao relativa pouco informativa
+7019,Amazonas Energia,rede_at,extensao_km,2022,2023,406.1885696,649.8056894,60.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5160,Neoenergia Brasilia,rede_bt,extensao_km,2022,2023,7649.903131389,12971.312097777,69.6,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+31,CEA Equatorial,reguladores,quantidade,2022,2023,42.0,117.0,178.6,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+51,Dmed,reguladores,quantidade,2024,2025,9.0,15.0,66.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (9 -> 15 unidades): variacao relativa pouco informativa
+87,Dcelt,reguladores,quantidade,2022,2023,15.0,24.0,60.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (15 -> 24 unidades): variacao relativa pouco informativa
+382,Light,reguladores,quantidade,2024,2025,38.0,74.0,94.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5160,Neoenergia Brasilia,reguladores,quantidade,2022,2023,96.0,162.0,68.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5352,Cerej,reguladores,quantidade,2022,2023,3.0,6.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 6 unidades): variacao relativa pouco informativa
+5385,Cerrp,reguladores,quantidade,2023,2024,12.0,3.0,-75.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (12 -> 3 unidades): variacao relativa pouco informativa
+5385,Cerrp,reguladores,quantidade,2024,2025,3.0,12.0,300.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 12 unidades): variacao relativa pouco informativa
+6072,Equatorial GO,reguladores,quantidade,2024,2025,1225.0,1941.0,58.4,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+86,Eflul,religadores,quantidade,2024,2025,9.0,15.0,66.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (9 -> 15 unidades): variacao relativa pouco informativa
+88,Joao Cesa,religadores,quantidade,2023,2024,0.0,1.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 1 unidades): variacao relativa pouco informativa
+370,Roraima Energia,religadores,quantidade,2022,2023,106.0,167.0,57.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+527,Certhil,religadores,quantidade,2024,2025,25.0,53.0,112.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2381,Cermissoes,religadores,quantidade,2024,2025,62.0,108.0,74.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2904,Cooperalianca,religadores,quantidade,2022,2023,4.0,12.0,200.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 12 unidades): variacao relativa pouco informativa
+5353,Cergal,religadores,quantidade,2024,2025,9.0,19.0,111.1,comparavel,revisar,sem_evidencia_suficiente,base pequena (9 -> 19 unidades): variacao relativa pouco informativa
+5364,Cermoful,religadores,quantidade,2024,2025,36.0,59.0,63.9,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5366,Cedri,religadores,quantidade,2022,2023,4.0,7.0,75.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 7 unidades): variacao relativa pouco informativa
+5366,Cedri,religadores,quantidade,2023,2024,7.0,16.0,128.6,comparavel,revisar,sem_evidencia_suficiente,base pequena (7 -> 16 unidades): variacao relativa pouco informativa
+5370,Coopera,religadores,quantidade,2024,2025,26.0,64.0,146.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5371,Coopercocal,religadores,quantidade,2024,2025,6.0,16.0,166.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (6 -> 16 unidades): variacao relativa pouco informativa
+5374,Cooperzem,religadores,quantidade,2024,2025,12.0,22.0,83.3,comparavel,revisar,sem_evidencia_suficiente,base pequena (12 -> 22 unidades): variacao relativa pouco informativa
+5382,Ceris,religadores,quantidade,2022,2023,4.0,7.0,75.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 7 unidades): variacao relativa pouco informativa
+6609,Cernhe,religadores,quantidade,2024,2025,24.0,37.0,54.2,comparavel,revisar,sem_evidencia_suficiente,base pequena (24 -> 37 unidades): variacao relativa pouco informativa
+7019,Amazonas Energia,religadores,quantidade,2022,2023,405.0,654.0,61.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+26,Energisa AC,seccionalizadores,quantidade,2024,2025,1.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 0 unidades): variacao relativa pouco informativa
+31,CEA Equatorial,seccionalizadores,quantidade,2023,2024,3.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 0 unidades): variacao relativa pouco informativa
+32,Energisa TO,seccionalizadores,quantidade,2024,2025,327.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+37,Equatorial MA,seccionalizadores,quantidade,2023,2024,1175.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+38,Equatorial PI,seccionalizadores,quantidade,2023,2024,6.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (6 -> 0 unidades): variacao relativa pouco informativa
+39,Enel CE,seccionalizadores,quantidade,2022,2023,360.0,163.0,-54.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+39,Enel CE,seccionalizadores,quantidade,2023,2024,163.0,293.0,79.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+44,Equatorial AL,seccionalizadores,quantidade,2023,2024,33.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (33 -> 0 unidades): variacao relativa pouco informativa
+51,Dmed,seccionalizadores,quantidade,2022,2023,2.0,4.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (2 -> 4 unidades): variacao relativa pouco informativa
+63,CPFL Paulista,seccionalizadores,quantidade,2023,2024,0.0,1.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 1 unidades): variacao relativa pouco informativa
+69,CPFL Santa Cruz,seccionalizadores,quantidade,2022,2023,1.0,2.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 2 unidades): variacao relativa pouco informativa
+371,Equatorial PA,seccionalizadores,quantidade,2023,2024,12.0,3.0,-75.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (12 -> 3 unidades): variacao relativa pouco informativa
+371,Equatorial PA,seccionalizadores,quantidade,2024,2025,3.0,6.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 6 unidades): variacao relativa pouco informativa
+405,Energisa MT,seccionalizadores,quantidade,2024,2025,3.0,70.0,2233.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2381,Cermissoes,seccionalizadores,quantidade,2023,2024,4.0,8.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 8 unidades): variacao relativa pouco informativa
+5370,Coopera,seccionalizadores,quantidade,2024,2025,3.0,9.0,200.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 9 unidades): variacao relativa pouco informativa
+5375,Cervam,seccionalizadores,quantidade,2022,2023,1.0,4.0,300.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 4 unidades): variacao relativa pouco informativa
+5381,Cedrap,seccionalizadores,quantidade,2024,2025,6.0,12.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (6 -> 12 unidades): variacao relativa pouco informativa
+5697,Celesc-Dis,seccionalizadores,quantidade,2022,2023,31.0,1.0,-96.8,comparavel,revisar,sem_evidencia_suficiente,base pequena (31 -> 1 unidades): variacao relativa pouco informativa
+5697,Celesc-Dis,seccionalizadores,quantidade,2023,2024,1.0,61.0,6000.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5697,Celesc-Dis,seccionalizadores,quantidade,2024,2025,61.0,96.0,57.4,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5707,CEEE Equatorial,seccionalizadores,quantidade,2023,2024,1.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 0 unidades): variacao relativa pouco informativa
+6072,Equatorial GO,seccionalizadores,quantidade,2022,2023,988.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+6609,Cernhe,seccionalizadores,quantidade,2023,2024,0.0,6.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 6 unidades): variacao relativa pouco informativa
+6609,Cernhe,seccionalizadores,quantidade,2024,2025,6.0,51.0,750.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7019,Amazonas Energia,seccionalizadores,quantidade,2022,2023,1.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 0 unidades): variacao relativa pouco informativa
+51,Dmed,subestacoes,quantidade,2024,2025,3.0,5.0,66.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 5 unidades): variacao relativa pouco informativa
+95,Demei,subestacoes,quantidade,2023,2024,1.0,2.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 2 unidades): variacao relativa pouco informativa
+398,Eletrocar,subestacoes,quantidade,2022,2023,7.0,3.0,-57.1,comparavel,revisar,sem_evidencia_suficiente,base pequena (7 -> 3 unidades): variacao relativa pouco informativa
+5356,Cegero,subestacoes,quantidade,2024,2025,1.0,2.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 2 unidades): variacao relativa pouco informativa
+5365,Cerpalo,subestacoes,quantidade,2022,2023,1.0,2.0,100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (1 -> 2 unidades): variacao relativa pouco informativa
+40,Neoenergia Cosern,torres,quantidade,2024,2025,13.0,24.0,84.6,comparavel,revisar,sem_evidencia_suficiente,base pequena (13 -> 24 unidades): variacao relativa pouco informativa
+43,Neoenergia Pernambuco,torres,quantidade,2022,2023,56.0,143.0,155.4,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+69,CPFL Santa Cruz,torres,quantidade,2024,2025,306.0,556.0,81.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+86,Eflul,torres,quantidade,2024,2025,0.0,66.0,,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+381,Santa Maria,torres,quantidade,2024,2025,194.0,310.0,59.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5355,Cergapa,torres,quantidade,2023,2024,12.0,1.0,-91.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (12 -> 1 unidades): variacao relativa pouco informativa
+5356,Cegero,torres,quantidade,2024,2025,0.0,56.0,,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5697,Celesc-Dis,torres,quantidade,2022,2023,5035.0,16688.0,231.4,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+6898,Cerbranorte,torres,quantidade,2024,2025,0.0,27.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 27 unidades): variacao relativa pouco informativa
+400,Nova Palma,trafo_forca,quantidade,2022,2023,2.0,5.0,150.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (2 -> 5 unidades): variacao relativa pouco informativa
+598,Creluz-D,trafo_forca,quantidade,2024,2025,2.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (2 -> 0 unidades): variacao relativa pouco informativa
+2763,Ceriluz,trafo_forca,quantidade,2022,2023,6.0,10.0,66.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (6 -> 10 unidades): variacao relativa pouco informativa
+5353,Cergal,trafo_forca,quantidade,2024,2025,2.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (2 -> 0 unidades): variacao relativa pouco informativa
+5365,Cerpalo,trafo_forca,quantidade,2024,2025,5.0,1.0,-80.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (5 -> 1 unidades): variacao relativa pouco informativa
+5374,Cooperzem,trafo_forca,quantidade,2024,2025,0.0,2.0,,comparavel,revisar,sem_evidencia_suficiente,base pequena (0 -> 2 unidades): variacao relativa pouco informativa
+6897,Ceraca,trafo_forca,quantidade,2023,2024,3.0,5.0,66.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (3 -> 5 unidades): variacao relativa pouco informativa
+31,CEA Equatorial,trafo_medida,quantidade,2023,2024,2239.0,5287.0,136.1,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+37,Equatorial MA,trafo_medida,quantidade,2022,2023,10212.0,16222.0,58.9,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+37,Equatorial MA,trafo_medida,quantidade,2024,2025,17476.0,28622.0,63.8,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+38,Equatorial PI,trafo_medida,quantidade,2024,2025,10867.0,16871.0,55.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+51,Dmed,trafo_medida,quantidade,2022,2023,219.0,691.0,215.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+370,Roraima Energia,trafo_medida,quantidade,2022,2023,178.0,1638.0,820.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+370,Roraima Energia,trafo_medida,quantidade,2024,2025,1083.0,223.0,-79.4,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+371,Equatorial PA,trafo_medida,quantidade,2022,2023,14670.0,22733.0,55.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+371,Equatorial PA,trafo_medida,quantidade,2023,2024,22733.0,39107.0,72.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+2763,Ceriluz,trafo_medida,quantidade,2024,2025,382.0,963.0,152.1,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+4950,Cemig-D,trafo_medida,quantidade,2023,2024,28497.0,44158.0,55.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5160,Neoenergia Brasilia,trafo_medida,quantidade,2024,2025,5166.0,9677.0,87.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+5345,Coopernorte,trafo_medida,quantidade,2022,2023,15.0,4.0,-73.3,comparavel,revisar,sem_evidencia_suficiente,base pequena (15 -> 4 unidades): variacao relativa pouco informativa
+5345,Coopernorte,trafo_medida,quantidade,2023,2024,4.0,14.0,250.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 14 unidades): variacao relativa pouco informativa
+5346,Coopersul,trafo_medida,quantidade,2023,2024,4.0,16.0,300.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (4 -> 16 unidades): variacao relativa pouco informativa
+5367,Ceprag,trafo_medida,quantidade,2022,2023,24.0,40.0,66.7,comparavel,revisar,sem_evidencia_suficiente,base pequena (24 -> 40 unidades): variacao relativa pouco informativa
+5707,CEEE Equatorial,trafo_medida,quantidade,2024,2025,8861.0,48162.0,443.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+6072,Equatorial GO,trafo_medida,quantidade,2022,2023,34235.0,15977.0,-53.3,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+6072,Equatorial GO,trafo_medida,quantidade,2023,2024,15977.0,33181.0,107.7,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7016,Coorsel,trafo_medida,quantidade,2022,2023,106.0,39.0,-63.2,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7016,Coorsel,trafo_medida,quantidade,2023,2024,39.0,63.0,61.5,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7019,Amazonas Energia,trafo_medida,quantidade,2023,2024,2891.0,4800.0,66.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7019,Amazonas Energia,trafo_medida,quantidade,2024,2025,4800.0,46.0,-99.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7371,Certel Energia,trafo_medida,quantidade,2024,2025,64.0,0.0,-100.0,comparavel,revisar,sem_evidencia_suficiente,"sem quebra de classificacao, sucessao ou padrao de erro identificavel; requer verificacao"
+7883,Cersad,trafo_medida,quantidade,2023,2024,5.0,12.0,140.0,comparavel,revisar,sem_evidencia_suficiente,base pequena (5 -> 12 unidades): variacao relativa pouco informativa
+6600,Energisa PB,reatores,quantidade,2024,2025,1.0,0.0,-100.0,comparavel,revisar,sucessao_societaria,DIST em evento EPB_EBO_2023
+26,Energisa AC,geradores,quantidade,2023,2024,6940.0,16252.0,134.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+31,CEA Equatorial,geradores,quantidade,2022,2023,1638.0,4362.0,166.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+31,CEA Equatorial,geradores,quantidade,2023,2024,4362.0,8393.0,92.4,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+37,Equatorial MA,geradores,quantidade,2022,2023,28410.0,43982.0,54.8,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+38,Equatorial PI,geradores,quantidade,2022,2023,29129.0,45860.0,57.4,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+39,Enel CE,geradores,quantidade,2022,2023,47179.0,71343.0,51.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+39,Enel CE,geradores,quantidade,2024,2025,70944.0,128928.0,81.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+40,Neoenergia Cosern,geradores,quantidade,2023,2024,54014.0,87003.0,61.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+43,Neoenergia Pernambuco,geradores,quantidade,2022,2023,45492.0,76232.0,67.6,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+44,Equatorial AL,geradores,quantidade,2022,2023,13630.0,23644.0,73.5,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+44,Equatorial AL,geradores,quantidade,2023,2024,23644.0,37755.0,59.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+47,Neoenergia Coelba,geradores,quantidade,2022,2023,81751.0,135807.0,66.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+47,Neoenergia Coelba,geradores,quantidade,2023,2024,135807.0,220540.0,62.4,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+370,Roraima Energia,geradores,quantidade,2022,2023,1290.0,2860.0,121.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+370,Roraima Energia,geradores,quantidade,2023,2024,2860.0,6025.0,110.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+370,Roraima Energia,geradores,quantidade,2024,2025,6025.0,9235.0,53.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+371,Equatorial PA,geradores,quantidade,2022,2023,38275.0,70936.0,85.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+371,Equatorial PA,geradores,quantidade,2023,2024,70936.0,109315.0,54.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+381,Santa Maria,geradores,quantidade,2022,2023,3584.0,5739.0,60.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+383,Enel RJ,geradores,quantidade,2023,2024,59873.0,90659.0,51.4,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+390,Enel SP,geradores,quantidade,2022,2023,16971.0,26153.0,54.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+405,Energisa MT,geradores,quantidade,2022,2023,68127.0,106144.0,55.8,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+405,Energisa MT,geradores,quantidade,2023,2024,106144.0,165927.0,56.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+504,Cerfox,geradores,quantidade,2022,2023,464.0,853.0,83.8,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+2763,Ceriluz,geradores,quantidade,2022,2023,426.0,814.0,91.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+4248,Ceral-Dis,geradores,quantidade,2022,2023,14.0,35.0,150.0,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+4248,Ceral-Dis,geradores,quantidade,2023,2024,35.0,57.0,62.9,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5160,Neoenergia Brasilia,geradores,quantidade,2022,2023,12564.0,19303.0,53.6,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5352,Cerej,geradores,quantidade,2024,2025,758.0,1229.0,62.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5364,Cermoful,geradores,quantidade,2024,2025,449.0,677.0,50.8,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5368,Cersul,geradores,quantidade,2022,2023,180.0,273.0,51.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5369,Certrel,geradores,quantidade,2022,2023,106.0,173.0,63.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5369,Certrel,geradores,quantidade,2023,2024,173.0,317.0,83.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5369,Certrel,geradores,quantidade,2024,2025,317.0,481.0,51.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5370,Coopera,geradores,quantidade,2023,2024,317.0,482.0,52.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5370,Coopera,geradores,quantidade,2024,2025,482.0,734.0,52.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5372,Cejama,geradores,quantidade,2023,2024,91.0,141.0,54.9,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5372,Cejama,geradores,quantidade,2024,2025,141.0,246.0,74.5,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5373,Coopermila,geradores,quantidade,2022,2023,27.0,44.0,63.0,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5375,Cervam,geradores,quantidade,2022,2023,80.0,123.0,53.8,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5375,Cervam,geradores,quantidade,2023,2024,123.0,189.0,53.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5377,Cercos,geradores,quantidade,2022,2023,32.0,57.0,78.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5377,Cercos,geradores,quantidade,2023,2024,57.0,132.0,131.6,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5377,Cercos,geradores,quantidade,2024,2025,132.0,206.0,56.1,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5378,Ceripa,geradores,quantidade,2022,2023,384.0,671.0,74.7,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5381,Cedrap,geradores,quantidade,2024,2025,221.0,352.0,59.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5382,Ceris,geradores,quantidade,2022,2023,31.0,54.0,74.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5382,Ceris,geradores,quantidade,2024,2025,70.0,108.0,54.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5384,Cerpro,geradores,quantidade,2022,2023,46.0,70.0,52.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5384,Cerpro,geradores,quantidade,2024,2025,103.0,156.0,51.5,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+5707,CEEE Equatorial,geradores,quantidade,2022,2023,25659.0,44355.0,72.9,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+6609,Cernhe,geradores,quantidade,2022,2023,142.0,229.0,61.3,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+7019,Amazonas Energia,geradores,quantidade,2022,2023,5983.0,9108.0,52.2,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+7883,Cersad,geradores,quantidade,2023,2024,21.0,32.0,52.4,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+7883,Cersad,geradores,quantidade,2024,2025,32.0,51.0,59.4,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)
+11825,Castro-Dis,geradores,quantidade,2022,2023,44.0,86.0,95.5,comparavel,revisar,variacao_real_plausivel,expansao da geracao distribuida (crescimento consistente com o setor)

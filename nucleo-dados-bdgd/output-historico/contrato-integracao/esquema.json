@@ -1,0 +1,54 @@
+{
+ "versao": "contrato-nacional-1.0.0",
+ "descricao": "Série física nacional BDGD 2022–2025 por ano × DIST × conceito × métrica (perímetro da publicação original).",
+ "chave": [
+  "ano",
+  "dist",
+  "conceitoId",
+  "metrica",
+  "perimetroId"
+ ],
+ "campos": {
+  "ano": "inteiro 2022–2025",
+  "dist": "código ANEEL da distribuidora (inteiro)",
+  "conceitoId": "ativo do catálogo (25)",
+  "metrica": "quantidade | extensao_km",
+  "unidade": "itens | km",
+  "valor": "número ou vazio (null); nunca zero quando ausente",
+  "perimetroId": "publicacao_original",
+  "regraVersao": "regra de cálculo + versão da matriz",
+  "estado": "observado | zero_verificado | ausente | nao_homologado | nao_aplicavel",
+  "cobertura": "1 somente quando a célula é integral e verificável (publicação anual 01/01–31/12, sem anomalia de fonte); vazio caso contrário",
+  "fonte": "origem oficial",
+  "dataBase": "BASE.DAT_FNL da publicação (AAAA-MM-DD)",
+  "perimetroBridgeId": "vazio no perímetro original (pontes em pontes_sucessao.csv)",
+  "motivo_nd": "causa exata quando não observado",
+  "status_homologacao": "HOMOLOGADO | COMPLETO_TECNICO | APTO_COM_RESSALVAS | PENDENTE_DECISAO | BLOQUEADO | NAO_DISPONIVEL",
+  "fonte_homologada": "true somente para HOMOLOGADO (2025); COMPLETO_TECNICO é validação automática",
+  "publicacao_id": "item ArcGIS ANEEL",
+  "sha256": "SHA-256 do ZIP oficial verificado",
+  "tipo_lacuna": "causa do inventário nacional",
+  "data_geracao": "data de geração",
+  "ruptura_desde_ano_anterior": "true quando a variação em relação ao ano anterior não é comparável (classificação, cadastro, anomalia, sucessão ou sem explicação)",
+  "tipo_ruptura": "categoria da ruptura",
+  "intervalo_base": "classe do intervalo DAT_INC–DAT_FNL",
+  "tag_extra": "tag Extra do catálogo (observação, não exclui)",
+  "empresa": "nome",
+  "nao_somar_em_agregados": "true para predecessora já contida na sucessora (ENF 2022)"
+ },
+ "regras_de_uso": [
+  "treinar só com estado observado/zero_verificado",
+  "não somar linhas com nao_somar_em_agregados=true",
+  "cortar a série em ruptura_desde_ano_anterior=true",
+  "fonte_homologada=false não autoriza previsão validada",
+  "agregado Brasil só com cobertura_completa=true; 2022–2023 nunca"
+ ],
+ "estados_ts": [
+  "observado",
+  "zero_verificado",
+  "ausente",
+  "nao_homologado",
+  "nao_aplicavel",
+  "ruptura"
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "escopo": "BDGD 2022-2025, mesma regra de ativos de 2025",
+ "versao_regra": "r3-1",
+ "gerado_em": "2026-10-24T22:56:43+00:00",
+ "cobertura": [
+  {
+   "ano": 2022,
+   "publicadas": 102,
+   "validadas": 95,
+   "pendentes": 2,
+   "competencia_divergente": 5,
+   "status_ano": "parcial"
+  },
+  {
+   "ano": 2023,
+   "publicadas": 101,
+   "validadas": 83,
+   "pendentes": 11,
+   "competencia_divergente": 7,
+   "status_ano": "parcial"
+  },
+  {
+   "ano": 2024,
+   "publicadas": 97,
+   "validadas": 97,
+   "pendentes": 0,
+   "competencia_divergente": 0,
+   "status_ano": "completo_tecnico"
+  },
+  {
+   "ano": 2025,
+   "publicadas": 99,
+   "validadas": 99,
+   "pendentes": 0,
+   "competencia_divergente": 0,
+   "status_ano": "homologado"
+  }
+ ],
+ "estados": [
+  "validado",
+  "ausente",
+  "campo_ausente",
+  "bloqueado",
+  "revisao_pendente",
+  "nao_processado",
+  "competencia_divergente",
+  "sem_publicacao"
+ ],
+ "regras": {
+  "valores": "somente celulas validado tem valor; demais ficam vazias (N/D), nunca zero",
+  "brasil": "total nacional so quando todas as publicacoes do ano estao validadas",
+  "perimetro": "predecessoras somadas apenas com prova de disjuncao por CONJ e absorcao no ano seguinte",
+  "quebra_classificacao": "variacao > 10% da parcela sem TUC"
+ },
+ "privacidade": "somente agregados por DIST/ano/ativo; nenhum identificador individual",
+ "checksums": {
+  "cobertura_por_ano.csv": "4578ba89a15edb8b622defc782c1c31f5896a52796b2101441ed8701884618fe",
+  "eventos_sucessao.csv": "d006a4d8e6969a85490dc73db61c6d25d13cb8df12087197cd02aaaa2cf44443",
+  "ponte_perimetro_2025.csv": "887aaf1693569609990a210b0e0e5cefdb6844343224ea05be1ef93173221d5a",
+  "populacao_conceitos.csv": "a2601e6d62a7d584aea879d9e4d0dbc8223fafba43b13e9ff0a20bc99f43e357",
+  "qa_consistencia_temporal.csv": "fcdc4666e6fb8a1ce531eab41ab351697461339bb43c9c143c20ea39a0b8a8f3",
+  "qa_duplicatas_reconciliadas.csv": "a9bc8648721647472ea1ee00bb318167ef133394c0baa2e0320fd6a924b12efc",
+  "qa_itens_auditoria.csv": "2b6edf2eb24405026c6bb65736b2192a2a17018e4cae6efae300559c74d20cce",
+  "qa_publicacoes_multiplas.csv": "9ae743bf9ef03b8ad246c10e57a4b0e3decbfd85595a129de7af82e21d79d23c",
+  "qa_sinais_temporais_classificados.csv": "c266cfe53009a24dc4face107275e0670abde29cf71ad933de24925b147566f0",
+  "qa_sucessao.csv": "a7617e0825d7eaca70b3c68812ee03b6473012bc169d249d0aed4526a10f35ab",
+  "serie_ativos_original.csv": "a2789c128440131cb6e864aa3d20f354a67c9eae136b123f5c6364921bfb6c21",
+  "serie_ativos_perimetro_2025.csv": "366405f7dadf9f72b96f8860bb49564c4b963a520a8ff7fd0ec10e72f35da85d"
+ }
+}
