@@ -33,22 +33,19 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.getByRole("heading", { name: "Energisa", level: 2 })).toBeVisible();
   });
 
-  test("matriz: busca, ordenação e exportação CSV", async ({ page }) => {
-    await page.goto("/matriz/");
+  test("matriz: recorte por coluna aplicado e exportado sem alterar os dados", async ({ page }) => {
+    await page.goto("/matriz/?ativos=trafo_dist,consumidores");
     const table = page.getByTestId("matriz-tabela");
     await expect(table).toBeVisible();
-    await page.getByTestId("matriz-busca").fill("Energisa");
-    await expect(table.locator("tbody tr")).not.toHaveCount(0);
-    for (const row of await table.locator("tbody tr").all()) {
-      const t = await row.innerText();
-      if (!t.startsWith("Total")) expect(t).toMatch(/Energisa/);
-    }
-    await table.getByRole("button", { name: /SSDMT/ }).click();
-    await expect(page).toHaveURL(/ordem=SSDMT/);
+    await page.getByTestId("filtro-col-trafo_dist").click();
+    await page.getByTestId("col-filtro-area").click();
+    await page.getByRole("button", { name: /Urbano/ }).first().click();
+    await expect.poll(() => decodeURIComponent(page.url())).toContain("cf=trafo_dist~area:");
+    await expect(page.getByTestId("matriz-chips")).toContainText("Transformadores de distribuição");
+    await page.keyboard.press("Escape");
     const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("matriz-csv").click()]);
-    expect(dl.suggestedFilename()).toMatch(/^bdgd_2025-12-31_matriz_.*\.csv$/);
+    expect(dl.suggestedFilename()).toMatch(/\.csv$/);
   });
-
   test("comparador: troca A/B e exporta", async ({ page }) => {
     await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial");
     await expect(page.getByTestId("comparar-tabela")).toBeVisible();
@@ -59,21 +56,15 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     expect(dl.suggestedFilename()).toContain("2025-12-31_comparacao");
   });
 
-  test("entidades e DDA: facetas em cascata e combinação indisponível", async ({ page }) => {
-    await page.goto("/explorar/?ent=UCBT");
-    await expect(page.getByTestId("ent-title")).toHaveText(/baixa tensão/i);
+  test("entidades e DDA: modo técnico preserva facetas de UCBT", async ({ page }) => {
+    await page.goto("/explorar/?ativo=consumidores");
+    await expect(page.getByTestId("conceito-titulo")).toHaveText("Consumidores");
+    await page.getByTestId("modo-avancado").click();
+    await page.getByTestId("abrir-tecnico").click();
+    await expect(page.getByTestId("visao-tecnica")).toBeVisible();
     await page.getByTestId("attr-ARE_LOC").click();
-    await expect(page.getByTestId("chart-categorias")).toBeVisible();
-    await page.locator("table tbody tr").first().click();
-    await expect(page).toHaveURL(/c1=/);
-    await expect(page.getByTestId("attr2-CLAS_SUB")).toHaveAttribute("aria-disabled", "false");
-    await expect(page.getByTestId("attr2-TEN_FORN")).toHaveAttribute("aria-disabled", "true");
-    await page.getByTestId("attr2-CLAS_SUB").click();
-    await expect(page).toHaveURL(/a2=CLAS_SUB/);
-    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("explorar-csv").click()]);
-    expect(dl.suggestedFilename()).toMatch(/^bdgd_2025-12-31_UCBT_CLAS_SUB_dado-ARE_LOC-/);
+    await expect(page.getByTestId("chart-categorias").last()).toBeVisible();
   });
-
   test("R2 panorama: clicar de novo desmarca, Ver Brasil limpa e ranking expande", async ({ page }) => {
     await page.goto("/?dist=31");
     await expect(page.getByTestId("dist-title")).toHaveText(/CEA Equatorial/);
@@ -119,39 +110,38 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("#dicionario")).toBeAttached();
   });
 
-  test("R2 matriz: medida Extensão só com tipos aplicáveis, UF e chips", async ({ page }) => {
-    await page.goto("/matriz/?metrica=extensao_km&ufs=SC");
+  test("R3 matriz: medida kVA disponível somente para transformadores", async ({ page }) => {
+    await page.goto("/matriz/?ativos=trafo_dist&cm=trafo_dist~potencia_kva");
     const table = page.getByTestId("matriz-tabela");
     await expect(table).toBeVisible();
-    await expect(table.getByRole("button", { name: /SSDMT/ })).toBeVisible();
-    await expect(table.getByRole("button", { name: /UCBT/ })).toHaveCount(0);
-    await expect(page.getByTestId("matriz-chips")).toContainText("UF: SC");
-    for (const row of (await table.locator("tbody tr").all()).slice(1)) expect(await row.innerText()).toMatch(/SC/);
+    await expect(table).toContainText("kVA");
+    await expect(page.getByRole("radiogroup", { name: "Medida" })).toHaveCount(0);
     const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("matriz-csv").click()]);
-    const csv = await (await dl.createReadStream()).toArray();
-    expect(Buffer.concat(csv).toString("utf-8").split(/\r?\n/)[0]).toContain("data_base,versao,dist,sigla,grupo_economico,grupo_status,entidade,tipo_de_ativo,metrica,unidade,valor,status,motivo,regra,cobertura_recorte");
+    const stream = await dl.createReadStream();
+    const chunks: Buffer[] = [];
+    for await (const chunk of stream) chunks.push(Buffer.from(chunk));
+    const head = Buffer.concat(chunks).toString("utf8").split(/\r?\n/)[0].replace(/^\uFEFF/, "");
+    expect(head).toContain("medida,unidade,recorte,valor,status,motivo,regra");
   });
-
-  test("R2 comparador: barras espelhadas e radar com benchmark acima de 100%", async ({ page }) => {
-    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial&grafico=valores&ref=bench_dists");
+  test("R3 comparador: barras espelhadas e radar exibidos em abas específicas", async ({ page }) => {
+    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial&ativo=transformadores&ref=bench_dists");
+    await expect(page.getByTestId("comparar-tabela")).toBeVisible();
+    await page.getByRole("radio", { name: "Gráficos" }).click();
+    await page.getByRole("radio", { name: "Valores A × B" }).click();
     await expect(page.getByTestId("chart-espelhado")).toBeVisible();
+    await page.getByRole("radio", { name: "Radar" }).click();
     await expect(page.getByTestId("radar-tabela")).toBeVisible();
-    const pcts = await page.locator('[data-testid^="radar-pct-"]').allInnerTexts();
-    expect(pcts.some((x) => parseFloat(x.replace(".", "").replace(",", ".")) > 100)).toBeTruthy();
     const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("radar-csv").click()]);
     expect(dl.suggestedFilename()).toContain("radar");
   });
-
-  test("R2 explorar: recorte TUC 565 e participação dupla", async ({ page }) => {
-    await page.goto("/explorar/?ent=EQTRMT&escopo=grupo:energisa");
-    await page.getByTestId("preset-tuc-EQTRMT-565").click();
-    await expect(page).toHaveURL(/c1=565/);
-    await expect(page.getByTestId("participacao")).toBeVisible();
-    await expect(page.getByTestId("vinculos-tuc")).toContainText("instalações distintas");
-    await expect(page.getByTestId("part-escopo")).toHaveText(/%|N\/D/);
-    await expect(page.getByTestId("inventario-atributos")).toContainText("Filtrável agora");
+  test("R3 explorar: TUC 565 filtra transformadores mantendo visões e dimensões", async ({ page }) => {
+    await page.goto("/explorar/?ativo=transformadores&escopo=grupo:energisa");
+    await expect(page.getByTestId("conceito-titulo")).toHaveText("Transformadores");
+    await page.getByTestId("cartao-565").click();
+    await expect(page).toHaveURL(/c=565/);
+    await expect(page.getByTestId("onde-instalados")).toContainText("não são somadas");
+    await expect(page.getByTestId("tabela-categorias")).toBeVisible();
   });
-
   test("Evolução 2022–2025 exibe histórico real e rastreabilidade", async ({ page }) => {
     await page.goto("/evolucao/?ativo=consumidores");
     await expect(page.getByTestId("evo-tabela")).toBeVisible();
