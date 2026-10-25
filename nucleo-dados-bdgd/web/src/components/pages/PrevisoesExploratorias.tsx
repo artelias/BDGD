@@ -195,7 +195,7 @@ export function PrevisoesExploratorias() {
                     </div>
                     <a className={s.exportar} href={"data:text/csv;charset=utf-8," + encodeURIComponent("\uFEFF" + csv)}
                       download={"cenario_DIST_" + serie[0] + "_" + serie[2] + "_" + metodo + ".csv"}>
-                      Exportar série e rastreabilidade (CSV)
+                      Exportar série selecionada (CSV)
                     </a>
                   </div>
                   <div>
