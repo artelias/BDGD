@@ -42,3 +42,9 @@
 .erro { padding: 14px; border: 1px solid var(--hairline); border-radius: 10px; line-height: 1.6; }
 @media (max-width: 900px) { .filtros { grid-template-columns: repeat(2,minmax(0,1fr)); } .indicadores { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 @media (max-width: 680px) { .duasColunas { grid-template-columns: 1fr; } .destaque { grid-template-columns: 1fr; } .filtros { grid-template-columns: 1fr; } .section { padding: 16px; } }
+/* Evidências de cautela são neutras: não indicam validação nem recomendação de investimento. */
+.alertas { border: 1px solid var(--hairline); border-radius: 12px; padding: 13px 16px; margin: 12px 0 18px; }
+.alertas h3 { font-size: .9rem; font-weight: 700; margin: 0 0 9px; }
+.alertas ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.alertas li { color: var(--muted); font-size: .81rem; line-height: 1.55; }
+.alertas li strong { color: var(--foreground, inherit); font-weight: 700; }
