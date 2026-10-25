@@ -40,7 +40,7 @@ test.describe("Riscos exploratórios — dados BDGD sem imputação", () => {
     const csv = Buffer.concat(chunks).toString("utf8");
     expect(csv).toContain("2025,0,zero_verificado_pendente");
     expect(csv).toContain("2022,0,zero_verificado_pendente");
-    expect(csv).toContain("status_homologacao").toBe(false); // apenas a coluna estável homologacao_origem
+    expect(csv).not.toContain("status_homologacao"); // apenas a coluna estável homologacao_origem
     expect(csv).toContain("homologacao_origem,publicacao_id");
   });
 
