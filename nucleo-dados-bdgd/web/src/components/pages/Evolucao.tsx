@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import { EscopoSeletor } from "@/components/explorar/EscopoSeletor";
+import { PublicacoesAuditadas } from "@/components/pages/PublicacoesAuditadas";
 import { Button } from "@/components/ui/Button";
 import { Explain } from "@/components/ui/Explain";
 import { DataError, downloadText, EmptyState, LoadingBlock, useToast } from "@/components/ui/Feedback";
@@ -193,6 +194,8 @@ function EvolucaoReady({ ds, sd, h }: { ds: Dataset; sd: SerieData; h: Homologac
           Os demais dados válidos continuam disponíveis. Não é necessário corrigir o GDB nem inventar zeros.
         </p>
       </details>
+
+      <PublicacoesAuditadas />
 
       <aside className={s.ressalvas} data-testid="evo-ressalvas" aria-label="Ressalvas de publicação">
         <ShieldCheck size={16} aria-hidden />
