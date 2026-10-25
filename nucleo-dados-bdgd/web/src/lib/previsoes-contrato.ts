@@ -67,7 +67,7 @@ export function previsaoPublicavel(p: ResultadoPrevisao): boolean {
   if (typeof p.dist === "number" && (!Number.isInteger(p.dist) || p.dist <= 0)) return false;
   const ev = p.evidenciaValidacao;
   if (!ev || !ev.protocoloId?.trim() || !ev.versaoCodigo?.trim() || !ev.baselineId?.trim()) return false;
-  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(ev.dataCorteTreino) || !Number.isFinite(Date.parse(ev.dataCorteTreino))) return false;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(ev.dataCorteTreino) || !Number.isFinite(Date.parse(ev.dataCorteTreino))) return false;
   if (!Number.isInteger(ev.numeroObservacoes) || ev.numeroObservacoes < 5) return false;
   if (!Number.isInteger(ev.numeroOrigensTeste) || ev.numeroOrigensTeste < 2) return false;
   if (!["mae", "rmse", "wape"].includes(ev.metricaErro)) return false;
