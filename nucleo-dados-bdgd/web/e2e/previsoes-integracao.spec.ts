@@ -18,7 +18,7 @@ test("Previsões apresenta resultados exploratórios antes das ressalvas longas"
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Distribuidora" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Ativo" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Método" })).toBeVisible();
-  await page.getByLabel("Método").selectOption("persistencia");
+  await page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Método" }).selectOption("persistencia");
   await expect(page.getByRole("img", { name: /simulação condicional 2026 a 2030 pelo método persistência/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Exportar série selecionada/ })).toHaveAttribute("download", /cenario_DIST_/);
   await expect(page.getByText("Entenda a diferença entre simulação e previsão validada")).toBeVisible();
