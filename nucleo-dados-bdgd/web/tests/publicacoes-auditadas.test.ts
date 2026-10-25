@@ -21,7 +21,7 @@ describe("inventário individual de publicações — 25/10/2026", () => {
     expect(usa("em_uso_na_serie")).toHaveLength(273);
     expect(usa("pacote_2025")).toHaveLength(99);
     expect(usa("par_competencia_unica_valida_em_uso")).toHaveLength(2);
-    expect(audit.items.filter((p: unknown[]) => [2022, 2023, 2024, 2025].includes(p[0]))).toHaveLength(414);
+    expect(audit.items.filter((p: unknown[]) => [2022, 2023, 2024, 2025].includes(Number(p[0])))).toHaveLength(414);
   });
 
   it("exclusões por competência são sustentadas pelo DAT_FNL incompatível, não zeros", () => {
