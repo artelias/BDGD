@@ -137,7 +137,7 @@ export function PublicacoesAuditadas() {
           <details className={s.pares} data-testid="publicacoes-inexistentes">
             <summary>11 publicações não localizadas no catálogo oficial — não são arquivos em quarentena</summary>
             <p className={s.rodape}>A busca pelo catálogo oficial não encontrou publicações para essas combinações distribuidora/ano, afetando {fmt(data.publicacoesNaoLocalizadasCelulas)} células de ativos. Não há arquivo local para corrigir. É necessário que a ANEEL ou a distribuidora disponibilize ou identifique a publicação adequada.</p>
-            <div className={s.scroll} tabIndex={0} role="region" aria-label="Publicações inexistentes no catálogo ANEEL">
+            <div className={s.scroll} tabIndex={0} role="region" aria-label="Publicações não localizadas no catálogo ANEEL">
               <table className={s.tabela}>
                 <thead><tr><th>Ano</th><th>Distribuidora</th><th>Situação</th></tr></thead>
                 <tbody>{data.publicacoesNaoLocalizadas.map(([ano, dist, empresa]) => (
@@ -151,7 +151,7 @@ export function PublicacoesAuditadas() {
             </div>
           </details>
           <ParesDivergentes />
-          <p className={s.rodape}>Fonte: matriz de conformidade BDGD Ordinária, commit {data.sourceCommit}, auditoria concluída em 25/10/2026. Nenhuma versão pendente foi escolhida automaticamente. Publicações inexistentes no catálogo e ativos estruturalmente ausentes são controlados separadamente na matriz de homologação.</p>
+          <p className={s.rodape}>Fonte: matriz de conformidade BDGD Ordinária, commit {data.sourceCommit}, auditoria concluída em 25/10/2026. Nenhuma versão pendente foi escolhida automaticamente. Publicações não localizadas no catálogo e ativos não aplicáveis são controlados separadamente no contrato.</p>
         </>
       )}
     </section>

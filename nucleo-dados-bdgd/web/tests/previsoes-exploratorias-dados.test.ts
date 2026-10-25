@@ -13,7 +13,7 @@ function tendencia(v: number[], alvo: number): number {
   const my = v.reduce((a, b) => a + b, 0) / n;
   const slope = v.reduce((s, y, i) => s + (i - mx) * (y - my), 0) /
     v.reduce((s, _y, i) => s + (i - mx) ** 2, 0);
-  return Math.max(0, v[n - 1] + slope * (alvo - n + 1));
+  return Math.max(0, my + slope * (alvo - mx));
 }
 
 describe("dados de cenários exploratórios — contrato nacional", () => {
@@ -64,6 +64,6 @@ describe("dados de cenários exploratórios — contrato nacional", () => {
       else if (persist < linear - 1e-9) persistenciaVence++;
       else empates++;
     }
-    expect([tendenciaVence, persistenciaVence, empates]).toEqual([718, 396, 441]);
+    expect([tendenciaVence, persistenciaVence, empates]).toEqual([704, 421, 430]);
   });
 });

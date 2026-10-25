@@ -34,7 +34,8 @@ function projetar(serie: { ano: number; valor: number }[], ano: number, metodo: 
   const numerador = serie.reduce((s, p) => s + (p.ano - mx) * (p.valor - my), 0);
   const denominador = serie.reduce((s, p) => s + (p.ano - mx) ** 2, 0);
   const inclinacao = denominador ? numerador / denominador : 0;
-  return Math.max(0, ultimo.valor + inclinacao * (ano - ultimo.ano));
+  // Reta OLS com intercepto: passa pelas médias, não pelo último observado.
+  return Math.max(0, my + inclinacao * (ano - mx));
 }
 export function gerarCenarioExploratorio(
   entrada: readonly SerieFisica[],

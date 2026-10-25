@@ -17,7 +17,7 @@ import { displayName, type Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
 import { fmt, fmtArea, fmtCompact, METRIC_UNIT } from "@/lib/format";
 import { coberturaTexto } from "@/lib/kpis";
-import { PANORAMA_IDS, PANORAMA_KPIS, PANORAMA_PRESETS, panoramaIndicador, panoramaValue, type PanoramaKpi as KpiDef } from "@/lib/panorama-r3";
+import { coberturaNacionalIncompleta, PANORAMA_IDS, PANORAMA_KPIS, PANORAMA_PRESETS, panoramaIndicador, panoramaValue, type PanoramaKpi as KpiDef } from "@/lib/panorama-r3";
 import { useMediaQuery, useStoredValue } from "@/lib/hooks";
 import { useTheme, useReducedMotion } from "@/lib/theme";
 import type { Metric, Scope } from "@/lib/types";
@@ -185,6 +185,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
         </Sheet>
       </section>
 
+      {coberturaNacionalIncompleta(ds, scopeDists) && <p className="caption" role="note">Cobertura nacional incompleta: {ds.raw.release.cobertura.sem_publicacao_2025.length} distribuidoras sem publicação 2025. Os totais nacionais ficam N/D; consulte os recortes disponíveis.</p>}
       <div className={s.kpiHead}>
         <div>
           <h2 className="title" style={{ fontSize: "1.375rem" }}>{ds.scopeLabel(scope)}</h2>
@@ -513,11 +514,14 @@ function Inventory({ ds, dists }: { ds: Dataset; dists: number[] }) {
 
 function InvLine({ ds, dists, ent, nome, metric, regra }: { ds: Dataset; dists: number[]; ent: string; nome: string; metric: Metric; regra: string }) {
   const a = ds.aggregate(dists, ent, metric);
+  const incompleto = a.partial || a.ausentes > 0 || coberturaNacionalIncompleta(ds, dists);
+  const escopo = dists.length < ds.dists.length ? `&escopo=dists&dists=${dists.join(",")}` : "";
   return (
     <div className={s.entLine}>
-      <Link href={`/explorar/?ent=${ent}`} title={regra}>{nomeNegocio(ent, nome)}<span className="mono faint" style={{ marginLeft: 6, fontSize: "0.6875rem" }}>{ent}</span></Link>
-      <span className="num" style={{ textAlign: "right" }}>{fmtCompact(a.partial || a.ausentes > 0 ? null : a.v, metric)}</span>
-      {(a.partial || a.ausentes > 0) && <span className={s.entNd}><Link href="/metodologia/#qualidade">Valor não disponível para todo o recorte · ver cobertura</Link></span>}
+      <Link href={`/explorar/?ent=${ent}&tec=${ent}${escopo}`} title={regra}>{nomeNegocio(ent, nome)}<span className="mono faint" style={{ marginLeft: 6, fontSize: "0.6875rem" }}>{ent}</span></Link>
+      <span className="num" style={{ textAlign: "right" }}>{fmtCompact(incompleto ? null : a.v, metric)}</span>
+      {incompleto && <span className={s.entNd}><Link href="/metodologia/#qualidade">Valor não disponível para todo o recorte · ver cobertura</Link></span>}
+      {!incompleto && a.v === 0 && <span className={s.entNd}>Zero no agregado processado; verificação independente pendente.</span>}
     </div>
   );
 }

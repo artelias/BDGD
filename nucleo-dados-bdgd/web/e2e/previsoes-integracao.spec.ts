@@ -27,7 +27,7 @@ test("Previsões apresenta resultados exploratórios antes das ressalvas longas"
 test("@mobile Previsões mantém formulário e gráficos acessíveis sem rolagem horizontal da página", async ({ page }) => {
   await page.goto("/previsoes/");
   await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toBeVisible();
-  await expect(page.getByLabel("Distribuidora")).toBeVisible();
+  await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Distribuidora", exact: true })).toBeVisible();
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Ano simulado" })).toBeVisible();
   const sobra = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(sobra).toBeLessThanOrEqual(1);

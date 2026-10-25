@@ -21,6 +21,7 @@ import {
   serieBrasil, seriePainel, sinaisNoEscopo, urlItem, type EstadoPub, type Homologacao, type PontoHom,
 } from "@/lib/homologacao";
 import { fmt, fmtCompact, toCSV } from "@/lib/format";
+import { aplicarEstadosContrato, pontosContrato, type EstadosContrato } from "@/lib/historico-contrato";
 import { useQueryPatch, useQueryState } from "@/lib/url-state";
 import p from "./pages.module.css";
 import s from "./evolucao.module.css";
@@ -44,11 +45,13 @@ export function Evolucao() {
   const data = useData();
   const serie = useJson<SerieData>("/data/historico/serie.json");
   const hom = useJson<Homologacao>("/data/historico/homologacao.json");
-  if (data.status === "loading" || (!serie.data && !serie.error) || (!hom.data && !hom.error)) return <LoadingBlock lines={6} label="Carregando séries" />;
+  const estados = useJson<EstadosContrato>("/data/historico/estados-contrato.json");
+  if (data.status === "loading" || (!serie.data && !serie.error) || (!hom.data && !hom.error) || (!estados.data && !estados.error)) return <LoadingBlock lines={6} label="Carregando séries" />;
   if (data.status === "error") return <DataError error={data.error} />;
   if (serie.error || !serie.data) return <DataError error={serie.error ?? "série indisponível"} />;
   if (hom.error || !hom.data) return <DataError error={hom.error ?? "matriz de homologação indisponível"} />;
-  return <EvolucaoReady ds={data.ds} sd={serie.data} h={hom.data} />;
+  if (estados.error || !estados.data) return <DataError error={estados.error ?? "estados do contrato indisponíveis"} />;
+  return <EvolucaoReady ds={data.ds} sd={serie.data} h={hom.data} estados={estados.data} />;
 }
 
 function Selo({ e, curto }: { e: EstadoPub; curto?: boolean }) {
@@ -57,17 +60,19 @@ function Selo({ e, curto }: { e: EstadoPub; curto?: boolean }) {
 
 function Celula({ pt, medida }: { pt: PontoHom; medida: Parameters<typeof fmt>[1] }) {
   const motivo = pt.motivo || ESTADO[pt.estado] || "";
-  if (pt.v === null) return <><span className="faint">N/D</span>{pt.pub && pt.pub !== "N" && <span className={s.mini} data-e={pt.pub}>{ROTULO_PUB[pt.pub].split(" ")[0]}</span>}<span className="sr-only">: {motivo}</span></>;
+  if (pt.estado === "nao_aplicavel") return <span className="faint" title={motivo}>Não aplicável</span>;
+  if (pt.v === null) return <><span className="faint">N/D</span>{pt.estado === "nao_homologado" ? <span className={s.mini}>Não homologado</span> : pt.pub && pt.pub !== "N" && <span className={s.mini} data-e={pt.pub}>{ROTULO_PUB[pt.pub].split(" ")[0]}</span>}<span className="sr-only">: {motivo}</span></>;
   return (
     <>
       {fmt(pt.v, medida)}
+      {pt.estado === "zero_verificado" && <span className={s.mini}>Zero técnico*</span>}
       {pt.pub === "R" && <AlertTriangle size={11} className={s.warn} aria-label={`ressalva: ${motivo}`} />}
       {pt.quebra && <Flag size={11} className={s.flag} aria-label="quebra de comparabilidade" />}
     </>
   );
 }
 
-function EvolucaoReady({ ds, sd, h }: { ds: Dataset; sd: SerieData; h: Homologacao }) {
+function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: Homologacao; estados: EstadosContrato }) {
   const toast = useToast();
   const patch = useQueryPatch();
   const ativos = listaAtivos(ds);
@@ -82,14 +87,14 @@ function EvolucaoReady({ ds, sd, h }: { ds: Dataset; sd: SerieData; h: Homologac
   const escopo = useMemo(() => lerEscopo(ds, escopoQ, distsQ), [ds, escopoQ, distsQ]);
   const anos = sd.anos;
   const ih = indiceHom(h, a.id);
-  const idx = indexarHom(aplicarMatriz((visao === "perimetro" ? sd.perimetro : sd.original)[a.id], ih));
+  const idx = indexarHom(aplicarEstadosContrato(aplicarMatriz((visao === "perimetro" ? sd.perimetro : sd.original)[a.id], ih), estados, a.id));
   const nomeD = (d: number) => ds.dist(d)?.sigla.replaceAll("_", " ") ?? sd.nomes[String(d)] ?? `DIST ${d}`;
   const setEscopo = (e: Escopo) => { const w = escreverEscopo(e); patch({ escopo: w.escopo, dists: w.dists }); };
 
   // Brasil e painel vêm da matriz de homologação (agregados elegíveis); grupo e DIST somam/mostram só células publicáveis
   const series: Serie[] = useMemo(() => {
     if (escopo.modo === "brasil") {
-      const out: Serie[] = [serieBrasil(h, a.id, anos)];
+      const out: Serie[] = [serieBrasil(h, a.id, anos, estados)];
       const painel = seriePainel(h, a.id, anos);
       if (painel) out.push(painel);
       return out;
@@ -98,9 +103,9 @@ function EvolucaoReady({ ds, sd, h }: { ds: Dataset; sd: SerieData; h: Homologac
     const out: Serie[] = [];
     if (escopo.modo === "grupo") out.push({ ...serieSoma(idx, dists, anos, "grupo", `${rotuloEscopo(ds, escopo)} (composição de 2025)`), nota: "soma só nos anos com todas as distribuidoras publicáveis" });
     const top = [...dists].sort((x, y) => (idx.get(y)?.get(2025)?.[2] ?? 0) - (idx.get(x)?.get(2025)?.[2] ?? 0)).slice(0, MAX_LINHAS);
-    for (const d of top) out.push(pontosHom(serieDist(idx, d, anos, nomeD(d)), h, ih, d));
+    for (const d of top) out.push(pontosContrato(pontosHom(serieDist(idx, d, anos, nomeD(d)), h, ih, d), estados, a.id, d));
     return out;
-  }, [idx, escopo, anos, ds, h, a.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [idx, escopo, anos, ds, h, estados, a.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const exibidas = escala === "indice" ? series.map(indice100) : series;
   const principal = series[0];
   const varP = principal ? variacao(principal) : null;
@@ -191,7 +196,7 @@ function EvolucaoReady({ ds, sd, h }: { ds: Dataset; sd: SerieData; h: Homologac
       <aside className={s.ressalvas} data-testid="evo-ressalvas" aria-label="Ressalvas de publicação">
         <ShieldCheck size={16} aria-hidden />
         <div>
-          <b>Ressalvas vigentes.</b> 2022 e 2023 não têm cobertura nacional completa: o total Brasil não é publicado e o painel balanceado mostra a tendência comparável. 2024 tem as publicações tecnicamente validadas, mas ainda apresenta células ausentes, sem homologação humana. Em 2025 há publicações homologadas, com ausências documentadas por ativo; a tag “Extra” do catálogo ANEEL aparece em todas as publicações de 2025 e é registrada só como observação (o intervalo da base é anual em 98 de 99).
+          <b>Ressalvas vigentes.</b> 2022 e 2023 não têm cobertura nacional completa. O contrato também registra publicações não localizadas em 2024 e 2025: o total Brasil fica N/D em qualquer ano com lacunas. O painel balanceado mostra somente as mesmas distribuidoras comparáveis. Validação automática e zero técnico não equivalem a homologação humana. Não aplicável é um estado próprio; ausência e pendência nunca viram zero. A comprovação independente dos zeros técnicos permanece pendente.
           {ressalvas2025.length > 0 && <ul className={s.lista}>{ressalvas2025.slice(0, 4).map((c) => <li key={c[0]}><b>{nomeD(c[0])} 2025</b> · {ROTULO_PUB[c[2]]}: {h.motivos[c[3]]}</li>)}</ul>}
         </div>
       </aside>

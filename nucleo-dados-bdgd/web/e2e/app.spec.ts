@@ -17,7 +17,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("canvas.maplibregl-canvas")).toBeVisible();
     // regressão: o contêiner do mapa precisa ocupar o palco (ordem de CSS em produção)
     expect(await page.locator("canvas.maplibregl-canvas").evaluate((c) => c.clientHeight)).toBeGreaterThan(400);
-    await expect(page.getByTestId("kpi-ssdmt")).not.toContainText("N/D");
+    await expect(page.getByTestId("kpi-ssdmt").locator("..")).toContainText("N/D");
+    await expect(page.getByText(/Cobertura nacional incompleta:/)).toBeVisible();
     await page.getByTestId("panel-search").fill("CEA");
     await page.getByTestId("dist-31").click();
     await expect(page).toHaveURL(/dist=31/);

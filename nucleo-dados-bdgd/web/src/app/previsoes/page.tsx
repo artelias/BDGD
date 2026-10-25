@@ -39,7 +39,7 @@ const entregas = [
 
 export default function Page() {
   return (
-    <main style={{ maxWidth: 1180, margin: "0 auto", paddingBottom: 80 }}>
+    <div style={{ maxWidth: 1180, margin: "0 auto", paddingBottom: 80 }}>
       <header style={{ maxWidth: 900, marginBottom: 18 }}>
         <div className="eyebrow">Estoque físico · dados nacionais BDGD</div>
         <h1 className="display" style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
@@ -123,10 +123,10 @@ export default function Page() {
         <p className="muted" style={{ fontSize: ".85rem", flex: "1 1 280px", margin: 0 }}>
           Histórico e cenários condicionais aparecem separadamente. Não há previsão estatisticamente validada publicada; nenhum valor é inferido de exemplos ilustrativos.
         </p>
-        <Link href="/panorama" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 600, fontSize: ".88rem" }}>
+        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 600, fontSize: ".88rem" }}>
           Explorar dados observados <ArrowUpRight size={16} aria-hidden="true" />
         </Link>
       </footer>
-    </main>
+    </div>
   );
 }

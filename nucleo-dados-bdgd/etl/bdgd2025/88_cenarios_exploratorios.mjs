@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 const raiz = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const entrada = join(raiz, "output-historico/contrato-integracao/serie_fisica_nacional.csv");
 const saida = join(raiz, "web/public/data/previsoes/cenarios-exploratorios-2026-2030.json");
+const saidaEstados = join(raiz, "web/public/data/historico/estados-contrato.json");
 const commitIndex = process.argv.indexOf("--source-commit");
 const commitOrigem = commitIndex >= 0 ? process.argv[commitIndex + 1] : "";
 if (!/^[0-9a-f]{7,40}$/i.test(commitOrigem ?? "")) {
@@ -51,7 +52,7 @@ function tendencia(valores, alvo) {
   const centroY = valores.reduce((s, v) => s + v, 0) / n;
   const inclinacao = valores.reduce((s, v, i) => s + (i - centroX) * (v - centroY), 0) /
     valores.reduce((s, _, i) => s + (i - centroX) ** 2, 0);
-  return Math.max(0, valores[n - 1] + inclinacao * (alvo - n + 1));
+  return Math.max(0, centroY + inclinacao * (alvo - centroX));
 }
 const linhas = csv(arquivo.toString("utf8"));
 const conjuntos = new Map();
@@ -68,6 +69,7 @@ for (const conjunto of conjuntos.values()) {
     Number(p.ano) !== 2022 + i ||
     !["observado", "zero_verificado"].includes(p.estado) ||
     p.valor.trim() === "" || !Number.isFinite(Number(p.valor)) || Number(p.valor) < 0 ||
+    (p.estado === "zero_verificado" && Number(p.valor) !== 0) ||
     Number(p.cobertura) !== 1 ||
     p.ruptura_desde_ano_anterior.toLowerCase() === "true" ||
     p.nao_somar_em_agregados.toLowerCase() === "true" ||
@@ -87,7 +89,7 @@ for (const conjunto of conjuntos.values()) {
 }
 series.sort((a, b) => a[0] - b[0] || a[2].localeCompare(b[2]));
 const produto = {
-  versao: "cenarios-bdgd-exploratorios-1.0.0",
+  versao: "cenarios-bdgd-exploratorios-1.0.1",
   origem: "ANEEL/BDGD; contrato-nacional-1.0.0",
   commitOrigem,
   blobShaOrigem,
@@ -104,8 +106,18 @@ const produto = {
   series,
 };
 const conteudo = JSON.stringify(produto);
+// Sem alterar a matriz nem homologar fontes: transporta os estados explícitos
+// do contrato, inclusive DIST/ano sem publicação que não estão no pacote 2025.
+const estados = {};
+for (const r of linhas) {
+  (estados[r.conceitoId] ??= []).push([
+    Number(r.dist), Number(r.ano), r.estado, r.tipo_lacuna,
+    r.nao_somar_em_agregados === "true",
+  ]);
+}
+const conteudoEstados = JSON.stringify({ commitOrigem, blobShaOrigem, celulas: estados });
 if (process.argv.includes("--check")) {
-  if (readFileSync(saida, "utf8") !== conteudo) {
+  if (readFileSync(saida, "utf8") !== conteudo || readFileSync(saidaEstados, "utf8") !== conteudoEstados) {
     console.error("Cenários publicados divergem do contrato; regenere com este script.");
     process.exit(1);
   }
@@ -113,5 +125,6 @@ if (process.argv.includes("--check")) {
 } else {
   mkdirSync(dirname(saida), { recursive: true });
   writeFileSync(saida, conteudo);
+  writeFileSync(saidaEstados, conteudoEstados);
   console.log("Geradas " + series.length + " séries condicionais, origem " + commitOrigem);
 }

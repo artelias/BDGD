@@ -1,4 +1,5 @@
 "use client";
+import { coberturaNacionalIncompleta } from "@/lib/panorama-r3";
 import { Code2, Download, Info, SlidersHorizontal, X } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
@@ -39,7 +40,8 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
   const [cQ] = useQueryState("c");
   const [mQ, setM] = useQueryState("m");
   const [porQ, setPor] = useQueryState("por");
-  const [tecnico, setTecnico] = useState(false);
+  const [tecQ] = useQueryState("tec");
+  const [tecnico, setTecnico] = useState(() => Boolean(tecQ));
 
   const todasDims = useMemo(() => [...new Set(Object.values(cd.cubos).flatMap((c) => c.dims))], [cd]);
   const base = useMemo(() => recorteDe(item), [item]);
@@ -58,8 +60,9 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
   const S = useMemo(() => new Set(distsDoEscopo(ds, escopo)), [ds, escopo]);
   const B = useMemo(() => new Set(ds.dists.map((d) => d.dist)), [ds]);
   const brasil = escopo.modo === "brasil";
+  const nacionalIncompleto = coberturaNacionalIncompleta(ds, [...B]);
   const temSelecao = !!cardSel || Object.values(user.filtro).some((v) => v.length);
-  const escopoNome = rotuloEscopo(ds, escopo);
+  const escopoNome = rotuloEscopo(ds, escopo) + (brasil && nacionalIncompleto ? " · subtotal da base disponível" : "");
 
   const ess = (ESSENCIAIS[item.conceito!] ?? []).filter((d) => todasDims.includes(d) && d !== cardsDim);
   const fixadas = new Set(Object.entries(base.filtro).filter(([, v]) => v.length === 1).map(([k]) => k));
@@ -74,8 +77,15 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
 
   const total = useMemo(() => agregar(cd, recorte, m, S), [cd, recorte, m, S]);
   const pot = useMemo(() => (m !== "potencia_kva" && cd.medidas.includes("potencia_kva") ? agregar(cd, recorte, "potencia_kva", S) : null), [cd, recorte, m, S]);
-  const part = useMemo(() => participacao(cd, base, recorte, m, S, B), [cd, base, recorte, m, S, B]);
-  const partBr = useMemo(() => (brasil && temSelecao ? participacao(cd, base, recorte, m, B, B) : null), [cd, base, recorte, m, B, brasil, temSelecao]);
+  const part = useMemo(() => {
+    const r = participacao(cd, base, recorte, m, S, B);
+    return nacionalIncompleto ? { ...r, doBrasil: null, motivo: "Cobertura nacional incompleta: publicações não localizadas fora do pacote." } : r;
+  }, [cd, base, recorte, m, S, B, nacionalIncompleto]);
+  const partBr = useMemo(() => {
+    if (!brasil || !temSelecao) return null;
+    const r = participacao(cd, base, recorte, m, B, B);
+    return nacionalIncompleto ? { ...r, noEscopo: null, motivo: "Cobertura nacional incompleta." } : r;
+  }, [cd, base, recorte, m, B, brasil, temSelecao, nacionalIncompleto]);
   const cards = useMemo(() => (cardsDim ? distribuicao(cd, cardsDim, semCard, m, S) : null), [cd, cardsDim, semCard, m, S]);
   const cardsPot = useMemo(() => (cardsDim && m === "quantidade" && cd.medidas.includes("potencia_kva") ? distribuicao(cd, cardsDim, semCard, "potencia_kva", S) : null), [cd, cardsDim, semCard, m, S]);
   const totalSemCard = useMemo(() => agregar(cd, semCard, m, S), [cd, semCard, m, S]);
@@ -84,7 +94,7 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
   const cubo = escolherCubo(cd, [...Object.keys(recorte.filtro).filter((k) => recorte.filtro[k].length), ...(por ? [por] : [])]);
   const fora = cubo ? foraDoCubo(cd, cubo) : [];
   const somaCat = dist?.categorias.reduce((x, c) => x + (c.v ?? 0), 0) ?? 0;
-  const brMap = new Map(distBr?.categorias.map((c) => [c.code, c.v]) ?? []);
+  const brMap = new Map(nacionalIncompleto ? [] : distBr?.categorias.map((c) => [c.code, c.v]) ?? []);
   const unidade = UNIDADE[m];
   const at = ativo(ds, item.id);
   const rot = (dim: string) => ds.raw.conceitos!.dimensoes[dim]?.rotulo ?? dim;

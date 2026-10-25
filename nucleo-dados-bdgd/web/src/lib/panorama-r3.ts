@@ -34,6 +34,13 @@ export const PANORAMA_PRESETS = [
 ];
 export const panoramaIndicador = (id: string) => PANORAMA_KPIS.find((k) => k.id === id);
 
+/** O universo do pacote processado pode ser menor que o universo nacional. */
+export function coberturaNacionalIncompleta(ds: Dataset, dists: number[]): boolean {
+  return ds.dists.length > 0 && dists.length === ds.dists.length &&
+    ds.dists.every((d) => dists.includes(d.dist)) &&
+    (ds.raw.release.cobertura?.sem_publicacao_2025?.length ?? 0) > 0;
+}
+
 function somaTuc(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
   const cubo = ds.raw.vinculosTuc;
   let v = 0, n = 0, nd = 0, alerta = 0;
@@ -59,6 +66,6 @@ function somaTuc(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
 /** Falha fechada: um subconjunto de empresas não é rotulado como total do Brasil/grupo. */
 export function panoramaValue(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
   const a = k.tuc ? somaTuc(ds, k, dists) : kpiValue(ds, k, dists);
-  if (a.nd > 0 || a.ausentes > 0 || a.total === 0) return { ...a, v: null, partial: true };
+  if (a.nd > 0 || a.ausentes > 0 || a.total === 0 || coberturaNacionalIncompleta(ds, dists)) return { ...a, v: null, partial: true };
   return a;
 }

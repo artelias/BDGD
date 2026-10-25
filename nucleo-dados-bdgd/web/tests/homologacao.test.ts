@@ -45,15 +45,15 @@ describe("matriz de homologação na Evolução", () => {
     const g = serieSoma(idx, [1, 2, 3], anos, "g", "G").pontos.map((p) => p.v);
     expect(g[0]).toBeNull();                                      // DIST 2 bloqueada em 2022: sem soma parcial
     expect(g[1]).toBeNull();                                      // DIST 1 pendente em 2023
-    expect(g[2]).toBe(30);
+    expect(g[2]).toBeNull();                                      // sem publicação não prova não aplicabilidade
     const so13 = serieSoma(idx, [1, 3], anos, "g", "G").pontos[0].v;
     expect(so13).toBe(10);                                        // DIST 3 (não somar) fica fora, sem bloquear
   });
-  it("Brasil 2022–2023 nunca aparece como total nacional; anos elegíveis vêm da matriz", () => {
+  it("Brasil requer cobertura comprovada e nunca publica soma com exclusões", () => {
     const br = serieBrasil(h, "x", anos).pontos as PontoHom[];
-    expect(br.map((p) => p.v)).toEqual([null, null, 30, 40]);
+    expect(br.map((p) => p.v)).toEqual([null, null, null, null]);
     expect(br[0].estado).toBe("g");
-    expect(br[0].motivo).toBe("nao total");
+    expect(br[0].motivo).toContain("Total nacional indisponível");
   });
   it("painel vazio não gera série", () => { expect(seriePainel(h, "x", anos)).toBeNull(); });
   it("cobertura conta estados por ano", () => {

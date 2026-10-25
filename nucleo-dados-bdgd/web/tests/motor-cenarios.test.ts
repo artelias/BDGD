@@ -7,6 +7,13 @@ const serie = (ano: number, valor: number): SerieFisica => ({
   dataBase: `${ano}-12-31`, cobertura: 1, perimetroBridgeId: null,
 });
 describe("motor exploratorio", () => {
+  it("ajusta também o intercepto OLS na série real EAC/alimentadores", () => {
+    const r = gerarCenarioExploratorio([88, 111, 120, 123].map((v, i) => serie(2022 + i, v)), 2030, "tendencia_linear");
+    expect(r.pontos[0].valor).toBeCloseTo(139);
+    expect(r.pontos[4].valor).toBeCloseTo(184.6);
+    expect(r.backtest.maeModelo).toBeCloseTo(46 / 3);
+    expect(r.backtest.maePersistencia).toBe(3);
+  });
   it("produz cenarios identificados sem afirmar validacao", () => {
     const r = gerarCenarioExploratorio([serie(2022, 100), serie(2023, 110), serie(2024, 120), serie(2025, 130)], 2027, "tendencia_linear");
     expect(r.diagnostico.elegivel).toBe(true);

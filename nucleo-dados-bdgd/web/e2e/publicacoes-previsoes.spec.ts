@@ -61,7 +61,7 @@ test.describe("Previsões — cenários reais, não previsões validadas", () =>
     await expect(painel).toContainText("1.555");
     await painel.getByRole("combobox", { name: "Ativo" }).selectOption("alimentadores");
     await painel.getByRole("combobox", { name: "Ano simulado" }).selectOption("2030");
-    await expect(painel).toContainText("180 itens");
+    await expect(painel).toContainText("185 itens");
     await expect(painel).toContainText("123 itens");
     await expect(painel.getByRole("img", { name: /Evolução histórica 2022 a 2025/ })).toBeVisible();
     const [download] = await Promise.all([
@@ -73,7 +73,7 @@ test.describe("Previsões — cenários reais, não previsões validadas", () =>
     for await (const chunk of stream) bufs.push(Buffer.from(chunk));
     const csv = Buffer.concat(bufs).toString("utf8");
     expect(csv).toContain("2025,123,observado");
-    expect(csv).toContain("2030,180,simulacao_condicional");
+    expect(Number(csv.split(/\r?\n/).find((l) => l.startsWith("2030,"))?.split(",")[1])).toBeCloseTo(184.6);
     await expect(painel).toContainText("Não há previsão estatisticamente validada");
   });
 

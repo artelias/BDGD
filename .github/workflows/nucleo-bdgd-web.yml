@@ -65,6 +65,10 @@ jobs:
         run: node ../etl/validate-contrato-nacional.mjs ../output-historico/contrato-integracao ../auditoria/fase4/MATRIZ_HOMOLOGACAO_2022_2025.csv
       - name: Build estático
         run: npm run build
+      - name: Cenários e estados correspondem ao contrato versionado
+        run: node ../etl/bdgd2025/88_cenarios_exploratorios.mjs --source-commit 8e2eab8 --check
+      - name: Auditoria independente de publicações, estados, OLS e backtests
+        run: python3 ../etl/tests/auditoria_pr6.py
       - name: Chrome do runner para E2E
         run: google-chrome --version
       - name: E2E (desktop e celular)

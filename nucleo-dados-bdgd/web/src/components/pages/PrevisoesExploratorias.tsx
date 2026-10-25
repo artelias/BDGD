@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { toCSV } from "@/lib/format";
 import s from "./previsoes-exploratorias.module.css";
 
 /** Pacote agregado público, sem registros individuais. Cada linha é uma série DIST × ativo. */
@@ -13,6 +14,7 @@ interface Pacote {
   versao: string;
   origem: string;
   commitOrigem: string;
+  blobShaOrigem: string;
   anosObservados: number[];
   anosSimulados: number[];
   numeroOrigensBacktest: number;
@@ -42,18 +44,19 @@ function Grafico({ historico, futuro, unidade, modelo }: {
 }) {
   const valores = [...historico, ...futuro];
   const maximo = Math.max(1, ...valores) * 1.08;
-  const x = (i: number) => 57 + (i * 92);
+  const x = (i: number) => 120 + (i * 92);
   const y = (v: number) => 217 - (v / maximo) * 185;
   const caminho = (val: number[], inicio: number) =>
     val.map((v, i) => (i === 0 ? "M" : "L") + x(inicio + i) + " " + y(v).toFixed(2)).join(" ");
   const previsao = [historico[3], ...futuro];
   return (
-    <div className={s.grafico} role="img" aria-label={"Evolução histórica 2022 a 2025 e simulação condicional 2026 a 2030 pelo método " + (modelo === "persistencia" ? "persistência" : "tendência linear")}>
-      <svg viewBox="0 0 830 264" aria-hidden="true">
+    <div className={s.grafico} tabIndex={0} role="region" aria-label="Gráfico rolável dos cenários">
+      <div role="img" aria-label={"Evolução histórica 2022 a 2025 e simulação condicional 2026 a 2030 pelo método " + (modelo === "persistencia" ? "persistência" : "tendência linear")}>
+      <svg viewBox="0 0 900 264" aria-hidden="true">
         {[0, 0.5, 1].map((f) => (
           <g key={f}>
-            <line x1="57" x2="799" y1={y(maximo * f)} y2={y(maximo * f)} stroke="currentColor" opacity={0.12} strokeDasharray="3 5" />
-            <text x="48" y={y(maximo * f) + 4} textAnchor="end" fill="currentColor" fontSize="11" opacity={0.75}>{formatar(maximo * f, unidade)}</text>
+            <line x1="120" x2="862" y1={y(maximo * f)} y2={y(maximo * f)} stroke="currentColor" opacity={0.12} strokeDasharray="3 5" />
+            <text x="111" y={y(maximo * f) + 4} textAnchor="end" fill="currentColor" fontSize="11" opacity={0.75}>{formatar(maximo * f, unidade)}</text>
           </g>
         ))}
         <rect x={x(3)} y="18" width={x(8) - x(3) + 15} height="200" fill="var(--accent)" opacity={0.035} />
@@ -64,6 +67,7 @@ function Grafico({ historico, futuro, unidade, modelo }: {
         {ANOS.map((ano, i) => <text key={ano} x={x(i)} y="244" textAnchor="middle" fill="currentColor" fontSize="12" opacity={i === 3 || i === 4 || i === 8 ? 1 : 0.65}>{ano}</text>)}
         <line x1={x(3) + 46} x2={x(3) + 46} y1="17" y2="222" stroke="var(--accent)" strokeDasharray="2 5" opacity="0.55" />
       </svg>
+      </div>
       <div className={s.legenda}><span><i className={s.pontoHistorico} />BDGD observada</span><span><i className={s.pontoCenario} />Simulação condicional</span></div>
       <p className={s.notaGrafico}>Eixo vertical a partir de zero. Valores de itens são arredondados apenas na exibição.</p>
     </div>
@@ -105,10 +109,14 @@ export function PrevisoesExploratorias() {
     ? [0, 1, 2, 3, 4].map(() => serie[5][3]) : serie[6]);
   const valorAno = serie && futuros ? futuros[anoAlvo - 2026] : null;
   const erroModelo = serie && (metodo === "persistencia" ? serie[7][0] : serie[7][1]);
-  const csv = serie && futuros
-    ? ["ano,valor,classe,metodo,dist,conceitoId,unidade", ...ANOS.map((ano, i) =>
-      [ano, i < 4 ? serie[5][i] : futuros[i - 4], i < 4 ? "observado" : "simulacao_condicional",
-        i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4]].join(","))].join("\r\n")
+  const csv = serie && futuros && dados
+    ? toCSV(["ano", "valor", "classe", "metodo", "dist", "conceitoId", "unidade", "metrica",
+      "status_homologacao", "publicacao_id", "verificacao_independente_zero", "versao_dados", "commit_origem", "blob_sha_origem"],
+      ANOS.map((ano, i) => [ano, i < 4 ? serie[5][i] : futuros[i - 4],
+        i < 4 ? (serie[10][i] === "Z" ? "zero_tecnico" : "observado") : "simulacao_condicional",
+        i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4], serie[3],
+        i < 4 ? serie[9][i] : "NAO_VALIDADA", i < 4 ? serie[8][i] : "",
+        i < 4 && serie[10][i] === "Z" ? "pendente" : "nao_se_aplica", dados.versao, dados.commitOrigem, dados.blobShaOrigem]))
     : "";
 
   return (
@@ -155,7 +163,7 @@ export function PrevisoesExploratorias() {
             </div>
             {serie && futuros && valorAno !== null && (
               <>
-                <div className={s.destaque}>
+                <div className={s.destaque} aria-live="polite" aria-atomic="true">
                   <div><span>Estoque observado em 2025</span><strong>{formatar(serie[5][3], serie[4])} <small>{serie[4]}</small></strong></div>
                   <div><span>Cenário condicional para {anoAlvo}</span><strong>{formatar(valorAno, serie[4])} <small>{serie[4]}</small></strong></div>
                   <div><span>Erro absoluto no teste de 2025</span><strong>{formatar(erroModelo ?? 0, serie[4])} <small>{serie[4]}</small></strong><em>Apenas 1 origem temporal de teste</em></div>
@@ -164,7 +172,7 @@ export function PrevisoesExploratorias() {
                 <div className={s.duasColunas}>
                   <div>
                     <h3>Valores e natureza do dado</h3>
-                    <div className={s.tabelaContainer}>
+                    <div className={s.tabelaContainer} tabIndex={0} role="region" aria-label="Valores dos cenários — tabela rolável">
                       <table className={s.tabela}>
                         <thead><tr><th>Ano</th><th>Quantidade ou extensão</th><th>Classificação</th></tr></thead>
                         <tbody>{ANOS.map((ano, i) => (

@@ -1,4 +1,5 @@
 "use client";
+import { coberturaNacionalIncompleta } from "@/lib/panorama-r3";
 import { Code2, Download, Info, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useState } from "react";
@@ -107,7 +108,9 @@ function FacetExplorer({ ds, data, dists, brasil, scope, ent, a1, c1, a2, metQ, 
   const selectedValue = C1 && !A2 ? facetValue(data, { [A1]: C1 }, metric, dists) : null;
   const total = dist.categories.reduce((x, c) => x + (c.v ?? 0), 0);
   const comEnt = (set: Set<number>) => [...set].filter((d) => ds.hasEntity(d, ent)).length;
-  const part = C1 && !A2 && scope.tipo !== "brasil" ? participacao(data, { [A1]: C1 }, A1, metric, dists, brasil, comEnt(dists), comEnt(brasil)) : null;
+  const partBruto = C1 && !A2 && scope.tipo !== "brasil" ? participacao(data, { [A1]: C1 }, A1, metric, dists, brasil, comEnt(dists), comEnt(brasil)) : null;
+  const part = partBruto && coberturaNacionalIncompleta(ds, [...brasil])
+    ? { ...partBruto, doBrasil: null, motivoBrasil: "Cobertura nacional incompleta: publicações não localizadas fora do pacote." } : partBruto;
   const unit = METRIC_UNIT[metric] || "itens";
 
   const exportCSV = () => {

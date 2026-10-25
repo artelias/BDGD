@@ -19,7 +19,7 @@ Não há série comparável suficiente para construir previsão probabilística 
 ## Modelos
 
 - Persistência: repete o valor observado em 2025 em cada ano 2026–2030.
-- Tendência linear: estima inclinação por mínimos quadrados em 2022–2025 e extrapola até cada ano-alvo, truncando estoque a zero se o valor algébrico for negativo.
+- Tendência linear (pacote 1.0.1): ajusta inclinação e intercepto por mínimos quadrados em 2022–2025; usa `média(y) + inclinação × (ano-alvo − média(ano))`, truncando estoque a zero se o valor algébrico for negativo. A versão 1.0.0 ancorava incorretamente a reta no último observado.
 - Erro `MAE` no corte temporal 2025: um erro absoluto, dada uma única origem; não interpretá-lo como estimativa estável de generalização.
 - Não somar séries para obter Brasil: cobertura das distribuidoras e mudanças de perímetro tornam a agregação nacional parcial.
 
@@ -39,5 +39,9 @@ A primeira linha verifica que o JSON publicado corresponde exatamente ao contrat
 ## Uso no portal
 
 Página `/previsoes`, com seleção por distribuidora, ativo, método e ano, gráfico 2022–2030, CSV por série, backtest e acesso aos identificadores das publicações oficiais.
+
+O CSV diferencia observado, zero técnico e simulação; conserva status de homologação, IDs das publicações, versão e blob de origem. São 792 zeros técnicos nas séries elegíveis, de 1.013 no contrato completo; a verificação independente desses zeros continua pendente. O placar exploratório no corte 2025 é 704 erros menores na tendência, 421 na persistência e 430 empates (tolerância 1e-9); não seleciona nem valida automaticamente um modelo.
+
+O mesmo gerador transporta os 11.400 estados para `web/public/data/historico/estados-contrato.json`, sem modificar o contrato, a matriz ou GDBs. A Evolução exige cobertura nacional completa por ativo/ano; as lacunas do contrato também impedem totais nacionais em 2024–2025. O painel balanceado continua identificado como subconjunto.
 
 **Revisões pendentes:** conferir independentemente os 1.013 zeros técnicos; resolver republicações divergentes, EPB/EBO e outras decisões humanas; obter histórico maior e covariáveis de carga/custos para modelos de demanda e CAPEX.

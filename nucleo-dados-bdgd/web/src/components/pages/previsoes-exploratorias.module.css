@@ -19,7 +19,8 @@
 .destaque strong small { font-size: .7rem; font-weight: 510; color: var(--muted); }
 .destaque em { font-size: .75rem; font-style: normal; color: var(--muted); }
 .grafico { width: 100%; overflow-x: auto; padding: 10px 0 2px; margin-bottom: 15px; }
-.grafico svg { display: block; width: 100%; height: auto; min-width: 570px; overflow: visible; }
+.grafico svg { display: block; width: 100%; height: auto; min-width: 830px; overflow: visible; }
+.grafico:focus-visible, .tabelaContainer:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .legenda { display: flex; gap: 20px; flex-wrap: wrap; font-size: .78rem; color: var(--muted); align-items: center; margin-top: 2px; }
 .legenda span { display: inline-flex; align-items: center; gap: 7px; }
 .pontoHistorico, .pontoCenario { display: inline-block; width: 24px; border-top: 2px solid currentColor; }
