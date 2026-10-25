@@ -66,7 +66,10 @@ jobs:
       - name: Build estático
         run: npm run build
       - name: Chromium para E2E
-        run: npx playwright install --with-deps chromium
+        timeout-minutes: 8
+        # Ubuntu GitHub-hosted já fornece as bibliotecas do navegador;
+        # evitar apt-get --with-deps, que pode travar no espelho de pacotes.
+        run: npx playwright install chromium
       - name: E2E (desktop e celular)
         env:
           CI: "1"
