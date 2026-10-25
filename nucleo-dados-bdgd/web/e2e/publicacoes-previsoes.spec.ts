@@ -17,6 +17,8 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
     await inexistentes.locator("summary").click();
     await expect(inexistentes.getByRole("row")).toHaveCount(12); // 11 DIST/ano + cabeçalho
     await expect(inexistentes).toContainText("275 células");
+    await pares.locator("summary").click();
+    await inexistentes.locator("summary").click();
 
     await auditoria.getByRole("combobox", { name: "Situação" }).selectOption("divergentes");
     await expect(auditoria.getByRole("row")).toHaveCount(27);
