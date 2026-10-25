@@ -15,6 +15,8 @@ interface Auditoria {
   total: number;
   resumo: Record<string, number>;
   items: Linha[];
+  publicacoesNaoLocalizadas: Array<[ano: number, dist: number, empresa: string]>;
+  publicacoesNaoLocalizadasCelulas: number;
 }
 type Filtro = "restritas" | "divergentes" | "competencia" | "em_uso" | "todas";
 const TOTAL_ESPERADO = 414;
@@ -41,7 +43,8 @@ export function PublicacoesAuditadas() {
     fetch("/data/historico/publicacoes-auditadas.json", { signal: ctrl.signal })
       .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then((d: Auditoria) => {
-        if (!Array.isArray(d.items) || d.items.length !== TOTAL_ESPERADO || d.total !== TOTAL_ESPERADO)
+        if (!Array.isArray(d.items) || d.items.length !== TOTAL_ESPERADO || d.total !== TOTAL_ESPERADO ||
+          d.publicacoesNaoLocalizadas?.length !== 11 || d.publicacoesNaoLocalizadasCelulas !== 275)
           throw new Error("Inventário de publicações incompleto ou incompatível.");
         setData(d);
       })
@@ -131,6 +134,22 @@ export function PublicacoesAuditadas() {
               </table>
             </div>
           )}
+          <details className={s.pares} data-testid="publicacoes-inexistentes">
+            <summary>11 publicações não localizadas no catálogo oficial — não são arquivos em quarentena</summary>
+            <p className={s.rodape}>A busca pelo catálogo oficial não encontrou publicações para essas combinações distribuidora/ano, afetando {fmt(data.publicacoesNaoLocalizadasCelulas)} células de ativos. Não há arquivo local para corrigir. É necessário que a ANEEL ou a distribuidora disponibilize ou identifique a publicação adequada.</p>
+            <div className={s.scroll} tabIndex={0} role="region" aria-label="Publicações inexistentes no catálogo ANEEL">
+              <table className={s.tabela}>
+                <thead><tr><th>Ano</th><th>Distribuidora</th><th>Situação</th></tr></thead>
+                <tbody>{data.publicacoesNaoLocalizadas.map(([ano, dist, empresa]) => (
+                  <tr key={ano + "-" + dist}>
+                    <td className={s.ano}>{ano}</td>
+                    <td><b>{empresa}</b><span className={s.sub}>DIST {dist}</span></td>
+                    <td>Publicação oficial não localizada; 25 conceitos ficam N/D para essa combinação.</td>
+                  </tr>
+                ))}</tbody>
+              </table>
+            </div>
+          </details>
           <ParesDivergentes />
           <p className={s.rodape}>Fonte: matriz de conformidade BDGD Ordinária, commit {data.sourceCommit}, auditoria concluída em 25/10/2026. Nenhuma versão pendente foi escolhida automaticamente. Publicações inexistentes no catálogo e ativos estruturalmente ausentes são controlados separadamente na matriz de homologação.</p>
         </>
