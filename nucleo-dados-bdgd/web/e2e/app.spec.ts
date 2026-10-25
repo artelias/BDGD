@@ -152,10 +152,12 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.getByTestId("inventario-atributos")).toContainText("Filtrável agora");
   });
 
-  test("R2 evolução: histórico em preparação sem números de ativos", async ({ page }) => {
-    await page.goto("/evolucao/");
-    await expect(page.getByTestId("historico-preparacao")).toBeVisible();
-    await expect(page.getByTestId("historico-progresso")).toContainText("31/12/2022");
+  test("Evolução 2022–2025 exibe histórico real e rastreabilidade", async ({ page }) => {
+    await page.goto("/evolucao/?ativo=consumidores");
+    await expect(page.getByTestId("evo-tabela")).toBeVisible();
+    await expect(page.getByTestId("evo-cards")).toBeVisible();
+    await expect(page.getByTestId("evo-tabela")).toContainText("2025");
+    await expect(page.getByText("Histórico em preparação.")).toHaveCount(0);
   });
 
   test("R2 mapa: clique fora das áreas volta ao Brasil", async ({ page }) => {
