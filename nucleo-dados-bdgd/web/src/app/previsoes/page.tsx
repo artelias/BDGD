@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PrevisoesExploratorias } from "@/components/pages/PrevisoesExploratorias";
-import { Activity, ArrowUpRight, ChartSpline, CircleHelp, Database, GitBranch, Layers3, ShieldCheck, Wallet } from "lucide-react";
+import { Activity, ArrowUpRight, ChartSpline, CircleHelp, Database, GitBranch, Layers3, Wallet } from "lucide-react";
 
 export const metadata: Metadata = { title: "Previsões | Expansão elétrica" };
 
@@ -40,32 +40,30 @@ const entregas = [
 export default function Page() {
   return (
     <main style={{ maxWidth: 1180, margin: "0 auto", paddingBottom: 80 }}>
-      <header style={{ maxWidth: 900, marginBottom: 32 }}>
-        <div className="eyebrow">Inteligência de infraestrutura · metodologia em desenvolvimento</div>
+      <header style={{ maxWidth: 900, marginBottom: 18 }}>
+        <div className="eyebrow">Estoque físico · dados nacionais BDGD</div>
         <h1 className="display" style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
           <ChartSpline size={34} strokeWidth={1.6} color="var(--accent)" aria-hidden="true" />
           Motor de Expansão Elétrica
         </h1>
         <p className="lede" style={{ marginTop: 12 }}>
-          Estudo do crescimento físico das redes de distribuição, combinando estatística, engenharia elétrica e economia.
-          O objetivo é distinguir necessidade técnica, evolução do estoque e investimento, sem confundir incorporações
-          societárias com expansão real.
+          Explore a evolução observada de 2022 a 2025 e compare cenários condicionais de ativos até 2030.
+          Resultados simulados não representam investimentos previstos ou obras necessárias.
         </p>
       </header>
 
-      <section aria-label="Estado da publicação" style={{ border: "1px solid var(--hairline)", borderRadius: 16, padding: "20px 24px", marginBottom: 32 }}>
-        <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-          <ShieldCheck size={24} color="var(--accent)" aria-hidden="true" style={{ flexShrink: 0 }} />
-          <div>
-            <h2 style={{ fontSize: "1.05rem", fontWeight: 680, margin: 0 }}>Nenhuma previsão estatisticamente validada</h2>
-            <p className="muted" style={{ marginTop: 6, lineHeight: 1.6 }}>
-              Foram processados cenários matemáticos exploratórios sobre séries físicas observadas de 2022–2025. O backtest usa apenas uma origem temporal de teste e os anos históricos anteriores ainda não estão integralmente homologados. Por isso, os valores de 2026–2030 não são previsões validadas, necessidade técnica de expansão ou CAPEX, e não possuem intervalos probabilísticos de confiança.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <PrevisoesExploratorias />
+
+      <details style={{ border: "1px solid var(--hairline)", borderRadius: 12, padding: "13px 16px", marginBottom: 26 }}>
+        <summary style={{ cursor: "pointer", fontSize: ".88rem", fontWeight: 630 }}>
+          Entenda a diferença entre simulação e previsão validada
+        </summary>
+        <p className="muted" style={{ margin: "12px 0 0", lineHeight: 1.6, fontSize: ".87rem" }}>
+          Os cenários extrapolam o estoque histórico observado de 2022 a 2025. Como há apenas uma origem temporal
+          de backtest e os anos anteriores não estão integralmente homologados, o modelo ainda não oferece previsões
+          estatisticamente validadas, necessidade técnica de expansão, CAPEX ou intervalos probabilísticos.
+        </p>
+      </details>
 
       <section aria-labelledby="perspectivas-title" style={{ marginBottom: 36 }}>
         <div className="eyebrow">Três perspectivas complementares</div>
