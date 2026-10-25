@@ -7,7 +7,7 @@ import s from "./previsoes-exploratorias.module.css";
 type Serie = [
   dist: number, empresa: string, conceitoId: string, metrica: string, unidade: string,
   historico: number[], tendenciaLinear: number[], erros2025: number[],
-  publicacoes: string[], homologacao: string[],
+  publicacoes: string[], homologacao: string[], estadosHistoricos: string[],
 ];
 interface Pacote {
   versao: string;
@@ -83,7 +83,7 @@ export function PrevisoesExploratorias() {
     fetch("/data/previsoes/cenarios-exploratorios-2026-2030.json", { signal: ctrl.signal })
       .then((r) => { if (!r.ok) throw new Error("Arquivo de cenários indisponível."); return r.json(); })
       .then((d: Pacote) => {
-        if (!Array.isArray(d.series) || d.previsaoValidada !== false || d.series.length !== 1555)
+        if (!Array.isArray(d.series) || d.previsaoValidada !== false || d.series.length === 0)
           throw new Error("Versão do conjunto de cenários incompatível.");
         setDados(d);
       })
@@ -169,7 +169,7 @@ export function PrevisoesExploratorias() {
                         <thead><tr><th>Ano</th><th>Quantidade ou extensão</th><th>Classificação</th></tr></thead>
                         <tbody>{ANOS.map((ano, i) => (
                           <tr key={ano}><td>{ano}</td><td>{formatar(i < 4 ? serie[5][i] : futuros[i - 4], serie[4])} {serie[4]}</td>
-                          <td>{i < 4 ? "Observado" : "Simulação"}</td></tr>
+                          <td>{i < 4 ? (serie[10][i] === "Z" ? "Zero técnico*" : "Observado") : "Simulação"}</td></tr>
                         ))}</tbody>
                       </table>
                     </div>
@@ -192,6 +192,7 @@ export function PrevisoesExploratorias() {
                     <div className={s.alerta}>A comparação usa o perímetro original da distribuidora. Séries com rupturas ou sucessões não reconciliadas foram excluídas; os resultados não representam totais nacionais completos.</div>
                   </div>
                 </div>
+                <p className={s.rodape}>* Zero técnico: a classificação é consistente com o agregado processado, mas a comprovação independente de cada entidade vazia no GDB ainda precisa ser concluída.</p>
                 <p className={s.rodape}>Origem: contrato nacional BDGD 1.0.0, PR #4, commit {dados.commitOrigem}. Identificadores das publicações preservados. Não há previsão estatisticamente validada nem intervalo probabilístico de confiança.</p>
               </>
             )}
