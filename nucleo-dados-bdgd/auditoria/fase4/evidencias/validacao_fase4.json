@@ -1,0 +1,147 @@
+[
+ {
+  "teste": "matriz: chave unica (ano, dist, ativo, medida)",
+  "ok": true,
+  "detalhe": "[]"
+ },
+ {
+  "teste": "matriz: uma celula DIST por celula da serie",
+  "ok": true,
+  "detalhe": "11025 x 11025"
+ },
+ {
+  "teste": "matriz: estados dentro do dominio",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "N/D: nenhuma celula nao publicavel com valor",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "N/D: nenhum zero criado a partir de ausencia",
+  "ok": true,
+  "detalhe": "0"
+ },
+ {
+  "teste": "totais: valores publicaveis identicos a serie de origem",
+  "ok": true,
+  "detalhe": "0"
+ },
+ {
+  "teste": "totais: so celulas 'validado' na origem tem valor",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "homologacao: HOMOLOGADO so em 2025 (decisao vigente)",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "Brasil: soma = celulas publicaveis (sem pendentes/bloqueadas)",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "Brasil: celulas pendentes/bloqueadas identificadas no agregado",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "Brasil 2022-2023: sem valor publicado como total nacional",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "painel balanceado: universo publicavel nos 4 anos e soma correta",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "sucessoes: ENF 6612 (2022) fora de qualquer agregado",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "sucessoes: nenhuma ponte somada (perimetro so com DIST destino ou pendente)",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "duplicatas: 13 pares = divergentes reconciliados",
+  "ok": true,
+  "detalhe": "13"
+ },
+ {
+  "teste": "duplicatas: 25 ativos por par, sem repeticao",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "duplicatas: nenhuma decisao tomada automaticamente",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "duplicatas: 6 sem diferenca nos totais e 7 com diferenca",
+  "ok": true,
+  "detalhe": "{'COM_DIFERENCA_TOTAIS': 7, 'SEM_DIFERENCA_TOTAIS': 6}"
+ },
+ {
+  "teste": "duplicatas: celulas dos pares pendentes na matriz",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "sinais: 238 reconciliados com a Fase 3",
+  "ok": true,
+  "detalhe": "238"
+ },
+ {
+  "teste": "sinais: prioridade unica 1..N",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "conformidade: um registro por publicacao (item_id unico)",
+  "ok": true,
+  "detalhe": "414"
+ },
+ {
+  "teste": "conformidade: toda celula validada usa publicacao auditada",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "conformidade: nenhuma publicacao excluida so pela tag Extra",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "preservacao: checksums do manifesto historico conferem",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "preservacao: pipeline.py original intacto",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "preservacao: pipeline_antijoin.py intacto",
+  "ok": true,
+  "detalhe": ""
+ },
+ {
+  "teste": "preservacao: 301 checkpoints presentes e integros",
+  "ok": true,
+  "detalhe": "301 checkpoints, 0 com divergencia"
+ },
+ {
+  "teste": "preservacao: pacote 2025 com DATA_BASE 2025-12-31 inalterado",
+  "ok": true,
+  "detalhe": ""
+ }
+]
