@@ -44,6 +44,14 @@ describe("inventário individual de publicações — 25/10/2026", () => {
     expect([...pares.values()].every((arr) => arr.length === 2)).toBe(true);
   });
 
+  it("separa 11 publicações ausentes do catálogo de 14 arquivos excluídos", () => {
+    expect(audit.publicacoesNaoLocalizadas).toHaveLength(11);
+    expect(audit.publicacoesNaoLocalizadasCelulas).toBe(275);
+    expect(new Set(audit.publicacoesNaoLocalizadas.map((p: unknown[]) => p[0] + "|" + p[1])).size).toBe(11);
+    const inexistentes = new Set(audit.publicacoesNaoLocalizadas.map((p: unknown[]) => p[0] + "|" + p[1]));
+    expect(audit.items.filter((p: unknown[]) => inexistentes.has(p[0] + "|" + p[1]))).toHaveLength(0);
+  });
+
   it("a base publicada não rotula uma versão divergente como 'em uso'", () => {
     const distAnoPendente = new Set(usa("par_divergente_pendente").map((p: unknown[]) => p[0] + "|" + p[1]));
     expect(audit.items.filter((p: unknown[]) =>
