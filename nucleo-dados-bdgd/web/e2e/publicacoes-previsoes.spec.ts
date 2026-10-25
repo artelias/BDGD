@@ -38,7 +38,7 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
     await auditoria.getByRole("combobox", { name: "Situação" }).selectOption("todas");
     await auditoria.getByRole("combobox", { name: "Ano" }).selectOption("2023");
     await auditoria.getByRole("searchbox", { name: "Distribuidora, DIST ou item oficial" }).fill("Coprel");
-    const linhas = auditoria.locator("tbody tr");
+    const linhas = auditoria.getByRole("region", { name: "Publicações e justificativas — tabela rolável" }).locator("tbody tr");
     await expect(linhas).toHaveCount(2);
     await expect(auditoria).toContainText("Versão única em uso (ver ressalvas)");
     await expect(auditoria).toContainText("BASE inconsistente");
