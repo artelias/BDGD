@@ -61,6 +61,8 @@ jobs:
         run: node ../etl/validate-serie-historica.mjs ../output-historico/2022-2025 public/data/historico/serie.json
       - name: Validar matriz de homologação aplicada à Evolução (N/D nunca vira valor; Brasil 2022-2023 sem total nacional)
         run: node ../etl/validate-homologacao-web.mjs ../auditoria/fase4 public/data/historico/homologacao.json public/data/historico/serie.json
+      - name: Validar contrato de integração nacional (consumido pelo motor do PR #6)
+        run: node ../etl/validate-contrato-nacional.mjs ../output-historico/contrato-integracao ../auditoria/fase4/MATRIZ_HOMOLOGACAO_2022_2025.csv
       - name: Build estático
         run: npm run build
       - name: Chromium para E2E

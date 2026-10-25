@@ -28,6 +28,7 @@ web = json.loads((REPO / "web/public/data/historico/serie.json").read_text(encod
 webv = {(str(c[1]), str(c[0]), a): c for a, cs in web["original"].items() for c in cs}
 ATIVOS = sorted({k[2] for k in MAT})
 pos = {(r["ano_titulo"], r["dist"]): r for r in rd(EV / "posicao_temporal_excluidos.csv")}
+CORR = {(r["ano"], r["dist"], r["ativo"]): r for r in rd(A6 / "CORRECOES_AUSENCIAS.csv")}
 SUCESSAO_ANTIGA = {"70": "69", "71": "69", "72": "69", "73": "69", "75": "69", "84": "69", "386": "69", "5217": "69", "397": "396", "6896": "5372"}
 INCORP = {"6611": ("6600", 2023, "EPB_EBO_2023"), "6612": ("6585", 2022, "EMR_ENF_2022")}
 universo = sorted({r["dist"] for r in inv} | {r["dist"] for r in inv25}, key=int)
@@ -73,7 +74,11 @@ for y in ANOS:
                 elif st == "revisao_pendente":
                     causa, det, rec, acao = ("REPUBLICACOES_DIVERGENTES", "duas publicações 31/12 com intervalo anual compatível e conteúdo divergente", "decisao_humana", "escolha registrada (DECISOES_DUPLICATAS_13_PARES.csv)")
                 elif st == "ausente":
-                    causa, det, rec, acao = ("ATIVO_NAO_APLICAVEL", sr["motivo"] if sr else mo, "nao", "N/D (nunca zero)")
+                    cr = CORR.get((str(y), d, a))
+                    if cr and cr["classificacao"] != "ATIVO_NAO_APLICAVEL":
+                        causa, det, rec, acao = ("ENTIDADE_VAZIA_NA_ORIGEM", f"{cr['registros_entidades']} na publicação; ativo presente em {cr['presenca_outros_anos']}", "nao", "N/D na fonte; agregado do ano marcado incompleto")
+                    else:
+                        causa, det, rec, acao = ("ATIVO_NAO_APLICAVEL", sr["motivo"] if sr else mo, "nao", "N/D (nunca zero)")
                 elif st == "campo_ausente":
                     causa, det, rec, acao = ("INDICADOR_AUSENTE_OUTRA_RAZAO", "campo do recorte ausente no layout da competência", "nao", "N/D")
                 elif st == "bloqueado":

@@ -3,7 +3,7 @@ auditoria/fase4/ e de output-historico/2022-2025/ (nenhum GDB, checkpoint ou val
 Saida: web/public/data/historico/homologacao.json
   celulas[ativo]  = [[dist, ano, estado, motivo_idx, flags]]   estado: H homologado, T completo tecnico, R apto com ressalvas,
                                                                 P pendente decisao, B bloqueado, N nao disponivel
-                    flags: bits 1 quebra de classificacao, 2 sinal temporal, 4 nao somar (sucessao ja contida no destino)
+                    flags: bits 1 quebra de classificacao, 2 sinal temporal, 4 nao somar (sucessao ja contida no destino), 8 entidade vazia na publicacao (Fase 6)
   brasil[ativo]   = [[ano, valor|null, estado, n_incluidas, n_excluidas, [dists_excluidas], motivo_idx]]
   painel[ativo]   = {universo: [dists], valores: [[ano, valor]]}
   proveniencia["dist|ano"] = publicacoes oficiais (item ArcGIS, versao, BASE, tag Extra, SHA-256, uso na serie)
@@ -61,6 +61,29 @@ for r in M:
         p["valores"].append([int(r["ano"]), num(r["valor"])])
 for v in list(br.values()) + [p["valores"] for p in painel.values()]: v.sort()
 
+# Fase 6: células que a Fase 4 tratou como "ativo não aplicável" mas cuja entidade veio vazia (ou sem o tipo) na publicação,
+# com o ativo presente em outros anos da mesma DIST: dado AUSENTE (nunca zero, nunca "não aplicável"). Flag 8. Os agregados
+# Brasil desses anos deixam de ser completos: a DIST entra como excluída e o estado vira "apto com ressalvas".
+F6 = RAIZ / "auditoria" / "fase6" / "CORRECOES_AUSENCIAS.csv"
+corr = {}
+if F6.exists():
+    for r in rd(F6):
+        if r["classificacao"] != "ATIVO_NAO_APLICAVEL": corr[(int(r["dist"]), int(r["ano"]), r["ativo"])] = r
+    FONTES.append("../fase6/CORRECOES_AUSENCIAS.csv")
+for a, cs in cel.items():
+    for c in cs:
+        r = corr.get((c[0], c[1], a))
+        if r and c[2] == "N":
+            c[3] = m(f"entidade vazia na publicação de {c[1]} ({r['registros_entidades']}), mas o ativo existe na distribuidora em outros anos ({r['presenca_outros_anos']}): dado ausente na fonte, não zero")
+            c[4] |= 8
+for a, linhas_br in br.items():
+    for l in linhas_br:
+        afet = sorted(d for (d, y, aa) in corr if aa == a and y == l[0])
+        if afet:
+            if l[2] in ("H", "T"): l[2] = "R"
+            l[4] += len(afet); l[5] = sorted(set(l[5]) | set(afet))
+            l[6] = m(motivos[l[6]] + f"; {len(afet)} distribuidora(s) com entidade vazia na publicação ficam fora da soma: total incompleto")
+
 prov = {}
 for r in rd(F4 / "MATRIZ_CONFORMIDADE_BDGD_ORDINARIA.csv"):
     prov.setdefault(f"{r['dist']}|{r['ano_alvo']}", []).append(dict(item=r["item_id"], titulo=r["titulo_catalogo"], versao=r["versao_titulo"], data_base=r["data_base_titulo"],
@@ -94,7 +117,7 @@ for r in rd(HIS / "populacao_conceitos.csv"):
     q, s = num(r["quantidade"]), num(r["sem_tuc_mcpse"])
     if q and s is not None: sem_tuc[f"{r['dist']}|{r['ano']}|{r['conceito']}"] = round(s / q, 4)
 
-doc = dict(versao="fase4-1", fonte="auditoria/fase4", fontes={f: hashlib.sha256((F4 / f).read_bytes()).hexdigest() for f in FONTES},
+doc = dict(versao="fase6-1", fonte="auditoria/fase4 + auditoria/fase6/CORRECOES_AUSENCIAS.csv", fontes={f: hashlib.sha256((F4 / f).read_bytes()).hexdigest() for f in FONTES},
            estados={"H": "homologado", "T": "completo técnico", "R": "apto com ressalvas", "P": "pendente de decisão", "B": "bloqueado", "N": "não disponível"},
            motivos=motivos, celulas=cel, brasil=br, painel=painel, proveniencia=prov, sinais=sinais, pares=pares, pontes=pontes, absorcao_epb=absorcao, sem_tuc=sem_tuc)
 OUT.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

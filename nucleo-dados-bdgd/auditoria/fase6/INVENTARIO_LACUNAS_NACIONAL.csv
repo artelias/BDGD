@@ -1188,7 +1188,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,527,Certhil,postes,45d56614d0d4428a83c1dddb833c796c,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,527,Certhil,ramais,45d56614d0d4428a83c1dddb833c796c,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,527,Certhil,reatores,45d56614d0d4428a83c1dddb833c796c,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2022,527,Certhil,rede_at,45d56614d0d4428a83c1dddb833c796c,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo nesta competencia,nao,N/D (nunca zero)
+2022,527,Certhil,rede_at,45d56614d0d4428a83c1dddb833c796c,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2024=19.096030,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,527,Certhil,rede_bt,45d56614d0d4428a83c1dddb833c796c,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,527,Certhil,rede_mt,45d56614d0d4428a83c1dddb833c796c,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,527,Certhil,reguladores,45d56614d0d4428a83c1dddb833c796c,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -1301,7 +1301,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,2763,Ceriluz,trafo_medida,15acbbd379494515bdb889dedccdf8d5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2783,Creral,alimentadores,f91564cfe33c47479300052b506e9ffc,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2783,Creral,bancos_capacitores,f91564cfe33c47479300052b506e9ffc,APTO_COM_RESSALVAS,validado,DISPONIVEL,sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #93),,
-2022,2783,Creral,barramentos,f91564cfe33c47479300052b506e9ffc,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2022,2783,Creral,barramentos,f91564cfe33c47479300052b506e9ffc,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,BAR=0 na publicação; ativo presente em 2024=4;2025=6,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,2783,Creral,chaves,f91564cfe33c47479300052b506e9ffc,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2783,Creral,circuitos_at,f91564cfe33c47479300052b506e9ffc,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
 2022,2783,Creral,conjuntos,f91564cfe33c47479300052b506e9ffc,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -1353,7 +1353,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,2904,Cooperalianca,bancos_capacitores,76514137eac54fd88e7d4dc8f6b7b298,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2904,Cooperalianca,barramentos,76514137eac54fd88e7d4dc8f6b7b298,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2904,Cooperalianca,chaves,76514137eac54fd88e7d4dc8f6b7b298,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2022,2904,Cooperalianca,circuitos_at,76514137eac54fd88e7d4dc8f6b7b298,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2022,2904,Cooperalianca,circuitos_at,76514137eac54fd88e7d4dc8f6b7b298,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2023=4,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,2904,Cooperalianca,conjuntos,76514137eac54fd88e7d4dc8f6b7b298,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2904,Cooperalianca,consumidores,76514137eac54fd88e7d4dc8f6b7b298,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,2904,Cooperalianca,disjuntores,76514137eac54fd88e7d4dc8f6b7b298,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -1853,7 +1853,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,5364,Cermoful,bancos_capacitores,e204dc45d91e43159b04a4f76151ad5b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5364,Cermoful,barramentos,e204dc45d91e43159b04a4f76151ad5b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5364,Cermoful,chaves,e204dc45d91e43159b04a4f76151ad5b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2022,5364,Cermoful,circuitos_at,e204dc45d91e43159b04a4f76151ad5b,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2022,5364,Cermoful,circuitos_at,e204dc45d91e43159b04a4f76151ad5b,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2024=1;2025=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,5364,Cermoful,conjuntos,e204dc45d91e43159b04a4f76151ad5b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5364,Cermoful,consumidores,e204dc45d91e43159b04a4f76151ad5b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5364,Cermoful,disjuntores,e204dc45d91e43159b04a4f76151ad5b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -1944,7 +1944,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,5367,Ceprag,reguladores,b2b38e9a886e419ebb24df5be3b91fff,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5367,Ceprag,religadores,b2b38e9a886e419ebb24df5be3b91fff,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5367,Ceprag,seccionalizadores,b2b38e9a886e419ebb24df5be3b91fff,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2022,5367,Ceprag,subestacoes,b2b38e9a886e419ebb24df5be3b91fff,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2022,5367,Ceprag,subestacoes,b2b38e9a886e419ebb24df5be3b91fff,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SUB=0 na publicação; ativo presente em 2023=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,5367,Ceprag,torres,b2b38e9a886e419ebb24df5be3b91fff,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5367,Ceprag,trafo_dist,b2b38e9a886e419ebb24df5be3b91fff,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5367,Ceprag,trafo_forca,b2b38e9a886e419ebb24df5be3b91fff,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -2038,7 +2038,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,5371,Coopercocal,postes,ea0bd88583b34aa69d688a0366f49a0a,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5371,Coopercocal,ramais,ea0bd88583b34aa69d688a0366f49a0a,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5371,Coopercocal,reatores,ea0bd88583b34aa69d688a0366f49a0a,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2022,5371,Coopercocal,rede_at,ea0bd88583b34aa69d688a0366f49a0a,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo nesta competencia,nao,N/D (nunca zero)
+2022,5371,Coopercocal,rede_at,ea0bd88583b34aa69d688a0366f49a0a,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2024=11.095910;2025=11.09591,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,5371,Coopercocal,rede_bt,ea0bd88583b34aa69d688a0366f49a0a,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5371,Coopercocal,rede_mt,ea0bd88583b34aa69d688a0366f49a0a,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5371,Coopercocal,reguladores,ea0bd88583b34aa69d688a0366f49a0a,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -2178,7 +2178,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2022,5378,Ceripa,bancos_capacitores,e15299da664f43fe97bf07ecab5ba2c5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5378,Ceripa,barramentos,e15299da664f43fe97bf07ecab5ba2c5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5378,Ceripa,chaves,e15299da664f43fe97bf07ecab5ba2c5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2022,5378,Ceripa,circuitos_at,e15299da664f43fe97bf07ecab5ba2c5,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2022,5378,Ceripa,circuitos_at,e15299da664f43fe97bf07ecab5ba2c5,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2023=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2022,5378,Ceripa,conjuntos,e15299da664f43fe97bf07ecab5ba2c5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5378,Ceripa,consumidores,e15299da664f43fe97bf07ecab5ba2c5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2022,5378,Ceripa,disjuntores,e15299da664f43fe97bf07ecab5ba2c5,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -3128,7 +3128,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2023,51,Dmed,bancos_capacitores,2c235ceca5af469caa89754d2b148010,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,51,Dmed,barramentos,2c235ceca5af469caa89754d2b148010,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,51,Dmed,chaves,2c235ceca5af469caa89754d2b148010,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2023,51,Dmed,circuitos_at,2c235ceca5af469caa89754d2b148010,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2023,51,Dmed,circuitos_at,2c235ceca5af469caa89754d2b148010,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=4;2025=7,nao,N/D na fonte; agregado do ano marcado incompleto
 2023,51,Dmed,conjuntos,2c235ceca5af469caa89754d2b148010,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,51,Dmed,consumidores,2c235ceca5af469caa89754d2b148010,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,51,Dmed,disjuntores,2c235ceca5af469caa89754d2b148010,APTO_COM_RESSALVAS,validado,DISPONIVEL,sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #77),,
@@ -4038,7 +4038,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2023,527,Certhil,postes,bcdff14b9d59454fa0efb2bd4acdfa3b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,527,Certhil,ramais,bcdff14b9d59454fa0efb2bd4acdfa3b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,527,Certhil,reatores,bcdff14b9d59454fa0efb2bd4acdfa3b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2023,527,Certhil,rede_at,bcdff14b9d59454fa0efb2bd4acdfa3b,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo nesta competencia,nao,N/D (nunca zero)
+2023,527,Certhil,rede_at,bcdff14b9d59454fa0efb2bd4acdfa3b,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2024=19.096030,nao,N/D na fonte; agregado do ano marcado incompleto
 2023,527,Certhil,rede_bt,bcdff14b9d59454fa0efb2bd4acdfa3b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,527,Certhil,rede_mt,bcdff14b9d59454fa0efb2bd4acdfa3b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,527,Certhil,reguladores,bcdff14b9d59454fa0efb2bd4acdfa3b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -4151,7 +4151,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2023,2763,Ceriluz,trafo_medida,09bc82e42468412e94fc4b5713f97185,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,2783,Creral,alimentadores,3101a9d30ed2409bb68b7da91dfb619e,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,2783,Creral,bancos_capacitores,3101a9d30ed2409bb68b7da91dfb619e,APTO_COM_RESSALVAS,validado,DISPONIVEL,sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #93),,
-2023,2783,Creral,barramentos,3101a9d30ed2409bb68b7da91dfb619e,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2023,2783,Creral,barramentos,3101a9d30ed2409bb68b7da91dfb619e,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,BAR=0 na publicação; ativo presente em 2024=4;2025=6,nao,N/D na fonte; agregado do ano marcado incompleto
 2023,2783,Creral,chaves,3101a9d30ed2409bb68b7da91dfb619e,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2023,2783,Creral,circuitos_at,3101a9d30ed2409bb68b7da91dfb619e,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
 2023,2783,Creral,conjuntos,3101a9d30ed2409bb68b7da91dfb619e,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -5978,7 +5978,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2024,51,Dmed,bancos_capacitores,5cd60c9c3ea5449593ea91b2390edfad,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,51,Dmed,barramentos,5cd60c9c3ea5449593ea91b2390edfad,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,51,Dmed,chaves,5cd60c9c3ea5449593ea91b2390edfad,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2024,51,Dmed,circuitos_at,5cd60c9c3ea5449593ea91b2390edfad,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2024,51,Dmed,circuitos_at,5cd60c9c3ea5449593ea91b2390edfad,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=4;2025=7,nao,N/D na fonte; agregado do ano marcado incompleto
 2024,51,Dmed,conjuntos,5cd60c9c3ea5449593ea91b2390edfad,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,51,Dmed,consumidores,5cd60c9c3ea5449593ea91b2390edfad,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,51,Dmed,disjuntores,5cd60c9c3ea5449593ea91b2390edfad,APTO_COM_RESSALVAS,validado,DISPONIVEL,sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #77),,
@@ -7463,7 +7463,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2024,5353,Cergal,postes,6406e7fa9b224485afcdf5b34ac3dc04,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5353,Cergal,ramais,6406e7fa9b224485afcdf5b34ac3dc04,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5353,Cergal,reatores,6406e7fa9b224485afcdf5b34ac3dc04,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2024,5353,Cergal,rede_at,6406e7fa9b224485afcdf5b34ac3dc04,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo nesta competencia,nao,N/D (nunca zero)
+2024,5353,Cergal,rede_at,6406e7fa9b224485afcdf5b34ac3dc04,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2022=0.347290;2023=0.347290,nao,N/D na fonte; agregado do ano marcado incompleto
 2024,5353,Cergal,rede_bt,6406e7fa9b224485afcdf5b34ac3dc04,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5353,Cergal,rede_mt,6406e7fa9b224485afcdf5b34ac3dc04,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5353,Cergal,reguladores,6406e7fa9b224485afcdf5b34ac3dc04,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -7644,7 +7644,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2024,5367,Ceprag,reguladores,9f1fb5764e9847b2b55d0adb716a463b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5367,Ceprag,religadores,9f1fb5764e9847b2b55d0adb716a463b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5367,Ceprag,seccionalizadores,9f1fb5764e9847b2b55d0adb716a463b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2024,5367,Ceprag,subestacoes,9f1fb5764e9847b2b55d0adb716a463b,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2024,5367,Ceprag,subestacoes,9f1fb5764e9847b2b55d0adb716a463b,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SUB=0 na publicação; ativo presente em 2023=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2024,5367,Ceprag,torres,9f1fb5764e9847b2b55d0adb716a463b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5367,Ceprag,trafo_dist,9f1fb5764e9847b2b55d0adb716a463b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5367,Ceprag,trafo_forca,9f1fb5764e9847b2b55d0adb716a463b,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -7878,7 +7878,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2024,5378,Ceripa,bancos_capacitores,820368193ce848f98b61811a2952c6d8,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5378,Ceripa,barramentos,820368193ce848f98b61811a2952c6d8,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5378,Ceripa,chaves,820368193ce848f98b61811a2952c6d8,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
-2024,5378,Ceripa,circuitos_at,820368193ce848f98b61811a2952c6d8,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta competencia,nao,N/D (nunca zero)
+2024,5378,Ceripa,circuitos_at,820368193ce848f98b61811a2952c6d8,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2023=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2024,5378,Ceripa,conjuntos,820368193ce848f98b61811a2952c6d8,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5378,Ceripa,consumidores,820368193ce848f98b61811a2952c6d8,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
 2024,5378,Ceripa,disjuntores,820368193ce848f98b61811a2952c6d8,COMPLETO_TECNICO,validado,DISPONIVEL,"validado pelas regras automaticas; sem sinal, quebra ou ressalva de BASE",,
@@ -8603,7 +8603,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,32,Energisa TO,bancos_capacitores,e9a7bd0056174a8da1a5662135056766,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,32,Energisa TO,barramentos,e9a7bd0056174a8da1a5662135056766,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,32,Energisa TO,chaves,e9a7bd0056174a8da1a5662135056766,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,32,Energisa TO,circuitos_at,e9a7bd0056174a8da1a5662135056766,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,32,Energisa TO,circuitos_at,e9a7bd0056174a8da1a5662135056766,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=59;2024=61,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,32,Energisa TO,conjuntos,e9a7bd0056174a8da1a5662135056766,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,32,Energisa TO,consumidores,e9a7bd0056174a8da1a5662135056766,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,32,Energisa TO,disjuntores,e9a7bd0056174a8da1a5662135056766,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -8753,7 +8753,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,44,Equatorial AL,bancos_capacitores,cb77602aaeb34bcfa36b822a964dd1a8,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,44,Equatorial AL,barramentos,cb77602aaeb34bcfa36b822a964dd1a8,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,44,Equatorial AL,chaves,cb77602aaeb34bcfa36b822a964dd1a8,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,44,Equatorial AL,circuitos_at,cb77602aaeb34bcfa36b822a964dd1a8,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,44,Equatorial AL,circuitos_at,cb77602aaeb34bcfa36b822a964dd1a8,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=121;2023=136;2024=136,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,44,Equatorial AL,conjuntos,cb77602aaeb34bcfa36b822a964dd1a8,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,44,Equatorial AL,consumidores,cb77602aaeb34bcfa36b822a964dd1a8,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,44,Equatorial AL,disjuntores,cb77602aaeb34bcfa36b822a964dd1a8,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9103,7 +9103,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,86,Eflul,bancos_capacitores,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,barramentos,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,chaves,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,86,Eflul,circuitos_at,04a736e95f114c32a56206957a492cba,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,86,Eflul,circuitos_at,04a736e95f114c32a56206957a492cba,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2024=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,86,Eflul,conjuntos,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,consumidores,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,disjuntores,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9113,7 +9113,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,86,Eflul,postes,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,ramais,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,reatores,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,86,Eflul,rede_at,04a736e95f114c32a56206957a492cba,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo de ativo no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,86,Eflul,rede_at,04a736e95f114c32a56206957a492cba,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2024=7.973310,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,86,Eflul,rede_bt,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,rede_mt,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,86,Eflul,reguladores,04a736e95f114c32a56206957a492cba,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9378,7 +9378,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,383,Enel RJ,bancos_capacitores,32a52a0b29df4b82b9e63362bc927267,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,383,Enel RJ,barramentos,32a52a0b29df4b82b9e63362bc927267,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,383,Enel RJ,chaves,32a52a0b29df4b82b9e63362bc927267,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,383,Enel RJ,circuitos_at,32a52a0b29df4b82b9e63362bc927267,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,383,Enel RJ,circuitos_at,32a52a0b29df4b82b9e63362bc927267,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=215;2023=218;2024=223,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,383,Enel RJ,conjuntos,32a52a0b29df4b82b9e63362bc927267,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,383,Enel RJ,consumidores,32a52a0b29df4b82b9e63362bc927267,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,383,Enel RJ,disjuntores,32a52a0b29df4b82b9e63362bc927267,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9453,7 +9453,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,390,Enel SP,bancos_capacitores,837ab21a1e684f448df2f73d709b6fd9,APTO_COM_RESSALVAS,validado,DISPONIVEL,intervalo BASE nao anual: DAT_INC 01/12/2024 (DAT_FNL correto 31/12/2025); periodo de 396 dias; tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025),,
 2025,390,Enel SP,barramentos,837ab21a1e684f448df2f73d709b6fd9,APTO_COM_RESSALVAS,validado,DISPONIVEL,intervalo BASE nao anual: DAT_INC 01/12/2024 (DAT_FNL correto 31/12/2025); periodo de 396 dias; tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025),,
 2025,390,Enel SP,chaves,837ab21a1e684f448df2f73d709b6fd9,APTO_COM_RESSALVAS,validado,DISPONIVEL,intervalo BASE nao anual: DAT_INC 01/12/2024 (DAT_FNL correto 31/12/2025); periodo de 396 dias; tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025),,
-2025,390,Enel SP,circuitos_at,837ab21a1e684f448df2f73d709b6fd9,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,390,Enel SP,circuitos_at,837ab21a1e684f448df2f73d709b6fd9,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=728;2023=728;2024=728,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,390,Enel SP,conjuntos,837ab21a1e684f448df2f73d709b6fd9,APTO_COM_RESSALVAS,validado,DISPONIVEL,intervalo BASE nao anual: DAT_INC 01/12/2024 (DAT_FNL correto 31/12/2025); periodo de 396 dias; tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025),,
 2025,390,Enel SP,consumidores,837ab21a1e684f448df2f73d709b6fd9,APTO_COM_RESSALVAS,validado,DISPONIVEL,intervalo BASE nao anual: DAT_INC 01/12/2024 (DAT_FNL correto 31/12/2025); periodo de 396 dias; tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025),,
 2025,390,Enel SP,disjuntores,837ab21a1e684f448df2f73d709b6fd9,APTO_COM_RESSALVAS,validado,DISPONIVEL,intervalo BASE nao anual: DAT_INC 01/12/2024 (DAT_FNL correto 31/12/2025); periodo de 396 dias; tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025),,
@@ -9653,7 +9653,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,404,Energisa MS,bancos_capacitores,9a1ce360865f4358b31e9fb2d016aac9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,404,Energisa MS,barramentos,9a1ce360865f4358b31e9fb2d016aac9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,404,Energisa MS,chaves,9a1ce360865f4358b31e9fb2d016aac9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,404,Energisa MS,circuitos_at,9a1ce360865f4358b31e9fb2d016aac9,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,404,Energisa MS,circuitos_at,9a1ce360865f4358b31e9fb2d016aac9,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=101;2024=107,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,404,Energisa MS,conjuntos,9a1ce360865f4358b31e9fb2d016aac9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,404,Energisa MS,consumidores,9a1ce360865f4358b31e9fb2d016aac9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,404,Energisa MS,disjuntores,9a1ce360865f4358b31e9fb2d016aac9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9738,7 +9738,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,527,Certhil,postes,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,527,Certhil,ramais,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,527,Certhil,reatores,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,527,Certhil,rede_at,bb53870506c9430399ce67634fee17e9,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo de ativo no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,527,Certhil,rede_at,bb53870506c9430399ce67634fee17e9,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2024=19.096030,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,527,Certhil,rede_bt,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,527,Certhil,rede_mt,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,527,Certhil,reguladores,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9751,7 +9751,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,527,Certhil,trafo_medida,bb53870506c9430399ce67634fee17e9,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,alimentadores,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,bancos_capacitores,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,598,Creluz-D,barramentos,0d8ca0795ce9453fbe779fd69d0334ed,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,598,Creluz-D,barramentos,0d8ca0795ce9453fbe779fd69d0334ed,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,BAR=0 na publicação; ativo presente em 2022=2;2023=2;2024=2,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,598,Creluz-D,chaves,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,circuitos_at,0d8ca0795ce9453fbe779fd69d0334ed,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
 2025,598,Creluz-D,conjuntos,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9769,7 +9769,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,598,Creluz-D,reguladores,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,religadores,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,seccionalizadores,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,598,Creluz-D,subestacoes,0d8ca0795ce9453fbe779fd69d0334ed,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,598,Creluz-D,subestacoes,0d8ca0795ce9453fbe779fd69d0334ed,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SUB=0 na publicação; ativo presente em 2022=1;2023=1;2024=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,598,Creluz-D,torres,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,trafo_dist,0d8ca0795ce9453fbe779fd69d0334ed,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,598,Creluz-D,trafo_forca,0d8ca0795ce9453fbe779fd69d0334ed,APTO_COM_RESSALVAS,validado,DISPONIVEL,tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025); sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #149),,
@@ -9778,7 +9778,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,2351,Coprel,bancos_capacitores,fb3fa39c507d45e09abb2608cad0c884,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2351,Coprel,barramentos,fb3fa39c507d45e09abb2608cad0c884,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2351,Coprel,chaves,fb3fa39c507d45e09abb2608cad0c884,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,2351,Coprel,circuitos_at,fb3fa39c507d45e09abb2608cad0c884,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,2351,Coprel,circuitos_at,fb3fa39c507d45e09abb2608cad0c884,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2023=4,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,2351,Coprel,conjuntos,fb3fa39c507d45e09abb2608cad0c884,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2351,Coprel,consumidores,fb3fa39c507d45e09abb2608cad0c884,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2351,Coprel,disjuntores,fb3fa39c507d45e09abb2608cad0c884,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9828,7 +9828,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,2763,Ceriluz,bancos_capacitores,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,barramentos,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,chaves,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,2763,Ceriluz,circuitos_at,98c79376fc62406aa26d4bdf959805dc,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,2763,Ceriluz,circuitos_at,98c79376fc62406aa26d4bdf959805dc,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=3;2023=3;2024=4,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,2763,Ceriluz,conjuntos,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,consumidores,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,disjuntores,98c79376fc62406aa26d4bdf959805dc,APTO_COM_RESSALVAS,validado,DISPONIVEL,tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025); sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #171),,
@@ -9838,7 +9838,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,2763,Ceriluz,postes,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,ramais,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,reatores,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,2763,Ceriluz,rede_at,98c79376fc62406aa26d4bdf959805dc,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo de ativo no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,2763,Ceriluz,rede_at,98c79376fc62406aa26d4bdf959805dc,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2022=0.513820;2023=0.747720;2024=19.359340,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,2763,Ceriluz,rede_bt,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,rede_mt,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,2763,Ceriluz,reguladores,98c79376fc62406aa26d4bdf959805dc,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -9978,7 +9978,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,3627,Cooperluz,bancos_capacitores,257d8db7726244699e96b1c369ee33b4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,3627,Cooperluz,barramentos,257d8db7726244699e96b1c369ee33b4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,3627,Cooperluz,chaves,257d8db7726244699e96b1c369ee33b4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,3627,Cooperluz,circuitos_at,257d8db7726244699e96b1c369ee33b4,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,3627,Cooperluz,circuitos_at,257d8db7726244699e96b1c369ee33b4,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=1;2023=1;2024=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,3627,Cooperluz,conjuntos,257d8db7726244699e96b1c369ee33b4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,3627,Cooperluz,consumidores,257d8db7726244699e96b1c369ee33b4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,3627,Cooperluz,disjuntores,257d8db7726244699e96b1c369ee33b4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -10313,13 +10313,13 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,5353,Cergal,postes,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,ramais,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,reatores,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,5353,Cergal,rede_at,e0bf8240fca44b96af37665712302ba0,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,sem registros desse tipo de ativo no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,5353,Cergal,rede_at,e0bf8240fca44b96af37665712302ba0,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SSDAT=0 na publicação; ativo presente em 2022=0.347290;2023=0.347290,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,5353,Cergal,rede_bt,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,rede_mt,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,reguladores,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,religadores,e0bf8240fca44b96af37665712302ba0,APTO_COM_RESSALVAS,validado,DISPONIVEL,tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025); sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #155),,
 2025,5353,Cergal,seccionalizadores,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,5353,Cergal,subestacoes,e0bf8240fca44b96af37665712302ba0,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,5353,Cergal,subestacoes,e0bf8240fca44b96af37665712302ba0,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SUB=0 na publicação; ativo presente em 2022=1;2023=1;2024=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,5353,Cergal,torres,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,trafo_dist,e0bf8240fca44b96af37665712302ba0,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5353,Cergal,trafo_forca,e0bf8240fca44b96af37665712302ba0,APTO_COM_RESSALVAS,validado,DISPONIVEL,tag Extra no catalogo (significado nao documentado; presente em 100% do ciclo 2025); sinal temporal (RANKING_ANOMALIAS_TEMPORAIS.csv #150),,
@@ -10494,7 +10494,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,5367,Ceprag,reguladores,d92b1d2d49e4498eb54755bf51acf22d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5367,Ceprag,religadores,d92b1d2d49e4498eb54755bf51acf22d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5367,Ceprag,seccionalizadores,d92b1d2d49e4498eb54755bf51acf22d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,5367,Ceprag,subestacoes,d92b1d2d49e4498eb54755bf51acf22d,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,5367,Ceprag,subestacoes,d92b1d2d49e4498eb54755bf51acf22d,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,SUB=0 na publicação; ativo presente em 2023=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,5367,Ceprag,torres,d92b1d2d49e4498eb54755bf51acf22d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5367,Ceprag,trafo_dist,d92b1d2d49e4498eb54755bf51acf22d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5367,Ceprag,trafo_forca,d92b1d2d49e4498eb54755bf51acf22d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -10551,7 +10551,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,5369,Certrel,trafo_medida,6666637cb9954e0a9daa7f7b3dfde8e4,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5370,Coopera,alimentadores,5d0f7ea5db5d48aeb365998fabaa9db7,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5370,Coopera,bancos_capacitores,5d0f7ea5db5d48aeb365998fabaa9db7,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,5370,Coopera,barramentos,5d0f7ea5db5d48aeb365998fabaa9db7,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,5370,Coopera,barramentos,5d0f7ea5db5d48aeb365998fabaa9db7,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,BAR=0 na publicação; ativo presente em 2022=8;2023=8;2024=8,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,5370,Coopera,chaves,5d0f7ea5db5d48aeb365998fabaa9db7,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5370,Coopera,circuitos_at,5d0f7ea5db5d48aeb365998fabaa9db7,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
 2025,5370,Coopera,conjuntos,5d0f7ea5db5d48aeb365998fabaa9db7,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -10728,7 +10728,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,5378,Ceripa,bancos_capacitores,f555cfcf974c49ea865fcda4683e2666,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5378,Ceripa,barramentos,f555cfcf974c49ea865fcda4683e2666,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5378,Ceripa,chaves,f555cfcf974c49ea865fcda4683e2666,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,5378,Ceripa,circuitos_at,f555cfcf974c49ea865fcda4683e2666,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,5378,Ceripa,circuitos_at,f555cfcf974c49ea865fcda4683e2666,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2023=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,5378,Ceripa,conjuntos,f555cfcf974c49ea865fcda4683e2666,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5378,Ceripa,consumidores,f555cfcf974c49ea865fcda4683e2666,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,5378,Ceripa,disjuntores,f555cfcf974c49ea865fcda4683e2666,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
@@ -11303,7 +11303,7 @@ ano,dist,empresa,ativo,publicacoes,estado_publicacao,status_serie,causa,detalhe,
 2025,7371,Certel Energia,bancos_capacitores,4539da264de84533bc371241a514400d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,7371,Certel Energia,barramentos,4539da264de84533bc371241a514400d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,7371,Certel Energia,chaves,4539da264de84533bc371241a514400d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
-2025,7371,Certel Energia,circuitos_at,4539da264de84533bc371241a514400d,NAO_DISPONIVEL,ausente,ATIVO_NAO_APLICAVEL,tipo de ativo inexistente no GDB desta distribuidora,nao,N/D (nunca zero)
+2025,7371,Certel Energia,circuitos_at,4539da264de84533bc371241a514400d,NAO_DISPONIVEL,ausente,ENTIDADE_VAZIA_NA_ORIGEM,CTAT=0 na publicação; ativo presente em 2022=2;2023=1;2024=1,nao,N/D na fonte; agregado do ano marcado incompleto
 2025,7371,Certel Energia,conjuntos,4539da264de84533bc371241a514400d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,7371,Certel Energia,consumidores,4539da264de84533bc371241a514400d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,
 2025,7371,Certel Energia,disjuntores,4539da264de84533bc371241a514400d,HOMOLOGADO,validado,DISPONIVEL,pacote 2025 homologado; intervalo BASE 01/01-31/12 compativel; tag Extra registrada como observacao,,

@@ -56,13 +56,17 @@ for (const [a, linhas] of Object.entries(hom.brasil)) for (const [ano, v, e, nin
   if ((ano === 2022 || ano === 2023) && (v !== null || e !== "B")) erros.push(`Brasil ${ano}/${a} publicado como total nacional`);
   const cs = hom.celulas[a].filter((c) => c[1] === ano);
   const inc = cs.filter((c) => PUB.has(c[2]) && !(c[4] & 4) && serieIdx.get(`${c[0]}|${ano}|${a}`) !== null);
-  const excl = cs.filter((c) => c[2] === "P" || c[2] === "B").map((c) => c[0]).sort((x, y) => x - y);
+  // excluídas: pendentes, bloqueadas e (Fase 6) entidade vazia na publicação com o ativo presente em outros anos (flag 8)
+  const excl = cs.filter((c) => c[2] === "P" || c[2] === "B" || c[4] & 8).map((c) => c[0]).sort((x, y) => x - y);
+  if (cs.some((c) => c[4] & 8) && e === "H") erros.push(`Brasil ${ano}/${a}: homologado com distribuidora de entidade vazia fora da soma`);
   if (ninc !== inc.length || nexc !== excl.length || exc.join() !== excl.join()) erros.push(`Brasil ${ano}/${a}: contagens divergem da matriz`);
   if (v !== null) {
     const soma = inc.reduce((s, c) => s + serieIdx.get(`${c[0]}|${ano}|${a}`), 0);
     if (Math.abs(soma - v) > 1e-6 * Math.max(1, Math.abs(v))) erros.push(`Brasil ${ano}/${a}: ${v} ≠ soma ${soma}`);
   }
 }
+// 4b) entidade vazia na publicação (flag 8): nunca publicável, nunca zero
+for (const [a, cs] of Object.entries(hom.celulas)) for (const c of cs) if (c[4] & 8 && PUB.has(c[2])) erros.push(`célula ${c[0]}/${c[1]}/${a}: entidade vazia marcada como publicável`);
 // 5) painel balanceado: universo publicável nos quatro anos, sem DIST "não somar"
 for (const [a, p] of Object.entries(hom.painel)) for (const [ano, v] of p.valores) {
   const cs = new Map(hom.celulas[a].filter((c) => c[1] === ano).map((c) => [c[0], c]));
