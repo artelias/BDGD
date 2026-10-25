@@ -57,6 +57,7 @@ jobs:
       - name: Assets web derivados do mesmo pacote
         run: |
           node -e 'const m=require("../output-publicavel/2025-12-31/manifest.json"),a=require("./public/data/2025-12-31/assets.json"),i=require("./public/data/2025-12-31/index.json");if(a.release_id!==m.release_id||i.release.release_id!==m.release_id||i.release.data_base!=="2025-12-31"){console.error("release_id divergente",m.release_id,a.release_id,i.release.release_id);process.exit(1)}console.log("assets =",m.release_id,"status",m.status)'
+          npm run validate:data
       - name: Validar série histórica 2022-2025 (somente células validadas têm valor)
         run: node ../etl/validate-serie-historica.mjs ../output-historico/2022-2025 public/data/historico/serie.json
       - name: Validar matriz de homologação aplicada à Evolução (N/D nunca vira valor; Brasil 2022-2023 sem total nacional)
