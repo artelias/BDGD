@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import s from "./previsoes-exploratorias.module.css";
+import { avaliarRiscosCenario } from "@/lib/risco-cenarios";
 
 /** Pacote agregado público, sem registros individuais. Cada linha é uma série DIST × ativo. */
 type Serie = [
@@ -105,10 +106,19 @@ export function PrevisoesExploratorias() {
     ? [0, 1, 2, 3, 4].map(() => serie[5][3]) : serie[6]);
   const valorAno = serie && futuros ? futuros[anoAlvo - 2026] : null;
   const erroModelo = serie && (metodo === "persistencia" ? serie[7][0] : serie[7][1]);
+  const avisos = serie && futuros ? avaliarRiscosCenario(serie[5], futuros, serie[10], metodo) : [];
+  const codigosAviso = avisos.map((a) => a.codigo).join("|");
+  // Estados e fontes ficam explicitamente preservados no CSV, inclusive para zeros técnicos.
   const csv = serie && futuros
-    ? ["ano,valor,classe,metodo,dist,conceitoId,unidade", ...ANOS.map((ano, i) =>
-      [ano, i < 4 ? serie[5][i] : futuros[i - 4], i < 4 ? "observado" : "simulacao_condicional",
-        i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4]].join(","))].join("\r\n")
+    ? ["ano,valor,classe,metodo,dist,conceitoId,unidade,estado_origem,homologacao_origem,publicacao_id,avisos_estatisticos",
+      ...ANOS.map((ano, i) =>
+        [ano, i < 4 ? serie[5][i] : futuros[i - 4],
+          i < 4 ? (serie[10][i] === "Z" ? "zero_verificado_pendente" : "observado") : "simulacao_condicional",
+          i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4],
+          i < 4 ? (serie[10][i] === "Z" ? "zero_tecnico" : "observado") : "nao_se_aplica",
+          i < 4 ? serie[9][i] : "sem_homologacao_preditiva",
+          i < 4 ? serie[8][i] : "",
+          i < 4 ? "" : codigosAviso].join(","))].join("\r\n")
     : "";
 
   return (
@@ -160,6 +170,16 @@ export function PrevisoesExploratorias() {
                   <div><span>Cenário condicional para {anoAlvo}</span><strong>{formatar(valorAno, serie[4])} <small>{serie[4]}</small></strong></div>
                   <div><span>Erro absoluto no teste de 2025</span><strong>{formatar(erroModelo ?? 0, serie[4])} <small>{serie[4]}</small></strong><em>Apenas 1 origem temporal de teste</em></div>
                 </div>
+                {avisos.length > 0 && (
+                  <section className={s.alertas} aria-label="Limitações específicas da série selecionada" aria-live="polite">
+                    <h3>Sinais que exigem cautela neste cenário</h3>
+                    <ul>{avisos.map((alerta) => (
+                      <li key={alerta.codigo} data-risco={alerta.codigo}>
+                        <strong>{alerta.gravidade === "alta" ? "Atenção reforçada" : "Ressalva"}:</strong> {alerta.descricao}
+                      </li>
+                    ))}</ul>
+                  </section>
+                )}
                 <Grafico historico={serie[5]} futuro={futuros} unidade={serie[4]} modelo={metodo} />
                 <div className={s.duasColunas}>
                   <div>
@@ -175,7 +195,7 @@ export function PrevisoesExploratorias() {
                     </div>
                     <a className={s.exportar} href={"data:text/csv;charset=utf-8," + encodeURIComponent("\uFEFF" + csv)}
                       download={"cenario_DIST_" + serie[0] + "_" + serie[2] + "_" + metodo + ".csv"}>
-                      Exportar série selecionada (CSV)
+                      Exportar série e rastreabilidade (CSV)
                     </a>
                   </div>
                   <div>
