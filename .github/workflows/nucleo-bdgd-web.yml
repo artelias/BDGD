@@ -65,11 +65,8 @@ jobs:
         run: node ../etl/validate-contrato-nacional.mjs ../output-historico/contrato-integracao ../auditoria/fase4/MATRIZ_HOMOLOGACAO_2022_2025.csv
       - name: Build estático
         run: npm run build
-      - name: Chromium para E2E
-        timeout-minutes: 8
-        # Ubuntu GitHub-hosted já fornece as bibliotecas do navegador;
-        # evitar apt-get --with-deps, que pode travar no espelho de pacotes.
-        run: npx playwright install chromium
+      - name: Chrome do runner para E2E
+        run: google-chrome --version
       - name: E2E (desktop e celular)
         env:
           CI: "1"
