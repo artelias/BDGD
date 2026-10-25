@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PrevisoesExploratorias } from "@/components/pages/PrevisoesExploratorias";
 import { Activity, ArrowUpRight, ChartSpline, CircleHelp, Database, GitBranch, Layers3, ShieldCheck, Wallet } from "lucide-react";
 
 export const metadata: Metadata = { title: "Previsões | Expansão elétrica" };
@@ -29,10 +30,10 @@ const perspectivas = [
 ] as const;
 
 const entregas = [
-  { nome: "Históricos 2022–2024", detalhe: "Extração e homologação dos arquivos BDGD por competência e distribuidora.", situacao: "Em preparação" },
-  { nome: "Perímetros comparáveis", detalhe: "EPB + EBO e EMG + ENF: recomposição auditada sem dupla contagem.", situacao: "Regra definida" },
+  { nome: "Históricos 2022–2024", detalhe: "Extração, validação técnica e auditoria das bases por competência e distribuidora. Homologação humana dos anos anteriores pendente.", situacao: "Auditoria concluída" },
+  { nome: "Perímetros comparáveis", detalhe: "EMR/ENF tratada contra dupla contagem; ponte EPB/EBO ainda depende de decisão humana.", situacao: "Parcialmente reconciliado" },
   { nome: "Variáveis elétricas e econômicas", detalhe: "Demanda, capacidade, topologia, PIB regional, indústria, juros e custos, conforme disponibilidade histórica.", situacao: "Contrato definido" },
-  { nome: "Validação dos modelos", detalhe: "Comparação com baselines, cortes temporais, análise de erros e verificação de coerência física.", situacao: "Aguardando dados" },
+  { nome: "Validação dos modelos", detalhe: "Backtest exploratório de persistência e tendência linear com corte em 2025; uma origem de teste, sem suficiência para homologação preditiva.", situacao: "Exploratório" },
   { nome: "Projeções publicáveis", detalhe: "Valores, horizontes e intervalos só após aprovação dos critérios de elegibilidade.", situacao: "Indisponível" },
 ] as const;
 
@@ -56,15 +57,15 @@ export default function Page() {
         <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
           <ShieldCheck size={24} color="var(--accent)" aria-hidden="true" style={{ flexShrink: 0 }} />
           <div>
-            <h2 style={{ fontSize: "1.05rem", fontWeight: 680, margin: 0 }}>Nenhuma previsão publicada</h2>
+            <h2 style={{ fontSize: "1.05rem", fontWeight: 680, margin: 0 }}>Nenhuma previsão estatisticamente validada</h2>
             <p className="muted" style={{ marginTop: 6, lineHeight: 1.6 }}>
-              Os históricos de 2022–2024 ainda não foram integralmente homologados. Não há modelos treinados,
-              projeções validadas nem intervalos de confiança disponíveis. Os números da BDGD 2025 não são,
-              isoladamente, uma série temporal. Os resultados permanecerão indisponíveis até passar pelos testes técnicos.
+              Foram processados cenários matemáticos exploratórios sobre séries físicas observadas de 2022–2025. O backtest usa apenas uma origem temporal de teste e os anos históricos anteriores ainda não estão integralmente homologados. Por isso, os valores de 2026–2030 não são previsões validadas, necessidade técnica de expansão ou CAPEX, e não possuem intervalos probabilísticos de confiança.
             </p>
           </div>
         </div>
       </section>
+
+      <PrevisoesExploratorias />
 
       <section aria-labelledby="perspectivas-title" style={{ marginBottom: 36 }}>
         <div className="eyebrow">Três perspectivas complementares</div>
@@ -122,8 +123,7 @@ export default function Page() {
 
       <footer style={{ borderTop: "1px solid var(--hairline)", paddingTop: 18, display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center" }}>
         <p className="muted" style={{ fontSize: ".85rem", flex: "1 1 280px", margin: 0 }}>
-          Histórico, cenários condicionais e previsões estatisticamente validadas serão apresentados separadamente.
-          Nenhum resultado é inferido de números ilustrativos.
+          Histórico e cenários condicionais aparecem separadamente. Não há previsão estatisticamente validada publicada; nenhum valor é inferido de exemplos ilustrativos.
         </p>
         <Link href="/panorama" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontWeight: 600, fontSize: ".88rem" }}>
           Explorar dados observados <ArrowUpRight size={16} aria-hidden="true" />
