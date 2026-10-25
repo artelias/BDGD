@@ -8,8 +8,9 @@
 import { readFileSync, mkdirSync, writeFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const raiz = resolve(import.meta.dirname, "../..");
+const raiz = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const entrada = join(raiz, "output-historico/contrato-integracao/serie_fisica_nacional.csv");
 const saida = join(raiz, "web/public/data/previsoes/cenarios-exploratorios-2026-2030.json");
 const commitIndex = process.argv.indexOf("--source-commit");
