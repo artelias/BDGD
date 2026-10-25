@@ -25,13 +25,12 @@ test.describe("R3 — Explorar ativos por conceito", () => {
     await expect(page.getByTestId("valor-recorte")).toContainText("kVA");
   });
 
-  test("participação dupla com denominadores distintos (grupo)", async ({ page }) => {
+  test("participação interna mantém denominador próprio; nacional incompleto fica N/D", async ({ page }) => {
     await page.goto("/explorar/?ativo=religadores&escopo=grupo:energisa&f=area:NU");
     const pe = num(await page.getByTestId("part-escopo").innerText());
-    const pb = num(await page.getByTestId("part-brasil").innerText());
     expect(pe).toBeGreaterThan(0); expect(pe).toBeLessThanOrEqual(100);
-    expect(pb).toBeGreaterThan(0); expect(pb).toBeLessThan(100);
-    expect(pe).not.toBe(pb);
+    await expect(page.getByTestId("part-brasil")).toHaveText("N/D");
+    await expect(page.getByText(/Cobertura nacional incompleta:/)).toBeVisible();
   });
 
   test("mesmo recorte: valor do Explorar = soma dos totais por distribuidora do grupo", async ({ page }) => {

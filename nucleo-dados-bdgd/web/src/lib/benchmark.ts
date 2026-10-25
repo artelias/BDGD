@@ -1,6 +1,7 @@
 import type { Indicador } from "./catalogo";
 import type { Aggregate, Dataset } from "./dataset";
 import { kpiValue } from "./kpis";
+import { coberturaNacionalIncompleta } from "./panorama-r3";
 
 /** Referência do radar. "lado" usa o lado B do comparador (outro grupo ou outra distribuidora). */
 export type RefTipo = "lado" | "brasil" | "bench_grupos" | "bench_dists";
@@ -54,7 +55,12 @@ export function eixosRadar(ds: Dataset, inds: Indicador[], distsA: number[], ref
     let lid: Lider | null = null;
     let refLabel = labelB;
     if (ref === "lado") refV = kpiValue(ds, ind, distsB).v;
-    else if (ref === "brasil") { refV = kpiValue(ds, ind, ds.dists.map((d) => d.dist)).v; refLabel = REF_LABEL.brasil; }
+    else if (ref === "brasil") {
+      const dists = ds.dists.map((d) => d.dist);
+      const nacional = kpiValue(ds, ind, dists);
+      refV = nacional.partial || coberturaNacionalIncompleta(ds, dists) ? null : nacional.v;
+      refLabel = REF_LABEL.brasil;
+    }
     else {
       lid = lider(ds, ind, ref === "bench_grupos" ? "grupos" : "dists");
       refV = lid?.v ?? null;

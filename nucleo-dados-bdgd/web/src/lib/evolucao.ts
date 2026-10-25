@@ -19,6 +19,8 @@ export const ESTADO: Record<string, string> = {
   v: "validado", a: "ativo inexistente nesta competência", c: "campo ausente no layout do ano", b: "valor não homologável",
   r: "mais de uma publicação válida (revisão pendente)", p: "processamento histórico em andamento", d: "arquivo de outra competência", s: "sem publicação da ANEEL neste ano",
   x: "pendente de decisão humana", g: "não é total nacional completo neste ano",
+  n: "não aplicável", nao_aplicavel: "não aplicável", ausente: "N/D — dado ausente",
+  nao_homologado: "não homologado", observado: "observado", zero_verificado: "zero técnico (verificação independente pendente)",
 };
 
 /** Status do ano na cobertura: "homologado" (decisão humana registrada, hoje só 2025), "completo_tecnico" (todas as
@@ -51,9 +53,9 @@ export function serieSoma(idx: ReturnType<typeof indexar>, dists: number[], anos
     let v = 0, algum = false, falta = false, quebra = false;
     for (const d of dists) {
       const c = idx.get(d)?.get(ano);
-      if (!c || c[3] === "s") continue;           // sem publicação no ano: DIST não existia nesta forma (ver perímetro 2025)
-      if (c[3] === "a") continue;                 // ativo inexistente: não soma, não bloqueia
-      if (typeof c[7] === "number" && c[7] & 4) continue; // predecessora já contida na sucessora: nunca somar (evita dupla contagem)
+      if (typeof c?.[7] === "number" && c[7] & 4) continue; // predecessora já contida na sucessora: nunca somar (evita dupla contagem)
+      if (c?.[3] === "n") continue;               // somente não aplicabilidade explícita do contrato não bloqueia
+      if (!c) { falta = true; continue; }
       if (c[3] !== "v" || c[2] === null) { falta = true; continue; }
       v += c[2]; algum = true; if (c[4]) quebra = true;
     }

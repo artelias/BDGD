@@ -1,0 +1,26 @@
+name: R3 IASC — validação de associação
+on:
+  pull_request:
+    paths:
+      - "nucleo-dados-bdgd/etl/iasc/**"
+      - ".github/workflows/r3-iasc-tests.yml"
+  push:
+    branches:
+      - "feat/chatgpt-r3-panorama-iasc-previsoes"
+    paths:
+      - "nucleo-dados-bdgd/etl/iasc/**"
+      - ".github/workflows/r3-iasc-tests.yml"
+permissions:
+  contents: read
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate IASC mapping without external data
+        run: python -m unittest discover -s nucleo-dados-bdgd/etl/iasc -p 'test_*.py' -v
+      - name: Python syntax
+        run: python -m compileall -q nucleo-dados-bdgd/etl/iasc

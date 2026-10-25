@@ -1,5 +1,6 @@
 import type { Dataset } from "./dataset";
 import type { MedidaConceito } from "./types";
+import { coberturaNacionalIncompleta } from "./panorama-r3";
 
 /** Linha comparável: um ativo (ou uma categoria do ativo filtrado) com o valor de cada DIST.
  *  null = sem valor homologado na DIST (fica fora da soma e é contado); DIST ausente do mapa = ativo inexistente. */
@@ -47,7 +48,11 @@ export function benchmarkLinhas(ds: Dataset, linhas: Linha[], distsA: number[], 
     let refV: number | null, refNome = nomeB;
     let lid = liderLinha(ds, l, ref === "bench_grupos" ? "grupos" : "dists");
     if (ref === "lado") refV = somar(l, distsB).v;
-    else if (ref === "brasil") { refV = somar(l, todas).v; refNome = REFERENCIA.brasil; }
+    else if (ref === "brasil") {
+      const nacional = somar(l, todas);
+      refV = nacional.nd || coberturaNacionalIncompleta(ds, todas) ? null : nacional.v;
+      refNome = REFERENCIA.brasil;
+    }
     else { refV = lid?.v ?? null; refNome = lid ? `${REFERENCIA[ref]} (${lid.nome})` : REFERENCIA[ref]; }
     if (ref === "lado" || ref === "brasil") lid = liderLinha(ds, l, "dists");
     let nd: string | null = null;

@@ -4,13 +4,13 @@ import { expect, test } from "@playwright/test";
 const linha = (page: import("@playwright/test").Page, nome: RegExp | string) => page.getByTestId("evo-tabela").locator("tbody tr").filter({ has: page.getByRole("rowheader", { name: nome }) });
 
 test.describe("Evolução — homologação assistida", () => {
-  test("Brasil 2022–2023 não é total nacional; 2024–2025 elegíveis; painel balanceado identificado", async ({ page }) => {
+  test("Brasil fica N/D em todos os anos com lacunas; painel balanceado identificado", async ({ page }) => {
     await page.goto("/evolucao/?ativo=consumidores");
     const br = linha(page, /^Brasil/);
     await expect(br.locator("td").nth(3)).toBeVisible();
     const cel = await br.locator("td").allInnerTexts();
     expect(cel[0]).toContain("N/D"); expect(cel[1]).toContain("N/D");
-    expect(cel[2]).toMatch(/\d/); expect(cel[3]).toMatch(/\d/);
+    expect(cel[2]).toContain("N/D"); expect(cel[3]).toContain("N/D");
     await expect(page.getByTestId("evo-tabela")).toContainText(/Painel balanceado \(\d+ distribuidoras\)/);
     await expect(page.getByTestId("evo-ressalvas")).toContainText("2022 e 2023 não têm cobertura nacional completa");
     await expect(page.getByTestId("evo-ressalvas")).toContainText("Equatorial GO 2025");

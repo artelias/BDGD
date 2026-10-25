@@ -20,8 +20,9 @@ describe("séries observadas", () => {
   it("soma só nos anos em que todas as DIST estão validadas", () => {
     expect(serieSoma(idx, [1, 2], anos, "g", "G").pontos.map((p) => p.v)).toEqual([150, null, 181, 203.1]);
   });
-  it("DIST sem publicação no ano não bloqueia a soma das demais", () => {
-    expect(serieSoma(idx, [1, 9], anos, "g", "G").pontos.map((p) => p.v)).toEqual([140, 110, 121, 133.1]);
+  it("DIST sem publicação bloqueia soma parcial; só não aplicabilidade explícita pode ser omitida", () => {
+    expect(serieSoma(idx, [1, 9], anos, "g", "G").pontos.map((p) => p.v)).toEqual([140, null, null, null]);
+    expect(serieSoma(idx, [1, 99], anos, "g", "G").pontos.every((p) => p.v === null)).toBe(true);
   });
   it("painel balanceado: só quem tem os quatro anos validados", () => {
     expect(painelBalanceado(idx, [1, 2, 3, 4, 9], anos)).toEqual([1, 3, 4]);

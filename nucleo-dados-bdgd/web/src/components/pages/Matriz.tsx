@@ -256,7 +256,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
             <tbody>
               <tr className={s.totalRow}>
                 <td className={s.sticky}><div className={s.distCell}><span><div className={s.distName}>Total do recorte</div><div className={s.distMeta}>{rows.length} distribuidoras</div></span></div></td>
-                {cols.map((a) => { const t = totalCol(a); return <td key={a.id} className={`${s.cell} ${t.v === null ? s.cellNd : ""}`} title={`${t.n} distribuidoras com valor${t.nd ? `; ${t.nd} sem valor homologado` : ""}`} data-testid={`total-${a.id}`}>{fmtCel(a, t.v)}{t.nd > 0 && <span className="faint" style={{ fontSize: 10, marginLeft: 4 }}>*</span>}</td>; })}
+                {cols.map((a) => { const t = totalCol(a); return <td key={a.id} className={`${s.cell} ${t.v === null ? s.cellNd : ""}`} title={`${t.n} distribuidoras com valor${t.nd ? `; ${t.nd} sem valor homologado` : ""}`} data-testid={`total-${a.id}`}>{fmtCel(a, t.v)}{t.nd > 0 && <span className="faint" style={{ fontSize: 11, marginLeft: 4 }}>parcial*</span>}</td>; })}
               </tr>
               {rows.map((d) => (
                 <tr key={d.dist} data-dist={d.dist} data-selected={selected === d.dist} onClick={() => patch({ dist: String(d.dist) })}>

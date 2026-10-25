@@ -2,6 +2,7 @@
  * proveniência e sinais. Regras: nada é preenchido; célula não publicável vira N/D com motivo; soma nunca inclui célula
  * pendente/bloqueada nem predecessora já contida na sucessora ("não somar"). */
 import type { CelulaSerie, Ponto, Serie } from "@/lib/evolucao";
+import { lacunasNacionais, type EstadosContrato } from "./historico-contrato";
 
 export type EstadoPub = "H" | "T" | "R" | "P" | "B" | "N";
 export const PUBLICAVEL: ReadonlySet<string> = new Set(["H", "T", "R"]);
@@ -70,12 +71,15 @@ export function pontosHom(s: Serie, h: Homologacao, ih: ReturnType<typeof indice
 }
 
 /** Brasil pelo agregado da matriz: só anos elegíveis; 2022–2023 nunca como total nacional. */
-export function serieBrasil(h: Homologacao, ativo: string, anos: number[]): Serie {
+export function serieBrasil(h: Homologacao, ativo: string, anos: number[], contrato?: EstadosContrato): Serie {
   const linhas = new Map((h.brasil[ativo] ?? []).map((r) => [r[0], r]));
-  return { id: "brasil", nome: "Brasil", nota: "somente anos elegíveis; 2022–2023 não são total nacional", pontos: anos.map((ano) => {
+  return { id: "brasil", nome: "Brasil (cobertura completa)", nota: "N/D quando há lacunas; o painel balanceado não representa o total nacional", pontos: anos.map((ano) => {
     const r = linhas.get(ano);
-    const pub = !!r && PUBLICAVEL.has(r[2]) && r[1] !== null;
-    return { ano, v: pub ? r![1] : null, estado: pub ? "v" : "g", quebra: false, pub: r?.[2] ?? "N", motivo: r ? h.motivos[r[6]] : undefined } as PontoHom;
+    const lacunas = contrato ? lacunasNacionais(contrato, ativo, ano) : null;
+    const pub = ano >= 2024 && !!r && PUBLICAVEL.has(r[2]) && r[1] !== null && r[4] === 0 &&
+      lacunas === 0 && (contrato?.celulas[ativo]?.some((c) => c[1] === ano) ?? false);
+    return { ano, v: pub ? r![1] : null, estado: pub ? "v" : "g", quebra: false, pub: pub ? r![2] : "N",
+      motivo: !pub ? `Total nacional indisponível: ${lacunas ?? "cobertura não comprovada"}${lacunas === null ? "" : " DIST com lacunas"}. Use o painel balanceado identificado.` : h.motivos[r![6]] } as PontoHom;
   }) };
 }
 
