@@ -92,6 +92,10 @@ export interface IndexData {
   vinculosTuc?: { cols: string[]; destinos: Record<string, string[]>; rows: Array<[number, string, string, number, number, number, number]> };
   /** nomes MCPSE (Res. ANEEL 674/2015) dos TUC presentes */
   tucNomes?: Record<string, string>;
+  /** R3: catálogo semântico compartilhado (conceitos, ativos, menu) */
+  conceitos?: ConceitosCatalogo;
+  /** R3: total por ativo e medida, por DIST, calculado do cubo principal do conceito */
+  ativosTotais?: Record<string, Partial<Record<MedidaConceito, TotalAtivoRow[]>>>;
 }
 
 export interface FacetMetricSpec { unidade: string; rollup: boolean; disjunta: boolean; cobertura: string; status: Status }
@@ -122,3 +126,38 @@ export interface Qualidade {
 }
 
 export type Scope = { tipo: "brasil" } | { tipo: "grupo"; id: string } | { tipo: "dist"; id: number };
+
+/* ---------- R3: catálogo semântico de ativos e cubos por conceito ---------- */
+export type MedidaConceito = "quantidade" | "extensao_km" | "potencia_kva";
+export type Filtro = Record<string, string[]>;
+export interface ConceitoCfg {
+  nome: string; descricao: string; entidades: string[]; vinculos?: string[]; medidas: MedidaConceito[];
+  categoria: string | null; cubos: Record<string, string[]>; inventario?: "sub" | "ctmt" | "ctat" | "conj";
+}
+export interface AtivoCfg {
+  id: string; nome: string; conceito: string; filtro: Filtro; medida: MedidaConceito; medidas_extra?: MedidaConceito[]; familia: string;
+  resumo: string; explicacao: string; tecnico: string; ressalva?: string;
+}
+export interface MenuItem { id: string; nome: string; conceito?: string; filtro?: Filtro; excluir?: Filtro; descricao?: string; tecnico?: string[] }
+export interface ConceitosCatalogo {
+  versao: string;
+  dimensoes: Record<string, { rotulo: string; dda?: string; fonte?: string }>;
+  medidas: Record<MedidaConceito, { rotulo: string; unidade: string; ressalva?: string }>;
+  conceitos: Record<string, ConceitoCfg>;
+  ativos: AtivoCfg[];
+  kpis_padrao: string[];
+  menu: Array<{ grupo: string; itens: MenuItem[] }>;
+}
+/** [dist, valor, status, motivo] */
+export type TotalAtivoRow = [number, number | null, Status, string];
+/** linha compacta: [dist, ...índices das dimensões, ...valores das medidas do conceito] */
+export type CuboRow = number[];
+export interface ConceitoData {
+  id: string; medidas: MedidaConceito[];
+  valores: Record<string, string[]>;
+  rotulos: Record<string, Record<string, string>>;
+  cubos: Record<string, { dims: string[]; entidades: string[]; rows: Array<Array<number | null>> }>;
+  a1PorTuc?: Record<string, Record<string, string>>;
+}
+export interface InventarioTabela { cols: string[]; rows: Array<Array<string | number | null>> }
+export type InventarioData = Partial<Record<"sub" | "ctmt" | "ctat" | "conj", InventarioTabela>>;

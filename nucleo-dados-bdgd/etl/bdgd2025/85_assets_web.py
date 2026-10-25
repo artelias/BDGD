@@ -173,6 +173,103 @@ for ent, e in porent.items():
     tam[ent] = dump(OUT / "facetas" / f"{ent}.json", obj)
 index["tucNomes"] = {k: tuc_desc[k] for k in sorted({r[2] for r in index["vinculosTuc"]["rows"]}) if k in tuc_desc}
 s_idx = dump(OUT / "index.json", index)
+# --- R3: conceitos de ativo (cubos conjuntos exatos), totais por ativo e inventarios por DIST
+CF = json.load(open(PKG / "conceitos" / "catalogo.json", encoding="utf-8"))
+(OUT / "conceitos").mkdir(exist_ok=True); (OUT / "inventario").mkdir(exist_ok=True)
+DDA = {}
+for tb in json.load(open(KN / "BDGD_DDA_CATALOG_M10.json", encoding="utf-8"))["tables"]:
+    DDA[tb["table"]] = {str(v["COD_ID"]).strip(): v for v in tb["values"]}
+tuar = {}
+for code, v in DDA.get("TUAR", {}).items():
+    if "-" in code: tuar.setdefault(code.split("-")[0], []).append(cap(v.get("DESCR") or ""))
+ESPECIAIS = {"SEM_CODIGO": "Não informado", "NA": "Não se aplica", "AMBIGUO": "Vínculo ambíguo", "SEM_VINCULO": "Sem instalação vinculada"}
+CLASSES = {"RE": "Residencial", "IN": "Industrial", "CO": "Comercial, serviços e outras atividades", "RU": "Rural", "PP": "Poder público", "IP": "Iluminação pública",
+           "SP": "Serviço público", "CP": "Consumo próprio", "CS": "Concessionária ou permissionária", "OUTRO": "Outras subclasses"}
+NIVEL = {"BT": "Baixa tensão", "MT": "Média tensão", "AT": "Alta tensão"}
+NIVEL_TRAFO = {"MT": "Rede de distribuição (MT/BT)", "AT": "Alta tensão", "ME": "Medição"}
+def fmt_num(x):
+    s = f"{x:,.3f}".rstrip("0").rstrip(".")
+    return s.replace(",", "X").replace(".", ",").replace("X", ".")
+def rotulo_dim(conceito, dim, code):
+    if code in ESPECIAIS: return ESPECIAIS[code]
+    meta = CF["dimensoes"].get(dim, {})
+    if dim == "nivel": return (NIVEL_TRAFO if conceito == "transformadores" else NIVEL).get(code, code)
+    if dim == "classe": return CLASSES.get(code, code)
+    if dim == "municipio": return ibge.get(code, f"Código {code} (fora da tabela IBGE)")
+    if dim == "tipo":
+        if code in tuc_desc: return f"{tuc_desc[code]} (TUC {code})"
+        if code in tuar: return f"TUC {code} — " + "; ".join(sorted(set(tuar[code]))[:3])
+        return f"Código {code} (sem correspondência no MCPSE)"
+    if dim == "a1": return f"Tipo de bem {code}"
+    tb = meta.get("dda")
+    if dim == "potencia_nominal":
+        v = DDA.get("TPOTAPRT", {}).get(code)
+        return f"{fmt_num(float(v['POT']))} kVA" if v and v.get("POT") is not None else f"Código {code} (sem potência no DDA)"
+    if dim == "potencia_reativa":
+        v = DDA.get("TPOTRTV", {}).get(code)
+        pot = v and (v.get("POT") if v.get("POT") is not None else v.get("DESCR"))
+        return f"{fmt_num(float(pot))} kvar" if pot not in (None, "") and str(pot).replace(".", "", 1).isdigit() else (cap(str(v.get("DESCR"))) if v else f"Código {code}")
+    if tb and code in DDA.get(tb, {}):
+        d = DDA[tb][code].get("DESCR") or code
+        return d[:1].upper() + d[1:]
+    return f"Código {code} (sem descrição no DDA)"
+
+cubos3 = {}
+with open(PKG / "conceitos" / "cubos.csv", encoding="utf-8") as fh:
+    for r in csv.DictReader(fh):
+        cubos3.setdefault(r["conceito"], []).append(r)
+# potencia bloqueada no fato-base -> N/D tambem no cubo (mesma regra do pacote)
+pot_bloq = {(f["dist"], f["entidade"]) for f in fatos if f["entidade"] in ("EQTRMT", "EQTRAT", "EQRE") and f["potencia_kva"] == ""}
+tam3 = {}
+for cid, cfg in CF["conceitos"].items():
+    rows = cubos3.get(cid, [])
+    meds = cfg["medidas"]
+    valores, rot, pos = {}, {}, {}
+    cub_out = {}
+    for cubo, dims in cfg["cubos"].items():
+        enc, ents = [], set()
+        for r in (x for x in rows if x["cubo"] == cubo):
+            k = json.loads(r["chave"]); ents.add(r["entidade"])
+            idx = []
+            for dm, code in zip(dims, k):
+                lst, ps = valores.setdefault(dm, []), pos.setdefault(dm, {})
+                if code not in ps: ps[code] = len(lst); lst.append(code); rot.setdefault(dm, {})[code] = rotulo_dim(cid, dm, code)
+                idx.append(ps[code])
+            vals = []
+            for m in meds:
+                v = r[m]
+                if m == "potencia_kva" and (r["dist"], r["entidade"]) in pot_bloq: v = ""
+                if m == "potencia_kva" and r["entidade"] not in ("EQTRMT", "EQTRAT", "EQRE"):
+                    vals.append(-1); continue   # -1 = medida nao se aplica a esta entidade (ex.: transformador de medida): nem soma, nem N/D
+                vals.append(None if v == "" else (int(v) if m == "quantidade" else float(v)))
+            enc.append([int(r["dist"])] + idx + vals)
+        cub_out[cubo] = {"dims": dims, "entidades": sorted(ents), "rows": enc}
+    obj = {"id": cid, "medidas": meds, "valores": valores, "rotulos": {dm: v for dm, v in rot.items() if dm != "municipio"}, "cubos": cub_out}
+    if "a1" in valores:
+        obj["a1PorTuc"] = {tc: a1_tuc[tc] for tc in valores.get("tipo", []) if a1_tuc.get(tc)}
+    if "municipio" in valores:
+        obj["rotulos"]["municipio"] = {c: rot["municipio"][c] for c in valores["municipio"]}
+    tam3[cid] = dump(OUT / "conceitos" / f"{cid}.json", obj)
+# totais por ativo (mesmo calculo do pacote; validados contra o cubo) + catalogo no indice principal
+tot3 = {}
+for r in rd("ativos_totais.csv"):
+    tot3.setdefault(r["ativo"], {}).setdefault(r["medida"], []).append([int(r["dist"]), num(r["valor"]), ST.get(r["status"], r["status"]), r["motivo"]])
+index["conceitos"] = {k: CF[k] for k in ("versao", "dimensoes", "medidas", "grupos_navegacao", "conceitos", "ativos", "kpis_padrao")}
+index["conceitos"]["menu"] = CF.get("menu", [])
+index["ativosTotais"] = tot3
+s_idx = dump(OUT / "index.json", index)
+# inventarios por DIST: subestacoes, alimentadores, circuitos AT e conjuntos (codigo e nome de infraestrutura + contagens)
+inv3 = {}
+for chave, nome_inv in (("sub", "subestacoes"), ("ctmt", "alimentadores"), ("ctat", "circuitos_at"), ("conj", "conjuntos")):
+    with open(PKG / "inventario" / f"{nome_inv}.csv", encoding="utf-8") as fh:
+        rr = list(csv.DictReader(fh))
+    cols = [c for c in (rr[0].keys() if rr else []) if c not in ("dist", "data_base")]
+    for r in rr:
+        nome = (r.get("nome") or "").replace(" \ufffd ", " – ").replace("\ufffd", "·")
+        o = inv3.setdefault(r["dist"], {}).setdefault(chave, {"cols": cols, "rows": []})
+        o["rows"].append([nome if c == "nome" else (num(r[c]) if c not in ("chave", "sub", "ten_nom", "pos") else r[c]) for c in cols])
+for d, o in inv3.items():
+    dump(OUT / "inventario" / f"{d}.json", o)
 listing = {"arquivos": sorted(p.relative_to(OUT).as_posix() for p in OUT.rglob("*.json"))}
 dump(OUT / "assets.json", {**listing, "release_id": man["release_id"], "geo_visualizacao": "ARAT oficial 2025 com simplificacao adicional de 0,008 grau para a vista nacional; detalhe por DIST usa o arquivo do pacote"})
-print(json.dumps({"index_kb": s_idx // 1024, "brasil_kb": size_br // 1024, "facetas_mb": round(sum(tam.values()) / 1e6, 2), "maior_faceta": max(tam.items(), key=lambda x: x[1])}, ensure_ascii=False))
+print(json.dumps({"conceitos_mb": round(sum(tam3.values()) / 1e6, 2), "maior_conceito": max(tam3.items(), key=lambda x: x[1]), "index_kb": s_idx // 1024, "brasil_kb": size_br // 1024, "facetas_mb": round(sum(tam.values()) / 1e6, 2), "maior_faceta": max(tam.items(), key=lambda x: x[1])}, ensure_ascii=False))

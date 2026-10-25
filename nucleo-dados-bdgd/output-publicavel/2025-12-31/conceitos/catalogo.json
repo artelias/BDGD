@@ -1,0 +1,1199 @@
+{
+ "versao": "r3-1",
+ "descricao": "Catalogo semantico compartilhado (ETL e web): conceitos de ativo, entidades de origem, dimensoes filtraveis, medidas e ativos (recortes nomeados). Fonte unica para Panorama, Matriz, Comparador, Explorar e Evolucao.",
+ "dimensoes": {
+  "nivel": {
+   "rotulo": "Nível de tensão",
+   "fonte": "tabela de origem (BT, MT, AT)"
+  },
+  "situacao": {
+   "rotulo": "Situação de ativação",
+   "dda": "TSITATI"
+  },
+  "classe": {
+   "rotulo": "Classe",
+   "fonte": "prefixo do código de subclasse (DDA TCLASUBCLA)"
+  },
+  "subclasse": {
+   "rotulo": "Subclasse",
+   "dda": "TCLASUBCLA"
+  },
+  "grupo_tensao": {
+   "rotulo": "Grupo de tensão",
+   "dda": "TGRUTEN"
+  },
+  "grupo_tarifario": {
+   "rotulo": "Subgrupo tarifário",
+   "dda": "TGRUTAR"
+  },
+  "fases": {
+   "rotulo": "Fases de conexão",
+   "dda": "TFASCON"
+  },
+  "area": {
+   "rotulo": "Localização",
+   "dda": "TARE"
+  },
+  "municipio": {
+   "rotulo": "Município",
+   "fonte": "IBGE"
+  },
+  "tipo": {
+   "rotulo": "Tipo patrimonial (TUC)",
+   "fonte": "MCPSE Res. ANEEL 674/2015; DDA TUAR"
+  },
+  "a1": {
+   "rotulo": "Tipo de bem (A1)",
+   "fonte": "MCPSE, por TUC"
+  },
+  "classe_tensao": {
+   "rotulo": "Classe de tensão",
+   "dda": "TCLATEN"
+  },
+  "potencia_nominal": {
+   "rotulo": "Potência nominal",
+   "dda": "TPOTAPRT"
+  },
+  "potencia_reativa": {
+   "rotulo": "Potência reativa",
+   "dda": "TPOTRTV"
+  },
+  "instalacao": {
+   "rotulo": "Tipo de instalação",
+   "dda": "TINST"
+  },
+  "situacao_contabil": {
+   "rotulo": "Situação contábil",
+   "dda": "TSITCONT"
+  },
+  "propriedade": {
+   "rotulo": "Propriedade",
+   "dda": "TPOS"
+  },
+  "meio_isolante": {
+   "rotulo": "Meio isolante",
+   "dda": "TMEIISO"
+  },
+  "tipo_regulador": {
+   "rotulo": "Ligação do regulador",
+   "dda": "TREGU"
+  },
+  "tecnologia": {
+   "rotulo": "Tipo de medidor",
+   "dda": "TUNI"
+  },
+  "tipo_estrutura": {
+   "rotulo": "Tipo de estrutura",
+   "dda": "TPONNOT"
+  },
+  "material": {
+   "rotulo": "Material",
+   "dda": "TESTMAT"
+  },
+  "estrutura": {
+   "rotulo": "Estrutura",
+   "dda": "TESTR"
+  },
+  "altura": {
+   "rotulo": "Altura",
+   "dda": "TESTALT"
+  },
+  "esforco": {
+   "rotulo": "Esforço",
+   "dda": "TESTESF"
+  },
+  "lampada": {
+   "rotulo": "Tipo de lâmpada",
+   "dda": "TPIP"
+  },
+  "tensao_nominal": {
+   "rotulo": "Tensão nominal",
+   "dda": "TTEN"
+  },
+  "tipo_bay": {
+   "rotulo": "Grupo do bay",
+   "dda": "TSUBGRP"
+  },
+  "material_condutor": {
+   "rotulo": "Material do condutor",
+   "dda": "TCABOMAT",
+   "fonte": "SEGCON.MAT_FAS_1 via TIP_CND"
+  }
+ },
+ "medidas": {
+  "quantidade": {
+   "rotulo": "Quantidade",
+   "unidade": "itens"
+  },
+  "extensao_km": {
+   "rotulo": "Extensão",
+   "unidade": "km"
+  },
+  "potencia_kva": {
+   "rotulo": "Potência nominal",
+   "unidade": "kVA",
+   "ressalva": "Potência traduzida do código DDA TPOTAPRT; homologada com ressalvas (divergências entre equipamento e instalação preservadas como alerta)."
+  }
+ },
+ "grupos_navegacao": [
+  {
+   "id": "clientes",
+   "nome": "Clientes e geração",
+   "conceitos": [
+    "consumidores",
+    "geradores",
+    "iluminacao"
+   ]
+  },
+  {
+   "id": "redes",
+   "nome": "Redes",
+   "conceitos": [
+    "redes",
+    "ramais"
+   ]
+  },
+  {
+   "id": "transformacao",
+   "nome": "Transformação",
+   "conceitos": [
+    "transformadores"
+   ]
+  },
+  {
+   "id": "protecao",
+   "nome": "Seccionamento e proteção",
+   "conceitos": [
+    "seccionamento"
+   ]
+  },
+  {
+   "id": "regulacao",
+   "nome": "Regulação e compensação",
+   "conceitos": [
+    "reguladores",
+    "compensacao"
+   ]
+  },
+  {
+   "id": "medicao",
+   "nome": "Medição",
+   "conceitos": [
+    "medidores"
+   ]
+  },
+  {
+   "id": "estruturas",
+   "nome": "Estruturas",
+   "conceitos": [
+    "estruturas"
+   ]
+  },
+  {
+   "id": "sistema",
+   "nome": "Subestações e circuitos",
+   "conceitos": [
+    "subestacoes",
+    "alimentadores",
+    "circuitos_at",
+    "conjuntos",
+    "barramentos",
+    "bays"
+   ]
+  }
+ ],
+ "conceitos": {
+  "consumidores": {
+   "nome": "Consumidores",
+   "descricao": "Unidades consumidoras de baixa, média e alta tensão. Cada unidade é contada uma vez por distribuidora, pela chave código anonimizado + ponto de conexão (regra UC v3).",
+   "entidades": [
+    "UCBT",
+    "UCMT",
+    "UCAT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "nivel",
+   "cubos": {
+    "principal": [
+     "nivel",
+     "situacao",
+     "classe",
+     "subclasse",
+     "grupo_tensao",
+     "grupo_tarifario",
+     "fases",
+     "area"
+    ],
+    "municipio": [
+     "municipio",
+     "nivel",
+     "situacao"
+    ]
+   }
+  },
+  "geradores": {
+   "nome": "Geradores",
+   "descricao": "Unidades geradoras conectadas à rede da distribuidora (inclui micro e minigeração distribuída). Potência instalada não é publicada: sem unidade e semântica comprovadas.",
+   "entidades": [
+    "UGBT",
+    "UGMT",
+    "UGAT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "nivel",
+   "cubos": {
+    "principal": [
+     "nivel",
+     "situacao",
+     "grupo_tensao",
+     "fases"
+    ],
+    "municipio": [
+     "municipio",
+     "nivel",
+     "situacao"
+    ]
+   }
+  },
+  "iluminacao": {
+   "nome": "Iluminação pública",
+   "descricao": "Pontos de iluminação pública cadastrados pela distribuidora.",
+   "entidades": [
+    "PIP"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "lampada",
+   "cubos": {
+    "principal": [
+     "lampada",
+     "situacao",
+     "area",
+     "fases"
+    ],
+    "municipio": [
+     "municipio",
+     "situacao"
+    ]
+   }
+  },
+  "redes": {
+   "nome": "Redes",
+   "descricao": "Segmentos de rede de baixa, média e alta tensão. Extensão = comprimento declarado (COMP) em km.",
+   "entidades": [
+    "SSDBT",
+    "SSDMT",
+    "SSDAT"
+   ],
+   "medidas": [
+    "extensao_km"
+   ],
+   "categoria": "nivel",
+   "cubos": {
+    "principal": [
+     "nivel",
+     "fases",
+     "area",
+     "instalacao",
+     "propriedade",
+     "situacao_contabil"
+    ],
+    "condutor": [
+     "nivel",
+     "material_condutor",
+     "tensao_nominal",
+     "area"
+    ]
+   }
+  },
+  "ramais": {
+   "nome": "Ramais de ligação",
+   "descricao": "Trechos que ligam a rede às unidades consumidoras. Extensão complementar às redes, não somada a elas.",
+   "entidades": [
+    "RAMLIG"
+   ],
+   "medidas": [
+    "extensao_km"
+   ],
+   "categoria": "fases",
+   "cubos": {
+    "principal": [
+     "fases",
+     "area",
+     "instalacao",
+     "propriedade",
+     "situacao_contabil"
+    ]
+   }
+  },
+  "transformadores": {
+   "nome": "Transformadores",
+   "descricao": "Equipamentos transformadores classificados pelo TUC do MCPSE: distribuição (565), força (570), medida (575) e demais tipos encontrados. Instalações (UNTRMT, UNTRAT) servem só para localização e nunca são somadas aos equipamentos.",
+   "entidades": [
+    "EQTRMT",
+    "EQTRAT",
+    "EQTRM"
+   ],
+   "vinculos": [
+    "UNTRMT",
+    "UNTRAT"
+   ],
+   "medidas": [
+    "quantidade",
+    "potencia_kva"
+   ],
+   "categoria": "tipo",
+   "cubos": {
+    "principal": [
+     "tipo",
+     "a1",
+     "nivel",
+     "fases",
+     "classe_tensao",
+     "area",
+     "instalacao",
+     "situacao_contabil"
+    ],
+    "potencia": [
+     "tipo",
+     "nivel",
+     "potencia_nominal",
+     "area"
+    ],
+    "municipio": [
+     "municipio",
+     "tipo"
+    ]
+   }
+  },
+  "seccionamento": {
+   "nome": "Seccionamento e proteção",
+   "descricao": "Chaves, disjuntores, religadores e demais equipamentos de seccionamento (EQSE), separados pelo TUC do MCPSE. O nível de tensão e a localização vêm da instalação vinculada.",
+   "entidades": [
+    "EQSE"
+   ],
+   "vinculos": [
+    "UNSEAT",
+    "UNSEMT",
+    "UNSEBT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tipo",
+   "cubos": {
+    "principal": [
+     "tipo",
+     "a1",
+     "nivel",
+     "fases",
+     "classe_tensao",
+     "area",
+     "meio_isolante",
+     "situacao_contabil"
+    ],
+    "municipio": [
+     "municipio",
+     "tipo"
+    ]
+   }
+  },
+  "reguladores": {
+   "nome": "Reguladores",
+   "descricao": "Reguladores de tensão (EQRE; TUC 340 do MCPSE). Média e alta tensão vêm da instalação vinculada.",
+   "entidades": [
+    "EQRE"
+   ],
+   "vinculos": [
+    "UNREAT",
+    "UNREMT"
+   ],
+   "medidas": [
+    "quantidade",
+    "potencia_kva"
+   ],
+   "categoria": "nivel",
+   "cubos": {
+    "principal": [
+     "tipo",
+     "nivel",
+     "tipo_regulador",
+     "fases",
+     "potencia_nominal",
+     "situacao_contabil"
+    ],
+    "municipio": [
+     "municipio",
+     "tipo"
+    ]
+   }
+  },
+  "compensacao": {
+   "nome": "Compensação de reativos",
+   "descricao": "Bancos de capacitores (TUC 125), reatores (330) e compensadores de reativos (165), separados pelo TUC do MCPSE.",
+   "entidades": [
+    "EQCR"
+   ],
+   "vinculos": [
+    "UNCRAT",
+    "UNCRMT",
+    "UNCRBT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tipo",
+   "cubos": {
+    "principal": [
+     "tipo",
+     "a1",
+     "nivel",
+     "fases",
+     "area",
+     "potencia_reativa",
+     "situacao_contabil"
+    ],
+    "municipio": [
+     "municipio",
+     "tipo"
+    ]
+   }
+  },
+  "medidores": {
+   "nome": "Medidores",
+   "descricao": "Medidores de energia (EQME; TUC 295 do MCPSE). A tecnologia vem do tipo de unidade do DDA.",
+   "entidades": [
+    "EQME"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tecnologia",
+   "cubos": {
+    "principal": [
+     "tipo",
+     "a1",
+     "tecnologia",
+     "fases",
+     "situacao_contabil"
+    ]
+   }
+  },
+  "estruturas": {
+   "nome": "Estruturas",
+   "descricao": "Pontos notáveis da rede (PONNOT): postes, torres e demais estruturas, pelo tipo do DDA (TPONNOT).",
+   "entidades": [
+    "PONNOT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tipo_estrutura",
+   "cubos": {
+    "principal": [
+     "tipo_estrutura",
+     "tipo",
+     "a1",
+     "material",
+     "area",
+     "propriedade",
+     "situacao_contabil"
+    ],
+    "dimensoes": [
+     "tipo_estrutura",
+     "altura",
+     "esforco"
+    ],
+    "estrutura": [
+     "tipo_estrutura",
+     "estrutura"
+    ],
+    "municipio": [
+     "municipio",
+     "tipo_estrutura"
+    ]
+   }
+  },
+  "subestacoes": {
+   "nome": "Subestações",
+   "descricao": "Subestações cadastradas pela distribuidora (SUB).",
+   "entidades": [
+    "SUB"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "propriedade",
+   "cubos": {
+    "principal": [
+     "propriedade"
+    ]
+   },
+   "inventario": "sub"
+  },
+  "alimentadores": {
+   "nome": "Alimentadores",
+   "descricao": "Circuitos de média tensão (CTMT), um por alimentador.",
+   "entidades": [
+    "CTMT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tensao_nominal",
+   "cubos": {
+    "principal": [
+     "tensao_nominal"
+    ]
+   },
+   "inventario": "ctmt"
+  },
+  "circuitos_at": {
+   "nome": "Circuitos de alta tensão",
+   "descricao": "Circuitos de alta tensão (CTAT): linhas de subtransmissão da distribuidora.",
+   "entidades": [
+    "CTAT"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tensao_nominal",
+   "cubos": {
+    "principal": [
+     "tensao_nominal"
+    ]
+   },
+   "inventario": "ctat"
+  },
+  "conjuntos": {
+   "nome": "Conjuntos",
+   "descricao": "Conjuntos de unidades consumidoras (CONJ) usados nos indicadores de continuidade.",
+   "entidades": [
+    "CONJ"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": null,
+   "cubos": {
+    "principal": []
+   },
+   "inventario": "conj"
+  },
+  "barramentos": {
+   "nome": "Barramentos",
+   "descricao": "Barramentos de subestação (BAR).",
+   "entidades": [
+    "BAR"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tensao_nominal",
+   "cubos": {
+    "principal": [
+     "tensao_nominal",
+     "tipo",
+     "instalacao"
+    ]
+   }
+  },
+  "bays": {
+   "nome": "Bays",
+   "descricao": "Vãos (bays) de subestação (BAY).",
+   "entidades": [
+    "BAY"
+   ],
+   "medidas": [
+    "quantidade"
+   ],
+   "categoria": "tipo_bay",
+   "cubos": {
+    "principal": [
+     "tipo_bay",
+     "propriedade"
+    ]
+   }
+  }
+ },
+ "ativos": [
+  {
+   "id": "consumidores",
+   "nome": "Unidades consumidoras",
+   "conceito": "consumidores",
+   "filtro": {
+    "situacao": [
+     "AT"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Clientes",
+   "resumo": "Unidades consumidoras ativas em 31/12/2025.",
+   "explicacao": "Cada unidade consumidora com situação Ativada é contada uma vez, somando baixa, média e alta tensão. Registros repetidos da mesma unidade (por exemplo, mudança de classe no ano) não duplicam a contagem.",
+   "tecnico": "COUNT(DISTINCT (COD_ID, PN_CON)) sobre UCBT ∪ UCMT ∪ UCAT com SIT_ATIV = 'AT' (DDA TSITATI: Ativada), por DIST; COD_ID é o código anonimizado (SHA-256) publicado pela ANEEL."
+  },
+  {
+   "id": "geradores",
+   "nome": "Geradores",
+   "conceito": "geradores",
+   "filtro": {
+    "situacao": [
+     "AT"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Clientes",
+   "resumo": "Unidades geradoras ativas conectadas à rede.",
+   "explicacao": "Unidades geradoras com situação Ativada, em baixa, média e alta tensão, incluindo micro e minigeração distribuída.",
+   "tecnico": "COUNT(*) de UGBT ∪ UGMT ∪ UGAT com SIT_ATIV = 'AT'.",
+   "ressalva": "Potência instalada não publicada: o campo POT_INST não tem unidade e semântica comprovadas."
+  },
+  {
+   "id": "iluminacao",
+   "nome": "Iluminação pública",
+   "conceito": "iluminacao",
+   "filtro": {
+    "situacao": [
+     "AT"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Clientes",
+   "resumo": "Pontos de iluminação pública ativos.",
+   "explicacao": "Pontos de iluminação pública cadastrados com situação Ativada.",
+   "tecnico": "COUNT(*) de PIP com SIT_ATIV = 'AT'."
+  },
+  {
+   "id": "rede_bt",
+   "nome": "Rede de baixa tensão",
+   "conceito": "redes",
+   "filtro": {
+    "nivel": [
+     "BT"
+    ]
+   },
+   "medida": "extensao_km",
+   "familia": "Redes",
+   "resumo": "Extensão da rede de baixa tensão.",
+   "explicacao": "Soma do comprimento declarado dos segmentos de rede de baixa tensão.",
+   "tecnico": "SUM(SSDBT.COMP) / 1000, em decimal exato."
+  },
+  {
+   "id": "rede_mt",
+   "nome": "Rede de média tensão",
+   "conceito": "redes",
+   "filtro": {
+    "nivel": [
+     "MT"
+    ]
+   },
+   "medida": "extensao_km",
+   "familia": "Redes",
+   "resumo": "Extensão da rede de média tensão.",
+   "explicacao": "Soma do comprimento declarado dos segmentos de rede de média tensão.",
+   "tecnico": "SUM(SSDMT.COMP) / 1000, em decimal exato."
+  },
+  {
+   "id": "rede_at",
+   "nome": "Rede de alta tensão",
+   "conceito": "redes",
+   "filtro": {
+    "nivel": [
+     "AT"
+    ]
+   },
+   "medida": "extensao_km",
+   "familia": "Redes",
+   "resumo": "Extensão da rede de alta tensão.",
+   "explicacao": "Soma do comprimento declarado dos segmentos de rede de alta tensão.",
+   "tecnico": "SUM(SSDAT.COMP) / 1000, em decimal exato.",
+   "ressalva": "Parte dos segmentos de alta tensão tem comprimento nulo ou zero."
+  },
+  {
+   "id": "ramais",
+   "nome": "Ramais de ligação",
+   "conceito": "ramais",
+   "filtro": {},
+   "medida": "extensao_km",
+   "familia": "Redes",
+   "resumo": "Extensão dos ramais de ligação.",
+   "explicacao": "Comprimento declarado dos ramais que ligam a rede às unidades consumidoras. Não é somado à rede.",
+   "tecnico": "SUM(RAMLIG.COMP) / 1000."
+  },
+  {
+   "id": "trafo_dist",
+   "nome": "Transformadores de distribuição",
+   "conceito": "transformadores",
+   "filtro": {
+    "tipo": [
+     "565"
+    ]
+   },
+   "medida": "quantidade",
+   "medidas_extra": [
+    "potencia_kva"
+   ],
+   "familia": "Transformação",
+   "resumo": "Transformadores de distribuição instalados (TUC 565).",
+   "explicacao": "Equipamentos transformadores classificados como transformador de distribuição no controle patrimonial. Conta o equipamento, não a instalação.",
+   "tecnico": "COUNT(*) de EQTRMT ∪ EQTRAT com TUC = 565 (MCPSE)."
+  },
+  {
+   "id": "trafo_forca",
+   "nome": "Transformadores de força",
+   "conceito": "transformadores",
+   "filtro": {
+    "tipo": [
+     "570"
+    ]
+   },
+   "medida": "quantidade",
+   "medidas_extra": [
+    "potencia_kva"
+   ],
+   "familia": "Transformação",
+   "resumo": "Transformadores de força (TUC 570).",
+   "explicacao": "Equipamentos classificados como transformador de força, em geral de subestação.",
+   "tecnico": "COUNT(*) de EQTRMT ∪ EQTRAT com TUC = 570 (MCPSE)."
+  },
+  {
+   "id": "trafo_medida",
+   "nome": "Transformadores de medida",
+   "conceito": "transformadores",
+   "filtro": {
+    "tipo": [
+     "575"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Medição",
+   "resumo": "Transformadores de corrente e de potencial (TUC 575).",
+   "explicacao": "Transformadores usados na medição (TC e TP), classificados pelo controle patrimonial.",
+   "tecnico": "COUNT(*) de EQTRMT ∪ EQTRAT ∪ EQTRM com TUC = 575 (MCPSE)."
+  },
+  {
+   "id": "chaves",
+   "nome": "Chaves",
+   "conceito": "seccionamento",
+   "filtro": {
+    "tipo": [
+     "160"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Seccionamento e proteção",
+   "resumo": "Chaves seccionadoras e fusíveis (TUC 160).",
+   "explicacao": "Equipamentos classificados como chave: seccionadoras, fusíveis, seccionalizadores e afins.",
+   "tecnico": "COUNT(*) de EQSE com TUC = 160 (MCPSE).",
+   "ressalva": "Equipamentos de seccionamento sem TUC do MCPSE não entram em Chaves, Disjuntores ou Religadores; aparecem como categoria própria em Seccionamento e proteção."
+  },
+  {
+   "id": "seccionalizadores",
+   "nome": "Seccionalizadores",
+   "conceito": "seccionamento",
+   "filtro": {
+    "tipo": [
+     "160"
+    ],
+    "a1": [
+     "10"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Seccionamento e proteção",
+   "resumo": "Seccionalizadores (TUC 160, tipo de bem 10).",
+   "explicacao": "Chaves do tipo seccionalizador.",
+   "tecnico": "COUNT(*) de EQSE com TUC = 160 e A1 = 10 (MCPSE)."
+  },
+  {
+   "id": "disjuntores",
+   "nome": "Disjuntores",
+   "conceito": "seccionamento",
+   "filtro": {
+    "tipo": [
+     "210"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Seccionamento e proteção",
+   "resumo": "Disjuntores (TUC 210).",
+   "explicacao": "Equipamentos classificados como disjuntor.",
+   "tecnico": "COUNT(*) de EQSE com TUC = 210 (MCPSE)."
+  },
+  {
+   "id": "religadores",
+   "nome": "Religadores",
+   "conceito": "seccionamento",
+   "filtro": {
+    "tipo": [
+     "345"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Seccionamento e proteção",
+   "resumo": "Religadores (TUC 345).",
+   "explicacao": "Equipamentos classificados como religador.",
+   "tecnico": "COUNT(*) de EQSE com TUC = 345 (MCPSE)."
+  },
+  {
+   "id": "reguladores",
+   "nome": "Reguladores",
+   "conceito": "reguladores",
+   "filtro": {},
+   "medida": "quantidade",
+   "medidas_extra": [
+    "potencia_kva"
+   ],
+   "familia": "Regulação e compensação",
+   "resumo": "Reguladores de tensão.",
+   "explicacao": "Equipamentos reguladores de tensão. A tabela de equipamentos é exclusiva desse ativo; o TUC fica disponível como filtro.",
+   "tecnico": "COUNT(*) de EQRE."
+  },
+  {
+   "id": "bancos_capacitores",
+   "nome": "Bancos de capacitores",
+   "conceito": "compensacao",
+   "filtro": {
+    "tipo": [
+     "125"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Regulação e compensação",
+   "resumo": "Bancos de capacitores paralelo (TUC 125).",
+   "explicacao": "Equipamentos classificados como banco de capacitores.",
+   "tecnico": "COUNT(*) de EQCR com TUC = 125 (MCPSE)."
+  },
+  {
+   "id": "reatores",
+   "nome": "Reatores",
+   "conceito": "compensacao",
+   "filtro": {
+    "tipo": [
+     "330"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Regulação e compensação",
+   "resumo": "Reatores e resistores (TUC 330).",
+   "explicacao": "Equipamentos classificados como reator ou resistor.",
+   "tecnico": "COUNT(*) de EQCR com TUC = 330 (MCPSE)."
+  },
+  {
+   "id": "medidores",
+   "nome": "Medidores",
+   "conceito": "medidores",
+   "filtro": {},
+   "medida": "quantidade",
+   "familia": "Medição",
+   "resumo": "Medidores de energia.",
+   "explicacao": "Medidores cadastrados. A tabela de equipamentos é exclusiva desse ativo; tecnologia e TUC ficam disponíveis como filtros.",
+   "tecnico": "COUNT(*) de EQME."
+  },
+  {
+   "id": "postes",
+   "nome": "Postes",
+   "conceito": "estruturas",
+   "filtro": {
+    "tipo_estrutura": [
+     "POS"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Estruturas",
+   "resumo": "Postes da rede.",
+   "explicacao": "Pontos notáveis do tipo poste.",
+   "tecnico": "COUNT(*) de PONNOT com TIP_PN = 'POS' (DDA TPONNOT)."
+  },
+  {
+   "id": "torres",
+   "nome": "Torres",
+   "conceito": "estruturas",
+   "filtro": {
+    "tipo_estrutura": [
+     "TOR"
+    ]
+   },
+   "medida": "quantidade",
+   "familia": "Estruturas",
+   "resumo": "Torres da rede.",
+   "explicacao": "Pontos notáveis do tipo torre.",
+   "tecnico": "COUNT(*) de PONNOT com TIP_PN = 'TOR' (DDA TPONNOT)."
+  },
+  {
+   "id": "subestacoes",
+   "nome": "Subestações",
+   "conceito": "subestacoes",
+   "filtro": {},
+   "medida": "quantidade",
+   "familia": "Subestações e circuitos",
+   "resumo": "Subestações cadastradas.",
+   "explicacao": "Subestações registradas pela distribuidora, inclusive as de outros proprietários em que ela tem instalações.",
+   "tecnico": "COUNT(*) de SUB."
+  },
+  {
+   "id": "alimentadores",
+   "nome": "Alimentadores",
+   "conceito": "alimentadores",
+   "filtro": {},
+   "medida": "quantidade",
+   "familia": "Subestações e circuitos",
+   "resumo": "Alimentadores de média tensão.",
+   "explicacao": "Circuitos de média tensão que saem das subestações.",
+   "tecnico": "COUNT(*) de CTMT."
+  },
+  {
+   "id": "circuitos_at",
+   "nome": "Circuitos de alta tensão",
+   "conceito": "circuitos_at",
+   "filtro": {},
+   "medida": "quantidade",
+   "familia": "Subestações e circuitos",
+   "resumo": "Circuitos de alta tensão.",
+   "explicacao": "Linhas de subtransmissão (alta tensão) da distribuidora.",
+   "tecnico": "COUNT(*) de CTAT."
+  },
+  {
+   "id": "conjuntos",
+   "nome": "Conjuntos",
+   "conceito": "conjuntos",
+   "filtro": {},
+   "medida": "quantidade",
+   "familia": "Subestações e circuitos",
+   "resumo": "Conjuntos de unidades consumidoras.",
+   "explicacao": "Agrupamentos de unidades consumidoras usados nos indicadores de continuidade.",
+   "tecnico": "COUNT(*) de CONJ."
+  },
+  {
+   "id": "barramentos",
+   "nome": "Barramentos",
+   "conceito": "barramentos",
+   "filtro": {},
+   "medida": "quantidade",
+   "familia": "Subestações e circuitos",
+   "resumo": "Barramentos de subestação.",
+   "explicacao": "Barramentos cadastrados nas subestações.",
+   "tecnico": "COUNT(*) de BAR."
+  }
+ ],
+ "kpis_padrao": [
+  "consumidores",
+  "rede_mt",
+  "rede_bt",
+  "rede_at",
+  "trafo_dist",
+  "trafo_forca",
+  "subestacoes",
+  "alimentadores",
+  "medidores",
+  "iluminacao"
+ ],
+ "menu": [
+  {
+   "grupo": "Clientes e geração",
+   "itens": [
+    {
+     "id": "consumidores",
+     "nome": "Consumidores",
+     "conceito": "consumidores"
+    },
+    {
+     "id": "geradores",
+     "nome": "Geradores",
+     "conceito": "geradores"
+    }
+   ]
+  },
+  {
+   "grupo": "Redes",
+   "itens": [
+    {
+     "id": "redes",
+     "nome": "Redes",
+     "conceito": "redes"
+    },
+    {
+     "id": "ramais",
+     "nome": "Ramais de ligação",
+     "conceito": "ramais"
+    }
+   ]
+  },
+  {
+   "grupo": "Transformação",
+   "itens": [
+    {
+     "id": "transformadores",
+     "nome": "Transformadores",
+     "conceito": "transformadores"
+    }
+   ]
+  },
+  {
+   "grupo": "Seccionamento e proteção",
+   "itens": [
+    {
+     "id": "chaves",
+     "nome": "Chaves",
+     "conceito": "seccionamento",
+     "filtro": {
+      "tipo": [
+       "160"
+      ]
+     },
+     "descricao": "Chaves seccionadoras, fusíveis e seccionalizadores (TUC 160). O tipo de bem (A1) separa os subtipos."
+    },
+    {
+     "id": "disjuntores",
+     "nome": "Disjuntores",
+     "conceito": "seccionamento",
+     "filtro": {
+      "tipo": [
+       "210"
+      ]
+     },
+     "descricao": "Disjuntores (TUC 210)."
+    },
+    {
+     "id": "religadores",
+     "nome": "Religadores",
+     "conceito": "seccionamento",
+     "filtro": {
+      "tipo": [
+       "345"
+      ]
+     },
+     "descricao": "Religadores (TUC 345)."
+    },
+    {
+     "id": "outros_seccionamento",
+     "nome": "Outros dispositivos de seccionamento",
+     "conceito": "seccionamento",
+     "excluir": {
+      "tipo": [
+       "160",
+       "210",
+       "345"
+      ]
+     },
+     "descricao": "Demais equipamentos de seccionamento, inclusive os sem TUC do MCPSE, que não entram em Chaves, Disjuntores ou Religadores."
+    }
+   ]
+  },
+  {
+   "grupo": "Regulação e compensação",
+   "itens": [
+    {
+     "id": "reguladores",
+     "nome": "Reguladores",
+     "conceito": "reguladores"
+    },
+    {
+     "id": "bancos_capacitores",
+     "nome": "Bancos de capacitores",
+     "conceito": "compensacao",
+     "filtro": {
+      "tipo": [
+       "125"
+      ]
+     },
+     "descricao": "Bancos de capacitores paralelo (TUC 125)."
+    },
+    {
+     "id": "outros_compensacao",
+     "nome": "Reatores e compensadores",
+     "conceito": "compensacao",
+     "excluir": {
+      "tipo": [
+       "125"
+      ]
+     },
+     "descricao": "Reatores, resistores e compensadores de reativos, separados pelo TUC."
+    }
+   ]
+  },
+  {
+   "grupo": "Medição",
+   "itens": [
+    {
+     "id": "medidores",
+     "nome": "Medidores",
+     "conceito": "medidores"
+    },
+    {
+     "id": "transformadores_medida",
+     "nome": "Transformadores de medida",
+     "conceito": "transformadores",
+     "filtro": {
+      "tipo": [
+       "575"
+      ]
+     },
+     "descricao": "Transformadores de corrente e de potencial (TUC 575), onde estiverem cadastrados."
+    }
+   ]
+  },
+  {
+   "grupo": "Estruturas e iluminação",
+   "itens": [
+    {
+     "id": "estruturas",
+     "nome": "Estruturas",
+     "conceito": "estruturas",
+     "descricao": "Postes, torres e demais pontos notáveis da rede."
+    },
+    {
+     "id": "iluminacao",
+     "nome": "Iluminação pública",
+     "conceito": "iluminacao"
+    }
+   ]
+  },
+  {
+   "grupo": "Subestações e circuitos",
+   "itens": [
+    {
+     "id": "subestacoes",
+     "nome": "Subestações",
+     "conceito": "subestacoes"
+    },
+    {
+     "id": "alimentadores",
+     "nome": "Alimentadores",
+     "conceito": "alimentadores"
+    },
+    {
+     "id": "circuitos_at",
+     "nome": "Circuitos de alta tensão",
+     "conceito": "circuitos_at"
+    },
+    {
+     "id": "conjuntos",
+     "nome": "Conjuntos",
+     "conceito": "conjuntos"
+    }
+   ]
+  },
+  {
+   "grupo": "Perdas e balanço",
+   "itens": [
+    {
+     "id": "perdas",
+     "nome": "Perdas e balanço energético",
+     "tecnico": [
+      "PT",
+      "PNT",
+      "BE",
+      "EP"
+     ],
+     "descricao": "Registros declarados de perdas e balanço energético (não são ativos físicos). Mantidos na visão por entidade."
+    }
+   ]
+  }
+ ]
+}

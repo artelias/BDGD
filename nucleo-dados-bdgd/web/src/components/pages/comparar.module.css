@@ -52,3 +52,11 @@
   .radarBody { grid-template-columns: minmax(0, 1fr); }
   .radarTable .lider { display: none; }
 }
+
+/* R3: um único palco com abas Tabela | Gráficos | Radar */
+.stage { margin-top: 6px; padding: 16px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); }
+.stageHead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; }
+.stage .table th { position: static; background: transparent; }
+.totalLine td { font-weight: 640; background: var(--bg-sunken); }
+.chipsLine { display: flex; flex-wrap: wrap; gap: 6px; margin: -6px 0 12px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 8px 0 11px; border-radius: var(--r-pill); border: 0; background: var(--accent-soft); color: var(--accent); font-size: var(--fs-caption); font-weight: 600; }

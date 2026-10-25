@@ -1,6 +1,7 @@
+import { escreverRecorte, lerRecorte } from "./cubo";
 import type { Dataset } from "./dataset";
 import { toCSV } from "./format";
-import type { Distribuidora, Entidade, Metric } from "./types";
+import type { Distribuidora, Entidade, Filtro as FiltroR3, MedidaConceito, Metric } from "./types";
 
 /** Medidas de negócio da matriz. Registros e COD_ID distintos ficam só no CSV técnico e na metodologia. */
 export type Modo = "principal" | "quantidade" | "extensao_km" | "potencia_kva";
@@ -46,4 +47,23 @@ export function csvRecorte(ds: Dataset, rows: Distribuidora[], ents: Entidade[],
     }
   }
   return toCSV(header, body);
+}
+
+/* ---------- R3: colunas = ativos do catálogo, cada uma com medida e filtro próprios ---------- */
+
+export interface ColunaEstado { filtro: FiltroR3; medida?: MedidaConceito }
+/** URL: cf=trafo_dist~fases:ABC|ABCN;area:UB!religadores~area:NU · cm=trafo_dist~potencia_kva */
+export function lerColunas(cf: string, cm: string): Record<string, ColunaEstado> {
+  const out: Record<string, ColunaEstado> = {};
+  for (const part of cf.split("!").filter(Boolean)) { const [id, f] = part.split("~"); if (id && f) out[id] = { filtro: lerRecorte(f) }; }
+  for (const part of cm.split("!").filter(Boolean)) {
+    const [id, m] = part.split("~");
+    if (id && (m === "quantidade" || m === "extensao_km" || m === "potencia_kva")) out[id] = { ...(out[id] ?? { filtro: {} }), medida: m };
+  }
+  return out;
+}
+export function escreverColunas(c: Record<string, ColunaEstado>): { cf: string | null; cm: string | null } {
+  const cf = Object.entries(c).map(([id, e]) => [id, escreverRecorte(e.filtro)]).filter(([, f]) => f).map(([id, f]) => `${id}~${f}`).join("!");
+  const cm = Object.entries(c).filter(([, e]) => e.medida).map(([id, e]) => `${id}~${e.medida}`).join("!");
+  return { cf: cf || null, cm: cm || null };
 }

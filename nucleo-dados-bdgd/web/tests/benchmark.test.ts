@@ -79,3 +79,18 @@ describe("N/D explicado", () => {
     expect(ndFrase(3)).toBe("3 distribuidoras sem valor homologado");
   });
 });
+
+describe("radar genérico por linha (R3, mesmo caso de aceite)", async () => {
+  const { benchmarkLinhas, somar } = await import("@/lib/comparador");
+  const linha = { id: "tr", nome: "tr", familia: "x", medida: "quantidade" as const, porDist: new Map<number, number | null>([[1, 1200], [2, 300], [3, 1000], [4, 1000], [5, 500]]) };
+  it("A = 1500, MAX_g = 2000 → 75%; MAX_d = 1200 → 125%; Brasil = 37,5%", () => {
+    expect(somar(linha, g1).v).toBe(1500);
+    expect(benchmarkLinhas(ds, [linha], g1, "bench_grupos", [], "")[0].pctA).toBeCloseTo(0.75);
+    expect(benchmarkLinhas(ds, [linha], g1, "bench_dists", [], "")[0].pctA).toBeCloseTo(1.25);
+    expect(benchmarkLinhas(ds, [linha], g1, "brasil", [], "")[0].pctA).toBeCloseTo(0.375);
+  });
+  it("N/D numa DIST de A remove-a da soma e é contada", () => {
+    const l2 = { ...linha, porDist: new Map<number, number | null>([[1, null], [2, 300]]) };
+    const s = somar(l2, g1); expect(s.v).toBe(300); expect(s.nd).toBe(1);
+  });
+});

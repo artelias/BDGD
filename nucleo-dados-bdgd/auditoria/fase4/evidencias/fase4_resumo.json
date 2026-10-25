@@ -1,0 +1,794 @@
+{
+ "celulas_dist": {
+  "COMPLETO_TECNICO": 5921,
+  "APTO_COM_RESSALVAS": 580,
+  "NAO_DISPONIVEL": 1673,
+  "PENDENTE_DECISAO": 354,
+  "BLOQUEADO": 300,
+  "HOMOLOGADO": 2197
+ },
+ "celulas_dist_por_ano": {
+  "2022": {
+   "COMPLETO_TECNICO": 2028,
+   "APTO_COM_RESSALVAS": 192,
+   "NAO_DISPONIVEL": 455,
+   "PENDENTE_DECISAO": 50,
+   "BLOQUEADO": 125
+  },
+  "2023": {
+   "COMPLETO_TECNICO": 1785,
+   "APTO_COM_RESSALVAS": 125,
+   "PENDENTE_DECISAO": 300,
+   "NAO_DISPONIVEL": 465,
+   "BLOQUEADO": 175
+  },
+  "2024": {
+   "COMPLETO_TECNICO": 2108,
+   "APTO_COM_RESSALVAS": 162,
+   "NAO_DISPONIVEL": 579,
+   "PENDENTE_DECISAO": 1
+  },
+  "2025": {
+   "HOMOLOGADO": 2197,
+   "APTO_COM_RESSALVAS": 101,
+   "NAO_DISPONIVEL": 174,
+   "PENDENTE_DECISAO": 3
+  }
+ },
+ "brasil": {
+  "2022|consumidores": [
+   "BLOQUEADO",
+   "",
+   94,
+   7
+  ],
+  "2023|consumidores": [
+   "BLOQUEADO",
+   "",
+   82,
+   19
+  ],
+  "2024|consumidores": [
+   "APTO_COM_RESSALVAS",
+   89827086.0,
+   97,
+   0
+  ],
+  "2025|consumidores": [
+   "APTO_COM_RESSALVAS",
+   90251993.0,
+   98,
+   1
+  ],
+  "2022|medidores": [
+   "BLOQUEADO",
+   "",
+   94,
+   7
+  ],
+  "2023|medidores": [
+   "BLOQUEADO",
+   "",
+   82,
+   19
+  ],
+  "2024|medidores": [
+   "APTO_COM_RESSALVAS",
+   102445805.0,
+   97,
+   0
+  ],
+  "2025|medidores": [
+   "APTO_COM_RESSALVAS",
+   105036802.0,
+   99,
+   0
+  ],
+  "2022|postes": [
+   "BLOQUEADO",
+   "",
+   94,
+   7
+  ],
+  "2023|postes": [
+   "BLOQUEADO",
+   "",
+   82,
+   19
+  ],
+  "2024|postes": [
+   "APTO_COM_RESSALVAS",
+   54613516.0,
+   97,
+   0
+  ],
+  "2025|postes": [
+   "APTO_COM_RESSALVAS",
+   55835576.0,
+   99,
+   0
+  ],
+  "2022|rede_bt": [
+   "BLOQUEADO",
+   "",
+   94,
+   7
+  ],
+  "2023|rede_bt": [
+   "BLOQUEADO",
+   "",
+   82,
+   19
+  ],
+  "2024|rede_bt": [
+   "APTO_COM_RESSALVAS",
+   1738584.198667,
+   97,
+   0
+  ],
+  "2025|rede_bt": [
+   "APTO_COM_RESSALVAS",
+   1750884.380513,
+   99,
+   0
+  ],
+  "2022|rede_mt": [
+   "BLOQUEADO",
+   "",
+   94,
+   7
+  ],
+  "2023|rede_mt": [
+   "BLOQUEADO",
+   "",
+   82,
+   19
+  ],
+  "2024|rede_mt": [
+   "APTO_COM_RESSALVAS",
+   3086241.819867,
+   97,
+   0
+  ],
+  "2025|rede_mt": [
+   "APTO_COM_RESSALVAS",
+   3146152.063523,
+   99,
+   0
+  ],
+  "2022|trafo_dist": [
+   "BLOQUEADO",
+   "",
+   94,
+   7
+  ],
+  "2023|trafo_dist": [
+   "BLOQUEADO",
+   "",
+   82,
+   19
+  ],
+  "2024|trafo_dist": [
+   "APTO_COM_RESSALVAS",
+   5925467.0,
+   97,
+   0
+  ],
+  "2025|trafo_dist": [
+   "APTO_COM_RESSALVAS",
+   6103972.0,
+   99,
+   0
+  ]
+ },
+ "pares": [
+  {
+   "ano": "2022",
+   "dist": "2866",
+   "empresa": "Copel-Dis",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "MEDIO",
+   "impacto_max_sobre_total_validado_pct": 0.00219,
+   "ativos_com_diferenca": 1,
+   "versao_A": "V11_20231214-1225",
+   "versao_B": "V11_20250424-0845",
+   "recomendacao_tecnica": "Sugere-se B: versao posterior e igual ou mais coerente com os anos vizinhos. Confirmar antes de publicar.",
+   "ordem": 3
+  },
+  {
+   "ano": "2022",
+   "dist": "86",
+   "empresa": "Eflul",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "MEDIO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 1,
+   "versao_A": "V11_20240103-0915",
+   "versao_B": "V11_20250131-1249",
+   "recomendacao_tecnica": "Sugere-se B: versao posterior e igual ou mais coerente com os anos vizinhos. Confirmar antes de publicar.",
+   "ordem": 5
+  },
+  {
+   "ano": "2023",
+   "dist": "32",
+   "empresa": "Energisa TO",
+   "grupo": "SEM_DIFERENCA_TOTAIS",
+   "risco": "BAIXO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 0,
+   "versao_A": "V11_20250111-1448",
+   "versao_B": "V11_20250916-1512",
+   "recomendacao_tecnica": "Sem impacto nos 25 totais: qualquer escolha produz o mesmo painel. Tecnicamente sugere-se B (versao posterior); diferencas so em registros/atributos.",
+   "ordem": 8
+  },
+  {
+   "ano": "2023",
+   "dist": "369",
+   "empresa": "Energisa RO",
+   "grupo": "SEM_DIFERENCA_TOTAIS",
+   "risco": "BAIXO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 0,
+   "versao_A": "V11_20241218-0833",
+   "versao_B": "V11_20250916-1513",
+   "recomendacao_tecnica": "Sem impacto nos 25 totais: qualquer escolha produz o mesmo painel. Tecnicamente sugere-se B (versao posterior); diferencas so em registros/atributos.",
+   "ordem": 9
+  },
+  {
+   "ano": "2023",
+   "dist": "380",
+   "empresa": "EDP ES",
+   "grupo": "SEM_DIFERENCA_TOTAIS",
+   "risco": "BAIXO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 0,
+   "versao_A": "V11_20250214-1728",
+   "versao_B": "V11_20250915-1019",
+   "recomendacao_tecnica": "Sem impacto nos 25 totais: qualquer escolha produz o mesmo painel. Tecnicamente sugere-se B (versao posterior); diferencas so em registros/atributos.",
+   "ordem": 10
+  },
+  {
+   "ano": "2023",
+   "dist": "404",
+   "empresa": "Energisa MS",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "MEDIO",
+   "impacto_max_sobre_total_validado_pct": 0.01429,
+   "ativos_com_diferenca": 1,
+   "versao_A": "V11_20241217-1120",
+   "versao_B": "V11_20250923-1616",
+   "recomendacao_tecnica": "Inconclusiva: B e a versao posterior, mas A e mais coerente com os anos vizinhos. Recomenda-se consultar a distribuidora/ANEEL antes de escolher.",
+   "ordem": 2
+  },
+  {
+   "ano": "2023",
+   "dist": "5216",
+   "empresa": "Energisa Sul-Sudeste",
+   "grupo": "SEM_DIFERENCA_TOTAIS",
+   "risco": "BAIXO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 0,
+   "versao_A": "V11_20240801-1636",
+   "versao_B": "V11_20250916-0841",
+   "recomendacao_tecnica": "Sem impacto nos 25 totais: qualquer escolha produz o mesmo painel. Tecnicamente sugere-se B (versao posterior); diferencas so em registros/atributos.",
+   "ordem": 11
+  },
+  {
+   "ano": "2023",
+   "dist": "5279",
+   "empresa": "Cerci",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "MEDIO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 1,
+   "versao_A": "V11_20250128-1656",
+   "versao_B": "V11_20250502-1228",
+   "recomendacao_tecnica": "Inconclusiva: B e a versao posterior, mas A e mais coerente com os anos vizinhos. Recomenda-se consultar a distribuidora/ANEEL antes de escolher.",
+   "ordem": 6
+  },
+  {
+   "ano": "2023",
+   "dist": "5381",
+   "empresa": "Cedrap",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "ALTO",
+   "impacto_max_sobre_total_validado_pct": 0.03309,
+   "ativos_com_diferenca": 14,
+   "versao_A": "V11_20241219-0917",
+   "versao_B": "V11_20250529-1139",
+   "recomendacao_tecnica": "Inconclusiva: B e a versao posterior, mas A e mais coerente com os anos vizinhos. Recomenda-se consultar a distribuidora/ANEEL antes de escolher.",
+   "ordem": 1
+  },
+  {
+   "ano": "2023",
+   "dist": "6585",
+   "empresa": "Energisa Minas Rio",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "MEDIO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 1,
+   "versao_A": "V11_20250218-1001",
+   "versao_B": "V11_20250916-1514",
+   "recomendacao_tecnica": "Inconclusiva: B e a versao posterior, mas A e mais coerente com os anos vizinhos. Recomenda-se consultar a distribuidora/ANEEL antes de escolher.",
+   "ordem": 7
+  },
+  {
+   "ano": "2023",
+   "dist": "6587",
+   "empresa": "Energisa SE",
+   "grupo": "SEM_DIFERENCA_TOTAIS",
+   "risco": "BAIXO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 0,
+   "versao_A": "V11_20241219-1646",
+   "versao_B": "V11_20250701-0833",
+   "recomendacao_tecnica": "Sem impacto nos 25 totais: qualquer escolha produz o mesmo painel. Tecnicamente sugere-se B (versao posterior); diferencas so em registros/atributos.",
+   "ordem": 12
+  },
+  {
+   "ano": "2023",
+   "dist": "6600",
+   "empresa": "Energisa PB",
+   "grupo": "SEM_DIFERENCA_TOTAIS",
+   "risco": "BAIXO",
+   "impacto_max_sobre_total_validado_pct": 0,
+   "ativos_com_diferenca": 0,
+   "versao_A": "V11_20250211-0801",
+   "versao_B": "V11_20250923-1612",
+   "recomendacao_tecnica": "Sem impacto nos 25 totais: qualquer escolha produz o mesmo painel. Tecnicamente sugere-se B (versao posterior); diferencas so em registros/atributos.",
+   "ordem": 13
+  },
+  {
+   "ano": "2023",
+   "dist": "86",
+   "empresa": "Eflul",
+   "grupo": "COM_DIFERENCA_TOTAIS",
+   "risco": "MEDIO",
+   "impacto_max_sobre_total_validado_pct": 0.00025,
+   "ativos_com_diferenca": 2,
+   "versao_A": "V11_20250129-1313",
+   "versao_B": "V11_20250416-2319",
+   "recomendacao_tecnica": "Sugere-se B: versao posterior e igual ou mais coerente com os anos vizinhos. Confirmar antes de publicar.",
+   "ordem": 4
+  }
+ ],
+ "top20": [
+  {
+   "prioridade": 1,
+   "dist": "4950",
+   "empresa": "Cemig-D",
+   "ativo": "chaves",
+   "ano_de": 2023,
+   "ano_para": 2024,
+   "valor_de": 380878.0,
+   "valor_para": 1346117.0,
+   "variacao_pct": "253.4",
+   "impacto_sobre_total_validado_pct": 17.36199,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 2,
+   "dist": "4950",
+   "empresa": "Cemig-D",
+   "ativo": "chaves",
+   "ano_de": 2024,
+   "ano_para": 2025,
+   "valor_de": 1346117.0,
+   "valor_para": 581779.0,
+   "variacao_pct": "-56.8",
+   "impacto_sobre_total_validado_pct": 14.50695,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 3,
+   "dist": "37",
+   "empresa": "Equatorial MA",
+   "ativo": "reatores",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 35.0,
+   "valor_para": 59.0,
+   "variacao_pct": "68.6",
+   "impacto_sobre_total_validado_pct": 10.16949,
+   "categoria": "variacao_real_plausivel",
+   "grau_confianca": "HIPOTESE",
+   "possivel_causa": "registros anteriores persistem e ha inclusao de novos: expansao ou complemento de cadastro"
+  },
+  {
+   "prioridade": 4,
+   "dist": "4950",
+   "empresa": "Cemig-D",
+   "ativo": "bancos_capacitores",
+   "ano_de": 2023,
+   "ano_para": 2024,
+   "valor_de": 5961.0,
+   "valor_para": 2545.0,
+   "variacao_pct": "-57.3",
+   "impacto_sobre_total_validado_pct": 8.34616,
+   "categoria": "alteracao_cadastral",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "baixa persistencia de COD_ID: recadastramento/recodificacao, nao variacao fisica"
+  },
+  {
+   "prioridade": 5,
+   "dist": "385",
+   "empresa": "Neoenergia Elektro",
+   "ativo": "rede_at",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 10821.902762,
+   "valor_para": 2494.842701,
+   "variacao_pct": "-76.9",
+   "impacto_sobre_total_validado_pct": 6.84439,
+   "categoria": "alteracao_cadastral",
+   "grau_confianca": "HIPOTESE",
+   "possivel_causa": "2022 inclui ~22 mil segmentos AT (~8.300 km, ~208 circuitos) que deixam de existir a partir de 2023, sem migrar para MT; possivel saneamento de perimetro (linhas de outro agente/DIT)"
+  },
+  {
+   "prioridade": 6,
+   "dist": "371",
+   "empresa": "Equatorial PA",
+   "ativo": "chaves",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 196052.0,
+   "valor_para": 472207.0,
+   "variacao_pct": "140.9",
+   "impacto_sobre_total_validado_pct": 5.92142,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 7,
+   "dist": "5707",
+   "empresa": "CEEE Equatorial",
+   "ativo": "trafo_medida",
+   "ano_de": 2024,
+   "ano_para": 2025,
+   "valor_de": 8861.0,
+   "valor_para": 48162.0,
+   "variacao_pct": "443.5",
+   "impacto_sobre_total_validado_pct": 5.26771,
+   "categoria": "variacao_real_plausivel",
+   "grau_confianca": "HIPOTESE",
+   "possivel_causa": "registros anteriores persistem e ha inclusao de novos: expansao ou complemento de cadastro"
+  },
+  {
+   "prioridade": 8,
+   "dist": "2866",
+   "empresa": "Copel-Dis",
+   "ativo": "chaves",
+   "ano_de": 2023,
+   "ano_para": 2024,
+   "valor_de": 538721.0,
+   "valor_para": 257374.0,
+   "variacao_pct": "-52.2",
+   "impacto_sobre_total_validado_pct": 5.06066,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 9,
+   "dist": "37",
+   "empresa": "Equatorial MA",
+   "ativo": "chaves",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 96958.0,
+   "valor_para": 323566.0,
+   "variacao_pct": "233.7",
+   "impacto_sobre_total_validado_pct": 4.85901,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 10,
+   "dist": "38",
+   "empresa": "Equatorial PI",
+   "ativo": "chaves",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 49820.0,
+   "valor_para": 256467.0,
+   "variacao_pct": "414.8",
+   "impacto_sobre_total_validado_pct": 4.431,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 11,
+   "dist": "5697",
+   "empresa": "Celesc-Dis",
+   "ativo": "torres",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 5035.0,
+   "valor_para": 16688.0,
+   "variacao_pct": "231.4",
+   "impacto_sobre_total_validado_pct": 4.17284,
+   "categoria": "variacao_real_plausivel",
+   "grau_confianca": "HIPOTESE",
+   "possivel_causa": "registros anteriores persistem e ha inclusao de novos: expansao ou complemento de cadastro"
+  },
+  {
+   "prioridade": 12,
+   "dist": "37",
+   "empresa": "Equatorial MA",
+   "ativo": "seccionalizadores",
+   "ano_de": 2023,
+   "ano_para": 2024,
+   "valor_de": 1175.0,
+   "valor_para": 0.0,
+   "variacao_pct": "-100.0",
+   "impacto_sobre_total_validado_pct": 4.09165,
+   "categoria": "sem_evidencia_suficiente",
+   "grau_confianca": "SEM_EXPLICACAO",
+   "possivel_causa": "nao identificada"
+  },
+  {
+   "prioridade": 13,
+   "dist": "6072",
+   "empresa": "Equatorial GO",
+   "ativo": "consumidores",
+   "ano_de": 2024,
+   "ano_para": 2025,
+   "valor_de": 3471824.0,
+   "valor_para": 23203.0,
+   "variacao_pct": "-99.3",
+   "impacto_sobre_total_validado_pct": 3.82109,
+   "categoria": "anomalia_fonte",
+   "grau_confianca": "CAUSA_COMPROVADA (marcacao na fonte) / HIPOTESE (erro de cadastro)",
+   "possivel_causa": "GDB 2025 marca 3.449.443 UCBT como DS (desativada); em 2024 havia 3.462.456 UCBT AT"
+  },
+  {
+   "prioridade": 14,
+   "dist": "44",
+   "empresa": "Equatorial AL",
+   "ativo": "chaves",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 15016.0,
+   "valor_para": 150454.0,
+   "variacao_pct": "902.0",
+   "impacto_sobre_total_validado_pct": 2.90411,
+   "categoria": "alteracao_classificacao",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "mudanca na codificacao TUC/MCPSE (parcela sem TUC alterada), nao crescimento fisico"
+  },
+  {
+   "prioridade": 15,
+   "dist": "6072",
+   "empresa": "Equatorial GO",
+   "ativo": "seccionalizadores",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 988.0,
+   "valor_para": 0.0,
+   "variacao_pct": "-100.0",
+   "impacto_sobre_total_validado_pct": 3.63289,
+   "categoria": "alteracao_cadastral",
+   "grau_confianca": "HIPOTESE",
+   "possivel_causa": "registros persistem mas o ativo filtrado diminui: provavel reclassificacao de atributo (TUC/tipo)"
+  },
+  {
+   "prioridade": 16,
+   "dist": "63",
+   "empresa": "CPFL Paulista",
+   "ativo": "circuitos_at",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 481.0,
+   "valor_para": 206.0,
+   "variacao_pct": "-57.2",
+   "impacto_sobre_total_validado_pct": 3.67254,
+   "categoria": "alteracao_cadastral",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "baixa persistencia de COD_ID: recadastramento/recodificacao, nao variacao fisica"
+  },
+  {
+   "prioridade": 17,
+   "dist": "6072",
+   "empresa": "Equatorial GO",
+   "ativo": "trafo_medida",
+   "ano_de": 2022,
+   "ano_para": 2023,
+   "valor_de": 34235.0,
+   "valor_para": 15977.0,
+   "variacao_pct": "-53.3",
+   "impacto_sobre_total_validado_pct": 3.67435,
+   "categoria": "alteracao_cadastral",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "baixa persistencia de COD_ID: recadastramento/recodificacao, nao variacao fisica"
+  },
+  {
+   "prioridade": 18,
+   "dist": "5160",
+   "empresa": "Neoenergia Brasilia",
+   "ativo": "disjuntores",
+   "ano_de": 2023,
+   "ano_para": 2024,
+   "valor_de": 1009.0,
+   "valor_para": 2036.0,
+   "variacao_pct": "101.8",
+   "impacto_sobre_total_validado_pct": 3.49819,
+   "categoria": "sem_evidencia_suficiente",
+   "grau_confianca": "SEM_EXPLICACAO",
+   "possivel_causa": "nao identificada"
+  },
+  {
+   "prioridade": 19,
+   "dist": "6072",
+   "empresa": "Equatorial GO",
+   "ativo": "barramentos",
+   "ano_de": 2023,
+   "ano_para": 2024,
+   "valor_de": 2706.0,
+   "valor_para": 1267.0,
+   "variacao_pct": "-53.2",
+   "impacto_sobre_total_validado_pct": 3.47803,
+   "categoria": "alteracao_cadastral",
+   "grau_confianca": "EXPLICACAO_PLAUSIVEL",
+   "possivel_causa": "baixa persistencia de COD_ID: recadastramento/recodificacao, nao variacao fisica"
+  },
+  {
+   "prioridade": 20,
+   "dist": "6072",
+   "empresa": "Equatorial GO",
+   "ativo": "geradores",
+   "ano_de": 2024,
+   "ano_para": 2025,
+   "valor_de": 134597.0,
+   "valor_para": 1991.0,
+   "variacao_pct": "-98.5",
+   "impacto_sobre_total_validado_pct": 3.37649,
+   "categoria": "anomalia_fonte",
+   "grau_confianca": "CAUSA_COMPROVADA",
+   "possivel_causa": "entidade de origem sem registros na publicacao de 2025: UGBT,UGAT"
+  }
+ ],
+ "sinais_por_categoria": {
+  "alteracao_classificacao": 25,
+  "variacao_real_plausivel": 95,
+  "alteracao_cadastral": 25,
+  "sem_evidencia_suficiente": 9,
+  "anomalia_fonte": 6,
+  "base_pequena": 78
+ },
+ "sinais_por_confianca": {
+  "EXPLICACAO_PLAUSIVEL": 103,
+  "HIPOTESE": 42,
+  "SEM_EXPLICACAO": 87,
+  "CAUSA_COMPROVADA (marcacao na fonte) / HIPOTESE (erro de cadastro)": 1,
+  "CAUSA_COMPROVADA": 5
+ },
+ "absorcao_epb": [
+  {
+   "item_2023": "3bf43d35e8fc409f8bd23e2dffd9841f",
+   "ativo": "consumidores",
+   "epb_2023": 1698731.0,
+   "epb_2022": 1496531.0,
+   "ebo_2022": 222783.0,
+   "soma_2022": 1719314.0,
+   "razao_2023_sobre_epb2022": 1.1351,
+   "razao_2023_sobre_soma": 0.988
+  },
+  {
+   "item_2023": "3bf43d35e8fc409f8bd23e2dffd9841f",
+   "ativo": "rede_mt",
+   "epb_2023": 45937.635237,
+   "epb_2022": 43003.693002,
+   "ebo_2022": 2391.839202,
+   "soma_2022": 45395.532204,
+   "razao_2023_sobre_epb2022": 1.0682,
+   "razao_2023_sobre_soma": 1.0119
+  },
+  {
+   "item_2023": "3bf43d35e8fc409f8bd23e2dffd9841f",
+   "ativo": "rede_bt",
+   "epb_2023": 38596.40367,
+   "epb_2022": 34966.26424,
+   "ebo_2022": 3466.489544,
+   "soma_2022": 38432.753784,
+   "razao_2023_sobre_epb2022": 1.1038,
+   "razao_2023_sobre_soma": 1.0043
+  },
+  {
+   "item_2023": "3bf43d35e8fc409f8bd23e2dffd9841f",
+   "ativo": "trafo_dist",
+   "epb_2023": 70540.0,
+   "epb_2022": 64168.0,
+   "ebo_2022": 4793.0,
+   "soma_2022": 68961.0,
+   "razao_2023_sobre_epb2022": 1.0993,
+   "razao_2023_sobre_soma": 1.0229
+  },
+  {
+   "item_2023": "3bf43d35e8fc409f8bd23e2dffd9841f",
+   "ativo": "postes",
+   "epb_2023": 1223762.0,
+   "epb_2022": 1109992.0,
+   "ebo_2022": 98534.0,
+   "soma_2022": 1208526.0,
+   "razao_2023_sobre_epb2022": 1.1025,
+   "razao_2023_sobre_soma": 1.0126
+  },
+  {
+   "item_2023": "3bf43d35e8fc409f8bd23e2dffd9841f",
+   "ativo": "medidores",
+   "epb_2023": 2020482.0,
+   "epb_2022": 1725794.0,
+   "ebo_2022": 257199.0,
+   "soma_2022": 1982993.0,
+   "razao_2023_sobre_epb2022": 1.1708,
+   "razao_2023_sobre_soma": 1.0189
+  },
+  {
+   "item_2023": "a5965d84a15244b9ab26e567ce22a11b",
+   "ativo": "consumidores",
+   "epb_2023": 1698731.0,
+   "epb_2022": 1496531.0,
+   "ebo_2022": 222783.0,
+   "soma_2022": 1719314.0,
+   "razao_2023_sobre_epb2022": 1.1351,
+   "razao_2023_sobre_soma": 0.988
+  },
+  {
+   "item_2023": "a5965d84a15244b9ab26e567ce22a11b",
+   "ativo": "rede_mt",
+   "epb_2023": 45937.635237,
+   "epb_2022": 43003.693002,
+   "ebo_2022": 2391.839202,
+   "soma_2022": 45395.532204,
+   "razao_2023_sobre_epb2022": 1.0682,
+   "razao_2023_sobre_soma": 1.0119
+  },
+  {
+   "item_2023": "a5965d84a15244b9ab26e567ce22a11b",
+   "ativo": "rede_bt",
+   "epb_2023": 38596.40367,
+   "epb_2022": 34966.26424,
+   "ebo_2022": 3466.489544,
+   "soma_2022": 38432.753784,
+   "razao_2023_sobre_epb2022": 1.1038,
+   "razao_2023_sobre_soma": 1.0043
+  },
+  {
+   "item_2023": "a5965d84a15244b9ab26e567ce22a11b",
+   "ativo": "trafo_dist",
+   "epb_2023": 70540.0,
+   "epb_2022": 64168.0,
+   "ebo_2022": 4793.0,
+   "soma_2022": 68961.0,
+   "razao_2023_sobre_epb2022": 1.0993,
+   "razao_2023_sobre_soma": 1.0229
+  },
+  {
+   "item_2023": "a5965d84a15244b9ab26e567ce22a11b",
+   "ativo": "postes",
+   "epb_2023": 1223762.0,
+   "epb_2022": 1109992.0,
+   "ebo_2022": 98534.0,
+   "soma_2022": 1208526.0,
+   "razao_2023_sobre_epb2022": 1.1025,
+   "razao_2023_sobre_soma": 1.0126
+  },
+  {
+   "item_2023": "a5965d84a15244b9ab26e567ce22a11b",
+   "ativo": "medidores",
+   "epb_2023": 2020482.0,
+   "epb_2022": 1725794.0,
+   "ebo_2022": 257199.0,
+   "soma_2022": 1982993.0,
+   "razao_2023_sobre_epb2022": 1.1708,
+   "razao_2023_sobre_soma": 1.0189
+  }
+ ]
+}

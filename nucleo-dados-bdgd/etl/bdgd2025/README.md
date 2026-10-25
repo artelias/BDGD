@@ -13,8 +13,20 @@ Pipeline que gera o pacote público `output-publicavel/2025-12-31/` (contrato **
 | 5 | `75_facetas_exatas.py` | Facetas DDA de 1 dimensão + cubos conjuntos curados (2 dimensões) com somas em `DECIMAL(38,6)` — categorias reconciliam exatamente com o total. |
 | 6 | `80_monta_pacote.py` | Pacote 1.1.0: fato-base, facetas + catálogo de rollup, matriz, distribuidoras, grupos com fonte, DDA, QA, homologação por métrica, ARAT, manifesto com checksums. Aplica a **regra UC v2**. |
 | 7 | `85_assets_web.py` | JSON compacto para o site a partir do pacote validado (sem acesso ao staging). |
+| 8 | `86_homologacao_web.py` | `web/public/data/historico/homologacao.json` a partir de `auditoria/fase4/` (matriz de homologação, conformidade da BASE, sinais, pares e pontes), com o SHA-256 das fontes. Validado por `etl/validate-homologacao-web.mjs` no CI. |
 
 Pilotos históricos (superados por `bdgd_etl.py`) estão em `piloto/`, para auditoria.
+
+### Série histórica 2022–2024 (pacote separado; nunca entra no pacote 2025)
+
+| Script | O que faz |
+|---|---|
+| `historico/run.py` (runner do staging 2022–2024) | Download, validação de competência e Parquet por ano/DIST/item; processa apenas itens `candidato`. |
+| `duplicatas_historico.py` | Processa, com o mesmo pipeline e sob o lock do runner, as publicações múltiplas do mesmo ano/DIST (`revisao_pendente`). |
+| `78_conceitos_historico.py` | Aplica a regra de conceitos de 2025 (`77_conceitos.py`) a cada item histórico. |
+| `equivalencia_duplicatas.py` | Equivalência integral entre publicações com SHA-256 diferente: esquema, contagem, identidade COD_ID, impressões por grupo de atributos (identidade, TUC/MCPSE, DDA, vínculos, demais), registro completo e geometria (WKB do GDB original). OBJECTID ignorado. Sem prova integral → decisão humana. |
+| `79_serie_historica.py` | `output-historico/2022-2025`: série original, perímetro 2025, sucessões, cobertura, publicações múltiplas, manifesto. |
+| `monitor_historico.py`, `cadeia_historico.sh` | Monitor de RAM/RSS e erros DuckDB (limite 768 MB); cadeia serial após o runner. |
 
 ## Regras implementadas
 

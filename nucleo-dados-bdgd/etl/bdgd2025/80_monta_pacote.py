@@ -2,6 +2,7 @@
 So agregados: nenhum COD_ID, nenhuma linha individual. Uso: 80_monta_pacote.py [--saida DIR]
 Regra UC v2 (decisao 2): COD_ID distinto e o indicador principal quando nao ha COD_ID nulo, SIT_ATIV so AT/DS
 e no maximo 1 registro ativado (AT) por COD_ID; repeticoes AT+DS sao historico de estado no ano, nao conflito."""
+from decimal import Decimal
 import argparse, csv, datetime, hashlib, json, pathlib, shutil, sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import bdgd_etl as E
@@ -85,6 +86,7 @@ def main():
     met_status = {}
     exatas = {}
     r2_dists, mun_qa, vinc_tuc = set(), {}, []
+    r3_dists, r3_cubos, r3_fontes, r3_qa, uc3, r3_inv = set(), [], {}, [], [], {}
     ibge_p = R / "referencias" / "ibge" / "municipios.json"
     ibge = {str(m["id"]): m for m in json.loads(ibge_p.read_text(encoding="utf-8"))} if ibge_p.exists() else {}
     for d in ok:
@@ -189,6 +191,20 @@ def main():
         for e, x in v2.items():   # todo caso invalido pela regra v2 tem alerta, mesmo sem alerta na v1
             if not x["valida"] and not any(a["dist"] == d and a["entidade"] == e and a["tipo"] == "uc_cod_id_ativo_duplicado" for a in alertas):
                 alertas.append({"dist": d, "entidade": e, "tipo": "uc_cod_id_ativo_duplicado", "detalhe": "; ".join(x["motivos"]), "acao": "quantidade N/D; registros e distintos publicados"})
+        # R3: cubos por conceito, inventarios e regra UC v3 (77_conceitos.py)
+        if (pd_ / "conceitos.csv").exists():
+            r3_dists.add(d)
+            for r in rd(pd_ / "conceitos.csv"):
+                r3_cubos.append({"dist": d, "data_base": DB, **r})
+            q3 = json.loads((pd_ / "conceitos_qa.json").read_text(encoding="utf-8"))
+            r3_fontes[d] = {k.split("|")[0] for k in q3["fontes"]}
+            for c3 in q3["cubos"]: r3_qa.append({"dist": d, **c3})
+            for e3, u in q3["uc_v3"].items():
+                if e3 != "uniao": uc3.append({"dist": d, "entidade": e3, **u})
+            uc3.append({"dist": d, "entidade": "UC* (uniao)", "unidades_ativas_v3": q3["uc_v3"]["uniao"]["unidades_ativas_v3"], "unidades_v3": q3["uc_v3"]["uniao"]["unidades_v3"]})
+            for chave in ("ctmt", "ctat", "sub", "conj"):
+                f3 = pd_ / f"inventario_{chave}.csv"
+                if f3.exists(): r3_inv.setdefault(chave, []).extend({"dist": d, "data_base": DB, **r} for r in rd(f3))
         comp += rd(pd_ / "complementares.csv"); vinc += rd(pd_ / "qa_vinculos.csv")
         ddaqa += rd(pd_ / "qa_dda.csv"); filtros += rd(pd_ / "disponibilidade_filtros.csv")
         aq = json.loads((pd_ / "arat_qa.json").read_text(encoding="utf-8")); arat_qa.append(aq)
@@ -237,6 +253,53 @@ def main():
     w("qa_municipios.csv", sorted(mun_qa.values(), key=lambda r: (int(r["dist"]), r["entidade"])),
       ["dist", "entidade", "municipios", "codigos_fora_ibge", "registros_fora_ibge", "registros_sem_codigo", "registros"])
     w("indicadores_vinculos_tuc.csv", vinc_tuc, ["dist", "data_base", "entidade", "tuc", "campo_vinculo", "destinos", "equipamentos", "com_vinculo", "vinculados", "unidades_distintas"])
+
+    # ---- R3: conceitos de ativo (cubos conjuntos exatos), totais por ativo e inventarios por SUB/CTMT/CTAT/CONJ
+    CF = json.loads((pathlib.Path(__file__).parent / "config" / "conceitos_2025.json").read_text(encoding="utf-8"))
+    (TMP / "conceitos").mkdir(exist_ok=True); (TMP / "inventario").mkdir(exist_ok=True)
+    (TMP / "conceitos" / "catalogo.json").write_text(json.dumps(CF, ensure_ascii=False, indent=1), encoding="utf-8")
+    w("conceitos/cubos.csv", r3_cubos, ["dist", "data_base", "conceito", "cubo", "entidade", "chave", "quantidade", "extensao_km", "potencia_kva"])
+    idx3 = {}
+    for r in r3_cubos:
+        if r["cubo"] == "principal": idx3.setdefault((r["dist"], r["conceito"]), []).append(r)
+    excesso_uc = {}
+    for u in uc3:
+        if u.get("registros_ativados") not in (None, ""):
+            excesso_uc[u["dist"]] = excesso_uc.get(u["dist"], 0) + int(u["registros_ativados"]) - int(u["unidades_ativas_v3"])
+    tot3 = []
+    for a3 in CF["ativos"]:
+        dims3 = CF["conceitos"][a3["conceito"]]["cubos"]["principal"]
+        ents3 = set(CF["conceitos"][a3["conceito"]]["entidades"])
+        for d in ok:
+            linhas = [r for r in idx3.get((d, a3["conceito"]), []) if all(json.loads(r["chave"])[dims3.index(k)] in v for k, v in a3["filtro"].items())]
+            presente = a3["conceito"] in r3_fontes.get(d, set())
+            for m in [a3["medida"]] + a3.get("medidas_extra", []):
+                st, mo = "aprovado", ""
+                if d not in r3_dists or not presente:
+                    val, st, mo = "", "nao_aplicavel", "tipo de ativo inexistente no GDB desta distribuidora"
+                else:
+                    vals = [r[m] for r in linhas if r[m] != ""]
+                    val = str(sum(Decimal(x) for x in vals)) if vals else ("0" if m == "quantidade" else "")
+                    if not linhas and m != "quantidade":
+                        st, mo = "nao_aplicavel", "sem registros desse tipo de ativo no GDB desta distribuidora"
+                    elif val == "" and m == "extensao_km":
+                        st, mo = "bloqueado", "comprimento nulo em todos os segmentos do recorte"
+                    if m == "potencia_kva":
+                        bl = sorted(e_ for e_ in ents3 if met_status.get((d, e_, "potencia_kva"), ("", ""))[0] == "bloqueado" and any(r["entidade"] == e_ for r in linhas))
+                        if bl: val, st, mo = "", "bloqueado", "potencia N/D em " + ", ".join(bl)
+                        elif val == "": st, mo = "bloqueado", "codigo de potencia sem correspondencia no DDA TPOTAPRT para os equipamentos do recorte"
+                        else: st, mo = "alerta", "potencia traduzida do codigo DDA TPOTAPRT; homologada com ressalvas"
+                    if a3["id"] == "consumidores" and excesso_uc.get(d, 0) > 0:
+                        st, mo = "alerta", f"{excesso_uc[d]} registros ativados repetidos para a mesma unidade (codigo + ponto de conexao); contados uma vez"
+                tot3.append({"dist": d, "data_base": DB, "ativo": a3["id"], "conceito": a3["conceito"], "medida": m,
+                             "unidade": {"extensao_km": "km", "potencia_kva": "kVA"}.get(m, "itens"), "valor": val, "status": st, "motivo": mo})
+    w("ativos_totais.csv", tot3, ["dist", "data_base", "ativo", "conceito", "medida", "unidade", "valor", "status", "motivo"])
+    for chave, nome_inv in (("sub", "subestacoes"), ("ctmt", "alimentadores"), ("ctat", "circuitos_at"), ("conj", "conjuntos")):
+        linhas = r3_inv.get(chave, [])
+        cols3 = ["dist", "data_base", "chave", "nome"] + sorted({c for r in linhas for c in r} - {"dist", "data_base", "chave", "nome"})
+        w(f"inventario/{nome_inv}.csv", linhas, cols3)
+    w("qa_uc_regra_v3.csv", uc3, ["dist", "entidade", "registros", "registros_ativados", "codigos_ativados", "unidades_ativas_v3", "unidades_v3", "cod_id_nulo", "cod_id_sha256"])
+    w("qa_conceitos.csv", r3_qa, ["dist", "conceito", "cubo", "entidade", "quantidade", "ref_quantidade", "ok"])
 
     # ---- distribuidoras, grupos, cobertura
     aq = {a["dist"]: a for a in arat_qa}
@@ -324,7 +387,9 @@ def main():
     completo = len(ok) == len(alvo) and not falhas
     sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
     files = {"distribuidoras": "distribuidoras.csv", "entidades": "entidades.csv", "fatos": "ativos_agregados.csv", "facetas": "ativos_facetas.csv",
-             "facetas_catalogo": "facetas_catalogo.csv", "matriz": "matriz_empresas_2025.csv", "arat": sorted(f"geo/{p.name}" for p in (TMP / "geo").glob("*.geojson"))}
+             "facetas_catalogo": "facetas_catalogo.csv", "matriz": "matriz_empresas_2025.csv",
+             "conceitos_catalogo": "conceitos/catalogo.json", "conceitos_cubos": "conceitos/cubos.csv", "ativos_totais": "ativos_totais.csv",
+             "inventarios": {"sub": "inventario/subestacoes.csv", "ctmt": "inventario/alimentadores.csv", "ctat": "inventario/circuitos_at.csv", "conj": "inventario/conjuntos.csv"}, "arat": sorted(f"geo/{p.name}" for p in (TMP / "geo").glob("*.geojson"))}
     lock = json.load(open(E.K / "KNOWLEDGE_LOCK.json", encoding="utf-8"))
     man = {"schema_version": "1.1.0", "release_id": "", "data_base": DB,
            "status": "parcial", "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
@@ -333,12 +398,12 @@ def main():
            "files": files, "quality": {"status": "em_validacao", "source_reconciliation": all(q["status"] != "falha" for q in qa), "facetas_exatas_decimal": all(exatas.values()), "dists_sem_facetas_exatas": sorted((d for d, v in exatas.items() if not v), key=int)},
            "cobertura": {"distribuidoras_historicas_consideradas": len(inv), "com_gdb_2025": len(alvo), "processadas": len(ok), "quarentena": falhas,
                          "em_processamento": sorted(set(alvo) - set(ok) - set(falhas), key=int), "sem_publicacao_2025": sorted(set(inv) - set(alvo), key=int)},
-           "regras": {"uc": "regra UC v2", "potencia_ug": "N/D (POT_INST nao homologado)", "rede": "extensao_km = SUM(COMP)/1000",
+           "regras": {"uc": "regra UC v2 no fato por entidade; regra UC v3 nos ativos: unidade = (COD_ID anonimizado, PN_CON) com SIT_ATIV = AT, unida entre UCBT/UCMT/UCAT", "potencia_ug": "N/D (POT_INST nao homologado)", "rede": "extensao_km = SUM(COMP)/1000",
                       "transformacao": "UNTRMT e EQTRMT sao visoes da mesma populacao; nunca somar"},
            "conhecimento_ia_builder": {f["file"]: f["sha256_copy"] for f in lock["files"]},
            "licenca": "Dados derivados da BDGD/ANEEL (dados abertos). Atribuicao: Agencia Nacional de Energia Eletrica - ANEEL. Projeto nao oficial.",
            "autoria": "Nucleo de Dados da BDGD - desenvolvido por Arthur Henrique Elias de Lima",
-           "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID, sem registros individuais, sem dados de consumidores.",
+           "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID de consumidores ou geradores e sem registros individuais. Inventarios por subestacao, alimentador, circuito AT e conjunto usam o codigo e o nome de infraestrutura publicados na BDGD, com contagens agregadas.",
            "checksums": {}}
     criterios = {
         "todas_elegiveis_processadas": completo,
@@ -347,6 +412,7 @@ def main():
         "arat_valida_em_todas": all(a_.get("status") == "ok" and a_.get("valida_saida") for a_ in arat_qa),
         "grupos_com_fonte_ou_nao_confirmado": all((d["grupo_economico"] == "nao_confirmado") or (d["dist"] in dist_grp) for d in dists),
         "facetas_r2_municipio_tuc_em_todas": len(r2_dists) == len(ok),
+        "conceitos_r3_em_todas": len(r3_dists) == len(ok) and all(str(q_["ok"]) == "True" for q_ in r3_qa if q_["cubo"] != "municipio"),
         "sem_colunas_individuais": True,
     }
     homologado = all(criterios.values())
@@ -357,7 +423,7 @@ def main():
                           "revisao_manual_recomendada": ["semantica de potencia UG* (N/D)", "regra UC v2 em DIST com mais de um registro ativado",
                                                          "licenca/atribuicao ANEEL", "grupos nao confirmados (cooperativas e municipais)"]}
     man["release_id"] = f"bdgd-2025-12-31-{'v1' if homologado else 'parcial'}-{len(ok)}d-" + hashlib.sha256("".join(sorted(x["sha256"] for x in dists)).encode()).hexdigest()[:10]
-    contrato = {"schema_version": "1.1.0", "arquivos": {p.name: next(csv.reader(open(p, encoding="utf-8"))) for p in sorted(TMP.glob("*.csv"))},
+    contrato = {"schema_version": "1.1.0", "arquivos": {p.relative_to(TMP).as_posix(): next(csv.reader(open(p, encoding="utf-8"))) for p in sorted(TMP.rglob("*.csv"))},
                 "geo": {"padrao": "geo/arat_2025_<DIST>.geojson", "crs": "EPSG:4326", "propriedades": {"dist": "integer", "data_base": "YYYY-MM-DD", "source_item_id": "string"}},
                 "convencoes": {"vazio": "N/D (metrica inexistente, bloqueada ou nao homologada); nunca zero implicito", SEM: "categoria de registros sem codigo DDA informado"}}
     (TMP / "schemas" / "contrato_publicacao.json").write_text(json.dumps(contrato, ensure_ascii=False, indent=1), encoding="utf-8")

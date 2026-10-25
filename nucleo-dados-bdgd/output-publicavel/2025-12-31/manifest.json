@@ -3,7 +3,7 @@
  "release_id": "bdgd-2025-12-31-v1-99d-2f6fa3879a",
  "data_base": "2025-12-31",
  "status": "homologado",
- "generated_at": "2026-10-23T17:19:43Z",
+ "generated_at": "2026-10-23T22:47:15Z",
  "dda_version": "BDGD_DDA_CATALOG_M10 v1.1",
  "sources": [
   {
@@ -608,6 +608,15 @@
   "facetas": "ativos_facetas.csv",
   "facetas_catalogo": "facetas_catalogo.csv",
   "matriz": "matriz_empresas_2025.csv",
+  "conceitos_catalogo": "conceitos/catalogo.json",
+  "conceitos_cubos": "conceitos/cubos.csv",
+  "ativos_totais": "ativos_totais.csv",
+  "inventarios": {
+   "sub": "inventario/subestacoes.csv",
+   "ctmt": "inventario/alimentadores.csv",
+   "ctat": "inventario/circuitos_at.csv",
+   "conj": "inventario/conjuntos.csv"
+  },
   "arat": [
    "geo/arat_2025_103.geojson",
    "geo/arat_2025_11825.geojson",
@@ -741,7 +750,7 @@
   ]
  },
  "regras": {
-  "uc": "regra UC v2",
+  "uc": "regra UC v2 no fato por entidade; regra UC v3 nos ativos: unidade = (COD_ID anonimizado, PN_CON) com SIT_ATIV = AT, unida entre UCBT/UCMT/UCAT",
   "potencia_ug": "N/D (POT_INST nao homologado)",
   "rede": "extensao_km = SUM(COMP)/1000",
   "transformacao": "UNTRMT e EQTRMT sao visoes da mesma populacao; nunca somar"
@@ -757,11 +766,14 @@
  },
  "licenca": "Dados derivados da BDGD/ANEEL (dados abertos). Atribuicao: Agencia Nacional de Energia Eletrica - ANEEL. Projeto nao oficial.",
  "autoria": "Nucleo de Dados da BDGD - desenvolvido por Arthur Henrique Elias de Lima",
- "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID, sem registros individuais, sem dados de consumidores.",
+ "privacidade": "Somente agregados por DIST/entidade/categoria DDA. Sem COD_ID de consumidores ou geradores e sem registros individuais. Inventarios por subestacao, alimentador, circuito AT e conjunto usam o codigo e o nome de infraestrutura publicados na BDGD, com contagens agregadas.",
  "checksums": {
   "ativos_agregados.csv": "091c583d59db3342ee368a496c8ccf96ea15b7dbf468c1023cfe32f60b0961e4",
   "ativos_facetas.csv": "47e9fac503e026f2f5181621cbeb2ad144eea76c67c5a93fdedb414c58c6b2d4",
+  "ativos_totais.csv": "e8f31d7ef03f07403c4d95b9b55f2323f71008082fbe1b34fd46dfed68204b2b",
   "cobertura_distribuidoras.csv": "c237594ff64074e5ef1bb5459f22fa4f58fe9b212fca3d734bc78d51c3c538d7",
+  "conceitos/catalogo.json": "22b815fd9c4fb17aada718d6077724034f40e422394ccfea59895726ca1d94c1",
+  "conceitos/cubos.csv": "29f20404a265c8f5e2c23d9f3f48c769ec6e5a3e410c2f59d1da026510d785dd",
   "dda_descricoes.csv": "05863d315441cb02a28f2144f6f45a677983fa36f9b97d9a4f59b57d06a34d59",
   "disponibilidade_filtros.csv": "edef65c86028d80abecf9dbf4e7fe281105609c1317014ea20db13f91ebca5b1",
   "dist_grupo.csv": "e04b9d884b2d99b16e9bb8a8142f7ea4f03421fe49a96b3f318a273c250dfabb",
@@ -870,16 +882,22 @@
   "grupos_economicos.csv": "22517888e662372050fef4d21e46adfb6d33838b641003a6313bf6ed0cacc3ea",
   "indicadores_complementares.csv": "3497ae47b220b19c71c2ebb7034a79e5bad3bf3106de7678aea96111914a032f",
   "indicadores_vinculos_tuc.csv": "2a1bce71fdfc96677ff040d1356388360ca687faf2ba75aedefdbaf43bb45ac7",
+  "inventario/alimentadores.csv": "f699391713cf7819480f35bfedcf336ae0b57f47a7304e6125dccf1bff38e41a",
+  "inventario/circuitos_at.csv": "12af89d1a2c2d3f599ae56c62a30bcc4b97cf4dec4f513d2ef1cd95243bb64f6",
+  "inventario/conjuntos.csv": "e26d83bc2082ce682ba06a66bc1eb8023c81ac35c23de51acc4704df2594aac6",
+  "inventario/subestacoes.csv": "ea05e27790d773e92bf991d5698ed00eb88906768a6d6169388876034fd27eb7",
   "matriz_empresas_2025.csv": "47fbff58a0c4cc4c7e837dc3051a37071821b3477ce5861740395b03419c7415",
   "metricas_homologacao.csv": "54b3077ef7873f5a83dcc980737b6efc8bd1a8fb3bd36ba586133ffcb23ef327",
   "qa_alertas.csv": "2836599ce7c29bd5c49bcaa843be68bb300dfbe7449b87f5f523344c11922667",
   "qa_arat.csv": "f10ea5bc5a2bb4a98277a0d369369a37d9f702811d4b7bcab89614888cd73874",
+  "qa_conceitos.csv": "0cebee0f1c551b4609a20c0f31b2f1bd1de283ac3b1ec21969b46a76fa1e17b7",
   "qa_dda_cobertura.csv": "e119a820e6e1e19fb38d0755a585bdf72b7f5deeac90dbb6d4ac8ebc58b236b6",
   "qa_municipios.csv": "822f5f407a42466685deec1ccadd5f7b88e71279c6d0520bc21f4bbfa25f441f",
   "qa_reconciliacao.csv": "847f55f449df235b5b5ab0f9a275aed8194952f728e3bfe606e0f110dcdec780",
   "qa_uc_regra_v2.csv": "183d550b1fb85d0f91df2f7de39aa5bbe58f34765b19326003acaeab757874d8",
+  "qa_uc_regra_v3.csv": "0a2605a1014ae8982007ebbc636ab89d1b05438c12b86fbfb6778d32ef01cb72",
   "qa_vinculos.csv": "e662c5a179c40b39efe4d42a57cb139479568e6038e050e016d5516dfda0ed3b",
-  "schemas/contrato_publicacao.json": "f2f36b73c143f0ef1e0a775076fbad31d650368f824de47c40a870813acd9f46"
+  "schemas/contrato_publicacao.json": "10845a4a267e28edfe9f13663d984bace7d635de0da2d3a058f36e16a59124df"
  },
  "homologacao": {
   "tipo": "tecnica_automatizada",
@@ -890,6 +908,7 @@
    "arat_valida_em_todas": true,
    "grupos_com_fonte_ou_nao_confirmado": true,
    "facetas_r2_municipio_tuc_em_todas": true,
+   "conceitos_r3_em_todas": true,
    "sem_colunas_individuais": true
   },
   "metricas": "ver metricas_homologacao.csv (homologada, com ressalvas, nao homologada)",

@@ -26,6 +26,17 @@
    "status_qualidade",
    "motivo_qualidade"
   ],
+  "ativos_totais.csv": [
+   "dist",
+   "data_base",
+   "ativo",
+   "conceito",
+   "medida",
+   "unidade",
+   "valor",
+   "status",
+   "motivo"
+  ],
   "cobertura_distribuidoras.csv": [
    "dist",
    "sigla",
@@ -35,6 +46,17 @@
    "tamanho_bytes",
    "item_id",
    "motivo"
+  ],
+  "conceitos/cubos.csv": [
+   "dist",
+   "data_base",
+   "conceito",
+   "cubo",
+   "entidade",
+   "chave",
+   "quantidade",
+   "extensao_km",
+   "potencia_kva"
   ],
   "dda_descricoes.csv": [
    "versao",
@@ -129,6 +151,83 @@
    "com_vinculo",
    "vinculados",
    "unidades_distintas"
+  ],
+  "inventario/alimentadores.csv": [
+   "dist",
+   "data_base",
+   "chave",
+   "nome",
+   "bancos_capacitores",
+   "chaves",
+   "consumidores",
+   "disjuntores",
+   "geradores",
+   "iluminacao",
+   "ramais_km",
+   "rede_bt_km",
+   "rede_mt_km",
+   "reguladores",
+   "religadores",
+   "sub",
+   "ten_nom",
+   "trafo_dist",
+   "trafo_dist_kva"
+  ],
+  "inventario/circuitos_at.csv": [
+   "dist",
+   "data_base",
+   "chave",
+   "nome",
+   "consumidores",
+   "geradores",
+   "rede_at_km",
+   "ten_nom"
+  ],
+  "inventario/conjuntos.csv": [
+   "dist",
+   "data_base",
+   "chave",
+   "nome",
+   "alimentadores",
+   "bancos_capacitores",
+   "chaves",
+   "consumidores",
+   "disjuntores",
+   "geradores",
+   "iluminacao",
+   "ramais_km",
+   "rede_at_km",
+   "rede_bt_km",
+   "rede_mt_km",
+   "reguladores",
+   "religadores",
+   "subestacoes",
+   "trafo_dist",
+   "trafo_dist_kva",
+   "trafo_forca"
+  ],
+  "inventario/subestacoes.csv": [
+   "dist",
+   "data_base",
+   "chave",
+   "nome",
+   "alimentadores",
+   "bancos_capacitores",
+   "barramentos",
+   "bays",
+   "chaves",
+   "consumidores",
+   "disjuntores",
+   "geradores",
+   "iluminacao",
+   "pos",
+   "rede_bt_km",
+   "rede_mt_km",
+   "reguladores",
+   "religadores",
+   "trafo_dist",
+   "trafo_dist_kva",
+   "trafo_forca"
   ],
   "matriz_empresas_2025.csv": [
    "dist",
@@ -231,6 +330,15 @@
    "bytes",
    "sha256"
   ],
+  "qa_conceitos.csv": [
+   "dist",
+   "conceito",
+   "cubo",
+   "entidade",
+   "quantidade",
+   "ref_quantidade",
+   "ok"
+  ],
   "qa_dda_cobertura.csv": [
    "dist",
    "entidade",
@@ -275,6 +383,17 @@
    "valida",
    "historico_at_ds",
    "motivos"
+  ],
+  "qa_uc_regra_v3.csv": [
+   "dist",
+   "entidade",
+   "registros",
+   "registros_ativados",
+   "codigos_ativados",
+   "unidades_ativas_v3",
+   "unidades_v3",
+   "cod_id_nulo",
+   "cod_id_sha256"
   ],
   "qa_vinculos.csv": [
    "dist",

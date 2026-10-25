@@ -1,0 +1,55 @@
+{
+ "versao": "contrato-nacional-1.0.0",
+ "data_geracao": "2026-10-25",
+ "linhas": 11400,
+ "agregados": 200,
+ "pontes": 4,
+ "cobertura_por_ano": {
+  "2022": {
+   "observado": 1963,
+   "zero_verificado": 257,
+   "ausente": 57,
+   "nao_homologado": 175,
+   "nao_aplicavel": 398,
+   "pct_observado_sobre_aplicavel": 90.54
+  },
+  "2023": {
+   "observado": 1678,
+   "zero_verificado": 232,
+   "ausente": 28,
+   "nao_homologado": 475,
+   "nao_aplicavel": 437,
+   "pct_observado_sobre_aplicavel": 79.15
+  },
+  "2024": {
+   "observado": 2011,
+   "zero_verificado": 259,
+   "ausente": 129,
+   "nao_homologado": 1,
+   "nao_aplicavel": 450,
+   "pct_observado_sobre_aplicavel": 94.58
+  },
+  "2025": {
+   "observado": 2033,
+   "zero_verificado": 265,
+   "ausente": 95,
+   "nao_homologado": 3,
+   "nao_aplicavel": 454,
+   "pct_observado_sobre_aplicavel": 95.91
+  }
+ },
+ "entradas": {
+  "auditoria/fase4/MATRIZ_HOMOLOGACAO_2022_2025.csv": "59bad3c177dea0676cc014ea231e6f9ad5dd563c6ac9a0b33037efa6125cd992",
+  "auditoria/fase4/MATRIZ_CONFORMIDADE_BDGD_ORDINARIA.csv": "3d972ec385de6bd132af57b99369ad9b34150d06897dda162e5d48129b9c0bb2",
+  "auditoria/fase4/RANKING_ANOMALIAS_TEMPORAIS.csv": "430c45190750adaa87c4735018ce9092119e479f105b59577dac7ffdb4796a6d",
+  "auditoria/fase6/INVENTARIO_LACUNAS_NACIONAL.csv": "2e8be0aaa1649f414174ca628b36527c9d92c6b19b2ef733b40a24f5c519bd3f",
+  "auditoria/fase6/CORRECOES_AUSENCIAS.csv": "6f0fe7c65115b3354e8b1c976cfbf098f6ab0d8132436653c5e4058ea9f809a6",
+  "web/public/data/historico/homologacao.json": "ac7a5d25f21112a4a4034108998456e7b0f443e3abf39c1b34d6320104935ffc"
+ },
+ "saidas": {
+  "serie_fisica_nacional.csv": "8d47fb589859a925ffae3a77e55e2edd2638f343a78e2ed1fb23764ee10735f5",
+  "agregados_nacionais.csv": "ce2ce58bd4ee8b33ad358e4ab8ad34ef67177fa809bb6e87cd2080a949e290e6",
+  "pontes_sucessao.csv": "359f7e7ac4841e31ed442de6f94decb0a834da37b227c1083e90ad9c3fa8e166",
+  "esquema.json": "05af8a8d0a160f137b0c20a890b427b1009c67d7b33f2b26d503422ea7d4b511"
+ }
+}
