@@ -29,3 +29,9 @@
 .rodape { font-size:.75rem;color:var(--muted);line-height:1.6;margin:14px 0 0 }
 @media(max-width:950px) { .explicacao { grid-template-columns:1fr; } .filtros { grid-template-columns:1fr 1fr; } .filtros label:last-child { grid-column:span 2 } }
 @media(max-width:570px) { .kpis { grid-template-columns:1fr 1fr } .filtros { grid-template-columns:1fr } .filtros label:last-child { grid-column:auto } .section {padding:15px} }
+.pares { margin:19px 0 15px; border:1px solid var(--hairline);border-radius:11px;padding:12px 14px; }
+.pares summary { cursor:pointer; font-weight:670; font-size:.86rem; }
+.pares summary:focus-visible {outline:3px solid var(--accent);outline-offset:3px}
+.pares .scroll {margin:15px 0;max-height:550px}
+.pares .tabela {min-width:1040px}
+.pares .tabela td:nth-child(5) {max-width:360px}
