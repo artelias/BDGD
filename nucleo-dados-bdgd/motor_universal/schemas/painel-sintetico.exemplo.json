@@ -1,0 +1,107 @@
+{
+  "schema_version": "painel-bdgd-1",
+  "dataset_version": "SINTETICO-TESTE-1",
+  "sintetico": true,
+  "feature_definitions": {},
+  "rows": [
+    {
+      "ano": 2010,
+      "DIST": "26",
+      "objetivo_id": "consumidores",
+      "metrica": "quantidade",
+      "unidade": "itens",
+      "valor_alvo": 100,
+      "status_qualidade": "observado",
+      "competencia": "2010-12-31",
+      "disponivel_em": "2010-12-31",
+      "fonte": "SINTETICO",
+      "features": {},
+      "territorio": {
+        "nivel": "dist",
+        "id": "26"
+      },
+      "perimetro_id": "teste",
+      "regra_versao": "teste-1",
+      "homologado": false,
+      "status_homologacao": "SINTETICO_NAO_HOMOLOGADO",
+      "ruptura": false,
+      "nao_somar": false,
+      "cobertura": 1
+    },
+    {
+      "ano": 2011,
+      "DIST": "26",
+      "objetivo_id": "consumidores",
+      "metrica": "quantidade",
+      "unidade": "itens",
+      "valor_alvo": 110,
+      "status_qualidade": "observado",
+      "competencia": "2011-12-31",
+      "disponivel_em": "2011-12-31",
+      "fonte": "SINTETICO",
+      "features": {},
+      "territorio": {
+        "nivel": "dist",
+        "id": "26"
+      },
+      "perimetro_id": "teste",
+      "regra_versao": "teste-1",
+      "homologado": false,
+      "status_homologacao": "SINTETICO_NAO_HOMOLOGADO",
+      "ruptura": false,
+      "nao_somar": false,
+      "cobertura": 1
+    },
+    {
+      "ano": 2012,
+      "DIST": "26",
+      "objetivo_id": "consumidores",
+      "metrica": "quantidade",
+      "unidade": "itens",
+      "valor_alvo": 120,
+      "status_qualidade": "observado",
+      "competencia": "2012-12-31",
+      "disponivel_em": "2012-12-31",
+      "fonte": "SINTETICO",
+      "features": {},
+      "territorio": {
+        "nivel": "dist",
+        "id": "26"
+      },
+      "perimetro_id": "teste",
+      "regra_versao": "teste-1",
+      "homologado": false,
+      "status_homologacao": "SINTETICO_NAO_HOMOLOGADO",
+      "ruptura": false,
+      "nao_somar": false,
+      "cobertura": 1
+    },
+    {
+      "ano": 2013,
+      "DIST": "26",
+      "objetivo_id": "consumidores",
+      "metrica": "quantidade",
+      "unidade": "itens",
+      "valor_alvo": 130,
+      "status_qualidade": "observado",
+      "competencia": "2013-12-31",
+      "disponivel_em": "2013-12-31",
+      "fonte": "SINTETICO",
+      "features": {},
+      "territorio": {
+        "nivel": "dist",
+        "id": "26"
+      },
+      "perimetro_id": "teste",
+      "regra_versao": "teste-1",
+      "homologado": false,
+      "status_homologacao": "SINTETICO_NAO_HOMOLOGADO",
+      "ruptura": false,
+      "nao_somar": false,
+      "cobertura": 1
+    }
+  ],
+  "limites": [
+    "SINTETICO EXCLUSIVO PARA TESTAR SOFTWARE"
+  ]
+}

@@ -1,0 +1,2 @@
+# Extra opcional. O núcleo e os baselines usam somente a biblioteca padrão.
+scikit-learn==1.8.0
