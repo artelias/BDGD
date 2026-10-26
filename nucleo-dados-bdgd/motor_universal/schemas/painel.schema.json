@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bdgd:painel-bdgd-1",
+  "title": "Painel analítico do Motor Universal BDGD v1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "dataset_version",
+    "sintetico",
+    "feature_definitions",
+    "rows"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "painel-bdgd-1"
+    },
+    "dataset_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sintetico": {
+      "type": "boolean"
+    },
+    "feature_definitions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "tipo",
+          "unidade"
+        ],
+        "properties": {
+          "tipo": {
+            "enum": [
+              "numerica",
+              "categorica"
+            ]
+          },
+          "unidade": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permite_imputacao": {
+            "type": "boolean"
+          },
+          "dividir_por": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "interagir_com": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/row"
+      }
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "feature": {
+      "type": "object",
+      "required": [
+        "valor",
+        "disponivel_em",
+        "referencia",
+        "fonte",
+        "unidade"
+      ],
+      "properties": {
+        "valor": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        },
+        "disponivel_em": {
+          "$ref": "#/$defs/date"
+        },
+        "referencia": {
+          "$ref": "#/$defs/date"
+        },
+        "fonte": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unidade": {
+          "type": "string"
+        },
+        "cenario_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "row": {
+      "type": "object",
+      "required": [
+        "ano",
+        "DIST",
+        "objetivo_id",
+        "metrica",
+        "unidade",
+        "valor_alvo",
+        "features",
+        "status_qualidade",
+        "fonte",
+        "competencia",
+        "territorio",
+        "perimetro_id",
+        "regra_versao",
+        "disponivel_em",
+        "ruptura",
+        "nao_somar",
+        "homologado",
+        "cobertura",
+        "status_homologacao"
+      ],
+      "properties": {
+        "ano": {
+          "type": "integer",
+          "minimum": 1900,
+          "maximum": 2100
+        },
+        "DIST": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*$"
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ]
+        },
+        "objetivo_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "metrica": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unidade": {
+          "type": "string",
+          "minLength": 1
+        },
+        "valor_alvo": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "features": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/feature"
+          }
+        },
+        "status_qualidade": {
+          "enum": [
+            "observado",
+            "zero_verificado",
+            "zero_tecnico",
+            "ausente",
+            "nao_homologado",
+            "nao_aplicavel"
+          ]
+        },
+        "competencia": {
+          "$ref": "#/$defs/date"
+        },
+        "disponivel_em": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fonte": {
+          "type": "string",
+          "minLength": 1
+        },
+        "perimetro_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "regra_versao": {
+          "type": "string",
+          "minLength": 1
+        },
+        "territorio": {
+          "type": "object",
+          "required": [
+            "nivel",
+            "id"
+          ],
+          "properties": {
+            "nivel": {
+              "enum": [
+                "dist",
+                "municipio",
+                "alimentador",
+                "subestacao"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "ruptura": {
+          "type": "boolean"
+        },
+        "nao_somar": {
+          "type": "boolean"
+        },
+        "homologado": {
+          "type": "boolean"
+        },
+        "ponte_pendente": {
+          "type": "boolean"
+        },
+        "cobertura": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidencia_zero": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status_homologacao": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comparabilidade_validada": {
+          "type": "boolean"
+        },
+        "evidencia_comparabilidade": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

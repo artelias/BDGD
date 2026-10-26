@@ -1,0 +1,43 @@
+name: Motor Universal BDGD — contratos e experimentos
+on:
+  pull_request:
+    paths:
+      - "nucleo-dados-bdgd/motor_universal/**"
+      - "nucleo-dados-bdgd/etl/bdgd2025/config/conceitos_2025.json"
+      - "nucleo-dados-bdgd/output-historico/contrato-integracao/**"
+      - "nucleo-dados-bdgd/web/public/data/previsoes/motor-universal-resumo.json.gz"
+      - ".github/workflows/motor-universal.yml"
+permissions:
+  contents: read
+jobs:
+  motor:
+    name: Parquet, anti-leakage, ML opcional e integração real
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: nucleo-dados-bdgd
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Ambiente e dependências fixadas
+        run: |
+          python3 -m venv "$RUNNER_TEMP/motor-env"
+          "$RUNNER_TEMP/motor-env/bin/python" -m pip install -r motor_universal/requirements.txt -r motor_universal/requirements-ml.txt
+      - name: Contratos, Parquet, treino sintético e backtesting
+        run: '"$RUNNER_TEMP/motor-env/bin/python" -m unittest discover -s motor_universal/tests -v'
+      - name: Experimento real reproduzível, sem reprocessar BDGD
+        run: '"$RUNNER_TEMP/motor-env/bin/python" -m motor_universal --output "$RUNNER_TEMP/experimento-motor" --web-summary web/public/data/previsoes/motor-universal-resumo.json.gz --check-web'
+      - name: Artefatos auditáveis do experimento
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: motor-universal-${{ github.run_id }}
+          path: ${{ runner.temp }}/experimento-motor
+          retention-days: 14
+          if-no-files-found: warn
