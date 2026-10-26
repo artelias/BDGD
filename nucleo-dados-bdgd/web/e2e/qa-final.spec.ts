@@ -94,6 +94,13 @@ test("@iphone QA: navegação pelas sete páginas, busca vazia e retorno", async
   await expect(page.getByTestId("open-search")).toBeFocused();
 });
 
+test("@iphone QA: seletor de categorias permanece clicável no celular", async ({ page }) => {
+  await page.goto("/explorar/");
+  await page.getByTestId("menu-mobile").click();
+  await page.getByRole("option", { name: /Consumidores/ }).first().click();
+  await expect(page.getByTestId("conceito-titulo")).toHaveText("Consumidores");
+});
+
 test("@iphone QA: TUC, potência, categorias e CSV do recorte", async ({ page }) => {
   await page.goto("/explorar/?ativo=transformadores&escopo=grupo:energisa");
   await page.getByTestId("cartao-565").click();
