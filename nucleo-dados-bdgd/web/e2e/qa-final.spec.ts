@@ -171,7 +171,7 @@ for (const dispositivo of ["desktop", "iphone"] as const) {
           : page.locator("#regras");
         await expect(alvo).toBeVisible();
         const cargaMs = Date.now() - inicio;
-        expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
         await page.screenshot({ path: info.outputPath("inicio.png"), scale: "css" });
         await info.attach("início", { path: info.outputPath("inicio.png"), contentType: "image/png" });
         await alvo.scrollIntoViewIfNeeded();
