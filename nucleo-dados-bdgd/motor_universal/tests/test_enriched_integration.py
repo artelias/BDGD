@@ -143,6 +143,19 @@ class EnrichedIntegrationTests(unittest.TestCase):
         s = run(p, r, base_year=2013, final_year=2018)['series'][0]
         self.assertEqual(s['treino_anos'], [2012, 2013]); self.assertFalse(s['projecoes'])
 
+    def test_explicit_unapproved_or_unknown_metadata_never_enters_training(self):
+        for status in ['NAO_HOMOLOGADO', 'STATUS_DESCONHECIDO']:
+            with self.subTest(status=status):
+                p,r=fixture(4)
+                for row in p['rows']: row['status_homologacao']=status
+                report=run(p,r,base_year=2013,final_year=2018,candidates=['persistencia'])
+                self.assertFalse(report['series'][0]['projecoes'])
+                rows,_=coverage(p,r,report)
+                self.assertEqual(next(x for x in rows if x['OBJETIVO_ID']=='consumidores')['MOTIVO_BLOQUEIO'],'FALTA_HOMOLOGACAO')
+        p,r=fixture(4);p['sintetico']=False
+        with self.assertRaisesRegex(ValueError,'Estado sintético'):
+            validate_panel(p,r)
+
     def test_future_reference_before_release_needs_scenario_even_for_lag(self):
         p, _ = enriched(); f = p['rows'][2]['features']['populacao']; f.update(disponivel_em='2010-01-01', referencia='2011-12-31')
         with self.assertRaisesRegex(ValueError, 'SEM_CENARIO'):

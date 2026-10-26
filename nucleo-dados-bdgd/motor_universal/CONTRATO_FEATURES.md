@@ -60,3 +60,5 @@ python -m motor_universal --panel /caminho/bundle --registry /caminho/objetivos.
 ```
 
 A aceitação técnica não é aprovação de fontes, validação causal, homologação estatística ou autorização para publicar previsões. Necessidade de expansão permanece NULL: não é identificável apenas pela diferença de estoques.
+
+Estados de origem explícitos `NAO_HOMOLOGADO` e desconhecidos não entram no treino mesmo quando conservam valor numérico para auditoria. Aptidão técnica reconhece `HOMOLOGADO`, `COMPLETO_TECNICO` e `APTO_COM_RESSALVAS` e não produz homologação humana ou científica. O estado especial de fixture sintética só é aceito em painel marcado sintético, jamais publicável.

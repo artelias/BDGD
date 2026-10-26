@@ -71,6 +71,8 @@ Há também 25 séries bloqueadas que contêm flag de não somável em algum ano
 6. **Razões/interações ausentes podiam chegar à imputação sem autorização própria.** Agora a autorização é exigida nos dois componentes no treino; não se gera zero de denominador inválido. Uma referência futura em relação à própria divulgação também exige identificação explícita de cenário.
 7. **Números de catálogo não mostravam o denominador de cobertura na interface.** O dashboard passa a distinguir esperadas, com linhas, bloqueadas e sem histórico; a tabela e a exportação incluem cobertura por métrica. O parser recusa contagens incompatíveis com as séries.
 
+8. **Status explícito NAO_HOMOLOGADO ou desconhecido podia passar como observação apta se o valor estivesse presente.** A aptidão agora usa estados reconhecidos; ambos ficam fora do treino e recebem causa rastreável de homologação. O estado especial de fixture sintética é recusado em painel real. COMPLETO_TECNICO/APTO_COM_RESSALVAS continuam apenas aptidão técnica para simulação condicional, não homologação humana ou científica.
+
 Ajustes adicionais: alvos conhecidos tardios também são recusados na API direta de modelos quando há corte informado; projeções recursivas intermediárias negativas/não finitas são rejeitadas imediatamente; horizontes inválidos são recusados. Folds registram anos de treino, corte e identidade da série. Agregados por objetivo registram hash da cobertura e aviso de comparação pareada necessária.
 
 ## Controles estatísticos preservados
@@ -89,10 +91,10 @@ Claude ainda deve entregar Parquets/dicionário, fontes e versões por variável
 
 ## Validação desta entrega
 
-- Python: 61 testes aprovados localmente, com dependências ML opcionais instaladas; 28 novos testes de integração/auditoria.
+- Python: 62 testes aprovados localmente, com dependências ML opcionais instaladas; 29 novos testes de integração/auditoria.
 - TypeScript: 128 testes aprovados localmente; quatro regressões novas de cobertura/exportação.
 - Lint e tipos aprovados localmente.
 - Build estático aprovado localmente. E2E: resultados finais, links e evidências registrados no PR da entrega após execução do CI. Não considerar execução local bloqueada como aprovação.
 - Tentativa local de Playwright: o servidor `serve` abortou em `uv_interface_addresses` por restrição do ambiente; com servidor Python, o Chromium chegou a iniciar, mas abortou em `socket() failed: Operation not permitted`. Nenhuma dessas tentativas locais é contabilizada como E2E aprovado. O runner GitHub Actions executa Chrome desktop, Android e iPhone estreito emulado; não equivale a Safari/iOS físico.
 
-O artefato do CI publica Parquets de entrada/resultados, matriz completa, manifestos e registro de execução. Experimento desta auditoria: `6786a18a45f920003350f4d0c9efbe18835c4ad4a13762a99bbba92630d18427`. Os bytes de `targets.parquet` foram comparados com o artefato original do PR #10: idênticos. 500 arquivos oficiais/ETL/históricos/assets preexistentes foram comparados por SHA-256, sem alterações; ver evidência de integridade.
+O artefato do CI publica Parquets de entrada/resultados, matriz completa, manifestos e registro de execução. Experimento desta auditoria: `983b46a29817c8e353d6a695a3fd3decad466a25116c715d2cafa87b7f68e8a1`. Os bytes de `targets.parquet` foram comparados com o artefato original do PR #10: idênticos. 500 arquivos oficiais/ETL/históricos/assets preexistentes foram comparados por SHA-256, sem alterações; ver evidência de integridade.

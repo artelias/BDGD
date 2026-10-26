@@ -6,6 +6,7 @@ from .registry import validate_registry
 SCHEMA = "painel-bdgd-1"
 OBSERVED = {"observado", "zero_verificado"}
 STATES = OBSERVED | {"zero_tecnico", "ausente", "nao_homologado", "nao_aplicavel"}
+READY_HOMOLOGATION = {"HOMOLOGADO", "COMPLETO_TECNICO", "APTO_COM_RESSALVAS", "SINTETICO_NAO_HOMOLOGADO"}
 
 
 def iso(value):
@@ -81,6 +82,8 @@ def validate_panel(panel, registry):
             raise ValueError("Status de homologação obrigatório")
         if (row["status_homologacao"] == "HOMOLOGADO") != row["homologado"]:
             raise ValueError("Estado de homologação contraditório")
+        if row["status_homologacao"] == "SINTETICO_NAO_HOMOLOGADO" and not panel["sintetico"]:
+            raise ValueError("Estado sintético não é admissível em painel real")
         territory = row["territorio"]
         if territory.get("nivel") not in target.get("territorios", ["dist"]) or not str(territory.get("id", "")):
             raise ValueError("Granularidade territorial inválida")
@@ -134,7 +137,7 @@ def validate_panel(panel, registry):
 
 def usable(row):
     return (row["status_qualidade"] in OBSERVED and row["cobertura"] == 1 and not row["nao_somar"]
-            and not row.get("ponte_pendente", False) and row["status_homologacao"] not in {"BLOQUEADO", "PENDENTE_DECISAO", "NAO_DISPONIVEL"})
+            and not row.get("ponte_pendente", False) and row["status_homologacao"] in READY_HOMOLOGATION)
 
 
 def contiguous_tail(rows):

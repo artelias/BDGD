@@ -3,7 +3,7 @@ from collections import Counter, defaultdict
 import csv
 import json
 from pathlib import Path
-from .contracts import usable, iso
+from .contracts import usable, iso, READY_HOMOLOGATION
 from .parquet_io import arrow, sha
 from .registry import validate_registry
 
@@ -30,7 +30,7 @@ def row_causes(row, target, as_of):
     if state == 'nao_aplicavel': causes.append('NAO_APLICAVEL')
     if state == 'ausente': causes.append('AUSENCIA_OBSERVACOES')
     if state == 'zero_tecnico': causes.append('ZERO_TECNICO_SEM_EVIDENCIA')
-    if state == 'nao_homologado' or row['status_homologacao'] in {'BLOQUEADO', 'PENDENTE_DECISAO'}:
+    if state == 'nao_homologado' or row['status_homologacao'] not in READY_HOMOLOGATION | {'NAO_DISPONIVEL'}:
         causes.append('FALTA_HOMOLOGACAO')
     if row['ruptura'] or row.get('ponte_pendente'): causes.append('RUPTURA_CADASTRAL')
     if row['disponivel_em'] and iso(row['disponivel_em']) > iso(as_of): causes.append('INCOMPATIBILIDADE_TEMPORAL')
