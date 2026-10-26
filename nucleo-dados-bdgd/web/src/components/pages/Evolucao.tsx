@@ -128,7 +128,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
 
   const buildLinhas = (t: ChartTokens) => ({
     grid: { left: 8, right: 20, top: 30, bottom: 24, containLabel: true },
-    legend: { top: 0, left: 0, type: "scroll", textStyle: { color: t.text2, fontFamily: t.font, fontSize: 11 } },
+    legend: { top: 0, left: 0, type: "scroll", tooltip: { show: true }, textStyle: { color: t.text2, fontFamily: t.font, fontSize: 11, width: 140, overflow: "truncate" } },
     tooltip: { trigger: "axis", backgroundColor: t.surface, borderColor: t.hairline, textStyle: { color: t.text, fontFamily: t.font, fontSize: 12 },
       valueFormatter: (v: number | null) => (v === null || v === undefined ? "N/D" : escala === "indice" ? v.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) : `${fmt(v, a.medida)} ${UNIDADE[a.medida]}`) },
     xAxis: { type: "category", data: anos.map(String), axisLine: { lineStyle: { color: t.hairline } }, axisLabel: { color: t.text2, fontFamily: t.font } },

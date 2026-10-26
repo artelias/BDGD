@@ -16,7 +16,7 @@ Branch de correção: `feat/qa-funcional-visual-final-pr8`.
 | Textos de UC v2, ausência física e modelagem contradiziam a interface atual | UC v3 explicitada; diagnóstico legado identificado; N/D separado de zero técnico e ausência física; cenários existentes separados do modelo estrutural ainda não estimado |
 | Inventário mantinha referências genéricas à quarentena | Classes específicas de competência, divergência e publicação não localizada |
 | CSV habilitado sem linhas/colunas na Matriz | Exportação desabilitada no estado vazio; busca e limpeza testadas |
-| Conteúdo alargava o viewport mobile e tirava a barra inferior da área clicável | Contenção horizontal na coluna principal, colunas de cenários com largura mínima zero e regressão pela largura do documento |
+| Conteúdo alargava o viewport mobile e tirava a barra inferior da área clicável | Contenção horizontal nos gráficos, colunas de cenários com largura mínima zero e barras/diálogos fixos ancorados às unidades dinâmicas do viewport; regressão da posição clicável no iPhone |
 | Contato no rodapé podia exceder telas estreitas | Quebra de texto sem perder o endereço |
 
 ## Cobertura executada

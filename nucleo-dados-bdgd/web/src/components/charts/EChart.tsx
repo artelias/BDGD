@@ -53,5 +53,5 @@ export function EChart({ build, height, ariaLabel, onClickIndex, testId }: {
     inst.current.setOption({ animation: !reduce, animationDuration: 420, animationDurationUpdate: 360, animationEasingUpdate: "cubicOut", aria: { enabled: true, label: { description: ariaLabel } }, ...opt }, { notMerge: false, replaceMerge: ["series", "xAxis", "yAxis"] });
   }, [build, ready, resolved, ariaLabel]);
 
-  return <div ref={el} style={{ width: "100%", height }} role="img" aria-label={ariaLabel} data-testid={testId} />;
+  return <div ref={el} style={{ width: "100%", minWidth: 0, overflow: "hidden", height }} role="img" aria-label={ariaLabel} data-testid={testId} />;
 }

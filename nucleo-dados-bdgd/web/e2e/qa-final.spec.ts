@@ -89,7 +89,7 @@ test("@iphone QA: navegação pelas sete páginas, busca vazia e retorno", async
   await page.getByTestId("open-search").click();
   await page.getByTestId("search-input").fill("zzzz-sem-resultado-qa");
   await expect(page.getByText(/Nada encontrado para/)).toBeVisible();
-  await expect(page.getByRole("option")).toHaveCount(0);
+  await expect(page.getByRole("dialog", { name: "Busca global" }).getByRole("option")).toHaveCount(0);
   await page.keyboard.press("Escape");
   await expect(page.getByTestId("open-search")).toBeFocused();
 });
@@ -172,6 +172,11 @@ for (const dispositivo of ["desktop", "iphone"] as const) {
         await expect(alvo).toBeVisible();
         const cargaMs = Date.now() - inicio;
         expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+        if (dispositivo === "iphone") {
+          const nav = (await page.getByRole("navigation", { name: "Navegação", exact: true }).boundingBox())!;
+          expect(nav.x + nav.width).toBeLessThanOrEqual(page.viewportSize()!.width + 1);
+          expect(nav.y + nav.height).toBeLessThanOrEqual(page.viewportSize()!.height + 1);
+        }
         await page.screenshot({ path: info.outputPath("inicio.png"), scale: "css" });
         await info.attach("início", { path: info.outputPath("inicio.png"), contentType: "image/png" });
         await alvo.scrollIntoViewIfNeeded();
