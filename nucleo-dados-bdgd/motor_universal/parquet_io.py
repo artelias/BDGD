@@ -16,6 +16,7 @@ FIELDS = {"ano": "ANO", "DIST": "DIST", "objetivo_id": "OBJETIVO_ID", "metrica":
           "natureza_alvo": "NATUREZA_ALVO"}
 DATE_FIELDS = {"COMPETENCIA", "DISPONIVEL_EM"}
 SUFFIXES = ("disponivel_em", "referencia", "fonte", "cenario_id")
+CONTROLS = ("status_comparabilidade", "evidencia_comparabilidade", "ruptura", "versao")
 
 
 def arrow():
@@ -31,15 +32,58 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def _feature_schema(definitions):
+def _feature_schema(definitions, *, scoped=False, version=2):
     pa, _ = arrow()
     fields = [("ANO", pa.int32()), ("DIST", pa.string())]
+    if scoped:
+        fields.append(("OBJETIVO_ID", pa.string()))
     for name, spec in sorted(definitions.items()):
-        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", name) or "__" in name:
+        if not re.fullmatch(r"[A-Za-z][A-Za-z0-9_]*", name) or "__" in name or name in {"ANO", "DIST", "OBJETIVO_ID"}:
             raise ValueError("Nome de feature wide inválido/reservado")
         fields.append((name, pa.float64() if spec["tipo"] == "numerica" else pa.string()))
         fields += [(name + "__" + suffix, pa.date32() if suffix in {"disponivel_em", "referencia"} else pa.string()) for suffix in SUFFIXES]
+        if version == 2:
+            fields += [(name + "__" + suffix, pa.bool_() if suffix == "ruptura" else pa.string()) for suffix in CONTROLS]
     return pa.schema(fields)
+
+
+def _target_schema():
+    pa, _ = arrow()
+    return pa.schema([(column, pa.int32() if column == "ANO" else pa.float64() if column in {"VALOR_ALVO", "COBERTURA"}
+                      else pa.bool_() if column in {"HOMOLOGADO", "RUPTURA_CADASTRAL", "NAO_SOMAR", "COMPARABILIDADE_VALIDADA"}
+                      else pa.date32() if column in DATE_FIELDS else pa.string()) for column in FIELDS.values()] +
+                     [("PROVENIENCIA_JSON", pa.string()), ("METADADOS_JSON", pa.string())])
+
+
+def _check_schema(table, expected):
+    if len(table.column_names) != len(set(table.column_names)) or set(table.column_names) != set(expected.names):
+        raise ValueError("Colunas Parquet incompatíveis/duplicadas")
+    if any(table.schema.field(f.name).type != f.type for f in expected):
+        raise ValueError("Tipos Parquet incompatíveis com o contrato")
+
+
+def _merge_features(store, key, values):
+    dest = store.setdefault(key, {})
+    for name, feature in values.items():
+        if name in dest and dest[name] != feature:
+            raise ValueError("Features wide conflitantes na mesma chave; não multiplicar observações")
+        dest[name] = feature
+
+
+def _write_wide(pq, pa, root, filename, values, definitions, *, scoped=False):
+    wide = []
+    for key, features in sorted(values.items()):
+        item = {"ANO": key[0], "DIST": key[1]}
+        if scoped:
+            item["OBJETIVO_ID"] = key[2]
+        for name in definitions:
+            f = features.get(name, {})
+            item[name] = f.get("valor")
+            for suffix in SUFFIXES + CONTROLS:
+                v = f.get(suffix)
+                item[name + "__" + suffix] = iso(v) if v is not None and suffix in {"referencia", "disponivel_em"} else v
+        wide.append(item)
+    pq.write_table(pa.Table.from_pylist(wide, schema=_feature_schema(definitions, scoped=scoped)), root / filename, compression="zstd")
 
 
 def write_bundle(panel, registry, directory):
@@ -47,9 +91,11 @@ def write_bundle(panel, registry, directory):
     pa, pq = arrow()
     root = Path(directory)
     root.mkdir(parents=True, exist_ok=False)
-    target_rows, feature_rows, target_keys = [], {}, set()
+    target_rows, feature_rows, scoped_rows, target_keys = [], {}, {}, set()
     definitions = panel["feature_definitions"]
-    fschema = _feature_schema(definitions)
+    shared_defs = {n: s for n, s in definitions.items() if not s.get("objetivos_aplicaveis")}
+    scoped_defs = {n: s for n, s in definitions.items() if s.get("objetivos_aplicaveis")}
+    _feature_schema(definitions)
     for row in panel["rows"]:
         if row["territorio"] != {"nivel": "dist", "id": str(row["DIST"])}:
             raise ValueError("Parquet v1 é DIST × ano; municipal requer contrato territorial v2")
@@ -64,102 +110,120 @@ def write_bundle(panel, registry, directory):
         converted["METADADOS_JSON"] = json.dumps({k: v for k, v in row.items() if k not in FIELDS and k not in {"features", "territorio", "proveniencia"}}, ensure_ascii=False, sort_keys=True, allow_nan=False)
         target_rows.append(converted)
         fkey = row["ano"], str(row["DIST"])
-        if fkey in feature_rows and feature_rows[fkey] != row["features"]:
-            raise ValueError("Features wide conflitantes para ANO+DIST; use colunas qualificadas por ativo")
-        feature_rows[fkey] = row["features"]
-    wide = []
-    for (year, dist), features in sorted(feature_rows.items()):
-        item = {"ANO": year, "DIST": dist}
-        for name, spec in definitions.items():
-            f = features.get(name, {})
-            item[name] = f.get("valor")
-            for suffix in SUFFIXES:
-                v = f.get(suffix)
-                item[name + "__" + suffix] = iso(v) if v is not None and suffix in {"referencia", "disponivel_em"} else v
-        wide.append(item)
-    schema = pa.schema([(column, pa.int32() if column == "ANO" else pa.float64() if column in {"VALOR_ALVO", "COBERTURA"}
-                         else pa.bool_() if column in {"HOMOLOGADO", "RUPTURA_CADASTRAL", "NAO_SOMAR", "COMPARABILIDADE_VALIDADA"}
-                         else pa.date32() if column in DATE_FIELDS else pa.string()) for column in FIELDS.values()] +
-                       [("PROVENIENCIA_JSON", pa.string()), ("METADADOS_JSON", pa.string())])
-    pq.write_table(pa.Table.from_pylist(target_rows, schema=schema), root / "targets.parquet", compression="zstd")
-    pq.write_table(pa.Table.from_pylist(wide, schema=fschema), root / "features.parquet", compression="zstd")
+        _merge_features(feature_rows, fkey, {n: f for n, f in row["features"].items() if n in shared_defs})
+        if scoped_defs:
+            _merge_features(scoped_rows, (*fkey, row["objetivo_id"]), {n: f for n, f in row["features"].items() if n in scoped_defs})
+    pq.write_table(pa.Table.from_pylist(target_rows, schema=_target_schema()), root / "targets.parquet", compression="zstd")
+    _write_wide(pq, pa, root, "features.parquet", feature_rows, shared_defs)
+    filenames = ["targets.parquet", "features.parquet"]
+    if scoped_defs:
+        _write_wide(pq, pa, root, "features_objetivo.parquet", scoped_rows, scoped_defs, scoped=True)
+        filenames.append("features_objetivo.parquet")
     metadata = {k: v for k, v in panel.items() if k != "rows"}
-    manifest = {"schema_version": "bdgd-parquet-1", "grain": "DIST_ANO", "target_key": ["ANO", "DIST", "OBJETIVO_ID", "METRICA"],
+    manifest = {"schema_version": "bdgd-parquet-2", "grain": "DIST_ANO", "target_key": ["ANO", "DIST", "OBJETIVO_ID", "METRICA"],
                 "feature_key": ["ANO", "DIST"], "metadata": metadata,
-                "sha256": {name: sha(root / name) for name in ("targets.parquet", "features.parquet")}}
+                "objective_feature_key": ["ANO", "DIST", "OBJETIVO_ID"] if scoped_defs else None,
+                "sha256": {name: sha(root / name) for name in filenames}}
     (root / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
     return manifest
+
+
+def _read_wide(root, filename, definitions, *, scoped=False, version=2):
+    _, pq = arrow()
+    table = pq.read_table(root / filename)
+    _check_schema(table, _feature_schema(definitions, scoped=scoped, version=version))
+    result = {}
+    for row in table.to_pylist():
+        if row["ANO"] is None or row["DIST"] is None or not 1900 <= row["ANO"] <= 2100 or not str(row["DIST"]).isdigit() or int(row["DIST"]) <= 0 or str(int(row["DIST"])) != row["DIST"]:
+            raise ValueError("Chave wide inválida")
+        key = (row["ANO"], row["DIST"], row["OBJETIVO_ID"]) if scoped else (row["ANO"], row["DIST"])
+        if key in result:
+            raise ValueError("Features wide duplicadas na chave declarada")
+        fs = {}
+        for name, spec in definitions.items():
+            suffixes = SUFFIXES + (CONTROLS if version == 2 else ())
+            if row[name] is None and all(row[name + "__" + x] is None for x in suffixes):
+                continue
+            f = {"valor": row[name], "unidade": spec["unidade"]}
+            for suffix in suffixes:
+                v = row[name + "__" + suffix]
+                if v is None and suffix not in {"disponivel_em", "referencia", "fonte"}:
+                    continue
+                f[suffix] = v.isoformat() if isinstance(v, date) else v
+            iso(f["disponivel_em"]); iso(f["referencia"])
+            if not f["fonte"] or (f["valor"] is not None and not (finite(f["valor"]) if spec["tipo"] == "numerica" else isinstance(f["valor"], str))):
+                raise ValueError("Feature wide inválida: fonte/tipo")
+            if scoped and key[2] not in spec["objetivos_aplicaveis"]:
+                raise ValueError("Feature fora do escopo do objetivo")
+            fs[name] = f
+        result[key] = fs
+    return result
 
 
 def read_bundle(directory, registry):
     _, pq = arrow()
     root = Path(directory)
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
-    if manifest.get("schema_version") != "bdgd-parquet-1" or manifest.get("grain") != "DIST_ANO":
-        raise ValueError("Contrato/granularidade Parquet incompatível")
+    schema = manifest.get("schema_version")
+    if schema not in {"bdgd-parquet-1", "bdgd-parquet-2"} or manifest.get("grain") != "DIST_ANO":
+        raise ValueError("Contrato/granularidade Parquet incompatível; municipal requer contrato territorial v2")
+    version = 1 if schema == "bdgd-parquet-1" else 2
     if manifest.get("target_key") != ["ANO", "DIST", "OBJETIVO_ID", "METRICA"] or manifest.get("feature_key") != ["ANO", "DIST"]:
         raise ValueError("Chaves Parquet incompatíveis")
-    for name in ("targets.parquet", "features.parquet"):
-        if sha(root / name) != manifest["sha256"].get(name):
-            raise ValueError("Hash Parquet divergente: " + name)
     metadata = manifest["metadata"]
     definitions = metadata["feature_definitions"]
-    features = pq.read_table(root / "features.parquet")
-    if set(features.column_names) != set(_feature_schema(definitions).names):
-        raise ValueError("Colunas wide não correspondem às definições de features")
-    wide = {}
-    for row in features.to_pylist():
-        if not isinstance(row["ANO"], int) or isinstance(row["ANO"], bool) or not 1900 <= row["ANO"] <= 2100 or not str(row["DIST"]).isdigit() or int(row["DIST"]) <= 0:
-            raise ValueError("Chave wide inválida")
-        key = row["ANO"], str(row["DIST"])
-        if key in wide:
-            raise ValueError("Features wide duplicadas ANO+DIST")
-        fs = {}
-        for name, spec in definitions.items():
-            if row[name + "__disponivel_em"] is None and row[name] is None:
-                continue  # ausência real; não cria valor nem disponibilidade
-            fs[name] = {"valor": row[name], "unidade": spec["unidade"]}
-            for suffix in SUFFIXES:
-                v = row[name + "__" + suffix]
-                if suffix == "cenario_id" and v is None:
-                    continue
-                fs[name][suffix] = v.isoformat() if isinstance(v, date) else v
-            iso(fs[name]["disponivel_em"]); iso(fs[name]["referencia"])
-            if not fs[name]["fonte"] or (fs[name]["valor"] is not None and not (finite(fs[name]["valor"]) if spec["tipo"] == "numerica" else isinstance(fs[name]["valor"], str))):
-                raise ValueError("Feature wide inválida")
-        wide[key] = fs
+    scoped_defs = {n: s for n, s in definitions.items() if s.get("objetivos_aplicaveis")} if version == 2 else {}
+    shared_defs = {n: s for n, s in definitions.items() if n not in scoped_defs}
+    filenames = {"targets.parquet", "features.parquet"} | ({"features_objetivo.parquet"} if scoped_defs else set())
+    if set(manifest["sha256"]) != filenames:
+        raise ValueError("Arquivos declarados incompatíveis com o contrato")
+    if version == 2 and manifest.get("objective_feature_key") != (["ANO", "DIST", "OBJETIVO_ID"] if scoped_defs else None):
+        raise ValueError("Chave de features por objetivo incompatível")
+    for name in filenames:
+        if sha(root / name) != manifest["sha256"][name]:
+            raise ValueError("Hash Parquet divergente: " + name)
+    wide = _read_wide(root, "features.parquet", shared_defs, version=version)
+    scoped = _read_wide(root, "features_objetivo.parquet", scoped_defs, scoped=True) if scoped_defs else {}
     targets = pq.read_table(root / "targets.parquet")
-    if set(targets.column_names) != set(FIELDS.values()) | {"PROVENIENCIA_JSON", "METADADOS_JSON"}:
-        raise ValueError("Colunas long incompatíveis")
+    _check_schema(targets, _target_schema())
     rows, keys, last = [], set(), {}
     for row in targets.to_pylist():
-        key = row["ANO"], str(row["DIST"]), row["OBJETIVO_ID"], row["METRICA"]
+        key = row["ANO"], row["DIST"], row["OBJETIVO_ID"], row["METRICA"]
         if key in keys:
             raise ValueError("Alvos long duplicados")
         keys.add(key)
         if key[:2] not in wide:
             raise ValueError("Alvo sem linha correspondente no painel wide ANO+DIST")
         item = json.loads(row["METADADOS_JSON"])
-        if any(k in item for k in FIELDS) or "features" in item or "territorio" in item:
+        if any(k in item for k in FIELDS) or any(k in item for k in ("features", "territorio", "proveniencia")):
             raise ValueError("Metadados tentam sobrescrever campos do contrato")
         item.update({field: row[column].isoformat() if isinstance(row[column], date) else row[column] for field, column in FIELDS.items()})
-        item.update({"territorio": {"nivel": "dist", "id": str(row["DIST"])}, "features": wide[key[:2]],
+        fs = {**wide[key[:2]], **scoped.get(key[:3], {})}
+        # V1 guardava todas as features no mesmo wide, mesmo as de outros ativos.
+        fs = {n: f for n, f in fs.items() if not definitions[n].get("objetivos_aplicaveis") or key[2] in definitions[n]["objetivos_aplicaveis"]}
+        item.update({"territorio": {"nivel": "dist", "id": row["DIST"]}, "features": fs,
                      "proveniencia": json.loads(row["PROVENIENCIA_JSON"])})
         rows.append(item)
         skey = key[1:]
         if skey not in last or key[0] > last[skey]["ano"]:
             last[skey] = item
-    max_year = max((row["ano"] for row in rows), default=0)
-    # Cenários futuros wide são juntados sem fabricar observação do alvo.
-    for (year, dist), fs in sorted(wide.items()):
-        if year <= max_year:
-            continue
-        for (d, _, _), previous in last.items():
-            if d == dist:
-                rows.append({**previous, "ano": year, "competencia": f"{year}-12-31", "valor_alvo": None,
-                             "status_qualidade": "ausente", "features": fs, "homologado": False,
-                             "status_homologacao": "NAO_DISPONIVEL", "ruptura": False, "disponivel_em": None,
-                             "proveniencia": {"features_only": True, "parquet_sha256": manifest["sha256"]["features.parquet"]}})
+    # Cenários são associados por série, nunca pelo maior ano global de outra DIST.
+    for (dist, objective, metric), previous in sorted(last.items()):
+        years = {y for y, d in wide if d == dist} | {y for y, d, o in scoped if d == dist and o == objective}
+        for year in sorted(years):
+            if year <= previous["ano"]:
+                continue
+            fs = {**wide.get((year, dist), {}), **scoped.get((year, dist, objective), {})}
+            fs = {n: f for n, f in fs.items() if not definitions[n].get("objetivos_aplicaveis") or objective in definitions[n]["objetivos_aplicaveis"]}
+            rows.append({**previous, "ano": year, "competencia": f"{year}-12-31", "valor_alvo": None,
+                         "status_qualidade": "ausente", "features": fs, "homologado": False,
+                         "status_homologacao": "NAO_DISPONIVEL", "ruptura": False, "disponivel_em": None,
+                         "proveniencia": {"features_only": True, "bundle_sha256": manifest["sha256"]}})
+    # Linhas órfãs não desaparecem silenciosamente nem criam um novo universo de alvos.
+    known_dists = {k[0] for k in last}
+    known_objectives = {(k[0], k[1]) for k in last}
+    if any(d not in known_dists for _, d in wide) or any((d, o) not in known_objectives for _, d, o in scoped):
+        raise ValueError("Feature órfã: DIST/objetivo sem alvo declarado")
     panel = {**metadata, "rows": rows}
     validate_panel(panel, registry)
     return panel

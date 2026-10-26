@@ -37,6 +37,10 @@ def predict(candidate, history, years, definitions=None, future=None, cutoff=Non
         raise ValueError("AMOSTRA_TREINO_INSUFICIENTE")
     values = [r["valor_alvo"] for r in history]
     end = history[-1]["ano"]
+    if not years or years != sorted(set(years)) or any(not isinstance(y, int) or isinstance(y, bool) or y <= end for y in years):
+        raise ValueError("HORIZONTES_FUTUROS_ORDENADOS_OBRIGATORIOS")
+    if cutoff is not None and any(r.get("disponivel_em") is not None and r["disponivel_em"] > cutoff for r in history):
+        raise ValueError("ALVO_TREINO_INDISPONIVEL_NA_ORIGEM")
     diagnostics = {"variaveis": [], "hiperparametros": dict(candidate.params)}
     if not candidate.sklearn_class:
         mx, my = fmean(r["ano"] for r in history), fmean(values)
@@ -67,8 +71,10 @@ def predict(candidate, history, years, definitions=None, future=None, cutoff=Non
         # Recursão usa previsões anteriores identificadas, jamais alvos futuros observados.
         for year in range(end + 1, max(years) + 1):
             source = future.get(year, {"features": {}})
-            x = feature_row(working, year, source, definitions, cutoff)
+            x = feature_row(working, year, source, definitions, cutoff, allow_imputation=False)
             value = float(model.predict(encoder.transform([x]))[0])
+            if not math.isfinite(value) or value < 0:
+                raise ValueError("PROJECAO_NEGATIVA_OU_NAO_FINITA_REJEITADA")
             working.append({**history[-1], "ano": year, "valor_alvo": value})
             if year in years:
                 out.append(value)

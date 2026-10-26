@@ -54,6 +54,21 @@
             "items": {
               "type": "string"
             }
+          },
+          "comparabilidade_validada": {
+            "type": "boolean"
+          },
+          "evidencia_comparabilidade": {
+            "type": "string",
+            "minLength": 1
+          },
+          "objetivos_aplicaveis": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
           }
         }
       }
@@ -101,6 +116,24 @@
           "type": "string"
         },
         "cenario_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status_comparabilidade": {
+          "enum": [
+            "VALIDADA",
+            "PENDENTE",
+            "INCOMPATIVEL"
+          ]
+        },
+        "evidencia_comparabilidade": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ruptura": {
+          "type": "boolean"
+        },
+        "versao": {
           "type": "string",
           "minLength": 1
         }

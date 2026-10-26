@@ -41,4 +41,29 @@ describe("Motor universal — contrato e publicação", () => {
     expect(exported.code_version).toHaveLength(64);
     expect(exported.serie.historico).toEqual(serie.historico);
   });
+  it("contabiliza o universo de 29 métricas × 114 DIST sem inventar histórico", () => {
+    const data = parseResumoMotor(raw());
+    expect(data.cobertura).toMatchObject({ esperado: 3306, observado: 2850, elegivel: 1545, bloqueado: 1305, ausente_no_contrato: 456 });
+    expect(data.cobertura.por_metrica.find((m) => m.METRICA === "potencia_kva")).toMatchObject({ ESPERADO: 456, OBSERVADO: 0, ELEGIVEL: 0, BLOQUEADO: 0, AUSENTE: 456 });
+  });
+  it("recusa contagens de cobertura inconsistentes e métricas duplicadas", () => {
+    const count = raw(); count.cobertura.bloqueado++;
+    expect(() => parseResumoMotor(count)).toThrow("Cobertura");
+    const dup = raw(); dup.cobertura.por_metrica.push(dup.cobertura.por_metrica[0]);
+    expect(() => parseResumoMotor(dup)).toThrow("Cobertura");
+  });
+  it("recusa redistribuição de cobertura entre métricas mesmo preservando totais", () => {
+    const data = raw(); const [a,b] = data.cobertura.por_metrica;
+    a.OBSERVADO++; a.BLOQUEADO++; a.AUSENTE--;
+    b.OBSERVADO--; b.BLOQUEADO--; b.AUSENTE++;
+    expect(() => parseResumoMotor(data)).toThrow("Cobertura");
+  });
+  it("exporta a cobertura e mantém as combinações ausentes separadas dos bloqueios", () => {
+    const data = parseResumoMotor(raw()); const serie = data.series.find((s) => s.modelos.length)!;
+    const exported = JSON.parse(exportarExperimentoMotor(data, serie, serie.modelos[0]));
+    expect(exported.cobertura).toEqual(data.cobertura);
+    expect(exported.cobertura.ausente_no_contrato).toBe(456);
+    expect(exported.cobertura.bloqueado).toBe(1305);
+  });
+
 });

@@ -92,13 +92,16 @@ def run(panel, registry, *, base_year=2025, final_year=2030, as_of="2026-10-26",
                     # Features do ano alvo só são lidas pelo filtro de disponibilidade do modelo.
                     future = {r["ano"]: r for r in history[i:i+horizon]}
                     try:
+                        if any(r["disponivel_em"] is not None and iso(r["disponivel_em"]) > iso(cutoff) for r in train):
+                            raise ValueError("ALVO_TREINO_INDISPONIVEL_NA_ORIGEM")
                         if model_id == "poisson" and target.get("tipo_alvo") != "contagem":
                             raise ValueError("POISSON_REQUER_CONTAGEM")
                         preds, _ = predict(c, train, list(range(origin+1, test["ano"]+1)),
                                            definitions, future, cutoff)
                         folds.append({"origem": origin, "ano": test["ano"], "horizonte": horizon,
                                       "observado": test["valor_alvo"], "previsto": preds[-1],
-                                      "point_in_time": real_time})
+                                      "point_in_time": real_time, "treino_anos": [r["ano"] for r in train],
+                                      "corte": cutoff, "serie_id": fingerprint(key)})
                     except (ValueError, OverflowError) as error:
                         failures.append({"origem": origin, "horizonte": horizon, "motivo": str(error)})
             one = [p for p in folds if p["horizonte"] == 1]
@@ -157,6 +160,7 @@ def run(panel, registry, *, base_year=2025, final_year=2030, as_of="2026-10-26",
         target_summaries.append({**t, "series": len(items), "series_elegiveis": sum(bool(r["projecoes"]) for r in items),
                                  "motivo": None if items else "SEM_HISTORICO_NESTA_METRICA",
                                  "estados": dict(Counter(r["status"] for r in items))})
+    # Agregados descritivos mantêm a cobertura por modelo; não são um ranking pareado.
     return {"schema_version": "experimento-bdgd-1", "engine_version": VERSION,
             "experiment_id": fingerprint({"panel": panel, "registry": registry, "candidates": chosen_ids,
                                           "base_year": base_year, "final_year": final_year, "as_of": as_of,
@@ -167,7 +171,8 @@ def run(panel, registry, *, base_year=2025, final_year=2030, as_of="2026-10-26",
             "horizontes": list(range(base_year+1, final_year+1)), "sintetico": panel["sintetico"],
             "previsao_validada": False, "objetivos": target_summaries, "series": results,
             "comparacao_objetivos": [{"objetivo_id": k[0], "metrica": k[1], "unidade": k[2], "modelo": k[3],
-                                      "metricas": metrics(v)} for k, v in sorted(aggregate_errors.items())],
+                                      "metricas": metrics(v), "cobertura_folds_sha256": fingerprint(sorted((p["serie_id"], p["origem"], p["ano"]) for p in v)),
+                                      "nota": "Cobertura própria por modelo; comparação exige os mesmos folds por série"} for k, v in sorted(aggregate_errors.items())],
             "comparacao_familias": [{"familia": k[0], "metrica": k[1], "unidade": k[2], "modelo": k[3],
                                      "metricas": metrics(v), "nota": "Diagnóstico de erros, não soma de estoques ou amostra independente"}
                                     for k, v in sorted(family_errors.items())],

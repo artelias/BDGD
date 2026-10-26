@@ -6,6 +6,7 @@ from .registry import validate_registry
 SCHEMA = "painel-bdgd-1"
 OBSERVED = {"observado", "zero_verificado"}
 STATES = OBSERVED | {"zero_tecnico", "ausente", "nao_homologado", "nao_aplicavel"}
+READY_HOMOLOGATION = {"HOMOLOGADO", "COMPLETO_TECNICO", "APTO_COM_RESSALVAS", "SINTETICO_NAO_HOMOLOGADO"}
 
 
 def iso(value):
@@ -30,11 +31,20 @@ def validate_panel(panel, registry):
     if not isinstance(panel.get("sintetico"), bool):
         raise ValueError("Identifique explicitamente se o painel é sintético")
     definitions = panel.get("feature_definitions", {})
+    if panel.get("territorial_mapping") is not None:
+        from .territorial import validate_municipal_mapping
+        validate_municipal_mapping(panel["territorial_mapping"])
+    objective_ids = {key[0] for key in targets}
     for name, spec in definitions.items():
         if not name or spec.get("tipo") not in {"numerica", "categorica"} or not spec.get("unidade"):
             raise ValueError(f"Feature sem tipo/unidade: {name}")
         if "comparabilidade_validada" in spec and not isinstance(spec["comparabilidade_validada"], bool):
             raise ValueError("Comparabilidade da feature deve ser booleana")
+        applies = spec.get("objetivos_aplicaveis", [])
+        if not isinstance(applies, list) or len(set(applies)) != len(applies) or any(x not in objective_ids for x in applies):
+            raise ValueError("Escopo da feature contém objetivo inválido/duplicado")
+        if "permite_imputacao" in spec and not isinstance(spec["permite_imputacao"], bool):
+            raise ValueError("Permissão de imputação deve ser booleana")
         for other in spec.get("dividir_por", []) + spec.get("interagir_com", []):
             if spec["tipo"] != "numerica" or definitions.get(other, {}).get("tipo") != "numerica":
                 raise ValueError("Razões/interações exigem duas features numéricas declaradas")
@@ -72,6 +82,8 @@ def validate_panel(panel, registry):
             raise ValueError("Status de homologação obrigatório")
         if (row["status_homologacao"] == "HOMOLOGADO") != row["homologado"]:
             raise ValueError("Estado de homologação contraditório")
+        if row["status_homologacao"] == "SINTETICO_NAO_HOMOLOGADO" and not panel["sintetico"]:
+            raise ValueError("Estado sintético não é admissível em painel real")
         territory = row["territorio"]
         if territory.get("nivel") not in target.get("territorios", ["dist"]) or not str(territory.get("id", "")):
             raise ValueError("Granularidade territorial inválida")
@@ -99,12 +111,20 @@ def validate_panel(panel, registry):
             if name not in definitions or not isinstance(feature, dict):
                 raise ValueError(f"Feature não declarada: {name}")
             spec = definitions[name]
+            if spec.get("objetivos_aplicaveis") and row["objetivo_id"] not in spec["objetivos_aplicaveis"]:
+                raise ValueError("Feature fora do escopo do objetivo")
             for field in ("valor", "disponivel_em", "referencia", "fonte", "unidade"):
                 if field not in feature:
                     raise ValueError(f"Feature {name} sem {field}")
             iso(feature["disponivel_em"]); iso(feature["referencia"])
-            if feature["unidade"] != spec["unidade"] or not feature["fonte"]:
+            if feature["unidade"] != spec["unidade"] or not isinstance(feature["fonte"], str) or not feature["fonte"].strip():
                 raise ValueError("Unidade/fonte da feature incompatível")
+            if "ruptura" in feature and not isinstance(feature["ruptura"], bool):
+                raise ValueError("Ruptura da feature deve ser booleana")
+            if feature.get("status_comparabilidade", "VALIDADA") not in {"VALIDADA", "PENDENTE", "INCOMPATIVEL"}:
+                raise ValueError("Status de comparabilidade da feature inválido")
+            if "versao" in feature and (not isinstance(feature["versao"], str) or not feature["versao"].strip()):
+                raise ValueError("Versão da feature inválida")
             value = feature["valor"]
             if value is not None and not (finite(value) if spec["tipo"] == "numerica" else isinstance(value, str)):
                 raise ValueError("Tipo inválido de feature")
@@ -117,7 +137,7 @@ def validate_panel(panel, registry):
 
 def usable(row):
     return (row["status_qualidade"] in OBSERVED and row["cobertura"] == 1 and not row["nao_somar"]
-            and not row.get("ponte_pendente", False) and row["status_homologacao"] not in {"BLOQUEADO", "PENDENTE_DECISAO", "NAO_DISPONIVEL"})
+            and not row.get("ponte_pendente", False) and row["status_homologacao"] in READY_HOMOLOGATION)
 
 
 def contiguous_tail(rows):
