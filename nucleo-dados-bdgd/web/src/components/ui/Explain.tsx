@@ -19,10 +19,12 @@ export function Explain({ title, children, tecnico, ressalva, cobertura, align =
   /** O balão vai para o <body> com posição fixa: nenhum contexto de empilhamento ou overflow o corta. */
   const place = () => {
     const r = btn.current?.getBoundingClientRect(); if (!r) return;
-    const w = Math.min(340, window.innerWidth - 32);
-    const left = align === "end" ? Math.max(16, r.right - w) : Math.min(Math.max(16, r.left - 8), window.innerWidth - w - 16);
-    const below = window.innerHeight - r.bottom > 260 || r.top < 260;
-    setPos(below ? { left, top: r.bottom + 6, width: w } : { left, bottom: window.innerHeight - r.top + 6, width: w });
+    const vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight;
+    const w = Math.min(340, vw - 32);
+    const left = align === "end" ? Math.max(16, r.right - w) : Math.min(Math.max(16, r.left - 8), vw - w - 16);
+    const below = vh - r.bottom >= r.top;
+    const maxHeight = Math.max(80, (below ? vh - r.bottom : r.top) - 22);
+    setPos(below ? { left, top: r.bottom + 6, width: w, maxHeight } : { left, bottom: `calc(100% - ${r.top - 6}px)`, width: w, maxHeight });
   };
   useEffect(() => {
     if (!open) return;

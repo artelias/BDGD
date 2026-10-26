@@ -3,10 +3,11 @@ import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Ma
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Brand, BrandMark } from "@/components/ui/Brand";
 import { Button } from "@/components/ui/Button";
 import { Tip } from "@/components/ui/Feedback";
+import { useModalFocus } from "@/components/ui/useModalFocus";
 import { useData } from "@/lib/data-context";
 import { fmtDate } from "@/lib/format";
 import { useStoredValue } from "@/lib/hooks";
@@ -28,7 +29,7 @@ export const AUTOR = "Arthur Henrique Elias de Lima";
 export const CONTATO = "Arthur.henrique.elias@gmail.com";
 const NAV2: NavItem[] = [
   { href: "/metodologia/", label: "Metodologia e qualidade", short: "Metodologia", icon: BookOpen },
-  { href: "/previsoes/", label: "Previsões", short: "Previsões", icon: ChartSpline, tag: "Futuro" },
+  { href: "/previsoes/", label: "Previsões", short: "Previsões", icon: ChartSpline, tag: "Cenários" },
 ];
 const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional", "/evolucao/": "Evolução histórica", "/comparar/": "Comparador", "/explorar/": "Explorar ativos", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Previsões", "/design/": "Sistema de componentes" };
 
@@ -64,6 +65,11 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [showTitle, setShowTitle] = useState(false);
   const [cmd, setCmd] = useState(false);
   const [more, setMore] = useState(false);
+  const moreDialog = useRef<HTMLDivElement>(null);
+  const moreTrigger = useRef<HTMLButtonElement>(null);
+  const searchTrigger = useRef<HTMLButtonElement>(null);
+  useModalFocus(more, moreDialog, () => setMore(false), moreTrigger);
+  const modalAberto = cmd || more;
   const [lastPath, setLastPath] = useState(path);
   if (lastPath !== path) { setLastPath(path); setMore(false); } // fecha a folha "Mais" ao navegar
 
@@ -75,7 +81,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       const typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target as HTMLElement)?.tagName);
-      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing)) { e.preventDefault(); setCmd(true); }
+      if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing)) { e.preventDefault(); setMore(false); setCmd(true); }
     };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
@@ -101,8 +107,8 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className={s.app} data-collapsed={collapsed}>
-      <a href="#conteudo" className={s.skip}>Ir para o conteúdo</a>
-      <aside className={s.sidebar} aria-label="Navegação principal">
+      <a href="#conteudo" className={s.skip} inert={modalAberto}>Ir para o conteúdo</a>
+      <aside className={s.sidebar} aria-label="Navegação principal" inert={modalAberto}>
         <div className={s.sideTop}>
           {collapsed ? <BrandMark /> : <Link href="/" aria-label="Núcleo de Dados da BDGD — início"><Brand /></Link>}
         </div>
@@ -112,7 +118,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className={s.sideBottom}>
           <div className={s.sideMeta}>
             <div>Data-base <strong>31/12/2025</strong></div>
-            {rel && <div>{rel.cobertura.processadas} de {rel.cobertura.com_gdb_2025} distribuidoras</div>}
+            {rel && <div>{rel.cobertura.processadas} GDBs processados{rel.cobertura.sem_publicacao_2025.length > 0 && ` · ${rel.cobertura.sem_publicacao_2025.length} publicações 2025 não localizadas`}</div>}
             <div>Desenvolvido por <strong>{AUTOR}</strong></div>
             <a href={`mailto:${CONTATO}`} className={s.sideMail}><Mail size={12} aria-hidden /> Contato</a>
           </div>
@@ -122,12 +128,12 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </aside>
 
-      <div className={s.main}>
+      <div className={s.main} inert={modalAberto}>
         <header className={s.topbar} data-scrolled={scrolled} data-title={showTitle}>
           <span className={s.mobileOnly} style={{ display: "inline-flex" }}><BrandMark size={20} /></span>
           <span className={s.topTitle}>{TITLES[path] ?? "Núcleo de Dados da BDGD"}</span>
           <span className={s.topSpacer} />
-          <button className={s.search} onClick={() => setCmd(true)} aria-label="Buscar distribuidora, grupo ou entidade" data-testid="open-search">
+          <button ref={searchTrigger} className={s.search} onClick={() => setCmd(true)} aria-label="Buscar distribuidora, grupo ou entidade" data-testid="open-search">
             <Search size={15} aria-hidden /><span className={s.searchText}>Buscar distribuidora, grupo ou entidade</span><span className={s.kbd}>⌘K</span>
           </button>
           <span className={s.basePill} title={rel ? `Release ${rel.release_id}` : undefined}>
@@ -146,7 +152,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </footer>
       </div>
 
-      <nav className={s.tabbar} aria-label="Navegação">
+      <nav className={s.tabbar} aria-label="Navegação" inert={modalAberto}>
         {TABS.map((n) => {
           const on = isActive(path, n.href); const Icon = n.icon;
           return (
@@ -155,7 +161,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Link>
           );
         })}
-        <button className={s.tab} onClick={() => setMore(true)} aria-haspopup="dialog" aria-current={[...MORE, ...NAV2].some((n) => isActive(path, n.href)) ? "page" : undefined}>
+        <button ref={moreTrigger} className={s.tab} onClick={() => setMore(true)} aria-haspopup="dialog" aria-expanded={more} aria-current={[...MORE, ...NAV2].some((n) => isActive(path, n.href)) ? "page" : undefined}>
           <Ellipsis size={21} strokeWidth={1.8} aria-hidden />Mais
         </button>
       </nav>
@@ -164,11 +170,11 @@ export function AppShell({ children }: { children: ReactNode }) {
         {more && (
           <>
             <motion.div className={s.cmdOverlay} style={{ padding: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setMore(false)} />
-            <motion.div role="dialog" aria-label="Mais opções" className={s.moreSheet} initial={{ y: "110%" }} animate={{ y: 0 }} exit={{ y: "110%" }}
+            <motion.div ref={moreDialog} role="dialog" aria-modal="true" aria-label="Mais opções" className={s.moreSheet} initial={{ y: "110%" }} animate={{ y: 0 }} exit={{ y: "110%" }}
               transition={{ type: "spring", stiffness: 420, damping: 40 }} drag="y" dragConstraints={{ top: 0, bottom: 0 }} dragElastic={{ top: 0, bottom: 0.6 }}
               onDragEnd={(_, i) => { if (i.offset.y > 80 || i.velocity.y > 500) setMore(false); }}>
               <div className={s.sheetHandle} aria-hidden />
-              {[...MORE, ...NAV2].map((n) => { const Icon = n.icon; return <Link key={n.href} href={n.href} className={s.moreItem}><Icon size={19} aria-hidden />{n.label}{n.tag && <span className={s.navTag}>{n.tag}</span>}</Link>; })}
+              {[...MORE, ...NAV2].map((n) => { const Icon = n.icon; return <Link key={n.href} href={n.href} onClick={() => setMore(false)} className={s.moreItem}><Icon size={19} aria-hidden />{n.label}{n.tag && <span className={s.navTag}>{n.tag}</span>}</Link>; })}
               <div className={s.moreItem} style={{ justifyContent: "space-between" }}>Tema <ThemeButton /></div>
               <Button variant="ghost" onClick={() => setMore(false)} style={{ width: "100%", marginTop: 4 }}><X size={16} /> Fechar</Button>
             </motion.div>
@@ -176,7 +182,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         )}
       </AnimatePresence>
 
-      <CommandMenu open={cmd} onClose={() => setCmd(false)} />
+      <CommandMenu open={cmd} onClose={() => setCmd(false)} trigger={searchTrigger} />
     </div>
   );
 }

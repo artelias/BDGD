@@ -4,8 +4,8 @@
 .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
 .brandMark { flex: none; color: var(--accent); }
 .brandText { display: flex; flex-direction: column; line-height: 1.1; min-width: 0; }
-.brandName { font-family: var(--font-display); font-weight: 650; font-size: 0.9375rem; letter-spacing: -0.015em; white-space: nowrap; }
-.brandSub { font-size: 0.6875rem; color: var(--text-3); letter-spacing: 0.02em; white-space: nowrap; }
+.brandName { font-family: var(--font-display); font-weight: 650; font-size: 0.875rem; letter-spacing: -0.015em; line-height: 1.2; white-space: normal; }
+.brandSub { font-size: 0.6875rem; color: var(--text-3); letter-spacing: 0.02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 /* Botões */
 .btn {
@@ -29,7 +29,7 @@
 .sm.icon { width: 30px; }
 
 /* Controle segmentado */
-.seg { position: relative; display: inline-flex; mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent); -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent); padding: 3px; gap: 2px; border-radius: 10px; background: var(--bg-sunken); border: 1px solid var(--hairline); max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.seg { position: relative; display: inline-flex; padding: 3px; gap: 2px; border-radius: 10px; background: var(--bg-sunken); border: 1px solid var(--hairline); max-width: 100%; overflow-x: auto; scrollbar-width: thin; }
 .seg::-webkit-scrollbar { display: none; }
 .segItem {
   position: relative; z-index: 1; border: 0; background: transparent; color: var(--text-2);
@@ -117,7 +117,7 @@
 }
 
 @media (max-width: 640px) {
-  .popover { position: fixed; left: 8px !important; right: 8px; top: auto !important; bottom: calc(8px + env(safe-area-inset-bottom)); max-width: none; transform-origin: bottom center; }
+  .popover { position: fixed; left: 8px !important; right: calc(100% - 100vw + 8px); top: auto !important; bottom: calc(100% - 100dvh + 8px + env(safe-area-inset-bottom)); max-width: none; transform-origin: bottom center; }
   .list { max-height: 56vh; }
   .option { padding: 12px 10px; }
 }

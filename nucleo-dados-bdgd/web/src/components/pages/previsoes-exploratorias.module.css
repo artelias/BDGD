@@ -26,6 +26,7 @@
 .pontoHistorico, .pontoCenario { display: inline-block; width: 24px; border-top: 2px solid currentColor; }
 .pontoCenario { border-top: 2px dashed var(--accent); }
 .notaGrafico { margin: 5px 0; font-size: .73rem; color: var(--muted); }
+.duasColunas > * { min-width: 0; }
 .duasColunas { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 20px; }
 .duasColunas h3 { font-size: 1rem; font-weight: 680; margin: 0 0 13px; }
 .tabelaContainer { width: 100%; overflow-x: auto; }

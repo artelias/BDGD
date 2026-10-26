@@ -14,8 +14,10 @@ export default defineConfig({
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
   use: { baseURL: external ?? "http://localhost:3211", locale: "pt-BR", trace: "retain-on-failure" },
   projects: [
-    { name: "desktop", use: { ...devices["Desktop Chrome"], ...chromeDoRunner, viewport: { width: 1440, height: 900 } }, grepInvert: /@mobile/ },
+    { name: "desktop", use: { ...devices["Desktop Chrome"], ...chromeDoRunner, viewport: { width: 1440, height: 900 } }, grepInvert: /@mobile|@iphone/ },
     { name: "mobile", use: { ...devices["Pixel 7"], ...chromeDoRunner }, grep: /@mobile/ },
+    // Emulação de viewport/toque/UA iPhone; não equivale a Safari em aparelho físico.
+    { name: "iphone-estreito", use: { ...devices["iPhone SE"], defaultBrowserType: "chromium", browserName: "chromium", ...chromeDoRunner, viewport: { width: 320, height: 568 }, screen: { width: 320, height: 568 } }, grep: /@iphone/ },
   ],
   webServer: external ? undefined : { command: "npx serve@14.2.4 out -l 3211 --no-clipboard", port: 3211, reuseExistingServer: true, timeout: 120_000 },
 });

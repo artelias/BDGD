@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { DataError, LoadingBlock } from "@/components/ui/Feedback";
 import { Pill } from "@/components/ui/Value";
@@ -18,7 +19,7 @@ const SECS = [
 
 const ALERTA: Record<string, string> = {
   potencia_UG_acima_75kW: "Registros de unidades geradoras com POT_INST acima de 75 kW em BT (inclui sistemas SIGFI cujo valor não se comporta como kW). Valores preservados; potência de geração publicada como N/D.",
-  uc_cod_id_ativo_duplicado: "Consumidores com mais de um registro ativado para o mesmo COD_ID (regra UC v2). Quantidade N/D; registros e distintos publicados.",
+  uc_cod_id_ativo_duplicado: "Alerta da auditoria legada UC v2: mais de um registro ativado para o mesmo COD_ID. Naquela regra, a quantidade fica N/D; registros e distintos são preservados. O indicador atual segue a regra UC v3 e seu próprio estado no contrato.",
   uc_sobreposicao_entre_entidades: "COD_ID presente em mais de uma entidade UC (BT, MT, AT). Por isso o total de consumidores usa a união de códigos por distribuidora.",
   filtro_indisponivel: "Chaves de circuito/subestação que não existem na tabela de destino (> 5% de órfãos). O filtro fica indisponível; contagens independentes seguem válidas.",
   divergencia_potencia: "Potência total das unidades transformadoras diverge mais de 5% da potência dos equipamentos (via DDA). As duas visões não são somadas.",
@@ -92,7 +93,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
                   {cov.map((c) => (
                     <tr key={c.dist}>
                       <td className="num">{c.dist}</td><td>{c.sigla.replaceAll("_", " ")}</td>
-                      <td>{c.status === "processada" ? <Pill tone="ok">Publicada</Pill> : c.status === "sem_publicacao_2025" ? <Pill tone="nd">Sem BDGD 2025</Pill> : c.status === "quarentena" ? <Pill tone="warn">Quarentena</Pill> : <Pill>Em processamento</Pill>}</td>
+                      <td>{c.status === "processada" ? <Pill tone="ok">Publicada</Pill> : c.status === "sem_publicacao_2025" ? <Pill tone="nd">Publicação não localizada</Pill> : c.status === "quarentena" ? <Pill tone="warn">Bloqueio técnico — ver motivo</Pill> : <Pill>Estado técnico: {c.status}</Pill>}</td>
                       <td className="caption">{c.motivo}</td>
                     </tr>
                   ))}
@@ -104,9 +105,9 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="regras" className={s.sec}>
             <h2>Regras de contagem e unidades</h2>
             <dl>
-              <div className={s.rule}><dt>Quantidade</dt><dd>COUNT(*) dos registros da camada. Para consumidores (UCBT, UCMT, UCAT), COUNT(DISTINCT COD_ID) quando a regra UC v2 valida a entidade.</dd></div>
-              <div className={s.rule}><dt>Regra UC v2</dt><dd>Um COD_ID repetido com um registro ativado (SIT_ATIV = AT) e outros desativados (DS) é histórico de estado no ano, não conflito. A contagem distinta é homologada quando não há COD_ID nulo, SIT_ATIV só assume AT/DS e há no máximo um registro ativado por COD_ID. Fora disso a quantidade fica N/D e registros e distintos continuam publicados.</dd></div>
-              <div className={s.rule}><dt>Consumidores totais</dt><dd>As três entidades UC podem compartilhar códigos; o total por distribuidora usa a união de COD_ID, e só então soma-se entre distribuidoras.</dd></div>
+              <div className={s.rule}><dt>Quantidade</dt><dd>A medida depende do conceito e do recorte escolhido. A visão técnica por entidade pode mostrar registros ou códigos distintos; esses valores não são intercambiáveis com o total de consumidores do catálogo.</dd></div>
+              <div className={s.rule}><dt>Regra UC v3</dt><dd>O catálogo vigente conta cada unidade consumidora por código anonimizado e ponto de conexão, dentro da distribuidora. Panorama, Explorar e histórico usam essa definição; a união legada de COD_ID da regra UC v2 não deve ser interpretada como o mesmo indicador.</dd></div>
+              <div className={s.rule}><dt>Consumidores totais</dt><dd>O total segue a regra UC v3 e o estado de publicação do contrato. Ausências e anomalias permanecem N/D. Uma contagem zero no agregado é um zero técnico; não comprova, isoladamente, ausência física de consumidores. Não aplicável e não homologado são estados distintos.</dd></div>
               <div className={s.rule}><dt>Extensão (km)</dt><dd>SUM(COMP)/1000 dos segmentos SSDMT, SSDBT, SSDAT e RAMLIG — comprimento declarado na BDGD, não comprimento geométrico. Somas em decimal exato para que categorias reconciliem com o total.</dd></div>
               <div className={s.rule}><dt>Potência (kVA)</dt><dd>UNTRMT: POT_NOM em kVA; UNTRAT: POT_NOM em MVA × 1000; EQTRMT, EQTRAT, EQRE: código POT_NOM traduzido pela tabela DDA TPOTAPRT. Unidade e equipamento descrevem a mesma população e nunca são somados.</dd></div>
               <div className={s.rule}><dt>Geração (UG*)</dt><dd>Contagens publicadas. Potência instalada não homologada: há valores acima de 75 kW em BT e sistemas SIGFI cujo POT_INST não se comporta como kW. Nenhum corte artificial foi aplicado; o valor é N/D.</dd></div>
@@ -172,7 +173,8 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
                     ))}
                   </tbody>
                 </table>
-                <h3>Consumidores fora da regra UC v2</h3>
+                <h3>Auditoria legada de consumidores — regra UC v2</h3>
+                <p className="caption">Diagnóstico do pacote de origem, preservado para rastreabilidade. Esta tabela não substitui o indicador vigente UC v3 nem altera seu estado de publicação.</p>
                 <table className={s.tbl}>
                   <thead><tr><th>DIST</th><th>Entidade</th><th className="r">Registros</th><th className="r">COD_ID distintos</th><th>Motivo</th></tr></thead>
                   <tbody>{q.data.ucRegraV2.filter((u) => !u.valida).map((u) => <tr key={`${u.dist}${u.entidade}`}><td className="num">{u.dist} · {ds.dist(u.dist)?.sigla.replaceAll("_", " ")}</td><td className="mono">{u.entidade}</td><td className="r num">{fmt(u.registros)}</td><td className="r num">{fmt(u.distintos)}</td><td className="caption">{u.motivos}</td></tr>)}</tbody>
@@ -217,7 +219,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
 
           <section id="modelo-matematico" className={s.sec}>
             <h2>Modelagem matemática e estatística</h2>
-            <p>Especificação científica do Motor de Expansão Elétrica. As expressões de inventário abaixo descrevem os cálculos físicos; as equações preditivas são <b>hipóteses de modelagem, ainda não estimadas ou validadas</b>. Nenhum coeficiente, elasticidade, intervalo de previsão ou CAPEX projetado está disponível nesta versão.</p>
+            <p>Especificação científica do Motor de Expansão Elétrica. As expressões de inventário abaixo descrevem os cálculos físicos; as equações estruturais de demanda e investimento são <b>hipóteses de modelagem, ainda não estimadas ou validadas</b>. A página <Link href="/previsoes/">Previsões</Link> já permite comparar persistência e tendência linear em simulações condicionais do estoque, com backtest limitado. Isso não estima elasticidades econômicas, intervalos probabilísticos de previsão ou CAPEX.</p>
             <h3>1. Definições e observações</h3>
             <p>Seja <span className="mono">i</span> uma distribuidora com perímetro territorial comparável, <span className="mono">t</span> o ano e <span className="mono">k</span> o conceito de ativo. <span className="mono">A(i,t,k)</span> é o estoque físico, <span className="mono">U(i,t)</span> o número de unidades consumidoras, <span className="mono">D(i,t)</span> a demanda máxima coincidente, <span className="mono">S(i,t)</span> a capacidade instalada e <span className="mono">L(i,t)</span> a extensão de rede.</p>
             <dl className={s.rule}><dt>Inventário de equipamentos</dt><dd><code>A(i,t,k) = Σ 1[TUC(e) = k]</code><p className="caption">Soma sobre equipamentos elegíveis, dentro de DIST e ano. A instalação UN* correspondente não é novamente somada como outro equipamento.</p></dd></dl>
@@ -236,7 +238,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
             <dl className={s.rule}><dt>Erro absoluto médio</dt><dd><code>MAE = (1/n) × Σ |y(t) − ŷ(t)|</code></dd></dl>
             <dl className={s.rule}><dt>Viés médio</dt><dd><code>BIAS = (1/n) × Σ [ŷ(t) − y(t)]</code></dd></dl>
             <dl className={s.rule}><dt>Erro percentual absoluto ponderado</dt><dd><code>WAPE = Σ |y(t) − ŷ(t)| / Σ |y(t)|</code><p className="caption">Somente quando o denominador é positivo e a agregação é comparável.</p></dd></dl>
-            <p>O protocolo prevê validação com origem temporal móvel, comparação contra baselines, análise de resíduos e sensibilidade. Com somente quatro competências anuais (2022–2025), e históricos ainda não homologados, <b>não é possível afirmar desempenho robusto para horizontes longos nem calibrar intervalos probabilísticos confiáveis</b>. Cenários econômicos futuros serão rotulados como simulações condicionais, não previsões validadas.</p>
+            <p>O protocolo prevê validação com origem temporal móvel, comparação contra baselines, análise de resíduos e sensibilidade. O backtest exploratório disponível usa apenas uma origem temporal. Com somente quatro competências anuais (2022–2025), e históricos ainda não homologados, <b>não é possível afirmar desempenho robusto para horizontes longos nem calibrar intervalos probabilísticos confiáveis</b>. Os cenários disponíveis são simulações condicionais, sem homologação preditiva.</p>
             <h3>6. Incorporações e perímetros históricos</h3>
             <p>As séries de EPB devem considerar a sucessão EPB/EBO (2023), e as de EMR a sucessão EMG/ENF (2022). A reconstrução em perímetro comparável exige prova de não sobreposição dos GDBs e reconciliação por métrica. No ano de transição, não se somam automaticamente arquivos que já possam incluir a incorporada. Ausências e rupturas são N/D, jamais zero presumido.</p>
             <p className="caption">Estado desta documentação: inventário e regras de contagem BDGD 2025 são cálculos observados; demanda, capacidade futura, funções de expansão, CAPEX e modelos de erro são especificações de pesquisa até homologação e execução verificáveis.</p>
