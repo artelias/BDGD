@@ -51,3 +51,34 @@ test("motor universal: falha de contrato mostra erro em vez de números", async 
   await expect(page.getByTestId("motor-universal").getByRole("alert")).toContainText("Contrato do motor universal inválido");
   await expect(page.getByTestId("motor-universal").getByRole("combobox")).toHaveCount(0);
 });
+
+
+test("motor universal: denominadores e potência sem histórico ficam explícitos no desktop", async ({ page }, info) => {
+  await page.goto("/previsoes/");
+  await page.getByText("Explorar experimentos do motor universal", { exact: true }).click();
+  const section = page.getByTestId("motor-universal");
+  await expect(section.getByTestId("motor-universal-universo")).toContainText("3.306 combinações esperadas");
+  await expect(section.getByTestId("motor-universal-universo")).toContainText("456 combinações sem histórico");
+  await section.getByText("Cobertura por métrica", { exact: true }).click();
+  const region = section.getByRole("region", { name: "Cobertura das métricas do motor", exact: true });
+  await expect(region.getByRole("row")).toHaveCount(4);
+  await expect(region.getByRole("row").filter({ hasText: "potencia_kva" })).toContainText("456");
+  await region.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: info.outputPath("motor-universal-cobertura-desktop.png"), scale: "css" });
+  await info.attach("cobertura desktop", { path: info.outputPath("motor-universal-cobertura-desktop.png"), contentType: "image/png" });
+});
+
+test("@iphone motor universal: tabela de cobertura acessível sem alargar a página", async ({ page }, info) => {
+  await page.goto("/previsoes/");
+  await page.getByText("Explorar experimentos do motor universal", { exact: true }).click();
+  const section = page.getByTestId("motor-universal");
+  await expect(section.getByTestId("motor-universal-universo")).toContainText("1.305 bloqueadas");
+  await section.getByText("Cobertura por métrica", { exact: true }).click();
+  const region = section.getByRole("region", { name: "Cobertura das métricas do motor", exact: true });
+  await region.focus(); await page.keyboard.press("ArrowRight");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
+  const axe = await new AxeBuilder({ page }).include('[data-testid="motor-universal"]').withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+  expect(axe.violations.filter((v) => ["serious", "critical"].includes(v.impact ?? "")).map((v) => v.id)).toEqual([]);
+  await page.screenshot({ path: info.outputPath("motor-universal-cobertura-iphone.png"), scale: "css" });
+  await info.attach("cobertura iPhone emulado", { path: info.outputPath("motor-universal-cobertura-iphone.png"), contentType: "image/png" });
+});

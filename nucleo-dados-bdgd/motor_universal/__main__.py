@@ -12,6 +12,7 @@ from .adapters import national_panel
 from .engine import run
 from .models import CANDIDATES
 from .parquet_io import write_bundle, read_bundle, write_results
+from .coverage import write_coverage
 
 
 def code_digest():
@@ -50,7 +51,7 @@ def main():
     parser = argparse.ArgumentParser(description="Motor Universal BDGD: experimento auditável, sem homologação automática")
     parser.add_argument("--catalog", type=Path, default=root / "etl/bdgd2025/config/conceitos_2025.json")
     parser.add_argument("--registry", type=Path, help="Substitui o adaptador pelo contrato universal objetivos-1")
-    parser.add_argument("--panel", type=Path, help="Bundle Parquet bdgd-parquet-1; JSON aceito apenas como adaptador de migração/teste")
+    parser.add_argument("--panel", type=Path, help="Bundle Parquet bdgd-parquet-1/2; JSON aceito apenas como adaptador de migração/teste")
     parser.add_argument("--national", type=Path, default=root / "output-historico/contrato-integracao")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--web-summary", type=Path)
@@ -74,6 +75,7 @@ def main():
         write_bundle(panel, registry, output / "entrada")
         panel = read_bundle(output / "entrada", registry)
     result = run(panel, registry, base_year=args.base_year, final_year=args.final_year, as_of=args.as_of, code_version=code_digest())
+    coverage_summary = write_coverage(panel, registry, result, output / "cobertura")
     write_json(output / "objetivos.json", registry)
     write_json(output / "experimento-manifesto.json", write_results(result, output))
     if args.debug_json:
@@ -85,6 +87,7 @@ def main():
     write_json(output / "execucao.json", {"experiment_id": result["experiment_id"], "executado_em": datetime.now(timezone.utc).isoformat(),
                                           "python": platform.python_version(), "dependencias": dependencies, "codigo_sha256": code_digest()})
     product = summary(result)
+    product["cobertura"] = {k: coverage_summary[k] for k in ("esperado", "observado", "elegivel", "bloqueado", "ausente_no_contrato", "por_metrica")}
     if args.web_summary:
         if args.check_web:
             existing = json.loads(gzip.decompress(args.web_summary.read_bytes())) if args.web_summary.suffix == ".gz" else read_json(args.web_summary)

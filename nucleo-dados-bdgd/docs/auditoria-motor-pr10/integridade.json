@@ -1,0 +1,8 @@
+{
+  "base_sha": "413e444227f98a5b14e83398c31c0b978e9777ad",
+  "arquivos_oficiais_verificados": 500,
+  "arquivos_alterados": [],
+  "sha256_targets_ci_pr10": "981cfb3c8463e32d00d03913e3147115056a701e31ff4fd58890488c28162b26",
+  "sha256_targets_nova_execucao": "981cfb3c8463e32d00d03913e3147115056a701e31ff4fd58890488c28162b26",
+  "targets_bytes_identicos": true
+}

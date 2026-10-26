@@ -33,6 +33,19 @@ jobs:
         run: '"$RUNNER_TEMP/motor-env/bin/python" -m unittest discover -s motor_universal/tests -v'
       - name: Experimento real reproduzível, sem reprocessar BDGD
         run: '"$RUNNER_TEMP/motor-env/bin/python" -m motor_universal --output "$RUNNER_TEMP/experimento-motor" --web-summary web/public/data/previsoes/motor-universal-resumo.json.gz --check-web'
+      - name: Matriz de cobertura versionada corresponde ao experimento
+        run: |
+          "$RUNNER_TEMP/motor-env/bin/python" - <<'PYCODE'
+          import gzip, json, os
+          from pathlib import Path
+          generated = Path(os.environ["RUNNER_TEMP"]) / "experimento-motor/cobertura"
+          committed = Path("docs/auditoria-motor-pr10")
+          assert gzip.decompress((committed / "cobertura.csv.gz").read_bytes()) == (generated / "cobertura.csv").read_bytes()
+          for name in ["cobertura.parquet", "cobertura-por-metrica.csv", "cobertura-por-objetivo.csv"]:
+              assert (committed / name).read_bytes() == (generated / name).read_bytes(), name
+          assert json.loads((committed / "cobertura-resumo.json").read_text()) == json.loads((generated / "cobertura-resumo.json").read_text())
+          print("Matriz completa e resumos conferidos contra o experimento")
+          PYCODE
       - name: Artefatos auditáveis do experimento
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

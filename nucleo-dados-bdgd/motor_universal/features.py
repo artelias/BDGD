@@ -3,7 +3,7 @@ from statistics import fmean, pstdev
 from .contracts import iso, usable
 
 
-def feature_row(history, year, source, definitions, cutoff):
+def feature_row(history, year, source, definitions, cutoff, *, allow_imputation=True):
     past = [r for r in history if r["ano"] < year and usable(r)]
     if not past or past[-1]["ano"] != year - 1:
         raise ValueError("Sem defasagem anual contígua")
@@ -12,14 +12,26 @@ def feature_row(history, year, source, definitions, cutoff):
            "crescimento_lag": (values[-1] / values[-2] - 1) if len(values) > 1 and values[-2] > 0 else None}
     # Cada referência também precisa ser conhecida no corte, não apenas ter ano antigo.
     for name, spec in definitions.items():
-        if not spec.get("comparabilidade_validada") or not spec.get("evidencia_comparabilidade"):
+        if not spec.get("comparabilidade_validada"):
             raise ValueError(f"FEATURE_SEM_COMPARABILIDADE_VALIDADA:{name}")
         f = source.get("features", {}).get(name)
-        if f is None or iso(f["disponivel_em"]) > iso(cutoff):
+        evidence = f.get("evidencia_comparabilidade", spec.get("evidencia_comparabilidade")) if f else spec.get("evidencia_comparabilidade")
+        if not isinstance(evidence, str) or not evidence.strip():
+            raise ValueError(f"FEATURE_SEM_COMPARABILIDADE_VALIDADA:{name}")
+        if f is None:
+            if not allow_imputation or not spec.get("permite_imputacao", False):
+                raise ValueError(f"FEATURE_AUSENTE:{name}")
+            out[name] = None
+            continue
+        if iso(f["disponivel_em"]) > iso(cutoff):
             raise ValueError(f"FEATURE_INDISPONIVEL_NO_CORTE:{name}")
-        if iso(f["referencia"]).year >= year and not f.get("cenario_id"):
+        if f.get("ruptura", False):
+            raise ValueError(f"FEATURE_COM_RUPTURA:{name}")
+        if f.get("status_comparabilidade", "VALIDADA") != "VALIDADA":
+            raise ValueError(f"FEATURE_SEM_COMPARABILIDADE_VALIDADA:{name}")
+        if (iso(f["referencia"]).year >= year or iso(f["referencia"]) > iso(f["disponivel_em"])) and not f.get("cenario_id"):
             raise ValueError(f"FEATURE_CONTEMPORANEA_SEM_CENARIO:{name}")
-        if f["valor"] is None and not spec.get("permite_imputacao", False):
+        if f["valor"] is None and (not allow_imputation or not spec.get("permite_imputacao", False)):
             raise ValueError(f"FEATURE_AUSENTE:{name}")
         out[name] = f["valor"]
     # Razões/densidades/interações são declaradas pelo fornecedor, nunca inferidas de nomes.
@@ -29,11 +41,15 @@ def feature_row(history, year, source, definitions, cutoff):
                 raise ValueError("Denominador não declarado")
             a, b = out[name], out[denominator]
             out[f"razao:{name}/{denominator}"] = a / b if a is not None and b is not None and b > 0 else None
+            if out[f"razao:{name}/{denominator}"] is None and not (allow_imputation and spec.get("permite_imputacao") and definitions[denominator].get("permite_imputacao")):
+                raise ValueError(f"FEATURE_DERIVADA_AUSENTE:razao:{name}/{denominator}")
         for other in spec.get("interagir_com", []):
             if other not in out:
                 raise ValueError("Interação não declarada")
             a, b = out[name], out[other]
             out[f"interacao:{name}*{other}"] = a * b if a is not None and b is not None else None
+            if out[f"interacao:{name}*{other}"] is None and not (allow_imputation and spec.get("permite_imputacao") and definitions[other].get("permite_imputacao")):
+                raise ValueError(f"FEATURE_DERIVADA_AUSENTE:interacao:{name}*{other}")
     return out
 
 

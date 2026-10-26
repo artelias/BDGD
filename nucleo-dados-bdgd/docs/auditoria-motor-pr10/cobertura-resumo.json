@@ -1,0 +1,400 @@
+{
+  "schema_version": "cobertura-bdgd-1",
+  "experiment_id": "6786a18a45f920003350f4d0c9efbe18835c4ad4a13762a99bbba92630d18427",
+  "dataset_sha256": "25e81272e652f3a7f4aec192a83345026cd33a208548ee2f729abe4ffc62176d",
+  "universo": "DIST presentes no painel; não certifica universo nacional completo",
+  "dist": 114,
+  "esperado": 3306,
+  "observado": 2850,
+  "elegivel": 1545,
+  "bloqueado": 1305,
+  "ausente_no_contrato": 456,
+  "causa_principal_exclusiva": {
+    "HISTORICO_INSUFICIENTE": 0,
+    "AUSENCIA_OBSERVACOES": 134,
+    "FALTA_HOMOLOGACAO": 329,
+    "RUPTURA_CADASTRAL": 40,
+    "INCOMPATIBILIDADE_TEMPORAL": 0,
+    "SOBREPOSICAO_ATIVOS": 0,
+    "PROBLEMA_UNIDADE": 0,
+    "FALTA_COMPARABILIDADE": 0,
+    "ZERO_TECNICO_SEM_EVIDENCIA": 277,
+    "NAO_APLICAVEL": 454,
+    "COBERTURA_INCOMPLETA": 71,
+    "METRICA_SEM_HISTORICO": 0,
+    "OUTROS": 0
+  },
+  "causas_contribuintes_nao_exclusivas": {
+    "HISTORICO_INSUFICIENTE": 1305,
+    "AUSENCIA_OBSERVACOES": 152,
+    "FALTA_HOMOLOGACAO": 511,
+    "RUPTURA_CADASTRAL": 55,
+    "INCOMPATIBILIDADE_TEMPORAL": 0,
+    "SOBREPOSICAO_ATIVOS": 25,
+    "PROBLEMA_UNIDADE": 0,
+    "FALTA_COMPARABILIDADE": 0,
+    "ZERO_TECNICO_SEM_EVIDENCIA": 298,
+    "NAO_APLICAVEL": 462,
+    "COBERTURA_INCOMPLETA": 1068,
+    "METRICA_SEM_HISTORICO": 0,
+    "OUTROS": 0
+  },
+  "resolucao_bloqueados": {
+    "DEPENDE_EVIDENCIA_INDEPENDENTE_ZERO": 277,
+    "DEPENDE_PONTE_DE_POPULACAO": 40,
+    "DEPENDE_DECISAO_FORMAL_FONTE": 329,
+    "DEPENDE_FONTE_OU_NOVOS_DADOS": 134,
+    "MANTER_ND_NAO_REATIVAR": 454,
+    "DEPENDE_COMPROVACAO_COBERTURA": 71
+  },
+  "por_objetivo_metrica": [
+    {
+      "OBJETIVO_ID": "alimentadores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 78,
+      "BLOQUEADO": 36,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "bancos_capacitores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 75,
+      "BLOQUEADO": 39,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "barramentos",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 49,
+      "BLOQUEADO": 65,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "chaves",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 74,
+      "BLOQUEADO": 40,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "circuitos_at",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 28,
+      "BLOQUEADO": 86,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "conjuntos",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 78,
+      "BLOQUEADO": 36,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "consumidores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 76,
+      "BLOQUEADO": 38,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "disjuntores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 43,
+      "BLOQUEADO": 71,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "geradores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 78,
+      "BLOQUEADO": 36,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "iluminacao",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 78,
+      "BLOQUEADO": 36,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "medidores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 79,
+      "BLOQUEADO": 35,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "postes",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 79,
+      "BLOQUEADO": 35,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "ramais",
+      "METRICA": "extensao_km",
+      "UNIDADE": "km",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 79,
+      "BLOQUEADO": 35,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "reatores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 8,
+      "BLOQUEADO": 106,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "rede_at",
+      "METRICA": "extensao_km",
+      "UNIDADE": "km",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 39,
+      "BLOQUEADO": 75,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "rede_bt",
+      "METRICA": "extensao_km",
+      "UNIDADE": "km",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 79,
+      "BLOQUEADO": 35,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "rede_mt",
+      "METRICA": "extensao_km",
+      "UNIDADE": "km",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 79,
+      "BLOQUEADO": 35,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "reguladores",
+      "METRICA": "potencia_kva",
+      "UNIDADE": "kVA",
+      "ESPERADO": 114,
+      "OBSERVADO": 0,
+      "ELEGIVEL": 0,
+      "BLOQUEADO": 0,
+      "AUSENTE": 114
+    },
+    {
+      "OBJETIVO_ID": "reguladores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 70,
+      "BLOQUEADO": 44,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "religadores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 74,
+      "BLOQUEADO": 40,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "seccionalizadores",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 19,
+      "BLOQUEADO": 95,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "subestacoes",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 54,
+      "BLOQUEADO": 60,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "torres",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 39,
+      "BLOQUEADO": 75,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "trafo_dist",
+      "METRICA": "potencia_kva",
+      "UNIDADE": "kVA",
+      "ESPERADO": 114,
+      "OBSERVADO": 0,
+      "ELEGIVEL": 0,
+      "BLOQUEADO": 0,
+      "AUSENTE": 114
+    },
+    {
+      "OBJETIVO_ID": "trafo_dist",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 76,
+      "BLOQUEADO": 38,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "trafo_forca",
+      "METRICA": "potencia_kva",
+      "UNIDADE": "kVA",
+      "ESPERADO": 114,
+      "OBSERVADO": 0,
+      "ELEGIVEL": 0,
+      "BLOQUEADO": 0,
+      "AUSENTE": 114
+    },
+    {
+      "OBJETIVO_ID": "trafo_forca",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 51,
+      "BLOQUEADO": 63,
+      "AUSENTE": 0
+    },
+    {
+      "OBJETIVO_ID": "trafo_medida",
+      "METRICA": "potencia_kva",
+      "UNIDADE": "kVA",
+      "ESPERADO": 114,
+      "OBSERVADO": 0,
+      "ELEGIVEL": 0,
+      "BLOQUEADO": 0,
+      "AUSENTE": 114
+    },
+    {
+      "OBJETIVO_ID": "trafo_medida",
+      "METRICA": "quantidade",
+      "UNIDADE": "itens",
+      "ESPERADO": 114,
+      "OBSERVADO": 114,
+      "ELEGIVEL": 63,
+      "BLOQUEADO": 51,
+      "AUSENTE": 0
+    }
+  ],
+  "por_metrica": [
+    {
+      "METRICA": "extensao_km",
+      "ESPERADO": 456,
+      "OBSERVADO": 456,
+      "ELEGIVEL": 276,
+      "BLOQUEADO": 180,
+      "AUSENTE": 0
+    },
+    {
+      "METRICA": "potencia_kva",
+      "ESPERADO": 456,
+      "OBSERVADO": 0,
+      "ELEGIVEL": 0,
+      "BLOQUEADO": 0,
+      "AUSENTE": 456
+    },
+    {
+      "METRICA": "quantidade",
+      "ESPERADO": 2394,
+      "OBSERVADO": 2394,
+      "ELEGIVEL": 1269,
+      "BLOQUEADO": 1125,
+      "AUSENTE": 0
+    }
+  ],
+  "sobreposicoes_catalogo": [
+    {
+      "objetivo_a": "chaves",
+      "objetivo_b": "seccionalizadores",
+      "metrica": "quantidade",
+      "entidades": [
+        "EQSE"
+      ],
+      "filtros_a": {
+        "tipo": [
+          "160"
+        ]
+      },
+      "filtros_b": {
+        "tipo": [
+          "160"
+        ],
+        "a1": [
+          "10"
+        ]
+      },
+      "status": "SOBREPOSICAO_POTENCIAL_NAO_SOMAR",
+      "evidencia": "Entidades comuns e predicados não disjuntos no catálogo; não somar objetivos"
+    }
+  ],
+  "nota": "ANOS_DISPONIVEIS conta valores não nulos, inclusive zero técnico; não comprova disponibilidade histórica point-in-time. ANOS_VALIDOS é qualidade local; a elegibilidade usa segmento final contíguo. Causas anuais podem coexistir.",
+  "arquivos_sha256": {
+    "cobertura.parquet": "971ca9c67b3f3f5c1a7838a5410831b4c7f6edb0288877d37b5a1c69c496b786",
+    "cobertura.csv": "d72067c6eb88930f840c6dbb42e9c0d460be8d98c8c74fc5ace3e662235fc9dc",
+    "cobertura-por-metrica.csv": "73fda7826c744ea776c957e12751d7397cd287944609c7c11d9e34e8a324523e",
+    "cobertura-por-objetivo.csv": "94d2a33fc3af91625d1cc187537a962589b8eef89f46be15e23c8867f2230314"
+  }
+}
