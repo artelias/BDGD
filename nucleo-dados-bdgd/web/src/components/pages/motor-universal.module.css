@@ -1,0 +1,16 @@
+.section { margin: 28px 0; padding: clamp(16px, 3vw, 26px); border: 1px solid var(--hairline); border-radius: 16px; min-width: 0; }
+.section h2 { font-size: 1.45rem; margin-top: 0; }
+.section p { font-size: .9rem; line-height: 1.6; }
+.section summary { cursor: pointer; font-weight: 650; padding: 8px 0; }
+.section summary:focus-visible, .section a:focus-visible, .section select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.filters { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin: 20px 0; }
+.filters label { display: flex; flex-direction: column; gap: 6px; font-size: .82rem; font-weight: 600; min-width: 0; }
+.filters select { min-width: 0; width: 100%; min-height: 44px; border: 1px solid var(--hairline); border-radius: 8px; background: var(--surface); color: var(--text); padding: 8px; }
+.scroll { overflow-x: auto; margin: 18px 0; }
+.scroll table { border-collapse: collapse; min-width: 430px; width: 100%; font-size: .85rem; }
+.scroll th, .scroll td { text-align: left; padding: 9px; border-bottom: 1px solid var(--hairline); }
+.provenance { color: var(--text-2); overflow-wrap: anywhere; }
+.provenance code { font-size: .75rem; }
+.export { display: inline-flex; align-items: center; min-height: 44px; color: var(--accent); text-decoration: underline; }
+@media (max-width: 800px) { .filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .filters { grid-template-columns: minmax(0, 1fr); } }
