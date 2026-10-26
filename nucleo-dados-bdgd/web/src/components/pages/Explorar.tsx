@@ -91,6 +91,9 @@ function ExplorarReady({ ds }: { ds: Dataset }) {
           <div className={s.mobileMenu} style={{ marginBottom: 12 }}>
             <Picker label="Ativo" value={item.id} onChange={ir} testId="menu-mobile"
               options={menu.flatMap((g) => g.itens.map((i) => ({ value: i.id, label: i.nome, group: g.grupo, meta: resumo(i) })))} />
+            <button type="button" className={s.advancedMobile} aria-pressed={avancado} onClick={() => setAv(avancado ? "0" : "1")} data-testid="modo-avancado-mobile">
+              <Code2 size={14} aria-hidden /> Modo avançado · {avancado ? "ligado" : "desligado"}
+            </button>
           </div>
           {item.tecnico ? (
             <section aria-labelledby="tec-titulo">

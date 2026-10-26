@@ -72,7 +72,17 @@ jobs:
         run: python3 ../etl/tests/auditoria_pr6.py
       - name: Chrome do runner para E2E
         run: google-chrome --version
-      - name: E2E (desktop e celular)
+      - name: E2E (desktop, Android e iPhone estreito emulado)
         env:
           CI: "1"
         run: npx playwright test
+      - name: Evidências Playwright (relatório, capturas e traces de falhas)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: qa-desktop-mobile-${{ github.run_id }}
+          path: |
+            nucleo-dados-bdgd/web/playwright-report
+            nucleo-dados-bdgd/web/test-results
+          retention-days: 14
+          if-no-files-found: warn

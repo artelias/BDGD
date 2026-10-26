@@ -75,7 +75,7 @@ export function PublicacoesAuditadas() {
         <div>
           <div className="eyebrow">Rastreabilidade · inventário de arquivos</div>
           <h2 id="publicacoes-auditadas-title">Publicações avaliadas e motivos de bloqueio</h2>
-          <p>O antigo termo “em quarentena” não descrevia corretamente a situação atual. Agora cada publicação tem uma classificação verificável e link para o item oficial.</p>
+          <p>Cada publicação está identificada como em uso, excluída por competência ou pendente de decisão sobre versões divergentes, com justificativa e link para o item oficial.</p>
         </div>
       </div>
       {!data ? (erro ? <p role="alert">Falha ao carregar inventário: {erro}.</p> :
@@ -135,7 +135,7 @@ export function PublicacoesAuditadas() {
             </div>
           )}
           <details className={s.pares} data-testid="publicacoes-inexistentes">
-            <summary>11 publicações não localizadas no catálogo oficial — não são arquivos em quarentena</summary>
+            <summary>11 publicações não localizadas no catálogo oficial — 275 células sem dados de origem</summary>
             <p className={s.rodape}>A busca pelo catálogo oficial não encontrou publicações para essas combinações distribuidora/ano, afetando {fmt(data.publicacoesNaoLocalizadasCelulas)} células de ativos. Não há arquivo local para corrigir. É necessário que a ANEEL ou a distribuidora disponibilize ou identifique a publicação adequada.</p>
             <div className={s.scroll} tabIndex={0} role="region" aria-label="Publicações não localizadas no catálogo ANEEL">
               <table className={s.tabela}>
