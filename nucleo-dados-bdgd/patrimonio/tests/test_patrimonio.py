@@ -76,6 +76,12 @@ class DocumentTests(unittest.TestCase):
   self.assertEqual(technical('1,25 MVA')['valor_tecnico'],'1250.00')
   self.assertIsNone(technical('20/26,6/33,3 MVA')['valor_tecnico'])
   self.assertIsNone(technical('até 5 kA')['valor_tecnico'])
+ def test_open_bounds_and_ambiguous_localized_number_never_become_point_value(self):
+  for text in ['Superior a 36.000 kVAR','Inferior a 5 kVA','> 1000 kVA']:
+   with self.subTest(text=text):
+    result=technical(text);self.assertEqual(result['natureza_valor'],'FAIXA');self.assertIsNone(result['valor_tecnico'])
+  self.assertIsNone(technical('10.500 kVAR')['componentes'][0]['valor'])
+  self.assertEqual(technical('10.500 kVAR')['componentes'][0]['numero_original'],'10.500')
  def test_native_power_namespace_differs_from_a4(self):
   e=enrich_record(D,{'COD_ID':'SINTETICO','TUC':'565','A1':'01','A4':'29','POT_NOM':'29'},entity='EQTRMT',dist='26',year=2025,publication='SINTETICO')
   self.assertIsNone(e['potencia']['potencia_recuperada_homologada_kva'])

@@ -61,6 +61,10 @@ python -m patrimonio.web_product
 python -m unittest discover -s patrimonio/tests -v
 ```
 
-Os 500 arquivos históricos preexistentes permanecem byte a byte preservados. O produto novo é derivado e separado. Fixtures sintéticas só aparecem nos testes; nunca são publicadas como dados reais. O CI verifica 24 testes novos Python, os 62 do motor existente, a reprodutibilidade do produto web, unitários TypeScript, lint/tipos/build e Playwright desktop/mobile. Resultados e evidências finais são registrados no PR; execução local de Chromium é impedida pela restrição de sockets deste ambiente.
+Os 500 arquivos históricos preexistentes permanecem byte a byte preservados. O produto novo é derivado e separado. Fixtures sintéticas só aparecem nos testes; nunca são publicadas como dados reais. O CI verifica 25 testes novos Python, os 62 do motor existente, a reprodutibilidade do produto web, unitários TypeScript, lint/tipos/build e Playwright desktop/mobile. Resultados e evidências finais são registrados no PR; execução local de Chromium é impedida pela restrição de sockets deste ambiente.
 
 **Estado de conclusão:** implementação documental/pipeline/consulta entregue; dicionário universal normativamente validado e auditoria de valores dos registros ainda não concluídos. A conclusão exige os dois insumos inacessíveis e conferência dos 89 mapeamentos de slots restantes. Não confundir CI aprovado com validação normativa ou homologação humana.
+
+Correção de leitura numérica: limites escritos como superior/inferior/maior/menor ou sinais de desigualdade são faixas, nunca pontos. Pontuação com ponto e três casas (ex.: 10.500), cuja interpretação poderia misturar milhar e decimal, é preservada como texto com marca de ambiguidade, sem escalar numérico presumido.
+
+Rotulagem e regressão de navegação: os seletores patrimoniais recebem nomes explícitos iguais aos rótulos visíveis. O teste desktop detectou que a busca pelo rótulo exato do seletor TUC não o localizava, embora a árvore acessível exibisse o nome correto; a regressão verifica a localização pelo rótulo, o nome acessível, a mudança TUC/A1 e a exportação.

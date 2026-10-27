@@ -7,6 +7,7 @@ test("patrimônio: consulta documental, tipos condicionais, faixa e exportação
  await section.getByText('Consultar atributos patrimoniais', { exact: true }).click();
  await expect(section).toContainText('Vigência normativa pendente');
  await expect(section.getByTestId('patrimonio-traducao')).toContainText('faixa normativa');
+ await expect(section.getByRole('combobox', { name: 'TUC patrimonial', exact: true })).toHaveAccessibleName('TUC patrimonial');
  await section.getByLabel('TUC patrimonial', { exact: true }).selectOption('575');
  await section.getByLabel('Tipo de bem A1', { exact: true }).selectOption('01');
  await section.getByLabel('Código do atributo', { exact: true }).fill('01');
