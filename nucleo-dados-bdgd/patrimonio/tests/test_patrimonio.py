@@ -19,6 +19,12 @@ class DocumentTests(unittest.TestCase):
   self.assertIn('IIIA',D['tabelas']);self.assertIn('VIII_A6',D['tabelas'])
   self.assertFalse(any('kVAR' in x['descricao'] for x in D['tabelas']['II']))
   self.assertEqual(len(D['tabelas']['VI']),7)
+ def test_published_code_audit_tracks_groups_not_individual_records(self):
+  root=Path(__file__).resolve().parents[1]
+  summary=json.loads((root/'data/publicados/resumo.json').read_text())
+  self.assertEqual(summary['grupos'],2187)
+  self.assertEqual(summary['por_status'],{'CODIGOS_CATALOGADOS_R2':1886,'TUC_SEM_CORRESPONDENCIA_R2':279,'A1_SEM_CORRESPONDENCIA_R2':22})
+  self.assertFalse(summary['targets_modificados'])
  def test_power_not_always_a4(self):
   self.assertEqual(D['tucs']['340']['slots']['A3']['tabela'],'IIIB')
   self.assertEqual(D['tucs']['340']['slots']['A4']['tabela'],'V')

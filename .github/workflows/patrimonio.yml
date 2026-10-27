@@ -33,6 +33,10 @@ jobs:
           cp web/public/data/patrimonio/dicionario.json.gz "$RUNNER_TEMP/antes.json.gz"
           "$RUNNER_TEMP/patrimonio-env/bin/python" -m patrimonio.web_product
           cmp "$RUNNER_TEMP/antes.json.gz" web/public/data/patrimonio/dicionario.json.gz
+      - name: Confronto dos códigos publicados é reproduzível
+        run: |
+          "$RUNNER_TEMP/patrimonio-env/bin/python" -m patrimonio.published
+          git diff --exit-code -- patrimonio/data/publicados
       - name: Evidências documentais e inventário
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:

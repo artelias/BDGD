@@ -31,6 +31,8 @@ A ferramenta XLSM de apoio e o seed JSON do acervo foram localizados e inspecion
 
 A Tabela IIIB lida tem **77 entradas, todas sem potência pontual inequívoca**. Isso não diz que nenhum transformador tem potência conhecida: diz que esse código patrimonial, isoladamente, não fornece seu valor exato. Não usar limite superior, ponto médio ou primeira alternativa como potência nominal. Existem ainda códigos ambíguos na cópia: II/91 e VIII_A4/80–81; o resolvedor preserva alternativas e recusa escolher uma.
 
+Nos 2.187 grupos conjuntos de 2025, 1.886 têm TUC/A1 catalogados na cópia lida, 279 não têm correspondência de TUC e 22 não têm correspondência de A1. Os cinco códigos/marcadores de TUC são `0`, `000`, `001`, `656` e `SEM_CODIGO` (marcador do cubo, não código normativo). O confronto por DIST/grupo está em `data/publicados`, sem corrigir dados ou afirmar invalidade sob Revisão 3 ainda não conferida. Esses números contam grupos, não equipamentos.
+
 MCPSE IIIB e DDA TPOTAPRT são **namespaces diferentes**. Por exemplo, MCPSE IIIB 29 significa faixa até 75 kVA; DDA TPOTAPRT 29 significa 207 kVA. Um número igual não comprova correspondência. Não se reaproveita a tabela DDA para traduzir A4. `POT_NOM` de EQTRMT/EQTRAT/EQRE pode ser auditado separadamente pelo domínio TPOTAPRT, sem habilitação para os modelos até comparação por ano. `POT_NOM` de UNTRMT/UNTRAT não recebe conversão histórica automática de unidades.
 
 ## Pipeline de leitura dos Parquets existentes
@@ -59,6 +61,6 @@ python -m patrimonio.web_product
 python -m unittest discover -s patrimonio/tests -v
 ```
 
-Os 500 arquivos históricos preexistentes permanecem byte a byte preservados. O produto novo é derivado e separado. Fixtures sintéticas só aparecem nos testes; nunca são publicadas como dados reais. O CI verifica 23 testes novos Python, os 62 do motor existente, a reprodutibilidade do produto web, unitários TypeScript, lint/tipos/build e Playwright desktop/mobile. Resultados e evidências finais são registrados no PR; execução local de Chromium é impedida pela restrição de sockets deste ambiente.
+Os 500 arquivos históricos preexistentes permanecem byte a byte preservados. O produto novo é derivado e separado. Fixtures sintéticas só aparecem nos testes; nunca são publicadas como dados reais. O CI verifica 24 testes novos Python, os 62 do motor existente, a reprodutibilidade do produto web, unitários TypeScript, lint/tipos/build e Playwright desktop/mobile. Resultados e evidências finais são registrados no PR; execução local de Chromium é impedida pela restrição de sockets deste ambiente.
 
 **Estado de conclusão:** implementação documental/pipeline/consulta entregue; dicionário universal normativamente validado e auditoria de valores dos registros ainda não concluídos. A conclusão exige os dois insumos inacessíveis e conferência dos 89 mapeamentos de slots restantes. Não confundir CI aprovado com validação normativa ou homologação humana.

@@ -1,0 +1,18 @@
+{
+  "grupos": 2187,
+  "por_status": {
+    "TUC_SEM_CORRESPONDENCIA_R2": 279,
+    "CODIGOS_CATALOGADOS_R2": 1886,
+    "A1_SEM_CORRESPONDENCIA_R2": 22
+  },
+  "codigos_tuc_sem_correspondencia_r2": [
+    "0",
+    "000",
+    "001",
+    "656",
+    "SEM_CODIGO"
+  ],
+  "nota": "Grupos DIST×conceito×TUC×A1, não registros individuais; SEM_CODIGO é marcador do cubo. Não correspondência na Revisão 2 não autoriza corrigir código sem verificar Revisão 3/vigência. Não somar esses grupos como amostras independentes.",
+  "source_sha256": "ef9c7b836c659d20456750d4688836b59e41bee893c2c657061c860683e83ece",
+  "targets_modificados": false
+}
