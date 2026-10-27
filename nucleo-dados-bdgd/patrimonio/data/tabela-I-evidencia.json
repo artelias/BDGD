@@ -1,0 +1,6833 @@
+[
+  {
+    "pagina": 173,
+    "tuc": "100",
+    "celulas": [
+      "100",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE COMBUSTÍVEL LÍQUIDO OU GASOSO",
+      "100.01",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE COMBUSTÍVEL LÍQUIDO OU GASOSO",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "105",
+    "celulas": [
+      "105",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE COMBUSTÍVEL NUCLEAR",
+      "105.01",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE COMBUSTÍVEL NUCLEAR",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "110",
+    "celulas": [
+      "110",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE COMBUSTÍVEL SÓLIDO",
+      "110.01",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE COMBUSTÍVEL SÓLIDO",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "112",
+    "celulas": [
+      "112",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE RESÍDUO",
+      "112.01",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE RESÍDUO",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "115",
+    "celulas": [
+      "115",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE RESÍDUO NUCLEAR",
+      "115.01",
+      "ARMAZENAGEM, MANIPULAÇÃO E TRANSPORTE DE RESÍDUO NUCLEAR",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "120",
+    "celulas": [
+      "120",
+      "BALANÇA PARA VEÍCULOS DE CARGA",
+      "120.01",
+      "BALANÇA PARA VEÍCULOS DE CARGA",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "125",
+    "celulas": [
+      "125",
+      "BANCO DE CAPACITORES PARALELO",
+      "125.01",
+      "CLASSE DE TENSÃO IGUAL OU SUPERIOR A 69kV CLASSE DE TENSÃO INFERIOR A 69kV",
+      "CLASSE DE TENSÃO",
+      "",
+      "VIDE TABELA CLASSE DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "125",
+    "celulas": [
+      "",
+      "",
+      "125.02",
+      "",
+      "TIPO DE CONTROLE",
+      "",
+      "VIDE TABELA TIPO DE CONTROLE",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "125",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "",
+      "VIDE TABELA POTÊNCIA IIIA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "130",
+    "celulas": [
+      "130",
+      "BANCO DE CAPACITORES SERIE",
+      "130.01",
+      "CLASSE DE TENSÃO IGUAL OU SUPERIOR A 69kV",
+      "CLASSE DE TENSÃO",
+      "",
+      "VIDE TABELA CLASSE DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "130",
+    "celulas": [
+      "",
+      "",
+      "130.02",
+      "CLASSE DE TENSÃO INFERIOR A 69kV",
+      "",
+      "TIPO DE CONTROLE",
+      "",
+      "VIDE TABELA TIPO DE CONTROLE",
+      ""
+    ]
+  },
+  {
+    "pagina": 173,
+    "tuc": "130",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "",
+      "VIDE TABELA POTÊNCIA IIIA",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "135",
+      "BARRAMENTO",
+      "135.01 135.02",
+      "RÍGIDO FLEXÍVEL",
+      "CLASSE DE TENSÃO",
+      "VIDE TABELA CLASSE DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "MATERIAL",
+      "01",
+      "COBRE",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "ALUMÍNIO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "ALUMÍNIO COM ALMA DE AÇO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "AÇO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "AÇO COBREADO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "08",
+      "AÇO ALUMINIZADO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "20",
+      "TUBO DE ALUMÍNIO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "30",
+      "BARRA DE ALUMÍNIO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "35",
+      "BARRA DE COBRE",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ISOLAMENTO",
+      "01",
+      "NU",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "ISOLADO- PAPEL IMPREGNADO",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "ISOLADO- EPR",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "ISOLADO- XLPE",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "ISOLADO- PVC",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "PROTEGIDO - EPR",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "PROTEGIDO - XLPE",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "08",
+      "PROTEGIDO - PVC",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "BITOLA",
+      "VIDE TABELA DE BITOLA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "135.03",
+      "CONJUNTO DE ISOLADORES DE PEDESTAL",
+      "CLASSE DE TENSÃO",
+      "VER TABELA DE TENSÕES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "MATERIAL",
+      "01 - PORCELANA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02 - POLÍMERO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "135",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03 - OUTRO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "140",
+    "celulas": [
+      "140",
+      "CALDEIRA",
+      "140.01",
+      "CALDEIRA",
+      "CAPACIDADE",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "140",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "PRESSÃO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "140",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TEMPERATURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "145",
+    "celulas": [
+      "145",
+      "CÂMARA E GALERIA",
+      "145.01",
+      "CÂMARA GALERIA TÚNEL",
+      "COMPRIMENTO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "145",
+    "celulas": [
+      "",
+      "",
+      "145.02",
+      "",
+      "LARGURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "145",
+    "celulas": [
+      "",
+      "",
+      "145.03",
+      "",
+      "ALTURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "150",
+    "celulas": [
+      "150",
+      "CANAL DE DESCARGA",
+      "150.01",
+      "CANAL DE DESCARGA",
+      "COMPRIMENTO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "150",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "150",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ALTURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "155",
+    "celulas": [
+      "155",
+      "CHAMINÉ",
+      "155.01",
+      "CHAMINÉ",
+      "ALTURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "155",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "DIÂMETRO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "160",
+      "CHAVE",
+      "160.01",
+      "SECCIONADORA",
+      "CLASSE DE TENSÃO",
+      "VIDE TABELA CLASSE DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.02",
+      "SECCIONADORA COM LÂMINA DE TERRA",
+      "CORRENTE NOMINAL",
+      "VIDE TABELA CORRENTE NOMINAL",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.03",
+      "FUSÍVEL",
+      "Nº DE FASES",
+      "VIDE TABELA N º DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.04",
+      "FUSÍVEL RELIGADORA",
+      "TIPO DE CONTROLE",
+      "VIDE TABELA TIPO DE CONTROLE",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.05",
+      "SECCIONADORA EM MÓDULO DE MANOBRA",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.06",
+      "DE ATERRAMENTO",
+      "TIPO DE ISOLAMENTO",
+      "VIDE TABELA TIPO DE ISOLAMENTO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.10",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.12",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 174,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.15",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 175,
+    "tuc": "160",
+    "celulas": [
+      "",
+      "",
+      "160.20",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 175,
+    "tuc": "165",
+    "celulas": [
+      "165",
+      "COMPENSADOR DE REATIVOS",
+      "165.01",
+      "COMPENSADOR DE REATIVOS ESTÁTICO COMPENSADOR DE REATIVOS ROTATIVO",
+      "CLASSE DE TENSÃO",
+      "VIDE TABELA CLASSE DE TENSÃO"
+    ]
+  },
+  {
+    "pagina": 175,
+    "tuc": "165",
+    "celulas": [
+      "",
+      "",
+      "165.02",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "170",
+    "celulas": [
+      "170",
+      "COMPORTA",
+      "170.01",
+      "COMPORTA",
+      "TIPO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "170",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "170",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ALTURA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "175",
+    "celulas": [
+      "175",
+      "CONDENSADOR DE VAPOR",
+      "175.01",
+      "CONDENSADOR DE VAPOR",
+      "VAZÃO DE VAPOR",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "175",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "VAZÃO DE ÁGUA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "180",
+      "CONDUTO E CANALETA",
+      "180.01",
+      "CONDUTO",
+      "TIPO DE MATERIAL",
+      "01",
+      "",
+      "CIMENTO (CONCRETO)"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "ALVENARIA"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "METÁLICO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "FIBRA DE VIDRO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "180.02",
+      "CANALETA",
+      "",
+      "05",
+      "",
+      "PLÁSTICO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "",
+      "PE CORRUGADO DE ALTA"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "DENSIDADE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "N/A",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "180.03",
+      "CONDUTO E CANALETA INTEGRADOS",
+      "BITOLA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "180",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "SEÇÃO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "185",
+    "celulas": [
+      "185",
+      "CONDUTO FORÇADO",
+      "185.01",
+      "CONDUTO FORÇADO",
+      "TIPO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "185",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "185",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "DIÂMETRO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "190",
+      "CONDUTOR",
+      "190.01",
+      "CLASSE DE TENSÃO IGUAL OU SUPERIOR A 69kV",
+      "TIPO DO MATERIAL",
+      "01",
+      "",
+      "COBRE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "ALUMÍNIO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "ALUMÍNIO COM ALMA"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "DE AÇO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "ALUMÍNIO-LIGA"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "AÇO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "",
+      "AÇO COBREADO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "",
+      "AÇO ALUMINIZADO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "08",
+      "AÇO ZINCADO",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "09",
+      "",
+      "ALUMÍNIO-LIGA"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "TERMORRESISTENTE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "COM ALMA DE AÇO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "10",
+      "",
+      "ALUMÍNIO-LIGA"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "TERMORRESISTENTE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "COM ALMA DE FIBRA DE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "CARBONO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE ISOLAMENTO DE CONDUTOR",
+      "01",
+      "",
+      "NU"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "190.02",
+      "CLASSE DE TENSÃO INFERIOR A 69kV",
+      "",
+      "02",
+      "",
+      "ISOLADO- PAPEL"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "IMPREGNADO"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "ISOLADO- EPR"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "ISOLADO- XLPE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "ISOLADO - PVC"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06 07",
+      "",
+      "PROTEGIDO - EPR"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "PROTEGIDO – XLPE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "08",
+      "",
+      "PROTEGIDO - PVC"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "09",
+      "",
+      "ISOLADO - PE"
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "BITOLA",
+      "VIDE TABELA DE BITOLA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 176,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "190.03",
+      "CONJUNTO DE CADEIA DE ISOLADORES",
+      "CLASSE DE TENSÃO",
+      "",
+      "VIDE TABELA DE TENSÕES",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO",
+      "",
+      "01 - ANCORAGEM",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02 - SUSPENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03 - JUMPER",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "MATERIAL",
+      "",
+      "01 - PORCELANA",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02 - VIDRO",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03 - POLIMÉRICA",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04 - OUTRO",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPOSIÇÃO",
+      "",
+      "01 - SIMPLES",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02 - DUPLA",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03 - TRIPLA",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "190",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04 – TIPO BASTÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "195",
+    "celulas": [
+      "195",
+      "CONVERSOR DE CORRENTE",
+      "195.01",
+      "CONVERSOR DE CORRENTE",
+      "POTÊNCIA",
+      "",
+      "VIDE TABELA DE POTENCIA III-B",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "195",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "RELAÇÃO DE CONVERSÃO",
+      "",
+      "CÓDIGO DA EMPRESA",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "200",
+    "celulas": [
+      "200",
+      "CONVERSOR DE FREQUÊNCIA",
+      "200.01",
+      "CONVERSOR DE FREQUÊNCIA",
+      "",
+      "POTÊNCIA",
+      "VIDE TABELA DE POTÊNCIA III-B",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "200",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "RELAÇÃO DE CONVERSÃO",
+      "CÓDIGO DA EMPRESA",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "205",
+    "celulas": [
+      "205",
+      "DIREITO, MARCA E PATENTE",
+      "205.01",
+      "DIREITO MARCA PATENTE SERVIDÕES OUTROS",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "205",
+    "celulas": [
+      "",
+      "",
+      "205.02",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "205",
+    "celulas": [
+      "",
+      "",
+      "205.03",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "205",
+    "celulas": [
+      "",
+      "",
+      "205.05",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 177,
+    "tuc": "205",
+    "celulas": [
+      "",
+      "",
+      "205.09",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "210",
+    "celulas": [
+      "210",
+      "DISJUNTOR",
+      "210.01",
+      "DISJUNTOR DE CLASSE DE TENSÃO IGUAL OU SUPERIOR A 69kV",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "210",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CORRENTE NOMINAL",
+      "VIDE TABELA CORRENTE NOMINAL",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "210",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE ISOLAMENTO",
+      "VIDE TABELA TIPO DE ISOLAMENTO",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "210",
+    "celulas": [
+      "",
+      "",
+      "210.02",
+      "DISJUNTOR DE CLASSE DE TENSÃO INFERIOR A 69kV",
+      "LOCAL DE INSTALAÇÃO",
+      "01",
+      "INTERNO"
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "210",
+    "celulas": [
+      "",
+      "",
+      "210.03",
+      "DISJUNTOR EM MÓDULO DE MANOBRA EM SF6",
+      "",
+      "02",
+      "EXTERNO"
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "210",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CAPACIDADE DE INTERRUPÇÃO",
+      "VIDE TABELA CAPACIDADE DE INTERRUPÇÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "215",
+    "celulas": [
+      "215",
+      "EDIFICAÇÃO",
+      "215.01",
+      "EDIFICAÇÃO - CASA DE FORÇA EDIFICAÇÃO - OUTRAS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "215",
+    "celulas": [
+      "",
+      "",
+      "215.09",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "220",
+    "celulas": [
+      "220",
+      "ELEVADOR E TELEFÉRICO",
+      "220.01",
+      "ELEVADOR",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "220",
+    "celulas": [
+      "",
+      "",
+      "220.02",
+      "TELEFÉRICO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "225",
+    "celulas": [
+      "225",
+      "ENVOLTÓRIO OU ESFERA DE CONTENÇÃO DO EDIFÍCIO DO REATOR NUCLEAR",
+      "225.01",
+      "ENVOLTÓRIO OU ESFERA DE CONTENÇÃO DO EDIFÍCIO DO REATOR NUCLEAR",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "230",
+      "EQUIPAMENTO GERAL",
+      "230.01",
+      "MÓVEIS E UTENSÍLIOS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.05",
+      "EQUIPAMENTOS MÓVEIS E PORTÁTEIS DE COMUNICAÇÃO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.10",
+      "EQUIPAMENTOS DE SERVIÇO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.15",
+      "EQUIPAMENTOS DE OFICINAS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.18",
+      "EQUIPAMENTOS DE LABORATÓRIOS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.20",
+      "EQUIPAMENTOS DE ALMOXARIFADO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.25",
+      "EQUIPAMENTOS DE ESCRITÓRIO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.30",
+      "EQUIPAMENTOS DE CONSERVAÇÃO E LIMPEZA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "230",
+    "celulas": [
+      "",
+      "",
+      "230.90",
+      "OUTROS EQUIPAMENTOS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "235",
+    "celulas": [
+      "235",
+      "EQUIPAMENTO GERAL DE INFORMÁTICA",
+      "235.01",
+      "EQUIPAMENTO GERAl DE INFORMÁTICA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "240",
+    "celulas": [
+      "240",
+      "EQUIPAMENTOS DA TOMADA D'ÁGUA",
+      "240.01",
+      "EQUIPAMENTOS DA TOMADA D'ÁGUA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "245",
+    "celulas": [
+      "245",
+      "EQUIPAMENTOS DO CICLO TÉRMICO",
+      "245.01",
+      "EQUIPAMENTOS DO CICLO TÉRMICO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 178,
+    "tuc": "250",
+    "celulas": [
+      "250",
+      "ESTRADA DE ACESSO",
+      "250.01",
+      "ESTRADA DE ACESSO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "255",
+      "ESTRUTURA (POSTE, TORRE)",
+      "255.01",
+      "POSTE",
+      "TIPO DO POSTE",
+      "",
+      "01",
+      "",
+      "CIRCULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "DUPLO T",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "TRILHO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "CURVO SIMPLES",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "CURVO DUPLO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "",
+      "TUBULAR - Seção poligonal",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "",
+      "RETANGULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "08",
+      "",
+      "SEXTAVADO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "09",
+      "",
+      "TRIANGULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DO MATERIAL",
+      "",
+      "01",
+      "",
+      "CONCRETO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "MADEIRA",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "FERRO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "AÇO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "EM COMPÓSITO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ALTURA",
+      "",
+      "VIDE TABELA ALTURA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CARREGAMENTO/ESFORÇO",
+      "",
+      "VIDE TABELA DE CARREGAM/ESFORÇO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "255.02",
+      "TORRE",
+      "TIPO DE TORRE",
+      "",
+      "01",
+      "",
+      "CIRCULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "DUPLO T",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "AUTOPORTANTE",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "ESTAIADA",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "TRIANGULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "",
+      "TRUSSPOLE",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "",
+      "RETANGULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "08",
+      "",
+      "H (2 COLUNAS E VIGA CENTRAL)",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE MATERIAL",
+      "",
+      "01",
+      "",
+      "CONCRETO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "MADEIRA",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "METÁLICA",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ALTURA",
+      "",
+      "VIDE TABELA ALTURA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "255",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CARREGAMENTO/ESFORÇO",
+      "",
+      "VIDE TABELA DE CARREGAMENTO/ESFORÇO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "260",
+    "celulas": [
+      "260",
+      "ESTRUTURA DA TOMADA D'ÁGUA",
+      "260.01",
+      "ESTRUTURA DA TOMADA D'ÁGUA",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "265",
+    "celulas": [
+      "265",
+      "ESTRUTURA SUPORTE DE EQUIPAMENTO E DE BARRAMENTO",
+      "265.01",
+      "ESTRUTURA DE SUPORTE PARA EQUIPAMENTO ESTRUTURA DE SUPORTE PARA BARRAMENTO",
+      "TIPO DE MATERIAL",
+      "",
+      "01",
+      "",
+      "CONCRETO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "265",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "MADEIRA",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "265",
+    "celulas": [
+      "",
+      "",
+      "265.02",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "FERRO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "265",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "AÇO",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "265",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "ALVENARIA",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "265",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "",
+      "MISTA (CONCRETO E AÇO)",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "270",
+    "celulas": [
+      "270",
+      "FIBRA ÓTICA",
+      "270.01",
+      "FIBRA ÓTICA",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "275",
+    "celulas": [
+      "275",
+      "GERADOR",
+      "275.01",
+      "GERADOR",
+      "TENSÃO",
+      "",
+      "Vide Tabela II",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "275",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "",
+      "Vide Tabela IIIB",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "275",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ROTAÇÃO",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "275",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "FATOR DE POTÊNCIA",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "275",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "RENDIMENTO MÁXIMO",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "280",
+    "celulas": [
+      "280",
+      "GERADOR DE VAPOR",
+      "280.01",
+      "GERADOR DE VAPOR",
+      "",
+      "CAPACIDADE",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "280",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "PRESSÃO",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 179,
+    "tuc": "280",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "TEMPERATURA",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "285",
+    "celulas": [
+      "285",
+      "INSTALAÇÕES DE RECREAÇÃO E LAZER",
+      "285.01",
+      "INSTALAÇÕES DE RECREAÇÃO E LAZER",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "290",
+    "celulas": [
+      "290",
+      "LUMINÁRIA",
+      "290.01",
+      "LUMINÁRIA",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "295",
+      "MEDIDOR",
+      "295.01",
+      "MEDIDOR ELETROMECÂNICO MEDIDOR ELETRÔNICO MEDIDOR INTELIGENTE CONCENTRADOR PRIMÁRIO CONCENTRADOR SECUNDÁRIO COMPARADOR/FISCAL",
+      "GRANDEZA MEDIDA",
+      "01",
+      "",
+      "ENERGIA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "295.11",
+      "",
+      "",
+      "02",
+      "",
+      "ENERGIA E DEMANDA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "295.13",
+      "",
+      "",
+      "03",
+      "",
+      "ENERGIA ATIVA E REATIVA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "295.16",
+      "",
+      "",
+      "04",
+      "",
+      "MUTIFUNÇÃO PROGRAMÁVEL",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "295.17",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "295.18",
+      "",
+      "",
+      "10",
+      "",
+      "REGISTRADOR DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA DE Nº DE FASES",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE COMUNICAÇÃO",
+      "01",
+      "",
+      "RADIOFREQUENCIA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "FIBRA ÓTICA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "REDE CELULAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "PLC",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "",
+      "ZIGBEE",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "",
+      "OUTROS",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "",
+      "N/A",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "MÓDULO DE CORTE/RELIG",
+      "",
+      "01",
+      "",
+      "SEM MÓDULO"
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "COM MÓDULO"
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "MÓDULO DE DISPLAY",
+      "",
+      "01",
+      "",
+      "SEM MÓDULO"
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "295",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "COM MÓDULO"
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "300",
+    "celulas": [
+      "300",
+      "MOTOR DE COMBUSTÃO INTERNA",
+      "300.01",
+      "MOTOR DE COMBUSTÃO INTERNA",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "305",
+      "PAINEL, MESA DE COMANDO E CUBÍCULO",
+      "305.01",
+      "PAINEL MESA DE COMANDO CUBÍCULO PAINEL, MESA DE COMANDO E CUBÍCULO INTERLIGADOS",
+      "FUNÇÃO",
+      "01",
+      "",
+      "ENTRADA/SAÍDA DE LINHA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "ENTRADA/SAÍDA DE CIRCUÍTO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "",
+      "TRANSFORMAÇÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "OSCILOGRAFIA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "305.02",
+      "",
+      "",
+      "20",
+      "",
+      "SERVIÇOS AUXILIARES",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "25",
+      "",
+      "PROTEÇÃO DE SINCRONISMO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "30",
+      "",
+      "ALARME",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "305.03",
+      "",
+      "",
+      "35",
+      "",
+      "AQUISIÇÃO DE DADOS",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "40",
+      "",
+      "SUPERVISÃO E CONTROLE",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "45",
+      "",
+      "DISTRIBUIÇÃO DE FORÇA",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "50",
+      "",
+      "PROTEÇÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "305.04",
+      "",
+      "",
+      "55",
+      "",
+      "MANOBRA E SINALIZAÇÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "60",
+      "",
+      "TRANSFERENCIA E RELIGAMENTO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "65",
+      "",
+      "MEDIÇÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "305",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "70",
+      "",
+      "INTERFACE",
+      ""
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "310",
+    "celulas": [
+      "310",
+      "PÁRA-RAIOS",
+      "310.01",
+      "PÁRA-RAIOS",
+      "TIPO DE MATERIAL",
+      "",
+      "01",
+      "",
+      "PORCELANA OU VIDRO"
+    ]
+  },
+  {
+    "pagina": 180,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "POLIMÉRICO"
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ELEMENTO RESISTIVO",
+      "01",
+      "",
+      "CARBONETO DE SILÍCIO"
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "ÓXIDO DE ZINCO"
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CORRENTE DE DESCARGA NOMINAL",
+      "VIDE TABELA DE CAPACIDADE DE INTERRUPÇÃO /CORRENTE DE DESCARGA NOMINAL",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "310.02",
+      "CENTELHADOR",
+      "TIPO DE MATERIAL DO ISOLADOR",
+      "01",
+      "",
+      "PORCELANA OU VIDRO"
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "POLIMÉRICO"
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "310",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "315",
+      "PONTE ROLANTE, GUINDASTE OU PÓRTICO",
+      "315.01",
+      "PONTE ROLANTE GUINDASTE PÓRTICO DERRICK GUINCHO MONOTRILHO / MONOVIA TORRE DE IÇAMENTO MÁQUINA LIMPA-GRADES",
+      "CAPACIDADE",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.02",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.03",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.05",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.10",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.20",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.30",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 181,
+    "tuc": "315",
+    "celulas": [
+      "",
+      "",
+      "315.40",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "320",
+    "celulas": [
+      "320",
+      "PRECIPITADOR DE RESÍDUOS, DESSULFURIZADOR",
+      "320.01",
+      "PRECIPITADOR DE RESÍDUOS",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "320",
+    "celulas": [
+      "",
+      "",
+      "320.02",
+      "DESSULFURIZADOR",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "325",
+    "celulas": [
+      "325",
+      "PROTETOR DE REDE",
+      "325.01",
+      "PROTETOR DE REDE NÃO SUBMERSÍVEL PROTETOR DE REDE SUBMERSÍVEL",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "325",
+    "celulas": [
+      "",
+      "",
+      "325.02",
+      "",
+      "CORRENTE",
+      "VIDE TABELA DE CORRENTE",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "325",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "325",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE CONTROLE",
+      "VIDE TABELA TIPO DE CONTROLE",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "325",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE ISOLAMENTO",
+      "VIDE TABELA TIPO DE ISOLAMENTO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "330",
+    "celulas": [
+      "330",
+      "REATOR (OU RESISTOR)",
+      "330.01",
+      "REATOR",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "330",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CORRENTE NOMINAL",
+      "VIDE TABELA CORRENTE NOMINAL",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "330",
+    "celulas": [
+      "",
+      "",
+      "330.02",
+      "RESISTOR",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "330",
+    "celulas": [
+      "",
+      "",
+      "330.03",
+      "REATOR COM REATÂNCIA VARIÁVEL",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "335",
+    "celulas": [
+      "335",
+      "REATOR NUCLEAR",
+      "335.01",
+      "REATOR NUCLEAR",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "340",
+    "celulas": [
+      "340",
+      "REGULADOR DE TENSÃO",
+      "340.01",
+      "REGULADOR DE TENSÃO",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "340",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "340",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CORRENTE NOMINAL",
+      "VIDE TABELA CORRENTE NOMINAL",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "340",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "345",
+    "celulas": [
+      "345",
+      "RELIGADOR",
+      "345.01",
+      "RELIGADOR",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "345",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CORRENTE NOMINAL",
+      "VIDE TABELA CORRENTE NOMINAL",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "345",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "345",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TIPO DE CONTROLE",
+      "VIDE TABELA TIPO DE CONTROLE",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 182,
+    "tuc": "345",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CAPACIDADE DE INTERRUPÇÃO",
+      "VIDE TABELA CAPACIDADE DE INTERUPÇÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "350",
+      "RESERVATÓRIO, BARRAGEM E ADUTORA",
+      "350.01",
+      "RESERVATÓRIO",
+      "ÁREA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "VOLUME",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "NÍVEL DE ÁGUA A MONTANTE",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "NÍVEL DE ÁGUA A JUSANTE",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.02",
+      "BARRAGEM",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO TOTAL DA CRISTA",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ALTURA MÁXIMA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COTA DA CRISTA",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA DA CRISTA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.05",
+      "DIQUE",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.10",
+      "QUEBRA-MAR",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.15",
+      "ADUTORA",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.20",
+      "VERTEDOURO",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "CAPACIDADE",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COTA DE SOLEIRA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO TOTAL DA CRISTA",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA DA CRISTA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.25",
+      "TOMADA D'ÁGUA",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ALTURA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.30",
+      "CANAL DE FUGA",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.35",
+      "ECLUSA",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.38",
+      "SISTEMA DE TRANSPOSIÇÃO DE PEIXES",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.40",
+      "CANAL DE ADUÇÃO",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "350.50",
+      "TÚNEL DE ADUÇÃO",
+      "TIPO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "LARGURA",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "350",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMPRIMENTO",
+      "",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "355",
+    "celulas": [
+      "355",
+      "SISTEMA ANTI-RUÍDO",
+      "355.01",
+      "SISTEMA ANTI-RUÍDO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "360",
+    "celulas": [
+      "360",
+      "SISTEMA DE ABASTECIMENTO DE ÁGUA",
+      "360.01",
+      "SISTEMA DE ABASTECIMENTO DE ÁGUA",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "365",
+    "celulas": [
+      "365",
+      "SISTEMA DE ÁGUA DE ALIMENTAÇÃO",
+      "365.01",
+      "SISTEMA DE ÁGUA DE ALIMENTAÇÃO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "370",
+    "celulas": [
+      "370",
+      "SISTEMA DE ÁGUA DE CIRCULAÇÃO",
+      "370.01",
+      "SISTEMA DE ÁGUA DE CIRCULAÇÃO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "375",
+    "celulas": [
+      "375",
+      "SISTEMA DE ALIMENTAÇÃO DE ENERGIA",
+      "375.01",
+      "SISTEMA DE ALIMENTAÇÃO DE ENERGIA",
+      "TIPO",
+      "",
+      "",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 183,
+    "tuc": "380",
+    "celulas": [
+      "380",
+      "SISTEMA DE AMOSTRAGEM PRIMÁRIO",
+      "380.01",
+      "SISTEMA DE AMOSTRAGEM PRIMÁRIO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "385",
+    "celulas": [
+      "385",
+      "SISTEMA DE AR COMPRIMIDO",
+      "385.01",
+      "",
+      "SISTEMA DE AR COMPRIMIDO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "390",
+    "celulas": [
+      "390",
+      "SISTEMA DE AR E GASES DE COMBUSTÃO",
+      "390.01",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "390",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "SISTEMA DE AR E GASES DE",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "390",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMBUSTÃO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "390",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "395",
+    "celulas": [
+      "395",
+      "SISTEMA DE ATERRAMENTO",
+      "395.01",
+      "",
+      "SISTEMA DE ATERRAMENTO DE USINA SISTEMA DE ATERRAMENTO DE SUBESTAÇÃO SISTEMA DE ATERRAMENTO EM INSTALAÇÃO DE COMUNICAÇÃO SISTEMA DE ATERRAMENTO EM LINHA DE TRANSMISSÃO SISTEMA DE ATERRAMENTO EM LINHAS E REDES DE DISTRIBUIÇÃO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "395",
+    "celulas": [
+      "",
+      "",
+      "395.05",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "395",
+    "celulas": [
+      "",
+      "",
+      "395.10",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "395",
+    "celulas": [
+      "",
+      "",
+      "395.15",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "395",
+    "celulas": [
+      "",
+      "",
+      "395.20",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "400",
+    "celulas": [
+      "400",
+      "SISTEMA DE COLETA DE ÓLEO ISOLANTE",
+      "400.01",
+      "",
+      "SISTEMA DE COLETA DE ÓLEO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "400",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ISOLANTE",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "405",
+    "celulas": [
+      "405",
+      "SISTEMA DE COLETA E TRATAMENTO DE LIXO",
+      "405.01",
+      "",
+      "SISTEMA DE COLETA E TRATAMENTO DE LIXO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "410",
+    "celulas": [
+      "410",
+      "SISTEMA DE COMUNICAÇÃO E PROTEÇÃO CARRIER",
+      "410.01",
+      "",
+      "SISTEMA DE COMUNICAÇÃO E PROTEÇÃO CARRIER",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "415",
+    "celulas": [
+      "415",
+      "SISTEMA DE COMUNICAÇÃO LOCAL",
+      "415.01",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "415",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "SISTEMA DE COMUNICAÇÃO LOCAL",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "415",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "420",
+    "celulas": [
+      "420",
+      "SISTEMA DE CONDENSADO PARA PRODUÇÃO NUCLEAR",
+      "420.01",
+      "",
+      "SISTEMA DE CONDENSADO PARA PRODUÇÃO NUCLEAR",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "425",
+    "celulas": [
+      "425",
+      "SISTEMA DE CONTROLE QUÍMICO E VOLUMÉTRICO",
+      "425.05",
+      "",
+      "SISTEMA DE CONTROLE QUÍMICO E",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "425",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "VOLUMÉTRICO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "425",
+    "celulas": [
+      "",
+      "",
+      "425.10",
+      "",
+      "SISTEMA DE REGENERAÇÃO E",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "425",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "RECICLAGEM",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "425",
+    "celulas": [
+      "",
+      "",
+      "425.15",
+      "",
+      "SISTEMA DE ÁGUA DE REPOSIÇÃO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "430",
+    "celulas": [
+      "430",
+      "SISTEMA DE DADOS METEOROLÓGICOS, HIDROLÓGICOS E SISMOLÓGICOS",
+      "430.01",
+      "",
+      "ESTAÇÃO DE DADOS METEOROLÓGICOS ESTAÇÃO DE DADOS HIDROLÓGICOS ESTAÇÃO DE DADOS SISMOLÓGICOS",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "430",
+    "celulas": [
+      "",
+      "",
+      "430.02",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "430",
+    "celulas": [
+      "",
+      "",
+      "430.03",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "435",
+    "celulas": [
+      "435",
+      "SISTEMA DE DESCONTAMINAÇÃO PARA PRODUÇÃO NUCLEAR",
+      "435.01",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "435",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "SISTEMA DE DESCONTAMINAÇÃO PARA",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "435",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "PRODUÇÃO NUCLEAR",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "435",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "440",
+    "celulas": [
+      "440",
+      "SISTEMA DE DOSAGEM QUIMÍCA PARA PRODUÇÃO NUCLEAR",
+      "440.01",
+      "",
+      "SISTEMA DE DOSAGEM QUIMÍCA PARA PRODUÇÃO NUCLEAR",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "445",
+    "celulas": [
+      "445",
+      "SISTEMA DE DRENAGEM, ENCHIMENTO E ESGOTAMENTO",
+      "445.01",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "445",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "SISTEMA DE DRENAGEM",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "445",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "450",
+    "celulas": [
+      "450",
+      "SISTEMA DE ESGOTO SANITÁRIO",
+      "450.01",
+      "",
+      "SISTEMA DE ESGOTO SANITÁRIO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "455",
+    "celulas": [
+      "455",
+      "SISTEMA DE EXAUSTÃO, VENTILAÇÃO E AR CONDICIONADO",
+      "455.01",
+      "",
+      "SISTEMA DE EXAUSTÃO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "455",
+    "celulas": [
+      "",
+      "",
+      "455.02",
+      "",
+      "SISTEMA DE VENTILAÇÃO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "455",
+    "celulas": [
+      "",
+      "",
+      "455.03",
+      "",
+      "SISTEMA DE AR CONDICIONADO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 184,
+    "tuc": "460",
+    "celulas": [
+      "460",
+      "SISTEMA DE ILUMINAÇÃO E FORÇA",
+      "460.01",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "465",
+    "celulas": [
+      "465",
+      "SISTEMA DE LUBRIFICAÇÃO, DE ÓLEO DE REGULAÇÃO E DE ÓLEO ISOLANTE OU PARA ISOLAMENTO",
+      "465.01",
+      "",
+      "SISTEMA DE LUBRIFICAÇÃO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "465",
+    "celulas": [
+      "",
+      "",
+      "465.02",
+      "",
+      "SISTEMA DE ÓLEO DE REGULAÇÃO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "465",
+    "celulas": [
+      "",
+      "",
+      "465.03",
+      "",
+      "SISTEMA DE ÓLEO ISOLANTE",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "465",
+    "celulas": [
+      "",
+      "",
+      "465.04",
+      "",
+      "SISTEMA DE GRAXA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "465",
+    "celulas": [
+      "",
+      "",
+      "465.05",
+      "",
+      "SISTEMA DE SELAMENTO/SELAGEM",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "470",
+    "celulas": [
+      "470",
+      "SISTEMA DE MONITORAÇÃO DA USINA",
+      "470.01",
+      "",
+      "SISTEMA DE MONITORAÇÃO DE ATIVIDADE SISTEMA DE MONITORAÇÃO AMBIENTAL SISTEMA DE MONITORAÇÃO DE VAZAMENTO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "470",
+    "celulas": [
+      "",
+      "",
+      "470.02",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "470",
+    "celulas": [
+      "",
+      "",
+      "470.03",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "475",
+    "celulas": [
+      "475",
+      "SISTEMA DE MONITORAÇÃO DO CIRCUITO PRIMÁRIO PARA PRODUÇÃO NUCLEAR",
+      "475.01",
+      "",
+      "SISTEMA DE MONITORAÇÃO DO CIRCUITO PRIMÁRIO PARA PRODUÇÃO NUCLEAR",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "480",
+    "celulas": [
+      "480",
+      "SISTEMA DE PROTEÇÃO CONTRA INCÊNDIO",
+      "480.01",
+      "",
+      "SISTEMA DE PROTEÇÃO CONTRA INCÊNDIO",
+      "TIPO",
+      "CÓDIGO DA EMPRESA",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "485",
+    "celulas": [
+      "485",
+      "SISTEMA DE PROTEÇÃO, MEDIÇÃO E AUTOMAÇÃO",
+      "485.01",
+      "",
+      "SISTEMA DE PROTEÇÃO",
+      "TIPO DE COMUNICAÇÃO",
+      "01",
+      "RADIOFREQUENCIA"
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "485",
+    "celulas": [
+      "",
+      "",
+      "485.02",
+      "",
+      "SISTEMA DE TELEPROTEÇÃO",
+      "",
+      "02",
+      "FIBRA ÓTICA"
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "485",
+    "celulas": [
+      "",
+      "",
+      "485.03",
+      "",
+      "SISTEMA DE TELECONTROLE",
+      "",
+      "03",
+      "REDE CELULAR"
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "485",
+    "celulas": [
+      "",
+      "",
+      "485.04",
+      "",
+      "SISTEMA DE TELEMEDIÇÃO",
+      "",
+      "04",
+      "PLC"
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "485",
+    "celulas": [
+      "",
+      "",
+      "485.05",
+      "",
+      "SISTEMA DE AQUISIÇÃO DE DADOS",
+      "",
+      "05",
+      "ZIGBEE"
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "485",
+    "celulas": [
+      "",
+      "",
+      "485.06",
+      "",
+      "SISTEMA DE MONITORAMENTO",
+      "",
+      "06",
+      "OUTROS"
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "490",
+    "celulas": [
+      "490",
+      "SISTEMA DE PULVERIZAÇÃO DO ENVOLTÓRIO DE CONTENÇÃO",
+      "490.01",
+      "",
+      "SISTEMA DE PULVERIZAÇÃO DO ENVOLTÓRIO DE CONTENÇÃO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "495",
+    "celulas": [
+      "495",
+      "SISTEMA DE RADIOCOMUNICAÇÃO",
+      "495.02",
+      "",
+      "ESTAÇÃO VHF",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "495",
+    "celulas": [
+      "",
+      "",
+      "495.03",
+      "",
+      "ESTAÇÃO UHF",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "495",
+    "celulas": [
+      "",
+      "",
+      "495.04",
+      "",
+      "ESTAÇÃO MICROONDAS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "495",
+    "celulas": [
+      "",
+      "",
+      "495.05",
+      "",
+      "ESTAÇÃO FIBRA ÓTICA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "500",
+    "celulas": [
+      "500",
+      "SISTEMA DE REFRIGERAÇÃO DE EMERGÊNCIA DO NÚCLEO DO REATOR",
+      "500.01",
+      "",
+      "SISTEMA DE REFRIGERAÇÃO DE EMERGÊNCIA DO NÚCLEO DO REATOR",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "505",
+    "celulas": [
+      "505",
+      "SISTEMA DE REFRIGERAÇÃO DO REATOR",
+      "505.01",
+      "",
+      "SISTEMA DE REFRIGERAÇÃO DO REATOR",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "510",
+    "celulas": [
+      "510",
+      "SISTEMA DE REFRIGERAÇÃO E PURIFICAÇÃO DO POÇO DE COMBUSTÍVEL USADO",
+      "510.01",
+      "",
+      "SISTEMA DE REFRIGERAÇÃO E PURIFICAÇÃO DO POÇO DE COMBUSTÍVEL USADO",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "515",
+    "celulas": [
+      "515",
+      "SISTEMA DE RESFRIAMENTO DE EQUIPAMENTOS",
+      "515.01",
+      "",
+      "SISTEMA DE RESFRIAMENTO DE EQUIPAMENTOS",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 185,
+    "tuc": "520",
+    "celulas": [
+      "520",
+      "SISTEMA DE VIGILÂNCIA ELETRÔNICA",
+      "520.01",
+      "",
+      "SISTEMA DE VIGILÂNCIA ELETRÔNICA",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "525",
+    "celulas": [
+      "525",
+      "SISTEMA PARA GASEIFICAÇÃO DE CARVÃO",
+      "525.01",
+      "SISTEMA PARA GASEIFICAÇÃO DE CARVÃO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "530",
+    "celulas": [
+      "530",
+      "SISTEMA DE VAPOR PARA PRODUÇÃO NUCLEAR",
+      "530.01",
+      "SISTEMA DE VAPOR PARA PRODUÇÃO NUCLEAR",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "535",
+    "celulas": [
+      "535",
+      "SOFTWARE",
+      "535.01",
+      "SOFTWARE",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "535",
+    "celulas": [
+      "",
+      "",
+      "535.02",
+      "LICENÇA DE USO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "540",
+    "celulas": [
+      "540",
+      "SUBESTAÇÃO SF 6",
+      "540.01",
+      "SUBESTAÇÃO SF 6",
+      "TENSÃO PRIMÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "540",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO SECUNDÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "540",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "545",
+    "celulas": [
+      "545",
+      "SUBESTAÇÃO UNITÁRIA",
+      "545.01",
+      "SUBESTAÇÃO UNITÁRIA",
+      "",
+      "TENSÃO PRIMÁRIA",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "545",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO SECUNDÁRIA",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "545",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "550",
+    "celulas": [
+      "550",
+      "SUPRIMENTO E TRATAMENTO D'ÁGUA",
+      "550.01",
+      "SISTEMA DE SUPRIMENTO DE ÁGUA SISTEMA DE PRÉ-TRATAMENTO SISTEMA DE DESMINERALIZAÇÃO SISTEMA DE INJEÇÃO DE PRODUTOS QUÍMICOS",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "550",
+    "celulas": [
+      "",
+      "",
+      "550.02",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "550",
+    "celulas": [
+      "",
+      "",
+      "550.03",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "550",
+    "celulas": [
+      "",
+      "",
+      "550.04",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "555",
+    "celulas": [
+      "555",
+      "TERRENO",
+      "555.01",
+      "DE UTILIZAÇÃO GERAL",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "555",
+    "celulas": [
+      "",
+      "",
+      "555.09",
+      "DE UTILIZAÇÃO COMO PASSAGEM DE LINHA",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "560",
+    "celulas": [
+      "560",
+      "TRANSFORMADOR DE ATERRAMENTO",
+      "560.01",
+      "TRANSFORMADOR DE ATERRAMENTO",
+      "TENSÃO PRIMÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "560",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO SECUNDÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "560",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "560",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "",
+      "VIDE TABELA Nº DE FASES",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "565",
+    "celulas": [
+      "565",
+      "TRANSFORMADOR DE DISTRIBUIÇÃO",
+      "565.01",
+      "AÉREO",
+      "",
+      "TENSÃO PRIMÁRIA",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "565",
+    "celulas": [
+      "",
+      "",
+      "565.02",
+      "PEDESTAL, PLATAFORMA OU ESTALEIRO",
+      "TENSÃO SECUNDÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "565",
+    "celulas": [
+      "",
+      "",
+      "565.03",
+      "SUBTERRÂNEO",
+      "",
+      "POTÊNCIA",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "565",
+    "celulas": [
+      "",
+      "",
+      "565.04",
+      "SUBMERSÍVEL",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "565",
+    "celulas": [
+      "",
+      "",
+      "565.05",
+      "ESPECIAL / VERDE",
+      "TIPO DE PROTEÇÃO",
+      "",
+      "01",
+      "CONVENCIONAL"
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "565",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "AUTO-PROTEGIDO"
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "570",
+    "celulas": [
+      "570",
+      "TRANSFORMADOR DE FORÇA",
+      "570.01",
+      "TRANSFORMADOR DE FORÇA AUTO-TRANSFORMADOR DE FORÇA",
+      "TENSÃO PRIMÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "570",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO SECUNDÁRIA",
+      "",
+      "VIDE TABELA DE TENSÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "570",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "570",
+    "celulas": [
+      "",
+      "",
+      "570.02",
+      "",
+      "Nº DE FASES",
+      "",
+      "VIDE TABELA Nº DE FASES",
+      ""
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "570",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMUTAÇÃO",
+      "",
+      "01",
+      "COM COMUTADOR"
+    ]
+  },
+  {
+    "pagina": 186,
+    "tuc": "570",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "SEM COMUTADOR"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "575",
+    "celulas": [
+      "575",
+      "TRANSFORMADOR DE MEDIDA",
+      "575.01",
+      "TRANSFORMADOR DE CORRENTE",
+      "TENSÃO",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "575",
+    "celulas": [
+      "",
+      "",
+      "575.02",
+      "TRANSFORMADOR DE POTENCIAL",
+      "RELAÇÃO DE TRANSFORMAÇÃO",
+      "VIDE TABELA DE RELAÇÃO DE TRANSFORMAÇÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "575",
+    "celulas": [
+      "",
+      "",
+      "575.11",
+      "TRANSFORMADOR DE POTENCIAL CAPACITIVO",
+      "RELAÇÃO DE CORRENTE (para TC e Conjunto de Medição) ou RELAÇÃO DE TENSÃO (para TP, TPC, TPI, TD )",
+      "VIDE TABELAS DE RELAÇÃO DE CORRENTE ou RELAÇÃO DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "575",
+    "celulas": [
+      "",
+      "",
+      "575.12",
+      "TRANSFORMADOR DE POTENCIAL INDUTIVO",
+      "CLASSE DE EXATIDÃO",
+      "VIDE TABELA DE CLASSE DE EXATIDÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "575",
+    "celulas": [
+      "",
+      "",
+      "575.13",
+      "TRANSFORMADOR DE DEFASAMENTO",
+      "LOCAL DE INSTALAÇÃO",
+      "01",
+      "",
+      "INTERNO"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "575",
+    "celulas": [
+      "",
+      "",
+      "575.20",
+      "CONJUNTO DE MEDIÇÃO (TP e TC)",
+      "",
+      "02",
+      "",
+      "EXTERNO"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "580",
+    "celulas": [
+      "580",
+      "TRANSFORMADOR DE SERVIÇOS AUXILIARES",
+      "580.01",
+      "TRANSFORMADOR DE SERVIÇOS AUXILIARES",
+      "TENSÃO PRIMÁRIA",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "580",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "TENSÃO SECUNDÁRIA",
+      "VIDE TABELA DE TENSÃO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "580",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "VIDE TABELA DE POTÊNCIA IIIB",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "580",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "Nº DE FASES",
+      "VIDE TABELA Nº DE FASES",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "585",
+    "celulas": [
+      "585",
+      "TURBINA A GÁS",
+      "585.01",
+      "AÉREO-DERIVADO",
+      "POTÊNCIA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "585",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ROTAÇÃO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "585",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMBUSTÍVEL",
+      "01",
+      "",
+      "GÁS NATURAL"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "585",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "",
+      "GÁS LIQUEFEITO"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "585",
+    "celulas": [
+      "",
+      "",
+      "585.02",
+      "INDUSTRIAL",
+      "",
+      "03",
+      "",
+      "GÁS DE SÍNTESE"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "585",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "",
+      "ÓLEO DIESEL/QUEROSENE"
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "590",
+      "TURBINA EÓLICA (AEROGERADOR)",
+      "590.01",
+      "UNIDADE DE GERAÇÃO EÓLICA – PÁS",
+      "",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "590.05",
+      "UNIDADE DE GERAÇÃO EÓLICA - GERADOR",
+      "TIPO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "POTÊNCIA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ROTAÇÃO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "FATOR DE POTÊNCIA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "590.10",
+      "UNIDADE DE GERAÇÃO EÓLICA - NACELE",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "590.15",
+      "UNIDADE DE GEAÇÃO EÓLICA - TORRE",
+      "TIPO DE MATERIAL",
+      "01 – CONCRETO",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02 - MADEIRA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "590",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03 - METÁLICA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "595",
+    "celulas": [
+      "595",
+      "TURBINA HIDRÁULICA",
+      "595.01",
+      "PELTON",
+      "POTÊNCIA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "595",
+    "celulas": [
+      "",
+      "",
+      "595.02",
+      "FRANCIS",
+      "ROTAÇÃO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "595",
+    "celulas": [
+      "",
+      "",
+      "595.03",
+      "KAPLAN",
+      "QUEDA [m]",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "595",
+    "celulas": [
+      "",
+      "",
+      "595.04",
+      "MICHELL-BANKI",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "595",
+    "celulas": [
+      "",
+      "",
+      "595.05",
+      "HÉLICE",
+      "RENDIMENTO MÁXIMO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "595",
+    "celulas": [
+      "",
+      "",
+      "595.06",
+      "BULBO",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "600",
+      "TURBINA A VAPOR",
+      "600.01",
+      "TURBINA A VAPOR (TURBO GERADOR)",
+      "POTÊNCIA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "ROTAÇÃO",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "COMBUSTÍVEL",
+      "01",
+      "CARVÃO",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "02",
+      "GÁS",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "03",
+      "NUCLEAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "04",
+      "BAGAÇO DE CANA-DE- AÇÚCAR",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "05",
+      "MADEIRA",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "06",
+      "ÓLEO CRU",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "600",
+    "celulas": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "07",
+      "CASCA DE ARROZ",
+      ""
+    ]
+  },
+  {
+    "pagina": 187,
+    "tuc": "605",
+    "celulas": [
+      "605",
+      "UNIDADE DE GERAÇÃO SOLAR FOTOVOLTAICA",
+      "605.01",
+      "UNIDADE DE GERAÇÃO SOLAR FOTOVOLTAICA – MÓDULO DE SUPORTE",
+      "POTÊNCIA",
+      "CÓDIGO DA EMPRESA",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "605",
+    "celulas": [
+      "",
+      "",
+      "605.10",
+      "UNIDADE DE GERAÇÃO SOLAR FOTOVOLTAICA – CONTROLADORES E INVERSORES",
+      "POTÉNCIA",
+      "CÓDIGO DA EMPRESA"
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "605",
+    "celulas": [
+      "",
+      "",
+      "605.15",
+      "UNIDADE DE GERAÇÃO SOLAR FOTOVOLTAICA - BATERIA",
+      "POTÊNCIA",
+      "CÓDIGO DA EMPRESA"
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "610",
+      "URBANIZAÇÃO E BENFEITORIAS",
+      "610.05",
+      "PÁTIOS ESTRADAS RUAS PONTES VIADUTOS PASSEIOS CALÇADAS MUROS CERCAS ÁRVORES, GRAMADOS E JARDINS AEROPORTO CAMPO DE POUSO HELIPORTO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.10",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.15",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.20",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.25",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.30",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.35",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.40",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.42",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.45",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.50",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.55",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.60",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "610",
+    "celulas": [
+      "",
+      "",
+      "610.65",
+      "ÁREA DE ESTACIONAMENTO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "615",
+    "celulas": [
+      "615",
+      "VEÍCULOS",
+      "615.01",
+      "DE USO ADMINISTRATIVO",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "615",
+    "celulas": [
+      "",
+      "",
+      "615.02",
+      "DE USO OPERACIONAL",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  {
+    "pagina": 188,
+    "tuc": "615",
+    "celulas": [
+      "",
+      "",
+      "615.03",
+      "OPERACIONAL ESPECIAL (DERRICK DIGGER)",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  }
+]

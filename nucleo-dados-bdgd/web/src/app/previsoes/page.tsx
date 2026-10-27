@@ -1,3 +1,4 @@
+import { Patrimonio } from "@/components/pages/Patrimonio";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PrevisoesExploratorias } from "@/components/pages/PrevisoesExploratorias";
@@ -55,6 +56,7 @@ export default function Page() {
 
       <PrevisoesExploratorias />
       <MotorUniversal />
+      <Patrimonio />
 
       <details style={{ border: "1px solid var(--hairline)", borderRadius: 12, padding: "13px 16px", marginBottom: 26 }}>
         <summary style={{ cursor: "pointer", fontSize: ".88rem", fontWeight: 630 }}>

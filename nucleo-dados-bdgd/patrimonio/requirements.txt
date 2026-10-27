@@ -1,0 +1,2 @@
+pyarrow==26.0.0
+pdfplumber==0.11.10
