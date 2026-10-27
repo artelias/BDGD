@@ -36,10 +36,16 @@ AUX_PAGES = {'II':[189,190,191], 'IIIA':[191], 'IIIB':[192,193], 'IV':[194], 'V'
              'VI':[195], 'VII':[195], 'VIII':[196,197,198], 'IX':[199], 'X':[200,201],
              'XI':[202], 'XII':[203,204], 'XIII':[205], 'XIV':[206], 'XV':[207]}
 # Os índices abaixo são substituídos pelo título encontrado na página (sem presumir paginação).
+REVIEWED_DOCUMENT_SHA256 = 'ef9c7b836c659d20456750d4688836b59e41bee893c2c657061c860683e83ece'
 
 
 def extract(pdf_path, dda_path, output):
  import pdfplumber
+ # Os recortes de páginas e slots foram revistos nesta cópia R2, não em qualquer PDF.
+ # Um documento R3 recebido no futuro exige nova conferência, mesmo com capa reconhecível.
+ source_hash=digest(pdf_path)
+ if source_hash!=REVIEWED_DOCUMENT_SHA256:
+  raise ValueError('Documento/paginação sem revisão: não reutilizar mapeamentos R2 em outra cópia ou revisão MCPSE')
  out=Path(output); out.mkdir(parents=True,exist_ok=True)
  with pdfplumber.open(pdf_path) as pdf:
   first=pdf.pages[0].extract_text() or ''
@@ -85,7 +91,7 @@ def extract(pdf_path, dda_path, output):
     m=re.fullmatch(r'(\d{2})(\*)?\s+(.+)',line.strip())
     if m and active:
      tables[active].append({'codigo':m.group(1),'restricao_asterisco':bool(m.group(2)), 'descricao':clean(m.group(3)),'pagina':n+1})
-  source={'id':'mcpse-r'+revision,'revisao_lida':revision,'sha256':digest(pdf_path),
+  source={'id':'mcpse-r'+revision,'revisao_lida':revision,'sha256':source_hash,
           'arquivo':Path(pdf_path).name,'url':'https://www2.aneel.gov.br/cedoc/'+('aren20221020_2_6.pdf' if revision=='3' else 'aren2015674_2.pdf')}
   for tc,t in tucs.items():
    t['slots']={}

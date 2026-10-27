@@ -7,10 +7,18 @@ import pyarrow.parquet as pq
 from patrimonio.engine import load_dictionary,translate,technical,enrich_record,code
 from patrimonio.parquet import enrich_parquets
 from patrimonio.features import to_feature
+from patrimonio.build import extract
 
 D=load_dictionary()
 
 class DocumentTests(unittest.TestCase):
+ def test_new_manual_cannot_inherit_reviewed_rev2_layout(self):
+  with tempfile.TemporaryDirectory() as root:
+   manual=Path(root)/'SINTETICO-MCPSE-R3.pdf';manual.write_bytes(b'%PDF-SINTETICO REN 1.020 REVISAO 3')
+   output=Path(root)/'output'
+   with self.assertRaisesRegex(ValueError,'sem revisão'):
+    extract(manual,Path(root)/'DDA-ainda-nao-lido.json',output)
+   self.assertFalse(output.exists())
  def test_does_not_mislabel_rev2_as_rev3(self):
   self.assertEqual(D['source']['revisao_lida'],'2')
   self.assertTrue(all(x['status']=='PENDENTE_VERIFICACAO_NORMATIVA' for x in D['vigencias'].values()))
