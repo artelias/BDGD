@@ -1,4 +1,6 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
+import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { AlertTriangle, Download, ExternalLink, Flag, History, Info, ShieldCheck } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
@@ -124,7 +126,6 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
   const pendPares = Object.entries(h.pares).filter(([k]) => escopo.modo === "brasil" || distsEscopo.includes(Number(k.split("|")[0])));
   const pendOutras = (h.celulas[a.id] ?? []).filter((c) => c[2] === "P" && !h.pares[`${c[0]}|${c[1]}`] && (escopo.modo === "brasil" || distsEscopo.includes(c[0])));
   const conceito = a.conceito;
-  const ressalvaCoopera = a.id === "consumidores" && (escopo.modo === "brasil" || distsEscopo.includes(COOPERA_UCBT_2025.dist));
   const detalhesCoopera = observacaoCoopera2025();
   const semTuc0 = distPrincipal !== null ? anos.map((ano) => h.sem_tuc[`${distPrincipal}|${ano}|${conceito}`]) : null;
   const semTuc = semTuc0 && semTuc0.some((v) => v !== undefined) ? semTuc0 : null; // conceito sem TUC (ex.: redes): linha omitida
@@ -168,10 +169,10 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
     for (const x of series) for (const pt of x.pontos as PontoHom[]) {
       const prov = /^\d+$/.test(x.id) ? (h.proveniencia[`${x.id}|${pt.ano}`] ?? []).filter((q) => q.uso !== "excluido_competencia").map((q) => q.item).join(" ") : "";
       const parcialCoopera = a.id === "consumidores" && x.id === "5370" && pt.ano === 2025;
-      rows.push([x.nome, a.id, a.medida, UNIDADE[a.medida], pt.ano, pt.v, parcialCoopera ? "SUBTOTAL_PARCIAL_UCBT_AUSENTE" : (ESTADO[pt.estado] ?? pt.estado), pt.pub ? ROTULO_PUB[pt.pub] : "", parcialCoopera ? detalhesCoopera.texto : (pt.motivo ?? ""), pt.quebra ? "quebra" : "comparavel",
-        visao === "perimetro" ? "perimetro_2025" : "publicacao_original", prov, sd.versao_regra, h.versao]);
+      rows.push([x.nome, a.id, a.medida, UNIDADE[a.medida], pt.ano, pt.v, ESTADO[pt.estado] ?? pt.estado, pt.pub ? ROTULO_PUB[pt.pub] : "", parcialCoopera ? detalhesCoopera.texto : (pt.motivo ?? ""), pt.quebra ? "quebra" : "comparavel",
+        visao === "perimetro" ? "perimetro_2025" : "publicacao_original", prov, sd.versao_regra, h.versao, ...camposObservacoes({ dists: /^\d+$/.test(x.id) ? [x.id] : distsEscopo, ativos: [a.id], anos: [pt.ano], metricas: [a.medida] })]);
     }
-    downloadText(nome, toCSV(["serie", "ativo", "medida", "unidade", "ano", "valor", "estado", "estado_publicacao", "motivo", "comparabilidade", "visao", "publicacao_arcgis", "versao_regra", "versao_homologacao"], rows));
+    downloadText(nome, toCSV(["serie", "ativo", "medida", "unidade", "ano", "valor", "estado", "estado_publicacao", "motivo", "comparabilidade", "visao", "publicacao_arcgis", "versao_regra", "versao_homologacao", ...COLUNAS_OBSERVACOES], rows));
     toast(`${nome} exportado`);
   };
 
@@ -224,7 +225,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
 
       {principal && (
         <div className={s.cards} data-testid="evo-cards">
-          <div className={s.card}><div className={s.cardL}>{principal.nome}</div><div className={s.cardV}>{principal.pontos[3]?.v === null ? "N/D" : `${fmt(principal.pontos[3]?.v, a.medida)}`}{a.id === "consumidores" && principal.id === "5370" && <span className={s.mini} title={detalhesCoopera.texto}>* parcial</span>}<span className={s.cardU}> {UNIDADE[a.medida]} em 2025</span></div>
+          <div className={s.card}><div className={s.cardL}>{principal.nome}</div><div className={s.cardV}>{principal.pontos[3]?.v === null ? "N/D" : `${fmt(principal.pontos[3]?.v, a.medida)}`}{a.id === "consumidores" && principal.id === "5370" && principal.pontos[3]?.v !== null && <span className={s.mini} title={detalhesCoopera.texto}>* parcial</span>}<span className={s.cardU}> {UNIDADE[a.medida]} em 2025</span></div>
             {(principal.pontos[3] as PontoHom | undefined)?.pub && <div className={s.cardF}><Selo e={(principal.pontos[3] as PontoHom).pub!} /></div>}</div>
           <div className={s.card}><div className={s.cardL}>Variação acumulada</div><div className={s.cardV} data-testid="evo-var">{pct(varP?.pct ?? null)}</div><div className={s.cardF}>{varP?.motivo ?? (varP?.abs !== null && varP ? `${varP.abs >= 0 ? "+" : ""}${fmt(varP.abs, a.medida)} ${UNIDADE[a.medida]}` : "")}</div></div>
           <div className={s.card}><div className={s.cardL}>Crescimento médio anual (CAGR)</div><div className={s.cardV} data-testid="evo-cagr">{pct(varP?.cagr ?? null)}</div><div className={s.cardF}>{varP?.motivo ?? "entre o primeiro e o último ano com valor"}</div></div>
@@ -384,14 +385,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
         </section>
       )}
 
-      {ressalvaCoopera && (
-        <section className={s.stage} aria-labelledby="evo-coopera-2025" data-testid="evo-observacao-coopera-2025">
-          <h2 className="headline" id="evo-coopera-2025" style={{ fontSize: "1rem" }}>Observações da fonte — Coopera (DIST 5370), 2025</h2>
-          <p><strong>UCBT: {COOPERA_UCBT_2025.rotuloUcbt}</strong> — nenhum registro na entidade do arquivo publicado pela ANEEL. O asterisco indica ausência de informação cadastral, não estoque físico zero.</p>
-          <p><strong>UCMT: 224 AT; UCAT: 1 AT.</strong> O valor de <strong>{COOPERA_UCBT_2025.rotuloSubtotal}</strong> exibido no legado é apenas subtotal observado de média e alta tensão. O total BT+MT+AT permanece <strong>N/D</strong> até validação; crescimento, CAGR e projeções baseados na queda do subtotal não representam perda real comprovada de consumidores.</p>
-          <p className="caption">Origem: <a href={`https://www.arcgis.com/home/item.html?id=${COOPERA_UCBT_2025.arcgisItemId}`} target="_blank" rel="noreferrer">{COOPERA_UCBT_2025.nomeArquivo}</a>. Uma versão adicional de 2025 não foi localizada no inventário ArcGIS de 25/10/2026. Suspeita de omissão cadastral da distribuidora ainda não confirmada. KNN exógeno é apenas método candidato: nenhuma estimativa foi publicada.</p>
-        </section>
-      )}
+      <ObservacoesDados dists={distsEscopo} ativos={[a.id]} anos={anos} metricas={[a.medida]} />
     </>
   );
 }

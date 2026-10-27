@@ -2882,7 +2882,7 @@ dist,entidade,data_base,dimensoes_json,quantidade,quantidade_registros,quantidad
 5370,SSDMT,2025-12-31,{},19461,19461,19461,787.564570,,aprovado,
 5370,SUB,2025-12-31,{},2,2,2,,,aprovado,
 5370,UCAT,2025-12-31,{},1,1,1,,,aprovado,
-5370,UCBT,2025-12-31,{},0,0,0,,,aprovado,
+5370,UCBT,2025-12-31,{},,0,0,,,bloqueado,"UCBT sem registros na publicação: 0* cadastral, não zero físico. Total de consumidores N/D; subtotal observado de 225 ativos MT/AT. Total completo NULL; UCBT 0* apenas como contagem de registros. UCMT 224 e UCAT 1 mantidos. Histórico 2022–2024 preservado; recortes exclusivamente MT/AT podem mostrar observados."
 5370,UCMT,2025-12-31,{},238,242,238,,,aprovado,"quantidade N/D, registros e distintos preservados; regra_UC_v2: 4 registros de historico AT/DS no ano; 1 registro ativado por COD_ID"
 5370,UGAT,2025-12-31,{},0,0,0,,,aprovado,potencia_UG_N/D: unidade e semantica de POT_INST nao homologadas (ver complementares/alertas)
 5370,UGBT,2025-12-31,{},734,734,734,,,aprovado,potencia_UG_N/D: unidade e semantica de POT_INST nao homologadas (ver complementares/alertas)
@@ -4003,7 +4003,7 @@ dist,entidade,data_base,dimensoes_json,quantidade,quantidade_registros,quantidad
 7371,EQRE,2025-12-31,{},63,63,63,,12513.000000,aprovado,
 7371,EQSE,2025-12-31,{},8435,8435,8435,,,aprovado,
 7371,EQTRAT,2025-12-31,{},10,10,10,,176700.000000,aprovado,
-7371,EQTRM,2025-12-31,{},0,0,0,,,aprovado,
+7371,EQTRM,2025-12-31,{},,0,0,,,bloqueado,Entidade EQTRM vazia em 2025; zero cadastral não comprova retirada física dos transformadores de medida. Manter quantidade física N/D e decisão pendente; preservar zero de registros como evidência. Nenhuma alteração por suposição de situação cadastral.
 7371,EQTRMT,2025-12-31,{},9670,9670,9670,,453500.000000,aprovado,
 7371,PIP,2025-12-31,{},26591,26591,26591,,,aprovado,
 7371,PNT,2025-12-31,{},3,3,3,,,aprovado,

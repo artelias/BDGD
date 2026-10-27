@@ -1,4 +1,5 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -245,6 +246,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           </section>
         </article>
       </div>
+      <ObservacoesDados />
     </>
   );
 }

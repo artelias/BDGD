@@ -1,0 +1,11 @@
+{
+  "output-publicavel/2025-12-31/ativos_totais.csv": "e8f31d7ef03f07403c4d95b9b55f2323f71008082fbe1b34fd46dfed68204b2b",
+  "output-publicavel/2025-12-31/ativos_agregados.csv": "091c583d59db3342ee368a496c8ccf96ea15b7dbf468c1023cfe32f60b0961e4",
+  "output-publicavel/2025-12-31/matriz_empresas_2025.csv": "47fbff58a0c4cc4c7e837dc3051a37071821b3477ce5861740395b03419c7415",
+  "output-publicavel/2025-12-31/indicadores_complementares.csv": "3497ae47b220b19c71c2ebb7034a79e5bad3bf3106de7678aea96111914a032f",
+  "output-publicavel/2025-12-31/manifest.json": "9ab5596fd22fcf7c730cc29b0d990eb25f6b8d2180dc5e040c84592b315e8263",
+  "web/public/data/2025-12-31/index.json": "57765ed0d235b893daffc30db05b415ee118701fee7eaa358c34736af497ffa6",
+  "web/public/data/2025-12-31/assets.json": "bb707ceffb54c7f63c4e7a53f9e4e6f02a4992dac1039f7dcacf5999a4707440",
+  "web/public/data/2025-12-31/conceitos/consumidores.json": "f9747135a664437aea9f925bc72ee187c886ccd82a8fd1a5c98d247894bad2ee",
+  "web/public/data/2025-12-31/conceitos/transformadores.json": "d42ac2a435c00751e306c6df7971f122262e66770be1f4f33da1de11c68a19d9"
+}

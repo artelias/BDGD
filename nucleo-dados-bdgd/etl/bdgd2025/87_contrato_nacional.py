@@ -17,7 +17,7 @@ import csv, hashlib, json, pathlib, sys
 
 RAIZ = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parents[2]
 F4, F6 = RAIZ / "auditoria/fase4", RAIZ / "auditoria/fase6"; OUT = RAIZ / "output-historico/contrato-integracao"
-DATA_GERACAO = "2026-10-25"; VERSAO = "contrato-nacional-1.0.0"; REGRA = "r3-1+homologacao-fase6-1"
+DATA_GERACAO = "2026-10-27"; VERSAO = "contrato-nacional-1.0.1"; REGRA = "r3-1+homologacao-fase6-1"
 rd = lambda p: list(csv.DictReader(open(p, encoding="utf-8-sig")))
 # SHA-256 sobre o conteúdo com quebras de linha normalizadas para LF (independe de core.autocrlf / sistema operacional)
 sha = lambda p: hashlib.sha256(pathlib.Path(p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
@@ -69,6 +69,9 @@ for i in INV:
         ruptura_desde_ano_anterior=(y, d, a) in rup or "quebra_classificacao" in mt.get("flags", ""), tipo_ruptura=rup.get((y, d, a)) or ("alteracao_classificacao" if "quebra_classificacao" in mt.get("flags", "") else None),
         intervalo_base=pub["classe_intervalo"] if pub else None, tag_extra=pub["tag_extra"] if pub else None, empresa=i["empresa"],
         nao_somar_em_agregados="NAO SOMAR" in mt.get("motivo", "")))
+sys.path.insert(0, str(RAIZ))
+from reconciliacao.contratos import anotar_contrato
+anotar_contrato(linhas, RAIZ)
 OUT.mkdir(parents=True, exist_ok=True)
 CAMPOS = list(linhas[0])
 def grava(nome, rows, campos):
@@ -109,7 +112,9 @@ esquema = dict(versao=VERSAO, descricao="Série física nacional BDGD 2022–202
                        "sha256": "SHA-256 do ZIP oficial verificado", "tipo_lacuna": "causa do inventário nacional", "data_geracao": "data de geração",
                        "ruptura_desde_ano_anterior": "true quando a variação em relação ao ano anterior não é comparável (classificação, cadastro, anomalia, sucessão ou sem explicação)",
                        "tipo_ruptura": "categoria da ruptura", "intervalo_base": "classe do intervalo DAT_INC–DAT_FNL", "tag_extra": "tag Extra do catálogo (observação, não exclui)",
-                       "empresa": "nome", "nao_somar_em_agregados": "true para predecessora já contida na sucessora (ENF 2022)"},
+                       "empresa": "nome", "nao_somar_em_agregados": "true para predecessora já contida na sucessora (ENF 2022)",
+                       "observacao_id": "chave da ressalva auditada DIST × ANO × ATIVO × METRICA", "subtotal_observado": "parcela publicada; nunca alvo completo nem feature imputada",
+                       "valores_publicados_json": "contagens cadastrais de componentes, separadas do valor físico publicável"},
                regras_de_uso=["treinar só com estado observado/zero_verificado", "não somar linhas com nao_somar_em_agregados=true", "cortar a série em ruptura_desde_ano_anterior=true",
                               "fonte_homologada=false não autoriza previsão validada", "agregado Brasil só com cobertura_completa=true; 2022–2023 nunca"],
                estados_ts=["observado", "zero_verificado", "ausente", "nao_homologado", "nao_aplicavel", "ruptura"])
@@ -121,7 +126,7 @@ cob = {str(y): {e: cnt[(y, e)] for e in ("observado", "zero_verificado", "ausent
        for y in (2022, 2023, 2024, 2025)}
 man = dict(versao=VERSAO, data_geracao=DATA_GERACAO, linhas=len(linhas), agregados=len(ag), pontes=len(pontes), cobertura_por_ano=cob,
            entradas={str(p.relative_to(RAIZ)).replace("\\", "/"): sha(p) for p in [F4 / "MATRIZ_HOMOLOGACAO_2022_2025.csv", F4 / "MATRIZ_CONFORMIDADE_BDGD_ORDINARIA.csv",
-                     F4 / "RANKING_ANOMALIAS_TEMPORAIS.csv", F6 / "INVENTARIO_LACUNAS_NACIONAL.csv", F6 / "CORRECOES_AUSENCIAS.csv", RAIZ / "web/public/data/historico/homologacao.json"]},
+                     F4 / "RANKING_ANOMALIAS_TEMPORAIS.csv", F6 / "INVENTARIO_LACUNAS_NACIONAL.csv", F6 / "CORRECOES_AUSENCIAS.csv", RAIZ / "web/public/data/historico/homologacao.json", RAIZ / "auditoria/reconciliacao/observacoes.json"]},
            saidas={n: sha(OUT / n) for n in ("serie_fisica_nacional.csv", "agregados_nacionais.csv", "pontes_sucessao.csv", "esquema.json")})
 (OUT / "MANIFESTO.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 print(f"{VERSAO}: {len(linhas)} linhas, {len(ag)} agregados, {len(pontes)} pontes"); print(json.dumps(cob, ensure_ascii=False))

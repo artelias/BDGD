@@ -1,4 +1,6 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
+import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { ArrowDown, Building2, Download, Layers3, MapPin, Rows3, Search, Star, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FiltroAtivo } from "@/components/matriz/FiltroAtivo";
@@ -141,11 +143,11 @@ function MatrizReady({ ds }: { ds: Dataset }) {
 
   const exportCSV = () => {
     const nome = `bdgd_2025-12-31_matriz_ativos${grupo !== "todos" ? `_grupo-${grupo}` : ""}${ufSel.length ? `_uf-${ufSel.join("-")}` : ""}.csv`;
-    const header = ["data_base", "versao", "dist", "sigla", "grupo_economico", "grupo_status", "ativo", "nome_ativo", "medida", "unidade", "recorte", "valor", "status", "motivo", "regra"];
+    const header = ["data_base", "versao", "dist", "sigla", "grupo_economico", "grupo_status", "ativo", "nome_ativo", "medida", "unidade", "recorte", "valor", "status", "motivo", "regra", ...COLUNAS_OBSERVACOES];
     const body: Array<Array<string | number | null>> = [];
     for (const a of cols) for (const d of rows) {
       const c = cell(a, d.dist);
-      body.push(["2025-12-31", ds.raw.release.release_id, d.dist, d.sigla, d.grupo, d.grupo_status, a.id, a.nome, est(a).medida, unidadeCol(a), escreverRecorte(est(a).filtro) || "(população do ativo)", c.v, ST_TXT[c.st] ?? c.st, c.motivo, a.tecnico]);
+      body.push(["2025-12-31", ds.raw.release.release_id, d.dist, d.sigla, d.grupo, d.grupo_status, a.id, a.nome, est(a).medida, unidadeCol(a), escreverRecorte(est(a).filtro) || "(população do ativo)", c.v, ST_TXT[c.st] ?? c.st, c.motivo, a.tecnico, ...camposObservacoes({ dists: [d.dist], ativos: [a.id], anos: [2025], metricas: [est(a).medida], filtro: est(a).filtro })]);
     }
     downloadText(nome, toCSV(header, body));
     toast(`${nome} exportado · ${rows.length} distribuidoras × ${cols.length} ativos`);
@@ -274,6 +276,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
         </div>
       )}
       <p className="caption" style={{ marginTop: 10 }}>* soma parcial, sem as distribuidoras que não têm valor homologado nessa medida. N/D indica valor indisponível ou não homologado; não comprova ausência física do ativo. Zero técnico é um resultado da regra de contagem, e não se confunde com dado ausente. Consulte o motivo de cada célula e os estados na Metodologia.</p>
+      <ObservacoesDados dists={rows.map((d) => d.dist)} ativos={cols.map((a) => a.id)} anos={[2025]} filtro={cols.length === 1 ? est(cols[0]).filtro : undefined} />
     </>
   );
 }

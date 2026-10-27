@@ -1,4 +1,5 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { useEffect, useRef, useState } from "react";
 import { exportarExperimentoMotor, parseResumoMotor, type ResumoMotor } from "@/lib/motor-universal";
 import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
@@ -79,10 +80,11 @@ export function MotorUniversal() {
             </tbody></table>
           </div>
         </>}
-        {series && !bloqueioCoopera && <a className={s.export} download={`motor_bdgd_${assetId}_${target?.metrica}_DIST_${distId}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(exportarExperimentoMotor(data, series, chosen))}`}>Exportar diagnóstico e seleção (JSON)</a>}
+        {series && <a className={s.export} download={`motor_bdgd_${assetId}_${target?.metrica}_DIST_${distId}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(exportarExperimentoMotor(data, series, chosen))}`}>Exportar diagnóstico e seleção (JSON)</a>}
         <p className={s.provenance}>Dataset {data.dataset_version} · corte {data.as_of}. Experimento <code>{data.experiment_id}</code>. Fonte SHA-256 <code>{data.source_sha256}</code>. A prova detalhada por publicação permanece no contrato versionado e no registro completo do experimento.</p>
         <details><summary>Limites e dependências dos dados</summary><ul>{data.limites.map((limit) => <li key={limit}>{limit}</li>)}</ul><p>Totais nacionais não são gerados sem prova de cobertura completa e ausência de sobreposição. Variáveis futuras exigem cenário explícito e data de disponibilidade.</p></details>
       </>}
     </details>
+    <ObservacoesDados dists={[distId ?? ""]} ativos={[assetId ?? ""]} anos={[2022,2023,2024,2025]} />
   </section>;
 }

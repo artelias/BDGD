@@ -29,7 +29,7 @@ export function liderLinha(ds: Dataset, l: Linha, por: "grupos" | "dists") {
   if (por === "grupos") {
     for (const g of ds.grupos) {
       const s = somar(l, ds.groupDists(g.id).map((d) => d.dist));
-      if (s.v !== null && (!best || s.v > best.v)) best = { nome: g.nome, v: s.v, n: s.n, total: s.total };
+      if (s.v !== null && !s.nd && (!best || s.v > best.v)) best = { nome: g.nome, v: s.v, n: s.n, total: s.total };
     }
   } else {
     for (const d of ds.dists) {
@@ -47,7 +47,7 @@ export function benchmarkLinhas(ds: Dataset, linhas: Linha[], distsA: number[], 
     const a = somar(l, distsA);
     let refV: number | null, refNome = nomeB;
     let lid = liderLinha(ds, l, ref === "bench_grupos" ? "grupos" : "dists");
-    if (ref === "lado") refV = somar(l, distsB).v;
+    if (ref === "lado") { const b = somar(l, distsB); refV = b.nd ? null : b.v; }
     else if (ref === "brasil") {
       const nacional = somar(l, todas);
       refV = nacional.nd || coberturaNacionalIncompleta(ds, todas) ? null : nacional.v;
@@ -56,7 +56,8 @@ export function benchmarkLinhas(ds: Dataset, linhas: Linha[], distsA: number[], 
     else { refV = lid?.v ?? null; refNome = lid ? `${REFERENCIA[ref]} (${lid.nome})` : REFERENCIA[ref]; }
     if (ref === "lado" || ref === "brasil") lid = liderLinha(ds, l, "dists");
     let nd: string | null = null;
-    if (a.v === null) nd = "A sem valor homologado";
+    if (a.nd) nd = "A com cobertura parcial";
+    else if (a.v === null) nd = "A sem valor homologado";
     else if (refV === null) nd = "referência sem valor homologado";
     else if (refV === 0) nd = "referência igual a zero: proporção indefinida";
     return { linha: l, a, ref: refV, refNome, pctA: nd ? null : a.v! / refV!, lider: lid, nd };

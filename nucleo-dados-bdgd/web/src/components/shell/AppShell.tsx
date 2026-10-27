@@ -10,7 +10,6 @@ import { Tip } from "@/components/ui/Feedback";
 import { useModalFocus } from "@/components/ui/useModalFocus";
 import { useData } from "@/lib/data-context";
 import { fmtDate } from "@/lib/format";
-import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import { useStoredValue } from "@/lib/hooks";
 import { useTheme, type ThemePref } from "@/lib/theme";
 import { CommandMenu } from "./CommandMenu";
@@ -150,7 +149,6 @@ export function AppShell({ children }: { children: ReactNode }) {
         <footer className={s.footer}>
           <span data-testid="autoria">Desenvolvido por <strong>{AUTOR}</strong> · <a href={`mailto:${CONTATO}`} data-testid="contato">{CONTATO}</a></span>
           <span>Fonte: <a href="https://dadosabertos-aneel.opendata.arcgis.com/search?tags=distribuicao" target="_blank" rel="noreferrer">ANEEL — BDGD (Dados Abertos)</a></span>
-          <span data-testid="nota-global-coopera" title={COOPERA_UCBT_2025.nomeArquivo}>Observação 2025: Coopera (DIST 5370) — UCBT 0* (entidade vazia na fonte, não zero físico); 225 UC ativas MT/AT é subtotal parcial. <Link href="/evolucao/?escopo=dists&dists=5370&ativo=consumidores">Detalhes na evolução</Link>.</span>
         </footer>
       </div>
 

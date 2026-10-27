@@ -36,8 +36,8 @@ def national_panel(directory, registry):
                          "ponte_pendente": bool(r["perimetroBridgeId"].strip()),
                          "homologado": r["fonte_homologada"].lower() == "true",
                          "status_homologacao": r["status_homologacao"],
-                         "motivo": r["motivo_nd"], "proveniencia": {k: r[k] for k in
-                         ("publicacao_id", "sha256", "status_homologacao", "tipo_lacuna", "tipo_ruptura", "intervalo_base", "dataBase")}})
+                         "motivo": r["motivo_nd"], "proveniencia": {k: r.get(k, "") for k in
+                         ("publicacao_id", "sha256", "status_homologacao", "tipo_lacuna", "tipo_ruptura", "intervalo_base", "dataBase", "observacao_id", "subtotal_observado", "valores_publicados_json")}})
     return {"schema_version": SCHEMA, "dataset_version": manifest["versao"], "sintetico": False,
             "source_sha256": digest, "registro_sha256": registry.get("catalog_sha256", fingerprint(registry)),
             "feature_definitions": {}, "rows": rows,

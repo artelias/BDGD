@@ -1,4 +1,6 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
+import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { ArrowLeftRight, Download, Link2, SlidersHorizontal, TriangleAlert, X } from "lucide-react";
 import { AnimatePresence, motion, useAnimationControls } from "motion/react";
 import { useMemo } from "react";
@@ -101,7 +103,7 @@ function Corpo({ ds, item, cd }: { ds: Dataset; item: MenuItem | null; cd: Conce
   })();
 
   const tabela = (() => {
-    const r = linhas.map((l) => { const a = somar(l, dA), b = somar(l, dB); return { l, a, b, d: diff(a.v, b.v) }; });
+    const r = linhas.map((l) => { const a = somar(l, dA), b = somar(l, dB); return { l, a, b, d: diff(a.nd ? null : a.v, b.nd ? null : b.v) }; });
     const [tot, resto] = [r.filter((x) => x.l.id === "__total"), r.filter((x) => x.l.id !== "__total")];
     const ord = ordem === "diferenca" ? [...resto].sort((x, y) => Math.abs(y.d.rel ?? -1) - Math.abs(x.d.rel ?? -1))
       : item ? [...resto].sort((x, y) => Math.max(y.a.v ?? 0, y.b.v ?? 0) - Math.max(x.a.v ?? 0, x.b.v ?? 0)) : resto;
@@ -117,10 +119,12 @@ function Corpo({ ds, item, cd }: { ds: Dataset; item: MenuItem | null; cd: Conce
     ? Object.entries(filtro).filter(([, v]) => v.length).map(([d, v]) => `${cat.dimensoes[d]?.rotulo ?? d}: ${v.map((c) => rotulo(cd, d, c, recorte)).join(", ")}`).join(" · ")
     : "sem filtros";
 
+  const camposDaLinha = (linha: Linha) => camposObservacoes({ dists: [...dA, ...dB], ativos: [item?.id ?? linha.id], anos: [2025], metricas: [linha.medida],
+    filtro: item && por && linha.id !== "__total" ? { ...recorte.filtro, [por]: [linha.id] } : recorte.filtro });
   const exportCSV = () => {
     const name = `bdgd_2025-12-31_comparacao_${enc(A).replace(":", "-")}_x_${enc(B).replace(":", "-")}${item ? `_${item.id}` : ""}.csv`;
-    downloadText(name, toCSV(["data_base", "versao", "ativo", "recorte", "linha", "medida", "unidade", "A", "B", "A_menos_B", "variacao_rel_B", "A_dists_com_valor", "A_dists_total", "B_dists_com_valor", "B_dists_total"],
-      tabela.map((r) => ["2025-12-31", ds.raw.release.release_id, item?.nome ?? "todos", recorteTxt, r.l.nome, r.l.medida, UNIDADE[r.l.medida], r.a.v, r.b.v, r.d.abs, r.d.rel, r.a.n, r.a.total, r.b.n, r.b.total])));
+    downloadText(name, toCSV(["data_base", "versao", "ativo", "recorte", "linha", "medida", "unidade", "A", "B", "A_menos_B", "variacao_rel_B", "A_dists_com_valor", "A_dists_total", "B_dists_com_valor", "B_dists_total", ...COLUNAS_OBSERVACOES],
+      tabela.map((r) => ["2025-12-31", ds.raw.release.release_id, item?.nome ?? "todos", recorteTxt, r.l.nome, r.l.medida, UNIDADE[r.l.medida], r.a.v, r.b.v, r.d.abs, r.d.rel, r.a.n, r.a.total, r.b.n, r.b.total, ...camposDaLinha(r.l)])));
     toast(`${name} exportado`);
   };
   const share = async () => { try { await navigator.clipboard.writeText(window.location.href); toast("Link da comparação copiado"); } catch { toast("Não foi possível copiar o link"); } };
@@ -267,17 +271,18 @@ function Corpo({ ds, item, cd }: { ds: Dataset; item: MenuItem | null; cd: Conce
                     : <EChart key="pct" build={buildPct} height={Math.max(180, Math.min(18, nGraf) * 22 + 30)} ariaLabel="Diferença relativa entre A e B; os números estão na aba Tabela" testId="chart-comparacao" />}
               </div>
             )}
-            {aba === "radar" && <Radar ds={ds} linhas={semTotal.map((r) => r.l)} dA={dA} dB={dB} nomeA={nomeA} nomeB={nomeB} refQ={ref} setRef={(v) => setRef(v)} recorteTxt={item ? `${item.nome} · ${recorteLegivel}` : "todos os ativos"} />}
+            {aba === "radar" && <Radar observacoesDeLinha={camposDaLinha} ds={ds} linhas={semTotal.map((r) => r.l)} dA={dA} dB={dB} nomeA={nomeA} nomeB={nomeB} refQ={ref} setRef={(v) => setRef(v)} recorteTxt={item ? `${item.nome} · ${recorteLegivel}` : "todos os ativos"} />}
           </motion.div>
         </AnimatePresence>
       </section>
       <p className="caption" style={{ marginTop: 10 }}>Grupos somam apenas distribuidoras com vínculo verificado e valor homologado; a cobertura mostra quantas entraram em cada soma. Potência de geração não é publicada.</p>
+      <ObservacoesDados dists={[...dA, ...dB]} ativos={item ? [item.id] : linhas.map((l) => l.id)} anos={[2025]} filtro={recorte.filtro} />
     </>
   );
 }
 
 /** Radar · Benchmark: eixos = as mesmas linhas da tabela (já filtradas). Referência e líderes recalculados no recorte. */
-function Radar({ ds, linhas, dA, dB, nomeA, nomeB, refQ, setRef, recorteTxt }: { ds: Dataset; linhas: Linha[]; dA: number[]; dB: number[]; nomeA: string; nomeB: string; refQ: Referencia; setRef: (v: string) => void; recorteTxt: string }) {
+function Radar({ ds, linhas, dA, dB, nomeA, nomeB, refQ, setRef, recorteTxt, observacoesDeLinha }: { observacoesDeLinha: (linha: Linha) => string[]; ds: Dataset; linhas: Linha[]; dA: number[]; dB: number[]; nomeA: string; nomeB: string; refQ: Referencia; setRef: (v: string) => void; recorteTxt: string }) {
   const toast = useToast();
   const top = [...linhas].sort((x, y) => Math.max(somar(y, dA).v ?? 0, somar(y, dB).v ?? 0) - Math.max(somar(x, dA).v ?? 0, somar(x, dB).v ?? 0)).slice(0, 8);
   const eixos = benchmarkLinhas(ds, top, dA, refQ, dB, nomeB);
@@ -297,8 +302,8 @@ function Radar({ ds, linhas, dA, dB, nomeA, nomeB, refQ, setRef, recorteTxt }: {
   });
   const exportCSV = () => {
     const name = `bdgd_2025-12-31_radar_${refQ}.csv`;
-    downloadText(name, toCSV(["data_base", "recorte", "linha", "medida", "unidade", "A", "A_dists_com_valor", "A_dists_total", "referencia", "referencia_valor", "A_sobre_referencia", "lider", "lider_valor", "situacao"],
-      eixos.map((e) => ["2025-12-31", recorteTxt, e.linha.nome, e.linha.medida, UNIDADE[e.linha.medida], e.a.v, e.a.n, e.a.total, e.refNome, e.ref, e.pctA, e.lider?.nome ?? null, e.lider?.v ?? null, e.nd ?? "ok"])));
+    downloadText(name, toCSV(["data_base", "recorte", "linha", "medida", "unidade", "A", "A_dists_com_valor", "A_dists_total", "referencia", "referencia_valor", "A_sobre_referencia", "lider", "lider_valor", "situacao", ...COLUNAS_OBSERVACOES],
+      eixos.map((e) => ["2025-12-31", recorteTxt, e.linha.nome, e.linha.medida, UNIDADE[e.linha.medida], e.a.v, e.a.n, e.a.total, e.refNome, e.ref, e.pctA, e.lider?.nome ?? null, e.lider?.v ?? null, e.nd ?? "ok", ...observacoesDeLinha(e.linha)])));
     toast(`${name} exportado`);
   };
   return (

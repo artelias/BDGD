@@ -68,6 +68,16 @@ function posMedida(cd: ConceitoData, cubo: string, m: MedidaConceito) {
   return i < 0 ? -1 : 1 + cd.cubos[cubo].dims.length + i;
 }
 
+/** População ausente no arquivo: recortes que a incluem não podem virar total/zero. */
+function lacunas(cd: ConceitoData, r: Recorte, m: MedidaConceito) {
+  return (cd.cobertura_incompleta ?? []).filter((x) => x.metrica === m &&
+    (!(r.filtro[x.dimensao]?.length) || r.filtro[x.dimensao].includes(x.codigo)) &&
+    !r.excluir?.[x.dimensao]?.includes(x.codigo));
+}
+function marcarLacunas(map: Map<number, number | null>, cd: ConceitoData, r: Recorte, m: MedidaConceito, dists: Set<number> | null = null) {
+  for (const x of lacunas(cd, r, m)) if (!dists || dists.has(x.dist)) map.set(x.dist, null);
+}
+
 /** Soma de uma medida no recorte, por DIST do escopo (null = todas). */
 export function agregar(cd: ConceitoData, r: Recorte, m: MedidaConceito, dists: Set<number> | null, cubo?: string | null): Agregado | null {
   const cid = cubo ?? escolherCubo(cd, dimsDoRecorte(r));
@@ -84,6 +94,7 @@ export function agregar(cd: ConceitoData, r: Recorte, m: MedidaConceito, dists: 
     if (v === null || cur === null) porDist.set(d, null);
     else porDist.set(d, (cur ?? 0) + v);
   }
+  marcarLacunas(porDist, cd, r, m, dists);
   let v = 0, n = 0, nd = 0;
   for (const x of porDist.values()) { if (x === null) nd++; else { v += x; n++; } }
   return { v: n ? v : null, n, nd, dists: new Set(porDist.keys()) };
@@ -102,6 +113,7 @@ export function agregarPorDist(cd: ConceitoData, r: Recorte, m: MedidaConceito):
     const cur = porDist.get(d);
     porDist.set(d, v === null || cur === null ? null : (cur ?? 0) + v);
   }
+  marcarLacunas(porDist, cd, r, m);
   return porDist;
 }
 
@@ -124,6 +136,10 @@ export function porDistPorCategoria(cd: ConceitoData, dim: string, r: Recorte, m
   }
   // DIST com o ativo, mas sem a categoria, vale zero (não é ausência)
   for (const mm of out.values()) for (const d of presentes) if (!mm.has(d)) mm.set(d, 0);
+  for (const x of lacunas(cd, r, m)) {
+    if (dim === x.dimensao) { if (!out.has(x.codigo)) out.set(x.codigo, new Map()); out.get(x.codigo)!.set(x.dist, null); }
+    else for (const mm of out.values()) mm.set(x.dist, null);
+  }
   return out;
 }
 
@@ -150,6 +166,13 @@ export function distribuicao(cd: ConceitoData, dim: string, r: Recorte, m: Medid
     let porD = acc.get(c); if (!porD) { porD = new Map(); acc.set(c, porD); }
     const cur = porD.get(d);
     porD.set(d, v === null || cur === null ? null : (cur ?? 0) + v);
+  }
+  for (const x of lacunas(cd, r, m)) {
+    if (dists && !dists.has(x.dist)) continue;
+    if (dim === x.dimensao) {
+      const ci = cd.valores[dim]?.indexOf(x.codigo) ?? -1;
+      if (ci >= 0) { if (!acc.has(ci)) acc.set(ci, new Map()); acc.get(ci)!.set(x.dist, null); }
+    } else for (const porD of acc.values()) porD.set(x.dist, null);
   }
   const categorias: Categoria[] = [];
   for (const [ci, porD] of acc) {

@@ -760,14 +760,14 @@ dist,entidade,indicador,unidade,valor,status,motivo
 5369,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,4773,aprovado,
 5369,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,28,aprovado,
 5369,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
-5370,UC*,uc_uniao_distinta,COD_ID,239,aprovado,soma_por_entidade=239; sobreposicao=0
+5370,UC*,uc_uniao_distinta,COD_ID,,bloqueado,"UCBT sem registros na publicação: 0* cadastral, não zero físico. Total de consumidores N/D; subtotal observado de 225 ativos MT/AT. Total completo NULL; UCBT 0* apenas como contagem de registros. UCMT 224 e UCAT 1 mantidos. Histórico 2022–2024 preservado; recortes exclusivamente MT/AT podem mostrar observados."
 5370,UGBT,POT_INST_original_kW[TIP_SIST=RD_INTERLIG],"kW (original, nao homologado)",,bloqueado,registros=734; soma_original=37061.81; max=12810.0; >75=7; nulos_ou_nao_positivos=0
 5370,UNCRAT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
 5370,UNCRMT,potencia_kvar,kVAr,14475.0,aprovado,sem_mapeamento_DDA=0/18
 5370,UNCRBT,potencia_kvar,kVAr,,aprovado,sem_mapeamento_DDA=0/0
 5370,UNTRMT/EQTRMT,comparacao_unidade_a_unidade,unidades,2301,aprovado,casam_exatamente=2181; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.7%
 5370,UNTRAT/EQTRAT,comparacao_unidade_a_unidade,unidades,4,aprovado,casam_exatamente=4; provavel_POT_NOM_em_MVA_na_unidade=0; sem_mapeamento_DDA=0; dif_total_kVA=+0.0%
-5370,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,0,aprovado,
+5370,UCBT,uc_ativadas,COD_ID com SIT_ATIV=AT,,bloqueado,"UCBT sem registros na publicação: 0* cadastral, não zero físico. Total de consumidores N/D; subtotal observado de 225 ativos MT/AT. Total completo NULL; UCBT 0* apenas como contagem de registros. UCMT 224 e UCAT 1 mantidos. Histórico 2022–2024 preservado; recortes exclusivamente MT/AT podem mostrar observados."
 5370,UCMT,uc_ativadas,COD_ID com SIT_ATIV=AT,224,aprovado,
 5370,UCAT,uc_ativadas,COD_ID com SIT_ATIV=AT,1,aprovado,
 5371,UC*,uc_uniao_distinta,COD_ID,12473,alerta,soma_por_entidade=12507; sobreposicao=34
