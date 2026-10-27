@@ -35,8 +35,8 @@ def technical(text):
   unit,factor=units[u.lower()]
   ambiguous=bool(re.fullmatch(r'[0-9]+\.[0-9]{3}',n))
   quantities.append({'valor':None if ambiguous else str(Decimal(n.replace(',','.'))*factor),'unidade':unit,'numero_original':n,'pontuacao_ambigua':ambiguous})
- interval=bool(re.search(r'\bat[eé]\b|acima|abaixo|anterior|superior|inferior|maior|menor|[<>≤≥]',text,re.I))
- scalar=quantities[0] if len(quantities)==1 and quantities[0]['valor'] is not None and not interval and not any(c in text for c in [';','/','+','X','x','√']) else None
+ interval=bool(re.search(r'\bat[eé]\b|ante[ir]+or\s*at[eé]|acima|abaixo|anterior|superior|inferior|maior|menor|[<>≤≥]',text,re.I))
+ scalar=quantities[0] if len(quantities)==1 and quantities[0]['valor'] is not None and not interval and not any(c in text for c in [';','/','+','X','x','√','-','–']) else None
  return {'valor_tecnico':scalar['valor'] if scalar else None,'unidade':scalar['unidade'] if scalar else quantities[0]['unidade'] if quantities and len({q['unidade'] for q in quantities})==1 else None,
          'natureza_valor':'FAIXA' if interval else 'PONTUAL' if scalar else 'COMPOSTO_OU_CATEGORICO', 'componentes':quantities}
 

@@ -84,6 +84,16 @@ class DocumentTests(unittest.TestCase):
   self.assertEqual(technical('1,25 MVA')['valor_tecnico'],'1250.00')
   self.assertIsNone(technical('20/26,6/33,3 MVA')['valor_tecnico'])
   self.assertIsNone(technical('até 5 kA')['valor_tecnico'])
+ def test_hyphenated_current_relation_not_reduced_to_scalar(self):
+  result=translate(D,'575','01','A4','22',2025)
+  self.assertEqual(result['descricao'],'5-5A')
+  self.assertIsNone(result['valor_tecnico'])
+  self.assertEqual(result['natureza_valor'],'COMPOSTO_OU_CATEGORICO')
+ def test_compact_extracted_voltage_range_is_not_point(self):
+  result=translate(D,'565','01','A2','04',2025)
+  self.assertEqual(result['descricao'],'anteiroraté 4,16kV')
+  self.assertEqual(result['natureza_valor'],'FAIXA')
+  self.assertIsNone(result['valor_tecnico'])
  def test_open_bounds_and_ambiguous_localized_number_never_become_point_value(self):
   for text in ['Superior a 36.000 kVAR','Inferior a 5 kVA','> 1000 kVA']:
    with self.subTest(text=text):

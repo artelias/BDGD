@@ -61,7 +61,7 @@ python -m patrimonio.web_product
 python -m unittest discover -s patrimonio/tests -v
 ```
 
-Os 500 arquivos históricos preexistentes permanecem byte a byte preservados. O produto novo é derivado e separado. Fixtures sintéticas só aparecem nos testes; nunca são publicadas como dados reais. O CI verifica 28 testes novos Python, os 62 do motor existente, a reprodutibilidade do produto web, unitários TypeScript, lint/tipos/build e Playwright desktop/mobile. Resultados e evidências finais são registrados no PR; execução local de Chromium é impedida pela restrição de sockets deste ambiente.
+Os 500 arquivos históricos preexistentes permanecem byte a byte preservados. O produto novo é derivado e separado. Fixtures sintéticas só aparecem nos testes; nunca são publicadas como dados reais. O CI verifica 30 testes novos Python, os 62 do motor existente, a reprodutibilidade do produto web, unitários TypeScript, lint/tipos/build e Playwright desktop/mobile. Resultados e evidências finais são registrados no PR; execução local de Chromium é impedida pela restrição de sockets deste ambiente.
 
 **Estado de conclusão:** implementação documental/pipeline/consulta entregue; dicionário universal normativamente validado e auditoria de valores dos registros ainda não concluídos. A conclusão exige os dois insumos inacessíveis e conferência dos 89 mapeamentos de slots restantes. Não confundir CI aprovado com validação normativa ou homologação humana.
 
@@ -72,3 +72,7 @@ Rotulagem e regressão de navegação: os seletores patrimoniais recebem nomes e
 SEGCON: os esquemas existentes listam TUC/A1–A6 em conjuntos `_FAS` e `_NEU` (301 esquemas de publicação). O inventário registra esses campos; o leitor preserva fase e neutro em `componentes_patrimoniais` no JSON do mesmo COD_ID. Não escolhe um componente, não os coalesce com slots diretos e não cria duas linhas ou soma equipamentos. Testes sintéticos verificam códigos originais, nulo, estado de fonte e cardinalidade.
 
 Proteção da extração normativa: a paginação e os 16 mapeamentos conferidos ficam vinculados ao SHA-256 da cópia R2 efetivamente lida. Um PDF diferente, inclusive R3, é recusado antes de criar a saída. Reconhecer a capa não autoriza reutilizar o layout ou os slots de outra revisão; a futura R3 exige revisão documental própria.
+
+Expressões com hífen também permanecem compostas: XII/22 (`5-5A`, relação de corrente) não fornece escalar `5 A`. Regressão específica verifica a descrição e recusa a redução para valor pontual.
+
+A entrada II/04 conserva o texto extraído `anteiroraté 4,16kV`: a análise reconhece o limite de faixa apesar da grafia compacta, sem alterar a evidência nem publicar 4,16 kV como ponto. A varredura de todas as traduções pontuais identificou esse caso; regressão específica adicionada.
