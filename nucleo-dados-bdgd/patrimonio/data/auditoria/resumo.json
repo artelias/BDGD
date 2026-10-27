@@ -1,0 +1,61 @@
+{
+  "schema_version": "auditoria-patrimonio-1",
+  "sha256_handoff": "d2a3417f72dd3d4108ad1f99200ea8792f12e4844630fb7115997bac934ddfe1",
+  "arquivos_parquet_listados": 16899,
+  "arquivos_parquet_com_registros_acessiveis": 0,
+  "linhas_lidas_de_registros": 0,
+  "anos_listados": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "dist_listadas": 104,
+  "entidades_listadas": 43,
+  "tucs_documentais": 105,
+  "tucs_com_slots_conferidos": 16,
+  "tucs_observadas_facts": null,
+  "motivo_sem_tuc_facts": "Facts nacionais não expõem dimensões TUC/A1–A6; não inferir distribuição conjunta a partir de totais",
+  "ambiguidades_documentais": 3,
+  "tabela_IIIB": {
+    "codigos": 77,
+    "valores_pontuais_inequivocos": 0
+  },
+  "potencia_recuperada_homologada_kva": null,
+  "vigencias": {
+    "2022": {
+      "status": "PENDENTE_VERIFICACAO_NORMATIVA",
+      "revisao_solicitada": "3"
+    },
+    "2023": {
+      "status": "PENDENTE_VERIFICACAO_NORMATIVA",
+      "revisao_solicitada": "3"
+    },
+    "2024": {
+      "status": "PENDENTE_VERIFICACAO_NORMATIVA",
+      "revisao_solicitada": "3"
+    },
+    "2025": {
+      "status": "PENDENTE_VERIFICACAO_NORMATIVA",
+      "revisao_solicitada": "3"
+    }
+  },
+  "revisao_lida": "2",
+  "pendencias": [
+    "PDF integral Revisão 3 e verificação de vigência normativa por competência",
+    "Parquets EQ/UN originais, existentes somente no disco D: listado no pacote",
+    "Slots não conferidos e descrições de bens em células mescladas",
+    "Comparabilidade DDA por ano e relacionamento EQ/UN validado"
+  ],
+  "targets_modificados": false,
+  "arquivos_gerados": {
+    "ambiguidades-normativas.csv.gz": "18d131a601c679d1011e1481bfe43304d5c1388eb668453dae6b54bf62cb1ed4",
+    "ambiguidades-normativas.parquet": "737fa3d13737f4a8e88d637fe8d821f2df786102b9412a7241bbb053c8126939",
+    "auditoria-potencia-namespaces.csv.gz": "01b178421c6756404f36efe646ee40c2fb2e620e7b0c1613efcc1de9719a2ceb",
+    "auditoria-potencia-namespaces.parquet": "811dafadb326d3b75022127d0a24f63a133092678175890ea62dbfe0e2a35349",
+    "dicionario-tuc-atributos.csv.gz": "2038bb3cba77f19af001bc437b30d7e3c14f30c91fc015dfa201abd1b63b2852",
+    "dicionario-tuc-atributos.parquet": "15cde9271e3c600dfe161daf0eaac28314a48663ea33f39d865dd679ded3007b",
+    "inventario-cobertura.csv.gz": "3cfd2f23516decf592b6aa15730620fefa69c232336c2a32965820ec2767714c",
+    "inventario-cobertura.parquet": "11fcc73ca7247c5393104d8bd49469f208bc64f3705a86a678f403848079cb27"
+  }
+}

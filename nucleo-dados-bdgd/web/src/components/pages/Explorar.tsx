@@ -1,4 +1,5 @@
 "use client";
+import { Patrimonio } from "./Patrimonio";
 import { Code2 } from "lucide-react";
 import { motion } from "motion/react";
 import { useMemo } from "react";
@@ -108,6 +109,7 @@ function ExplorarReady({ ds }: { ds: Dataset }) {
           )}
         </div>
       </div>
+      <Patrimonio />
     </>
   );
 }

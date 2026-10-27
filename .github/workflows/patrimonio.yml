@@ -1,0 +1,45 @@
+name: Patrimônio MCPSE — contratos e enriquecimento documental
+on:
+  pull_request:
+    paths:
+      - 'nucleo-dados-bdgd/patrimonio/**'
+      - 'nucleo-dados-bdgd/web/**'
+      - '.github/workflows/patrimonio.yml'
+permissions:
+  contents: read
+jobs:
+  patrimonio:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: nucleo-dados-bdgd
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Dependências fixadas
+        run: |
+          python3 -m venv "$RUNNER_TEMP/patrimonio-env"
+          "$RUNNER_TEMP/patrimonio-env/bin/python" -m pip install -r patrimonio/requirements.txt -r motor_universal/requirements-ml.txt
+      - name: Tradução, namespaces, vigência pendente e Parquet sintético
+        run: '"$RUNNER_TEMP/patrimonio-env/bin/python" -m unittest discover -s patrimonio/tests -v'
+      - name: Regressões do motor universal preservado
+        run: '"$RUNNER_TEMP/patrimonio-env/bin/python" -m unittest discover -s motor_universal/tests -v'
+      - name: Produto web corresponde às evidências versionadas
+        run: |
+          cp web/public/data/patrimonio/dicionario.json.gz "$RUNNER_TEMP/antes.json.gz"
+          "$RUNNER_TEMP/patrimonio-env/bin/python" -m patrimonio.web_product
+          cmp "$RUNNER_TEMP/antes.json.gz" web/public/data/patrimonio/dicionario.json.gz
+      - name: Confronto dos códigos publicados é reproduzível
+        run: |
+          "$RUNNER_TEMP/patrimonio-env/bin/python" -m patrimonio.published
+          git diff --exit-code -- patrimonio/data/publicados
+      - name: Evidências documentais e inventário
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: patrimonio-mcpse-${{ github.run_id }}
+          path: nucleo-dados-bdgd/patrimonio/data
+          retention-days: 14
