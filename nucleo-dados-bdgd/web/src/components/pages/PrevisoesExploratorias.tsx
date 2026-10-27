@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { toCSV } from "@/lib/format";
+import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import { avaliarRiscosCenario } from "@/lib/risco-cenarios";
 import s from "./previsoes-exploratorias.module.css";
 
@@ -106,7 +107,8 @@ export function PrevisoesExploratorias() {
     (NOMES[a[2]] ?? a[2]).localeCompare(NOMES[b[2]] ?? b[2], "pt-BR")), [porDist]);
   const serie = conceitos.find((item) => item[2] === conceito) ?? conceitos[0];
   const conceitoEfetivo = serie?.[2] ?? "";
-  const futuros = serie && (metodo === "persistencia"
+  const bloqueioCoopera = dist === String(COOPERA_UCBT_2025.dist) && conceitoEfetivo === "consumidores";
+  const futuros = serie && !bloqueioCoopera && (metodo === "persistencia"
     ? [0, 1, 2, 3, 4].map(() => serie[5][3]) : serie[6]);
   const valorAno = serie && futuros ? futuros[anoAlvo - 2026] : null;
   const erroModelo = serie && (metodo === "persistencia" ? serie[7][0] : serie[7][1]);
@@ -165,6 +167,7 @@ export function PrevisoesExploratorias() {
                 </select>
               </label>
             </div>
+            {bloqueioCoopera && <p role="status" data-testid="coopera-bloqueio-cenario"><b>Coopera 2025 — cenário de consumidores suspenso.</b> UCBT sem registros (0*) na publicação ANEEL; 225 AT de UCMT/UCAT são somente subtotal parcial. A extrapolação existente não é confiável. Uma estimativa KNN com variáveis externas e âncora histórica válida está em estudo, sem resultados numéricos publicados.</p>}
             {serie && futuros && valorAno !== null && (
               <>
                 <div className={s.destaque} aria-live="polite" aria-atomic="true">
