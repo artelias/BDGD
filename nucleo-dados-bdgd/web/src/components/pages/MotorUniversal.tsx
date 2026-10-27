@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { exportarExperimentoMotor, parseResumoMotor, type ResumoMotor } from "@/lib/motor-universal";
+import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import s from "./motor-universal.module.css";
 
 const names: Record<string, string> = { persistencia: "Persistência", tendencia_ols: "Tendência OLS", crescimento_historico: "Crescimento histórico" };
@@ -44,6 +45,7 @@ export function MotorUniversal() {
   const series = data?.series.find((r) => r.DIST === distId && r.objetivo_id === assetId && r.metrica === target?.metrica && r.territorio.nivel === "dist");
   const chosen = series?.modelos.find((m) => m.modelo === model) ?? series?.modelos.find((m) => m.modelo === series.modelo_selecionado);
   const projection = data && chosen ? chosen.futuro[data.horizontes.indexOf(year)] : undefined;
+  const bloqueioCoopera = String(distId) === String(COOPERA_UCBT_2025.dist) && assetId === "consumidores" && target?.metrica === "quantidade";
   return <section className={s.section} aria-labelledby="motor-universal-title" data-testid="motor-universal">
     <h2 id="motor-universal-title">Motor universal de ativos BDGD</h2>
     <p>Infraestrutura de experimentos para todos os ativos catalogados. Os resultados atuais são retrospectivos e condicionais; não são previsões homologadas de demanda, obras ou investimento.</p>
@@ -61,7 +63,8 @@ export function MotorUniversal() {
           <label>Modelo do motor<select value={chosen?.modelo ?? ""} onChange={(e) => setModel(e.target.value)} disabled={!series?.modelos.length}><option value="" disabled>Sem modelo executável</option>{series?.modelos.map((m) => <option key={m.modelo} value={m.modelo} disabled={!m.futuro.length}>{names[m.modelo] ?? m.modelo}{m.motivo ? " — indisponível" : ""}</option>)}</select></label>
           <label>Horizonte do motor<select value={year} onChange={(e) => setYear(Number(e.target.value))}>{data.horizontes.map((y) => <option key={y}>{y}</option>)}</select></label>
         </div>
-        {!series || series.status === "dados_insuficientes" ? <p role="status" data-testid="motor-universal-vazio"><b>Sem simulação elegível.</b> {series?.motivos.join(" · ") || target?.motivo || "Não há série por distribuidora para esta métrica no contrato atual."} Nenhum valor foi preenchido.</p> : <>
+        {bloqueioCoopera && <p role="status" data-testid="motor-coopera-ausencia"><b>Coopera (DIST 5370): previsão de consumidores indisponível.</b> A UCBT 2025 está vazia na fonte (0*); o valor legado de 225 contém apenas UCMT+UCAT AT. Não utilizar esse subtotal como população completa, nem ajustar KNN com zero artificial. A estimativa com análogos exógenos aguarda dados reais e validação.</p>}
+        {!series || series.status === "dados_insuficientes" || bloqueioCoopera ? <p role="status" data-testid="motor-universal-vazio"><b>Sem simulação elegível.</b> {series?.motivos.join(" · ") || target?.motivo || "Não há série por distribuidora para esta métrica no contrato atual."} Nenhum valor foi preenchido.</p> : <>
           <p role="status"><b>Simulação condicional para {year}: {number(projection)} {target?.unidade}</b>. Método consultado: {names[chosen?.modelo ?? ""] ?? chosen?.modelo}. Seleção conservadora: {names[series.modelo_selecionado ?? ""] ?? series.modelo_selecionado}.</p>
           <p>Backtest diagnóstico de um ano: {chosen?.metricas.n ?? 0} origens · MAE {number(chosen?.metricas.mae)} · RMSE {number(chosen?.metricas.rmse)} · WAPE {chosen?.metricas.wape == null ? "N/D" : number(chosen.metricas.wape * 100) + "%"} · viés {number(chosen?.metricas.vies)}. Última origem reservada para auditoria: MAE {number(chosen?.auditoria.mae)}.</p>
           <p>Somente estoque passado e tempo nos baselines. O painel atual não contém variáveis demográficas, econômicas, energéticas ou climáticas enriquecidas. Não há intervalo probabilístico calibrado.</p>
@@ -76,7 +79,7 @@ export function MotorUniversal() {
             </tbody></table>
           </div>
         </>}
-        {series && <a className={s.export} download={`motor_bdgd_${assetId}_${target?.metrica}_DIST_${distId}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(exportarExperimentoMotor(data, series, chosen))}`}>Exportar diagnóstico e seleção (JSON)</a>}
+        {series && !bloqueioCoopera && <a className={s.export} download={`motor_bdgd_${assetId}_${target?.metrica}_DIST_${distId}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(exportarExperimentoMotor(data, series, chosen))}`}>Exportar diagnóstico e seleção (JSON)</a>}
         <p className={s.provenance}>Dataset {data.dataset_version} · corte {data.as_of}. Experimento <code>{data.experiment_id}</code>. Fonte SHA-256 <code>{data.source_sha256}</code>. A prova detalhada por publicação permanece no contrato versionado e no registro completo do experimento.</p>
         <details><summary>Limites e dependências dos dados</summary><ul>{data.limites.map((limit) => <li key={limit}>{limit}</li>)}</ul><p>Totais nacionais não são gerados sem prova de cobertura completa e ausência de sobreposição. Variáveis futuras exigem cenário explícito e data de disponibilidade.</p></details>
       </>}
