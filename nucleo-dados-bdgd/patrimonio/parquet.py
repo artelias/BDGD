@@ -29,7 +29,8 @@ def enrich_parquets(manifest, dictionary, output):
   if h!=spec['sha256']:raise ValueError('Hash de entrada divergente')
   approved=spec['status_fonte']=='SELECIONADA_FORMALMENTE'
   source=pq.ParquetFile(path)
-  cols=[c for c in ['DIST','COD_ID','TUC','A1','A2','A3','A4','A5','A6','POT_NOM'] if c in source.schema_arrow.names]
+  attribute_fields=['TUC','A1','A2','A3','A4','A5','A6']
+  cols=[c for c in ['DIST','COD_ID','POT_NOM']+attribute_fields+[f'{a}_{component}' for component in ['FAS','NEU'] for a in attribute_fields] if c in source.schema_arrow.names]
   writer=None;n=0;counts={};dest=out/f'enriquecido-{i:05d}.parquet'
   try:
    for batch in source.iter_batches(batch_size=4096,columns=cols):
@@ -39,9 +40,11 @@ def enrich_parquets(manifest, dictionary, output):
      try: db.execute('INSERT INTO seen VALUES (?,?,?,?,?)',key)
      except sqlite3.IntegrityError as exc: raise ValueError('Chave de registro duplicada; não deduplicar silenciosamente') from exc
      e=enrich_record(dictionary,row,entity=spec['ENTIDADE'],dist=spec['DIST'],year=spec['ANO'],publication=spec['PUBLICACAO'])
-     for slot,a in e['atributos'].items():
-      k=slot+':'+a['status'];counts[k]=counts.get(k,0)+1
-      if not approved:a['status_fonte']='NAO_SELECIONADA';a['elegivel_feature']=False
+     sets=[('',e['atributos'])]+[(component+':',v['atributos']) for component,v in e['componentes_patrimoniais'].items()]
+     for prefix,attributes in sets:
+      for slot,a in attributes.items():
+       k=prefix+slot+':'+a['status'];counts[k]=counts.get(k,0)+1
+       if not approved:a['status_fonte']='NAO_SELECIONADA';a['elegivel_feature']=False
      values.append({'DIST':str(spec['DIST']),'ANO':spec['ANO'],'ENTIDADE':spec['ENTIDADE'],'PUBLICACAO':spec['PUBLICACAO'],
                     'COD_ID':e['COD_ID'],'TUC':e['TUC'],'A1':e['A1'],'ATRIBUTOS_JSON':json.dumps(e,ensure_ascii=False,sort_keys=True),
                     'POTENCIA_HOMOLOGADA_KVA':None,'ELEGIVEL_MODELO':False})

@@ -55,7 +55,7 @@
     "auditoria-potencia-namespaces.parquet": "811dafadb326d3b75022127d0a24f63a133092678175890ea62dbfe0e2a35349",
     "dicionario-tuc-atributos.csv.gz": "2038bb3cba77f19af001bc437b30d7e3c14f30c91fc015dfa201abd1b63b2852",
     "dicionario-tuc-atributos.parquet": "15cde9271e3c600dfe161daf0eaac28314a48663ea33f39d865dd679ded3007b",
-    "inventario-cobertura.csv.gz": "4db100125f5ecf0011d5b01479fd203a1df384b9859adb1e6527892435f0e71d",
-    "inventario-cobertura.parquet": "853414ab0a4fd4b8ddd79a189719599618bc2146f510c820214310344103702c"
+    "inventario-cobertura.csv.gz": "3cfd2f23516decf592b6aa15730620fefa69c232336c2a32965820ec2767714c",
+    "inventario-cobertura.parquet": "11fcc73ca7247c5393104d8bd49469f208bc64f3705a86a678f403848079cb27"
   }
 }

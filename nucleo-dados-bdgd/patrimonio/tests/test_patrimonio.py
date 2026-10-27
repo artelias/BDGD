@@ -119,6 +119,27 @@ class ParquetTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as root:
    _,m=self.inputs(root);other=deepcopy(m['files'][0]);other['ENTIDADE']='UNTRMT';m['files'].append(other)
    r=enrich_parquets(m,D,Path(root)/'out');self.assertEqual(len(r['inventario']),2);self.assertFalse(r['agregacao_eq_un'])
+ def test_phase_and_neutral_preserved_with_one_output_row(self):
+  with tempfile.TemporaryDirectory() as root:
+   row={'COD_ID':'SINTETICO-SEGCON','TUC_FAS':'190','A1_FAS':'01','A4_FAS':'05','TUC_NEU':'190','A1_NEU':'02','A4_NEU':None}
+   path,m=self.inputs(root,[row],entity='SEGCON');before=path.read_bytes()
+   r=enrich_parquets(m,D,Path(root)/'out')
+   output=pq.read_table(Path(root)/'out/enriquecido-00000.parquet').to_pylist()
+   self.assertEqual(len(output),1);self.assertEqual(path.read_bytes(),before)
+   e=json.loads(output[0]['ATRIBUTOS_JSON']);components=e['componentes_patrimoniais']
+   self.assertEqual(set(components),{'FAS','NEU'})
+   self.assertEqual(components['FAS']['atributos']['A4']['codigo_original'],'05')
+   self.assertIsNone(components['NEU']['atributos']['A4']['codigo_original'])
+   self.assertEqual(components['NEU']['atributos']['A4']['status'],'VAZIO')
+   self.assertEqual(components['FAS']['atributos']['A1']['status_fonte'],'NAO_SELECIONADA')
+   self.assertFalse(output[0]['ELEGIVEL_MODELO']);self.assertIsNone(output[0]['POTENCIA_HOMOLOGADA_KVA'])
+   self.assertIn('A4_FAS',r['inventario'][0]['atributos_presentes'])
+ def test_phase_neutral_and_direct_attributes_are_not_coalesced(self):
+  row={'COD_ID':'SINTETICO','TUC':'565','A1':'01','A4':'29','TUC_FAS':'190','A1_FAS':'01','A4_FAS':'05','TUC_NEU':'190','A1_NEU':'02','A4_NEU':'07'}
+  e=enrich_record(D,row,entity='SEGCON',dist='26',year=2025,publication='SINTETICO')
+  self.assertEqual(e['atributos']['A4']['codigo_original'],'29')
+  self.assertEqual(e['componentes_patrimoniais']['FAS']['atributos']['A4']['codigo_original'],'05')
+  self.assertEqual(e['componentes_patrimoniais']['NEU']['atributos']['A4']['codigo_original'],'07')
  def test_tampered_hash_rejected_and_existing_output_preserved(self):
   with tempfile.TemporaryDirectory() as root:
    _,m=self.inputs(root);m['files'][0]['sha256']='BAD'

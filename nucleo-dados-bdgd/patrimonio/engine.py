@@ -79,6 +79,13 @@ def enrich_record(dictionary, row, *, entity, dist, year, publication):
  if row.get('COD_ID') is None or not str(row['COD_ID']).strip():raise ValueError('COD_ID obrigatório para auditoria de cardinalidade')
  t,a=row.get('TUC'),row.get('A1')
  attrs={s:translate(dictionary,t,a,s,row.get(s),year) for s in ['A1','A2','A3','A4','A5','A6']}
+ # SEGCON publica fase e neutro; preservar componentes na mesma identidade, sem somá-los.
+ components={}
+ for component in ['FAS','NEU']:
+  if any(f'{field}_{component}' in row for field in ['TUC','A1','A2','A3','A4','A5','A6']):
+   ct,ca=row.get(f'TUC_{component}'),row.get(f'A1_{component}')
+   components[component]={'TUC_original':ct,'A1_original':ca,
+    'atributos':{slot:translate(dictionary,ct,ca,slot,row.get(f'{slot}_{component}'),year) for slot in ['A1','A2','A3','A4','A5','A6']}}
  power_slot=next((s for s,v in attrs.items() if v.get('nome_atributo')=='POTÊNCIA'),None)
  candidate=attrs.get(power_slot,{})
  # Não usar POT_NOM como A4: namespaces DDA e MCPSE distintos.
@@ -92,7 +99,7 @@ def enrich_record(dictionary, row, *, entity, dist, year, publication):
  elif entity in {'UNTRMT','UNTRAT'} and row.get('POT_NOM') not in {None,''}:
   native={'valor_original':row['POT_NOM'],'status':'UNIDADE_E_COMPARABILIDADE_A_CONFIRMAR_POR_ANO','valor_candidato_kva':None}
  return {'DIST':str(dist),'ANO':year,'PUBLICACAO':publication,'ENTIDADE':entity,'COD_ID':str(row['COD_ID']),
-         'TUC':code(t,3),'A1':code(a,2),'atributos':attrs,'fonte_registro_preservada':True,
+         'TUC':code(t,3),'A1':code(a,2),'atributos':attrs,'componentes_patrimoniais':components,'fonte_registro_preservada':True,
          'somavel_com_eq':False if entity.startswith('UN') else None,
          'potencia':{'slot':power_slot,'documental':candidate,'campo_nativo':native,
                      'potencia_recuperada_homologada_kva':None,'elegivel_modelo':False,

@@ -35,7 +35,8 @@ def audit(handoff,dictionary,output):
   inventory=[]
   for r in listed:
    key=(r['ano'],r['dist'],r['item_id'],r['entidade']);fields=schemas.get(key)
-   attrs=[f for f in ['TUC','A1','A2','A3','A4','A5','A6'] if fields and f in fields]
+   names=['TUC','A1','A2','A3','A4','A5','A6']
+   attrs=[f for f in names+[f'{a}_{component}' for component in ['FAS','NEU'] for a in names] if fields and f in fields]
    inventory.append({'ANO':int(r['ano']),'DIST':r['dist'],'PUBLICACAO':r['item_id'],'ENTIDADE':r['entidade'],
     'LINHAS_LISTADAS':int(r['linhas']),'BYTES_LISTADOS':int(r['bytes']),'COLUNAS_LISTADAS':int(r['n_colunas']),
     'CAMPOS_DOCUMENTADOS':attrs,'LEITURA_REGISTROS_REALIZADA':False,'COBERTURA_VALORES_A1_A6':None,
