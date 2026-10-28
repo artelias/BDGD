@@ -8,14 +8,15 @@ test("Comparador: seletores de grupo A e B nao encobrem filtros nem tabela", asy
     await expect(menu).toBeVisible();
     const card = page.getByTestId(`lado-${lado}`);
     const filtros = page.getByRole("toolbar", { name: "Ativo e recorte" });
-    const menuBox = await menu.boundingBox();
-    const cardBox = await card.boundingBox();
-    const filtrosBox = await filtros.boundingBox();
-    expect(menuBox).not.toBeNull();
-    expect(cardBox).not.toBeNull();
-    expect(filtrosBox).not.toBeNull();
-    expect(menuBox!.y + menuBox!.height).toBeLessThanOrEqual(cardBox!.y + cardBox!.height + 2);
-    expect(cardBox!.y + cardBox!.height).toBeLessThanOrEqual(filtrosBox!.y + 2);
+    // A altura do cartao e animada; aguardar a estabilizacao do layout.
+    await expect.poll(async () => {
+      const menuBox = await menu.boundingBox();
+      const cardBox = await card.boundingBox();
+      const filtrosBox = await filtros.boundingBox();
+      if (!menuBox || !cardBox || !filtrosBox) return false;
+      return menuBox.y + menuBox.height <= cardBox.y + cardBox.height + 2 &&
+        cardBox.y + cardBox.height <= filtrosBox.y + 2;
+    }).toBe(true);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
     expect(overflow).toBeLessThanOrEqual(1);
     await page.keyboard.press("Escape");
