@@ -20,8 +20,8 @@ describe("dados de cenários exploratórios — contrato nacional", () => {
   it("preserva a classificação não validada, universo conhecido e fonte versionada", () => {
     expect(dados.previsaoValidada).toBe(false);
     expect(dados.numeroOrigensBacktest).toBe(1);
-    expect(dados.series).toHaveLength(1555);
-    expect(new Set(dados.series.map((s: unknown[]) => s[0])).size).toBe(71);
+    expect(dados.series).toHaveLength(1792);
+    expect(new Set(dados.series.map((s: unknown[]) => s[0])).size).toBe(81);
     expect(new Set(dados.series.map((s: unknown[]) => s[2])).size).toBe(25);
     expect(dados.anosObservados).toEqual([2022, 2023, 2024, 2025]);
     expect(dados.anosSimulados).toEqual([2026, 2027, 2028, 2029, 2030]);
@@ -64,6 +64,6 @@ describe("dados de cenários exploratórios — contrato nacional", () => {
       else if (persist < linear - 1e-9) persistenciaVence++;
       else empates++;
     }
-    expect([tendenciaVence, persistenciaVence, empates]).toEqual([704, 421, 430]);
+    expect([tendenciaVence, persistenciaVence, empates]).toEqual([832, 497, 463]);
   });
 });
