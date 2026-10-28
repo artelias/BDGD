@@ -1,13 +1,12 @@
 "use client";
 import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
-import { AlertTriangle, Download, ExternalLink, Flag, History, Info, ShieldCheck } from "lucide-react";
+import { AlertTriangle, Download, ExternalLink, Flag, History, Info } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import { EscopoSeletor } from "@/components/explorar/EscopoSeletor";
-import { PublicacoesAuditadas } from "@/components/pages/PublicacoesAuditadas";
 import { Button } from "@/components/ui/Button";
 import { Explain } from "@/components/ui/Explain";
 import { DataError, downloadText, EmptyState, LoadingBlock, useToast } from "@/components/ui/Feedback";
@@ -18,7 +17,7 @@ import { COOPERA_UCBT_2025, observacaoCoopera2025 } from "@/lib/observacoes-audi
 import type { Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
 import { distsDoEscopo, escreverEscopo, lerEscopo, rotuloEscopo, type Escopo } from "@/lib/escopo";
-import { anoAno, ESTADO, indice100, serieDist, serieSoma, STATUS_ANO, variacao, type Serie, type SerieData } from "@/lib/evolucao";
+import { anoAno, ESTADO, indice100, serieDist, serieSoma, variacao, type Serie, type SerieData } from "@/lib/evolucao";
 import {
   aplicarMatriz, coberturaAtivo, DESCRICAO_PUB, indexarHom, indiceHom, NATUREZA, naturezaVariacoes, pontosHom, ROTULO_PUB,
   serieBrasil, seriePainel, serieSubtotalObservado, sinaisNoEscopo, urlItem, type EstadoPub, type Homologacao, type PontoHom,
@@ -124,8 +123,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
   const distPrincipal = principal && /^\d+$/.test(principal.id) ? Number(principal.id) : null;
   const natureza = distPrincipal !== null ? naturezaVariacoes(h, distPrincipal, a.id, anos) : null;
   const sinaisEsc = sinaisNoEscopo(h, distsEscopo, a.id, anos);
-  const ressalvas2025 = (h.celulas[a.id] ?? []).filter((c) => c[1] === 2025 && (c[2] === "R" || c[2] === "P") && (escopo.modo === "brasil" || distsEscopo.includes(c[0])) && !h.motivos[c[3]].startsWith("tag “Extra”"));
-  const pendPares = Object.entries(h.pares).filter(([k]) => escopo.modo === "brasil" || distsEscopo.includes(Number(k.split("|")[0])));
+  const pendPares = Object.entries(h.pares).filter(([k, par]) => par.decisao === "PENDENTE" && (escopo.modo === "brasil" || distsEscopo.includes(Number(k.split("|")[0]))));
   const pendOutras = (h.celulas[a.id] ?? []).filter((c) => c[2] === "P" && !h.pares[`${c[0]}|${c[1]}`] && (escopo.modo === "brasil" || distsEscopo.includes(c[0])));
   const conceito = a.conceito;
   const detalhesCoopera = observacaoCoopera2025();
@@ -183,31 +181,8 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
       <header className={`${p.head} rise`}>
         <div className="eyebrow">2022 · 2023 · 2024 · 2025</div>
         <h1 className="display" style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 14 }}><History size={34} strokeWidth={1.6} color="var(--accent)" aria-hidden /> Evolução histórica</h1>
-        <p className="lede">Como os ativos físicos mudaram de 2022 a 2025, com a mesma regra de cálculo em todos os anos e a matriz de homologação aplicada a cada distribuidora, ano e ativo. Valores ausentes, pendentes ou bloqueados aparecem como N/D, nunca como zero, e nada é projetado.</p>
+        <p className="lede">Evolução de quantidades, extensão e capacidade dos ativos da distribuição entre 2022 e 2025. Escolha o ativo e o recorte para comparar valores observados ao longo dos anos.</p>
       </header>
-
-      <div className={s.anos} role="list" aria-label="Situação de cada ano" data-testid="anos">
-        {sd.cobertura.map((c, i) => (
-          <div key={c.ano} role="listitem" className={s.ano} data-status={c.status_ano}>
-            <div className={s.anoNum}>31/12/{c.ano}</div>
-            <div className={s.anoSt}>{STATUS_ANO[c.status_ano] ?? "em validação"}</div>
-            <div className={s.anoFoot}>{c.validadas} de {c.publicadas} publicações validadas{c.pendentes ? ` · ${c.pendentes} pendente${c.pendentes > 1 ? "s" : ""}` : ""}</div>
-            <div className={s.bar}><span style={{ transform: `scaleX(${c.publicadas ? c.validadas / c.publicadas : 0})` }} /></div>
-            <div className={s.anoFoot} data-testid={`cob-${c.ano}`}>{a.nome}: {cob[i]?.publicaveis ?? 0} DIST com valor · {(cob[i]?.P ?? 0) + (cob[i]?.B ?? 0)} pendentes/bloqueadas</div>
-          </div>
-        ))}
-      </div>
-
-
-      <PublicacoesAuditadas />
-
-      <aside className={s.ressalvas} data-testid="evo-ressalvas" aria-label="Ressalvas de publicação">
-        <ShieldCheck size={16} aria-hidden />
-        <div>
-          <b>Ressalvas vigentes.</b> 2022 e 2023 não têm cobertura nacional completa. Quando existem lacunas, o total nacional completo permanece N/D; o painel balanceado soma apenas as mesmas distribuidoras elegíveis em todos os anos e não representa o Brasil inteiro. Validação automática não é aprovação regulatória. Não aplicável é um estado próprio; ausência e pendência nunca viram zero. A comprovação independente dos zeros técnicos permanece pendente.
-          {ressalvas2025.length > 0 && <ul className={s.lista}>{ressalvas2025.slice(0, 4).map((c) => <li key={c[0]}><b>{nomeD(c[0])} 2025</b> · {ROTULO_PUB[c[2]]}: {h.motivos[c[3]]}</li>)}</ul>}
-        </div>
-      </aside>
 
       <EscopoSeletor ds={ds} value={escopo} onChange={setEscopo} testId="evo-escopo" />
       <div className={p.toolbar} role="toolbar" aria-label="Opções da evolução" style={{ marginTop: 12 }}>
