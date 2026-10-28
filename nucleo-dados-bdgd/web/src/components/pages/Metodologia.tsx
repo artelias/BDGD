@@ -38,7 +38,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
   return (
     <>
       <header className={`${p.head} rise`}>
-        <div className="eyebrow">Proveniência · regras · qualidade</div>
+        <div className="eyebrow">Proveniência · indicadores · modelos</div>
         <h1 className="display" style={{ marginTop: 8 }}>Metodologia dos ativos físicos</h1>
         <p className="lede">Definições das métricas físicas, classificação patrimonial, vínculos elétricos e metodologia de previsão; dados observados e projeções são apresentados separadamente.</p>
       </header>
@@ -119,7 +119,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
 
           <section id="dicionario" className={s.sec}>
             <h2>Dicionário de indicadores · Como é calculado?</h2>
-            <p>Cada indicador do painel em linguagem direta, com o cálculo técnico e as ressalvas. Os nomes de negócio são os mesmos usados no Panorama, na Matriz e no Comparador.</p>
+            <p>O dicionário descreve a população física de referência, a entidade de origem, a unidade de medida e os critérios de classificação. Em equipamentos com TUC, os subgrupos patrimoniais são distinguidos por TUC e A1, sem somar a instalação correspondente.</p>
             {CONCEITOS.filter((c) => INDICADORES.some((i) => i.conceito === c.id)).map((c) => (
               <div key={c.id}>
                 <h3>{c.nome}</h3>
@@ -127,7 +127,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
                   {INDICADORES.filter((i) => i.conceito === c.id).map((i) => (
                     <div key={i.id} className={s.rule} id={`ind-${i.id}`}>
                       <dt>{i.nome}<div className="caption mono" style={{ fontWeight: 400, marginTop: 2 }}>{i.ent ?? "UCBT+UCMT+UCAT"} · {METRIC_LABEL[i.metric]}</div></dt>
-                      <dd>{i.explicacao}<div className="caption" style={{ marginTop: 6 }}>População: {i.ent ?? "UCBT, UCMT e UCAT"}. Medida: {METRIC_LABEL[i.metric]}. {i.metric === "quantidade" ? "Contagem de unidades elegíveis da população indicada, com as exclusões e recortes patrimoniais definidos no catálogo técnico; instalações e equipamentos vinculados não são somados." : i.metric === "extensao_km" ? "Soma dos comprimentos declarados, dividida por mil para obter quilômetros." : "Soma de potências nominais apenas após validar domínio, unidade, vínculo e competência; valor N/D enquanto essas condições não forem comprovadas."}</div>{i.ressalva && <div className="caption" style={{ marginTop: 4, color: "var(--warn)" }}>{i.ressalva}</div>}</dd>
+                      <dd>{i.explicacao}<div className="caption" style={{ marginTop: 6 }}>População: {i.ent ?? "UCBT, UCMT e UCAT"}. Medida: {METRIC_LABEL[i.metric]}. {i.metric === "quantidade" ? "Contagem de unidades elegíveis da população indicada, por TUC e tipo de bem A1 quando presentes e aplicáveis. Chaves: TUC 160; disjuntores: 210; religadores: 345; reguladores: 340; transformadores de distribuição: 565; força: 570; medida: 575; estruturas: 255. As instalações UN* não são adicionadas à contagem EQ*." : i.metric === "extensao_km" ? "Soma dos comprimentos declarados, dividida por mil para obter quilômetros." : "Soma de potências nominais apenas após validar domínio, unidade, vínculo e competência; valor N/D enquanto essas condições não forem comprovadas."}</div>{i.ressalva && <div className="caption" style={{ marginTop: 4, color: "var(--warn)" }}>{i.ressalva}</div>}</dd>
                     </div>
                   ))}
                 </dl>
