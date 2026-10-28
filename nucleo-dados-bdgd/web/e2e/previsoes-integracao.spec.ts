@@ -1,14 +1,13 @@
 import { expect, test } from "@playwright/test";
 
-test("Evolução abre os dados auditados e explica a antiga quarentena", async ({ page }) => {
+test("Evolução prioriza a série física; inventário técnico permanece em página própria", async ({ page }) => {
   await page.goto("/evolucao/?ativo=consumidores");
   await expect(page.getByTestId("evo-tabela")).toBeVisible();
   await expect(page.getByTestId("evo-cards")).toBeVisible();
-  await expect(page.getByText("Histórico em preparação.")).toHaveCount(0);
-  const explicacao = page.getByTestId("auditoria-publicacoes").getByRole("heading", { name: "Publicações avaliadas e motivos de bloqueio" });
-  await expect(explicacao).toBeVisible();
+  await expect(page.getByTestId("auditoria-publicacoes")).toHaveCount(0);
+  await expect(page.getByTestId("evo-ressalvas")).toHaveCount(0);
+  await page.goto("/auditoria-publicacoes/");
   await expect(page.getByTestId("auditoria-publicacoes")).toContainText("414");
-  await expect(page.getByTestId("auditoria-publicacoes")).toContainText("Duas versões divergentes");
 });
 
 test("Previsões apresenta resultados exploratórios antes das ressalvas longas", async ({ page }) => {

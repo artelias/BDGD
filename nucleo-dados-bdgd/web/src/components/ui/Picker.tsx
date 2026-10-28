@@ -9,8 +9,8 @@ export interface PickerOption { value: string; label: string; group?: string; me
 function norm(t: string) { return t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
 
 /** Combobox pesquisável: teclado completo, grupos, Escape fecha e devolve o foco. No celular vira folha inferior. */
-export function Picker({ label, value, options, onChange, placeholder = "Selecionar", searchPlaceholder = "Buscar", width, icon, testId, compact }: {
-  label: string; value: string | null; options: PickerOption[]; onChange: (v: string) => void; placeholder?: string; searchPlaceholder?: string; width?: number | string; icon?: ReactNode; testId?: string; compact?: boolean;
+export function Picker({ label, value, options, onChange, placeholder = "Selecionar", searchPlaceholder = "Buscar", width, icon, testId, compact, inlineMenu = false }: {
+  label: string; value: string | null; options: PickerOption[]; onChange: (v: string) => void; placeholder?: string; searchPlaceholder?: string; width?: number | string; icon?: ReactNode; testId?: string; compact?: boolean; inlineMenu?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
@@ -66,7 +66,8 @@ export function Picker({ label, value, options, onChange, placeholder = "Selecio
       </button>
       <AnimatePresence>
         {open && (
-          <motion.div ref={pop} className={s.popover} style={{ top: "calc(100% + 6px)", left: 0, width: "max(100%, 300px)" }}
+          <motion.div ref={pop} className={`${s.popover} ${inlineMenu ? s.popoverInline : ""}`}
+            style={inlineMenu ? { position: "relative", top: "auto", bottom: "auto", left: "auto", right: "auto", width: "100%", minWidth: 0, maxWidth: "100%", marginTop: 6 } : { top: "calc(100% + 6px)", left: 0, width: "max(100%, 300px)" }}
             initial={{ opacity: 0, scale: 0.97, y: -4 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98, y: -2 }}
             transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}>
             <div className={s.popSearch}>

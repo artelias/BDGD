@@ -1,24 +1,23 @@
 "use client";
 import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
-import { AlertTriangle, Download, ExternalLink, Flag, History, Info, ShieldCheck } from "lucide-react";
+import { AlertTriangle, Download, ExternalLink, Flag, History, Info } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import { EscopoSeletor } from "@/components/explorar/EscopoSeletor";
-import { PublicacoesAuditadas } from "@/components/pages/PublicacoesAuditadas";
 import { Button } from "@/components/ui/Button";
 import { Explain } from "@/components/ui/Explain";
 import { DataError, downloadText, EmptyState, LoadingBlock, useToast } from "@/components/ui/Feedback";
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { ativos as listaAtivos, UNIDADE } from "@/lib/ativos";
-import { COOPERA_UCBT_2025, observacaoCoopera2025 } from "@/lib/observacoes-auditoria";
+import { observacaoCoopera2025 } from "@/lib/observacoes-auditoria";
 import type { Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
 import { distsDoEscopo, escreverEscopo, lerEscopo, rotuloEscopo, type Escopo } from "@/lib/escopo";
-import { anoAno, ESTADO, indice100, serieDist, serieSoma, STATUS_ANO, variacao, type Serie, type SerieData } from "@/lib/evolucao";
+import { anoAno, ESTADO, indice100, serieDist, serieSoma, variacao, type Serie, type SerieData } from "@/lib/evolucao";
 import {
   aplicarMatriz, coberturaAtivo, DESCRICAO_PUB, indexarHom, indiceHom, NATUREZA, naturezaVariacoes, pontosHom, ROTULO_PUB,
   serieBrasil, seriePainel, serieSubtotalObservado, sinaisNoEscopo, urlItem, type EstadoPub, type Homologacao, type PontoHom,
@@ -124,9 +123,6 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
   const distPrincipal = principal && /^\d+$/.test(principal.id) ? Number(principal.id) : null;
   const natureza = distPrincipal !== null ? naturezaVariacoes(h, distPrincipal, a.id, anos) : null;
   const sinaisEsc = sinaisNoEscopo(h, distsEscopo, a.id, anos);
-  const ressalvas2025 = (h.celulas[a.id] ?? []).filter((c) => c[1] === 2025 && (c[2] === "R" || c[2] === "P") && (escopo.modo === "brasil" || distsEscopo.includes(c[0])) && !h.motivos[c[3]].startsWith("tag “Extra”"));
-  const pendPares = Object.entries(h.pares).filter(([k]) => escopo.modo === "brasil" || distsEscopo.includes(Number(k.split("|")[0])));
-  const pendOutras = (h.celulas[a.id] ?? []).filter((c) => c[2] === "P" && !h.pares[`${c[0]}|${c[1]}`] && (escopo.modo === "brasil" || distsEscopo.includes(c[0])));
   const conceito = a.conceito;
   const detalhesCoopera = observacaoCoopera2025();
   const semTuc0 = distPrincipal !== null ? anos.map((ano) => h.sem_tuc[`${distPrincipal}|${ano}|${conceito}`]) : null;
@@ -183,31 +179,8 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
       <header className={`${p.head} rise`}>
         <div className="eyebrow">2022 · 2023 · 2024 · 2025</div>
         <h1 className="display" style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 14 }}><History size={34} strokeWidth={1.6} color="var(--accent)" aria-hidden /> Evolução histórica</h1>
-        <p className="lede">Como os ativos físicos mudaram de 2022 a 2025, com a mesma regra de cálculo em todos os anos e a matriz de homologação aplicada a cada distribuidora, ano e ativo. Valores ausentes, pendentes ou bloqueados aparecem como N/D, nunca como zero, e nada é projetado.</p>
+        <p className="lede">Séries anuais de ativos físicos das distribuidoras, de 2022 a 2025. Compare quantidade, extensão e variações no período; valores sem observação válida aparecem como N/D.</p>
       </header>
-
-      <div className={s.anos} role="list" aria-label="Situação de cada ano" data-testid="anos">
-        {sd.cobertura.map((c, i) => (
-          <div key={c.ano} role="listitem" className={s.ano} data-status={c.status_ano}>
-            <div className={s.anoNum}>31/12/{c.ano}</div>
-            <div className={s.anoSt}>{STATUS_ANO[c.status_ano] ?? "em validação"}</div>
-            <div className={s.anoFoot}>{c.validadas} de {c.publicadas} publicações validadas{c.pendentes ? ` · ${c.pendentes} pendente${c.pendentes > 1 ? "s" : ""}` : ""}</div>
-            <div className={s.bar}><span style={{ transform: `scaleX(${c.publicadas ? c.validadas / c.publicadas : 0})` }} /></div>
-            <div className={s.anoFoot} data-testid={`cob-${c.ano}`}>{a.nome}: {cob[i]?.publicaveis ?? 0} DIST com valor · {(cob[i]?.P ?? 0) + (cob[i]?.B ?? 0)} pendentes/bloqueadas</div>
-          </div>
-        ))}
-      </div>
-
-
-      <PublicacoesAuditadas />
-
-      <aside className={s.ressalvas} data-testid="evo-ressalvas" aria-label="Ressalvas de publicação">
-        <ShieldCheck size={16} aria-hidden />
-        <div>
-          <b>Ressalvas vigentes.</b> 2022 e 2023 não têm cobertura nacional completa. Quando existem lacunas, o total nacional completo permanece N/D; o painel balanceado soma apenas as mesmas distribuidoras elegíveis em todos os anos e não representa o Brasil inteiro. Validação automática não é aprovação regulatória. Não aplicável é um estado próprio; ausência e pendência nunca viram zero. A comprovação independente dos zeros técnicos permanece pendente.
-          {ressalvas2025.length > 0 && <ul className={s.lista}>{ressalvas2025.slice(0, 4).map((c) => <li key={c[0]}><b>{nomeD(c[0])} 2025</b> · {ROTULO_PUB[c[2]]}: {h.motivos[c[3]]}</li>)}</ul>}
-        </div>
-      </aside>
 
       <EscopoSeletor ds={ds} value={escopo} onChange={setEscopo} testId="evo-escopo" />
       <div className={p.toolbar} role="toolbar" aria-label="Opções da evolução" style={{ marginTop: 12 }}>
@@ -219,7 +192,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
         <Segmented label="Visualização" size="sm" value={layout} onChange={setLayout} options={[{ value: "linhas", label: "Linhas" }, { value: "calor", label: "Mapa de calor" }]} />
         <span className={p.spacer} />
         <Explain title="Como a evolução é calculada" align="end" tecnico={`Regra ${sd.versao_regra} e matriz de homologação ${h.versao} (auditoria/fase4). CAGR = (último/primeiro)^(1/anos) − 1, só com base > 0 e sem quebra. Brasil = soma das DIST publicáveis; células pendentes ou bloqueadas ficam fora e são contadas.`}
-          ressalva="Quebra de classificação: a codificação TUC mudou entre anos e o salto não é crescimento físico. Grupos usam a composição de 2025. Republicações divergentes não são escolhidas automaticamente.">
+          ressalva="Quebra de classificação: a codificação TUC mudou entre anos e o salto não é crescimento físico. Grupos usam a composição de 2025. Republicações válidas são reconciliadas com preferência pela versão mais recente e trilha de auditoria.">
           Cada ponto é o total do ativo publicado pela distribuidora naquele ano, exibido só quando a célula é publicável pela matriz (homologado, completo técnico ou apto com ressalvas). “Perímetro de 2025” soma predecessoras incorporadas apenas com ponte comprovada.
         </Explain>
         <Button size="sm" onClick={exportCSV} data-testid="evo-csv"><Download size={14} /> CSV</Button>
@@ -236,7 +209,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
       )}
 
       <section className={s.stage} aria-label="Série temporal">
-        {semDado && <EmptyState title="Sem valor publicável neste recorte">Nenhuma das distribuidoras escolhidas tem {a.nome.toLowerCase()} publicável em 2022–2025. Veja o motivo de cada ano na tabela e em “Qualidade e proveniência”.</EmptyState>}
+        {semDado && <EmptyState title="Sem valor publicável neste recorte">Nenhuma das distribuidoras escolhidas tem {a.nome.toLowerCase()} publicável em 2022–2025. Consulte os detalhes de cobertura, caso necessário.</EmptyState>}
         {!semDado && !algumHistorico && (
           <p className={s.note} data-testid="historico-preparacao"><Info size={14} aria-hidden /><span><b>Sem histórico publicável para este recorte.</b> As competências 2022–2024 não têm valor publicável para {escopo.modo === "brasil" ? "o agregado" : "as distribuidoras escolhidas"}; o motivo de cada ano está na tabela.</span></p>
         )}
@@ -348,21 +321,6 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
               </div>
             </details>
           ))}
-        </section>
-      )}
-
-      {(pendPares.length > 0 || pendOutras.length > 0) && (
-        <section className={s.stage} aria-labelledby="pend-t" data-testid="evo-pendencias">
-          <h2 className="headline" id="pend-t" style={{ fontSize: "1rem" }}>Decisões pendentes que afetam este recorte</h2>
-          <p className="caption">Nada aqui foi decidido automaticamente: as células ficam N/D até a decisão humana registrada. A recomendação técnica é só uma sugestão.</p>
-          <ul className={s.suc}>
-            {pendPares.sort((x, y) => x[1].ordem - y[1].ordem).slice(0, escopo.modo === "brasil" ? 13 : 20).map(([k, q]) => { const [d, ano] = k.split("|"); const dif = q.dif[a.id]; return (
-              <li key={k}><b>{nomeD(Number(d))} {ano}</b> · duas publicações divergentes ({q.A.versao} × {q.B.versao}) · {q.grupo === "SEM_DIFERENCA_TOTAIS" ? "mesmos totais nos 25 ativos" : `${q.ativos_dif} ativo(s) com totais diferentes`} · risco {q.risco.toLowerCase()}
-                {dif && <div className="caption">{a.nome}: {fmt(dif[0], a.medida)} × {fmt(dif[1], a.medida)} {UNIDADE[a.medida]}</div>}
-                <div className="caption">Recomendação técnica: {q.recomendacao}</div></li>
-            ); })}
-            {pendOutras.slice(0, 10).map((c) => <li key={`${c[0]}|${c[1]}`}><b>{nomeD(c[0])} {c[1]}</b> · {h.motivos[c[3]]}</li>)}
-          </ul>
         </section>
       )}
 

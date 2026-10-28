@@ -121,3 +121,6 @@
   .list { max-height: 56vh; }
   .option { padding: 12px 10px; }
 }
+
+/* Modo embutido: a lista participa do fluxo e empurra os filtros para baixo. */
+.popoverInline { position: relative; z-index: 1; min-width: 0; max-width: 100%; margin-top: 6px; box-shadow: var(--shadow-1); }

@@ -37,10 +37,20 @@ const ativos = Object.keys(hom.celulas);
 if (ativos.length !== 25) erros.push(`esperados 25 ativos, encontrados ${ativos.length}`);
 const EST = { HOMOLOGADO: "H", COMPLETO_TECNICO: "T", APTO_COM_RESSALVAS: "R", PENDENTE_DECISAO: "P", BLOQUEADO: "B", NAO_DISPONIVEL: "N" };
 const mat = new Map(M.filter((r) => r.nivel === "DIST").map((r) => [`${r.dist}|${r.ano}|${r.ativo}`, r]));
+// A matriz da Fase 4 antecede as decisões editoriais documentadas para os 13 pares.
+// Apenas esses pares podem mudar PENDENTE_DECISAO para R (valor) ou N (sem dado).
+const paresSelecionados = new Set(Object.entries(hom.pares ?? {})
+  .filter(([, p]) => p.decisao === "VERSAO_MAIS_RECENTE_SELECIONADA")
+  .map(([k]) => k));
 let n = 0;
 for (const [a, cs] of Object.entries(hom.celulas)) for (const [d, ano, e] of cs) {
   n++; const r = mat.get(`${d}|${ano}|${a}`);
-  if (!r) erros.push(`célula ${d}/${ano}/${a} ausente da matriz`); else if (EST[r.estado_publicacao] !== e) erros.push(`célula ${d}/${ano}/${a}: estado ${e} ≠ matriz ${r.estado_publicacao}`);
+  if (!r) erros.push(`célula ${d}/${ano}/${a} ausente da matriz`);
+  else if (EST[r.estado_publicacao] !== e) {
+    const revisada = r.estado_publicacao === "PENDENTE_DECISAO"
+      && paresSelecionados.has(`${d}|${ano}`) && (e === "R" || e === "N");
+    if (!revisada) erros.push(`célula ${d}/${ano}/${a}: estado ${e} ≠ matriz ${r.estado_publicacao}`);
+  }
 }
 if (n !== mat.size) erros.push(`células: asset ${n} ≠ matriz ${mat.size}`);
 // 3) nenhuma célula não publicável com valor na série consumida pela página (N/D nunca vira valor nem zero)
@@ -59,8 +69,12 @@ for (const [a, linhas] of Object.entries(hom.brasil)) for (const [ano, v, e, nin
   if ((ano === 2022 || ano === 2023) && (v !== null || e !== "B")) erros.push(`Brasil ${ano}/${a} publicado como total nacional`);
   const cs = hom.celulas[a].filter((c) => c[1] === ano);
   const inc = cs.filter((c) => PUB.has(c[2]) && !(c[4] & 4) && serieIdx.get(`${c[0]}|${ano}|${a}`) !== null);
-  // excluídas: pendentes, bloqueadas e (Fase 6) entidade vazia na publicação com o ativo presente em outros anos (flag 8)
-  const excl = cs.filter((c) => c[2] === "P" || c[2] === "B" || c[4] & 8).map((c) => c[0]).sort((x, y) => x - y);
+  // Lacunas: pendentes/bloqueadas, entidade vazia (flag 8) e conceitos N/D
+  // comprovadamente ausentes na republicação mais recente (motivo documental 115).
+  const excl = cs.filter((c) => c[2] === "P" || c[2] === "B" || (c[4] & 8)
+    || (c[2] === "N" && paresSelecionados.has(`${c[0]}|${ano}`)
+      && hom.motivos[c[3]] === "A publicação mais recente foi selecionada, mas o conceito está ausente nesta competência: N/D, não zero."))
+    .map((c) => c[0]).sort((x, y) => x - y);
   if (cs.some((c) => c[4] & 8) && e === "H") erros.push(`Brasil ${ano}/${a}: homologado com distribuidora de entidade vazia fora da soma`);
   if (ninc !== inc.length || nexc !== excl.length || exc.join() !== excl.join()) erros.push(`Brasil ${ano}/${a}: contagens divergem da matriz`);
   if (v !== null) {
@@ -77,13 +91,44 @@ for (const [a, p] of Object.entries(hom.painel)) for (const [ano, v] of p.valore
   for (const d of p.universo) { const c = cs.get(d); if (!c || !PUB.has(c[2]) || c[4] & 4) erros.push(`painel ${a}: DIST ${d} não publicável em ${ano}`); else soma += serieIdx.get(`${d}|${ano}|${a}`) ?? NaN; }
   if (Math.abs(soma - v) > 1e-6 * Math.max(1, Math.abs(v))) erros.push(`painel ${ano}/${a}: ${v} ≠ ${soma}`);
 }
-// 6) decisões humanas não foram tomadas: pares pendentes e células dos pares fora da publicação
+// 6) Contrato editorial: só liberar republicações com versão mais recente validada,
+// prova de competência anual, hash, versão anterior preservada e série consistente.
 for (const [k, p] of Object.entries(hom.pares)) {
-  if (p.decisao !== "PENDENTE") erros.push(`par ${k}: decisão registrada no asset (não permitido nesta fase)`);
   const [d, ano] = k.split("|").map(Number);
-  for (const [a, cs] of Object.entries(hom.celulas)) for (const c of cs) if (c[0] === d && c[1] === ano && c[2] !== "P" && c[2] !== "N") erros.push(`par ${k}: célula ${a} publicável`);
+  const prov = hom.proveniencia[k] ?? [];
+  if (p.decisao === "VERSAO_MAIS_RECENTE_SELECIONADA") {
+    const carimbo = (s) => {
+      const m = /^V\d+_(\d{8})-(\d{4})$/.exec(s ?? "");
+      return m ? `${m[1]}${m[2]}` : null;
+    };
+    const a = carimbo(p.A?.versao), b = carimbo(p.B?.versao);
+    if (!a || !b || b <= a) erros.push(`par ${k}: versão selecionada não é posterior`);
+    const atual = prov.find((v) => v.item === p.B?.item);
+    const anterior = prov.find((v) => v.item === p.A?.item);
+    if (!atual || atual.uso !== "em_uso_na_serie" || atual.data_base !== `${ano}-12-31`
+      || atual.intervalo !== "INTERVALO_ANUAL_COMPATIVEL" || !/^[a-f0-9]{64}$/i.test(atual.sha ?? ""))
+      erros.push(`par ${k}: fonte selecionada sem comprovação de competência/integridade`);
+    if (!anterior || anterior.uso !== "versao_anterior_preservada"
+      || !/^[a-f0-9]{64}$/i.test(anterior.sha ?? ""))
+      erros.push(`par ${k}: versão anterior ou hash não preservado`);
+    for (const [ativo, cs] of Object.entries(hom.celulas)) {
+      const cel = cs.find((v) => v[0] === d && v[1] === ano);
+      const serieCel = serie.original[ativo]?.find((v) => v[0] === d && v[1] === ano);
+      if (!cel || !serieCel) { erros.push(`par ${k}/${ativo}: célula ausente`); continue; }
+      if (cel[2] === "R") {
+        if (serieCel[3] !== "v" || typeof serieCel[2] !== "number")
+          erros.push(`par ${k}/${ativo}: apto com ressalva sem valor verificado`);
+      } else if (cel[2] === "N") {
+        if (serieCel[2] !== null) erros.push(`par ${k}/${ativo}: N/D publicado com valor`);
+      } else erros.push(`par ${k}/${ativo}: estado inesperado ${cel[2]}`);
+    }
+  } else if (p.decisao === "PENDENTE") {
+    for (const [ativo, cs] of Object.entries(hom.celulas)) for (const cel of cs)
+      if (cel[0] === d && cel[1] === ano && cel[2] !== "P" && cel[2] !== "N")
+        erros.push(`par ${k}/${ativo}: valor publicável sem decisão registrada`);
+  } else erros.push(`par ${k}: decisão desconhecida ${p.decisao}`);
 }
 if (Object.keys(hom.pares).length !== 13) erros.push(`esperados 13 pares, encontrados ${Object.keys(hom.pares).length}`);
 for (const e of erros.slice(0, 40)) console.error("ERRO: " + e);
 if (erros.length) { console.error(`BLOQUEADO: ${erros.length} erro(s).`); process.exitCode = 1; }
-else console.log(`HOMOLOGAÇÃO WEB OK: ${n} células, ${ativos.length} ativos, ${comValorValidado} com valor validado, 13 pares pendentes, Brasil 2022–2023 sem total nacional`);
+else console.log(`HOMOLOGAÇÃO WEB OK: ${n} células, ${ativos.length} ativos, ${comValorValidado} com valor validado, ${paresSelecionados.size} pares com seleção comprovada, Brasil 2022–2023 sem total nacional`);

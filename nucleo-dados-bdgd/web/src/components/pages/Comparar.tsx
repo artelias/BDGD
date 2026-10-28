@@ -143,7 +143,7 @@ function Corpo({ ds, item, cd }: { ds: Dataset; item: MenuItem | null; cd: Conce
           <Segmented size="sm" label={`Tipo do lado ${k.toUpperCase()}`} value={x.tipo} onChange={(t) => setSide(k, t === "dist" ? { tipo: "dist", id: (x.tipo === "grupo" ? ds.groupDists(x.id)[0]?.dist : x.id) ?? ds.dists[0].dist } : { tipo: "grupo", id: x.tipo === "dist" ? (ds.dist(x.id)!.grupo_status === "verificado" ? ds.dist(x.id)!.grupo : ds.grupos[0].id) : x.id })}
             options={[{ value: "dist", label: "Distribuidora" }, { value: "grupo", label: "Grupo" }]} />
         </div>
-        <Picker label={x.tipo === "dist" ? "Distribuidora" : "Grupo econômico verificado"} value={String(x.id)} options={opts}
+        <Picker inlineMenu label={x.tipo === "dist" ? "Distribuidora" : "Grupo econômico verificado"} value={String(x.id)} options={opts}
           onChange={(v) => setSide(k, x.tipo === "dist" ? { tipo: "dist", id: Number(v) } : { tipo: "grupo", id: v })} testId={`picker-${k}`} />
         <div className={s.sideName}>{ds.scopeLabel(x)}</div>
         <div className={s.sideMeta}>{x.tipo === "grupo" ? `${dists.length} distribuidoras · controlador ${g?.controlador ?? ""}` : `DIST ${x.id} · ${g ? `grupo ${g.nome}` : "grupo não confirmado"}`}</div>
