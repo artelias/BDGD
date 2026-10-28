@@ -44,14 +44,15 @@
   "auditoria/fase4/RANKING_ANOMALIAS_TEMPORAIS.csv": "430c45190750adaa87c4735018ce9092119e479f105b59577dac7ffdb4796a6d",
   "auditoria/fase6/INVENTARIO_LACUNAS_NACIONAL.csv": "2e8be0aaa1649f414174ca628b36527c9d92c6b19b2ef733b40a24f5c519bd3f",
   "auditoria/fase6/CORRECOES_AUSENCIAS.csv": "6f0fe7c65115b3354e8b1c976cfbf098f6ab0d8132436653c5e4058ea9f809a6",
-  "web/public/data/historico/homologacao.json": "00000000000000000000000000000000c90824cebc5e0d46ef423fd7d8bf59d1",
+  "web/public/data/historico/homologacao.json": "ad0e10e05f2ca36ff5a932fb69e1ec8ea8c75feffe456b3fe4798d2051092b08",
   "auditoria/reconciliacao/observacoes.json": "347e188567e092a7c63ee1caae92d91a805512865783aae03a3fbda94fddb825",
-  "web/public/data/historico/politica-republicacoes.json": "000000000000000000000000000000007696420adf8f2265688b5cbb0e86932e"
+  "auditoria/fase4/DECISOES_DUPLICATAS_13_PARES.csv": "de9ab1bd2fc58e61e328bddf7faf5c5d9b6d143d7bd660186b9d2f566cd2faac",
+  "web/public/data/historico/politica-republicacoes.json": "aba77a1f8b234cb7d0808551902e09d6a36b82ee21375208ceef3319af21d0ab"
  },
  "saidas": {
-  "serie_fisica_nacional.csv": "49f5da6b9cdb938efd77a517e289aefacf21f13b492f9a0f3e659426b7abd27d",
-  "agregados_nacionais.csv": "00000000000000000000000000000000eba00e0e92b927cd01d05c964a055a1e",
+  "serie_fisica_nacional.csv": "2843e1b175a5c3274492a404fb561934bb1741f50269c642c94c75da9163f4d5",
+  "agregados_nacionais.csv": "66010ea2959230e04db95ce1789ce07aea83d3100f8ca058bfe4dedcf90812a1",
   "pontes_sucessao.csv": "359f7e7ac4841e31ed442de6f94decb0a834da37b227c1083e90ad9c3fa8e166",
-  "esquema.json": "000000000000000000000000000000006dd88fc4e7db77dccfe6a7514bf22a99"
+  "esquema.json": "27cbdc503a1e7d3b112b868944fdb4ecb8471fbf4eb74593640e08e904990d20"
  }
 }
