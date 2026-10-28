@@ -50,7 +50,7 @@ describe("republicações históricas 2022–2023 — seleção sem homologaçã
         const cell=rows.find(r=>r[0]===p.dist && r[1]===p.ano);
         const estado=estados.celulas[ativo].find((r: unknown[])=>r[0]===p.dist && r[1]===p.ano);
         expect(cell).toBeDefined();
-        if(estado[2]==="observado"){expect(cell?.[2]).not.toBeNull();expect(cell?.[3]).toBe("v");}
+        if(estado[2]==="observado" || estado[2]==="zero_verificado"){expect(cell?.[2]).not.toBeNull();expect(cell?.[3]).toBe("v");}
         else if(estado[2]==="ausente"){expect(cell?.[2]).toBeNull();}
         else throw new Error("estado inesperado no par selecionado");
       }
