@@ -4,7 +4,7 @@ import AxeBuilder from "@axe-core/playwright";
 const paginas = [
   ["/", "Panorama Brasil"], ["/explorar/", "Explorar ativos"], ["/matriz/", "Matriz Nacional"],
   ["/comparar/", "Comparador"], ["/evolucao/", "Evolução histórica"],
-  ["/previsoes/", "Motor de Expansão Elétrica"], ["/metodologia/", "Metodologia e qualidade"],
+  ["/previsoes/", "Motor de Expansão Elétrica"], ["/metodologia/", "Metodologia dos ativos físicos"],
 ] as const;
 const conteudo = (p: Page) => p.getByRole("main");
 
@@ -81,7 +81,7 @@ test("@iphone QA: navegação pelas sete páginas, busca vazia e retorno", async
     await nav.getByRole("link", { name: link, exact: true }).click();
     await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();
   }
-  for (const [link, heading] of [["Evolução histórica", "Evolução histórica"], ["Metodologia e qualidade", "Metodologia e qualidade"], ["Previsões", "Motor de Expansão Elétrica"]]) {
+  for (const [link, heading] of [["Evolução histórica", "Evolução histórica"], ["Metodologia e qualidade", "Metodologia dos ativos físicos"], ["Previsões", "Motor de Expansão Elétrica"]]) {
     await nav.getByRole("button", { name: "Mais", exact: true }).click();
     await page.getByRole("dialog", { name: "Mais opções" }).getByRole("link", { name: new RegExp("^" + link) }).click();
     await expect(page.getByRole("heading", { name: heading, exact: true })).toBeVisible();

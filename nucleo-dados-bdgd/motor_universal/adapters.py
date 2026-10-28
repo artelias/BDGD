@@ -29,7 +29,9 @@ def national_panel(directory, registry):
                          "fonte": r["fonte"] or f"{manifest['versao']}/{filename}; fonte original não informada",
                          "competencia": f"{r['ano']}-12-31",
                          "territorio": {"nivel": "dist", "id": r["dist"]},
-                         "perimetro_id": r["perimetroId"], "regra_versao": r["regraVersao"],
+                         "perimetro_id": r["perimetroId"], "regra_versao": (
+                             r["regraVersao"].replace("+republicacao-mais-recente", "") + "+republicacao-mais-recente"
+                             if "republicacao-editorial" in manifest["versao"] else r["regraVersao"]),
                          "disponivel_em": None,  # data original de disponibilidade não consta no CSV
                          "ruptura": r["ruptura_desde_ano_anterior"].lower() == "true",
                          "nao_somar": r["nao_somar_em_agregados"].lower() == "true",

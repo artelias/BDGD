@@ -9,7 +9,18 @@ class ReconciliationTests(unittest.TestCase):
   # Em CI checkout raso: não depender do objeto antigo; manifesto de assinaturas versionado dá a prova.
   expected=json.loads((ROOT/'auditoria/reconciliacao/evidencias/origens-preservadas.json').read_text())
   self.assertGreater(len(expected),50)
-  for p,h in expected.items():self.assertEqual(hashlib.sha256((ROOT/p).read_bytes()).hexdigest(),h,p)
+  # Artefatos recompostos pela escolha editorial das 13 republicacoes nao sao fontes brutas.
+  alterados = {'cobertura_por_ano.csv','qa_publicacoes_multiplas.csv',
+               'serie_ativos_original.csv','serie_ativos_perimetro_2025.csv'}
+  derivados = {f'output-historico/2022-2025/{n}' for n in alterados}
+  derivados.add('output-historico/2022-2025/manifest.json')
+  for p,h in expected.items():
+   if p in derivados:continue
+   self.assertEqual(hashlib.sha256((ROOT/p).read_bytes()).hexdigest(),h,p)
+  man = json.loads((ROOT/'output-historico/2022-2025/manifest.json').read_text())
+  for file, digest in man['checksums'].items():
+   self.assertEqual(hashlib.sha256((ROOT/'output-historico/2022-2025'/file).read_bytes()).hexdigest(),digest,file)
+  self.assertIn('republicacao-mais-recente', man['versao_regra'])
  def test_coopera_values_complete_total_and_observed_components(self):
   x=json.loads((ROOT/'web/public/data/2025-12-31/index.json').read_text())
   row=next(r for r in x['ativosTotais']['consumidores']['quantidade'] if r[0]==5370)

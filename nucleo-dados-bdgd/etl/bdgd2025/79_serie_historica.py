@@ -27,6 +27,9 @@ OUT = R / "output-historico" / "2022-2025"
 WEB = R / "repo" / "nucleo-dados-bdgd" / "web" / "public" / "data" / "historico"
 CFG = json.loads((pathlib.Path(__file__).parent / "config" / "conceitos_2025.json").read_text(encoding="utf-8"))
 ANOS = [2022, 2023, 2024, 2025]
+POLITICA_P = pathlib.Path(__file__).resolve().parents[2] / "web/public/data/historico/politica-republicacoes.json"
+POLITICA = json.loads(POLITICA_P.read_text(encoding="utf-8")) if POLITICA_P.exists() else {"pares": []}
+SELECAO = {(int(p["ano"]), int(p["dist"])): p for p in POLITICA["pares"]}
 SEM_TUC = {"000", "00", "0", "SEM_CODIGO", "NA"}
 LIMIAR_QUEBRA = 0.10
 # eventos societarios documentados (fontes em docs/HARMONIZACAO-SUCESSAO-2022-2025.md e R3-MOTOR-EXPANSAO-ELETRICA-SUCESSOES.md)
@@ -82,7 +85,21 @@ def main():
                 multiplas.append({"ano": ano, "dist": d, "itens": "+".join(sorted(validos)), "pendentes_ou_falhas": "+".join(pendentes + divergentes), "sha256_distintos": len(shas),
                                   "ativos_divergentes": ",".join(difs), "diferencas_integrais": "; ".join((eqj or {}).get("diferencas", [])[:12]) if eqj else "comparacao integral nao executada",
                                   "decisao": f"equivalentes: {crit}" if crit else "revisao humana: equivalencia integral nao comprovada"})
-                if crit and not pendentes: equivalente = sorted(validos)[0]
+                # Regra editorial (28/10/2026): depois de conferir a competencia e o
+                # processamento de ambas, selecionar a republicacao V11 mais recente.
+                # A equivalencia integral continua auditada; nao representa homologacao ANEEL.
+                candidato = SELECAO.get((ano, d))
+                if candidato and not pendentes:
+                    item_recente = candidato["selecionada"]["item_id"]
+                    if item_recente not in validos:
+                        raise RuntimeError(f"Publicacao recente ausente nos conceitos validados: {ano}/{d}/{item_recente}")
+                    if not candidato["selecionada"]["versao"].startswith("V11_"):
+                        raise RuntimeError(f"Timestamp da republicacao invalido: {ano}/{d}")
+                    equivalente = item_recente
+                    multiplas[-1]["decisao"] = f"versao mais recente selecionada: {candidato['selecionada']['versao']} (ressalva)"
+                    multiplas[-1]["politica"] = POLITICA["versao"]
+                elif crit and not pendentes:
+                    equivalente = sorted(validos)[0]
                 if pendentes: base["motivo"] = "publicacoes multiplas: item restante em processamento"
             if not pubs.get(d): st = "sem_publicacao"
             elif len(pubs[d]) > 1 and pendentes:

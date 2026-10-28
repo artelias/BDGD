@@ -1,5 +1,7 @@
 .sides { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; gap: 14px; margin-bottom: 18px; }
-.side { position: relative; padding: 16px 16px 14px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); min-width: 0; overflow: hidden; }
+.side { position: relative; padding: 16px 16px 14px; border-radius: var(--r-lg); background: var(--surface); border: 1px solid var(--hairline); min-width: 0; overflow: visible; }
+/* O menu de distribuidoras/grupos fica fora do cartao; nao pode ser recortado pelo overflow. */
+.side:focus-within { z-index: 12; }
 .side::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--c); }
 .sideTag { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 7px; background: var(--c); color: #fff; font-size: 0.75rem; font-weight: 700; }
 :root[data-theme="dark"] .sideTag { color: #0d0e10; }

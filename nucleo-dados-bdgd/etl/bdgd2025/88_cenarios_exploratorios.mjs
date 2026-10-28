@@ -57,7 +57,7 @@ function tendencia(valores, alvo) {
 const linhas = csv(arquivo.toString("utf8"));
 const conjuntos = new Map();
 for (const r of linhas) {
-  const chave = [r.dist, r.conceitoId, r.metrica, r.unidade, r.perimetroId, r.regraVersao].join("|");
+  const chave = [r.dist, r.conceitoId, r.metrica, r.unidade, r.perimetroId].join("|");
   if (!conjuntos.has(chave)) conjuntos.set(chave, []);
   conjuntos.get(chave).push(r);
 }
@@ -89,8 +89,8 @@ for (const conjunto of conjuntos.values()) {
 }
 series.sort((a, b) => a[0] - b[0] || a[2].localeCompare(b[2]));
 const produto = {
-  versao: "cenarios-bdgd-exploratorios-1.0.1",
-  origem: "ANEEL/BDGD; contrato-nacional-1.0.1",
+  versao: "cenarios-bdgd-exploratorios-1.0.1+republicacao-editorial-1",
+  origem: "ANEEL/BDGD; contrato-nacional-1.0.1+republicacao-editorial-1",
   commitOrigem,
   blobShaOrigem,
   anosObservados: [2022, 2023, 2024, 2025],

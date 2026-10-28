@@ -2,33 +2,20 @@
 import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { DataError, LoadingBlock } from "@/components/ui/Feedback";
 import { Pill } from "@/components/ui/Value";
 import { CONCEITOS, INDICADORES } from "@/lib/catalogo";
 import type { Dataset } from "@/lib/dataset";
 import { useData, useQualidade } from "@/lib/data-context";
 import { fmt, fmtDate, METRIC_LABEL } from "@/lib/format";
-import type { Metric } from "@/lib/types";
 import p from "./pages.module.css";
 import s from "./metodologia.module.css";
 
 const SECS = [
-  ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["dicionario", "Dicionário de indicadores"], ["homologacao", "Homologação por métrica"],
-  ["qualidade", "Qualidade e alertas"], ["grupos", "Grupos econômicos"], ["dda", "DDA e vínculos"], ["vpe", "BI VPE 2024"], ["privacidade", "Privacidade e licença"], ["reproducao", "Reprodutibilidade"], ["modelo-matematico", "Modelagem matemática"],
+  ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["dicionario", "Dicionário de indicadores"],
+  ["grupos", "Grupos econômicos"], ["dda", "Classificação e vínculos"], ["privacidade", "Privacidade e licença"], ["modelo-matematico", "Modelagem matemática"],
 ] as const;
-
-const ALERTA: Record<string, string> = {
-  potencia_UG_acima_75kW: "Registros de unidades geradoras com POT_INST acima de 75 kW em BT (inclui sistemas SIGFI cujo valor não se comporta como kW). Valores preservados; potência de geração publicada como N/D.",
-  uc_cod_id_ativo_duplicado: "Alerta da auditoria legada UC v2: mais de um registro ativado para o mesmo COD_ID. Naquela regra, a quantidade fica N/D; registros e distintos são preservados. O indicador atual segue a regra UC v3 e seu próprio estado no contrato.",
-  uc_sobreposicao_entre_entidades: "COD_ID presente em mais de uma entidade UC (BT, MT, AT). Por isso o total de consumidores usa a união de códigos por distribuidora.",
-  filtro_indisponivel: "Chaves de circuito/subestação que não existem na tabela de destino (> 5% de órfãos). O filtro fica indisponível; contagens independentes seguem válidas.",
-  divergencia_potencia: "Potência total das unidades transformadoras diverge mais de 5% da potência dos equipamentos (via DDA). As duas visões não são somadas.",
-  POT_NOM_provavel_MVA: "Unidades transformadoras com POT_NOM aparentemente em MVA (valor × 1000 coincide com o equipamento). Valor original preservado, com alerta.",
-};
-const HOMOL: Record<string, ["ok" | "warn" | "nd" | "default", string]> = {
-  homologada: ["ok", "Homologada"], homologada_com_ressalvas: ["warn", "Com ressalvas"], nao_homologada: ["nd", "Não homologada"], informativa: ["default", "Informativa"],
-};
 
 export function Metodologia() {
   const data = useData();
@@ -47,15 +34,13 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
     return () => io.disconnect();
   }, []);
   const cov = ds.raw.cobertura;
-  const homol = useMemo(() => ds.raw.homologacao.filter((h) => h.status !== "informativa"), [ds]);
-  const nh = homol.reduce<Record<string, number>>((a, h) => { a[h.status] = (a[h.status] ?? 0) + 1; return a; }, {});
 
   return (
     <>
       <header className={`${p.head} rise`}>
-        <div className="eyebrow">Proveniência · regras · qualidade</div>
-        <h1 className="display" style={{ marginTop: 8 }}>Metodologia e qualidade</h1>
-        <p className="lede">Como cada número foi obtido a partir das BDGDs oficiais de 31/12/2025, o que foi homologado, o que permanece N/D e por quê.</p>
+        <div className="eyebrow">Proveniência · indicadores · modelos</div>
+        <h1 className="display" style={{ marginTop: 8 }}>Metodologia dos ativos físicos</h1>
+        <p className="lede">Definições das métricas físicas, classificação patrimonial, vínculos elétricos e metodologia de previsão; dados observados e projeções são apresentados separadamente.</p>
       </header>
       <div className={s.layout}>
         <nav className={s.toc} aria-label="Seções">
@@ -81,10 +66,11 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
               <div className={s.stat}><div className={s.statNum}>{ds.entidades.length}</div><div className="caption">entidades com agregados</div></div>
               <div className={s.stat}><div className={s.statNum}>{q.data ? fmt(q.data.reconciliacao.ok ?? 0) : "…"}</div><div className="caption">reconciliações exatas com a origem</div></div>
             </div>
-            <p className="caption">Release <span className="mono">{rel.release_id}</span> · gerado em {fmtDate(rel.generated_at)} · status {rel.status === "homologado" ? "homologado" : "parcial (em validação)"} · contrato {rel.schema_version}</p>
+            <p className="caption">Release <span className="mono">{rel.release_id}</span> · gerado em {fmtDate(rel.generated_at)} · estado {rel.status === "homologado" ? "auditado tecnicamente" : "parcial (em validação)"} · contrato {rel.schema_version}</p>
           </section>
 
           <section id="cobertura" className={s.sec}>
+            <span id="qualidade" className="sr-only" aria-hidden="true" />
             <h2>Cobertura</h2>
             <p>O universo considera toda distribuidora que já publicou BDGD no catálogo (2016–2025). Ausência de arquivo 2025 é um estado próprio, nunca zero.</p>
             <div className={s.scroll} tabIndex={0} role="region" aria-label="Tabela rolável">
@@ -115,11 +101,25 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
               <div className={s.rule}><dt>Entre distribuidoras</dt><dd>DISTs são partições: métricas por distribuidora são aditivas entre si. Grupos somam só vínculos verificados; distribuidoras sem grupo confirmado não entram em somas de grupo.</dd></div>
               <div className={s.rule}><dt>Filtros DDA</dt><dd>Cada filtro usa um cubo cujas dimensões são exatamente as filtradas. Sem cubo conjunto, a combinação é indisponível — nunca se multiplicam percentuais marginais.</dd></div>
             </dl>
+            <h3>Regras por categoria e subcategoria patrimonial</h3>
+            <p>A quantidade física decorre da população de equipamentos elegíveis, identificada pelo par entidade e TUC/A1, sob DIST e competência constantes; chaves COD_ID são preservadas para prova de unicidade, não para agrupamento estatístico.</p>
+            <dl>
+              <div className={s.rule}><dt>Transformadores de distribuição</dt><dd>Equipamentos EQTRMT/EQTRAT com TUC 565; A1 identifica tipo do bem; A2 tensão primária; A3 secundária; A4 faixa de potência; A5 fases e A6 proteção. UNTRMT/UNTRAT informam contexto e não são somadas ao estoque EQ.</dd></div>
+              <div className={s.rule}><dt>Transformadores de força</dt><dd>Equipamentos EQTRMT/EQTRAT com TUC 570; A2 e A3 descrevem tensões, A4 faixa patrimonial, A5 fases e A6 comutação. Instalações UN* não são contadas novamente.</dd></div>
+              <div className={s.rule}><dt>Transformadores de medida</dt><dd>Equipamentos EQTRM com TUC 575; A3 representa relação de transformação e A4 corrente/tensão condicionada ao tipo de bem A1. Não representa potência nominal exata.</dd></div>
+              <div className={s.rule}><dt>Chaves / disjuntores / religadores</dt><dd>Contagens distintas por TUC 160, 210 e 345 dentro de EQSE. Atributos A2–A6 descrevem tensão, corrente, fases, isolamento, controle e interrupção conforme a TUC. UNSE* são vínculos.</dd></div>
+              <div className={s.rule}><dt>Reguladores</dt><dd>Equipamentos EQRE, TUC 340: A2 tensão, A3 faixa patrimonial de potência, A4 corrente, A5 fases. Não confundir quantidade com kVA.</dd></div>
+              <div className={s.rule}><dt>Postes e torres</dt><dd>Na TUC 255, A1=01 indica poste e A1=02 torre; A2 é tipo construtivo, A3 material, A4 altura (Tabela IX) e A5 esforço (Tabela X). Confrontar com PONNOT.TIP_PN.</dd></div>
+              <div className={s.rule}><dt>Redes e ramais</dt><dd>Extensão de SSDBT, SSDMT, SSDAT e RAMLIG calculada por soma do comprimento declarado COMP, em metros, dividida por 1.000; separar BT, MT, AT e ramais.</dd></div>
+              <div className={s.rule}><dt>Alimentadores e circuitos</dt><dd>Número de circuitos MT em CTMT e AT em CTAT; quantidades de outros ativos atreladas somente quando os vínculos e a cardinalidade são verificáveis.</dd></div>
+              <div className={s.rule}><dt>Consumidores e geradores</dt><dd>Contar unidades no grão próprio, por DIST e competência, diferenciando UCBT/UCMT/UCAT e UGBT/UGMT/UGAT. Ausências e duplicidades não viram zeros presumidos.</dd></div>
+              <div className={s.rule}><dt>Capacitores, medidores e subestações</dt><dd>Contagem de EQCR por TUC, de EQME por equipamento e de SUB por subestação; subcategorias exigem a classificação patrimonial correta e não agregam equipamentos e instalações conjuntamente.</dd></div>
+            </dl>
           </section>
 
           <section id="dicionario" className={s.sec}>
             <h2>Dicionário de indicadores · Como é calculado?</h2>
-            <p>Cada indicador do painel em linguagem direta, com o cálculo técnico e as ressalvas. Os nomes de negócio são os mesmos usados no Panorama, na Matriz e no Comparador.</p>
+            <p>O dicionário descreve a população física de referência, a entidade de origem, a unidade de medida e os critérios de classificação. Em equipamentos com TUC, os subgrupos patrimoniais são distinguidos por TUC e A1, sem somar a instalação correspondente.</p>
             {CONCEITOS.filter((c) => INDICADORES.some((i) => i.conceito === c.id)).map((c) => (
               <div key={c.id}>
                 <h3>{c.nome}</h3>
@@ -127,7 +127,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
                   {INDICADORES.filter((i) => i.conceito === c.id).map((i) => (
                     <div key={i.id} className={s.rule} id={`ind-${i.id}`}>
                       <dt>{i.nome}<div className="caption mono" style={{ fontWeight: 400, marginTop: 2 }}>{i.ent ?? "UCBT+UCMT+UCAT"} · {METRIC_LABEL[i.metric]}</div></dt>
-                      <dd>{i.explicacao}<div className="mono caption" style={{ marginTop: 6 }}>{i.tecnico}</div>{i.ressalva && <div className="caption" style={{ marginTop: 4, color: "var(--warn)" }}>{i.ressalva}</div>}</dd>
+                      <dd>{i.explicacao}<div className="caption" style={{ marginTop: 6 }}>População: {i.ent ?? "UCBT, UCMT e UCAT"}. Medida: {METRIC_LABEL[i.metric]}. {i.metric === "quantidade" ? "Contagem de unidades elegíveis da população indicada, por TUC e tipo de bem A1 quando presentes e aplicáveis. Chaves: TUC 160; disjuntores: 210; religadores: 345; reguladores: 340; transformadores de distribuição: 565; força: 570; medida: 575; estruturas: 255. As instalações UN* não são adicionadas à contagem EQ*." : i.metric === "extensao_km" ? "Soma dos comprimentos declarados, dividida por mil para obter quilômetros." : "Soma de potências nominais apenas após validar domínio, unidade, vínculo e competência; valor N/D enquanto essas condições não forem comprovadas."}</div>{i.ressalva && <div className="caption" style={{ marginTop: 4, color: "var(--warn)" }}>{i.ressalva}</div>}</dd>
                     </div>
                   ))}
                 </dl>
@@ -142,50 +142,6 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
             </dl>
           </section>
 
-          <section id="homologacao" className={s.sec}>
-            <h2>Homologação por métrica</h2>
-            <p>Critério: reconciliação exata entre o agregado e uma leitura independente do GDB (contagens e somas) em cada distribuidora, mais o estado de qualidade por DIST. {nh.homologada ?? 0} métricas homologadas, {nh.homologada_com_ressalvas ?? 0} com ressalvas e {nh.nao_homologada ?? 0} não homologadas.</p>
-            <div className={s.scroll} tabIndex={0} role="region" aria-label="Tabela rolável">
-              <table className={s.tbl}>
-                <thead><tr><th>Entidade</th><th>Métrica</th><th>Situação</th><th className="r">DIST com valor</th><th className="r">N/D</th><th className="r">Alertas</th><th className="r">Reconciliações</th></tr></thead>
-                <tbody>
-                  {homol.map((h) => (
-                    <tr key={`${h.entidade}-${h.metrica}`}>
-                      <td><span className="mono">{h.entidade}</span></td><td>{METRIC_LABEL[h.metrica as Metric] ?? "Potência instalada (kW)"}</td>
-                      <td><Pill tone={HOMOL[h.status]?.[0] ?? "default"}>{HOMOL[h.status]?.[1] ?? h.status}</Pill></td>
-                      <td className="r num">{h.comValor}</td><td className="r num">{h.nd}</td><td className="r num">{h.alerta}</td><td className="r num">{h.recOk}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section id="qualidade" className={s.sec}>
-            <h2>Qualidade e alertas</h2>
-            <p>Anomalias da fonte são preservadas e documentadas; nenhum dado oficial é corrigido. Alertas não bloqueiam métricas independentes corretas.</p>
-            {!q.data ? <LoadingBlock lines={3} /> : (
-              <>
-                <table className={s.tbl}>
-                  <thead><tr><th>Alerta</th><th className="r">Ocorrências</th></tr></thead>
-                  <tbody>
-                    {Object.entries(q.data.alertasPorTipo).sort((a, b) => b[1] - a[1]).map(([t, n]) => (
-                      <tr key={t}><td><div style={{ fontWeight: 560 }}>{t.replaceAll("_", " ")}</div><div className="caption">{ALERTA[t] ?? ""}</div></td><td className="r num">{n}</td></tr>
-                    ))}
-                  </tbody>
-                </table>
-                <h3>Auditoria legada de consumidores — regra UC v2</h3>
-                <p className="caption">Diagnóstico do pacote de origem, preservado para rastreabilidade. Esta tabela não substitui o indicador vigente UC v3 nem altera seu estado de publicação.</p>
-                <table className={s.tbl}>
-                  <thead><tr><th>DIST</th><th>Entidade</th><th className="r">Registros</th><th className="r">COD_ID distintos</th><th>Motivo</th></tr></thead>
-                  <tbody>{q.data.ucRegraV2.filter((u) => !u.valida).map((u) => <tr key={`${u.dist}${u.entidade}`}><td className="num">{u.dist} · {ds.dist(u.dist)?.sigla.replaceAll("_", " ")}</td><td className="mono">{u.entidade}</td><td className="r num">{fmt(u.registros)}</td><td className="r num">{fmt(u.distintos)}</td><td className="caption">{u.motivos}</td></tr>)}</tbody>
-                </table>
-                <h3>Áreas de atuação (ARAT)</h3>
-                <p>Geometria exclusivamente da entidade ARAT de cada GDB 2025, reprojetada para EPSG:4326, simplificada preservando topologia em projeção equivalente local. Diferença máxima de área: <b className="num">{fmt(Math.max(...q.data.arat.map((a) => Math.abs(Number(a.dif_area_pct ?? 0)))), undefined)}%</b>; geometrias de saída válidas em {q.data.arat.filter((a) => a.valida_saida === "True").length} de {q.data.arat.length}. A vista nacional aplica simplificação adicional apenas para desenho; o detalhe de cada distribuidora usa o arquivo oficial do pacote.</p>
-              </>
-            )}
-          </section>
-
           <section id="grupos" className={s.sec}>
             <h2>Grupos econômicos</h2>
             <p>Controlador vigente em 31/12/2025, comprovado por publicação oficial da holding ou ato do regulador. Mudanças concluídas depois da data-base não alteram 2025 (por exemplo, as transferências da Amazonas Energia e da Roraima Energia ao grupo J&F, concluídas em abril de 2026). Sem fonte verificável, a distribuidora fica “não confirmado” e não entra em somas de grupo.</p>
@@ -197,25 +153,17 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           </section>
 
           <section id="dda" className={s.sec}>
-            <h2>DDA e vínculos</h2>
-            <p>Descrições de códigos: catálogo <span className="mono">{rel.dda_version}</span>. Rótulos de atributos: Manual BDGD Revisão 5. Vínculos entre entidades (UN*/EQ*, CTMT, SUB, CONJ) validados com o catálogo de relacionamentos do IA Builder, por <span className="mono">DIST + COD_ID</span>; alvos polimórficos avaliados pela união dos destinos. A tabela de domínio TSIST não existe no catálogo M10 e seus códigos aparecem sem descrição.</p>
-          </section>
-
-          <section id="vpe" className={s.sec}>
-            <h2>Relação com o BI VPE 2024</h2>
-            <p>O BI VPE usa a BDGD de 31/12/2024 e serve apenas como referência metodológica (definições, filtros, estrutura). Não é gabarito quantitativo: os números deste portal são reconciliados exclusivamente com as BDGDs de 31/12/2025.</p>
-            <p>A paridade entre as métricas deste portal e as do BI VPE <b>ainda não foi avaliada</b>, porque o arquivo do BI não está disponível. Isso não afeta a qualidade dos indicadores publicados, que são auditados diretamente na BDGD 2025; apenas nenhuma equivalência com medidas do BI é afirmada.</p>
+            <h2>Classificação patrimonial e conectividade elétrica</h2>
+            <p>A interpretação de um atributo A2–A6 é condicional ao par TUC × A1: códigos numéricos não têm significado isolado. O MCPSE estabelece as características patrimoniais por tipo de bem; o DDA estabelece domínios de atributos operacionais e de equipamentos, cuja equivalência temporal precisa ser comprovada.</p>
+            <p>Em transformadores TUC 565 e 570, A2 é tensão primária, A3 secundária e A4 representa <b>faixa patrimonial</b>, não potência nominal pontual. UNTRMT.POT_NOM expressa kVA, UNTRAT.POT_NOM expressa MVA (conversão × 1.000) e EQTRMT/EQTRAT.POT_NOM é um código de domínio DDA. Não se somam as potências de instalações e equipamentos da mesma população.</p>
+            <p>Os relacionamentos entre equipamentos e instalações (EQ–UN) e entre instalações, circuitos CTMT/CTAT, subestações SUB e conjuntos CONJ são vinculados por chaves de cadastro com avaliação de cardinalidade e órfãos. Conexões elétricas não são inferidas somente pela proximidade cartográfica. A tradução depende da competência, da referência documental e da cobertura de dados.</p>
+            <p className="caption">Referências documentais: MCPSE, Manual BDGD, catálogo DDA {rel.dda_version} e inventários geográficos publicados.</p>
           </section>
 
           <section id="privacidade" className={s.sec}>
             <h2>Privacidade e licença</h2>
             <p>{rel.privacidade} Nenhum arquivo GDB, Parquet ou identificador individual é publicado. {rel.licenca}</p>
             <p>Agregados calculados a partir dos dados abertos da ANEEL (BDGD). Desenvolvido por Arthur Henrique Elias de Lima · <a href="mailto:Arthur.henrique.elias@gmail.com">Arthur.henrique.elias@gmail.com</a>.</p>
-          </section>
-
-          <section id="reproducao" className={s.sec}>
-            <h2>Reprodutibilidade</h2>
-            <p>O pipeline (Python, GDAL/pyogrio, DuckDB, shapely) está versionado no repositório, com checkpoints por distribuidora, reconciliação contra a origem e validador estrutural do pacote. Os arquivos deste site são gerados a partir do pacote público validado, sem acesso a dados brutos.</p>
           </section>
 
           <section id="modelo-matematico" className={s.sec}>
@@ -234,13 +182,23 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
             <dl className={s.rule}><dt>Expansão física</dt><dd><code>Nnovo(i,t,k) = fₖ(Dpico, Sdisponível, topologia, dispersão, qualidade, custos)</code><p className="caption">A função fₖ depende da família de ativos e só será especificada empiricamente após auditoria dos vínculos SUB → CTMT → transformadores → segmentos → UC. Proximidade geográfica não prova conectividade elétrica.</p></dd></dl>
             <h3>4. Economia da distribuição e investimento</h3>
             <dl className={s.rule}><dt>Investimento condicional</dt><dd><code>CAPEX(i,t) = Σₖ qnovo(i,t,k) × creal(i,t,k) + Creforço + Csubstituição</code><p className="caption">qnovo é o volume executável, não apenas a necessidade técnica; creal é o custo unitário real no ano-base de preços. Juros, custo de capital, câmbio, restrições orçamentárias e ciclo regulatório podem afetar cronograma e custos. Valores nominais exigem deflator documentado.</p></dd></dl>
-            <h3>5. Identificação, validação e incerteza</h3>
+            <h3>5. Modelos candidatos e variáveis efetivamente disponíveis</h3>
+            <dl>
+              <div className={s.rule}><dt>Persistência</dt><dd><code>ŷ(i,t+h) = y(i,t)</code>. Conserva o último estoque observado. Não requer variáveis externas.</dd></div>
+              <div className={s.rule}><dt>Tendência linear</dt><dd><code>ŷ(i,t+h) = α̂(i) + β̂(i) × (t+h)</code>. Ajusta a trajetória temporal por mínimos quadrados. Não requer variáveis externas.</dd></div>
+              <div className={s.rule}><dt>Crescimento histórico</dt><dd>Estima evolução proporcional a partir de observações positivas e comparáveis. A projeção é condicional à continuidade da dinâmica histórica.</dd></div>
+              <div className={s.rule}><dt>Ridge, Lasso e Elastic Net</dt><dd>Modelos de regressão regularizada para covariáveis correlacionadas; dependem de amostra suficiente e avaliação temporal sem vazamento.</dd></div>
+              <div className={s.rule}><dt>Poisson, Random Forest e HistGradientBoosting</dt><dd>Alternativas para contagens e relações não lineares, sujeitas a disponibilidade de treino e validação fora da amostra. Cadastro no motor não significa desempenho real comprovado.</dd></div>
+              <div className={s.rule}><dt>KNN de distribuidoras análogas</dt><dd>Compara distribuidoras usando variáveis comparáveis e disponíveis no instante do corte, com vizinhanças k=1, 3 e 5. Nenhum resultado real com exógenas verificadas foi liberado no contrato auditado.</dd></div>
+            </dl>
+            <p><b>Variáveis internas candidatas:</b> estoque histórico, TUC/A1–A6, extensão BT/MT/AT, consumidores, CTMT/CTAT, subestações, distribuição urbano/rural e conectividade comprovada. <b>Variáveis externas candidatas:</b> mercado e indicadores de continuidade da ANEEL, PIB/população/domicílios do IBGE e cenários setoriais da EPE. Nenhuma deve ser descrita como efetivamente utilizada sem fonte, data de divulgação, competência, perímetro, versão do dataset e validação temporal.</p>
+            <h3>6. Identificação, validação e incerteza</h3>
             <p>Serão comparados modelos ingênuos, tendências simples, regressões regularizadas e modelos híbridos físico-estatísticos apenas quando os dados forem suficientes. A inclusão de variáveis macroeconômicas depende de melhoria verificável fora da amostra, estabilidade e coerência de engenharia.</p>
             <dl className={s.rule}><dt>Erro absoluto médio</dt><dd><code>MAE = (1/n) × Σ |y(t) − ŷ(t)|</code></dd></dl>
             <dl className={s.rule}><dt>Viés médio</dt><dd><code>BIAS = (1/n) × Σ [ŷ(t) − y(t)]</code></dd></dl>
             <dl className={s.rule}><dt>Erro percentual absoluto ponderado</dt><dd><code>WAPE = Σ |y(t) − ŷ(t)| / Σ |y(t)|</code><p className="caption">Somente quando o denominador é positivo e a agregação é comparável.</p></dd></dl>
             <p>O protocolo prevê validação com origem temporal móvel, comparação contra baselines, análise de resíduos e sensibilidade. O backtest exploratório disponível usa apenas uma origem temporal. Com somente quatro competências anuais (2022–2025), e históricos ainda não homologados, <b>não é possível afirmar desempenho robusto para horizontes longos nem calibrar intervalos probabilísticos confiáveis</b>. Os cenários disponíveis são simulações condicionais, sem homologação preditiva.</p>
-            <h3>6. Incorporações e perímetros históricos</h3>
+            <h3>7. Incorporações e perímetros históricos</h3>
             <p>As séries de EPB devem considerar a sucessão EPB/EBO (2023), e as de EMR a sucessão EMG/ENF (2022). A reconstrução em perímetro comparável exige prova de não sobreposição dos GDBs e reconciliação por métrica. No ano de transição, não se somam automaticamente arquivos que já possam incluir a incorporada. Ausências e rupturas são N/D, jamais zero presumido.</p>
             <p className="caption">Estado desta documentação: inventário e regras de contagem BDGD 2025 são cálculos observados; demanda, capacidade futura, funções de expansão, CAPEX e modelos de erro são especificações de pesquisa até homologação e execução verificáveis.</p>
           </section>

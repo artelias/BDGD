@@ -25,7 +25,7 @@ export const ESTADO: Record<string, string> = {
 
 /** Status do ano na cobertura: "homologado" (decisão humana registrada, hoje só 2025), "completo_tecnico" (todas as
  * publicações elegíveis validadas pelas regras automáticas, sem homologação humana) e "parcial". */
-export const STATUS_ANO: Record<string, string> = { homologado: "homologado", completo_tecnico: "completo (validação automática)", parcial: "em validação" };
+export const STATUS_ANO: Record<string, string> = { homologado: "pacote auditado tecnicamente", completo_tecnico: "validado automaticamente", parcial: "em validação" };
 
 /** Ano com todas as publicações elegíveis validadas: o agregado Brasil pode ser exibido (homologado ou completo técnico). */
 export function anoCompleto(statusAno: string | undefined) {

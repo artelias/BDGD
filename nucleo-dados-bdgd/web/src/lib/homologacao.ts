@@ -8,11 +8,11 @@ export type EstadoPub = "H" | "T" | "R" | "P" | "B" | "N";
 export const PUBLICAVEL: ReadonlySet<string> = new Set(["H", "T", "R"]);
 export const FLAG = { quebra: 1, sinal: 2, naoSomar: 4 } as const;
 export const ROTULO_PUB: Record<EstadoPub, string> = {
-  H: "homologado", T: "completo (validação automática)", R: "apto com ressalvas", P: "pendente de decisão", B: "bloqueado", N: "não disponível",
+  H: "pacote auditado", T: "validado automaticamente", R: "apto com ressalvas", P: "pendente de decisão", B: "bloqueado", N: "não disponível",
 };
 export const DESCRICAO_PUB: Record<EstadoPub, string> = {
-  H: "Pacote 2025 homologado; intervalo da base anual compatível.",
-  T: "Validado pelas regras automáticas, sem sinal temporal ou ressalva. Ainda não é homologação humana.",
+  H: "Pacote 2025 com verificações técnicas concluídas; intervalo da base anual compatível. Não representa homologação regulatória.",
+  T: "Validado pelas regras automáticas, sem sinal temporal ou ressalva. Não representa certificação patrimonial.",
   R: "Valor validado e exibido com ressalva (quebra, sinal temporal, intervalo da base ou anomalia).",
   P: "Sem valor publicado: aguarda decisão humana (publicações divergentes, base inconsistente ou anomalia comprovada).",
   B: "Sem valor publicado: arquivo de outra competência ou valor não homologável.",
@@ -89,6 +89,34 @@ export function seriePainel(h: Homologacao, ativo: string, anos: number[]): Seri
   const v = new Map(p.valores);
   return { id: "painel", nome: `Painel balanceado (${p.universo.length} distribuidoras)`, nota: "mesmas distribuidoras nos quatro anos; não representa o total nacional",
     pontos: anos.map((ano) => ({ ano, v: v.get(ano) ?? null, estado: v.get(ano) === undefined ? "s" : "v", quebra: false, pub: "R" }) as PontoHom) };
+}
+
+/** Subtotal das DIST com valores elegiveis em cada ano, sem exigir cobertura nacional completa.
+ * Nao equivale ao total Brasil; comparacoes temporais sao bloqueadas se o conjunto de DIST mudar.
+ * Flag 4 preserva a regra de nao duplicar predecessor ja contido na sucessora. */
+export function serieSubtotalObservado(idx: ReturnType<typeof indexarHom>, anos: number[]): Serie {
+  let anterior: string | null = null;
+  const pontos: PontoHom[] = anos.map((ano) => {
+    let soma = 0;
+    const membros: number[] = [];
+    for (const [dist, serie] of idx) {
+      const c = serie.get(ano);
+      if (typeof c?.[7] === "number" && (c[7] & 4)) continue;
+      if (c?.[3] !== "v" || typeof c[2] !== "number") continue;
+      soma += c[2];
+      membros.push(dist);
+    }
+    membros.sort((a, b) => a - b);
+    const chave = membros.join(",");
+    const ruptura = anterior !== null && anterior !== chave;
+    anterior = chave;
+    return {
+      ano, v: membros.length ? soma : null, estado: membros.length ? "v" : "s",
+      quebra: ruptura, motivo: `Subtotal de ${membros.length} distribuidoras com valores validos no ano; universo variavel; nao e total nacional.`,
+    };
+  });
+  return { id: "subtotal", nome: "Subtotal observado (cobertura variável)",
+    nota: "DIST disponíveis em cada ano; não representa o total nacional. Quebras de composição impedem variações comparáveis.", pontos };
 }
 
 /** Contagem de estados de publicação por ano para um ativo (cobertura e qualidade). */

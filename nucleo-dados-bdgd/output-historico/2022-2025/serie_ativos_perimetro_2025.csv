@@ -224,31 +224,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 32,Energisa TO,2022,circuitos_at,quantidade,59,validado,32,comparavel,2025,consolidado_comparavel,
 32,Energisa TO,2022,conjuntos,quantidade,55,validado,32,comparavel,2025,consolidado_comparavel,
 32,Energisa TO,2022,barramentos,quantidade,294,validado,32,comparavel,2025,consolidado_comparavel,
-32,Energisa TO,2023,consumidores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,geradores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,iluminacao,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,rede_bt,extensao_km,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,rede_mt,extensao_km,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,rede_at,extensao_km,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,ramais,extensao_km,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,trafo_dist,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,trafo_forca,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,trafo_medida,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,chaves,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,seccionalizadores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,disjuntores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,religadores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,reguladores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,bancos_capacitores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,reatores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,medidores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,postes,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,torres,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,subestacoes,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,alimentadores,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,circuitos_at,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,conjuntos,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-32,Energisa TO,2023,barramentos,quantidade,,revisao_pendente,32,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+32,Energisa TO,2023,consumidores,quantidade,626956.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,geradores,quantidade,32114.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,iluminacao,quantidade,206923.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,rede_bt,extensao_km,11971.157463,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,rede_mt,extensao_km,90217.26356,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,rede_at,extensao_km,2924.659518,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,ramais,extensao_km,14887.146833,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,trafo_dist,quantidade,86561.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,trafo_forca,quantidade,179.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,trafo_medida,quantidade,4099.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,chaves,quantidade,132541.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,seccionalizadores,quantidade,0.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,disjuntores,quantidade,213.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,religadores,quantidade,1796.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,reguladores,quantidade,436.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,bancos_capacitores,quantidade,406.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,reatores,quantidade,30.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,medidores,quantidade,717827.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,postes,quantidade,1056977.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,torres,quantidade,10383.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,subestacoes,quantidade,115.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,alimentadores,quantidade,223.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,circuitos_at,quantidade,59.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,conjuntos,quantidade,55.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
+32,Energisa TO,2023,barramentos,quantidade,290.0,validado,32,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1512 selecionada com ressalva; perimetro avaliado.
 32,Energisa TO,2024,consumidores,quantidade,619893,validado,32,comparavel,2025,consolidado_comparavel,
 32,Energisa TO,2024,geradores,quantidade,44535,validado,32,comparavel,2025,consolidado_comparavel,
 32,Energisa TO,2024,iluminacao,quantidade,206915,validado,32,comparavel,2025,consolidado_comparavel,
@@ -1599,56 +1599,56 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 83,Forcel,2025,circuitos_at,quantidade,,ausente,83,comparavel,2025,consolidado_comparavel,tipo de ativo inexistente no GDB desta distribuidora
 83,Forcel,2025,conjuntos,quantidade,1,validado,83,comparavel,2025,consolidado_comparavel,
 83,Forcel,2025,barramentos,quantidade,1,validado,83,comparavel,2025,consolidado_comparavel,
-86,Eflul,2022,consumidores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,geradores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,iluminacao,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,rede_bt,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,rede_mt,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,rede_at,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,ramais,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,trafo_dist,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,trafo_forca,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,trafo_medida,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,chaves,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,seccionalizadores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,disjuntores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,religadores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,reguladores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,bancos_capacitores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,reatores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,medidores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,postes,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,torres,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,subestacoes,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,alimentadores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,circuitos_at,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,conjuntos,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2022,barramentos,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,consumidores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,geradores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,iluminacao,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,rede_bt,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,rede_mt,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,rede_at,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,ramais,extensao_km,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,trafo_dist,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,trafo_forca,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,trafo_medida,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,chaves,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,seccionalizadores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,disjuntores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,religadores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,reguladores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,bancos_capacitores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,reatores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,medidores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,postes,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,torres,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,subestacoes,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,alimentadores,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,circuitos_at,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,conjuntos,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-86,Eflul,2023,barramentos,quantidade,,revisao_pendente,86,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+86,Eflul,2022,consumidores,quantidade,7479.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,geradores,quantidade,204.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,iluminacao,quantidade,4285.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,rede_bt,extensao_km,211.48047,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,rede_mt,extensao_km,180.05909,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,rede_at,extensao_km,7.97331,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,ramais,extensao_km,92.345,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,trafo_dist,quantidade,451.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,trafo_forca,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,trafo_medida,quantidade,147.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,chaves,quantidade,994.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,seccionalizadores,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,disjuntores,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,religadores,quantidade,9.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,reguladores,quantidade,15.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,bancos_capacitores,quantidade,12.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,reatores,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,medidores,quantidade,7889.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,postes,quantidade,5641.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,torres,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,subestacoes,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,alimentadores,quantidade,4.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,circuitos_at,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,conjuntos,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2022,barramentos,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250131-1249 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,consumidores,quantidade,7558.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,geradores,quantidade,260.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,iluminacao,quantidade,4086.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,rede_bt,extensao_km,212.73492,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,rede_mt,extensao_km,180.64869,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,rede_at,extensao_km,7.97331,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,ramais,extensao_km,78.1,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,trafo_dist,quantidade,440.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,trafo_forca,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,trafo_medida,quantidade,147.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,chaves,quantidade,1031.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,seccionalizadores,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,disjuntores,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,religadores,quantidade,5.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,reguladores,quantidade,15.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,bancos_capacitores,quantidade,12.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,reatores,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,medidores,quantidade,7649.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,postes,quantidade,5682.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,torres,quantidade,0.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,subestacoes,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,alimentadores,quantidade,4.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,circuitos_at,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,conjuntos,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
+86,Eflul,2023,barramentos,quantidade,1.0,validado,86,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250416-2319 selecionada com ressalva; perimetro avaliado.
 86,Eflul,2024,consumidores,quantidade,7691,validado,86,comparavel,2025,consolidado_comparavel,
 86,Eflul,2024,geradores,quantidade,303,validado,86,comparavel,2025,consolidado_comparavel,
 86,Eflul,2024,iluminacao,quantidade,4067,validado,86,comparavel,2025,consolidado_comparavel,
@@ -2124,31 +2124,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 369,Energisa RO,2022,circuitos_at,quantidade,54,validado,369,comparavel,2025,consolidado_comparavel,
 369,Energisa RO,2022,conjuntos,quantidade,26,validado,369,comparavel,2025,consolidado_comparavel,
 369,Energisa RO,2022,barramentos,quantidade,227,validado,369,comparavel,2025,consolidado_comparavel,
-369,Energisa RO,2023,consumidores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,geradores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,iluminacao,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,rede_bt,extensao_km,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,rede_mt,extensao_km,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,rede_at,extensao_km,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,ramais,extensao_km,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,trafo_dist,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,trafo_forca,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,trafo_medida,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,chaves,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,seccionalizadores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,disjuntores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,religadores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,reguladores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,bancos_capacitores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,reatores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,medidores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,postes,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,torres,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,subestacoes,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,alimentadores,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,circuitos_at,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,conjuntos,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-369,Energisa RO,2023,barramentos,quantidade,,revisao_pendente,369,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+369,Energisa RO,2023,consumidores,quantidade,652659.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,geradores,quantidade,22569.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,iluminacao,quantidade,190920.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,rede_bt,extensao_km,8281.441184,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,rede_mt,extensao_km,65229.494594,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,rede_at,extensao_km,2072.902211,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,ramais,extensao_km,13925.083536,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,trafo_dist,quantidade,138888.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,trafo_forca,quantidade,171.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,trafo_medida,quantidade,5566.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,chaves,quantidade,33997.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,seccionalizadores,quantidade,1.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,disjuntores,quantidade,540.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,religadores,quantidade,887.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,reguladores,quantidade,377.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,bancos_capacitores,quantidade,447.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,reatores,quantidade,1.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,medidores,quantidade,768300.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,postes,quantidade,707191.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,torres,quantidade,8225.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,subestacoes,quantidade,88.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,alimentadores,quantidade,315.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,circuitos_at,quantidade,57.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,conjuntos,quantidade,26.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
+369,Energisa RO,2023,barramentos,quantidade,246.0,validado,369,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1513 selecionada com ressalva; perimetro avaliado.
 369,Energisa RO,2024,consumidores,quantidade,630442,validado,369,comparavel,2025,consolidado_comparavel,
 369,Energisa RO,2024,geradores,quantidade,41091,validado,369,comparavel,2025,consolidado_comparavel,
 369,Energisa RO,2024,iluminacao,quantidade,190884,validado,369,comparavel,2025,consolidado_comparavel,
@@ -2424,31 +2424,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 380,EDP ES,2022,circuitos_at,quantidade,146,validado,380,comparavel,2025,consolidado_comparavel,
 380,EDP ES,2022,conjuntos,quantidade,41,validado,380,comparavel,2025,consolidado_comparavel,
 380,EDP ES,2022,barramentos,quantidade,472,validado,380,comparavel,2025,consolidado_comparavel,
-380,EDP ES,2023,consumidores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,geradores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,iluminacao,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,rede_bt,extensao_km,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,rede_mt,extensao_km,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,rede_at,extensao_km,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,ramais,extensao_km,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,trafo_dist,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,trafo_forca,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,trafo_medida,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,chaves,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,seccionalizadores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,disjuntores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,religadores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,reguladores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,bancos_capacitores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,reatores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,medidores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,postes,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,torres,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,subestacoes,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,alimentadores,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,circuitos_at,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,conjuntos,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-380,EDP ES,2023,barramentos,quantidade,,revisao_pendente,380,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+380,EDP ES,2023,consumidores,quantidade,1785668.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,geradores,quantidade,40008.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,iluminacao,quantidade,324699.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,rede_bt,extensao_km,10616.955757564,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,rede_mt,extensao_km,56005.633837779,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,rede_at,extensao_km,3384.6188584,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,ramais,extensao_km,27693.0834,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,trafo_dist,quantidade,160360.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,trafo_forca,quantidade,210.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,trafo_medida,quantidade,14301.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,chaves,quantidade,72017.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,seccionalizadores,quantidade,43.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,disjuntores,quantidade,999.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,religadores,quantidade,3269.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,reguladores,quantidade,1725.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,bancos_capacitores,quantidade,1334.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,reatores,quantidade,0.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,medidores,quantidade,1805776.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,postes,quantidade,811798.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,torres,quantidade,4846.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,subestacoes,quantidade,171.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,alimentadores,quantidade,439.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,circuitos_at,quantidade,157.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,conjuntos,quantidade,44.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
+380,EDP ES,2023,barramentos,quantidade,495.0,validado,380,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250915-1019 selecionada com ressalva; perimetro avaliado.
 380,EDP ES,2024,consumidores,quantidade,1793869,validado,380,comparavel,2025,consolidado_comparavel,
 380,EDP ES,2024,geradores,quantidade,60537,validado,380,comparavel,2025,consolidado_comparavel,
 380,EDP ES,2024,iluminacao,quantidade,324984,validado,380,comparavel,2025,consolidado_comparavel,
@@ -3624,31 +3624,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 404,Energisa MS,2022,circuitos_at,quantidade,101,validado,404,comparavel,2025,consolidado_comparavel,
 404,Energisa MS,2022,conjuntos,quantidade,60,validado,404,comparavel,2025,consolidado_comparavel,
 404,Energisa MS,2022,barramentos,quantidade,379,validado,404,comparavel,2025,consolidado_comparavel,
-404,Energisa MS,2023,consumidores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,geradores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,iluminacao,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,rede_bt,extensao_km,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,rede_mt,extensao_km,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,rede_at,extensao_km,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,ramais,extensao_km,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,trafo_dist,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,trafo_forca,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,trafo_medida,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,chaves,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,seccionalizadores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,disjuntores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,religadores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,reguladores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,bancos_capacitores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,reatores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,medidores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,postes,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,torres,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,subestacoes,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,alimentadores,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,circuitos_at,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,conjuntos,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-404,Energisa MS,2023,barramentos,quantidade,,revisao_pendente,404,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+404,Energisa MS,2023,consumidores,quantidade,1105280.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,geradores,quantidade,83034.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,iluminacao,quantidade,317406.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,rede_bt,extensao_km,17196.177128,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,rede_mt,extensao_km,89365.642016,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,rede_at,extensao_km,4264.203858,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,ramais,extensao_km,10102.727715,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,trafo_dist,quantidade,91652.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,trafo_forca,quantidade,209.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,trafo_medida,quantidade,9481.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,chaves,quantidade,83061.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,seccionalizadores,quantidade,1433.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,disjuntores,quantidade,422.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,religadores,quantidade,2174.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,reguladores,quantidade,789.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,bancos_capacitores,quantidade,2435.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,reatores,quantidade,40.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,medidores,quantidade,1206735.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,postes,quantidade,1185931.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,torres,quantidade,12796.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,subestacoes,quantidade,108.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,alimentadores,quantidade,354.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,circuitos_at,quantidade,99.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,conjuntos,quantidade,60.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
+404,Energisa MS,2023,barramentos,quantidade,379.0,validado,404,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1616 selecionada com ressalva; perimetro avaliado.
 404,Energisa MS,2024,consumidores,quantidade,1041455,validado,404,comparavel,2025,consolidado_comparavel,
 404,Energisa MS,2024,geradores,quantidade,122041,validado,404,comparavel,2025,consolidado_comparavel,
 404,Energisa MS,2024,iluminacao,quantidade,312386,validado,404,comparavel,2025,consolidado_comparavel,
@@ -4499,31 +4499,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 2783,Creral,2025,circuitos_at,quantidade,,ausente,2783,comparavel,2025,consolidado_comparavel,tipo de ativo inexistente no GDB desta distribuidora
 2783,Creral,2025,conjuntos,quantidade,1,validado,2783,comparavel,2025,consolidado_comparavel,
 2783,Creral,2025,barramentos,quantidade,6,validado,2783,comparavel,2025,consolidado_comparavel,
-2866,Copel-Dis,2022,consumidores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,geradores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,iluminacao,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,rede_bt,extensao_km,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,rede_mt,extensao_km,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,rede_at,extensao_km,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,ramais,extensao_km,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,trafo_dist,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,trafo_forca,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,trafo_medida,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,chaves,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,seccionalizadores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,disjuntores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,religadores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,reguladores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,bancos_capacitores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,reatores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,medidores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,postes,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,torres,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,subestacoes,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,alimentadores,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,circuitos_at,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,conjuntos,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-2866,Copel-Dis,2022,barramentos,quantidade,,revisao_pendente,2866,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+2866,Copel-Dis,2022,consumidores,quantidade,4956239.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,geradores,quantidade,148851.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,iluminacao,quantidade,1306425.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,rede_bt,extensao_km,55291.8932421,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,rede_mt,extensao_km,208719.2803643,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,rede_at,extensao_km,7884.36603,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,ramais,extensao_km,90247.12381845,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,trafo_dist,quantidade,459892.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,trafo_forca,quantidade,617.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,trafo_medida,quantidade,32063.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,chaves,quantidade,220625.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,seccionalizadores,quantidade,0.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,disjuntores,quantidade,1423.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,religadores,quantidade,25363.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,reguladores,quantidade,2727.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,bancos_capacitores,quantidade,892.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,reatores,quantidade,0.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,medidores,quantidade,5265760.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,postes,quantidade,3330655.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,torres,quantidade,16544.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,subestacoes,quantidade,476.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,alimentadores,quantidade,1753.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,circuitos_at,quantidade,342.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,conjuntos,quantidade,157.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
+2866,Copel-Dis,2022,barramentos,quantidade,1853.0,validado,2866,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250424-0845 selecionada com ressalva; perimetro avaliado.
 2866,Copel-Dis,2023,consumidores,quantidade,5020576,validado,2866,comparavel,2025,consolidado_comparavel,
 2866,Copel-Dis,2023,geradores,quantidade,190766,validado,2866,comparavel,2025,consolidado_comparavel,
 2866,Copel-Dis,2023,iluminacao,quantidade,1387516,validado,2866,comparavel,2025,consolidado_comparavel,
@@ -5224,31 +5224,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 5216,Energisa Sul-Sudeste,2022,circuitos_at,quantidade,66,validado,5216,comparavel,2025,consolidado_comparavel,
 5216,Energisa Sul-Sudeste,2022,conjuntos,quantidade,40,validado,5216,comparavel,2025,consolidado_comparavel,
 5216,Energisa Sul-Sudeste,2022,barramentos,quantidade,390,validado,5216,comparavel,2025,consolidado_comparavel,
-5216,Energisa Sul-Sudeste,2023,consumidores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,geradores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,iluminacao,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,rede_bt,extensao_km,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,rede_mt,extensao_km,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,rede_at,extensao_km,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,ramais,extensao_km,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,trafo_dist,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,trafo_forca,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,trafo_medida,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,chaves,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,seccionalizadores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,disjuntores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,religadores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,reguladores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,bancos_capacitores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,reatores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,medidores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,postes,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,torres,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,subestacoes,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,alimentadores,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,circuitos_at,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,conjuntos,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5216,Energisa Sul-Sudeste,2023,barramentos,quantidade,,revisao_pendente,5216,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+5216,Energisa Sul-Sudeste,2023,consumidores,quantidade,829865.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,geradores,quantidade,40768.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,iluminacao,quantidade,312030.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,rede_bt,extensao_km,10392.81403,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,rede_mt,extensao_km,24131.626911,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,rede_at,extensao_km,721.403523,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,ramais,extensao_km,10965.176115,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,trafo_dist,quantidade,52349.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,trafo_forca,quantidade,183.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,trafo_medida,quantidade,7007.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,chaves,quantidade,44169.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,seccionalizadores,quantidade,3.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,disjuntores,quantidade,281.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,religadores,quantidade,1206.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,reguladores,quantidade,554.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,bancos_capacitores,quantidade,1147.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,reatores,quantidade,0.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,medidores,quantidade,913075.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,postes,quantidade,569302.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,torres,quantidade,3520.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,subestacoes,quantidade,101.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,alimentadores,quantidade,329.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,circuitos_at,quantidade,66.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,conjuntos,quantidade,40.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
+5216,Energisa Sul-Sudeste,2023,barramentos,quantidade,426.0,validado,5216,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-0841 selecionada com ressalva; perimetro avaliado.
 5216,Energisa Sul-Sudeste,2024,consumidores,quantidade,852565,validado,5216,comparavel,2025,consolidado_comparavel,
 5216,Energisa Sul-Sudeste,2024,geradores,quantidade,58460,validado,5216,comparavel,2025,consolidado_comparavel,
 5216,Energisa Sul-Sudeste,2024,iluminacao,quantidade,322006,validado,5216,comparavel,2025,consolidado_comparavel,
@@ -7724,31 +7724,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 5381,Cedrap,2022,circuitos_at,quantidade,,ausente,5381,comparavel,2025,consolidado_comparavel,tipo de ativo inexistente no GDB desta competencia
 5381,Cedrap,2022,conjuntos,quantidade,1,validado,5381,comparavel,2025,consolidado_comparavel,
 5381,Cedrap,2022,barramentos,quantidade,,ausente,5381,comparavel,2025,consolidado_comparavel,tipo de ativo inexistente no GDB desta competencia
-5381,Cedrap,2023,consumidores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,geradores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,iluminacao,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,rede_bt,extensao_km,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,rede_mt,extensao_km,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,rede_at,extensao_km,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,ramais,extensao_km,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,trafo_dist,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,trafo_forca,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,trafo_medida,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,chaves,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,seccionalizadores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,disjuntores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,religadores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,reguladores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,bancos_capacitores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,reatores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,medidores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,postes,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,torres,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,subestacoes,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,alimentadores,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,circuitos_at,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,conjuntos,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-5381,Cedrap,2023,barramentos,quantidade,,revisao_pendente,5381,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+5381,Cedrap,2023,consumidores,quantidade,6894.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,geradores,quantidade,236.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,iluminacao,quantidade,1447.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,rede_bt,extensao_km,191.21723,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,rede_mt,extensao_km,763.82116,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,rede_at,extensao_km,,ausente,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,ramais,extensao_km,106.3354,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,trafo_dist,quantidade,1605.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,trafo_forca,quantidade,0.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,trafo_medida,quantidade,84.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,chaves,quantidade,1889.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,seccionalizadores,quantidade,9.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,disjuntores,quantidade,0.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,religadores,quantidade,17.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,reguladores,quantidade,3.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,bancos_capacitores,quantidade,27.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,reatores,quantidade,0.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,medidores,quantidade,7007.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,postes,quantidade,12018.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,torres,quantidade,5.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,subestacoes,quantidade,,ausente,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,alimentadores,quantidade,9.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,circuitos_at,quantidade,,ausente,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,conjuntos,quantidade,1.0,validado,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
+5381,Cedrap,2023,barramentos,quantidade,,ausente,5381,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250529-1139 selecionada com ressalva; perimetro avaliado.
 5381,Cedrap,2024,consumidores,quantidade,7544,validado,5381,comparavel,2025,consolidado_comparavel,
 5381,Cedrap,2024,geradores,quantidade,221,validado,5381,comparavel,2025,consolidado_comparavel,
 5381,Cedrap,2024,iluminacao,quantidade,2037,validado,5381,comparavel,2025,consolidado_comparavel,
@@ -8524,31 +8524,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 6585,Energisa Minas Rio,2022,circuitos_at,quantidade,70,validado,6585,quebra_perimetro,2025,consolidado_comparavel,
 6585,Energisa Minas Rio,2022,conjuntos,quantidade,44,validado,6585,quebra_perimetro,2025,consolidado_comparavel,
 6585,Energisa Minas Rio,2022,barramentos,quantidade,151,validado,6585,quebra_perimetro,2025,consolidado_comparavel,
-6585,Energisa Minas Rio,2023,consumidores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,geradores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,iluminacao,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,rede_bt,extensao_km,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,rede_mt,extensao_km,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,rede_at,extensao_km,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,ramais,extensao_km,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,trafo_dist,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,trafo_forca,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,trafo_medida,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,chaves,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,seccionalizadores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,disjuntores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,religadores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,reguladores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,bancos_capacitores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,reatores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,medidores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,postes,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,torres,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,subestacoes,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,alimentadores,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,circuitos_at,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,conjuntos,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6585,Energisa Minas Rio,2023,barramentos,quantidade,,revisao_pendente,6585,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+6585,Energisa Minas Rio,2023,consumidores,quantidade,572702.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,geradores,quantidade,21260.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,iluminacao,quantidade,121746.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,rede_bt,extensao_km,5169.38186,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,rede_mt,extensao_km,25864.123455,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,rede_at,extensao_km,1223.031076,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,ramais,extensao_km,5708.282748,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,trafo_dist,quantidade,71907.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,trafo_forca,quantidade,88.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,trafo_medida,quantidade,2881.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,chaves,quantidade,24776.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,seccionalizadores,quantidade,5.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,disjuntores,quantidade,285.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,religadores,quantidade,945.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,reguladores,quantidade,465.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,bancos_capacitores,quantidade,444.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,reatores,quantidade,0.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,medidores,quantidade,654714.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,postes,quantidade,319273.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,torres,quantidade,3476.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,subestacoes,quantidade,83.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,alimentadores,quantidade,216.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,circuitos_at,quantidade,70.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,conjuntos,quantidade,44.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
+6585,Energisa Minas Rio,2023,barramentos,quantidade,136.0,validado,6585,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250916-1514 selecionada com ressalva; perimetro avaliado.
 6585,Energisa Minas Rio,2024,consumidores,quantidade,561594,validado,6585,comparavel,2025,consolidado_comparavel,
 6585,Energisa Minas Rio,2024,geradores,quantidade,29125,validado,6585,comparavel,2025,consolidado_comparavel,
 6585,Energisa Minas Rio,2024,iluminacao,quantidade,129090,validado,6585,comparavel,2025,consolidado_comparavel,
@@ -8624,31 +8624,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 6587,Energisa SE,2022,circuitos_at,quantidade,83,validado,6587,comparavel,2025,consolidado_comparavel,
 6587,Energisa SE,2022,conjuntos,quantidade,31,validado,6587,comparavel,2025,consolidado_comparavel,
 6587,Energisa SE,2022,barramentos,quantidade,104,validado,6587,comparavel,2025,consolidado_comparavel,
-6587,Energisa SE,2023,consumidores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,geradores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,iluminacao,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,rede_bt,extensao_km,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,rede_mt,extensao_km,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,rede_at,extensao_km,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,ramais,extensao_km,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,trafo_dist,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,trafo_forca,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,trafo_medida,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,chaves,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,seccionalizadores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,disjuntores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,religadores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,reguladores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,bancos_capacitores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,reatores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,medidores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,postes,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,torres,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,subestacoes,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,alimentadores,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,circuitos_at,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,conjuntos,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6587,Energisa SE,2023,barramentos,quantidade,,revisao_pendente,6587,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+6587,Energisa SE,2023,consumidores,quantidade,810213.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,geradores,quantidade,10975.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,iluminacao,quantidade,224034.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,rede_bt,extensao_km,8649.025976,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,rede_mt,extensao_km,19628.708108,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,rede_at,extensao_km,1441.819009,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,ramais,extensao_km,9070.055437,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,trafo_dist,quantidade,50841.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,trafo_forca,quantidade,55.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,trafo_medida,quantidade,4450.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,chaves,quantidade,20426.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,seccionalizadores,quantidade,632.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,disjuntores,quantidade,258.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,religadores,quantidade,855.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,reguladores,quantidade,307.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,bancos_capacitores,quantidade,953.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,reatores,quantidade,0.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,medidores,quantidade,924755.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,postes,quantidade,410690.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,torres,quantidade,9810.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,subestacoes,quantidade,44.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,alimentadores,quantidade,190.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,circuitos_at,quantidade,83.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,conjuntos,quantidade,31.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
+6587,Energisa SE,2023,barramentos,quantidade,104.0,validado,6587,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250701-0833 selecionada com ressalva; perimetro avaliado.
 6587,Energisa SE,2024,consumidores,quantidade,807583,validado,6587,comparavel,2025,consolidado_comparavel,
 6587,Energisa SE,2024,geradores,quantidade,15721,validado,6587,comparavel,2025,consolidado_comparavel,
 6587,Energisa SE,2024,iluminacao,quantidade,224010,validado,6587,comparavel,2025,consolidado_comparavel,
@@ -8724,31 +8724,31 @@ dist_destino_2025,empresa,ano_base,ativo,medida,valor,status,origens_incluidas,c
 6600,Energisa PB,2022,circuitos_at,quantidade,,pendente,6600,quebra_perimetro,2025,consolidado_comparavel,predecessora sem prova de disjuncao: 6611
 6600,Energisa PB,2022,conjuntos,quantidade,,pendente,6600,quebra_perimetro,2025,consolidado_comparavel,predecessora sem prova de disjuncao: 6611
 6600,Energisa PB,2022,barramentos,quantidade,,pendente,6600,quebra_perimetro,2025,consolidado_comparavel,predecessora sem prova de disjuncao: 6611
-6600,Energisa PB,2023,consumidores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,geradores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,iluminacao,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,rede_bt,extensao_km,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,rede_mt,extensao_km,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,rede_at,extensao_km,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,ramais,extensao_km,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,trafo_dist,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,trafo_forca,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,trafo_medida,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,chaves,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,seccionalizadores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,disjuntores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,religadores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,reguladores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,bancos_capacitores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,reatores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,medidores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,postes,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,torres,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,subestacoes,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,alimentadores,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,circuitos_at,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,conjuntos,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
-6600,Energisa PB,2023,barramentos,quantidade,,revisao_pendente,6600,comparavel,2025,consolidado_comparavel,2 publicacoes validas sem equivalencia integral comprovada: decisao humana
+6600,Energisa PB,2023,consumidores,quantidade,1698731.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,geradores,quantidade,26175.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,iluminacao,quantidade,394850.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,rede_bt,extensao_km,38596.40367,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,rede_mt,extensao_km,45937.635237,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,rede_at,extensao_km,2519.685195,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,ramais,extensao_km,29795.173259,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,trafo_dist,quantidade,70540.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,trafo_forca,quantidade,126.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,trafo_medida,quantidade,5801.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,chaves,quantidade,29333.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,seccionalizadores,quantidade,384.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,disjuntores,quantidade,389.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,religadores,quantidade,1382.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,reguladores,quantidade,881.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,bancos_capacitores,quantidade,279.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,reatores,quantidade,0.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,medidores,quantidade,2020482.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,postes,quantidade,1223762.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,torres,quantidade,19373.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,subestacoes,quantidade,98.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,alimentadores,quantidade,404.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,circuitos_at,quantidade,142.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,conjuntos,quantidade,75.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
+6600,Energisa PB,2023,barramentos,quantidade,259.0,validado,6600,comparavel,2025,consolidado_comparavel,Republicacao mais recente V11_20250923-1612 selecionada com ressalva; perimetro avaliado.
 6600,Energisa PB,2024,consumidores,quantidade,1668042,validado,6600,comparavel,2025,consolidado_comparavel,
 6600,Energisa PB,2024,geradores,quantidade,34689,validado,6600,comparavel,2025,consolidado_comparavel,
 6600,Energisa PB,2024,iluminacao,quantidade,392322,validado,6600,comparavel,2025,consolidado_comparavel,

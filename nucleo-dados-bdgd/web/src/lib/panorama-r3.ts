@@ -84,9 +84,15 @@ function somaConsumidoresAtivos(ds: Dataset, dists: number[]): Aggregate {
   return { v: n ? v : null, n, nd, ausentes: 0, total: dists.length, alerta, partial: nd > 0 };
 }
 
-/** Falha fechada: um subconjunto de empresas não é rotulado como total do Brasil/grupo. */
+/** Subtotal calculado apenas sobre as DISTs com métrica válida.
+ * Não é total nacional nem total do grupo se houver qualquer lacuna. */
+export function panoramaSubtotal(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
+  return k.tuc ? somaTuc(ds, k, dists) : k.ent === null ? somaConsumidoresAtivos(ds, dists) : kpiValue(ds, k, dists);
+}
+
+/** Falha fechada para totais; o subtotal parcial pode ser rotulado explicitamente na UI. */
 export function panoramaValue(ds: Dataset, k: PanoramaKpi, dists: number[]): Aggregate {
-  const a = k.tuc ? somaTuc(ds, k, dists) : k.ent === null ? somaConsumidoresAtivos(ds, dists) : kpiValue(ds, k, dists);
+  const a = panoramaSubtotal(ds, k, dists);
   if (a.nd > 0 || a.ausentes > 0 || a.total === 0 || coberturaNacionalIncompleta(ds, dists)) return { ...a, v: null, partial: true };
   return a;
 }

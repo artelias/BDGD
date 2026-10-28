@@ -1,0 +1,269 @@
+{
+  "versao": "selecao-republicacoes-2026-10-28-v1",
+  "natureza": "criterio_editorial_reprodutivel_nao_homologacao",
+  "fonte": "auditoria/fase4/DECISOES_DUPLICATAS_13_PARES.csv",
+  "principio": "Preferir republicacao mais recente entre publicacoes com competencia interna valida; contabilizar divergencias por metrica e reter versoes anteriores para auditoria.",
+  "total_pares": 13,
+  "pares": [
+    {
+      "ano": 2022,
+      "dist": 86,
+      "empresa": "Eflul",
+      "selecionada": {
+        "item_id": "f224824054394e8ab30b3d8a42eca14a",
+        "versao": "V11_20250131-1249",
+        "sha256": "36a1d730ca00e527830a5dddf822e8c113726821774b465d99d31417b0ead1c6"
+      },
+      "anterior": {
+        "item_id": "f5970bd2f1464758beb23633cf82c808",
+        "versao": "V11_20240103-0915",
+        "sha256": "19b7ee0d00d90e9281306be845efd6635916ef12ffcd696e2ff510b41ee25b8b"
+      },
+      "totais_diferentes": 1,
+      "risco_auditoria": "MEDIO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2022,
+      "dist": 2866,
+      "empresa": "Copel-Dis",
+      "selecionada": {
+        "item_id": "6704ec96a7584ce3ac6396b776223cb3",
+        "versao": "V11_20250424-0845",
+        "sha256": "10092aed65159fd6fe059c6b4520f947b69719056318ffcd820f3a44fcd5c603"
+      },
+      "anterior": {
+        "item_id": "a86135a1bc804f9b81bc591fedf056ec",
+        "versao": "V11_20231214-1225",
+        "sha256": "d357325a2ad3d3bc6691106de43154ef70e61dc5676ff18db3cb8e911dec65ff"
+      },
+      "totais_diferentes": 1,
+      "risco_auditoria": "MEDIO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 32,
+      "empresa": "Energisa TO",
+      "selecionada": {
+        "item_id": "cb44503521154e9880a9ac45c395266d",
+        "versao": "V11_20250916-1512",
+        "sha256": "0c43e1f0b2fec87d3b78fdcab17f4b8eef8fc46cb810c527af3a1c43c929ca14"
+      },
+      "anterior": {
+        "item_id": "0c5d99bb2c62439ab1565f75e825c408",
+        "versao": "V11_20250111-1448",
+        "sha256": "3adedfcebf0e7b0a0af2576c919b95166bd6f38242f27a52e36b6550ae12db9c"
+      },
+      "totais_diferentes": 0,
+      "risco_auditoria": "BAIXO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 86,
+      "empresa": "Eflul",
+      "selecionada": {
+        "item_id": "d9cfadb4d95b4443a7527e3b67f58c8e",
+        "versao": "V11_20250416-2319",
+        "sha256": "d97dd571d5d30b16d2d85591c37d9da29bd05ebeedfa16cbf05bb11d97c2f3ef"
+      },
+      "anterior": {
+        "item_id": "f2dc25c4b2924edb9629ba601a0fd742",
+        "versao": "V11_20250129-1313",
+        "sha256": "e316bb51430f8007ba43b2d97ce5f249cc325f0b856d6452ae430e5c029c4b90"
+      },
+      "totais_diferentes": 2,
+      "risco_auditoria": "MEDIO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 369,
+      "empresa": "Energisa RO",
+      "selecionada": {
+        "item_id": "0e278b9b8a424a4c8867c385947c4c85",
+        "versao": "V11_20250916-1513",
+        "sha256": "64c0c4bc3265666d69a8a72cf3682b7cb96790e4d4fcd4bec42a318f86b25399"
+      },
+      "anterior": {
+        "item_id": "613405c27d7d49d7bfcbb105df77dc05",
+        "versao": "V11_20241218-0833",
+        "sha256": "ba9462882c2823d123d2cc559129155db6a25856551ed15271512b82f00589f9"
+      },
+      "totais_diferentes": 0,
+      "risco_auditoria": "BAIXO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 380,
+      "empresa": "EDP ES",
+      "selecionada": {
+        "item_id": "5ae7dc011378453587f39ac5e61b606d",
+        "versao": "V11_20250915-1019",
+        "sha256": "57d1ce51628dcf949a9b3d222ac79bb8290e62f8c558d873cc19f6fd03bf261b"
+      },
+      "anterior": {
+        "item_id": "3ebc8c083e324c76adc5afb867caf2f5",
+        "versao": "V11_20250214-1728",
+        "sha256": "9caa7509187b64992e9fa191d6b7595aebfd94c4ae03795b7e032c5074e6c88b"
+      },
+      "totais_diferentes": 0,
+      "risco_auditoria": "BAIXO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 404,
+      "empresa": "Energisa MS",
+      "selecionada": {
+        "item_id": "975f18dfdb0c479cb237893c5b296ca9",
+        "versao": "V11_20250923-1616",
+        "sha256": "ed1b19f2bb1120196cba9b61bef5077add4a64b4ea8e603a124804ad982cc94e"
+      },
+      "anterior": {
+        "item_id": "b8c585ae35224ac8aa0648587ec61bcb",
+        "versao": "V11_20241217-1120",
+        "sha256": "727e5ad8a55343fd2bebab40cb4dc35c3bacf9404d20a9f636ef75af8de5f125"
+      },
+      "totais_diferentes": 1,
+      "risco_auditoria": "MEDIO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 5216,
+      "empresa": "Energisa Sul-Sudeste",
+      "selecionada": {
+        "item_id": "eadcb67cd1c440f39663f9dd63d91fec",
+        "versao": "V11_20250916-0841",
+        "sha256": "078b2ab1dbebb32a0aff479ecd47bbb84ba36f500e3af18f3b234d54fd4c7235"
+      },
+      "anterior": {
+        "item_id": "c1d71ba88c514fe0b1f974d8c7c60aec",
+        "versao": "V11_20240801-1636",
+        "sha256": "cc62d556d632171949938a0e606bcda191c752e06a005e91667ded98cf63e7f3"
+      },
+      "totais_diferentes": 0,
+      "risco_auditoria": "BAIXO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 5279,
+      "empresa": "Cerci",
+      "selecionada": {
+        "item_id": "cc75c3b83ac64267a8cf0b274af296ac",
+        "versao": "V11_20250502-1228",
+        "sha256": "580cd8bca46b8b33150776e20f1e7311e06346bb712123acd4925a02a0737ad3"
+      },
+      "anterior": {
+        "item_id": "0b705db154054aa3b9e435846e7cc0fb",
+        "versao": "V11_20250128-1656",
+        "sha256": "a71d04563662d9ff82d21aed936d5f65226506fd86c3af141bf5fb072961a683"
+      },
+      "totais_diferentes": 1,
+      "risco_auditoria": "MEDIO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 5381,
+      "empresa": "Cedrap",
+      "selecionada": {
+        "item_id": "69dbc577d09545efa56100b09744cda0",
+        "versao": "V11_20250529-1139",
+        "sha256": "01a6f21991671020318cc3dd5429cf0cec55e88221258b012920dda117d93e32"
+      },
+      "anterior": {
+        "item_id": "63188321f61c43e4917d196814be91ac",
+        "versao": "V11_20241219-0917",
+        "sha256": "910dbe1b87384b8ed808f97fd7a7aa8fa731fdf1056fab4d32fb7836f0298b39"
+      },
+      "totais_diferentes": 14,
+      "risco_auditoria": "ALTO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 6585,
+      "empresa": "Energisa Minas Rio",
+      "selecionada": {
+        "item_id": "0cd65c3a977d417a8d1eabdd817791ca",
+        "versao": "V11_20250916-1514",
+        "sha256": "e109d31f816ee5fd1de0bf8bc33251f3877d94e724b64c17485da5ccb0f30383"
+      },
+      "anterior": {
+        "item_id": "7211ed57711c4e15bc57b2a402a54757",
+        "versao": "V11_20250218-1001",
+        "sha256": "88c9b27a194a257ef0fbbcf7305470cfc2a52d8cd5f215d20854845adbd13be3"
+      },
+      "totais_diferentes": 1,
+      "risco_auditoria": "MEDIO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 6587,
+      "empresa": "Energisa SE",
+      "selecionada": {
+        "item_id": "f19335bb704642199e2b5ee2dfc74684",
+        "versao": "V11_20250701-0833",
+        "sha256": "2d27871a1d91b43003b75c005f00888ec9d2b759e3533504326828236b3f803a"
+      },
+      "anterior": {
+        "item_id": "27a718bd4c0846a996f26795f129f3e8",
+        "versao": "V11_20241219-1646",
+        "sha256": "c210f6aecb7025ea5435913d27df8af84a40740748422d4f33c92c2cb89aeebb"
+      },
+      "totais_diferentes": 0,
+      "risco_auditoria": "BAIXO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    },
+    {
+      "ano": 2023,
+      "dist": 6600,
+      "empresa": "Energisa PB",
+      "selecionada": {
+        "item_id": "3bf43d35e8fc409f8bd23e2dffd9841f",
+        "versao": "V11_20250923-1612",
+        "sha256": "f68f56272f6b915ba1d56d6baa86e65dbbeca2d38ad783d9fd2477882ce5b710"
+      },
+      "anterior": {
+        "item_id": "a5965d84a15244b9ab26e567ce22a11b",
+        "versao": "V11_20250211-0801",
+        "sha256": "72047f203c037f26799d9c942402dcc70bcf1ce737c4cb0b565ff192dec80ef9"
+      },
+      "totais_diferentes": 0,
+      "risco_auditoria": "BAIXO",
+      "criterio": "ultima_versao_valida_por_timestamp",
+      "status": "selecionada_tecnicamente_com_ressalva",
+      "regra": "DIST + DATA_BASE + versao V11_YYYYMMDD-HHMM; conferir BASE.DAT_FNL; preservar antecessora; sem homologacao regulatoria"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
- "versao": "contrato-nacional-1.0.1",
+ "versao": "contrato-nacional-1.0.1+republicacao-editorial-1",
  "descricao": "Série física nacional BDGD 2022–2025 por ano × DIST × conceito × métrica (perímetro da publicação original).",
  "chave": [
   "ano",
@@ -53,5 +53,7 @@
   "nao_homologado",
   "nao_aplicavel",
   "ruptura"
- ]
+ ],
+ "politica_republicacoes": "web/public/data/historico/politica-republicacoes.json",
+ "ressalva_selecao": "Versão posterior de cada par com BASE válida selecionada para 13 pares; diferenças preservadas; sem homologação regulatória."
 }
