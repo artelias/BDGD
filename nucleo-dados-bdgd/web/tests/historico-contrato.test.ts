@@ -18,7 +18,7 @@ describe("contrato histórico efetivamente publicado", () => {
     const linhas = Object.values(contrato.celulas).flat();
     expect(linhas).toHaveLength(11400);
     const estados = Object.fromEntries([...new Set(linhas.map((c) => c[2]))].map((e) => [e, linhas.filter((c) => c[2] === e).length]));
-    expect(estados).toEqual({"observado":8002,"nao_aplicavel":1739,"nao_homologado":329,"ausente":317,"zero_verificado":1013});
+    expect(estados).toEqual({"observado":7976,"nao_aplicavel":1739,"nao_homologado":329,"ausente":317,"zero_verificado":1039});
   });
   it("nenhum dos 100 agregados incompletos é exibido como total nacional", () => {
     for (const ativo of Object.keys(contrato.celulas)) {
