@@ -34,6 +34,14 @@ RUPT = {"alteracao_classificacao", "alteracao_cadastral", "anomalia_fonte", "suc
 rup = {}
 for r in rd(F4 / "RANKING_ANOMALIAS_TEMPORAIS.csv"):
     if r["categoria"] in RUPT: rup[(r["ano_para"], r["dist"], r["ativo"])] = r["categoria"]
+# Seleção editorial explícita de republicações, sem alterar matrizes históricas da auditoria.
+POL_P = RAIZ / "web/public/data/historico/politica-republicacoes.json"
+POL = json.loads(POL_P.read_text(encoding="utf-8")) if POL_P.exists() else {"pares": []}
+SELECOES = {(str(p["ano"]), str(p["dist"])): p for p in POL["pares"]}
+AUDITADOS = {(r["ano"], r["dist"], r["ativo"]): r for r in rd(F4 / "DECISOES_DUPLICATAS_13_PARES.csv")
+            if (r["ano"], r["dist"]) in SELECOES}
+if POL["pares"] and len(AUDITADOS) != 25 * len(POL["pares"]):
+    raise RuntimeError("Seleção de republicações com quantitativos incompletos")
 ESTADO = {"DISPONIVEL": None, "SUCESSAO_SOCIETARIA": "nao_aplicavel", "ATIVO_NAO_APLICAVEL": "nao_aplicavel", "REPUBLICACOES_DIVERGENTES": "nao_homologado",
           "BLOQUEIO_COMPETENCIA": "nao_homologado", "BASE_INCONSISTENTE": "nao_homologado", "ENTIDADE_VAZIA_NA_ORIGEM": "ausente", "PUBLICACAO_INCOMPLETA_NA_ORIGEM": "nao_homologado",
           "PUBLICACAO_NAO_LOCALIZADA": "ausente", "INDICADOR_AUSENTE_OUTRA_RAZAO": "ausente"}
@@ -51,6 +59,22 @@ for i in INV:
     pubs = [c for c in CONF.get((y, d), []) if c["uso_na_serie"] in ("em_uso_na_serie", "pacote_2025", "par_competencia_unica_valida_em_uso")]
     pub = pubs[0] if pubs else None
     causa = i["causa"]; st_mat = mt.get("estado_publicacao", "NAO_DISPONIVEL")
+    rec = AUDITADOS.get((y, d, a))
+    if rec:
+        escolha = SELECOES[(y, d)]
+        if rec["item_B"] != escolha["selecionada"]["item_id"] or rec["competencia_declarada_B"] != f"{y}-12-31" or rec["DAT_FNL_B"] != f"31/12/{y}":
+            raise RuntimeError(f"Publicacao inconsistente com o criterio: {d}/{y}/{a}")
+        candidatos = [p for p in CONF.get((y, d), []) if p["item_id"] == rec["item_B"]]
+        if len(candidatos) != 1:
+            raise RuntimeError(f"Publicacao recente ausente na conformidade: {d}/{y}/{a}")
+        pub = candidatos[0]
+        if rec["status_B"] == "validado":
+            causa, st_mat = "DISPONIVEL", "APTO_COM_RESSALVAS"
+            mt = {**mt, "valor": rec["valor_B"], "motivo": "Republicacao mais recente: escolha tecnica com ressalva (sem homologacao)"}
+        elif rec["status_B"] == "ausente":
+            causa, st_mat = "INDICADOR_AUSENTE_OUTRA_RAZAO", "NAO_DISPONIVEL"
+        else:
+            raise RuntimeError(f"Status nao esperado no par {d}/{y}/{a}")
     if causa == "DISPONIVEL":
         v = float(mt["valor"]); estado = "zero_verificado" if v == 0 else "observado"; valor = v
         anomalo = any(w in mt["motivo"] for w in ANOMALIA) or (pub and pub["classe_intervalo"] != "INTERVALO_ANUAL_COMPATIVEL")
