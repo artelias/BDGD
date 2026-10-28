@@ -202,7 +202,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
       <aside className={s.ressalvas} data-testid="evo-ressalvas" aria-label="Ressalvas de publicação">
         <ShieldCheck size={16} aria-hidden />
         <div>
-          <b>Ressalvas vigentes.</b> 2022 e 2023 não têm cobertura nacional completa. O contrato também registra publicações não localizadas em 2024 e 2025: o total Brasil fica N/D em qualquer ano com lacunas. O painel balanceado mostra somente as mesmas distribuidoras comparáveis. Validação automática e zero técnico não equivalem a homologação humana. Não aplicável é um estado próprio; ausência e pendência nunca viram zero. A comprovação independente dos zeros técnicos permanece pendente.
+          <b>Ressalvas vigentes.</b> 2022 e 2023 não têm cobertura nacional completa. Quando existem lacunas, o total nacional completo permanece N/D; o painel balanceado soma apenas as mesmas distribuidoras elegíveis em todos os anos e não representa o Brasil inteiro. Validação automática não é aprovação regulatória. Não aplicável é um estado próprio; ausência e pendência nunca viram zero. A comprovação independente dos zeros técnicos permanece pendente.
           {ressalvas2025.length > 0 && <ul className={s.lista}>{ressalvas2025.slice(0, 4).map((c) => <li key={c[0]}><b>{nomeD(c[0])} 2025</b> · {ROTULO_PUB[c[2]]}: {h.motivos[c[3]]}</li>)}</ul>}
         </div>
       </aside>
@@ -301,9 +301,9 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
         </div>
       </section>
 
-      <section className={s.stage} aria-labelledby="qual-t" data-testid="evo-qualidade">
-        <h2 className="headline" id="qual-t" style={{ fontSize: "1rem" }}>Cobertura e qualidade · {a.nome}</h2>
-        <p className="caption">Estado de publicação das distribuidoras do recorte em cada ano, pela matriz de homologação. Só os três primeiros estados têm valor.</p>
+      <details className={s.stage} data-testid="evo-qualidade">
+        <summary id="qual-t" style={{ cursor: "pointer", fontWeight: 600 }}>Detalhes técnicos de cobertura · {a.nome}</summary>
+        <p className="caption">A tabela de estados fica recolhida por padrão. Os indicadores anuais acima mostram a cobertura resumida. Validação automática é diferente de aprovação formal; valores pendentes e ausentes não são tratados como zero.</p>
         <div className={s.scroll} tabIndex={0} role="region" aria-label="Cobertura por estado">
           <table className={s.table}>
             <caption className="sr-only">Quantidade de distribuidoras por estado de publicação e ano</caption>
@@ -317,7 +317,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
           </table>
         </div>
         <p className={s.note} data-testid="evo-tuc"><Info size={13} aria-hidden /><span><b>Recortes por TUC e atributos.</b> Para 2022–2024, a série histórica homologa apenas o total de cada ativo; os recortes por tipo patrimonial (TUC) e atributos DDA não foram validados para esses anos e por isso não são exibidos. Para 31/12/2025 eles estão em <Link href={`/explorar/?ativo=${a.conceito}`}>Explorar ativos</Link>.</span></p>
-      </section>
+      </details>
 
       {escopo.modo !== "brasil" && distsSeries.length > 0 && (
         <section className={s.stage} aria-labelledby="prov-t" data-testid="evo-proveniencia">
