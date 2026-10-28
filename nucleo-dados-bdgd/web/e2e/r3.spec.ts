@@ -166,7 +166,7 @@ test.describe("R3 — Evolução histórica 2022–2025", () => {
   test("três modos de escopo, situação por ano e nenhum ano preenchido artificialmente", async ({ page }) => {
     await page.goto("/evolucao/");
     await expect(page.getByTestId("anos")).toContainText("31/12/2022");
-    await expect(page.getByTestId("anos")).toContainText("homologado");
+    await expect(page.getByTestId("anos")).toContainText("pacote auditado tecnicamente");
     for (const m of ["Brasil", "Grupo", "Distribuidoras"]) await expect(page.getByRole("radio", { name: m, exact: true }).first()).toBeVisible();
     await expect(page.getByTestId("evo-tabela")).toBeVisible();
     // células de anos não validados aparecem como N/D, nunca como zero
