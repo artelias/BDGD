@@ -69,8 +69,12 @@ for (const [a, linhas] of Object.entries(hom.brasil)) for (const [ano, v, e, nin
   if ((ano === 2022 || ano === 2023) && (v !== null || e !== "B")) erros.push(`Brasil ${ano}/${a} publicado como total nacional`);
   const cs = hom.celulas[a].filter((c) => c[1] === ano);
   const inc = cs.filter((c) => PUB.has(c[2]) && !(c[4] & 4) && serieIdx.get(`${c[0]}|${ano}|${a}`) !== null);
-  // excluídas: pendentes, bloqueadas e (Fase 6) entidade vazia na publicação com o ativo presente em outros anos (flag 8)
-  const excl = cs.filter((c) => c[2] === "P" || c[2] === "B" || c[4] & 8).map((c) => c[0]).sort((x, y) => x - y);
+  // Lacunas: pendentes/bloqueadas, entidade vazia (flag 8) e conceitos N/D
+  // comprovadamente ausentes na republicação mais recente (motivo documental 115).
+  const excl = cs.filter((c) => c[2] === "P" || c[2] === "B" || (c[4] & 8)
+    || (c[2] === "N" && paresSelecionados.has(`${c[0]}|${ano}`)
+      && hom.motivos[c[3]] === "A publicação mais recente foi selecionada, mas o conceito está ausente nesta competência: N/D, não zero."))
+    .map((c) => c[0]).sort((x, y) => x - y);
   if (cs.some((c) => c[4] & 8) && e === "H") erros.push(`Brasil ${ano}/${a}: homologado com distribuidora de entidade vazia fora da soma`);
   if (ninc !== inc.length || nexc !== excl.length || exc.join() !== excl.join()) erros.push(`Brasil ${ano}/${a}: contagens divergem da matriz`);
   if (v !== null) {
