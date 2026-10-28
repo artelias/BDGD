@@ -66,7 +66,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
               <div className={s.stat}><div className={s.statNum}>{ds.entidades.length}</div><div className="caption">entidades com agregados</div></div>
               <div className={s.stat}><div className={s.statNum}>{q.data ? fmt(q.data.reconciliacao.ok ?? 0) : "…"}</div><div className="caption">reconciliações exatas com a origem</div></div>
             </div>
-            <p className="caption">Release <span className="mono">{rel.release_id}</span> · gerado em {fmtDate(rel.generated_at)} · status {rel.status === "homologado" ? "homologado" : "parcial (em validação)"} · contrato {rel.schema_version}</p>
+            <p className="caption">Release <span className="mono">{rel.release_id}</span> · gerado em {fmtDate(rel.generated_at)} · estado {rel.status === "homologado" ? "auditado tecnicamente" : "parcial (em validação)"} · contrato {rel.schema_version}</p>
           </section>
 
           <section id="cobertura" className={s.sec}>
