@@ -17,8 +17,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("canvas.maplibregl-canvas")).toBeVisible();
     // regressão: o contêiner do mapa precisa ocupar o palco (ordem de CSS em produção)
     expect(await page.locator("canvas.maplibregl-canvas").evaluate((c) => c.clientHeight)).toBeGreaterThan(400);
-    await expect(page.getByTestId("kpi-ssdmt").locator("..")).toContainText("Subtotal observado");
-    await expect(page.getByText(/Cobertura nacional incompleta:/)).toBeVisible();
+    await expect(page.getByTestId("kpi-ssdmt").locator("..")).not.toContainText("Subtotal observado");
+    await expect(page.getByRole("heading", { name: /Brasil · cobertura parcial/ })).toBeVisible();
     await page.getByTestId("panel-search").fill("CEA");
     await page.getByTestId("dist-31").click();
     await expect(page).toHaveURL(/dist=31/);
@@ -57,6 +57,20 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     expect(dl.suggestedFilename()).toContain("2025-12-31_comparacao");
   });
 
+  test("comparador: seletor de grupo expande sem sobrepor os filtros", async ({ page }) => {
+    await page.goto("/comparar/?a=grupo:energisa&b=grupo:equatorial");
+    await page.getByTestId("picker-a").click();
+    const lista = page.getByRole("listbox", { name: "Grupo econômico verificado" }).first();
+    await expect(lista).toBeVisible();
+    const menu = await lista.boundingBox();
+    const filtros = await page.getByRole("toolbar", { name: "Ativo e recorte" }).boundingBox();
+    expect(menu).not.toBeNull();
+    expect(filtros).not.toBeNull();
+    expect(menu!.y + menu!.height).toBeLessThanOrEqual(filtros!.y + 2);
+    await lista.getByRole("option", { name: /Neoenergia/ }).click();
+    await expect(page).toHaveURL(/a=grupo(%3A|:)neoenergia/);
+  });
+
   test("entidades e DDA: modo técnico preserva facetas de UCBT", async ({ page }) => {
     await page.goto("/explorar/?ativo=consumidores");
     await expect(page.getByTestId("conceito-titulo")).toHaveText("Consumidores");
@@ -93,7 +107,7 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await page.getByRole("button", { name: "Ver cálculo técnico" }).click();
     await expect(page.getByRole("dialog", { name: /Rede de média tensão/ })).toContainText("COMP");
     await page.keyboard.press("Escape");
-    await expect(page.locator('[data-testid="kpi-uc"]').locator("..")).toContainText("Subtotal observado");
+    await expect(page.locator('[data-testid="kpi-uc"]').locator("..")).not.toContainText("Subtotal observado");
     await expect(page.locator('button[data-testid^="kpi-"]:not([data-testid="kpi-picker"])')).toHaveCount(10);
     await expect(page.getByTestId("kpi-trdist565")).toBeVisible();
     await expect(page.getByTestId("kpi-trforca570")).toBeVisible();
