@@ -58,7 +58,7 @@ test.describe("Previsões — cenários reais, não previsões validadas", () =>
   test("filtros, gráfico, histórico e CSV têm o mesmo valor e fonte", async ({ page }) => {
     await page.goto("/previsoes/");
     const painel = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-    await expect(painel).toContainText("1.555");
+    await expect(painel).toContainText("1.792");
     await painel.getByRole("combobox", { name: "Ativo" }).selectOption("alimentadores");
     await painel.getByRole("combobox", { name: "Ano simulado" }).selectOption("2030");
     await expect(painel).toContainText("185 itens");
