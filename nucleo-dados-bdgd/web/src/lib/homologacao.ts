@@ -91,6 +91,34 @@ export function seriePainel(h: Homologacao, ativo: string, anos: number[]): Seri
     pontos: anos.map((ano) => ({ ano, v: v.get(ano) ?? null, estado: v.get(ano) === undefined ? "s" : "v", quebra: false, pub: "R" }) as PontoHom) };
 }
 
+/** Subtotal das DIST com valores elegiveis em cada ano, sem exigir cobertura nacional completa.
+ * Nao equivale ao total Brasil; comparacoes temporais sao bloqueadas se o conjunto de DIST mudar.
+ * Flag 4 preserva a regra de nao duplicar predecessor ja contido na sucessora. */
+export function serieSubtotalObservado(idx: ReturnType<typeof indexarHom>, anos: number[]): Serie {
+  let anterior: string | null = null;
+  const pontos: PontoHom[] = anos.map((ano) => {
+    let soma = 0;
+    const membros: number[] = [];
+    for (const [dist, serie] of idx) {
+      const c = serie.get(ano);
+      if (typeof c?.[7] === "number" && (c[7] & 4)) continue;
+      if (c?.[3] !== "v" || typeof c[2] !== "number") continue;
+      soma += c[2];
+      membros.push(dist);
+    }
+    membros.sort((a, b) => a - b);
+    const chave = membros.join(",");
+    const ruptura = anterior !== null && anterior !== chave;
+    anterior = chave;
+    return {
+      ano, v: membros.length ? soma : null, estado: membros.length ? "v" : "s",
+      quebra: ruptura, motivo: `Subtotal de ${membros.length} distribuidoras com valores validos no ano; universo variavel; nao e total nacional.`,
+    };
+  });
+  return { id: "subtotal", nome: "Subtotal observado (cobertura variável)",
+    nota: "DIST disponíveis em cada ano; não representa o total nacional. Quebras de composição impedem variações comparáveis.", pontos };
+}
+
 /** Contagem de estados de publicação por ano para um ativo (cobertura e qualidade). */
 export function coberturaAtivo(h: Homologacao, ativo: string, anos: number[], dists?: number[]) {
   const alvo = dists ? new Set(dists) : null;
