@@ -186,7 +186,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
         </Sheet>
       </section>
 
-      {coberturaNacionalIncompleta(ds, scopeDists) && <p className="caption" role="note">Cobertura nacional incompleta: {ds.raw.release.cobertura.sem_publicacao_2025.length} distribuidoras sem publicação 2025. Os totais nacionais completos permanecem N/D; os cartões podem apresentar subtotais identificados, calculados apenas entre distribuidoras com valor verificável.</p>}
+      {coberturaNacionalIncompleta(ds, scopeDists) && <p className="caption" role="note">Indicadores de {scopeDists.length} distribuidoras com BDGD publicada em 2025. Cobertura nacional parcial; valores não representam o total de todas as concessionárias.</p>}
       <div className={s.kpiHead}>
         <div>
           <h2 className="title" style={{ fontSize: "1.375rem" }}>{ds.scopeLabel(scope)}</h2>
@@ -348,7 +348,6 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
 function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; dists: number[]; active: boolean; onClick: () => void }) {
   const a = panoramaValue(ds, k, dists);
   const subtotal = a.partial ? panoramaSubtotal(ds, k, dists) : a;
-  const nacionalParcial = coberturaNacionalIncompleta(ds, dists);
   const valorExibido = a.v ?? (a.partial && subtotal.n > 0 ? subtotal.v : null);
   return (
     <div className={s.kpi} data-active={active}>
@@ -361,12 +360,6 @@ function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; di
           <Explain title={k.nome} tecnico={k.tecnico} ressalva={k.ressalva} cobertura={coberturaTexto(subtotal)} testId={`explain-${k.id}`}>{k.explicacao}</Explain>
         </span>
       </div>
-      {a.partial && <div className={s.kpiNd}><span className={s.ndNote}>
-        {valorExibido !== null
-          ? `Subtotal observado: ${subtotal.n} de ${dists.length} distribuidoras processadas${nacionalParcial ? `; ${ds.raw.release.cobertura.sem_publicacao_2025.length} sem publicação 2025` : ""}. Não representa o total ${nacionalParcial ? "nacional" : "do recorte"}.`
-          : "Valor indisponível para o recorte."}{" "}
-        <Link href="/metodologia/#cobertura" style={{ display: "inline-flex", alignItems: "center", minHeight: 24, paddingInline: 4 }}>Ver cobertura</Link>
-      </span></div>}
     </div>
   );
 }
