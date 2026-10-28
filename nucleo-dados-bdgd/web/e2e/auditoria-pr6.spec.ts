@@ -22,7 +22,8 @@ test("auditoria: filtros das 71 distribuidoras, dois métodos e cinco horizontes
   await expect(dist.locator("option")).toHaveCount(71);
   for (const codigo of new Set(series.map((s) => s[0]))) {
     await dist.selectOption(String(codigo));
-    await expect(ativo.locator("option")).toHaveCount(series.filter((s) => s[0] === codigo).length);
+    await expect(ativo.locator("option")).toHaveCount(series.filter((s) => s[0] === codigo).length + (codigo === 5370 ? 1 : 0));
+    if (codigo === 5370) await expect(ativo.locator('option[value="consumidores"]')).toHaveCount(1); // ausente permanece selecionável e bloqueado
     expect(await ativo.inputValue()).not.toBe("");
   }
   await dist.selectOption("26");

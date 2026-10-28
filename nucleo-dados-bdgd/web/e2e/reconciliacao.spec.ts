@@ -4,7 +4,7 @@ async function csvDownload(page: import('@playwright/test').Page, click: ()=>Pro
  const [d]=await Promise.all([page.waitForEvent('download'),click()]);return Buffer.concat(await (await d.createReadStream()).toArray()).toString('utf8');
 }
 test('reconciliação: Explorar distingue total N/D, BT ausente e MT/AT observados',async({page})=>{
- await page.goto('/explorar/?ativo=consumidores&escopo=dists&dists=5370');
+ await page.goto('/explorar/?ativo=consumidores&escopo=dists&dists=5370&f=situacao:AT');
  const p=page.getByTestId('conceito-painel');await expect(p.getByTestId('valor-recorte')).toContainText('N/D');
  const notes=p.getByTestId('observacoes-dados');await expect(notes).toContainText('0*');await expect(notes).toContainText('225');
  const csv=await csvDownload(page,()=>p.getByTestId('explorar-csv').click());expect(csv).toContain('observacoes_ids');expect(csv).toContain('5370-2025-consumidores-quantidade');

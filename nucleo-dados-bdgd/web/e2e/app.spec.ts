@@ -157,7 +157,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.getByTestId("dist-title")).toBeVisible();
     await page.waitForTimeout(1500);
     const box = (await page.locator("canvas.maplibregl-canvas").boundingBox())!;
-    await page.mouse.click(box.x + box.width - 60, box.y + box.height - 40); // oceano, canto inferior direito
+    // Locator.click rola o canvas até o ponto ficar visível; mouse.click usava coordenada fora do viewport.
+    await page.locator("canvas.maplibregl-canvas").click({ position: { x: box.width - 60, y: box.height - 40 } }); // oceano
     await expect(page).not.toHaveURL(/dist=/);
   });
 
