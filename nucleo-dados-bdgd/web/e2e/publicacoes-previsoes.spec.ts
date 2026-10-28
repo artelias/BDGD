@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 test.describe("Publicações auditadas — histórico 2022–2025", () => {
   test("quarentena antiga foi substituída pelo inventário real e filtros distinguem bloqueios", async ({ page }) => {
-    await page.goto("/evolucao/?ativo=consumidores");
+    await page.goto("/publicacoes/");
     const auditoria = page.getByTestId("auditoria-publicacoes");
     await expect(auditoria.getByRole("heading", { name: "Publicações avaliadas, versões selecionadas e restrições" })).toBeVisible();
     await expect(auditoria).toContainText("414");
@@ -33,7 +33,7 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
   });
 
   test("publicação oficial, motivo e estado em uso com ressalva permanecem rastreáveis", async ({ page }) => {
-    await page.goto("/evolucao/");
+    await page.goto("/publicacoes/");
     const auditoria = page.getByTestId("auditoria-publicacoes");
     await auditoria.getByRole("combobox", { name: "Situação" }).selectOption("todas");
     await auditoria.getByRole("combobox", { name: "Ano" }).selectOption("2023");
@@ -46,7 +46,7 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
   });
 
   test("@mobile inventário acessível sem rolagem horizontal da página", async ({ page }) => {
-    await page.goto("/evolucao/");
+    await page.goto("/publicacoes/");
     const auditoria = page.getByTestId("auditoria-publicacoes");
     await expect(auditoria.getByRole("row")).toHaveCount(28);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);

@@ -12,19 +12,17 @@ test.describe("Evolução — homologação assistida", () => {
     expect(cel[0]).toContain("N/D"); expect(cel[1]).toContain("N/D");
     expect(cel[2]).toContain("N/D"); expect(cel[3]).toContain("N/D");
     await expect(page.getByTestId("evo-tabela")).toContainText(/Painel balanceado \(\d+ distribuidoras\)/);
-    await expect(page.getByTestId("evo-ressalvas")).toContainText("2022 e 2023 não têm cobertura nacional completa");
-    await expect(page.getByTestId("evo-ressalvas")).toContainText("Equatorial GO 2025");
-    await expect(page.getByTestId("evo-qualidade")).toContainText("pendente de decisão");
+    await expect(page.getByTestId("anos")).toHaveCount(0);
+    await expect(page.getByTestId("auditoria-publicacoes")).toHaveCount(0);
+    await expect(page.getByTestId("evo-tabela")).toBeVisible();
   });
 
-  test("par divergente fica N/D com a decisão pendente explicada, sem escolher publicação", async ({ page }) => {
+  test("republicação mais recente conserva o valor observado em 2023 sem inventário na tela", async ({ page }) => {
     await page.goto("/evolucao/?escopo=dists&dists=5381&ativo=consumidores");
     const tr = page.getByTestId("evo-tabela").locator("tbody tr").first();
-    await expect(tr.locator("td").nth(3)).toBeVisible();
-    const cel = await tr.locator("td").allInnerTexts();
-    expect(cel[1]).toContain("N/D");
-    await expect(page.getByTestId("evo-pendencias")).toContainText("duas publicações divergentes");
-    await expect(page.getByTestId("evo-pendencias")).toContainText("Recomendação técnica");
+    await expect(tr.locator("td").nth(1)).toContainText("6.894");
+    await expect(page.getByTestId("auditoria-publicacoes")).toHaveCount(0);
+    await expect(page.getByTestId("evo-pendencias")).toHaveCount(0);
   });
 
   test("anomalia comprovada na fonte não publica o valor (Coopera 2025 sem UCBT)", async ({ page }) => {

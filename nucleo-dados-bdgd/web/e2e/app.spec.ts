@@ -17,8 +17,8 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page.locator("canvas.maplibregl-canvas")).toBeVisible();
     // regressão: o contêiner do mapa precisa ocupar o palco (ordem de CSS em produção)
     expect(await page.locator("canvas.maplibregl-canvas").evaluate((c) => c.clientHeight)).toBeGreaterThan(400);
-    await expect(page.getByTestId("kpi-ssdmt").locator("..")).toContainText("Subtotal observado");
-    await expect(page.getByText(/Cobertura nacional incompleta:/)).toBeVisible();
+    await expect(page.getByTestId("kpi-ssdmt").locator("..")).not.toContainText("Subtotal observado");
+    await expect(page.getByText(/Cobertura nacional parcial/)).toBeVisible();
     await page.getByTestId("panel-search").fill("CEA");
     await page.getByTestId("dist-31").click();
     await expect(page).toHaveURL(/dist=31/);
@@ -93,7 +93,7 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await page.getByRole("button", { name: "Ver cálculo técnico" }).click();
     await expect(page.getByRole("dialog", { name: /Rede de média tensão/ })).toContainText("COMP");
     await page.keyboard.press("Escape");
-    await expect(page.locator('[data-testid="kpi-uc"]').locator("..")).toContainText("Subtotal observado");
+    await expect(page.locator('[data-testid="kpi-uc"]').locator("..")).not.toContainText("Subtotal observado");
     await expect(page.locator('button[data-testid^="kpi-"]:not([data-testid="kpi-picker"])')).toHaveCount(10);
     await expect(page.getByTestId("kpi-trdist565")).toBeVisible();
     await expect(page.getByTestId("kpi-trforca570")).toBeVisible();
