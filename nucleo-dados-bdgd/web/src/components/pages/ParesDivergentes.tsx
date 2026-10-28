@@ -21,7 +21,7 @@ export function ParesDivergentes() {
       .then((res) => { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); })
       .then((r: Pacote) => {
         if (!Array.isArray(r.pares) || r.pares.length !== 13 ||
-            r.quantidade !== 13 || r.selecionadaAutomaticamente !== false)
+            r.quantidade !== 13 || r.selecionadaAutomaticamente !== true)
           throw new Error("Relação de republicações divergentes incompatível.");
         setDados(r);
       })
@@ -32,7 +32,7 @@ export function ParesDivergentes() {
   return (
     <details className={s.pares} data-testid="pares-publicacoes">
       <summary>Analisar individualmente os 13 pares de republicações divergentes</summary>
-      <p className={s.rodape}>São seis pares sem mudança nas quantidades dos 25 conceitos e sete com diferença em algum total. Mesmo sem mudança no total, os atributos das versões podem diferir. Nenhuma versão foi selecionada sem decisão documentada.</p>
+      <p className={s.rodape}>São seis pares sem mudança nas quantidades dos 25 conceitos e sete com diferença em algum total. Mesmo sem diferença nos 25 totais, os atributos e vínculos podem divergir. A versão mais recente válida foi selecionada por critério técnico-editorial documentado; a anterior segue disponível. Não implica homologação regulatória.</p>
       {erro ? <p role="alert">{erro}</p> : !dados ? <p role="status">Carregando comparações técnicas…</p> :
         <div className={s.scroll} tabIndex={0} role="region" aria-label="Comparação dos 13 pares de versões oficiais">
           <table className={s.tabela}>
@@ -48,9 +48,9 @@ export function ParesDivergentes() {
                 </td>
                 <td>
                   <a href={link(r.itemA)} target="_blank" rel="noopener noreferrer">Versão A: {r.versaoA}</a>
-                  <span className={s.sub}><a href={link(r.itemB)} target="_blank" rel="noopener noreferrer">Versão B: {r.versaoB}</a></span>
+                  <span className={s.sub}><a href={link(r.itemB)} target="_blank" rel="noopener noreferrer">Versão B (selecionada): {r.versaoB}</a></span>
                 </td>
-                <td><b>Decisão: {r.decisao.toLocaleLowerCase("pt-BR")}</b>
+                <td><b>Versão mais recente selecionada com ressalva</b>
                   <span className={s.sub}>{r.recomendacaoTecnica}</span>
                 </td>
               </tr>
