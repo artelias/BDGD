@@ -1,21 +1,21 @@
 {
  "escopo": "BDGD 2022-2025, mesma regra de ativos de 2025",
- "versao_regra": "r3-1",
+ "versao_regra": "r3-1+republicacao-mais-recente-20261028",
  "gerado_em": "2026-10-24T22:56:43+00:00",
  "cobertura": [
   {
    "ano": 2022,
    "publicadas": 102,
-   "validadas": 95,
-   "pendentes": 2,
+   "validadas": 97,
+   "pendentes": 0,
    "competencia_divergente": 5,
    "status_ano": "parcial"
   },
   {
    "ano": 2023,
    "publicadas": 101,
-   "validadas": 83,
-   "pendentes": 11,
+   "validadas": 94,
+   "pendentes": 0,
    "competencia_divergente": 7,
    "status_ano": "parcial"
   },
@@ -54,17 +54,19 @@
  },
  "privacidade": "somente agregados por DIST/ano/ativo; nenhum identificador individual",
  "checksums": {
-  "cobertura_por_ano.csv": "4578ba89a15edb8b622defc782c1c31f5896a52796b2101441ed8701884618fe",
+  "cobertura_por_ano.csv": "66e409c7301d85fb844805a95ad36ab658592b72b6d930407f1807ea217efaa8",
   "eventos_sucessao.csv": "d006a4d8e6969a85490dc73db61c6d25d13cb8df12087197cd02aaaa2cf44443",
   "ponte_perimetro_2025.csv": "887aaf1693569609990a210b0e0e5cefdb6844343224ea05be1ef93173221d5a",
   "populacao_conceitos.csv": "a2601e6d62a7d584aea879d9e4d0dbc8223fafba43b13e9ff0a20bc99f43e357",
   "qa_consistencia_temporal.csv": "fcdc4666e6fb8a1ce531eab41ab351697461339bb43c9c143c20ea39a0b8a8f3",
   "qa_duplicatas_reconciliadas.csv": "a9bc8648721647472ea1ee00bb318167ef133394c0baa2e0320fd6a924b12efc",
   "qa_itens_auditoria.csv": "2b6edf2eb24405026c6bb65736b2192a2a17018e4cae6efae300559c74d20cce",
-  "qa_publicacoes_multiplas.csv": "9ae743bf9ef03b8ad246c10e57a4b0e3decbfd85595a129de7af82e21d79d23c",
+  "qa_publicacoes_multiplas.csv": "0ccad927438a1c52540f18d2fb1f53f922e744341721d5e15aa9abb91d7f4b75",
   "qa_sinais_temporais_classificados.csv": "c266cfe53009a24dc4face107275e0670abde29cf71ad933de24925b147566f0",
   "qa_sucessao.csv": "a7617e0825d7eaca70b3c68812ee03b6473012bc169d249d0aed4526a10f35ab",
-  "serie_ativos_original.csv": "a2789c128440131cb6e864aa3d20f354a67c9eae136b123f5c6364921bfb6c21",
-  "serie_ativos_perimetro_2025.csv": "366405f7dadf9f72b96f8860bb49564c4b963a520a8ff7fd0ec10e72f35da85d"
- }
+  "serie_ativos_original.csv": "31a608ddd132ed45453619152d6549c100a781e9ef51788984bb37fb16671c38",
+  "serie_ativos_perimetro_2025.csv": "79f617b9c81e77e96d8d6988665cd1560be93b02f021dfdc5097aa1262f35edb"
+ },
+ "politica_republicacoes": "web/public/data/historico/politica-republicacoes.json",
+ "regra_selecao": "ultima versao V11 com BASE valida; sem homologacao regulatoria"
 }
