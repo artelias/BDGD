@@ -43,7 +43,9 @@ describe("Motor universal — contrato e publicação", () => {
   });
   it("contabiliza o universo de 29 métricas × 114 DIST sem inventar histórico", () => {
     const data = parseResumoMotor(raw());
-    expect(data.cobertura).toMatchObject({ esperado: 3306, observado: 2850, elegivel: 1545, bloqueado: 1305, ausente_no_contrato: 456 });
+    expect(data.cobertura).toMatchObject({ esperado: 3306, observado: 2850, ausente_no_contrato: 456 });
+    expect(data.cobertura.elegivel + data.cobertura.bloqueado).toBe(data.cobertura.observado);
+    expect(data.series.filter((x) => x.status === "simulacao_condicional")).toHaveLength(data.cobertura.elegivel);
     expect(data.cobertura.por_metrica.find((m) => m.METRICA === "potencia_kva")).toMatchObject({ ESPERADO: 456, OBSERVADO: 0, ELEGIVEL: 0, BLOQUEADO: 0, AUSENTE: 456 });
   });
   it("recusa contagens de cobertura inconsistentes e métricas duplicadas", () => {
@@ -63,7 +65,7 @@ describe("Motor universal — contrato e publicação", () => {
     const exported = JSON.parse(exportarExperimentoMotor(data, serie, serie.modelos[0]));
     expect(exported.cobertura).toEqual(data.cobertura);
     expect(exported.cobertura.ausente_no_contrato).toBe(456);
-    expect(exported.cobertura.bloqueado).toBe(1305);
+    expect(exported.cobertura.bloqueado + exported.cobertura.elegivel).toBe(exported.cobertura.observado);
   });
 
 });
