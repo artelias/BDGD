@@ -21,7 +21,7 @@ import { distsDoEscopo, escreverEscopo, lerEscopo, rotuloEscopo, type Escopo } f
 import { anoAno, ESTADO, indice100, serieDist, serieSoma, STATUS_ANO, variacao, type Serie, type SerieData } from "@/lib/evolucao";
 import {
   aplicarMatriz, coberturaAtivo, DESCRICAO_PUB, indexarHom, indiceHom, NATUREZA, naturezaVariacoes, pontosHom, ROTULO_PUB,
-  serieBrasil, seriePainel, sinaisNoEscopo, urlItem, type EstadoPub, type Homologacao, type PontoHom,
+  serieBrasil, seriePainel, serieSubtotalObservado, sinaisNoEscopo, urlItem, type EstadoPub, type Homologacao, type PontoHom,
 } from "@/lib/homologacao";
 import { fmt, fmtCompact, toCSV } from "@/lib/format";
 import { aplicarEstadosContrato, pontosContrato, type EstadosContrato } from "@/lib/historico-contrato";
@@ -101,6 +101,8 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
       const out: Serie[] = [serieBrasil(h, a.id, anos, estados)];
       const painel = seriePainel(h, a.id, anos);
       if (painel) out.push(painel);
+      const subtotal = serieSubtotalObservado(idx, anos);
+      if (subtotal.pontos.some((pt) => pt.v !== null)) out.push(subtotal);
       return out;
     }
     const dists = distsDoEscopo(ds, escopo);
