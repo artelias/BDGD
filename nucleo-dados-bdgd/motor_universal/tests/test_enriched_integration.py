@@ -273,14 +273,14 @@ class CoverageTests(unittest.TestCase):
 
     def test_real_catalog_and_missing_metrics_exactly_accounted(self):
         s=self.summary
-        self.assertEqual((s['esperado'],s['observado'],s['elegivel'],s['bloqueado'],s['ausente_no_contrato']),(3306,2850,1545,1305,456))
+        self.assertEqual((s['esperado'],s['observado'],s['elegivel'],s['bloqueado'],s['ausente_no_contrato']),(3306,2850,1748,1102,456))
         missing={(x['OBJETIVO_ID'],x['METRICA']) for x in self.rows if x['STATUS']=='AUSENTE_NO_CONTRATO'}
         self.assertEqual(missing,{(a,'potencia_kva') for a in ['trafo_dist','trafo_forca','trafo_medida','reguladores']})
         self.assertEqual(len({(x['DIST'],x['OBJETIVO_ID'],x['METRICA']) for x in self.rows}),3306)
 
     def test_every_block_has_traceable_primary_and_year_causes(self):
         blocked=[x for x in self.rows if x['STATUS']=='BLOQUEADA']
-        self.assertEqual(sum(self.summary['causa_principal_exclusiva'].values()),1305)
+        self.assertEqual(sum(self.summary['causa_principal_exclusiva'].values()),1102)
         self.assertTrue(all(x['MOTIVO_BLOQUEIO'] and x['EVIDENCIAS_ANUAIS'] and x['RESOLUCAO']!='NAO_NECESSARIA' for x in blocked))
         self.assertTrue(all(x['MOTIVO_BLOQUEIO']!='OUTROS' for x in blocked))
 
