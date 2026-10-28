@@ -17,7 +17,7 @@ import csv, hashlib, json, pathlib, sys
 
 RAIZ = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else pathlib.Path(__file__).resolve().parents[2]
 F4, F6 = RAIZ / "auditoria/fase4", RAIZ / "auditoria/fase6"; OUT = RAIZ / "output-historico/contrato-integracao"
-DATA_GERACAO = "2026-10-27"; VERSAO = "contrato-nacional-1.0.1"; REGRA = "r3-1+homologacao-fase6-1"
+DATA_GERACAO = "2026-10-28"; VERSAO = "contrato-nacional-1.0.1+republicacao-editorial-1"; REGRA = "r3-1+homologacao-fase6-1+republicacao-mais-recente"
 rd = lambda p: list(csv.DictReader(open(p, encoding="utf-8-sig")))
 # SHA-256 sobre o conteúdo com quebras de linha normalizadas para LF (independe de core.autocrlf / sistema operacional)
 sha = lambda p: hashlib.sha256(pathlib.Path(p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
