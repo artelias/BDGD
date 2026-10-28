@@ -1,3 +1,4 @@
+import { selecionarObservacoes } from "./observacoes";
 export interface MetricasMotor { n: number; mae: number | null; rmse: number | null; wape: number | null; vies: number | null }
 export interface ObjetivoMotor { objetivo_id: string; nome: string; familia: string; metrica: string; unidade: string; padrao: boolean; series: number; series_elegiveis: number; motivo: string | null }
 export interface ModeloMotor { modelo: string; metricas: MetricasMotor; auditoria: MetricasMotor; motivo: string | null; futuro: number[] }
@@ -75,7 +76,7 @@ export function parseResumoMotor(value: unknown): ResumoMotor {
 }
 
 export function exportarExperimentoMotor(data: ResumoMotor, serie: SerieMotor, modelo: ModeloMotor | undefined) {
-  return JSON.stringify({ schema_version: data.schema_version, experiment_id: data.experiment_id,
+  return JSON.stringify({ observacoes: selecionarObservacoes({ dists: [serie.DIST], ativos: [serie.objetivo_id], metricas: [serie.metrica] }), schema_version: data.schema_version, experiment_id: data.experiment_id,
     dataset_version: data.dataset_version, dataset_sha256: data.dataset_sha256, source_sha256: data.source_sha256,
     code_version: data.code_version, corte: data.as_of, previsao_validada: false,
     cobertura: data.cobertura,

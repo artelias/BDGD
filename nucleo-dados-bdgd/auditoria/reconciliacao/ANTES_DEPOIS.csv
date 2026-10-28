@@ -1,0 +1,9 @@
+DIST,ANO,ATIVO,METRICA,PACOTE_2025_ANTES,PACOTE_2025_DEPOIS,CONTRATO_ANTES,CONTRATO_DEPOIS,ESTADO_ANTES,ESTADO_DEPOIS,SUBTOTAL_OBSERVADO,OBSERVACAO_ID
+5370,2022,consumidores,quantidade,,,26773.0,26773.0,observado,observado,,
+5370,2023,consumidores,quantidade,,,27315.0,27315.0,observado,observado,,
+5370,2024,consumidores,quantidade,,,28141.0,28141.0,observado,observado,,
+5370,2025,consumidores,quantidade,225,,,,nao_homologado,nao_homologado,225,5370-2025-consumidores-quantidade
+6072,2025,consumidores,quantidade,23203,23203,23203.0,23203.0,observado,observado,,6072-2025-consumidores-quantidade
+7371,2025,trafo_medida,quantidade,0,,,,nao_homologado,nao_homologado,,7371-2025-trafo_medida-quantidade
+5374,2024,iluminacao,quantidade,,,,,nao_homologado,nao_homologado,,5374-2024-iluminacao-quantidade
+5374,2025,iluminacao,quantidade,5249,5249,5249.0,5249.0,observado,observado,,5374-2025-iluminacao-quantidade

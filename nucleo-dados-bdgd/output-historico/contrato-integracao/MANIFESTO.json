@@ -1,6 +1,6 @@
 {
- "versao": "contrato-nacional-1.0.0",
- "data_geracao": "2026-10-25",
+ "versao": "contrato-nacional-1.0.1",
+ "data_geracao": "2026-10-27",
  "linhas": 11400,
  "agregados": 200,
  "pontes": 4,
@@ -44,12 +44,13 @@
   "auditoria/fase4/RANKING_ANOMALIAS_TEMPORAIS.csv": "430c45190750adaa87c4735018ce9092119e479f105b59577dac7ffdb4796a6d",
   "auditoria/fase6/INVENTARIO_LACUNAS_NACIONAL.csv": "2e8be0aaa1649f414174ca628b36527c9d92c6b19b2ef733b40a24f5c519bd3f",
   "auditoria/fase6/CORRECOES_AUSENCIAS.csv": "6f0fe7c65115b3354e8b1c976cfbf098f6ab0d8132436653c5e4058ea9f809a6",
-  "web/public/data/historico/homologacao.json": "ac7a5d25f21112a4a4034108998456e7b0f443e3abf39c1b34d6320104935ffc"
+  "web/public/data/historico/homologacao.json": "ac7a5d25f21112a4a4034108998456e7b0f443e3abf39c1b34d6320104935ffc",
+  "auditoria/reconciliacao/observacoes.json": "347e188567e092a7c63ee1caae92d91a805512865783aae03a3fbda94fddb825"
  },
  "saidas": {
-  "serie_fisica_nacional.csv": "8d47fb589859a925ffae3a77e55e2edd2638f343a78e2ed1fb23764ee10735f5",
-  "agregados_nacionais.csv": "ce2ce58bd4ee8b33ad358e4ab8ad34ef67177fa809bb6e87cd2080a949e290e6",
+  "serie_fisica_nacional.csv": "be804d6e859479d54b6a11df855e7b3183c1e6064373fdfceed73d0e7eae7086",
+  "agregados_nacionais.csv": "e9ed7cc8a5611d268c7ff921a705ea1b43aaae58c98db84049231769cb3bdc1c",
   "pontes_sucessao.csv": "359f7e7ac4841e31ed442de6f94decb0a834da37b227c1083e90ad9c3fa8e166",
-  "esquema.json": "05af8a8d0a160f137b0c20a890b427b1009c67d7b33f2b26d503422ea7d4b511"
+  "esquema.json": "c4124faa5548a80384c864adfade539a52aab70f2fedef4e3f2bd82685e8ea3a"
  }
 }

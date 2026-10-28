@@ -1,0 +1,41 @@
+{
+  "fontes": [
+    {
+      "fonte": "ANEEL/SAMP",
+      "url": "https://dadosabertos.aneel.gov.br/dataset/samp",
+      "recurso_2025": "a757e805-fe7b-4764-bb49-19caef3e5dfe",
+      "consulta": "2026-10-27",
+      "status": "FONTE_LOCALIZADA_SEM_PAINEL_COMPARAVEL_ENTREGUE",
+      "evidencia": "evidencias/samp-recursos-2025.json e samp-schema-2025.txt",
+      "limites": [
+        "Esquema consultado identifica agente por CNPJ/sigla; não contém a chave DIST BDGD",
+        "VlrMercado não pode ser tratado como consumo/demanda sem classificar tipo de mercado e unidade",
+        "Recurso atual atualizado em 15/10/2026; não demonstra a versão disponível em cada origem de backtest"
+      ]
+    },
+    {
+      "fonte": "IBGE/PIB municipal",
+      "url": "https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html",
+      "consulta": "2026-10-27",
+      "status": "PAINEL_TERRITORIAL_E_VINTAGES_NAO_ENTREGUES",
+      "limites": [
+        "Acesso integral da página retornou HTTP 403 neste ambiente",
+        "PIB municipal não pode ser replicado integralmente em cada DIST que atende o município",
+        "Faltam pesos/comparabilidade territorial por ano e datas de divulgação/revisões para os cortes"
+      ]
+    },
+    {
+      "fonte": "EPE/Anuário 2026",
+      "url": "https://epe.gov.br/pt/publicacoes-dados-abertos/publicacoes/anuario-estatistico-de-energia-eletrica",
+      "consulta": "2026-10-27",
+      "status": "FONTE_LOCALIZADA_SEM_ASSOCIACAO_DIST_COMPROVADA",
+      "limites": [
+        "Publicação contém informações nacionais, regionais e por UF; não foi comprovado painel homogêneo DIST × ano",
+        "Dados do ano-base 2025 publicados em 2026 não são covariáveis disponíveis numa origem de 2024",
+        "Nenhum valor foi distribuído ou inventado por empresa"
+      ]
+    }
+  ],
+  "features_reais_inseridas": 0,
+  "previsao_validada": false
+}

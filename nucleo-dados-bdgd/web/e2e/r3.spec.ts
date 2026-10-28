@@ -116,7 +116,7 @@ test.describe("R3 — Matriz Nacional por ativo", () => {
     await page.keyboard.press("Escape");
     const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("matriz-csv").click()]);
     const txt = Buffer.concat(await (await dl.createReadStream()).toArray()).toString("utf-8");
-    expect(txt.split(/\r?\n/)[0].replace(/^﻿/, "")).toBe("data_base,versao,dist,sigla,grupo_economico,grupo_status,ativo,nome_ativo,medida,unidade,recorte,valor,status,motivo,regra");
+    expect(txt.split(/\r?\n/)[0].replace(/^﻿/, "")).toBe("data_base,versao,dist,sigla,grupo_economico,grupo_status,ativo,nome_ativo,medida,unidade,recorte,valor,status,motivo,regra,observacoes_ids,observacoes_e_ressalvas,valor_publicado_fonte,subtotal_observado,arquivo_origem,versao_origem");
     expect(txt).toContain("area:");
   });
 

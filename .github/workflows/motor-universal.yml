@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - "nucleo-dados-bdgd/motor_universal/**"
+      - "nucleo-dados-bdgd/reconciliacao/**"
+      - "nucleo-dados-bdgd/auditoria/reconciliacao/**"
       - "nucleo-dados-bdgd/etl/bdgd2025/config/conceitos_2025.json"
       - "nucleo-dados-bdgd/output-historico/contrato-integracao/**"
       - "nucleo-dados-bdgd/web/public/data/previsoes/motor-universal-resumo.json.gz"
@@ -31,20 +33,34 @@ jobs:
           "$RUNNER_TEMP/motor-env/bin/python" -m pip install -r motor_universal/requirements.txt -r motor_universal/requirements-ml.txt
       - name: Contratos, Parquet, treino sintético e backtesting
         run: '"$RUNNER_TEMP/motor-env/bin/python" -m unittest discover -s motor_universal/tests -v'
+      - name: Reconciliação e preservação das origens
+        run: '"$RUNNER_TEMP/motor-env/bin/python" -m unittest discover -s reconciliacao/tests -v'
       - name: Experimento real reproduzível, sem reprocessar BDGD
         run: '"$RUNNER_TEMP/motor-env/bin/python" -m motor_universal --output "$RUNNER_TEMP/experimento-motor" --web-summary web/public/data/previsoes/motor-universal-resumo.json.gz --check-web'
       - name: Matriz de cobertura versionada corresponde ao experimento
         run: |
           "$RUNNER_TEMP/motor-env/bin/python" - <<'PYCODE'
           import gzip, json, os
+          from patrimonio.verify import compare_file
           from pathlib import Path
           generated = Path(os.environ["RUNNER_TEMP"]) / "experimento-motor/cobertura"
-          committed = Path("docs/auditoria-motor-pr10")
+          committed = Path("docs/auditoria-reconciliacao-pr13")
           assert gzip.decompress((committed / "cobertura.csv.gz").read_bytes()) == (generated / "cobertura.csv").read_bytes()
           for name in ["cobertura.parquet", "cobertura-por-metrica.csv", "cobertura-por-objetivo.csv"]:
-              assert (committed / name).read_bytes() == (generated / name).read_bytes(), name
+              compare_file(committed / name, generated / name)
           assert json.loads((committed / "cobertura-resumo.json").read_text()) == json.loads((generated / "cobertura-resumo.json").read_text())
           print("Matriz completa e resumos conferidos contra o experimento")
+          PYCODE
+      - name: KNN real permanece bloqueado sem painel externo comparável
+        run: |
+          "$RUNNER_TEMP/motor-env/bin/python" -m motor_universal.knn --output "$RUNNER_TEMP/experimento-motor/knn-real.json"
+          "$RUNNER_TEMP/motor-env/bin/python" - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          expected = json.loads(Path("auditoria/reconciliacao/knn-real.json").read_text())
+          actual = json.loads((Path(os.environ["RUNNER_TEMP"]) / "experimento-motor/knn-real.json").read_text())
+          assert actual == expected
+          assert actual["status"] == "bloqueado" and actual["estimativa"] is None and not actual["previsao_validada"]
           PYCODE
       - name: Artefatos auditáveis do experimento
         if: always()

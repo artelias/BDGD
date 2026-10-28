@@ -1,4 +1,6 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
+import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { coberturaNacionalIncompleta } from "@/lib/panorama-r3";
 import { Code2, Download, Info, SlidersHorizontal, X } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
@@ -93,7 +95,7 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
   const distBr = por && !brasil ? distribuicao(cd, por, recorte, m, B) : null;
   const cubo = escolherCubo(cd, [...Object.keys(recorte.filtro).filter((k) => recorte.filtro[k].length), ...(por ? [por] : [])]);
   const fora = cubo ? foraDoCubo(cd, cubo) : [];
-  const somaCat = dist?.categorias.reduce((x, c) => x + (c.v ?? 0), 0) ?? 0;
+  const somaCat = total?.nd ? 0 : dist?.categorias.reduce((x, c) => x + (c.v ?? 0), 0) ?? 0;
   const brMap = new Map(nacionalIncompleto ? [] : distBr?.categorias.map((c) => [c.code, c.v]) ?? []);
   const unidade = UNIDADE[m];
   const at = ativo(ds, item.id);
@@ -123,10 +125,10 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
   const exportCSV = () => {
     if (!dist || !por) return;
     const nome = `bdgd_2025-12-31_${item.id}_${por}_${m}_${escopo.modo === "brasil" ? "brasil" : escopo.modo === "grupo" ? `grupo-${escopo.grupo}` : "dists"}.csv`;
-    downloadText(nome, toCSV(["data_base", "versao", "ativo", "escopo", "distribuidoras", "recorte", "dimensao", "codigo", "categoria", "medida", "unidade", "valor", "participacao_no_recorte", "participacao_brasil_mesma_categoria", "distribuidoras_com_valor", "distribuidoras_nd", "fonte"],
+    downloadText(nome, toCSV(["data_base", "versao", "ativo", "escopo", "distribuidoras", "recorte", "dimensao", "codigo", "categoria", "medida", "unidade", "valor", "participacao_no_recorte", "participacao_brasil_mesma_categoria", "distribuidoras_com_valor", "distribuidoras_nd", "fonte", ...COLUNAS_OBSERVACOES],
       dist.categorias.map((c) => ["2025-12-31", ds.raw.release.release_id, item.nome, escopoNome, [...S].join(" "), escreverRecorte(recorte.filtro) || "(sem filtro)", rot(por), c.code, c.label, m, unidade, c.v,
         c.v !== null && somaCat ? c.v / somaCat : null, !brasil && c.v !== null && brMap.get(c.code) ? c.v / (brMap.get(c.code) as number) : null, c.n, c.nd,
-        `BDGD 2025 (ANEEL); ${cfg.entidades.join(", ")}; DDA M10 / MCPSE`])));
+        `BDGD 2025 (ANEEL); ${cfg.entidades.join(", ")}; DDA M10 / MCPSE`, ...camposObservacoes({ dists: [...S], ativos: [item.id], anos: [2025], metricas: [m], filtro: recorte.filtro })])));
     toast(`${nome} exportado`);
   };
 
@@ -274,6 +276,7 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
           <EntidadeTecnica ds={ds} entidades={[...cfg.entidades, ...(cfg.vinculos ?? [])]} dists={S} scope={S.size === 1 ? { tipo: "dist", id: [...S][0] } : { tipo: "brasil" }} />
         </div>
       )}
+      <ObservacoesDados dists={[...S]} ativos={[item.id]} anos={[2025]} metricas={[m]} filtro={recorte.filtro} />
     </div>
   );
 }
@@ -295,7 +298,7 @@ function Barras({ data, m, onPick }: { data: Array<{ code: string; label: string
       formatter: (q: { dataIndex: number }) => `<b>${data[q.dataIndex].label}</b><br/>${comUnidade(data[q.dataIndex].v, m)}${m === "quantidade" ? " itens" : ""}` },
     xAxis: { type: "value", show: false },
     yAxis: { type: "category", inverse: true, data: data.map((c) => (c.label.length > 36 ? c.label.slice(0, 35) + "…" : c.label)), axisLine: { show: false }, axisTick: { show: false }, axisLabel: { color: t.text2, fontFamily: t.font, fontSize: 11 } },
-    series: [{ type: "bar", barWidth: 11, data: data.map((c) => ({ value: c.v ?? 0, itemStyle: { color: c.v === null ? t.nd : t.accent, borderRadius: 3 } })),
+    series: [{ type: "bar", barWidth: 11, data: data.map((c) => ({ value: c.v, itemStyle: { color: c.v === null ? t.nd : t.accent, borderRadius: 3 } })),
       label: { show: true, position: "right", color: t.text2, fontFamily: t.font, fontSize: 11, formatter: (q: { dataIndex: number }) => fmtCompact(data[q.dataIndex].v, m) } }],
   }), [data, m]);
   return <EChart build={build} height={Math.max(140, data.length * 26 + 20)} ariaLabel="Distribuição por categoria; os valores estão na tabela abaixo" onClickIndex={(i) => onPick(data[i].code)} testId="chart-categorias" />;

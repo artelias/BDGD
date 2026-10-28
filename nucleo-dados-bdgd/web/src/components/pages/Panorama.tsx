@@ -1,4 +1,5 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { ArrowLeft, Check, ChevronDown, ExternalLink, GitCompareArrows, Layers3, Locate, Search, SlidersHorizontal, Table2, X } from "lucide-react";
 import { AnimatePresence, motion, useAnimationControls, type PanInfo } from "motion/react";
 import Link from "next/link";
@@ -206,6 +207,7 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
       </div>
 
       <Inventory ds={ds} dists={scopeDists} />
+      <ObservacoesDados dists={scopeDists} anos={[2025]} />
     </>
   );
 }

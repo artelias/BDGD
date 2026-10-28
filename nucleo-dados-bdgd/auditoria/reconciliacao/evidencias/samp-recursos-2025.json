@@ -1,0 +1,21 @@
+{
+  "url": "https://dadosabertos.aneel.gov.br/api/3/action/package_show?id=samp",
+  "resources": [
+    {
+      "id": "6fac5605-5df0-469d-be08-04ee22934f60",
+      "name": "samp-2025.csv",
+      "format": "CSV",
+      "url": "https://dadosabertos.aneel.gov.br/dataset/3e153db4-a503-4093-88be-75d31b002dcf/resource/6fac5605-5df0-469d-be08-04ee22934f60/download/samp-2025.csv",
+      "last_modified": "2026-10-15T05:21:25.692080",
+      "created": "2025-02-11T13:09:03.953349"
+    },
+    {
+      "id": "a757e805-fe7b-4764-bb49-19caef3e5dfe",
+      "name": "samp-2025.parquet",
+      "format": "PARQUET",
+      "url": "https://dadosabertos.aneel.gov.br/dataset/3e153db4-a503-4093-88be-75d31b002dcf/resource/a757e805-fe7b-4764-bb49-19caef3e5dfe/download/samp-2025.parquet",
+      "last_modified": "2026-10-15T05:23:06.410780",
+      "created": "2026-06-11T21:46:24.233859"
+    }
+  ]
+}

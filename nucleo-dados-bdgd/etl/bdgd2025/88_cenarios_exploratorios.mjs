@@ -90,7 +90,7 @@ for (const conjunto of conjuntos.values()) {
 series.sort((a, b) => a[0] - b[0] || a[2].localeCompare(b[2]));
 const produto = {
   versao: "cenarios-bdgd-exploratorios-1.0.1",
-  origem: "ANEEL/BDGD; contrato-nacional-1.0.0",
+  origem: "ANEEL/BDGD; contrato-nacional-1.0.1",
   commitOrigem,
   blobShaOrigem,
   anosObservados: [2022, 2023, 2024, 2025],

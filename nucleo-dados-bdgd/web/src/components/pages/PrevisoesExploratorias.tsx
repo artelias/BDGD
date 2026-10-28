@@ -1,7 +1,10 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 
 import { useEffect, useMemo, useState } from "react";
+import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { toCSV } from "@/lib/format";
+import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import { avaliarRiscosCenario } from "@/lib/risco-cenarios";
 import s from "./previsoes-exploratorias.module.css";
 
@@ -104,9 +107,11 @@ export function PrevisoesExploratorias() {
   const porDist = useMemo(() => dados?.series.filter((item) => String(item[0]) === dist) ?? [], [dados, dist]);
   const conceitos = useMemo(() => [...porDist].sort((a, b) =>
     (NOMES[a[2]] ?? a[2]).localeCompare(NOMES[b[2]] ?? b[2], "pt-BR")), [porDist]);
-  const serie = conceitos.find((item) => item[2] === conceito) ?? conceitos[0];
-  const conceitoEfetivo = serie?.[2] ?? "";
-  const futuros = serie && (metodo === "persistencia"
+  const cooperaSemBt = dist === "5370" && conceito === "consumidores";
+  const serie = conceitos.find((item) => item[2] === conceito) ?? (cooperaSemBt ? undefined : conceitos[0]);
+  const conceitoEfetivo = cooperaSemBt ? "consumidores" : serie?.[2] ?? "";
+  const bloqueioCoopera = dist === String(COOPERA_UCBT_2025.dist) && conceitoEfetivo === "consumidores";
+  const futuros = serie && !bloqueioCoopera && (metodo === "persistencia"
     ? [0, 1, 2, 3, 4].map(() => serie[5][3]) : serie[6]);
   const valorAno = serie && futuros ? futuros[anoAlvo - 2026] : null;
   const erroModelo = serie && (metodo === "persistencia" ? serie[7][0] : serie[7][1]);
@@ -114,13 +119,13 @@ export function PrevisoesExploratorias() {
   const codigosAviso = avisos.map((a) => a.codigo).join("|");
   const csv = serie && futuros && dados
     ? toCSV(["ano", "valor", "classe", "metodo", "dist", "conceitoId", "unidade", "metrica",
-      "status_homologacao", "publicacao_id", "verificacao_independente_zero", "versao_dados", "commit_origem", "blob_sha_origem", "avisos_estatisticos"],
+      "status_homologacao", "publicacao_id", "verificacao_independente_zero", "versao_dados", "commit_origem", "blob_sha_origem", "avisos_estatisticos", ...COLUNAS_OBSERVACOES],
       ANOS.map((ano, i) => [ano, i < 4 ? serie[5][i] : futuros[i - 4],
         i < 4 ? (serie[10][i] === "Z" ? "zero_tecnico" : "observado") : "simulacao_condicional",
         i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4], serie[3],
         i < 4 ? serie[9][i] : "NAO_VALIDADA", i < 4 ? serie[8][i] : "",
         i < 4 && serie[10][i] === "Z" ? "pendente" : "nao_se_aplica", dados.versao, dados.commitOrigem, dados.blobShaOrigem,
-        i < 4 ? "" : codigosAviso]))
+        i < 4 ? "" : codigosAviso, ...camposObservacoes({ dists: [serie[0]], ativos: [serie[2]], anos: i < 4 ? [ano] : [2025], metricas: [serie[3]] })]))
     : "";
 
   return (
@@ -150,6 +155,7 @@ export function PrevisoesExploratorias() {
               </label>
               <label>Ativo
                 <select value={conceitoEfetivo} onChange={(e) => setConceito(e.target.value)}>
+                  {dist === "5370" && !conceitos.some((r) => r[2] === "consumidores") && <option value="consumidores">Consumidores · N/D (UCBT ausente)</option>}
                   {conceitos.map((item) => <option key={item[2]} value={item[2]}>{NOMES[item[2]] ?? item[2]}</option>)}
                 </select>
               </label>
@@ -165,6 +171,7 @@ export function PrevisoesExploratorias() {
                 </select>
               </label>
             </div>
+            {bloqueioCoopera && <p role="status" data-testid="coopera-bloqueio-cenario"><b>Coopera 2025 — cenário de consumidores suspenso.</b> UCBT sem registros (0*) na publicação ANEEL; 225 AT de UCMT/UCAT são somente subtotal parcial. A extrapolação existente não é confiável. Uma estimativa KNN com variáveis externas e âncora histórica válida está implementada e testada com fixtures sintéticas; aguarda painel externo comparável e disponibilidade histórica para avaliação real.</p>}
             {serie && futuros && valorAno !== null && (
               <>
                 <div className={s.destaque} aria-live="polite" aria-atomic="true">
@@ -215,11 +222,12 @@ export function PrevisoesExploratorias() {
                   </div>
                 </div>
                 <p className={s.rodape}>* Zero técnico: a classificação é consistente com o agregado processado, mas a comprovação independente de cada entidade vazia no GDB ainda precisa ser concluída.</p>
-                <p className={s.rodape}>Origem: contrato nacional BDGD 1.0.0, PR #4, commit {dados.commitOrigem}. Identificadores das publicações preservados. Não há previsão estatisticamente validada nem intervalo probabilístico de confiança.</p>
+                <p className={s.rodape}>Origem: contrato nacional BDGD 1.0.1 reconciliado, commit {dados.commitOrigem}. Identificadores das publicações preservados. Não há previsão estatisticamente validada nem intervalo probabilístico de confiança.</p>
               </>
             )}
           </>
         )}
-    </section>
+      <ObservacoesDados dists={[dist]} ativos={[conceitoEfetivo || conceito]} anos={[2022,2023,2024,2025]} />
+  </section>
   );
 }

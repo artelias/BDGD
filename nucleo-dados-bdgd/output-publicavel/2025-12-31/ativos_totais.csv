@@ -67,7 +67,7 @@ dist,data_base,ativo,conceito,medida,unidade,valor,status,motivo
 5367,2025-12-31,consumidores,consumidores,quantidade,itens,22438,aprovado,
 5368,2025-12-31,consumidores,consumidores,quantidade,itens,19052,aprovado,
 5369,2025-12-31,consumidores,consumidores,quantidade,itens,4801,aprovado,
-5370,2025-12-31,consumidores,consumidores,quantidade,itens,225,aprovado,
+5370,2025-12-31,consumidores,consumidores,quantidade,itens,,bloqueado,"UCBT sem registros na publicação: 0* cadastral, não zero físico. Total de consumidores N/D; subtotal observado de 225 ativos MT/AT. Total completo NULL; UCBT 0* apenas como contagem de registros. UCMT 224 e UCAT 1 mantidos. Histórico 2022–2024 preservado; recortes exclusivamente MT/AT podem mostrar observados."
 5371,2025-12-31,consumidores,consumidores,quantidade,itens,12282,aprovado,
 5372,2025-12-31,consumidores,consumidores,quantidade,itens,5615,aprovado,
 5373,2025-12-31,consumidores,consumidores,quantidade,itens,1438,aprovado,
@@ -83,7 +83,7 @@ dist,data_base,ativo,conceito,medida,unidade,valor,status,motivo
 5386,2025-12-31,consumidores,consumidores,quantidade,itens,17164,aprovado,
 5697,2025-12-31,consumidores,consumidores,quantidade,itens,3572532,alerta,1030 registros ativados repetidos para a mesma unidade (codigo + ponto de conexao); contados uma vez
 5707,2025-12-31,consumidores,consumidores,quantidade,itens,1980205,aprovado,
-6072,2025-12-31,consumidores,consumidores,quantidade,itens,23203,aprovado,
+6072,2025-12-31,consumidores,consumidores,quantidade,itens,23203,alerta,Mudança cadastral de situação AT/DS impede interpretar a queda como perda física de consumidores. Preservar o observado pela regra AT (23.203); não converter DS em AT. Comparabilidade/treino bloqueados; não imputar a queda.
 6585,2025-12-31,consumidores,consumidores,quantidade,itens,601282,aprovado,
 6587,2025-12-31,consumidores,consumidores,quantidade,itens,908179,aprovado,
 6600,2025-12-31,consumidores,consumidores,quantidade,itens,1902125,aprovado,
@@ -269,7 +269,7 @@ dist,data_base,ativo,conceito,medida,unidade,valor,status,motivo
 5371,2025-12-31,iluminacao,iluminacao,quantidade,itens,10427,aprovado,
 5372,2025-12-31,iluminacao,iluminacao,quantidade,itens,2683,aprovado,
 5373,2025-12-31,iluminacao,iluminacao,quantidade,itens,793,aprovado,
-5374,2025-12-31,iluminacao,iluminacao,quantidade,itens,5249,aprovado,
+5374,2025-12-31,iluminacao,iluminacao,quantidade,itens,5249,alerta,Retomada após publicação incompleta de 2024; crescimento contra 2024 não é expansão comprovada. Preservar observado 5.249 com ressalva e ruptura em relação a 2024; não estimar o valor de 2024.
 5375,2025-12-31,iluminacao,iluminacao,quantidade,itens,2050,aprovado,
 5377,2025-12-31,iluminacao,iluminacao,quantidade,itens,2836,aprovado,
 5378,2025-12-31,iluminacao,iluminacao,quantidade,itens,3057,aprovado,
@@ -1183,7 +1183,7 @@ dist,data_base,ativo,conceito,medida,unidade,valor,status,motivo
 6898,2025-12-31,trafo_medida,transformadores,quantidade,itens,219,aprovado,
 7016,2025-12-31,trafo_medida,transformadores,quantidade,itens,66,aprovado,
 7019,2025-12-31,trafo_medida,transformadores,quantidade,itens,46,aprovado,
-7371,2025-12-31,trafo_medida,transformadores,quantidade,itens,0,aprovado,
+7371,2025-12-31,trafo_medida,transformadores,quantidade,itens,,bloqueado,Entidade EQTRM vazia em 2025; zero cadastral não comprova retirada física dos transformadores de medida. Manter quantidade física N/D e decisão pendente; preservar zero de registros como evidência. Nenhuma alteração por suposição de situação cadastral.
 7467,2025-12-31,trafo_medida,transformadores,quantidade,itens,601,aprovado,
 7883,2025-12-31,trafo_medida,transformadores,quantidade,itens,12,aprovado,
 11825,2025-12-31,trafo_medida,transformadores,quantidade,itens,45,aprovado,

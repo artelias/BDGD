@@ -1,4 +1,6 @@
 "use client";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
+import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { AlertTriangle, Download, ExternalLink, Flag, History, Info, ShieldCheck } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
@@ -12,6 +14,7 @@ import { DataError, downloadText, EmptyState, LoadingBlock, useToast } from "@/c
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { ativos as listaAtivos, UNIDADE } from "@/lib/ativos";
+import { COOPERA_UCBT_2025, observacaoCoopera2025 } from "@/lib/observacoes-auditoria";
 import type { Dataset } from "@/lib/dataset";
 import { useData } from "@/lib/data-context";
 import { distsDoEscopo, escreverEscopo, lerEscopo, rotuloEscopo, type Escopo } from "@/lib/escopo";
@@ -58,13 +61,14 @@ function Selo({ e, curto }: { e: EstadoPub; curto?: boolean }) {
   return <span className={s.selo} data-e={e} title={DESCRICAO_PUB[e]}>{curto ? ROTULO_PUB[e].split(" (")[0] : ROTULO_PUB[e]}</span>;
 }
 
-function Celula({ pt, medida }: { pt: PontoHom; medida: Parameters<typeof fmt>[1] }) {
+function Celula({ pt, medida, parcial = false }: { pt: PontoHom; medida: Parameters<typeof fmt>[1]; parcial?: boolean }) {
   const motivo = pt.motivo || ESTADO[pt.estado] || "";
   if (pt.estado === "nao_aplicavel") return <span className="faint" title={motivo}>Não aplicável</span>;
   if (pt.v === null) return <><span className="faint">N/D</span>{pt.estado === "nao_homologado" ? <span className={s.mini}>Não homologado</span> : pt.pub && pt.pub !== "N" && <span className={s.mini} data-e={pt.pub}>{ROTULO_PUB[pt.pub].split(" ")[0]}</span>}<span className="sr-only">: {motivo}</span></>;
   return (
     <>
       {fmt(pt.v, medida)}
+      {parcial && <span className={s.mini} title="Subtotal parcial: UCBT não informada na publicação">* parcial</span>}
       {pt.estado === "zero_verificado" && <span className={s.mini}>Zero técnico*</span>}
       {pt.pub === "R" && <AlertTriangle size={11} className={s.warn} aria-label={`ressalva: ${motivo}`} />}
       {pt.quebra && <Flag size={11} className={s.flag} aria-label="quebra de comparabilidade" />}
@@ -122,6 +126,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
   const pendPares = Object.entries(h.pares).filter(([k]) => escopo.modo === "brasil" || distsEscopo.includes(Number(k.split("|")[0])));
   const pendOutras = (h.celulas[a.id] ?? []).filter((c) => c[2] === "P" && !h.pares[`${c[0]}|${c[1]}`] && (escopo.modo === "brasil" || distsEscopo.includes(c[0])));
   const conceito = a.conceito;
+  const detalhesCoopera = observacaoCoopera2025();
   const semTuc0 = distPrincipal !== null ? anos.map((ano) => h.sem_tuc[`${distPrincipal}|${ano}|${conceito}`]) : null;
   const semTuc = semTuc0 && semTuc0.some((v) => v !== undefined) ? semTuc0 : null; // conceito sem TUC (ex.: redes): linha omitida
   const semDado = escopo.modo !== "brasil" && series.every((x) => x.pontos.every((pt) => pt.v === null));
@@ -163,10 +168,11 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
     const rows: Array<Array<string | number | null>> = [];
     for (const x of series) for (const pt of x.pontos as PontoHom[]) {
       const prov = /^\d+$/.test(x.id) ? (h.proveniencia[`${x.id}|${pt.ano}`] ?? []).filter((q) => q.uso !== "excluido_competencia").map((q) => q.item).join(" ") : "";
-      rows.push([x.nome, a.id, a.medida, UNIDADE[a.medida], pt.ano, pt.v, ESTADO[pt.estado] ?? pt.estado, pt.pub ? ROTULO_PUB[pt.pub] : "", pt.motivo ?? "", pt.quebra ? "quebra" : "comparavel",
-        visao === "perimetro" ? "perimetro_2025" : "publicacao_original", prov, sd.versao_regra, h.versao]);
+      const parcialCoopera = a.id === "consumidores" && x.id === "5370" && pt.ano === 2025;
+      rows.push([x.nome, a.id, a.medida, UNIDADE[a.medida], pt.ano, pt.v, ESTADO[pt.estado] ?? pt.estado, pt.pub ? ROTULO_PUB[pt.pub] : "", parcialCoopera ? detalhesCoopera.texto : (pt.motivo ?? ""), pt.quebra ? "quebra" : "comparavel",
+        visao === "perimetro" ? "perimetro_2025" : "publicacao_original", prov, sd.versao_regra, h.versao, ...camposObservacoes({ dists: /^\d+$/.test(x.id) ? [x.id] : distsEscopo, ativos: [a.id], anos: [pt.ano], metricas: [a.medida] })]);
     }
-    downloadText(nome, toCSV(["serie", "ativo", "medida", "unidade", "ano", "valor", "estado", "estado_publicacao", "motivo", "comparabilidade", "visao", "publicacao_arcgis", "versao_regra", "versao_homologacao"], rows));
+    downloadText(nome, toCSV(["serie", "ativo", "medida", "unidade", "ano", "valor", "estado", "estado_publicacao", "motivo", "comparabilidade", "visao", "publicacao_arcgis", "versao_regra", "versao_homologacao", ...COLUNAS_OBSERVACOES], rows));
     toast(`${nome} exportado`);
   };
 
@@ -219,7 +225,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
 
       {principal && (
         <div className={s.cards} data-testid="evo-cards">
-          <div className={s.card}><div className={s.cardL}>{principal.nome}</div><div className={s.cardV}>{principal.pontos[3]?.v === null ? "N/D" : `${fmt(principal.pontos[3]?.v, a.medida)}`}<span className={s.cardU}> {UNIDADE[a.medida]} em 2025</span></div>
+          <div className={s.card}><div className={s.cardL}>{principal.nome}</div><div className={s.cardV}>{principal.pontos[3]?.v === null ? "N/D" : `${fmt(principal.pontos[3]?.v, a.medida)}`}{a.id === "consumidores" && principal.id === "5370" && principal.pontos[3]?.v !== null && <span className={s.mini} title={detalhesCoopera.texto}>* parcial</span>}<span className={s.cardU}> {UNIDADE[a.medida]} em 2025</span></div>
             {(principal.pontos[3] as PontoHom | undefined)?.pub && <div className={s.cardF}><Selo e={(principal.pontos[3] as PontoHom).pub!} /></div>}</div>
           <div className={s.card}><div className={s.cardL}>Variação acumulada</div><div className={s.cardV} data-testid="evo-var">{pct(varP?.pct ?? null)}</div><div className={s.cardF}>{varP?.motivo ?? (varP?.abs !== null && varP ? `${varP.abs >= 0 ? "+" : ""}${fmt(varP.abs, a.medida)} ${UNIDADE[a.medida]}` : "")}</div></div>
           <div className={s.card}><div className={s.cardL}>Crescimento médio anual (CAGR)</div><div className={s.cardV} data-testid="evo-cagr">{pct(varP?.cagr ?? null)}</div><div className={s.cardF}>{varP?.motivo ?? "entre o primeiro e o último ano com valor"}</div></div>
@@ -249,7 +255,7 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
                 <th scope="row">{x.nome}{x.nota && <div className="caption">{x.nota}</div>}</th>
                 {(x.pontos as PontoHom[]).map((pt) => (
                   <td key={pt.ano} title={pt.v === null ? (pt.motivo || sd.notas[`${x.id}|${pt.ano}|${a.id}`] || ESTADO[pt.estado] || "") : pt.pub === "R" ? pt.motivo : pt.quebra ? "quebra de classificação neste ano" : undefined}>
-                    <Celula pt={pt} medida={a.medida} />
+                    <Celula pt={pt} medida={a.medida} parcial={a.id === "consumidores" && x.id === "5370" && pt.ano === 2025} />
                   </td>
                 ))}
                 <td>{pct(v.pct)}</td><td>{pct(v.cagr)}</td>
@@ -378,6 +384,8 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
           </ul>
         </section>
       )}
+
+      <ObservacoesDados dists={distsEscopo} ativos={[a.id]} anos={anos} metricas={[a.medida]} />
     </>
   );
 }

@@ -62,3 +62,9 @@ python -m motor_universal --panel /caminho/bundle --registry /caminho/objetivos.
 A aceitação técnica não é aprovação de fontes, validação causal, homologação estatística ou autorização para publicar previsões. Necessidade de expansão permanece NULL: não é identificável apenas pela diferença de estoques.
 
 Estados de origem explícitos `NAO_HOMOLOGADO` e desconhecidos não entram no treino mesmo quando conservam valor numérico para auditoria. Aptidão técnica reconhece `HOMOLOGADO`, `COMPLETO_TECNICO` e `APTO_COM_RESSALVAS` e não produz homologação humana ou científica. O estado especial de fixture sintética só é aceito em painel marcado sintético, jamais publicável.
+
+## Análogos KNN ancorados (PR #13)
+
+O avaliador `motor_universal.knn` aceita o mesmo bundle e registro. Para suas variáveis numéricas, declarar `origem: interna | externa` na definição, além de unidade, comparabilidade validada e evidência. Pelo menos uma definição externa é exigida. Cada valor requer fonte, referência, disponibilidade, versão e controle de rupturas. Valores faltantes/tardios ou sem comparabilidade bloqueiam o uso; não há imputação KNN dos alvos. DIST × ano é a única granularidade habilitada. A API recebe âncora/ano alvo/corte/k; exige a última âncora confiável disponível. `backtest_knn` escolhe k por origens anteriores e reserva a última para auditoria. Cada vizinho é uma DIST distinta, não uma linha anual independente. O intervalo é dispersão indicativa dos análogos, não confiança calibrada; nenhuma saída recebe homologação automática.
+
+Execução real: `python -m motor_universal.knn --output /caminho/diagnostico.json`, ou `--panel /caminho/bundle-parquet` para painel fornecido. No contrato nacional atual, o diagnóstico permanece bloqueado. Relatório: `auditoria/reconciliacao/RELATORIO.md`.

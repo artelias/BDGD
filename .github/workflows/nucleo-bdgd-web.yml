@@ -75,7 +75,7 @@ jobs:
       - name: Build estático
         run: npm run build
       - name: Cenários e estados correspondem ao contrato versionado
-        run: node ../etl/bdgd2025/88_cenarios_exploratorios.mjs --source-commit 8e2eab8 --check
+        run: node ../etl/bdgd2025/88_cenarios_exploratorios.mjs --source-commit b7a7d6a80dec3eb42ac4fe949a545b15f7b76679 --check
       - name: Auditoria independente de publicações, estados, OLS e backtests
         run: python3 ../etl/tests/auditoria_pr6.py
       - name: Chrome do runner para E2E

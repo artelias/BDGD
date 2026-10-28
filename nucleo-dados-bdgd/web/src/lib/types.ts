@@ -153,6 +153,7 @@ export type TotalAtivoRow = [number, number | null, Status, string];
 /** linha compacta: [dist, ...índices das dimensões, ...valores das medidas do conceito] */
 export type CuboRow = number[];
 export interface ConceitoData {
+  cobertura_incompleta?: Array<{ dist: number; dimensao: string; codigo: string; metrica: MedidaConceito }>;
   id: string; medidas: MedidaConceito[];
   valores: Record<string, string[]>;
   rotulos: Record<string, Record<string, string>>;

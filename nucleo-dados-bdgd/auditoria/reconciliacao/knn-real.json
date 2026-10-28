@@ -1,0 +1,20 @@
+{
+  "status": "bloqueado",
+  "motivo": "PAINEL_EXTERNO_COMPARAVEL_NAO_ENTREGUE",
+  "estimativa": null,
+  "metricas_knn": {
+    "n": 0,
+    "mae": null,
+    "rmse": null,
+    "wape": null,
+    "vies": null,
+    "desvio_erros": null
+  },
+  "previsao_validada": false,
+  "sintetico": false,
+  "dataset_version": "contrato-nacional-1.0.1",
+  "source_sha256": "be804d6e859479d54b6a11df855e7b3183c1e6064373fdfceed73d0e7eae7086",
+  "ancora_coopera_2024": 28141.0,
+  "disponibilidade_ancora_original": "DESCONHECIDA_NO_CONTRATO_NACIONAL",
+  "fontes_externas_entregues": 0
+}

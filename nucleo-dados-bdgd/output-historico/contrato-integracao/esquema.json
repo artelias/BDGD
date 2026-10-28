@@ -1,5 +1,5 @@
 {
- "versao": "contrato-nacional-1.0.0",
+ "versao": "contrato-nacional-1.0.1",
  "descricao": "Série física nacional BDGD 2022–2025 por ano × DIST × conceito × métrica (perímetro da publicação original).",
  "chave": [
   "ano",
@@ -34,7 +34,10 @@
   "intervalo_base": "classe do intervalo DAT_INC–DAT_FNL",
   "tag_extra": "tag Extra do catálogo (observação, não exclui)",
   "empresa": "nome",
-  "nao_somar_em_agregados": "true para predecessora já contida na sucessora (ENF 2022)"
+  "nao_somar_em_agregados": "true para predecessora já contida na sucessora (ENF 2022)",
+  "observacao_id": "chave da ressalva auditada DIST × ANO × ATIVO × METRICA",
+  "subtotal_observado": "parcela publicada; nunca alvo completo nem feature imputada",
+  "valores_publicados_json": "contagens cadastrais de componentes, separadas do valor físico publicável"
  },
  "regras_de_uso": [
   "treinar só com estado observado/zero_verificado",
