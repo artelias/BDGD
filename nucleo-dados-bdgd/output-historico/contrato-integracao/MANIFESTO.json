@@ -49,7 +49,7 @@
   "web/public/data/historico/politica-republicacoes.json": "000000000000000000000000000000007696420adf8f2265688b5cbb0e86932e"
  },
  "saidas": {
-  "serie_fisica_nacional.csv": "00000000000000000000000000000000c99a527f8ff1d8fe80a3d5bf1d2e5fa7",
+  "serie_fisica_nacional.csv": "49f5da6b9cdb938efd77a517e289aefacf21f13b492f9a0f3e659426b7abd27d",
   "agregados_nacionais.csv": "00000000000000000000000000000000eba00e0e92b927cd01d05c964a055a1e",
   "pontes_sucessao.csv": "359f7e7ac4841e31ed442de6f94decb0a834da37b227c1083e90ad9c3fa8e166",
   "esquema.json": "000000000000000000000000000000006dd88fc4e7db77dccfe6a7514bf22a99"
