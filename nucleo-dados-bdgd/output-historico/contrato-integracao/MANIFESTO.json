@@ -1,25 +1,25 @@
 {
- "versao": "contrato-nacional-1.0.1",
- "data_geracao": "2026-10-27",
+ "versao": "contrato-nacional-1.0.1+republicacao-editorial-1",
+ "data_geracao": "2026-10-28",
  "linhas": 11400,
  "agregados": 200,
  "pontes": 4,
  "cobertura_por_ano": {
   "2022": {
-   "observado": 1963,
-   "zero_verificado": 257,
+   "observado": 2006,
+   "zero_verificado": 264,
    "ausente": 57,
-   "nao_homologado": 175,
+   "nao_homologado": 125,
    "nao_aplicavel": 398,
-   "pct_observado_sobre_aplicavel": 90.54
+   "pct_observado_sobre_aplicavel": 92.58
   },
   "2023": {
-   "observado": 1678,
-   "zero_verificado": 232,
-   "ausente": 28,
-   "nao_homologado": 475,
+   "observado": 1926,
+   "zero_verificado": 251,
+   "ausente": 36,
+   "nao_homologado": 200,
    "nao_aplicavel": 437,
-   "pct_observado_sobre_aplicavel": 79.15
+   "pct_observado_sobre_aplicavel": 90.22
   },
   "2024": {
    "observado": 2011,
@@ -44,13 +44,14 @@
   "auditoria/fase4/RANKING_ANOMALIAS_TEMPORAIS.csv": "430c45190750adaa87c4735018ce9092119e479f105b59577dac7ffdb4796a6d",
   "auditoria/fase6/INVENTARIO_LACUNAS_NACIONAL.csv": "2e8be0aaa1649f414174ca628b36527c9d92c6b19b2ef733b40a24f5c519bd3f",
   "auditoria/fase6/CORRECOES_AUSENCIAS.csv": "6f0fe7c65115b3354e8b1c976cfbf098f6ab0d8132436653c5e4058ea9f809a6",
-  "web/public/data/historico/homologacao.json": "ac7a5d25f21112a4a4034108998456e7b0f443e3abf39c1b34d6320104935ffc",
-  "auditoria/reconciliacao/observacoes.json": "347e188567e092a7c63ee1caae92d91a805512865783aae03a3fbda94fddb825"
+  "web/public/data/historico/homologacao.json": "00000000000000000000000000000000c90824cebc5e0d46ef423fd7d8bf59d1",
+  "auditoria/reconciliacao/observacoes.json": "347e188567e092a7c63ee1caae92d91a805512865783aae03a3fbda94fddb825",
+  "web/public/data/historico/politica-republicacoes.json": "000000000000000000000000000000007696420adf8f2265688b5cbb0e86932e"
  },
  "saidas": {
-  "serie_fisica_nacional.csv": "be804d6e859479d54b6a11df855e7b3183c1e6064373fdfceed73d0e7eae7086",
-  "agregados_nacionais.csv": "e9ed7cc8a5611d268c7ff921a705ea1b43aaae58c98db84049231769cb3bdc1c",
+  "serie_fisica_nacional.csv": "00000000000000000000000000000000c99a527f8ff1d8fe80a3d5bf1d2e5fa7",
+  "agregados_nacionais.csv": "00000000000000000000000000000000eba00e0e92b927cd01d05c964a055a1e",
   "pontes_sucessao.csv": "359f7e7ac4841e31ed442de6f94decb0a834da37b227c1083e90ad9c3fa8e166",
-  "esquema.json": "c4124faa5548a80384c864adfade539a52aab70f2fedef4e3f2bd82685e8ea3a"
+  "esquema.json": "000000000000000000000000000000006dd88fc4e7db77dccfe6a7514bf22a99"
  }
 }
