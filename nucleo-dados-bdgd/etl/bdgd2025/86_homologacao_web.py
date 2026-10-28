@@ -120,5 +120,57 @@ for r in rd(HIS / "populacao_conceitos.csv"):
 doc = dict(versao="fase6-1", fonte="auditoria/fase4 + auditoria/fase6/CORRECOES_AUSENCIAS.csv", fontes={f: hashlib.sha256((F4 / f).read_bytes().replace(b"\r\n", b"\n")).hexdigest() for f in FONTES},
            estados={"H": "homologado", "T": "completo técnico", "R": "apto com ressalvas", "P": "pendente de decisão", "B": "bloqueado", "N": "não disponível"},
            motivos=motivos, celulas=cel, brasil=br, painel=painel, proveniencia=prov, sinais=sinais, pares=pares, pontes=pontes, absorcao_epb=absorcao, sem_tuc=sem_tuc)
+# Politica tecnico-editorial do portal: versao mais recente valida sem alegar
+# equivalencia integral nem homologacao regulatoria. Preserva a matriz Fase 4.
+POL_P = RAIZ / "web/public/data/historico/politica-republicacoes.json"
+if POL_P.exists():
+    pol = json.loads(POL_P.read_text(encoding="utf-8"))
+    escolhas = {(str(x["ano"]), str(x["dist"])): x for x in pol["pares"]}
+    auditados = [r for r in rd(F4 / "DECISOES_DUPLICATAS_13_PARES.csv")
+                 if (r["ano"], r["dist"]) in escolhas]
+    if len(auditados) != 25 * len(escolhas):
+        raise RuntimeError("Auditoria de republicacoes nao possui as 25 metricas por par")
+    indice = {(str(r[0]), str(r[1]), a): r for a, linhas in cel.items() for r in linhas}
+    motivo_ok = m("Republicacao mais recente selecionada pelo criterio editorial, com ressalva e sem homologacao regulatoria")
+    motivo_nd = m("A publicacao mais recente foi selecionada, mas o ativo esta ausente: N/D, nao zero")
+    for r in auditados:
+        escolha = escolhas[(r["ano"], r["dist"])]
+        if (r["item_B"] != escolha["selecionada"]["item_id"] or
+            r["competencia_declarada_B"] != f'{r["ano"]}-12-31' or
+            r["DAT_FNL_B"] != f'31/12/{r["ano"]}'):
+            raise RuntimeError("Par de republicacoes incompatível: " + r["dist"] + "/" + r["ano"])
+        celula = indice[(r["dist"], r["ano"], r["ativo"])]
+        if celula[2] != "P":
+            raise RuntimeError("Estado inicial inesperado: " + r["dist"] + "/" + r["ano"] + "/" + r["ativo"])
+        celula[2] = "R" if r["status_B"] == "validado" else "N"
+        celula[3] = motivo_ok if celula[2] == "R" else motivo_nd
+        if r["status_B"] not in ("validado", "ausente"):
+            raise RuntimeError("Status B inesperado: " + r["status_B"])
+    for k, escolha in escolhas.items():
+        key = k[1] + "|" + k[0]
+        par = pares[key]
+        par["decisao"] = "VERSAO_MAIS_RECENTE_SELECIONADA"
+        par["selecionada"] = escolha["selecionada"]["item_id"]
+        par["criterio"] = "timestamp V11 posterior com BASE valida; ressalva, sem homologacao"
+        for q in prov[key]:
+            if q["item"] == escolha["selecionada"]["item_id"]:
+                q["uso"], q["decisao"], q["sha"] = "em_uso_na_serie", "versao_recente_selecionada", escolha["selecionada"]["sha256"]
+            elif q["item"] == escolha["anterior"]["item_id"]:
+                q["uso"], q["decisao"], q["sha"] = "versao_anterior_preservada", "substituida_pela_versao_recente", escolha["anterior"]["sha256"]
+    for a, linhas in br.items():
+        for total in linhas:
+            ano = total[0]
+            if ano not in (2022, 2023): continue
+            dists = {int(r["dist"]) for r in auditados if int(r["ano"]) == ano and
+                     r["ativo"] == a and r["status_B"] == "validado"}
+            antes = set(total[5])
+            aprovadas = antes & dists
+            total[3] += len(aprovadas)
+            total[4] -= len(aprovadas)
+            total[5] = sorted(antes - aprovadas)
+            if total[4] > 0: total[1] = None
+    doc["versao"] += "+selecao-mais-recente"
+    doc["politica_republicacoes"] = "politica-republicacoes.json"
+    doc["fontes"]["politica-republicacoes.json"] = hashlib.sha256(POL_P.read_bytes()).hexdigest()
 OUT.write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 print(f"{OUT.name}: {len(cel)} ativos, {sum(len(v) for v in cel.values())} celulas, {len(motivos)} motivos, {OUT.stat().st_size // 1024} KB")
