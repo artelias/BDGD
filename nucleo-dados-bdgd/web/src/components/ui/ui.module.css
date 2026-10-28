@@ -121,3 +121,10 @@
   .list { max-height: 56vh; }
   .option { padding: 12px 10px; }
 }
+
+/* Comparador: lista dentro do fluxo da pagina, sem encobrir seletores ou tabelas. */
+.popoverInline { position: relative; inset: auto; z-index: auto; min-width: 0; max-width: 100%; transform-origin: top center; box-shadow: var(--shadow-1); }
+.popoverInline .list { max-height: min(32vh, 240px); }
+@media (max-width: 900px) {
+  .popoverInline { position: relative !important; top: auto !important; right: auto !important; bottom: auto !important; left: auto !important; max-width: 100% !important; width: 100% !important; }
+}
