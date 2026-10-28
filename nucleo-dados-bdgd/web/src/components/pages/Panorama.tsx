@@ -186,10 +186,9 @@ function PanoramaReady({ ds }: { ds: Dataset }) {
         </Sheet>
       </section>
 
-      {coberturaNacionalIncompleta(ds, scopeDists) && <p className="caption" role="note">Cobertura nacional incompleta: {ds.raw.release.cobertura.sem_publicacao_2025.length} distribuidoras sem publicação 2025. Os totais nacionais completos permanecem N/D; os cartões podem apresentar subtotais identificados, calculados apenas entre distribuidoras com valor verificável.</p>}
       <div className={s.kpiHead}>
         <div>
-          <h2 className="title" style={{ fontSize: "1.375rem" }}>{ds.scopeLabel(scope)}</h2>
+          <h2 className="title" style={{ fontSize: "1.375rem" }}>{ds.scopeLabel(scope)}{scope.tipo === "brasil" && coberturaNacionalIncompleta(ds, scopeDists) ? " · cobertura parcial" : ""}</h2>
           <div className="caption">{scope.tipo === "brasil" ? `${scopeDists.length} distribuidoras processadas` : scope.tipo === "grupo" ? `${scopeDists.length} distribuidoras do grupo (vínculo verificado)` : `DIST ${selected}`} · valores reconciliados com os arquivos de origem</div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
@@ -348,10 +347,12 @@ function DistDetail({ ds, dist, onBack, theme }: { ds: Dataset; dist: number; on
 function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; dists: number[]; active: boolean; onClick: () => void }) {
   const a = panoramaValue(ds, k, dists);
   const subtotal = a.partial ? panoramaSubtotal(ds, k, dists) : a;
-  const nacionalParcial = coberturaNacionalIncompleta(ds, dists);
   const valorExibido = a.v ?? (a.partial && subtotal.n > 0 ? subtotal.v : null);
+  const coberturaAcessivel = a.partial
+    ? `Cobertura parcial: ${subtotal.n} de ${dists.length} distribuidoras processadas com valor; não é total completo.`
+    : undefined;
   return (
-    <div className={s.kpi} data-active={active}>
+    <div className={s.kpi} data-active={active} title={coberturaAcessivel}>
       <button className={s.kpiHit} aria-pressed={active} onClick={onClick} data-testid={`kpi-${k.id}`} aria-label={`${k.nome}: usar nos gráficos abaixo`} />
       <div className={s.kpiLabel}>{k.nome}</div>
       <div className={s.kpiBox}><div className={s.kpiValue}><Ticker v={valorExibido} metric={k.metric} compact /></div></div>
@@ -361,12 +362,6 @@ function KpiCell({ ds, k, dists, active, onClick }: { ds: Dataset; k: KpiDef; di
           <Explain title={k.nome} tecnico={k.tecnico} ressalva={k.ressalva} cobertura={coberturaTexto(subtotal)} testId={`explain-${k.id}`}>{k.explicacao}</Explain>
         </span>
       </div>
-      {a.partial && <div className={s.kpiNd}><span className={s.ndNote}>
-        {valorExibido !== null
-          ? `Subtotal observado: ${subtotal.n} de ${dists.length} distribuidoras processadas${nacionalParcial ? `; ${ds.raw.release.cobertura.sem_publicacao_2025.length} sem publicação 2025` : ""}. Não representa o total ${nacionalParcial ? "nacional" : "do recorte"}.`
-          : "Valor indisponível para o recorte."}{" "}
-        <Link href="/metodologia/#cobertura" style={{ display: "inline-flex", alignItems: "center", minHeight: 24, paddingInline: 4 }}>Ver cobertura</Link>
-      </span></div>}
     </div>
   );
 }
