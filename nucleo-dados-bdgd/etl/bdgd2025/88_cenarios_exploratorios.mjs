@@ -57,7 +57,7 @@ function tendencia(valores, alvo) {
 const linhas = csv(arquivo.toString("utf8"));
 const conjuntos = new Map();
 for (const r of linhas) {
-  const chave = [r.dist, r.conceitoId, r.metrica, r.unidade, r.perimetroId, r.regraVersao].join("|");
+  const chave = [r.dist, r.conceitoId, r.metrica, r.unidade, r.perimetroId].join("|");
   if (!conjuntos.has(chave)) conjuntos.set(chave, []);
   conjuntos.get(chave).push(r);
 }
