@@ -8,11 +8,11 @@ export type EstadoPub = "H" | "T" | "R" | "P" | "B" | "N";
 export const PUBLICAVEL: ReadonlySet<string> = new Set(["H", "T", "R"]);
 export const FLAG = { quebra: 1, sinal: 2, naoSomar: 4 } as const;
 export const ROTULO_PUB: Record<EstadoPub, string> = {
-  H: "homologado", T: "completo (validação automática)", R: "apto com ressalvas", P: "pendente de decisão", B: "bloqueado", N: "não disponível",
+  H: "pacote auditado", T: "validado automaticamente", R: "apto com ressalvas", P: "pendente de decisão", B: "bloqueado", N: "não disponível",
 };
 export const DESCRICAO_PUB: Record<EstadoPub, string> = {
-  H: "Pacote 2025 homologado; intervalo da base anual compatível.",
-  T: "Validado pelas regras automáticas, sem sinal temporal ou ressalva. Ainda não é homologação humana.",
+  H: "Pacote 2025 com verificações técnicas concluídas; intervalo da base anual compatível. Não representa homologação regulatória.",
+  T: "Validado pelas regras automáticas, sem sinal temporal ou ressalva. Não representa certificação patrimonial.",
   R: "Valor validado e exibido com ressalva (quebra, sinal temporal, intervalo da base ou anomalia).",
   P: "Sem valor publicado: aguarda decisão humana (publicações divergentes, base inconsistente ou anomalia comprovada).",
   B: "Sem valor publicado: arquivo de outra competência ou valor não homologável.",
