@@ -4,11 +4,11 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
   test("quarentena antiga foi substituída pelo inventário real e filtros distinguem bloqueios", async ({ page }) => {
     await page.goto("/evolucao/?ativo=consumidores");
     const auditoria = page.getByTestId("auditoria-publicacoes");
-    await expect(auditoria.getByRole("heading", { name: "Publicações avaliadas e motivos de bloqueio" })).toBeVisible();
+    await expect(auditoria.getByRole("heading", { name: "Publicações avaliadas, versões selecionadas e restrições" })).toBeVisible();
     await expect(auditoria).toContainText("414");
     await expect(auditoria).toContainText("26");
     await expect(auditoria).toContainText("14");
-    await expect(auditoria.getByRole("row")).toHaveCount(41); // 40 restritas + cabeçalho
+    await expect(auditoria.getByRole("row")).toHaveCount(28); // 13 versões anteriores + 14 exclusões + cabeçalho
     const pares = page.getByTestId("pares-publicacoes");
     await pares.locator("summary").click();
     await expect(pares.getByRole("row")).toHaveCount(14); // 13 pares + cabeçalho
@@ -22,7 +22,7 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
 
     await auditoria.getByRole("combobox", { name: "Situação" }).selectOption("divergentes");
     await expect(auditoria.getByRole("row")).toHaveCount(27);
-    await expect(auditoria).toContainText("Duas versões divergentes");
+    await expect(auditoria).toContainText("Versão anterior preservada");
 
     await auditoria.getByRole("combobox", { name: "Situação" }).selectOption("competencia");
     await expect(auditoria.getByRole("row")).toHaveCount(15);
@@ -48,7 +48,7 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
   test("@mobile inventário acessível sem rolagem horizontal da página", async ({ page }) => {
     await page.goto("/evolucao/");
     const auditoria = page.getByTestId("auditoria-publicacoes");
-    await expect(auditoria.getByRole("row")).toHaveCount(41);
+    await expect(auditoria.getByRole("row")).toHaveCount(28);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(1);
   });
