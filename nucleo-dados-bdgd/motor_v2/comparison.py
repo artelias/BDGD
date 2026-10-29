@@ -175,7 +175,30 @@ def experiment(rows,dist,mode,model,scope,cfg,stop):
    except Exception as e:failures.append(dict(origin=origin,part=part,reason=str(e)))
  return dict(predictions=predictions,folds=folds,failures=failures)
 
-def summarise(experiments,minimum_origins):
+def physical_block(rs,nature,policy):
+ """Publishable (integer) errors next to the continuous ones, same rows. Independent per-municipality rounding and the
+ largest-remainder reconciliation to the integer distributor total are both reported; selection never uses them."""
+ from . import metric_contract as mc
+ if nature!='discrete_count' or not rs:return None
+ raw=[r['pred'] for r in rs];act=[r['actual'] for r in rs];ind=[mc.round_count(v,policy) for v in raw]
+ out=dict(rounding_policy=policy,independent=mc.error_pair(act,raw,ind),totals=[],reconciled=None)
+ by=defaultdict(list)
+ for r in rs:by[r['origin']].append(r)
+ rec=[];recpred=[]
+ for o,z in sorted(by.items()):
+  rr=mc.reconcile({r['municipality']:r['pred'] for r in z},policy=policy);tot=sum(r['actual'] for r in z)
+  out['totals'].append(dict(origin=o,actual_total=int(round(tot)),raw_total=sum(r['pred'] for r in z),physical_total=rr['total'],territories=len(z),moved_by_reconciliation=sum(abs(rr['by_unit'][k]-rr['independent'][k]) for k in rr['by_unit'])))
+  for r in z:rec.append(r['actual']);recpred.append(rr['by_unit'][r['municipality']])
+ out['reconciled']=mc.error_pair(rec,[float(x) for x in recpred],recpred)['physical']
+ return out
+
+def physical_columns(candidate):
+ ph=candidate.get('physical')
+ if not ph:return {}
+ i=ph['independent'];rc=ph['reconciled']
+ return dict(physical_mae=i['physical']['mae'],physical_rmse=i['physical']['rmse'],physical_bias=i['physical']['bias'],physical_wape=i['physical']['wape'],reconciled_physical_mae=rc['mae'],reconciled_physical_wape=rc['wape'],rounding_policy=ph['rounding_policy'])
+
+def summarise(experiments,minimum_origins,nature=None,policy='half_up'):
  baseline=experiments['persistencia:individual']['predictions'];keys={r['key'] for r in baseline};out=[]
  for name,e in experiments.items():
   rs=e['predictions'];equivalent=bool(keys) and {r['key'] for r in rs}==keys and len(rs)==len(keys)
@@ -186,7 +209,7 @@ def summarise(experiments,minimum_origins):
   robust=float(np.mean([x['mae'] for x in fold_metrics])+np.std([x['mae'] for x in fold_metrics])) if fold_metrics else None
   totals=[dict(origin=o,actual=sum(r['actual'] for r in z),pred=sum(r['pred'] for r in z),municipalities=len(z)) for o,z in sorted(by.items())]
   total_metrics=score([r['actual'] for r in totals],[r['pred'] for r in totals]) if totals else {}
-  out.append(dict(distributor_totals=totals,distributor_metrics=total_metrics,candidate=name,common_test_set=equivalent,n_predictions=len(rs),independent_origins=len(by),metrics=metrics,by_origin=fold_metrics,robust_score=robust,folds=e['folds'],failures=e['failures']))
+  out.append(dict(physical=physical_block(rs,nature,policy),distributor_totals=totals,distributor_metrics=total_metrics,candidate=name,common_test_set=equivalent,n_predictions=len(rs),independent_origins=len(by),metrics=metrics,by_origin=fold_metrics,robust_score=robust,folds=e['folds'],failures=e['failures']))
  eligible=[r for r in out if r['common_test_set'] and r['robust_score'] is not None]
  best=min(eligible,key=lambda r:(r['robust_score'],r['candidate']!='persistencia:individual')) if eligible else None
  base=next(r for r in out if r['candidate']=='persistencia:individual')
@@ -261,7 +284,7 @@ def run(cfg,stop):
       atomic(cp,dict(signature=signature,sha256=fingerprint(result),result=result));executed+=1
      experiments[name]=result
      atomic(out/'progress.json',dict(state='running',mode=mode,dist=dist,candidate=name,reused=reused,executed=executed))
-    summary=dict(dist=dist,asset=spec['ativo'],metric=spec['metrica'],unit=spec['unit'],experimental_asset=spec['experimental'],models_used=models,feature_policy=cfg.get('feature_policy') or 'strict',mode=mode,evaluation_label=label(mode),scope_limit='pool das tres distribuidoras (26, 6585, 6600); no national model',**summarise(experiments,cfg['min_independent_origins']))
+    summary=dict(dist=dist,asset=spec['ativo'],metric=spec['metrica'],unit=spec['unit'],nature=spec['nature'],experimental_asset=spec['experimental'],models_used=models,feature_policy=cfg.get('feature_policy') or 'strict',mode=mode,evaluation_label=label(mode),scope_limit='pool das tres distribuidoras (26, 6585, 6600); no national model',**summarise(experiments,cfg['min_independent_origins'],spec['nature'],cfg.get('rounding_policy','half_up')))
     summaries.append(summary);atomic(out/f'{mode}_{dist}.json',summary)
  atomic(out/'summaries.json',summaries)
  from .externals import coverage_rows
@@ -269,16 +292,25 @@ def run(cfg,stop):
  if shared_matrix:
   shared.write(shared_matrix,out/'SHARED_FEATURE_MATRIX.csv',spec['unit_kind']);atomic(out/'SHARED_FEATURE_COVERAGE.json',shared.coverage(shared_matrix))
  feature_registry.write(feature_registry.build(rows,asset),out)
- reconciliation=[]
+ reconciliation=[];internal=[];from . import metric_contract as mc
  for summary in summaries:
   for c in summary['candidates']:
-   for t in c['distributor_totals']:
+   physical=c.get('physical')
+   for i,t in enumerate(c['distributor_totals']):
     total=next(q['municipal_total'] for q in quality if q['dist']==summary['dist'] and q['year']==t['origin']+1)
-    reconciliation.append(dict(DIST=summary['dist'],mode=summary['mode'],candidate=c['candidate'],year=t['origin']+1,**t,full_observed_stock=total,coverage=t['actual']/total if total else None,residual=t['pred']-t['actual'],rule='bottom_up_sum; no scaling to observed target; partial if uncovered municipalities'))
- csv_write(out/'DISTRIBUTOR_RECONCILIATION.csv',reconciliation)
+    base=dict(DIST=summary['dist'],mode=summary['mode'],candidate=c['candidate'],year=t['origin']+1,origin=t['origin'],municipalities=t['municipalities'],natureza=spec['nature'])
+    if physical:   # discrete: the public file carries integers only; the raw continuous prediction stays in the internal file
+     pt=physical['totals'][i];full=int(round(total))
+     reconciliation.append(dict(base,actual=pt['actual_total'],physical_prediction=pt['physical_total'],full_observed_stock=full,coverage=pt['actual_total']/full if full else None,residual=pt['physical_total']-pt['actual_total'],moved_by_reconciliation=pt['moved_by_reconciliation'],rule='bottom_up_integer_largest_remainder; no scaling to observed target; partial if uncovered municipalities'))
+     internal.append(dict(base,actual=t['actual'],raw_prediction=t['pred'],raw_residual=t['pred']-t['actual']))
+    else:
+     reconciliation.append(dict(base,actual=t['actual'],pred=t['pred'],full_observed_stock=total,coverage=t['actual']/total if total else None,residual=t['pred']-t['actual'],rule='bottom_up_sum; no scaling to observed target; partial if uncovered municipalities'))
+ columns={**{k:'discrete_count' for k in ('actual','physical_prediction','full_observed_stock','moved_by_reconciliation')},'residual':'discrete_count:signed'} if spec['nature']=='discrete_count' else {}
+ if reconciliation:mc.write_public_csv(out/'DISTRIBUTOR_RECONCILIATION.csv',reconciliation,columns)
+ if internal:csv_write(out/'INTERNAL_DISTRIBUTOR_RAW.csv',internal)
  flat=[]
  for summary in summaries:
-  for r in summary['candidates']:flat.append(dict(DIST=summary['dist'],ativo=spec['ativo'],metrica=spec['metrica'],mode=summary['mode'],candidate=r['candidate'],winner=summary['winner'],validated_winner=summary['validated_winner'],best_exploratory=summary['best_exploratory'],best_baseline=summary['best_baseline'],best_ml=summary['best_ml'],ml_gain_vs_best_baseline=summary['ml_gain_vs_best_baseline'],ml_gain_vs_persistence=summary['ml_gain_vs_persistence'],common_test_set=r['common_test_set'],n=r['n_predictions'],origins=r['independent_origins'],**r['metrics'],robust_score=r['robust_score'],features=json.dumps([f['selected_features'] for f in r['folds']]),hyperparameters=json.dumps([f['params'] for f in r['folds']]),blocks=json.dumps(r['failures']),reason=summary['selection_reason']))
+  for r in summary['candidates']:flat.append(dict(DIST=summary['dist'],ativo=spec['ativo'],metrica=spec['metrica'],natureza=spec['nature'],**physical_columns(r),mode=summary['mode'],candidate=r['candidate'],winner=summary['winner'],validated_winner=summary['validated_winner'],best_exploratory=summary['best_exploratory'],best_baseline=summary['best_baseline'],best_ml=summary['best_ml'],ml_gain_vs_best_baseline=summary['ml_gain_vs_best_baseline'],ml_gain_vs_persistence=summary['ml_gain_vs_persistence'],common_test_set=r['common_test_set'],n=r['n_predictions'],origins=r['independent_origins'],**r['metrics'],robust_score=r['robust_score'],features=json.dumps([f['selected_features'] for f in r['folds']]),hyperparameters=json.dumps([f['params'] for f in r['folds']]),blocks=json.dumps(r['failures']),reason=summary['selection_reason']))
  with open(out/'MATRIZ_COMPARATIVA.csv','w',newline='',encoding='utf-8-sig') as f:
   fields=list(dict.fromkeys(k for r in flat for k in r));w=csv.DictWriter(f,fields);w.writeheader();w.writerows(flat)
  atomic(out/'progress.json',dict(state='completed',reused=reused,executed=executed,summaries=len(summaries)))

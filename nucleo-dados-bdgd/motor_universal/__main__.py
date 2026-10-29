@@ -27,16 +27,28 @@ def write_json(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, allow_nan=False, indent=2) + "\n", encoding="utf-8")
 
 
+from motor_v2.metric_contract import nature_of  # noqa: E402
+
+
+def fisico(futuro, unidade):
+    """Public projections follow the physical nature of the unit: discrete counts are non-negative integers (half-up, declared);
+    km, kVA, kWh and ratios keep their decimals. The raw value is not part of the public summary."""
+    from motor_v2.metric_contract import nature_of, physical_prediction
+    nature = nature_of(unidade)
+    return [physical_prediction(v, nature) for v in futuro]
+
+
 def summary(report):
     """Resumo estático sem dados individuais nem artefato de treino volumoso."""
     return {k: report[k] for k in ("schema_version", "experiment_id", "dataset_version", "dataset_sha256", "source_sha256", "code_version",
             "as_of", "base_year", "horizontes", "sintetico", "previsao_validada", "objetivos", "limites", "agregacao_nacional")} | {
         "series": [{k: row.get(k) for k in ("DIST", "empresa", "objetivo_id", "metrica", "unidade", "status", "motivos",
                       "territorio", "perimetro_id", "regra_versao", "observacoes_treino", "modelo_selecionado", "validacao", "justificativa", "origens_selecao", "origem_auditoria")} |
+                   {"natureza_fisica": nature_of(row["unidade"])} |
                    {"historico": [{"ano": h["ano"], "valor": h["valor"], "estado": h["estado"], "variacao_liquida": h["variacao_liquida"]} for h in row["historico"]],
                     "modelos": [{"modelo": c["modelo"], "metricas": c["metricas_diagnosticas"],
                                  "auditoria": c["metricas_auditoria"], "elegivel_selecao": c["elegivel_selecao"],
-                                 "motivo": c["falha_projecao"], "futuro": c["futuro"]}
+                                 "motivo": c["falha_projecao"], "futuro": fisico(c["futuro"], row["unidade"])}
                                 for c in row["candidatos"] if c["metricas_diagnosticas"]["n"] > 0 or c["futuro"]]}
                    for row in report["series"]],
         "series_elegiveis": sum(bool(s["projecoes"]) for s in report["series"]),

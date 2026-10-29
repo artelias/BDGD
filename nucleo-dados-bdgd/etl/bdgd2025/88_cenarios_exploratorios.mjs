@@ -46,6 +46,14 @@ function csv(texto) {
   return rows.filter((r) => r.length === cabecalho.length)
     .map((r) => Object.fromEntries(cabecalho.map((k, i) => [k, r[i]])));
 }
+// Contrato de natureza física (motor_v2/metric_contract.py): contagens são inteiros não negativos (meio para cima; Math.round
+// arredonda .5 para cima em valores não negativos); km, kVA, kWh e razões mantêm decimais. Unidade não classificada é erro.
+const NATUREZA = { itens: "discrete_count", clientes: "discrete_count", km: "continuous_length", kVA: "continuous_capacity", kWh: "continuous_energy" };
+const fisico = (v, unidade) => {
+  if (!(unidade in NATUREZA)) throw Error(`unidade sem natureza física declarada: ${unidade}`);
+  if (!Number.isFinite(v) || v < 0) throw Error("previsão negativa ou não finita rejeitada");
+  return NATUREZA[unidade] === "discrete_count" ? Math.round(v) : v;
+};
 function tendencia(valores, alvo) {
   const n = valores.length;
   const centroX = (n - 1) / 2;
@@ -76,13 +84,15 @@ for (const conjunto of conjuntos.values()) {
     p.perimetroBridgeId.trim() !== ""
   )) continue;
   const valores = pontos.map((p) => Number(p.valor));
-  const tendenciaLinear = Array.from({ length: 5 }, (_, i) => tendencia(valores, i + 4));
+  const tendenciaLinear = Array.from({ length: 5 }, (_, i) => fisico(tendencia(valores, i + 4), conjunto[0].unidade));
   const maePersistencia = Math.abs(valores[2] - valores[3]);
   const maeTendencia = Math.abs(tendencia(valores.slice(0, 3), 3) - valores[3]);
+  // erro da previsão publicável (inteira, para contagens), registrado ao lado do erro contínuo; o placar continua usando o contínuo
+  const maeTendenciaFisica = Math.abs(fisico(tendencia(valores.slice(0, 3), 3), conjunto[0].unidade) - valores[3]);
   const primeira = pontos[0];
   series.push([
     Number(primeira.dist), primeira.empresa, primeira.conceitoId, primeira.metrica,
-    primeira.unidade, valores, tendenciaLinear, [maePersistencia, maeTendencia],
+    primeira.unidade, valores, tendenciaLinear, [maePersistencia, maeTendencia, maeTendenciaFisica],
     pontos.map((p) => p.publicacao_id), pontos.map((p) => p.status_homologacao),
     pontos.map((p) => p.estado === "zero_verificado" ? "Z" : "O"),
   ]);

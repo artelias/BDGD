@@ -45,7 +45,15 @@ describe("dados de cenários exploratórios — contrato nacional", () => {
       }
       expect(erros[0]).toBeCloseTo(Math.abs(historico[2] - historico[3]), 8);
       expect(erros[1]).toBeCloseTo(Math.abs(tendencia(historico.slice(0, 3), 3) - historico[3]), 8);
-      linear.forEach((valor, i) => expect(valor).toBeCloseTo(tendencia(historico, i + 4), 7));
+      // contagens são publicadas como inteiros (meio para cima); extensão e potência mantêm decimais
+      const discreta = s[4] === "itens" || s[4] === "clientes";
+      linear.forEach((valor, i) => {
+        const bruto = tendencia(historico, i + 4);
+        if (discreta) { expect(Number.isInteger(valor)).toBe(true); expect(valor).toBe(Math.floor(bruto + 0.5)); }
+        else expect(valor).toBeCloseTo(bruto, 7);
+      });
+      expect(erros).toHaveLength(3);                                   // persistência, tendência contínua, tendência publicável
+      if (!discreta) expect(erros[2]).toBeCloseTo(erros[1], 8);
     }
   });
 

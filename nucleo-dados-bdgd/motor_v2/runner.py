@@ -8,6 +8,7 @@ from motor_universal.registry import registry_from_catalog
 from motor_universal.contracts import validate_panel
 from motor_universal.parquet_io import write_bundle
 from motor_universal.models import CANDIDATES, predict
+from .metric_contract import physical_prediction
 
 VERSION='v2-pilot-2-uc-v3'
 def digest(p):
@@ -145,7 +146,7 @@ def run_task(cfg,dist,runroot,stop):
    # Neutral scenarios coincide unless explicit, approved sensitivities are supplied.
    values=scenario_values(base,cfg['scenario_rates'])
    for label,rate,values_ in zip(['Conservador','Moderado','Agressivo'],cfg['scenario_rates'],values):
-    for year,v in zip(range(2026,2031),values_):forecast.append(dict(DIST=dist,ativo='ucbt',metrica='quantidade',ano=year,cenario=label,valor=v,unidade='clientes',model=winner,assumption_rate=rate,status='exploratorio_condicional',confidence_interval=None))
+    for year,v in zip(range(2026,2031),values_):forecast.append(dict(DIST=dist,ativo='ucbt',metrica='quantidade',ano=year,cenario=label,valor=physical_prediction(v,'discrete_count'),raw_prediction=v,rounding='half_up',unidade='clientes',model=winner,assumption_rate=rate,status='exploratorio_condicional',confidence_interval=None))
   metrics={name:score([x['actual'] for x in rs],[x['pred'] for x in rs]) for name,rs in results.items()}
   report=dict(synthetic=cfg.get('synthetic',False),dist=dist,asset='ucbt',metric='quantidade',winner=winner,reason=reason,candidates=registry,backtest=dict(results),metrics=metrics,history=hist,quality=audits,forecast=forecast,feature_decisions=[dict(feature='estoque_passado',selected=True,reason='baseline'),dict(feature='externas',selected=False,reason='territorial exposure and as-of revision not validated'),dict(feature='entradas_saidas',selected=False,reason='identity continuity not certified')],hyperparameters=dict(CANDIDATES[winner].params),explanation=diagnostics,territorial_validation='aggregated municipalities; held-out territorial ML not yet eligible',retrospective_status='available' if results else 'blocked_by_release_dates_or_sample',training_status='baseline_fallback' if winner=='persistencia' else 'selected')
   # Only aggregated targets are exported; UCBT is a scoped extension, not all consumers.
@@ -199,9 +200,11 @@ def execute(cfg):
    except Exception as e:atomic(runroot/f'failure_{dist}.json',dict(error=str(e),traceback=traceback.format_exc()))
   from .integration import export
   if outputs:atomic(runroot/'registry_integration.json',export(outputs,read(ROOT/'etl/bdgd2025/config/conceitos_2025.json'),runroot/('bundle-'+fingerprint(outputs)[:12]),runid+'-'+fingerprint(outputs)[:12]))
-  atomic(runroot/'forecast.json',[r for o in outputs for r in o['forecast']])
+  allf=[r for o in outputs for r in o['forecast']]
+  # Public forecast: integers only (physical_prediction in `valor`); the raw continuous value stays in the internal diagnostic file.
+  atomic(runroot/'forecast.json',[{k:v for k,v in r.items() if k!='raw_prediction'} for r in allf]);atomic(runroot/'forecast_internal.json',allf)
   import pyarrow as pa,pyarrow.parquet as pq
-  flat=[r for o in outputs for r in o['forecast']]
+  flat=[{k:v for k,v in r.items() if k!='raw_prediction'} for r in allf]
   if flat:pq.write_table(pa.Table.from_pylist(flat),runroot/'forecast.parquet')
   atomic(status,dict(**owner,state='stopped' if stop.exists() else 'completed' if len(outputs)==len(cfg['dists']) else 'completed_with_errors',runid=runid,completed=len(outputs),total=len(cfg['dists']),output=str(runroot)))
  except Exception as error:

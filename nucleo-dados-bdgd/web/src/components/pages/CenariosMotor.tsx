@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import type { EChartsCoreOption } from "echarts/core";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import { useData } from "@/lib/data-context";
+import { casasDe, formatarFisico } from "@/lib/natureza-fisica";
 import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import {
-  CENARIOS, ROTULO_CENARIO, ROTULO_ESTADO, exportarCsv, parseCenarios, somaGrupo, variacoes,
+  CENARIOS, ROTULO_CENARIO, ROTULO_ESTADO, exportarCsv, naturezaMetrica, parseCenarios, somaGrupo, variacoes,
   type Cenario, type MetricaCenario, type ProdutoCenarios,
 } from "@/lib/cenarios-motor";
 import s from "./cenarios-motor.module.css";
@@ -15,7 +16,6 @@ const URL = "/data/previsoes/cenarios-motor.json";
 const MEDIDA: Record<string, string> = { quantidade: "Quantidade", extensao_km: "Extensão", potencia_kva: "Potência" };
 const num = (n: number | null | undefined, d = 0) => n == null ? "N/D" : n.toLocaleString("pt-BR", { maximumFractionDigits: d });
 const pct = (n: number | null | undefined, d = 1) => n == null ? "N/D" : `${n.toLocaleString("pt-BR", { maximumFractionDigits: d, minimumFractionDigits: d })}%`;
-const casas = (u: string) => u === "km" || u === "kVA" ? 1 : 0;
 
 /** Explorador dos cenários pré-calculados. Não treina modelos no navegador; carrega o produto compacto sob demanda. */
 export function CenariosMotor() {
@@ -86,7 +86,8 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
       textStyle: { fontFamily: t.font, color: t.text2 },
       grid: { left: 64, right: 18, top: 34, bottom: 34, containLabel: false },
       legend: { top: 0, textStyle: { color: t.text2 } },
-      tooltip: { trigger: "axis", valueFormatter: (v: unknown) => typeof v === "number" ? v.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) : "N/D" },
+      // contagens nunca aparecem com casas decimais no gráfico; extensão e potência mantêm 1 casa
+      tooltip: { trigger: "axis", valueFormatter: (v: unknown) => typeof v === "number" && m ? formatarFisico(v, naturezaMetrica(m)) : "N/D" },
       xAxis: { type: "category", data: anos.map(String), axisLine: { lineStyle: { color: t.hairline } }, axisLabel: { color: t.text2 } },
       yAxis: { type: "value", scale: true, axisLabel: { color: t.text2 }, splitLine: { lineStyle: { color: t.hairline, opacity: 0.5 } } },
       series: [
@@ -146,12 +147,12 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
             <caption className={s.caption}>{m.ativo} — {MEDIDA[m.metrica]} ({m.unidade}) · {nomeEscopo}</caption>
             <thead><tr><th scope="col">Ano</th><th scope="col">Natureza</th>{CENARIOS.map((c) => <th scope="col" key={c}>{ROTULO_CENARIO[c]}</th>)}<th scope="col">Variação vs {data.base} ({ROTULO_CENARIO[cenarioAtivo]})</th></tr></thead>
             <tbody>
-              {anosHist.map((a) => <tr key={a}><th scope="row">{a}</th><td>Observado</td><td colSpan={3}>{num(serie.hist.get(a), casas(m.unidade))}</td><td>—</td></tr>)}
+              {anosHist.map((a) => <tr key={a}><th scope="row">{a}</th><td>Observado</td><td colSpan={3}>{num(serie.hist.get(a), casasDe(naturezaMetrica(m)))}</td><td>—</td></tr>)}
               {data.horizonte.map((a, i) => {
                 const v = base != null ? variacoes(base, traj)?.[i] : null;
                 return <tr key={a}><th scope="row">{a}</th><td>Simulação condicional</td>
-                  {CENARIOS.map((c) => <td key={c} data-ativo={c === cenarioAtivo}>{serie.traj[c] ? num(serie.traj[c]![i], casas(m.unidade)) : "Indisponível"}</td>)}
-                  <td>{v ? `${v.abs >= 0 ? "+" : ""}${num(v.abs, casas(m.unidade))} (${pct(v.pct)})` : "N/D"}</td></tr>;
+                  {CENARIOS.map((c) => <td key={c} data-ativo={c === cenarioAtivo}>{serie.traj[c] ? num(serie.traj[c]![i], casasDe(naturezaMetrica(m))) : "Indisponível"}</td>)}
+                  <td>{v ? `${v.abs >= 0 ? "+" : ""}${num(v.abs, casasDe(naturezaMetrica(m)))} (${pct(v.pct)})` : "N/D"}</td></tr>;
               })}
             </tbody>
           </table>

@@ -1,0 +1,27 @@
+{
+  "catalog_sha256": "aed6263def8581e59e407fa064009e225381eeb46e2137d85db66a3cf4ed4a67",
+  "items_2021": 6,
+  "origins_now": [
+    2023,
+    2024
+  ],
+  "origins_with_2021": [
+    2022,
+    2023,
+    2024
+  ],
+  "minimum_required": 3,
+  "pit_clock": {
+    "competences": 19,
+    "generated_by_year_end": 0
+  },
+  "d_free_gib": 646.6,
+  "statement": "Including 2021 alone does not guarantee three eligible backtests: it can add origin 2022 only if the 2021->2022 transition passes layout, TUC, identity, perimeter, coverage and rupture checks, and point-in-time stays blocked regardless.",
+  "not_done": [
+    "no file downloaded",
+    "no metadata request",
+    "no dependency installed",
+    "no date altered",
+    "minimum of 3 origins not reduced"
+  ]
+}

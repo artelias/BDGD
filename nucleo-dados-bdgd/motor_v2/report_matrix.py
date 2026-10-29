@@ -36,7 +36,7 @@ def build(runs):
         minimum = manifest['config']['min_independent_origins']
         for s in json.loads(path.read_text(encoding='utf-8')):
             by = {c['candidate']: c for c in s['candidates']}
-            row = dict(DIST=s['dist'], ativo=s['asset'], metrica=s['metric'], unidade=s.get('unit'), experimental=s.get('experimental_asset'),
+            row = dict(execucao=name, DIST=s['dist'], ativo=s['asset'], metrica=s['metric'], unidade=s.get('unit'), experimental=s.get('experimental_asset'),
                        modo=s['mode'], rotulo=s['evaluation_label'], origens=max((c['independent_origins'] for c in s['candidates']), default=0),
                        minimo_origens=minimum, validado=bool(s['validated_winner']))
             for b in BASE:

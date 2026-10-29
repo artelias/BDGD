@@ -23,6 +23,9 @@ from pathlib import Path
 
 import numpy as np
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from motor_v2 import metric_contract as mc  # noqa: E402  (physical nature contract shared with Motor V2)
+
 ANOS = [2022, 2023, 2024, 2025]
 BASE = 2025
 HORIZONTE = [2026, 2027, 2028, 2029, 2030]
@@ -289,6 +292,17 @@ def erros(pares):
             "mdape": float(np.median(np.abs(e) / y))}
 
 
+def fisico(pts, discreta):
+    """Error of the PUBLISHABLE (integer) predictions on the same backtest points; the continuous error stays in the other fields."""
+    if not discreta or not pts:
+        return {}
+    if any(not math.isfinite(yh) or yh < 0 for _, yh, *_ in pts):
+        # a negative prediction is not a publishable count; the contract rejects it instead of clipping, so no physical error exists
+        return {"mae_fisico": None, "wape_fisico": None, "vies_fisico": None, "fisico_motivo": "PREVISAO_NEGATIVA_NAO_PUBLICAVEL"}
+    e = erros([(y, mc.round_count(yh)) for y, yh, *_ in pts])
+    return {"mae_fisico": e["mae"], "wape_fisico": e["wape"], "vies_fisico": e["vies_rel"]}
+
+
 def executar_metrica(motor, k):
     S = motor.series[k]
     segs = {d: segmento(anos) for d, anos in S.items()}
@@ -385,7 +399,7 @@ def estado_metrica(cen, met):
     return {3: "tres_cenarios", 2: "dois_cenarios", 1: "somente_moderado"}[n]
 
 
-def main(contrato, internas, raw, saida, web=None):
+def main(contrato, internas, raw, saida, web=None, internal_dir=None):
     saida = Path(saida); saida.mkdir(parents=True, exist_ok=True)
     series, empresas, unidades = carregar_contrato(contrato)
     pot, diag_pot = carregar_potencia(internas, series)
@@ -397,6 +411,7 @@ def main(contrato, internas, raw, saida, web=None):
     catalogo = json.load(open(Path(contrato).parents[1] / "etl/bdgd2025/config/conceitos_2025.json", encoding="utf-8"))
     nomes = {a["id"]: (a["nome"], a.get("familia", "")) for a in catalogo["ativos"]}
     matriz, backtest_rows, cen_rows, web_metricas = [], [], [], []
+    internos = []
     uso_vars = defaultdict(set)
     chaves = sorted(series)
     for k in chaves:
@@ -415,6 +430,7 @@ def main(contrato, internas, raw, saida, web=None):
                                       "wape_total": x["erros"]["wape"], "melhor_que_persistencia": (x["erros"]["wape"] or 9) < (met.get("persistencia", {}).get("erros", {}).get("wape") or 0) if "persistencia" in met else None,
                                       "elegivel": x["elegivel"], "motivo": x["motivo"] or ""})
         pers = met.get("persistencia", {}).get("erros", {}).get("wape")
+        natureza = mc.nature_of(unidades.get(k, "")); discreta = natureza == "discrete_count"
         series_pub = {}
         for d, s in segs.items():
             if not s:
@@ -426,9 +442,14 @@ def main(contrato, internas, raw, saida, web=None):
                     r = traj[-1] / s[-1][1]
                     if not (RAZAO_PLAUSIVEL[0] <= r <= RAZAO_PLAUSIVEL[1]):
                         traj = None
-                linha[slot] = [round(v, 3) for v in traj] if traj else None
-                cen_rows.append({"conceito": conc, "metrica": metr, "dist": d, "empresa": empresas.get(d, ""), "cenario": slot, "modelo": m or "",
-                                 **{str(a): (round(v, 3) if traj else "") for a, v in zip(HORIZONTE, traj or [None] * 5)},
+                # Public numbers follow the physical nature: discrete counts are integers (half-up, declared); the raw value stays internal.
+                pub = [mc.physical_prediction(v, natureza) if discreta else round(v, 3) for v in traj] if traj else None
+                linha[slot] = pub
+                if traj:
+                    internos.extend(dict(conceito=conc, metrica=metr, dist=d, cenario=slot, modelo=m, ano=a, raw_prediction=v, physical_prediction=p,
+                                         rounding="half_up" if discreta else "") for a, v, p in zip(HORIZONTE, traj, pub))
+                cen_rows.append({"conceito": conc, "metrica": metr, "natureza": natureza, "dist": d, "empresa": empresas.get(d, ""), "cenario": slot, "modelo": m or "",
+                                 **{str(a): (v if traj else "") for a, v in zip(HORIZONTE, pub or [None] * 5)},
                                  "base_2025": s[-1][1], "anos_historico": len(s),
                                  "status": ("indisponivel_metrica" if not m else "indisponivel_serie" if not traj else
                                             ("experimental" if experimental else "simulacao_validada_retrospectivamente"))})
@@ -437,7 +458,7 @@ def main(contrato, internas, raw, saida, web=None):
             linha["erro_moderado"] = erros(pts)["mdape"] if pts else None
             series_pub[d] = linha
         matriz.append({"conceito": conc, "ativo": nomes.get(conc, (conc,))[0], "familia": nomes.get(conc, ("", ""))[1], "metrica": metr,
-                       "unidade": unidades.get(k, ""), "estado": est, "experimental": experimental,
+                       "unidade": unidades.get(k, ""), "natureza": natureza, "estado": est, "experimental": experimental,
                        "conservador": cen["conservador"] or "", "moderado": cen["moderado"] or "", "agressivo": cen["agressivo"] or "",
                        "wape_conservador": met[cen["conservador"]]["erros"]["wape"] if cen["conservador"] else "",
                        "wape_moderado": met[cen["moderado"]]["erros"]["wape"] if cen["moderado"] else "",
@@ -448,11 +469,12 @@ def main(contrato, internas, raw, saida, web=None):
                        "series_com_historico": sum(1 for s in segs.values() if s), "series_projetadas": sum(1 for x in series_pub.values() if x.get("moderado")),
                        "justificativa_conservador": just.get("conservador", ""), "justificativa_moderado": just.get("moderado", ""),
                        "justificativa_agressivo": just.get("agressivo", "")})
-        web_metricas.append({"conceito": conc, "ativo": nomes.get(conc, (conc,))[0], "familia": nomes.get(conc, ("", ""))[1], "metrica": metr, "unidade": unidades.get(k, ""), "estado": est, "experimental": experimental,
+        web_metricas.append({"conceito": conc, "ativo": nomes.get(conc, (conc,))[0], "familia": nomes.get(conc, ("", ""))[1], "metrica": metr, "unidade": unidades.get(k, ""), "natureza": natureza, "estado": est, "experimental": experimental,
                              "cenarios": cen, "justificativas": just,
                              "modelos": {m: {"wape": x["erros"]["wape"], "mae": x["erros"]["mae"], "rmse": x["erros"]["rmse"], "vies": x["erros"]["vies_rel"],
                                              "mdape": x["erros"]["mdape"], "n": x["erros"]["n"], "wape_h1": x["por_h"][1]["wape"], "wape_h2": x["por_h"][2]["wape"],
-                                             "estabilidade": x["estabilidade_wape_h1"], "cagr": x["cagr_agregado"], "elegivel": x["elegivel"], "motivo": x["motivo"]}
+                                             "estabilidade": x["estabilidade_wape_h1"], "cagr": x["cagr_agregado"], "elegivel": x["elegivel"], "motivo": x["motivo"],
+                                             **fisico(bt.get(m), discreta)}
                                          for m, x in met.items()},
                              "diagnostico_painel": {str(o): {m: v for m, v in dg.items()} for o, dg in {**diag_bt, BASE: diag_final}.items()},
                              "series": series_pub})
@@ -468,11 +490,13 @@ def main(contrato, internas, raw, saida, web=None):
             motivo = BLOQ.get(k, "Sem série histórica comparável no contrato nacional")
             just = {"conservador": f"Indisponível: {motivo}", "moderado": f"Indisponível: {motivo}", "agressivo": f"Indisponível: {motivo}"}
             matriz.append({**{c: "" for c in matriz[0]}, "conceito": a["id"], "ativo": a["nome"], "familia": a.get("familia", ""), "metrica": metr,
+                           "natureza": mc.nature_of({"potencia_kva": "kVA", "extensao_km": "km"}.get(metr, "itens")),
                            "unidade": "kVA" if metr == "potencia_kva" else "", "estado": "bloqueado", "experimental": metr == "potencia_kva",
                            "moderado_melhor_que_persistencia": False, "pontos_backtest": 0, "series_com_historico": 0, "series_projetadas": 0,
                            "justificativa_conservador": just["conservador"], "justificativa_moderado": just["moderado"], "justificativa_agressivo": just["agressivo"]})
             web_metricas.append({"conceito": a["id"], "ativo": a["nome"], "familia": a.get("familia", ""), "metrica": metr,
-                                 "unidade": "kVA" if metr == "potencia_kva" else "", "estado": "bloqueado", "experimental": metr == "potencia_kva",
+                                 "unidade": "kVA" if metr == "potencia_kva" else "", "natureza": mc.nature_of({"potencia_kva": "kVA", "extensao_km": "km"}.get(metr, "itens")),
+                                 "estado": "bloqueado", "experimental": metr == "potencia_kva",
                                  "cenarios": {"conservador": None, "moderado": None, "agressivo": None}, "justificativas": just,
                                  "modelos": {}, "diagnostico_painel": {}, "series": {}})
     # ---------------- arquivos
@@ -481,7 +505,15 @@ def main(contrato, internas, raw, saida, web=None):
             w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n"); w.writeheader(); w.writerows(rows)
     wcsv("MATRIZ_MODELO_POR_METRICA.csv", matriz)
     wcsv("BACKTEST_MODELOS_POR_HORIZONTE.csv", backtest_rows)
+    # Public CSV gate: a fractional count aborts before writing; continuous columns keep their decimals.
+    anos = [str(a) for a in HORIZONTE]
+    mc.assert_public_table([r for r in cen_rows if r["natureza"] == "discrete_count"], {a: "discrete_count" for a in anos})
     wcsv("CENARIOS_CONSERVADOR_MODERADO_AGRESSIVO.csv", cen_rows)
+    if internal_dir and internos:                      # raw continuous predictions: diagnostic only, never under web/public or the public saida
+        Path(internal_dir).mkdir(parents=True, exist_ok=True)
+        with open(Path(internal_dir) / "INTERNAL_RAW_PREDICTIONS.csv", "w", encoding="utf-8", newline="\n") as f:
+            w = csv.DictWriter(f, fieldnames=list(internos[0]), lineterminator="\n")
+            w.writeheader(); w.writerows(internos)
     if diag_pot:
         wcsv("QUALIDADE_POTENCIA_EQ_UN.csv", diag_pot)
     vars_rows = variaveis(uso_vars, cob_ext)
@@ -553,7 +585,7 @@ def verificar(contrato, internas, raw, saida, web):
         elif isinstance(a, list) and isinstance(b, list):
             if len(a) != len(b): erros.append(f"{cam}: tamanho {len(a)} ≠ {len(b)}")
             for i, (x, y) in enumerate(zip(a, b)): cmp(x, y, f"{cam}[{i}]")
-        elif isinstance(a, float) or isinstance(b, float):
+        elif isinstance(a, float) or isinstance(b, float) or (isinstance(a, int) and isinstance(b, int) and "/series/" in cam and not isinstance(a, bool)):
             # Random Forest/HistGradientBoosting variam no último dígito entre plataformas (Windows × Linux):
             # e a diferença se acumula no horizonte de 5 anos (observado: até 0,15%). Números com tolerância de 0,5%
             # relativo ou 1e-4 absoluto; escolhas de modelo e estados continuam exatos.
@@ -571,5 +603,9 @@ def verificar(contrato, internas, raw, saida, web):
 if __name__ == "__main__":
     import warnings
     warnings.filterwarnings("ignore", category=UserWarning)
-    args = [a for a in sys.argv[1:] if a != "--check"]
-    (verificar if "--check" in sys.argv else main)(*args)
+    internal = next((a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--internal-dir=")), None)
+    args = [a for a in sys.argv[1:] if a != "--check" and not a.startswith("--internal-dir=")]
+    if "--check" in sys.argv:
+        verificar(*args)
+    else:
+        main(*args, internal_dir=internal)

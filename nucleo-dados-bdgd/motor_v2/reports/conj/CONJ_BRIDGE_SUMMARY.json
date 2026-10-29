@@ -1,0 +1,147 @@
+[
+  {
+    "id": "CONJ_26_2024",
+    "status": "PENDING_HOMOLOGATION",
+    "entering": [
+      "17306",
+      "17307",
+      "17308",
+      "17309",
+      "17310",
+      "17311"
+    ],
+    "changed": [
+      "12591",
+      "12592",
+      "12594"
+    ],
+    "coverage": {
+      "ctmt_continuity": 0.9975210610491562,
+      "km_total_new": 20118.605172999996,
+      "share_strong": 0.23795041563938354,
+      "share_partial": 0.7620495843606165,
+      "share_insufficient": 0.0,
+      "customers_ctmt_continuity": 0.8928550471635835,
+      "codes_new": 6,
+      "codes_gone": 3,
+      "codes_changed": 3
+    }
+  },
+  {
+    "id": "CONJ_6585_2023",
+    "status": "PENDING_HOMOLOGATION",
+    "entering": [
+      "16931",
+      "16932",
+      "16933",
+      "16934",
+      "16935"
+    ],
+    "changed": [
+      "13748",
+      "13751",
+      "13767",
+      "13774",
+      "13778",
+      "13779",
+      "15612",
+      "16832",
+      "16833"
+    ],
+    "coverage": {
+      "ctmt_continuity": 0.9999194106073757,
+      "km_total_new": 25864.123455000008,
+      "share_strong": 0.7509742763868973,
+      "share_partial": 0.2490257236131027,
+      "share_insufficient": 0.0,
+      "customers_ctmt_continuity": 0.9973773394429601,
+      "codes_new": 5,
+      "codes_gone": 5,
+      "codes_changed": 9
+    }
+  },
+  {
+    "id": "CONJ_6600_2023",
+    "status": "PENDING_HOMOLOGATION",
+    "entering": [
+      "12793",
+      "12797",
+      "16229",
+      "16749",
+      "16750",
+      "16751",
+      "16752",
+      "16753"
+    ],
+    "changed": [
+      "13689",
+      "13692",
+      "13704",
+      "13722",
+      "13735",
+      "15809",
+      "16187",
+      "16847",
+      "16848",
+      "16853",
+      "16854",
+      "16859"
+    ],
+    "coverage": {
+      "ctmt_continuity": 0.9435478161507262,
+      "km_total_new": 45937.635237,
+      "share_strong": 0.7976256933114365,
+      "share_partial": 0.20237430668856346,
+      "share_insufficient": 0.0,
+      "customers_ctmt_continuity": 0.8653879971155878,
+      "codes_new": 8,
+      "codes_gone": 0,
+      "codes_changed": 12
+    }
+  },
+  {
+    "id": "CONJ_6600_2024",
+    "status": "PENDING_HOMOLOGATION",
+    "entering": [
+      "17121",
+      "17122",
+      "17123",
+      "17124",
+      "17125",
+      "17126",
+      "17127",
+      "17128"
+    ],
+    "changed": [
+      "13690",
+      "13692",
+      "13716",
+      "13722",
+      "13735",
+      "13739",
+      "15809",
+      "16187",
+      "16847",
+      "16848",
+      "16851",
+      "16853",
+      "16854",
+      "16855",
+      "16856",
+      "16857",
+      "16859",
+      "16860"
+    ],
+    "coverage": {
+      "ctmt_continuity": 0.9869490958842839,
+      "km_total_new": 46520.08869399999,
+      "share_strong": 0.7847281081755194,
+      "share_partial": 0.2152718918244805,
+      "share_insufficient": 0.0,
+      "customers_ctmt_continuity": 0.973412535403109,
+      "codes_new": 8,
+      "codes_gone": 8,
+      "codes_changed": 18
+    }
+  }
+]

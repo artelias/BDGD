@@ -28,6 +28,10 @@ ASSETS = {
     'rede_mt_extensao_km': dict(ativo='rede_mt', metrica='extensao_km', unit='km', count=False, unit_kind='conjunto',
                                 concept='rede_mt', metric='extensao_km', measure='km', experimental=False),
 }
+from .metric_contract import nature_of
+for _spec in ASSETS.values():
+    _spec['nature'] = nature_of(_spec['unit'])   # unclassified units fail at import: no silent default
+
 PAIRS = (('EQTRMT', 'UNTRMT', ('UNI_TR_MT', 'UN_TR_MT'), 1.0), ('EQTRAT', 'UNTRAT', ('UNI_TR_AT', 'UN_TR_AT'), 1000.0))
 MIN_LINK_COVERAGE = 0.98   # engineering floor for publishing a power series, not a regulatory value
 

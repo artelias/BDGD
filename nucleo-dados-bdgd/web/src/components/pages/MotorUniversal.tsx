@@ -1,6 +1,7 @@
 "use client";
 import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { useEffect, useRef, useState } from "react";
+import { formatarFisico, naturezaDe } from "@/lib/natureza-fisica";
 import { exportarExperimentoMotor, parseResumoMotor, type ResumoMotor } from "@/lib/motor-universal";
 import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import s from "./motor-universal.module.css";
@@ -46,6 +47,8 @@ export function MotorUniversal() {
   const series = data?.series.find((r) => r.DIST === distId && r.objetivo_id === assetId && r.metrica === target?.metrica && r.territorio.nivel === "dist");
   const chosen = series?.modelos.find((m) => m.modelo === model) ?? series?.modelos.find((m) => m.modelo === series.modelo_selecionado);
   const projection = data && chosen ? chosen.futuro[data.horizontes.indexOf(year)] : undefined;
+  // contagens sem casas decimais (contrato de natureza física); extensão e potência com decimais
+  const fis = (n: number | null | undefined) => formatarFisico(n, naturezaDe(target?.unidade ?? "itens"));
   const bloqueioCoopera = String(distId) === String(COOPERA_UCBT_2025.dist) && assetId === "consumidores" && target?.metrica === "quantidade";
   return <section className={s.section} aria-labelledby="motor-universal-title" data-testid="motor-universal">
     <h2 id="motor-universal-title">Motor universal de ativos BDGD</h2>
@@ -66,16 +69,16 @@ export function MotorUniversal() {
         </div>
         {bloqueioCoopera && <p role="status" data-testid="motor-coopera-ausencia"><b>Coopera (DIST 5370): previsão de consumidores indisponível.</b> A UCBT 2025 está vazia na fonte (0*); o valor legado de 225 contém apenas UCMT+UCAT AT. Não utilizar esse subtotal como população completa, nem ajustar KNN com zero artificial. A estimativa com análogos exógenos aguarda dados reais e validação.</p>}
         {!series || series.status === "dados_insuficientes" || bloqueioCoopera ? <p role="status" data-testid="motor-universal-vazio"><b>Sem simulação elegível.</b> {series?.motivos.join(" · ") || target?.motivo || "Não há série por distribuidora para esta métrica no contrato atual."} Nenhum valor foi preenchido.</p> : <>
-          <p role="status"><b>Simulação condicional para {year}: {number(projection)} {target?.unidade}</b>. Método consultado: {names[chosen?.modelo ?? ""] ?? chosen?.modelo}. Seleção conservadora: {names[series.modelo_selecionado ?? ""] ?? series.modelo_selecionado}.</p>
+          <p role="status"><b>Simulação condicional para {year}: {fis(projection)} {target?.unidade}</b>. Método consultado: {names[chosen?.modelo ?? ""] ?? chosen?.modelo}. Seleção conservadora: {names[series.modelo_selecionado ?? ""] ?? series.modelo_selecionado}.</p>
           <p>Backtest diagnóstico de um ano: {chosen?.metricas.n ?? 0} origens · MAE {number(chosen?.metricas.mae)} · RMSE {number(chosen?.metricas.rmse)} · WAPE {chosen?.metricas.wape == null ? "N/D" : number(chosen.metricas.wape * 100) + "%"} · viés {number(chosen?.metricas.vies)}. Última origem reservada para auditoria: MAE {number(chosen?.auditoria.mae)}.</p>
           <p>Somente estoque passado e tempo nos baselines. O painel atual não contém variáveis demográficas, econômicas, energéticas ou climáticas enriquecidas. Não há intervalo probabilístico calibrado.</p>
           <p><b>Alvo: estoque físico.</b> A variação líquida é uma diferença entre estoques, não uma medida de entradas, baixas, substituições ou necessidade de expansão. Erros de um ano não validam o horizonte de cinco anos.</p>
           <div className={s.scroll} role="region" tabIndex={0} aria-label="Histórico e simulações do motor universal">
             <table><thead><tr><th scope="col">Ano</th><th scope="col">Estoque ({target?.unidade})</th><th scope="col">Variação líquida</th><th scope="col">Natureza</th></tr></thead><tbody>
-              {series.historico.map((h) => <tr key={h.ano}><td>{h.ano}</td><td>{number(h.valor)}</td><td>{number(h.variacao_liquida)}</td><td>{statusName[h.estado] ?? h.estado}</td></tr>)}
+              {series.historico.map((h) => <tr key={h.ano}><td>{h.ano}</td><td>{fis(h.valor)}</td><td>{number(h.variacao_liquida)}</td><td>{statusName[h.estado] ?? h.estado}</td></tr>)}
               {data.horizontes.map((y, i) => {
                 const value = chosen?.futuro[i], before = i ? chosen?.futuro[i-1] : series.historico.find((h) => h.ano === data.base_year)?.valor;
-                return y <= year && <tr key={y}><td>{y}</td><td>{number(value)}</td><td>{number(value != null && before != null ? value - before : null)}</td><td>Simulação condicional</td></tr>;
+                return y <= year && <tr key={y}><td>{y}</td><td>{fis(value)}</td><td>{fis(value != null && before != null ? value - before : null)}</td><td>Simulação condicional</td></tr>;
               })}
             </tbody></table>
           </div>

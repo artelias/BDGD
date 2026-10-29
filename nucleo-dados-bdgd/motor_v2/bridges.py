@@ -8,7 +8,7 @@ from pathlib import Path
 from .runner import fingerprint
 
 STATUSES = ('PENDING_HOMOLOGATION', 'HOMOLOGATED', 'REJECTED')
-KINDS = ('succession', 'absorption', 'split')
+KINDS = ('succession', 'absorption', 'split', 'conjunto_redefinition')
 REQUIRED = ('id', 'version', 'kind', 'successor_dist', 'predecessor_dist', 'effective_year', 'entering_units', 'overlap_units',
             'status', 'evidence', 'policy')
 
@@ -21,6 +21,8 @@ def validate(bridge):
         raise ValueError('invalid bridge status or kind')
     if bridge['status'] == 'HOMOLOGATED' and not bridge.get('decision'):
         raise ValueError('a HOMOLOGATED bridge needs a recorded human decision')
+    if 'mapping' in bridge and not isinstance(bridge['mapping'], list):
+        raise ValueError('bridge mapping must be a list of evidence entries')
     if bridge['status'] != 'HOMOLOGATED' and bridge.get('decision'):
         raise ValueError('decision recorded on a bridge that is not homologated')
     return bridge
@@ -28,7 +30,7 @@ def validate(bridge):
 
 def load(directory):
     out = []
-    for p in sorted(Path(directory).glob('*.json')):
+    for p in sorted(Path(directory).rglob('*.json')):      # subfolders (e.g. conj/) hold proposals of other unit kinds
         b = validate(json.loads(p.read_text(encoding='utf-8-sig')))
         b['_sha256'] = fingerprint({k: v for k, v in b.items() if not k.startswith('_')})
         out.append(b)
