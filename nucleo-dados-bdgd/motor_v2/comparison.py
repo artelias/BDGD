@@ -8,29 +8,44 @@ from .runner import atomic,read,digest,fingerprint,score,ROOT
 from .temporal import usable,label,MODES
 from .ml import build
 from .policy import FeaturePolicy
+from .baselines import BASELINES,DEFAULT_MIN_POINTS,predict as baseline_predict
 from .features import FEATURES, snapshots, csv_write
 MODELS=('ols','ridge','elastic_net','poisson','random_forest','hist_gradient_boosting')
 SCOPES=('individual','shared_pilot','peers_pilot')
 
 def bucket(group,n):return int(hashlib.sha256(group.encode()).hexdigest()[:8],16)%n
 
-def load_panel(input_run,asset='ucbt_quantidade',bridges=None):
+def load_panel(input_run,asset='ucbt_quantidade',bridges=None,min_coverage=None,min_continuity=None):
  from .assets import ASSETS
  from .bridges import quarantine
  kind=ASSETS[asset]['unit_kind'];bridges=bridges or []
  data,metadata,provenance=snapshots(input_run,asset)
  # Syntactically invalid municipalities remain in audit/total, not the model cohort.
  valid={k:v for k,v in data.items() if k[2] and ((len(k[2])==7 and k[2].isdigit()) if kind=='municipality' else k[2]!='MISSING')}
+ # Coverage gate: the territorial aggregate must reproduce the physical total under the SAME rule (and the asset's own
+ # link coverage). A (dist, year) that fails removes its rows (as target year and as t-1 feature year); never imputed.
+ gate={}
+ for d,y in metadata:
+  physical=metadata[d,y].get('value');tsum=sum(v['n'] for (dd,yy,m),v in data.items() if (dd,yy)==(d,y))
+  cov=tsum/physical if physical else None;ac=metadata[d,y].get('qa',{}).get('coverage')
+  if cov is not None and ac is not None:cov=min(cov,ac)
+  gate[d,y]=dict(physical_total=physical,territorial_sum=tsum,territorial_coverage=cov,gate_ok=(min_coverage is None) or (cov is not None and cov>=min_coverage))
+ # Continuity gate: share of the asset's stock (year y) in territorial units that already existed at y-1. A redefinition of the
+ # units (e.g. CONJ renumbering) breaks comparability even for units that keep their code, so the whole transition is withheld.
+ for d,y in metadata:
+  now={m:v['n'] for (dd,yy,m),v in valid.items() if (dd,yy)==(d,y)};before={m for (dd,yy,m) in valid if (dd,yy)==(d,y-1)}
+  tot=sum(now.values());cont=sum(v for m,v in now.items() if m in before)/tot if tot and before else None
+  gate[d,y].update(unit_continuity=cont,continuity_ok=(min_continuity is None) or cont is None or cont>=min_continuity)
  rows=[];quality=[]
  for (d,y,mun),s in sorted(valid.items()):
   prior=valid.get((d,y-1,mun))
   if prior is None:continue
-  h=metadata[d,y];lag=metadata[d,y-1];held=quarantine(bridges,d,y,kind)
-  rows.append(dict(dist=d,year=y,group=mun,feature_year=y-1,feature_available=lag['available'],feature_revision_available=lag['available'],target_available=h['available'],stock=prior['n'],y=float(s['n']),x=[math.log1p(prior['n']),prior['urban'],math.log1p(prior['energy']) if prior['energy'] is not None else None],rupture=h['rupture'] or mun in held,rupture_reason='perimeter_bridge_pending:'+held[mun] if mun in held else None,unit_kind=kind,territorial_conflicts=h['qa'].get('territorial_conflicts',0),key=f'{d}:{y}:{mun}'))
+  h=metadata[d,y];lag=metadata[d,y-1];held=quarantine(bridges,d,y,kind);bad=[k for k in ((d,y),(d,y-1)) if not gate[k]['gate_ok']];cbad=not gate[d,y]['continuity_ok']
+  rows.append(dict(dist=d,year=y,group=mun,feature_year=y-1,feature_available=lag['available'],feature_revision_available=lag['available'],target_available=h['available'],stock=prior['n'],y=float(s['n']),x=[math.log1p(prior['n']),prior['urban'],math.log1p(prior['energy']) if prior['energy'] is not None else None],rupture=h['rupture'] or mun in held or bool(bad) or cbad,rupture_reason=('perimeter_bridge_pending:'+held[mun]) if mun in held else ('coverage_gate:%s-%s'%bad[0]) if bad else ('continuity_gate:%s-%s'%(d,y)) if cbad else None,unit_kind=kind,territorial_conflicts=h['qa'].get('territorial_conflicts',0),key=f'{d}:{y}:{mun}'))
  for d,y in sorted(metadata):
   total=sum(v['n'] for (dd,yy,m),v in data.items() if (dd,yy)==(d,y))
   matched=sum(r['y'] for r in rows if (r['dist'],r['year'])==(d,y))
-  quality.append(dict(dist=d,year=y,municipal_total=total,matched_cohort=matched,coverage=matched/total if total else None,available=metadata[d,y]['available'],rupture=metadata[d,y]['rupture'],territorial_conflicts=metadata[d,y]['qa'].get('territorial_conflicts',0),quarantined_units=sorted(u for (dd,yy,u) in valid if (dd,yy)==(d,y) and u in quarantine(bridges,d,y,kind)),limitation='territorial overlap is not proof of physical continuity'))
+  quality.append(dict(dist=d,year=y,**gate[d,y],municipal_total=total,matched_cohort=matched,coverage=matched/total if total else None,available=metadata[d,y]['available'],rupture=metadata[d,y]['rupture'],territorial_conflicts=metadata[d,y]['qa'].get('territorial_conflicts',0),quarantined_units=sorted(u for (dd,yy,u) in valid if (dd,yy)==(d,y) and u in quarantine(bridges,d,y,kind)),limitation='territorial overlap is not proof of physical continuity'))
  return rows,quality,provenance
 
 def scope_pool(rows,dist,origin,mode,scope,heldout):
@@ -115,11 +130,24 @@ def choose_options(rows,dist,origin,mode,scope,heldout,model,cfg):
  blocked=heldout|{r['group'] for r in val};train,peers=scope_pool(rows,dist,inner,mode,scope,blocked)
  trials=[]
  policy=FeaturePolicy.from_cfg(cfg.get('feature_policy'));elig=eligible_features(train,val,mode,len(rows[0]['x']) if rows else 3,policy)
- for opt in options(model,cfg['max_trials'],cfg['seed'],eligible=elig):
+ def evaluate(opt):
   opt=dict(opt,mode=mode,policy=policy.as_dict())
   try:
-   p,_=fit_predict(model,opt,train,val,cfg['seed']);metric=score([r['y'] for r in val],p)['mae'];trials.append(dict(**opt,mae=metric,status='inner_validation',inner_origin=inner))
-  except Exception as e:trials.append(dict(**opt,mae=None,status=str(e),inner_origin=inner))
+   p,_=fit_predict(model,opt,train,val,cfg['seed']);return dict(**opt,mae=score([r['y'] for r in val],p)['mae'],status='inner_validation',inner_origin=inner)
+  except Exception as e:return dict(**opt,mae=None,status=str(e),inner_origin=inner)
+ for opt in options(model,cfg['max_trials'],cfg['seed'],eligible=elig):trials.append(evaluate(opt))
+ # Optional forward selection on the INNER validation only: grow the best subset while the inner MAE improves by >=1%.
+ if cfg.get('forward_selection') and len(elig)>3:
+  ok=[t for t in trials if t['mae'] is not None]
+  if ok:
+   cur=min(ok,key=lambda t:(t['mae'],len(t['features'])));feats=list(cur['features']);pool=[i for i in elig if i not in feats]
+   while pool and len(feats)<cfg.get('max_features',4):
+    step=[(evaluate(dict(params=cur['params'],features=feats+[i])),i) for i in pool];trials.extend(t for t,_ in step)
+    cand=[(t,i) for t,i in step if t['mae'] is not None]
+    if not cand:break
+    t,i=min(cand,key=lambda z:z[0]['mae'])
+    if t['mae']<.99*cur['mae']:cur=t;feats=feats+[i];pool.remove(i)
+    else:break
  good=[x for x in trials if x['mae'] is not None]
  selected=min(good,key=lambda x:(x['mae'],len(x['features']))) if good else dict(params=options(model,1,cfg['seed'],eligible=[0])[0]['params'],features=[0])
  selected=dict(selected,mode=mode,policy=policy.as_dict())
@@ -138,7 +166,7 @@ def experiment(rows,dist,mode,model,scope,cfg,stop):
    heldout={r['group'] for r in rows if bucket(r['group'],cfg['territorial_folds'])==part}
    train,peers=scope_pool(rows,dist,origin,mode,scope,heldout)
    try:
-    if model=='persistencia':values=[r['stock'] for r in test];opt=dict(params={},features=[0]);trials=[];selection='baseline';explain={}
+    if model in BASELINES:values,explain=baseline_predict(model,rows,test,origin,mode,cfg.get('baseline_min_points',DEFAULT_MIN_POINTS));opt=dict(params={},features=[0]);trials=[];selection='baseline'
     else:
      opt,trials,selection=choose_options(rows,dist,origin,mode,scope,heldout,model,cfg)
      values,explain=fit_predict(model,opt,train,test,cfg['seed'])
@@ -159,13 +187,29 @@ def summarise(experiments,minimum_origins):
   totals=[dict(origin=o,actual=sum(r['actual'] for r in z),pred=sum(r['pred'] for r in z),municipalities=len(z)) for o,z in sorted(by.items())]
   total_metrics=score([r['actual'] for r in totals],[r['pred'] for r in totals]) if totals else {}
   out.append(dict(distributor_totals=totals,distributor_metrics=total_metrics,candidate=name,common_test_set=equivalent,n_predictions=len(rs),independent_origins=len(by),metrics=metrics,by_origin=fold_metrics,robust_score=robust,folds=e['folds'],failures=e['failures']))
- eligible=[r for r in out if r['common_test_set']]
+ eligible=[r for r in out if r['common_test_set'] and r['robust_score'] is not None]
  best=min(eligible,key=lambda r:(r['robust_score'],r['candidate']!='persistencia:individual')) if eligible else None
  base=next(r for r in out if r['candidate']=='persistencia:individual')
+ names={b+':individual' for b in BASELINES}
+ baselines=[r for r in eligible if r['candidate'] in names];ml=[r for r in eligible if r['candidate'] not in names]
+ best_base=min(baselines,key=lambda r:(r['robust_score'],r['candidate']!='persistencia:individual')) if baselines else None
+ best_ml=min(ml,key=lambda r:r['robust_score']) if ml else None
+ gain=lambda a,b:(1-a['robust_score']/b['robust_score']) if a and b and b['robust_score'] else None
+ gain_best=gain(best_ml,best_base);gain_pers=gain(best_ml,base)
  winner='persistencia:individual';reason='insufficient independent temporal origins; baseline fallback'
- if best and best['independent_origins']>=minimum_origins and base['robust_score'] and best['robust_score']<.95*base['robust_score']:winner=best['candidate'];reason='>=5% robust individual gain on common tests'
+ enough=best and best['independent_origins']>=minimum_origins
+ # An ML candidate must beat the BEST baseline (persistence, drift or CAGR), not only persistence.
+ if enough and best_base and base['robust_score']:
+  if best_ml and best_ml['robust_score']<.95*best_base['robust_score']:winner=best_ml['candidate'];reason='>=5% robust individual gain over the best baseline on common tests'
+  elif best_base['candidate']!='persistencia:individual' and best_base['robust_score']<.95*base['robust_score']:winner=best_base['candidate'];reason='>=5% robust gain of a trend baseline over persistence'
+  else:reason='no candidate beats the best baseline by 5%'
  if not keys:reason='no eligible evaluation; baseline policy only, no measured winner'
- return dict(candidates=out,winner=winner,selection_reason=reason,best_exploratory=best['candidate'] if best else None,validated_winner=reason.startswith('>=5%'))
+ fallbacks={r['candidate']:sum(f['explanation'].get('fallback_rows',0) for f in r['folds']) for r in out if r['candidate'] in names}
+ return dict(candidates=out,winner=winner,selection_reason=reason,best_exploratory=best['candidate'] if best else None,
+  best_baseline=best_base['candidate'] if best_base else None,best_baseline_robust=best_base['robust_score'] if best_base else None,
+  best_ml=best_ml['candidate'] if best_ml else None,best_ml_robust=best_ml['robust_score'] if best_ml else None,
+  ml_gain_vs_best_baseline=gain_best,ml_gain_vs_persistence=gain_pers,ml_beats_best_baseline=bool(gain_best is not None and gain_best>0),
+  baseline_fallback_rows=fallbacks,validated_winner=reason.startswith('>='))
 
 def investigate(input_run,dists):
  from .runner import publication_map
@@ -184,10 +228,15 @@ def run(cfg,stop):
  from .assets import ASSETS
  from . import bridges as bridge_lib,feature_registry
  spec=ASSETS[asset];bridge_list=bridge_lib.load(cfg['bridges_dir']) if cfg.get('bridges_dir') else []
- rows,quality,provenance=load_panel(cfg['comparison_input'],asset,bridge_list);provenance['asset']=asset;provenance['bridges']=[dict(id=b['id'],status=b['status'],sha=b['_sha256']) for b in bridge_list];provenance['code']=fingerprint({str(p):digest(p) for p in Path(__file__).parent.glob('*.py')})
+ rows,quality,provenance=load_panel(cfg['comparison_input'],asset,bridge_list,cfg.get('min_territorial_coverage'),cfg.get('min_unit_continuity'));provenance['asset']=asset;provenance['bridges']=[dict(id=b['id'],status=b['status'],sha=b['_sha256']) for b in bridge_list];provenance['code']=fingerprint({str(p):digest(p) for p in Path(__file__).parent.glob('*.py')})
  if cfg.get('external_manifest'):
   from .externals import attach
   rows=attach(rows,cfg['external_manifest']);provenance['external_manifest']=digest(cfg['external_manifest'])
+ if cfg.get('shared_inputs'):
+  from . import shared
+  si=cfg['shared_inputs'];matrix=shared.build(si['asset_root'],si['ucbt_root'],cfg['dists'],spec['unit_kind']);rows=shared.attach(rows,matrix,asset)
+  provenance['shared_matrix']=fingerprint({str(k):v for k,v in matrix.items()});shared_matrix=matrix
+ else:shared_matrix=None
  rows=[r for r in rows if r['dist'] in cfg['dists']];quality=[r for r in quality if r['dist'] in cfg['dists']]
  environment=dict(python=platform.python_version(),packages={name:importlib.metadata.version(name) for name in ['scikit-learn','numpy','scipy','duckdb','threadpoolctl']})
  provenance['environment']=environment
@@ -199,7 +248,7 @@ def run(cfg,stop):
   for mode in MODES:
    for dist in cfg['dists']:
     experiments={}
-    for model,scope in [('persistencia','individual')]+[(m,s) for m in models for s in SCOPES]:
+    for model,scope in [(b,'individual') for b in BASELINES]+[(m,s) for m in models for s in SCOPES]:
      if stop.exists():atomic(out/'progress.json',dict(state='stopped',reused=reused,executed=executed));return out
      name=model+':'+scope;cp=out/'checkpoints'/f'{mode}_{dist}_{model}_{scope}.json'
      try:cached=read(cp) if cp.exists() else {}
@@ -217,6 +266,8 @@ def run(cfg,stop):
  atomic(out/'summaries.json',summaries)
  from .externals import coverage_rows
  csv_write(out/'FEATURE_COVERAGE_BY_ORIGIN.csv',coverage_rows(rows,cfg['origins']))
+ if shared_matrix:
+  shared.write(shared_matrix,out/'SHARED_FEATURE_MATRIX.csv',spec['unit_kind']);atomic(out/'SHARED_FEATURE_COVERAGE.json',shared.coverage(shared_matrix))
  feature_registry.write(feature_registry.build(rows,asset),out)
  reconciliation=[]
  for summary in summaries:
@@ -227,7 +278,7 @@ def run(cfg,stop):
  csv_write(out/'DISTRIBUTOR_RECONCILIATION.csv',reconciliation)
  flat=[]
  for summary in summaries:
-  for r in summary['candidates']:flat.append(dict(DIST=summary['dist'],ativo=spec['ativo'],metrica=spec['metrica'],mode=summary['mode'],candidate=r['candidate'],winner=summary['winner'],validated_winner=summary['validated_winner'],best_exploratory=summary['best_exploratory'],common_test_set=r['common_test_set'],n=r['n_predictions'],origins=r['independent_origins'],**r['metrics'],robust_score=r['robust_score'],features=json.dumps([f['selected_features'] for f in r['folds']]),hyperparameters=json.dumps([f['params'] for f in r['folds']]),blocks=json.dumps(r['failures']),reason=summary['selection_reason']))
+  for r in summary['candidates']:flat.append(dict(DIST=summary['dist'],ativo=spec['ativo'],metrica=spec['metrica'],mode=summary['mode'],candidate=r['candidate'],winner=summary['winner'],validated_winner=summary['validated_winner'],best_exploratory=summary['best_exploratory'],best_baseline=summary['best_baseline'],best_ml=summary['best_ml'],ml_gain_vs_best_baseline=summary['ml_gain_vs_best_baseline'],ml_gain_vs_persistence=summary['ml_gain_vs_persistence'],common_test_set=r['common_test_set'],n=r['n_predictions'],origins=r['independent_origins'],**r['metrics'],robust_score=r['robust_score'],features=json.dumps([f['selected_features'] for f in r['folds']]),hyperparameters=json.dumps([f['params'] for f in r['folds']]),blocks=json.dumps(r['failures']),reason=summary['selection_reason']))
  with open(out/'MATRIZ_COMPARATIVA.csv','w',newline='',encoding='utf-8-sig') as f:
   fields=list(dict.fromkeys(k for r in flat for k in r));w=csv.DictWriter(f,fields);w.writeheader();w.writerows(flat)
  atomic(out/'progress.json',dict(state='completed',reused=reused,executed=executed,summaries=len(summaries)))

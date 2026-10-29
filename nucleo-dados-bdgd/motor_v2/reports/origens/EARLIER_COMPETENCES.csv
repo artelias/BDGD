@@ -1,0 +1,18 @@
+﻿dist,empresa,competence,year,layout,generation_stamp,item_id,title,tags_extra,layout_family
+26,Energisa_AC,2019-12-31,2019,M10,2020-10-26,c064142cd68e4d469104d740ea6ea7d7,Energisa_AC_26_2019-12-31_M10_20201026-2143,False,older module layout: compatibility unverified
+26,ELETROACRE,2020-06-30,2020,M10,2020-10-18,7e2c89a4f96d44c38af6d21898bebf7a,ELETROACRE_26_2020-06-30_M10_20201018-1821,True,older module layout: compatibility unverified
+26,Energisa_AC,2020-12-31,2020,M10,2021-06-23,c0221ba551404afda6d4d014957323ee,Energisa_AC_26_2020-12-31_M10_20210623-1843,False,older module layout: compatibility unverified
+26,Energisa_AC,2021-12-31,2021,V10,2022-04-01,6fd06a6507004d188856b0cad479f568,Energisa_AC_26_2021-12-31_V10_20220401-0911,False,adjacent older layout: compatibility unverified
+6585,Energisa_Minas_Rio,2016-12-31,2016,M6,2017-09-19,b7ad164d258245e79c1b8e0593d65cc0,Energisa_Minas_Rio_6585_2016-12-31_M6_20170919-1004,False,oldest module layout: compatibility unverified
+6585,Energisa_Minas_Rio,2017-12-31,2017,M10,2018-06-06,5207143d047f45c1b9510ef855fbb033,Energisa_Minas_Rio_6585_2017-12-31_M10_20180606-0730,False,older module layout: compatibility unverified
+6585,Energisa_Minas_Rio,2018-12-31,2018,M10,2019-09-23,4f423ebb019b4919a3d4b5ba283adc79,Energisa_Minas_Rio_6585_2018-12-31_M10_20190923-1114,False,older module layout: compatibility unverified
+6585,Energisa_Minas_Rio,2019-12-31,2019,M10,2021-05-04,938c6b2b13154c9a87dd6d948e5b6108,Energisa_Minas_Rio_6585_2019-12-31_M10_20210504-1124,False,older module layout: compatibility unverified
+6585,EMG,2020-12-31,2020,M10,2024-03-27,8fed46b23249459987a9fb6323be0d01,EMG_6585_2020-12-31_M10_20240327-1817,True,older module layout: compatibility unverified
+6585,Energisa_Minas_Rio,2021-12-31,2021,V10,2022-06-30,6c1f1285b0fb4505a3c4e0b5da9cb052,Energisa_Minas_Rio_6585_2021-12-31_V10_20220630-1758,False,adjacent older layout: compatibility unverified
+6600,Energisa_PB,2016-12-31,2016,M6,2017-08-28,ef1dd39afcc84d6ba9579f9aaf2e3deb,Energisa_PB_6600_2016-12-31_M6_20170828-1522,False,oldest module layout: compatibility unverified
+6600,Energisa_PB,2017-12-31,2017,M10,2018-05-29,cedbd7f9641b4c5185b065b6b6713db0,Energisa_PB_6600_2017-12-31_M10_20180529-1730,False,older module layout: compatibility unverified
+6600,Energisa_PB,2018-12-31,2018,M10,2019-09-23,0d529c86ec814a97aaa566261f0018ed,Energisa_PB_6600_2018-12-31_M10_20190923-1121,False,older module layout: compatibility unverified
+6600,Energisa_PB,2019-12-31,2019,M10,2021-02-24,152fb4dc317f4f3cb84533e9d9616623,Energisa_PB_6600_2019-12-31_M10_20210224-1523,False,older module layout: compatibility unverified
+6600,Energisa_PB,2020-12-31,2020,M10,2021-07-27,6f511398864c47ca9c9adf0ef1618eb7,Energisa_PB_6600_2020-12-31_M10_20210727-1515,False,older module layout: compatibility unverified
+6600,EPB,2021-02-28,2021,M10,2024-01-19,6e1f61abbd934778a693802619a57257,EPB_6600_2021-02-28_M10_20240119-2249,True,older module layout: compatibility unverified
+6600,Energisa_PB,2021-12-31,2021,V10,2022-07-25,aa7ad008d5744c05be720a841f9d905d,Energisa_PB_6600_2021-12-31_V10_20220725-2001,False,adjacent older layout: compatibility unverified

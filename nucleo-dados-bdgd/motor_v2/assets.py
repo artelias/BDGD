@@ -17,7 +17,7 @@ import pyarrow.parquet as pq
 from .adapters import path as parquet_path, source
 from .runner import atomic, digest, fingerprint, lit, norm, read, resolve_sources
 
-ASSET_VERSION = 'assets-1'
+ASSET_VERSION = 'assets-3'
 ASSETS = {
     'ucbt_quantidade': dict(ativo='ucbt', metrica='quantidade', unit='clientes', count=True, unit_kind='municipality',
                             concept='consumidores', metric='quantidade', experimental=False),
@@ -33,7 +33,8 @@ MIN_LINK_COVERAGE = 0.98   # engineering floor for publishing a power series, no
 
 
 def extract_transformers(con, src, dest, tuc, measure):
-    units, audit = {}, dict(eq_total=0, linked=0, unlinked=0, non_bijective=0, invalid_power=0, entities=[], tuc=tuc)
+    units, audit = {}, dict(eq_total=0, linked=0, unlinked=0, non_bijective=0, invalid_power=0, entities=[], tuc=tuc,
+                            eq_duplicate_ids=0, eq_null_fk=0, eq_fk_not_in_un=0, un_shared_by_many_eq=0, un_duplicate_ids=0, un_rows=0, un_without_eq565=0)
     for eq, un, fks, factor in PAIRS:
         ec = source(con, src, eq, 'e0')
         if ec is None:
@@ -49,16 +50,29 @@ def extract_transformers(con, src, dest, tuc, measure):
         if uc is None or not fk or not {'COD_ID', 'POT_NOM', 'MUN'} <= uc:
             audit['unlinked'] += total
             continue
+        # Key uniqueness and orphan audit (EQ/UN are never added: they describe the same physical transformer)
+        dup_eq, null_fk, not_in_un, shared = con.execute(f"""SELECT
+            count(*) - count(DISTINCT {norm('COD_ID')}), count(*) FILTER(WHERE {norm(fk)} IS NULL),
+            count(*) FILTER(WHERE {norm(fk)} IS NOT NULL AND {norm(fk)} NOT IN (SELECT {norm('COD_ID')} FROM u0 WHERE {norm('COD_ID')} IS NOT NULL)),
+            count({norm(fk)}) - count(DISTINCT {norm(fk)})
+            FROM e0 WHERE {norm('TUC')}={lit(tuc)}""").fetchone()
+        un_rows, un_dup, un_orphan = con.execute(f"""SELECT count(*), count(*) - count(DISTINCT {norm('COD_ID')}),
+            count(*) FILTER(WHERE {norm('COD_ID')} NOT IN (SELECT {norm(fk)} FROM e0 WHERE {norm('TUC')}={lit(tuc)} AND {norm(fk)} IS NOT NULL))
+            FROM u0""").fetchone()
+        for k, v in (('eq_duplicate_ids', dup_eq), ('eq_null_fk', null_fk), ('eq_fk_not_in_un', not_in_un), ('un_shared_by_many_eq', shared),
+                     ('un_duplicate_ids', un_dup), ('un_rows', un_rows), ('un_without_eq565', un_orphan)):
+            audit[k] += v
+        conj_expr = norm('CONJ') if 'CONJ' in uc else 'NULL::VARCHAR'
         q = f"""WITH e AS (SELECT {norm('COD_ID')} id,{norm(fk)} fk,{norm('TUC')} tuc,
                    count(*) OVER(PARTITION BY {norm('COD_ID')}) ni,count(*) OVER(PARTITION BY {norm(fk)}) nf FROM e0),
-                 u AS (SELECT {norm('COD_ID')} fk,{norm('MUN')} mun,try_cast(POT_NOM AS DOUBLE)*{factor} kva,
+                 u AS (SELECT {norm('COD_ID')} fk,{norm('MUN')} mun,{conj_expr} conj,try_cast(POT_NOM AS DOUBLE)*{factor} kva,
                    count(*) OVER(PARTITION BY {norm('COD_ID')}) nu FROM u0)
-                 SELECT u.mun,count(*),sum(CASE WHEN isfinite(kva) AND kva>0 THEN kva END),
+                 SELECT u.mun,u.conj,count(*),sum(CASE WHEN isfinite(kva) AND kva>0 THEN kva END),
                         count(*) FILTER(WHERE NOT (isfinite(kva) AND kva>0))
-                 FROM e JOIN u USING(fk) WHERE tuc={lit(tuc)} AND ni=1 AND nf=1 AND nu=1 AND id IS NOT NULL GROUP BY 1"""
+                 FROM e JOIN u USING(fk) WHERE tuc={lit(tuc)} AND ni=1 AND nf=1 AND nu=1 AND id IS NOT NULL GROUP BY 1,2"""
         linked = 0
-        for mun, n, kva, bad in con.execute(q).fetchall():
-            cell = units.setdefault(mun or 'MISSING', [0, 0.])
+        for mun, conj, n, kva, bad in con.execute(q).fetchall():
+            cell = units.setdefault((mun or 'MISSING', conj or 'MISSING'), [0, 0.])
             cell[0] += n; cell[1] += kva or 0.
             linked += n; audit['invalid_power'] += bad
         audit['linked'] += linked
@@ -66,7 +80,7 @@ def extract_transformers(con, src, dest, tuc, measure):
     audit['unlinked'] = audit['eq_total'] - audit['linked']
     audit['coverage'] = audit['linked'] / audit['eq_total'] if audit['eq_total'] else None
     index = 0 if measure == 'count' else 1
-    rows = [dict(UNIT=m, value=float(v[index]), rows=v[0]) for m, v in sorted(units.items())]
+    rows = [dict(UNIT=m, CONJ=c, value=float(v[index]), rows=v[0]) for (m, c), v in sorted(units.items())]
     _write(rows, dest)
     ok = audit['coverage'] is not None and (measure == 'count' or (audit['coverage'] >= MIN_LINK_COVERAGE and audit['invalid_power'] == 0))
     value = None
@@ -83,7 +97,7 @@ def extract_network(con, src, dest):
     n, ids, missing, negative = con.execute("SELECT count(*),count(DISTINCT COD_ID),count(*) FILTER(WHERE try_cast(COMP AS DOUBLE) IS NULL),"
                                             "count(*) FILTER(WHERE try_cast(COMP AS DOUBLE)<0) FROM net").fetchone()
     q = f"SELECT coalesce({norm('CONJ')},'MISSING') UNIT,sum(try_cast(COMP AS DOUBLE))/1000 value,count(*) rows FROM net GROUP BY 1 ORDER BY 1"
-    rows = [dict(UNIT=u, value=float(v or 0.), rows=r) for u, v, r in con.execute(q).fetchall()]
+    rows = [dict(UNIT=u, CONJ=u, value=float(v or 0.), rows=r) for u, v, r in con.execute(q).fetchall()]
     _write(rows, dest)
     total = sum(r['value'] for r in rows)
     clean = n == ids and not missing and not negative
@@ -95,7 +109,7 @@ def extract_network(con, src, dest):
 
 def _write(rows, dest):
     import pyarrow as pa
-    schema = pa.schema([('UNIT', pa.string()), ('value', pa.float64()), ('rows', pa.int64())])
+    schema = pa.schema([('UNIT', pa.string()), ('CONJ', pa.string()), ('value', pa.float64()), ('rows', pa.int64())])
     pq.write_table(pa.Table.from_pylist(rows, schema=schema), Path(dest) / 'territorial.parquet', compression='zstd')
 
 

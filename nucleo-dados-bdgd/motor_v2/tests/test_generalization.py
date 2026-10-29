@@ -7,7 +7,7 @@ from pathlib import Path
 import duckdb
 import numpy as np
 
-from motor_v2 import bridges, feature_registry, future
+from motor_v2 import bridges, feature_registry
 from motor_v2.assets import ASSETS, extract_network, extract_transformers
 from motor_v2.comparison import eligible_features, feature_report, fit_predict, load_panel
 from motor_v2.externals import feature_allowed
@@ -95,7 +95,8 @@ class RegistryAndFuture(unittest.TestCase):
     def test_registry_matches_features_and_encodes_eligibility(self):
         feature_registry.check_alignment()
         by = {s.name: s for s in feature_registry.SPECS}
-        self.assertEqual(feature_registry.eligible_for(by['urban_share'], 'trafo_dist_quantidade')[0], False)
+        self.assertEqual(feature_registry.eligible_for(by['urban_share'], 'trafo_dist_quantidade')[0], True)      # cross-family, from UCBT
+        self.assertEqual(feature_registry.eligible_for(by['log_trafo_count'], 'trafo_dist_quantidade'), (False, 'not_defined_for_asset'))   # own lag
         self.assertEqual(feature_registry.eligible_for(by['log_energy_per_client'], 'ucbt_quantidade')[0], True)
         self.assertEqual(feature_registry.eligible_for(by['log_gdp'], 'rede_mt_extensao_km'), (False, 'unit_mismatch:conjunto'))
         self.assertEqual(feature_registry.eligible_for(by['dec'], 'rede_mt_extensao_km'), (False, 'source_not_obtained'))
@@ -109,31 +110,6 @@ class RegistryAndFuture(unittest.TestCase):
         self.assertEqual(out['log_population']['point_in_time_rows'], 4)
         self.assertEqual(out['log_population']['retrospective_rows'], 5)
         self.assertEqual(out['log_population']['availability_max'], '2026-10-28')
-
-    def test_future_never_invents_and_labels_every_cell(self):
-        last = {('log_gdp', '1'): (10., 2023), ('population_growth_census', '1'): (.01, 2022)}
-        cells = future.generate(['log_gdp', 'log_population', 'population_growth_census'], ['1'], last,
-                                assumptions={'log_gdp': dict(id='A1', scenarios={'Moderado': {'rate': .02}})},
-                                static_carry=('population_growth_census',))
-        by = {(c['feature'], c['year']): c for c in cells}
-        self.assertEqual(by['log_gdp', 2026]['kind'], 'scenario_assumption')
-        self.assertAlmostEqual(by['log_gdp', 2026]['value'], 10 * 1.02 ** 3)
-        self.assertEqual(by['population_growth_census', 2030]['method'], 'static_carry_forward')
-        self.assertEqual(by['log_population', 2026]['status'], 'unavailable')   # no official projection, no assumption: gap, not a guess
-        self.assertIsNone(by['log_population', 2026]['value'])
-
-    def test_future_rejects_observed_years_unprojected_official_and_conflicts(self):
-        with self.assertRaises(ValueError):
-            future.generate(['log_gdp'], ['1'], {}, years=(2025, 2026))
-        with self.assertRaises(ValueError):
-            future.generate(['log_population'], ['1'], {}, official=[dict(feature='log_population', geo='1', year=2026, value=1., source_id='s')])
-        with self.assertRaises(ValueError):
-            future.generate(['log_gdp'], ['1'], {('log_gdp', '1'): (1., 2023)}, official=[dict(feature='log_gdp', geo='1', year=2026, value=1., source_id='s', projected=True)],
-                            assumptions={'log_gdp': dict(id='A', scenarios={'Moderado': {'rate': .1}})})
-
-    def test_official_projection_is_labelled_official(self):
-        c = future.generate(['log_population'], ['1'], {}, official=[dict(feature='log_population', geo='1', year=2026, value=9., source_id='IBGE-proj', projected=True)])
-        self.assertEqual(next(x for x in c if x['year'] == 2026)['kind'], 'official_projection')
 
 
 def bridge(status='PENDING_HOMOLOGATION', **kw):

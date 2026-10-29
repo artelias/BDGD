@@ -103,8 +103,10 @@ def lookup(records,feature,geo,year):
 
 
 def feature_allowed(row,index,mode):
-    if index<3:return True  # BDGD publication checks are performed by temporal.usable.
     meta=row.get('feature_meta',{}).get(FEATURES[index])
+    # Own-publication features (stock, urban share, energy of the target's own series) are gated by temporal.usable.
+    # A value that came from ANOTHER family (cross_family metadata) is gated by its own availability here.
+    if index<3 and not meta:return True
     if not meta or meta['reference_year']>=row['year']:return False
     if mode=='reconciled_retrospective':return True
     return bool(meta.get('available') and meta['available']<=f"{row['feature_year']}-12-31")

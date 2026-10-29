@@ -1,0 +1,181 @@
+{
+  "catalog_sha256": "aed6263def8581e59e407fa064009e225381eeb46e2137d85db66a3cf4ed4a67",
+  "items": 1013,
+  "feasibility": [
+    {
+      "DIST": 26,
+      "empresa": "ELETROACRE",
+      "competences_before_2022": [
+        2019,
+        2020,
+        2021
+      ],
+      "contiguous_back_from_2021": [
+        2019,
+        2020,
+        2021
+      ],
+      "duplicates_same_competence": {
+        "2020": 2,
+        "2023": 2
+      },
+      "layouts": {
+        "2019": [
+          "M10"
+        ],
+        "2020": [
+          "M10"
+        ],
+        "2021": [
+          "V10"
+        ]
+      },
+      "origins_now": [
+        2023,
+        2024
+      ],
+      "origins_if_2021": [
+        2022,
+        2023,
+        2024
+      ],
+      "origins_if_all_contiguous": [
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "minimum_required": 3
+    },
+    {
+      "DIST": 6585,
+      "empresa": "EMG",
+      "competences_before_2022": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "contiguous_back_from_2021": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "duplicates_same_competence": {
+        "2023": 2
+      },
+      "layouts": {
+        "2016": [
+          "M6"
+        ],
+        "2017": [
+          "M10"
+        ],
+        "2018": [
+          "M10"
+        ],
+        "2019": [
+          "M10"
+        ],
+        "2020": [
+          "M10"
+        ],
+        "2021": [
+          "V10"
+        ]
+      },
+      "origins_now": [
+        2023,
+        2024
+      ],
+      "origins_if_2021": [
+        2022,
+        2023,
+        2024
+      ],
+      "origins_if_all_contiguous": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "minimum_required": 3
+    },
+    {
+      "DIST": 6600,
+      "empresa": "Energisa_PB",
+      "competences_before_2022": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "contiguous_back_from_2021": [
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "duplicates_same_competence": {
+        "2021": 2,
+        "2023": 2
+      },
+      "layouts": {
+        "2016": [
+          "M6"
+        ],
+        "2017": [
+          "M10"
+        ],
+        "2018": [
+          "M10"
+        ],
+        "2019": [
+          "M10"
+        ],
+        "2020": [
+          "M10"
+        ],
+        "2021": [
+          "M10",
+          "V10"
+        ]
+      },
+      "origins_now": [
+        2023,
+        2024
+      ],
+      "origins_if_2021": [
+        2022,
+        2023,
+        2024
+      ],
+      "origins_if_all_contiguous": [
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "minimum_required": 3
+    }
+  ],
+  "conclusion": "Competences 2016-2021 exist in the catalog for all three companies, but no Parquet exists locally: using them requires authorized downloads, GDB-to-Parquet conversion, DDA/TUC/identity compatibility checks per layout (V10, M10, M6) and a decision on duplicated competences. Nothing was downloaded or inferred. Generation stamps in titles are candidate vintage evidence to be verified, not applied."
+}

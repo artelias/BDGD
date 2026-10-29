@@ -7,7 +7,8 @@ from .runner import read, digest, atomic, fingerprint
 
 BASE_FEATURES = ('log_stock', 'urban_share', 'log_energy_per_client')
 EXTERNAL_FEATURES = ('log_population', 'population_growth_census', 'log_gdp', 'dec', 'fec')
-FEATURES = BASE_FEATURES + EXTERNAL_FEATURES
+SHARED_FEATURES = ('log_ucbt_clients', 'log_trafo_count', 'log_trafo_kva', 'log_clients_per_trafo', 'log_kva_per_client')
+FEATURES = BASE_FEATURES + EXTERNAL_FEATURES + SHARED_FEATURES
 
 
 # Official TARE domain (BDGD DDA catalog M10 v1.1): UB=Urbano, NU=Nao Urbano, 0=Nao informado.

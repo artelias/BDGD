@@ -74,10 +74,10 @@ class ComparativeTests(unittest.TestCase):
                 self.assertEqual(read(out/'progress.json')['reused'],2)
                 self.assertEqual(stamps,{p:p.stat().st_mtime_ns for p in files})
                 run(cfg,stop);self.assertEqual(read(out/'progress.json')['executed'],0)
-                self.assertEqual(read(out/'progress.json')['reused'],24)
+                self.assertEqual(read(out/'progress.json')['reused'],36)  # 3 baselines + 3 scopes, 3 DIST, 2 modes
                 target=files[0];target.write_text('{broken');run(cfg,stop)
                 self.assertEqual(read(out/'progress.json')['executed'],1)
-                self.assertEqual(read(out/'progress.json')['reused'],23)
+                self.assertEqual(read(out/'progress.json')['reused'],35)
                 self.assertIn('sha256',read(target))
 
 
