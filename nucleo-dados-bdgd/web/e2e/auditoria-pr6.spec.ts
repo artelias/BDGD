@@ -12,14 +12,14 @@ async function baixar(link: import("@playwright/test").Locator, page: import("@p
   return Buffer.concat(chunks).toString("utf8").replace(/^\uFEFF/, "");
 }
 
-test("auditoria: filtros das 71 distribuidoras, dois métodos e cinco horizontes", async ({ page, request }) => {
+test("auditoria: filtros de todas as distribuidoras com série, dois métodos e cinco horizontes", async ({ page, request }) => {
   const dados = await (await request.get("/data/previsoes/cenarios-exploratorios-2026-2030.json")).json();
   const series: Serie[] = dados.series;
   await page.goto("/previsoes/");
   const p = painel(page);
   const dist = p.getByRole("combobox", { name: "Distribuidora" });
   const ativo = p.getByRole("combobox", { name: "Ativo" });
-  await expect(dist.locator("option")).toHaveCount(71);
+  await expect(dist.locator("option")).toHaveCount(new Set(series.map((s) => s[0])).size); // 81 após a seleção das 13 republicações
   for (const codigo of new Set(series.map((s) => s[0]))) {
     await dist.selectOption(String(codigo));
     await expect(ativo.locator("option")).toHaveCount(series.filter((s) => s[0] === codigo).length + (codigo === 5370 ? 1 : 0));
@@ -115,7 +115,7 @@ for (const tema of ["light", "dark"] as const) {
     for (const largura of [320, 390, 768]) {
       await page.setViewportSize({ width: largura, height: 844 });
       await page.goto("/previsoes/");
-      await expect(painel(page)).toContainText("1.555");
+      await expect(painel(page)).toContainText("1.792");
       await expect(page.getByRole("heading", { name: "Motor de Expansão Elétrica", exact: true })).toHaveCount(1);
       expect(await page.getByRole("main").count()).toBe(1);
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);

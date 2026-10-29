@@ -13,7 +13,7 @@ test("Evolução prioriza a série física; inventário técnico permanece em p�
 test("Previsões apresenta resultados exploratórios antes das ressalvas longas", async ({ page }) => {
   await page.goto("/previsoes/");
   await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toBeVisible();
-  await expect(page.getByText("1.555", { exact: true })).toBeVisible();
+  await expect(page.getByText("1.792", { exact: true })).toBeVisible();
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Distribuidora" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Ativo" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Método" })).toBeVisible();
