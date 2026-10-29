@@ -25,12 +25,17 @@ def main(web, saida):
         cen = m["cenarios"]
         usa_ext = [v for v, mods in ext_usadas.items() if any(cen[c] and cen[c] in mods.split("|") for c in cen)]
         for d, s in sorted(m["series"].items(), key=lambda x: p["empresas"].get(x[0], x[0])):
+            contagem = m.get("natureza") == "discrete_count"
+
             def val(c):
                 if not cen[c]:
                     return "indisponível (métrica)"
                 if not s[c]:
                     return "indisponível (série)"
-                return f"{s[c][-1]:.1f} [{cen[c]}]"
+                v = s[c][-1]
+                if contagem and (type(v) is not int or v < 0):       # contagem: inteiro não negativo, nunca 650.0 nem 649.5
+                    raise ValueError(f"contagem fracionária ou negativa em {m['ativo']}/{d}/{c}: {v!r}")
+                return f"{v if contagem else format(v, '.1f')} [{cen[c]}]"
             status = ("bloqueado" if not s["moderado"] else "experimental" if m["experimental"] else "publicável — simulação condicional")
             linhas.append({"metrica": f"{m['ativo']} — {m['metrica']} ({m['unidade']})", "distribuidora": f"{p['empresas'].get(d, d)} (DIST {d})",
                            "base_2025": s["hist"][-1][1], "conservador_2030": val("conservador"), "moderado_2030": val("moderado"),

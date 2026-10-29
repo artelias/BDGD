@@ -1,0 +1,9 @@
+{
+ "experiment_id_anterior": "af27a4c7ff94730d6b6fab2e9a70fe67cc4fc16cb435f03c672a4c0f16ecb1d2",
+ "code_version_anterior": "950e3991d672339b7f5e073f90b2c92d5d2e978dfc860f838acf7c44057ca2ce",
+ "experiment_id": "7743f5ebf124d6fd0231a8fe62e320f346c3beea2195888578bebb40482e2eee",
+ "code_version": "367e6069053d7305ec7082160e3c7f550c6af37aaef85eae80b694a6541837ba",
+ "dataset_sha256": "f5b4a2b73431625469baa4024b8a8be95e6032b515768bcc0b1f106415f48eb0",
+ "source_sha256": "2843e1b175a5c3274492a404fb561934bb1741f50269c642c94c75da9163f4d5",
+ "motivo": "hash de texto do contrato e do codigo passou a ser normalizado em LF (checkout CRLF x Linux); contrato integro; numeros inalterados (diferenca 0 a 1e-9)"
+}

@@ -1,3 +1,5 @@
+import { exigirCoerencia, exigirContagemInteira, ehContagem, naturezaDe, type Natureza } from "./natureza-fisica";
+
 /** Produto estático do Motor de Expansão Elétrica: cenários Conservador | Moderado | Agressivo, pré-calculados fora do navegador. */
 export type Cenario = "conservador" | "moderado" | "agressivo";
 export const CENARIOS: readonly Cenario[] = ["conservador", "moderado", "agressivo"];
@@ -21,7 +23,7 @@ export interface SerieCenario {
   erro_moderado: number | null;
 }
 export interface MetricaCenario {
-  conceito: string; ativo: string; familia: string; metrica: string; unidade: string; estado: string; experimental: boolean;
+  conceito: string; ativo: string; familia: string; metrica: string; unidade: string; natureza?: Natureza; estado: string; experimental: boolean;
   cenarios: Record<Cenario, string | null>; justificativas: Record<Cenario, string>;
   modelos: Record<string, ErroModelo>; diagnostico_painel: Record<string, Record<string, unknown>>;
   series: Record<string, SerieCenario>;
@@ -52,6 +54,7 @@ export function parseCenarios(v: unknown): ProdutoCenarios {
     if (!rec(m) || typeof m.conceito !== "string" || typeof m.metrica !== "string" || !rec(m.cenarios) || !rec(m.modelos) || !rec(m.series))
       throw Error("Métrica inválida no produto de cenários.");
     const k = `${m.conceito}|${m.metrica}`;
+    const natureza = exigirCoerencia(m, k);                    // natureza declarada, unidade e métrica precisam concordar
     if (chaves.has(k)) throw Error(`Métrica duplicada: ${k}`);
     chaves.add(k);
     for (const c of CENARIOS) {
@@ -67,12 +70,18 @@ export function parseCenarios(v: unknown): ProdutoCenarios {
         throw Error(`Histórico inválido em ${k}.`);
       for (const c of CENARIOS) {
         if (!trajetoria(s[c], n)) throw Error(`Trajetória inválida em ${k}/${c}.`);
+        // Contrato de natureza física: contagem fracionária em produto público é recusada, não arredondada em silêncio.
+        if (s[c] !== null && ehContagem(natureza)) (s[c] as number[]).forEach((x, i) => exigirContagemInteira(x, `${k}/${c}[${i}]`));
         if (s[c] !== null && m.cenarios[c] === null) throw Error(`Trajetória sem modelo em ${k}/${c}.`);
       }
     }
   }
   return v as unknown as ProdutoCenarios;
 }
+
+/** Natureza física da métrica: a declarada no produto ou, na falta dela, a derivada da unidade (unidade desconhecida é erro). */
+export const naturezaMetrica = (m: Pick<MetricaCenario, "natureza" | "unidade" | "metrica">): Natureza =>
+  m.natureza ?? (m.unidade ? naturezaDe(m.unidade) : naturezaDe(m.metrica === "extensao_km" ? "km" : m.metrica === "potencia_kva" ? "kVA" : "itens"));
 
 /** Variação absoluta e percentual da trajetória contra o último ano observado (ano-base). */
 export function variacoes(base: number, traj: readonly number[] | null) {
@@ -99,7 +108,8 @@ export function somaGrupo(m: MetricaCenario, dists: readonly string[], c: Cenari
 export function exportarCsv(p: ProdutoCenarios, m: MetricaCenario, dist: string): string {
   const s = m.series[dist];
   const linhas = [["ano", "natureza", ...CENARIOS.map((c) => `${c}${m.cenarios[c] ? `_${m.cenarios[c]}` : "_indisponivel"}`)].join(",")];
+  const nat = naturezaMetrica(m);
   for (const [a, v] of s.hist) linhas.push([a, "observado", v, v, v].join(","));
-  p.horizonte.forEach((a, i) => linhas.push([a, "simulacao_condicional", ...CENARIOS.map((c) => s[c]?.[i] ?? "")].join(",")));
+  p.horizonte.forEach((a, i) => linhas.push([a, "simulacao_condicional", ...CENARIOS.map((c) => { const v = s[c]?.[i]; return v == null ? "" : ehContagem(nat) ? exigirContagemInteira(v, `exportação ${m.conceito}/${c}`) : v; })].join(",")));
   return linhas.join("\n") + "\n";
 }
