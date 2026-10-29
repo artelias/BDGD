@@ -1,0 +1,37 @@
+{
+  "dist": 6600,
+  "year": 2023,
+  "municipalities_prior": 219,
+  "municipalities_current": 224,
+  "entering": 6,
+  "entering_stock_current": 223223,
+  "leaving": [
+    "0"
+  ],
+  "comparable_municipalities": 218,
+  "comparable_prior": 1493478,
+  "comparable_current": 1471403,
+  "comparable_growth": -0.01478093416843096,
+  "naive_total_growth": 0.13468351413042967,
+  "entering_all_in_ebo_prior": true,
+  "entering_ebo_prior_stock": 222370,
+  "entering_vs_ebo_ratio": 1.0038359490938527,
+  "ebo_municipalities": 9,
+  "ebo_stock_prior": 222391,
+  "combined_prior_epb_plus_ebo": 1715870,
+  "current_total": 1694626,
+  "combined_growth": -0.012380891326265964,
+  "overlap_municipalities_with_ebo": [
+    "2502508",
+    "2503100",
+    "2512754"
+  ],
+  "overlap_ebo_stock": 21,
+  "classification": "perimeter_absorption_probable_NOT_proven_succession_NOT_new_connections",
+  "sources": {
+    "epb_prior": "38429c59a7a55f4dba5fb7d53adf7efe94385d60aa58adc9208bb60958c2d9d3",
+    "epb_current": "b967e7b0d5f108250b0f21672ad92d04369aa43534209e4d69be9521fe7ad119",
+    "ebo_ucbt_2022": "1bdf1ce489fcba999173ea12897b048bdfa5bbe73b05d93c8d9ef6cefbf1afea"
+  },
+  "policy": "entering municipalities have no prior snapshot: no target and no zero; the model cohort excludes them; physical expansion is measured only on comparable municipalities"
+}

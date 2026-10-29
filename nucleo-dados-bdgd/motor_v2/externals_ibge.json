@@ -1,0 +1,124 @@
+{
+ "output": "D:/NUCLEO_BDGD_2025/motor_v2/externals",
+ "sources": [
+  {
+   "feature": "population_census_2010",
+   "local": "D:/NUCLEO_BDGD_2025/motor_externas/raw/pop_censo2010.json",
+   "expected_sha256": "c2beb71ac54f3be4070e65886600386abb02e36cacd85798f8beb33a65b5eeec",
+   "url": "https://apisidra.ibge.gov.br/values/t/1378/n6/all/v/93/p/2010/c1/0/c2/0/c287/0/c455/0",
+   "format": "sidra",
+   "variable": "93",
+   "unit_code": "45",
+   "unit": "persons",
+   "granularity": "municipality",
+   "observed_at": "2026-10-28",
+   "released": "2011-11-29",
+   "period_definition": "Census 2010 resident population, ref 2010-08-01",
+   "source": "SIDRA 1378",
+   "status": "obtained"
+  },
+  {
+   "feature": "population",
+   "local": "D:/NUCLEO_BDGD_2025/motor_externas/raw/pop_censo2022.json",
+   "expected_sha256": "ec3c169ff4e6f59641c3ec681aabe2b96b65edf2273e2f319eaa37d565413558",
+   "url": "https://apisidra.ibge.gov.br/values/t/4709/n6/all/v/93/p/2022",
+   "format": "sidra",
+   "variable": "93",
+   "unit_code": "45",
+   "unit": "persons",
+   "granularity": "municipality",
+   "observed_at": "2026-10-28",
+   "released": "2023-08-31",
+   "period_definition": "Census 2022 resident population (revised 2023-08-31), ref 2022-08-01",
+   "source": "SIDRA 4709",
+   "status": "obtained"
+  },
+  {
+   "feature": "population",
+   "local": "D:/NUCLEO_BDGD_2025/motor_externas/raw/pop_estimativas_2024_2025.json",
+   "expected_sha256": "2c08e29b63f02cb0b408b370bf0d50be1520e60a8eab37d6899caff05477843b",
+   "url": "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/2024,2025",
+   "format": "sidra",
+   "variable": "9324",
+   "unit_code": "45",
+   "unit": "persons",
+   "granularity": "municipality",
+   "observed_at": "2026-10-28",
+   "released": null,
+   "period_definition": "IBGE annual estimates ref 1 July; post-census series only (2021 pre-census estimate not mixed)",
+   "source": "SIDRA 6579",
+   "status": "obtained",
+   "release_by_year": {
+    "2024": "2024-08-29"
+   }
+  },
+  {
+   "feature": "gdp",
+   "local": "D:/NUCLEO_BDGD_2025/motor_externas/raw/pib_mun_2020_2023.json",
+   "expected_sha256": "e4a54e08d2831789095fe60092aac218154439e68f01245937381dbde7850e92",
+   "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/all/v/37/p/2020,2021,2022,2023",
+   "format": "sidra",
+   "variable": "37",
+   "unit_code": "40",
+   "unit": "thousand_BRL_current",
+   "granularity": "municipality",
+   "observed_at": "2026-10-28",
+   "released": null,
+   "period_definition": "Municipal GDP at current prices; 2021 released 2023-12-15, 2022-2023 released 2025-12-19 (SCN base-year change); 2020 release not verified",
+   "source": "SIDRA 5938",
+   "status": "obtained",
+   "release_by_year": {
+    "2021": "2023-12-15",
+    "2022": "2025-12-19",
+    "2023": "2025-12-19"
+   }
+  },
+  {
+   "feature": "migration_in_out_balance",
+   "status": "unavailable",
+   "error": "not obtained: municipal Census-2022 migration tables not verified in this run; no estimate from population differences"
+  },
+  {
+   "feature": "samp_market",
+   "status": "unavailable",
+   "error": "not obtained: ANEEL SAMP keyed by agent (CNPJ), no audited agent-to-DIST/municipality mapping"
+  },
+  {
+   "feature": "epe_projections",
+   "status": "unavailable",
+   "error": "not obtained: EPE regional (UF-level) context only; no DIST x municipality panel"
+  },
+  {
+   "feature": "dec_municipal_context",
+   "status": "unavailable",
+   "error": "not obtained: ANEEL DEC/FEC are per consumer set (conjunto); CONJ->MUN link from UCBT not yet built"
+  },
+  {
+   "feature": "fec_municipal_context",
+   "status": "unavailable",
+   "error": "not obtained: same as DEC"
+  },
+  {
+   "feature": "pdd",
+   "status": "unavailable",
+   "error": "not obtained: distribution development plan data not located/verified"
+  }
+ ],
+ "derived": [
+  {
+   "feature": "population_growth_census",
+   "kind": "cagr",
+   "start": [
+    "population_census_2010",
+    2010
+   ],
+   "end": [
+    "population",
+    2022
+   ],
+   "unit": "fraction_per_year",
+   "released": "2023-08-31",
+   "period_definition": "Compound annual growth 2010-2022 between censuses; municipal, static context (not concession exposure)"
+  }
+ ]
+}

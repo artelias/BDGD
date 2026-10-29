@@ -58,7 +58,7 @@ class ComparativeTests(unittest.TestCase):
             return [r['stock'] for r in test], {}
         with patch('motor_v2.comparison.fit_predict',side_effect=fit):
             _,_,reason=choose_options(rows,26,2024,'point_in_time','shared_pilot',heldout,'ridge',self.cfg('.'))
-        self.assertEqual(reason,'inner_holdout_selection');self.assertEqual(len(observed),2)
+        self.assertEqual(reason,'inner_holdout_selection');self.assertEqual(len(observed),4)  # every eligible feature subset is mandatory: [0],[0,2],[0,1],[0,1,2]
 
     def test_comparison_stop_resume_reuse_and_corrupt_checkpoint(self):
         with tempfile.TemporaryDirectory(dir='D:/NUCLEO_BDGD_2025/motor_v2',prefix='comparison-test-') as tmp:
