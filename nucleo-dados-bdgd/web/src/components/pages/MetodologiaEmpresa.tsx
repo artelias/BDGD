@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 import {
   CENARIOS, ROTULO_CENARIO, ROTULO_ESTADO,
-  type Cenario, type MetricaCenario, type ProdutoCenarios,
+  type Cenario, type ProdutoCenarios,
 } from "@/lib/cenarios-motor";
 import s from "./metodologia.module.css";
 
