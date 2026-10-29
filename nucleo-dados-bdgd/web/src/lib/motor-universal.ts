@@ -1,4 +1,5 @@
 import { selecionarObservacoes } from "./observacoes";
+import { ehContagem, exigirCoerencia, exigirContagemInteira, naturezaDe } from "./natureza-fisica";
 export interface MetricasMotor { n: number; mae: number | null; rmse: number | null; wape: number | null; vies: number | null }
 export interface ObjetivoMotor { objetivo_id: string; nome: string; familia: string; metrica: string; unidade: string; padrao: boolean; series: number; series_elegiveis: number; motivo: string | null }
 export interface ModeloMotor { modelo: string; metricas: MetricasMotor; auditoria: MetricasMotor; motivo: string | null; futuro: number[] }
@@ -33,6 +34,7 @@ export function parseResumoMotor(value: unknown): ResumoMotor {
     if (!record(t) || [t.objetivo_id, t.nome, t.familia, t.metrica, t.unidade].some((x) => typeof x !== "string")) throw Error("Objetivo inválido.");
     const key = `${t.objetivo_id}|${t.metrica}`;
     if (keys.has(key)) throw Error("Objetivo duplicado.");
+    exigirCoerencia(t, `objetivo ${key}`);
     keys.set(key, String(t.unidade));
   }
   const seriesKeys = new Set<string>();
@@ -45,6 +47,10 @@ export function parseResumoMotor(value: unknown): ResumoMotor {
     for (const h of s.historico) if (!record(h) || !num(h.ano) || !(h.valor === null || num(h.valor) && h.valor >= 0) || typeof h.estado !== "string") throw Error("Histórico inválido.");
     for (const m of s.modelos) if (!record(m) || typeof m.modelo !== "string" || !record(m.metricas) || !record(m.auditoria) ||
       !Array.isArray(m.futuro) || m.futuro.some((n) => !num(n) || n < 0) || m.futuro.length !== 0 && m.futuro.length !== value.horizontes.length) throw Error("Modelo ou projeção inválida.");
+    // a natureza declarada na série, quando presente, concorda com a unidade e a métrica
+    exigirCoerencia({ natureza: s.natureza_fisica, unidade: s.unidade, metrica: s.metrica }, `série ${s.DIST}/${s.objetivo_id}/${s.metrica}`);
+    // contrato de natureza física: projeção de contagem fracionária em produto público é recusada
+    if (ehContagem(naturezaDe(String(s.unidade)))) for (const m of s.modelos) (m.futuro as number[]).forEach((v, i) => exigirContagemInteira(v, `${s.DIST}/${s.objetivo_id}/${m.modelo}[${i}]`));
   }
   const c = value.cobertura;
   const count = (x: unknown): x is number => num(x) && Number.isInteger(x) && x >= 0;

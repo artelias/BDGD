@@ -4,6 +4,7 @@ import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import { useEffect, useMemo, useState } from "react";
 import { camposObservacoes, COLUNAS_OBSERVACOES } from "@/lib/observacoes";
 import { toCSV } from "@/lib/format";
+import { ehContagem, naturezaDe, valorPublico } from "@/lib/natureza-fisica";
 import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import { avaliarRiscosCenario } from "@/lib/risco-cenarios";
 import s from "./previsoes-exploratorias.module.css";
@@ -41,7 +42,7 @@ const NOMES: Record<string, string> = {
 const ANOS = [2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030];
 const NUM = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 });
 const formatar = (valor: number, unidade: string) =>
-  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: unidade === "itens" ? 0 : 2 }).format(valor);
+  new Intl.NumberFormat("pt-BR", { maximumFractionDigits: ehContagem(naturezaDe(unidade)) ? 0 : 2 }).format(valor);
 
 function Grafico({ historico, futuro, unidade, modelo }: {
   historico: number[]; futuro: number[]; unidade: string; modelo: Metodo;
@@ -120,7 +121,7 @@ export function PrevisoesExploratorias() {
   const csv = serie && futuros && dados
     ? toCSV(["ano", "valor", "classe", "metodo", "dist", "conceitoId", "unidade", "metrica",
       "status_homologacao", "publicacao_id", "verificacao_independente_zero", "versao_dados", "commit_origem", "blob_sha_origem", "avisos_estatisticos", ...COLUNAS_OBSERVACOES],
-      ANOS.map((ano, i) => [ano, i < 4 ? serie[5][i] : futuros[i - 4],
+      ANOS.map((ano, i) => [ano, valorPublico(i < 4 ? serie[5][i] : futuros[i - 4], naturezaDe(serie[4]), `exportação ${serie[0]}/${serie[2]}/${ano}`),
         i < 4 ? (serie[10][i] === "Z" ? "zero_tecnico" : "observado") : "simulacao_condicional",
         i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4], serie[3],
         i < 4 ? serie[9][i] : "NAO_VALIDADA", i < 4 ? serie[8][i] : "",

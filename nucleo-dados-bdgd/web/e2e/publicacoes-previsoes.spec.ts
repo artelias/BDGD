@@ -73,7 +73,8 @@ test.describe("Previsões — cenários reais, não previsões validadas", () =>
     for await (const chunk of stream) bufs.push(Buffer.from(chunk));
     const csv = Buffer.concat(bufs).toString("utf8");
     expect(csv).toContain("2025,123,observado");
-    expect(Number(csv.split(/\r?\n/).find((l) => l.startsWith("2030,"))?.split(",")[1])).toBeCloseTo(184.6);
+    // alimentadores é contagem: o CSV exporta o inteiro publicado (185, o mesmo do card), nunca a tendência bruta 184,6
+    expect(csv.split(/\r?\n/).find((l) => l.startsWith("2030,"))?.split(",")[1]).toBe("185");
     await expect(painel).toContainText("Não há previsão estatisticamente validada");
   });
 
