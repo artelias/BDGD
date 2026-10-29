@@ -57,10 +57,10 @@ def catalog():
 def publication_map():
  hs=csvread('D:/NUCLEO_BDGD_2022_2024/inventario/inventario_historico_2022_2024.csv');rs=csvread('D:/NUCLEO_BDGD_2025/inventario/inventario_2025.csv')
  return {x['item_id']:x for x in hs+rs}
-def resolve_sources(dist):
+def resolve_sources(dist,concept='consumidores',metric='quantidade'):
  rows=csvread(ROOT/'output-historico/contrato-integracao/serie_fisica_nacional.csv');pubs=publication_map();out=[]
  for year in range(2022,2026):
-  hits=[x for x in rows if x['dist']==str(dist) and x['ano']==str(year) and x['conceitoId']=='consumidores' and x['metrica']=='quantidade']
+  hits=[x for x in rows if x['dist']==str(dist) and x['ano']==str(year) and x['conceitoId']==concept and x['metrica']==metric]
   ids={x['publicacao_id'] for x in hits if x['publicacao_id']};
   if len(ids)!=1:out.append(dict(year=year,error='missing or ambiguous contract publication'));continue
   it=next(iter(ids));x=next(x for x in hits if x['publicacao_id']==it);p=pubs.get(it,{})

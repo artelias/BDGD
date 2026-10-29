@@ -118,6 +118,8 @@ def attach(rows,manifest_path):
     out=[]
     for r in rows:
         r=dict(r,x=list(r['x'][:3]),feature_meta={})
+        if r.get('unit_kind','municipality')!='municipality':
+            r['x'].extend([None]*5);out.append(r);continue   # municipal covariates are undefined for other territorial units
         for feature,source_feature in [('log_population','population'),('population_growth_census','population_growth_census'),('log_gdp','gdp'),('dec','dec_municipal_context'),('fec','fec_municipal_context')]:
             z=lookup(by,source_feature,r['group'] if feature not in ('dec','fec') else str(r['dist'])+':'+r['group'],r['feature_year'])
             value=None

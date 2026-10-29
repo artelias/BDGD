@@ -33,12 +33,12 @@ def urban_share(areas):
                 reason='available' if not unknown else 'available_over_known_customers')
 
 
-def snapshots(input_run):
+def snapshots(input_run, asset='ucbt_quantidade'):
     db = duckdb.connect()
     db.execute("SET memory_limit='512MB'; SET threads=1")
     data, metadata, provenance = {}, {}, {}
     try:
-        for p in sorted(Path(input_run).glob('*/ucbt_quantidade/result.json')):
+        for p in sorted(Path(input_run).glob(f'*/{asset}/result.json')):
             result = read(p); dist = int(result['dist']); provenance[str(p)] = digest(p)
             for h in result['history']:
                 year = h['year']; f = p.parent / str(year) / 'territorial.parquet'
@@ -46,6 +46,12 @@ def snapshots(input_run):
                 if sha != read(f.parent/'checkpoint.json')['output_sha256']:
                     raise ValueError('aggregate hash mismatch: '+str(f))
                 provenance[str(f)] = sha; metadata[dist, year] = h
+                if asset != 'ucbt_quantidade':
+                    # Generic asset aggregate: UNIT, value (count, kVA or km). No area/energy covariates exist for it.
+                    for unit, value in db.execute('SELECT UNIT,sum(value) FROM read_parquet(?) GROUP BY ALL', [str(f)]).fetchall():
+                        data[dist, year, unit] = dict(n=float(value), areas={}, energy_n=0, energy_sum=0., urban=None, area_known=0,
+                                                      area_unknown=0, area_reason='not_applicable', energy=None)
+                    continue
                 query = '''SELECT MUN,upper(trim(ARE_LOC)),sum(clientes_ativos),
                            sum(energia_denominador),sum(energia_kwh)
                            FROM read_parquet(?) GROUP BY ALL'''
@@ -54,7 +60,7 @@ def snapshots(input_run):
                     s['n'] += n; s['areas'][area or 'MISSING'] = s['areas'].get(area or 'MISSING', 0)+n
                     s['energy_n'] += en
                     if energy is not None: s['energy_sum'] += energy
-        for s in data.values():
+        for s in (v for v in data.values() if v['areas']):
             u = urban_share(s['areas']); s['urban'], s['area_known'], s['area_unknown'], s['area_reason'] = u['share'], u['known'], u['unknown'], u['reason']
             s['energy'] = s['energy_sum']/s['n'] if s['n'] and s['energy_n']==s['n'] and s['energy_sum']>=0 else None
         return data, metadata, provenance

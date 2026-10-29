@@ -1,0 +1,40 @@
+{
+  "id": "EPB_EBO_2023",
+  "version": 1,
+  "kind": "absorption",
+  "unit_kind": "municipality",
+  "successor_dist": 6600,
+  "predecessor_dist": 6611,
+  "effective_year": 2023,
+  "entering_units": [
+    "2502151",
+    "2504009",
+    "2506103",
+    "2508307",
+    "2509206",
+    "2512507"
+  ],
+  "overlap_units": [
+    "2502508",
+    "2503100",
+    "2512754"
+  ],
+  "status": "PENDING_HOMOLOGATION",
+  "decision": null,
+  "evidence": {
+    "comparable_growth": -0.01478093416843096,
+    "naive_total_growth": 0.13468351413042967,
+    "combined_growth": -0.012380891326265964,
+    "entering_vs_ebo_ratio": 1.0038359490938527,
+    "entering_stock_current": 223223,
+    "entering_ebo_prior_stock": 222370,
+    "overlap_ebo_stock": 21,
+    "sources": {
+      "epb_prior": "38429c59a7a55f4dba5fb7d53adf7efe94385d60aa58adc9208bb60958c2d9d3",
+      "epb_current": "b967e7b0d5f108250b0f21672ad92d04369aa43534209e4d69be9521fe7ad119",
+      "ebo_ucbt_2022": "1bdf1ce489fcba999173ea12897b048bdfa5bbe73b05d93c8d9ef6cefbf1afea"
+    },
+    "classification": "perimeter_absorption_probable_NOT_proven_succession_NOT_new_connections"
+  },
+  "policy": "quarantine entering and overlapping municipalities for the effective year; never add EPB and EBO records; no new-connection or expansion claim until a human decision is recorded"
+}

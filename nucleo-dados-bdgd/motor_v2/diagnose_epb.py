@@ -39,7 +39,7 @@ def diagnose(run, ebo_ucbt, out, dist=6600, ebo_dist=6611, year=2023):
     comb_prev = sum(prev.get(m, 0) + ebo.get(m, 0) for m in comb_cohort)
     summary = dict(
         dist=dist, year=year, municipalities_prior=len(prev), municipalities_current=len(cur),
-        entering=len(entering), entering_stock_current=s(cur, entering), leaving=leaving,
+        entering=len(entering), entering_municipalities=entering, entering_stock_current=s(cur, entering), leaving=leaving,
         comparable_municipalities=len(both), comparable_prior=comparable_prev, comparable_current=comparable_cur,
         comparable_growth=comparable_cur/comparable_prev-1,
         naive_total_growth=sum(cur.values())/sum(prev.values())-1,
@@ -61,7 +61,20 @@ def diagnose(run, ebo_ucbt, out, dist=6600, ebo_dist=6611, year=2023):
     return summary
 
 
+def to_bridge(summary, ebo_dist=6611):
+    """Versioned perimeter bridge from the diagnostic. Status stays PENDING_HOMOLOGATION: evidence, not a decision."""
+    keep = ('comparable_growth', 'naive_total_growth', 'combined_growth', 'entering_vs_ebo_ratio', 'entering_stock_current',
+            'entering_ebo_prior_stock', 'overlap_ebo_stock', 'sources')
+    return dict(id=f"EPB_EBO_{summary['year']}", version=1, kind='absorption', unit_kind='municipality',
+                successor_dist=summary['dist'], predecessor_dist=ebo_dist, effective_year=summary['year'],
+                entering_units=summary['entering_municipalities'], overlap_units=summary['overlap_municipalities_with_ebo'],
+                status='PENDING_HOMOLOGATION', decision=None,
+                evidence={k: summary[k] for k in keep} | dict(classification=summary['classification']),
+                policy='quarantine entering and overlapping municipalities for the effective year; never add EPB and EBO records; '
+                       'no new-connection or expansion claim until a human decision is recorded')
+
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--run', required=True); ap.add_argument('--ebo', required=True); ap.add_argument('--out', required=True)
-    a = ap.parse_args(); print(json.dumps(diagnose(a.run, a.ebo, a.out), indent=1, default=str))
+    a = ap.parse_args(); r = diagnose(a.run, a.ebo, a.out); atomic(Path(a.out).parent.parent / 'bridges' / (to_bridge(r)['id'] + '.json'), to_bridge(r)); print(json.dumps(r, indent=1, default=str))

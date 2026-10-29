@@ -4,6 +4,14 @@
   "municipalities_prior": 219,
   "municipalities_current": 224,
   "entering": 6,
+  "entering_municipalities": [
+    "2502151",
+    "2504009",
+    "2506103",
+    "2508307",
+    "2509206",
+    "2512507"
+  ],
   "entering_stock_current": 223223,
   "leaving": [
     "0"
