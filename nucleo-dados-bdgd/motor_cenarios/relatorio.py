@@ -31,7 +31,7 @@ def main(web, saida):
                 if not s[c]:
                     return "indisponível (série)"
                 return f"{s[c][-1]:.1f} [{cen[c]}]"
-            status = ("bloqueado" if not s["moderado"] else "experimental" if m["experimental"] else "publicado — simulação condicional")
+            status = ("bloqueado" if not s["moderado"] else "experimental" if m["experimental"] else "publicável — simulação condicional")
             linhas.append({"metrica": f"{m['ativo']} — {m['metrica']} ({m['unidade']})", "distribuidora": f"{p['empresas'].get(d, d)} (DIST {d})",
                            "base_2025": s["hist"][-1][1], "conservador_2030": val("conservador"), "moderado_2030": val("moderado"),
                            "agressivo_2030": val("agressivo"), "melhor_erro_observado_mdape": pct(s["erro_moderado"]) if s["erro_moderado"] is not None else "N/D",
