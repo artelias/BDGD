@@ -16,5 +16,9 @@ if(Test-Path "$out\STOP"){Remove-Item -LiteralPath "$out\STOP"}
 $env:OMP_NUM_THREADS='2';$env:MKL_NUM_THREADS='2';$env:OPENBLAS_NUM_THREADS='2'
 $env:TEMP="$out\tmp";$env:TMP=$env:TEMP
 New-Item -ItemType Directory -Force $env:TEMP | Out-Null
-$stamp=Get-Date -Format 'yyyyMMdd-HHmmss'
-Start-Process -FilePath $python -ArgumentList @('-u','-m','motor_v2.runner','--config',('"'+[System.IO.Path]::GetFullPath($Config)+'"')) -WorkingDirectory $root -WindowStyle Hidden -RedirectStandardOutput "$out\run-$stamp.log" -RedirectStandardError "$out\run-$stamp.err" -PassThru | Select-Object Id
+$absoluteConfig=[System.IO.Path]::GetFullPath($Config)
+Push-Location $root
+try {
+ & $python -m motor_v2.launch --config $absoluteConfig
+ if($LASTEXITCODE -ne 0){throw 'Executor launch failed'}
+} finally { Pop-Location }

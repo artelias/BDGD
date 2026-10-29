@@ -97,7 +97,7 @@ def extract_uc(con,src,dest):
  return dict(value=valid if n and active else None,source_rows=n,active_rows=active,duplicate_rows_collapsed=dup,territorial_conflicts=conflicts,identity_rule="COD_ID+PN_CON UC-v3",null_ids=null,coverage=valid/active if active else None,missing_fields=missing,energy_columns=len(energy),invalid_municipality_rows=invalid,municipality_ufs=ufs,urban_numerator=urban[0],urban_denominator=urban[1],density=None,density_reason='no validated served area denominator',flows=None,flows_reason='identifier continuity not certified; no physical expansion label',source=str(p),parquet_sha256=digest(p))
 
 def run_task(cfg,dist,runroot,stop):
- task=runroot/str(dist)/'ucbt_quantidade';task.mkdir(parents=True,exist_ok=True);hist=[];audits=[];sources=resolve_sources(dist)
+ task=runroot/str(dist)/'ucbt_quantidade';task.mkdir(parents=True,exist_ok=True);hist=[];audits=[];sources=read(cfg['sources_manifest'])[str(dist)] if cfg.get('sources_manifest') else resolve_sources(dist)
  con=duckdb.connect();con.execute('SET memory_limit='+lit(cfg['memory']));con.execute('SET threads='+str(cfg['threads']));con.execute('SET temp_directory='+lit(str(runroot/'tmp')));con.execute('SET preserve_insertion_order=false')
  try:
   for src in sources:
@@ -147,7 +147,7 @@ def run_task(cfg,dist,runroot,stop):
    for label,rate,values_ in zip(['Conservador','Moderado','Agressivo'],cfg['scenario_rates'],values):
     for year,v in zip(range(2026,2031),values_):forecast.append(dict(DIST=dist,ativo='ucbt',metrica='quantidade',ano=year,cenario=label,valor=v,unidade='clientes',model=winner,assumption_rate=rate,status='exploratorio_condicional',confidence_interval=None))
   metrics={name:score([x['actual'] for x in rs],[x['pred'] for x in rs]) for name,rs in results.items()}
-  report=dict(dist=dist,asset='ucbt',metric='quantidade',winner=winner,reason=reason,candidates=registry,backtest=dict(results),metrics=metrics,history=hist,quality=audits,forecast=forecast,feature_decisions=[dict(feature='estoque_passado',selected=True,reason='baseline'),dict(feature='externas',selected=False,reason='territorial exposure and as-of revision not validated'),dict(feature='entradas_saidas',selected=False,reason='identity continuity not certified')],hyperparameters=dict(CANDIDATES[winner].params),explanation=diagnostics,territorial_validation='aggregated municipalities; held-out territorial ML not yet eligible',retrospective_status='available' if results else 'blocked_by_release_dates_or_sample',training_status='baseline_fallback' if winner=='persistencia' else 'selected')
+  report=dict(synthetic=cfg.get('synthetic',False),dist=dist,asset='ucbt',metric='quantidade',winner=winner,reason=reason,candidates=registry,backtest=dict(results),metrics=metrics,history=hist,quality=audits,forecast=forecast,feature_decisions=[dict(feature='estoque_passado',selected=True,reason='baseline'),dict(feature='externas',selected=False,reason='territorial exposure and as-of revision not validated'),dict(feature='entradas_saidas',selected=False,reason='identity continuity not certified')],hyperparameters=dict(CANDIDATES[winner].params),explanation=diagnostics,territorial_validation='aggregated municipalities; held-out territorial ML not yet eligible',retrospective_status='available' if results else 'blocked_by_release_dates_or_sample',training_status='baseline_fallback' if winner=='persistencia' else 'selected')
   # Only aggregated targets are exported; UCBT is a scoped extension, not all consumers.
   import pyarrow as pa, pyarrow.parquet as pq
   pq.write_table(pa.Table.from_pylist([dict(DIST=dist,ANO=x['year'],OBJETIVO_ID='ucbt',METRICA='quantidade',VALOR_ALVO=x['value'],DISPONIVEL_EM=x['available'],FONTE=x['qa']['source'],COBERTURA=x['qa']['coverage']) for x in hist]),task/'targets.parquet')
@@ -168,9 +168,15 @@ def execute(cfg):
   old=read(lock)
   if psutil.pid_exists(old['pid']) and abs(psutil.Process(old['pid']).create_time()-old['created'])<1:raise RuntimeError('executor already running')
   lock.unlink();fd=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY)
- owner=dict(pid=os.getpid(),created=psutil.Process().create_time());os.write(fd,json.dumps(owner).encode());os.close(fd)
+ owner=dict(pid=os.getpid(),created=psutil.Process().create_time(),launch_id=os.environ.get('MOTOR_V2_LAUNCH_ID'));os.write(fd,json.dumps(owner).encode());os.close(fd)
  stop=out/'STOP';status=out/'status.json';code={str(p.relative_to(ROOT)):digest(p) for p in list((ROOT/'motor_v2').glob('*.py'))+list((ROOT/'motor_universal').glob('*.py'))};runid=fingerprint([cfg,code])[:16];runroot=out/'runs'/runid;runroot.mkdir(parents=True,exist_ok=True)
  try:
+  if cfg.get('experiment')=='comparison':
+   from .comparison import run
+   atomic(status,dict(**owner,state='running',experiment='comparison',runid=runid))
+   destination=run(cfg,stop)
+   atomic(status,dict(**owner,state=read(destination/'progress.json')['state'],experiment='comparison',output=str(destination),runid=runid))
+   return
   atomic(runroot/'manifest.json',dict(version=VERSION,config=cfg,code=code,python=sys.version,platform=platform.platform(),runid=runid))
   atomic(runroot/'externas_catalogo.json',catalog());atomic(runroot/'registry.json',registry_from_catalog(read(ROOT/'etl/bdgd2025/config/conceitos_2025.json')))
   outputs=[]
@@ -192,7 +198,7 @@ def execute(cfg):
     if result_path.exists():outputs.append(read(result_path))
    except Exception as e:atomic(runroot/f'failure_{dist}.json',dict(error=str(e),traceback=traceback.format_exc()))
   from .integration import export
-  if outputs:atomic(runroot/'registry_integration.json',export(outputs,read(ROOT/'etl/bdgd2025/config/conceitos_2025.json'),runroot/'bundle',runid))
+  if outputs:atomic(runroot/'registry_integration.json',export(outputs,read(ROOT/'etl/bdgd2025/config/conceitos_2025.json'),runroot/('bundle-'+fingerprint(outputs)[:12]),runid+'-'+fingerprint(outputs)[:12]))
   atomic(runroot/'forecast.json',[r for o in outputs for r in o['forecast']])
   import pyarrow as pa,pyarrow.parquet as pq
   flat=[r for o in outputs for r in o['forecast']]

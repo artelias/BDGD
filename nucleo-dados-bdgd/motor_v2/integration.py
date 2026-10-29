@@ -13,8 +13,8 @@ def export(results,catalog,directory,version):
  rows=[]
  for result in results:
   for h in result['history']:
-   value=h['value'];qa=h['qa'];rows.append(dict(ano=h['year'],DIST=str(result['dist']),objetivo_id='ucbt',metrica='quantidade',unidade=template['unidade'],valor_alvo=value,status_qualidade='observado' if value and value>0 else 'ausente',status_homologacao='APTO_COM_RESSALVAS',homologado=False,fonte=qa['source'],competencia=f"{h['year']}-12-31",disponivel_em=h['available'],cobertura=qa['coverage'],territorio={'nivel':'dist','id':str(result['dist'])},perimetro_id='UCBT-publicacao-original',regra_versao='UC-v3-UCBT-v2',ruptura=h['rupture'],nao_somar=False,comparabilidade_validada=False,evidencia_comparabilidade=None,natureza_alvo='estoque_fisico',features={},proveniencia={'parquet_sha256':qa['parquet_sha256'],'publication':h['source']['item'],'source_sha256':h['source']['source_sha']}))
- panel=dict(schema_version='painel-bdgd-1',dataset_version=version,sintetico=False,feature_definitions={},rows=rows)
+   value=h['value'];qa=h['qa'];rows.append(dict(ano=h['year'],DIST=str(result['dist']),objetivo_id='ucbt',metrica='quantidade',unidade=template['unidade'],valor_alvo=value,status_qualidade='observado' if value and value>0 else 'ausente',status_homologacao='SINTETICO_NAO_HOMOLOGADO' if result.get('synthetic') else 'APTO_COM_RESSALVAS',homologado=False,fonte=qa['source'],competencia=f"{h['year']}-12-31",disponivel_em=h['available'],cobertura=qa['coverage'],territorio={'nivel':'dist','id':str(result['dist'])},perimetro_id='UCBT-publicacao-original',regra_versao='UC-v3-UCBT-v2',ruptura=h['rupture'],nao_somar=False,comparabilidade_validada=False,evidencia_comparabilidade=None,natureza_alvo='estoque_fisico',features={},proveniencia={'parquet_sha256':qa['parquet_sha256'],'publication':h['source']['item'],'source_sha256':h['source']['source_sha']}))
+ panel=dict(schema_version='painel-bdgd-1',dataset_version=version,sintetico=all(r.get('synthetic',False) for r in results),feature_definitions={},rows=rows)
  validate_panel(panel,registry)
  if not Path(directory).exists():write_bundle(panel,registry,directory)
  read_bundle(directory,registry)
