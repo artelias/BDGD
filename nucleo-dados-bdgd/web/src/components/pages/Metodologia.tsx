@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { DataError, LoadingBlock } from "@/components/ui/Feedback";
 import { Pill } from "@/components/ui/Value";
+import { MetodologiaMotor } from "./MetodologiaMotor";
 import { CONCEITOS, INDICADORES } from "@/lib/catalogo";
 import type { Dataset } from "@/lib/dataset";
 import { useData, useQualidade } from "@/lib/data-context";
@@ -14,7 +15,7 @@ import s from "./metodologia.module.css";
 
 const SECS = [
   ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["dicionario", "Dicionário de indicadores"],
-  ["grupos", "Grupos econômicos"], ["dda", "Classificação e vínculos"], ["privacidade", "Privacidade e licença"], ["modelo-matematico", "Modelagem matemática"],
+  ["grupos", "Grupos econômicos"], ["dda", "Classificação e vínculos"], ["privacidade", "Privacidade e licença"], ["modelo-matematico", "Modelagem matemática"], ["motor-cenarios", "Modelos executados e cenários"],
 ] as const;
 
 export function Metodologia() {
@@ -168,7 +169,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
 
           <section id="modelo-matematico" className={s.sec}>
             <h2>Modelagem matemática e estatística</h2>
-            <p>Especificação científica do Motor de Expansão Elétrica. As expressões de inventário abaixo descrevem os cálculos físicos; as equações estruturais de demanda e investimento são <b>hipóteses de modelagem, ainda não estimadas ou validadas</b>. A página <Link href="/previsoes/">Previsões</Link> já permite comparar persistência e tendência linear em simulações condicionais do estoque, com backtest limitado. Isso não estima elasticidades econômicas, intervalos probabilísticos de previsão ou CAPEX.</p>
+            <p>Especificação científica do Motor de Expansão Elétrica. As expressões de inventário abaixo descrevem os cálculos físicos; as equações estruturais de demanda e investimento são <b>hipóteses de modelagem, ainda não estimadas ou validadas</b>. A página <Link href="/previsoes/">Previsões</Link> apresenta os cenários Conservador, Moderado e Agressivo dos modelos efetivamente executados, documentados na seção <a href="#motor-cenarios">Modelos executados e cenários</a>. Isso não estima elasticidades econômicas, intervalos probabilísticos de previsão ou CAPEX.</p>
             <h3>1. Definições e observações</h3>
             <p>Seja <span className="mono">i</span> uma distribuidora com perímetro territorial comparável, <span className="mono">t</span> o ano e <span className="mono">k</span> o conceito de ativo. <span className="mono">A(i,t,k)</span> é o estoque físico, <span className="mono">U(i,t)</span> o número de unidades consumidoras, <span className="mono">D(i,t)</span> a demanda máxima coincidente, <span className="mono">S(i,t)</span> a capacidade instalada e <span className="mono">L(i,t)</span> a extensão de rede.</p>
             <dl className={s.rule}><dt>Inventário de equipamentos</dt><dd><code>A(i,t,k) = Σ 1[TUC(e) = k]</code><p className="caption">Soma sobre equipamentos elegíveis, dentro de DIST e ano. A instalação UN* correspondente não é novamente somada como outro equipamento.</p></dd></dl>
@@ -191,16 +192,20 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
               <div className={s.rule}><dt>Poisson, Random Forest e HistGradientBoosting</dt><dd>Alternativas para contagens e relações não lineares, sujeitas a disponibilidade de treino e validação fora da amostra. Cadastro no motor não significa desempenho real comprovado.</dd></div>
               <div className={s.rule}><dt>KNN de distribuidoras análogas</dt><dd>Compara distribuidoras usando variáveis comparáveis e disponíveis no instante do corte, com vizinhanças k=1, 3 e 5. Nenhum resultado real com exógenas verificadas foi liberado no contrato auditado.</dd></div>
             </dl>
-            <p><b>Variáveis internas candidatas:</b> estoque histórico, TUC/A1–A6, extensão BT/MT/AT, consumidores, CTMT/CTAT, subestações, distribuição urbano/rural e conectividade comprovada. <b>Variáveis externas candidatas:</b> mercado e indicadores de continuidade da ANEEL, PIB/população/domicílios do IBGE e cenários setoriais da EPE. Nenhuma deve ser descrita como efetivamente utilizada sem fonte, data de divulgação, competência, perímetro, versão do dataset e validação temporal.</p>
+            <p><b>Variáveis internas candidatas:</b> estoque histórico, TUC/A1–A6, extensão BT/MT/AT, consumidores, CTMT/CTAT, subestações, distribuição urbano/rural e conectividade comprovada. <b>Variáveis externas candidatas:</b> mercado e indicadores de continuidade da ANEEL, PIB/população/domicílios do IBGE e cenários setoriais da EPE. Nenhuma é descrita como utilizada sem fonte, data de divulgação, competência, perímetro e validação temporal; a tabela da seção <a href="#motor-cenarios">Modelos executados e cenários</a> indica quais foram de fato usadas.</p>
             <h3>6. Identificação, validação e incerteza</h3>
             <p>Serão comparados modelos ingênuos, tendências simples, regressões regularizadas e modelos híbridos físico-estatísticos apenas quando os dados forem suficientes. A inclusão de variáveis macroeconômicas depende de melhoria verificável fora da amostra, estabilidade e coerência de engenharia.</p>
             <dl className={s.rule}><dt>Erro absoluto médio</dt><dd><code>MAE = (1/n) × Σ |y(t) − ŷ(t)|</code></dd></dl>
             <dl className={s.rule}><dt>Viés médio</dt><dd><code>BIAS = (1/n) × Σ [ŷ(t) − y(t)]</code></dd></dl>
             <dl className={s.rule}><dt>Erro percentual absoluto ponderado</dt><dd><code>WAPE = Σ |y(t) − ŷ(t)| / Σ |y(t)|</code><p className="caption">Somente quando o denominador é positivo e a agregação é comparável.</p></dd></dl>
-            <p>O protocolo prevê validação com origem temporal móvel, comparação contra baselines, análise de resíduos e sensibilidade. O backtest exploratório disponível usa apenas uma origem temporal. Com somente quatro competências anuais (2022–2025), e históricos ainda não homologados, <b>não é possível afirmar desempenho robusto para horizontes longos nem calibrar intervalos probabilísticos confiáveis</b>. Os cenários disponíveis são simulações condicionais, sem homologação preditiva.</p>
+            <p>O protocolo prevê validação com origem temporal móvel, comparação contra baselines, análise de resíduos e sensibilidade. O motor de cenários usa duas origens (2023 e 2024), com horizontes de 1 e 2 anos. Com somente quatro competências anuais (2022–2025), e históricos ainda não homologados, <b>não é possível afirmar desempenho robusto para horizontes longos nem calibrar intervalos probabilísticos confiáveis</b>. Os cenários disponíveis são simulações condicionais, sem homologação preditiva.</p>
             <h3>7. Incorporações e perímetros históricos</h3>
             <p>As séries de EPB devem considerar a sucessão EPB/EBO (2023), e as de EMR a sucessão EMG/ENF (2022). A reconstrução em perímetro comparável exige prova de não sobreposição dos GDBs e reconciliação por métrica. No ano de transição, não se somam automaticamente arquivos que já possam incluir a incorporada. Ausências e rupturas são N/D, jamais zero presumido.</p>
             <p className="caption">Estado desta documentação: inventário e regras de contagem BDGD 2025 são cálculos observados; demanda, capacidade futura, funções de expansão, CAPEX e modelos de erro são especificações de pesquisa até homologação e execução verificáveis.</p>
+          </section>
+          <section id="motor-cenarios" className={s.sec}>
+            <h2>Modelos executados e cenários do Motor de Expansão</h2>
+            <MetodologiaMotor />
           </section>
         </article>
       </div>
