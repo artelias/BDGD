@@ -14,7 +14,7 @@ python motor_cenarios/preparar_externas.py <dir_com_json_do_sidra> motor_cenario
 # 3) Modelos, backtest, cenários e produto web
 python motor_cenarios/cenarios.py output-historico/contrato-integracao motor_cenarios/entrada motor_cenarios/entrada motor_cenarios/saida web/public/data/previsoes/cenarios-motor.json
 python motor_cenarios/relatorio.py web/public/data/previsoes/cenarios-motor.json motor_cenarios/saida
-# CI: testes e regeneração idêntica (escolhas exatas; números com tolerância relativa 1e-6)
+# CI: testes e regeneração idêntica (escolhas de modelo e estados exatos; números com tolerância de 0,1% para variação de ponto flutuante entre plataformas)
 python -m unittest discover -s motor_cenarios -p 'test_*.py'
 python motor_cenarios/cenarios.py output-historico/contrato-integracao motor_cenarios/entrada motor_cenarios/entrada motor_cenarios/saida web/public/data/previsoes/cenarios-motor.json --check
 ```

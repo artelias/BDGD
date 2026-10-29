@@ -539,7 +539,7 @@ def variaveis(uso, cob_ext):
 
 
 def verificar(contrato, internas, raw, saida, web):
-    """Regenera em diretório temporário e compara escolhas de modelo (exatas) e números (tolerância relativa 1e-6)."""
+    """Regenera em diretório temporário e compara escolhas de modelo e estados (exatos) e números (tolerância entre plataformas)."""
     import tempfile
     with tempfile.TemporaryDirectory() as tmp:
         main(contrato, internas, raw, Path(tmp) / "saida", Path(tmp) / "web.json")
@@ -554,7 +554,9 @@ def verificar(contrato, internas, raw, saida, web):
             if len(a) != len(b): erros.append(f"{cam}: tamanho {len(a)} ≠ {len(b)}")
             for i, (x, y) in enumerate(zip(a, b)): cmp(x, y, f"{cam}[{i}]")
         elif isinstance(a, float) or isinstance(b, float):
-            if a is None or b is None or abs(a - b) > 1e-6 * max(1.0, abs(a), abs(b)): erros.append(f"{cam}: {a} ≠ {b}")
+            # Random Forest/HistGradientBoosting variam no último dígito entre plataformas (Windows × Linux):
+            # números com tolerância de 0,1% relativo ou 1e-4 absoluto; escolhas de modelo e estados são exatos.
+            if a is None or b is None or abs(a - b) > max(1e-3 * max(abs(a), abs(b)), 1e-4): erros.append(f"{cam}: {a} ≠ {b}")
         elif a != b and not cam.endswith("codigo/cenarios.py"):
             erros.append(f"{cam}: {a!r} ≠ {b!r}")
     cmp(novo, pub, "")

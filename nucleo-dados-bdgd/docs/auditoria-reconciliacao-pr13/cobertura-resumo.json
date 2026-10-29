@@ -1,18 +1,18 @@
 {
   "schema_version": "cobertura-bdgd-1",
-  "experiment_id": "bc22e7acde4df5319a6955bf60e5633c5d27bd9cd31de52c4d4a36ef42a327fe",
-  "dataset_sha256": "0dbd88b3736f1530a759ab0bb6d1da133a4575b1a5b8d8aabe9cfd8a8da9ccce",
+  "experiment_id": "af27a4c7ff94730d6b6fab2e9a70fe67cc4fc16cb435f03c672a4c0f16ecb1d2",
+  "dataset_sha256": "f5b4a2b73431625469baa4024b8a8be95e6032b515768bcc0b1f106415f48eb0",
   "universo": "DIST presentes no painel; não certifica universo nacional completo",
   "dist": 114,
   "esperado": 3306,
   "observado": 2850,
-  "elegivel": 1545,
-  "bloqueado": 1305,
+  "elegivel": 1748,
+  "bloqueado": 1102,
   "ausente_no_contrato": 456,
   "causa_principal_exclusiva": {
     "HISTORICO_INSUFICIENTE": 0,
     "AUSENCIA_OBSERVACOES": 134,
-    "FALTA_HOMOLOGACAO": 329,
+    "FALTA_HOMOLOGACAO": 126,
     "RUPTURA_CADASTRAL": 40,
     "INCOMPATIBILIDADE_TEMPORAL": 0,
     "SOBREPOSICAO_ATIVOS": 0,
@@ -25,26 +25,26 @@
     "OUTROS": 0
   },
   "causas_contribuintes_nao_exclusivas": {
-    "HISTORICO_INSUFICIENTE": 1305,
-    "AUSENCIA_OBSERVACOES": 152,
-    "FALTA_HOMOLOGACAO": 511,
+    "HISTORICO_INSUFICIENTE": 1102,
+    "AUSENCIA_OBSERVACOES": 156,
+    "FALTA_HOMOLOGACAO": 231,
     "RUPTURA_CADASTRAL": 55,
     "INCOMPATIBILIDADE_TEMPORAL": 0,
     "SOBREPOSICAO_ATIVOS": 25,
     "PROBLEMA_UNIDADE": 0,
     "FALTA_COMPARABILIDADE": 0,
-    "ZERO_TECNICO_SEM_EVIDENCIA": 298,
+    "ZERO_TECNICO_SEM_EVIDENCIA": 297,
     "NAO_APLICAVEL": 462,
-    "COBERTURA_INCOMPLETA": 1068,
+    "COBERTURA_INCOMPLETA": 846,
     "METRICA_SEM_HISTORICO": 0,
     "OUTROS": 0
   },
   "resolucao_bloqueados": {
     "DEPENDE_EVIDENCIA_INDEPENDENTE_ZERO": 277,
     "DEPENDE_PONTE_DE_POPULACAO": 40,
-    "DEPENDE_DECISAO_FORMAL_FONTE": 329,
     "DEPENDE_FONTE_OU_NOVOS_DADOS": 134,
     "MANTER_ND_NAO_REATIVAR": 454,
+    "DEPENDE_DECISAO_FORMAL_FONTE": 126,
     "DEPENDE_COMPROVACAO_COBERTURA": 71
   },
   "por_objetivo_metrica": [
@@ -54,8 +54,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 78,
-      "BLOQUEADO": 36,
+      "ELEGIVEL": 87,
+      "BLOQUEADO": 27,
       "AUSENTE": 0
     },
     {
@@ -64,8 +64,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 75,
-      "BLOQUEADO": 39,
+      "ELEGIVEL": 84,
+      "BLOQUEADO": 30,
       "AUSENTE": 0
     },
     {
@@ -74,8 +74,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 49,
-      "BLOQUEADO": 65,
+      "ELEGIVEL": 57,
+      "BLOQUEADO": 57,
       "AUSENTE": 0
     },
     {
@@ -84,8 +84,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 74,
-      "BLOQUEADO": 40,
+      "ELEGIVEL": 83,
+      "BLOQUEADO": 31,
       "AUSENTE": 0
     },
     {
@@ -94,8 +94,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 28,
-      "BLOQUEADO": 86,
+      "ELEGIVEL": 33,
+      "BLOQUEADO": 81,
       "AUSENTE": 0
     },
     {
@@ -104,8 +104,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 78,
-      "BLOQUEADO": 36,
+      "ELEGIVEL": 87,
+      "BLOQUEADO": 27,
       "AUSENTE": 0
     },
     {
@@ -114,8 +114,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 76,
-      "BLOQUEADO": 38,
+      "ELEGIVEL": 85,
+      "BLOQUEADO": 29,
       "AUSENTE": 0
     },
     {
@@ -124,8 +124,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 43,
-      "BLOQUEADO": 71,
+      "ELEGIVEL": 50,
+      "BLOQUEADO": 64,
       "AUSENTE": 0
     },
     {
@@ -134,8 +134,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 78,
-      "BLOQUEADO": 36,
+      "ELEGIVEL": 87,
+      "BLOQUEADO": 27,
       "AUSENTE": 0
     },
     {
@@ -144,8 +144,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 78,
-      "BLOQUEADO": 36,
+      "ELEGIVEL": 87,
+      "BLOQUEADO": 27,
       "AUSENTE": 0
     },
     {
@@ -154,8 +154,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 79,
-      "BLOQUEADO": 35,
+      "ELEGIVEL": 88,
+      "BLOQUEADO": 26,
       "AUSENTE": 0
     },
     {
@@ -164,8 +164,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 79,
-      "BLOQUEADO": 35,
+      "ELEGIVEL": 88,
+      "BLOQUEADO": 26,
       "AUSENTE": 0
     },
     {
@@ -174,8 +174,8 @@
       "UNIDADE": "km",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 79,
-      "BLOQUEADO": 35,
+      "ELEGIVEL": 88,
+      "BLOQUEADO": 26,
       "AUSENTE": 0
     },
     {
@@ -184,8 +184,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 8,
-      "BLOQUEADO": 106,
+      "ELEGIVEL": 11,
+      "BLOQUEADO": 103,
       "AUSENTE": 0
     },
     {
@@ -194,8 +194,8 @@
       "UNIDADE": "km",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 39,
-      "BLOQUEADO": 75,
+      "ELEGIVEL": 46,
+      "BLOQUEADO": 68,
       "AUSENTE": 0
     },
     {
@@ -204,8 +204,8 @@
       "UNIDADE": "km",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 79,
-      "BLOQUEADO": 35,
+      "ELEGIVEL": 88,
+      "BLOQUEADO": 26,
       "AUSENTE": 0
     },
     {
@@ -214,8 +214,8 @@
       "UNIDADE": "km",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 79,
-      "BLOQUEADO": 35,
+      "ELEGIVEL": 88,
+      "BLOQUEADO": 26,
       "AUSENTE": 0
     },
     {
@@ -234,8 +234,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 70,
-      "BLOQUEADO": 44,
+      "ELEGIVEL": 79,
+      "BLOQUEADO": 35,
       "AUSENTE": 0
     },
     {
@@ -244,8 +244,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 74,
-      "BLOQUEADO": 40,
+      "ELEGIVEL": 83,
+      "BLOQUEADO": 31,
       "AUSENTE": 0
     },
     {
@@ -254,8 +254,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 19,
-      "BLOQUEADO": 95,
+      "ELEGIVEL": 25,
+      "BLOQUEADO": 89,
       "AUSENTE": 0
     },
     {
@@ -264,8 +264,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 54,
-      "BLOQUEADO": 60,
+      "ELEGIVEL": 62,
+      "BLOQUEADO": 52,
       "AUSENTE": 0
     },
     {
@@ -274,8 +274,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 39,
-      "BLOQUEADO": 75,
+      "ELEGIVEL": 47,
+      "BLOQUEADO": 67,
       "AUSENTE": 0
     },
     {
@@ -294,8 +294,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 76,
-      "BLOQUEADO": 38,
+      "ELEGIVEL": 85,
+      "BLOQUEADO": 29,
       "AUSENTE": 0
     },
     {
@@ -314,8 +314,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 51,
-      "BLOQUEADO": 63,
+      "ELEGIVEL": 58,
+      "BLOQUEADO": 56,
       "AUSENTE": 0
     },
     {
@@ -334,8 +334,8 @@
       "UNIDADE": "itens",
       "ESPERADO": 114,
       "OBSERVADO": 114,
-      "ELEGIVEL": 63,
-      "BLOQUEADO": 51,
+      "ELEGIVEL": 72,
+      "BLOQUEADO": 42,
       "AUSENTE": 0
     }
   ],
@@ -344,8 +344,8 @@
       "METRICA": "extensao_km",
       "ESPERADO": 456,
       "OBSERVADO": 456,
-      "ELEGIVEL": 276,
-      "BLOQUEADO": 180,
+      "ELEGIVEL": 310,
+      "BLOQUEADO": 146,
       "AUSENTE": 0
     },
     {
@@ -360,8 +360,8 @@
       "METRICA": "quantidade",
       "ESPERADO": 2394,
       "OBSERVADO": 2394,
-      "ELEGIVEL": 1269,
-      "BLOQUEADO": 1125,
+      "ELEGIVEL": 1438,
+      "BLOQUEADO": 956,
       "AUSENTE": 0
     }
   ],
@@ -392,9 +392,9 @@
   ],
   "nota": "ANOS_DISPONIVEIS conta valores não nulos, inclusive zero técnico; não comprova disponibilidade histórica point-in-time. ANOS_VALIDOS é qualidade local; a elegibilidade usa segmento final contíguo. Causas anuais podem coexistir.",
   "arquivos_sha256": {
-    "cobertura.parquet": "4c6e4ff72d73b2996b0d9c09b2f068615c43fc6cbe2f328b09f89d3dd9a372aa",
-    "cobertura.csv": "6af8133b1a51dc028d5c423b23e9a5d98aba7ed6308ba254c329239626b21974",
-    "cobertura-por-metrica.csv": "73fda7826c744ea776c957e12751d7397cd287944609c7c11d9e34e8a324523e",
-    "cobertura-por-objetivo.csv": "94d2a33fc3af91625d1cc187537a962589b8eef89f46be15e23c8867f2230314"
+    "cobertura.parquet": "a7e1ad59dd1bdd5011c6f4ae5b27f606bbfd3d1b69e61940043d904d6451d197",
+    "cobertura.csv": "5533dc0b3b93eacade732b53179e9476b8d394afdb4586b4b939a5441c61d7cd",
+    "cobertura-por-metrica.csv": "74f1a4deaf6021415697e566a0445909d75e0e7e8d270fa0ca802d36e9c72193",
+    "cobertura-por-objetivo.csv": "144756a18b9e22aab48b5b29988389b1c9009a236a0d141d31df5eaf0fc489c5"
   }
 }
