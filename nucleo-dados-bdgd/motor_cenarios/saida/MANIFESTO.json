@@ -29,7 +29,7 @@
   "internas/energia_uc.csv": "2abec6afdb239043976ec445ee7f1d812d1e27965d7756c5e0af4997fbda2d19",
   "internas/potencia_trafos_tuc.csv": "01a9238514c84568dd0970fe6fa9ae86da0704b9ceacbf20b411d1b3fb86b479",
   "contrato/serie_fisica_nacional.csv": "2843e1b175a5c3274492a404fb561934bb1741f50269c642c94c75da9163f4d5",
-  "codigo/cenarios.py": "85e91f2b9cb53457f3b784e3c902efff3c32c15e0e9f1a04e678a23538f0dd91"
+  "codigo/cenarios.py": "7e64ae9b9ff2018abc2b9c55e1e5d143e428002b64f91a658fb54a3891dcc831"
  },
  "saidas_sha256": {
   "BACKTEST_MODELOS_POR_HORIZONTE.csv": "d6ead21d32d8a7e37f716c44fb12d1fc23ebb14d8958596fc29035b344fc1d1a",
