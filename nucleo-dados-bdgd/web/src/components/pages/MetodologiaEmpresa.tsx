@@ -40,7 +40,8 @@ export function MetodologiaEmpresa({ p }: { p: ProdutoCenarios }) {
   const ultimo = serie?.[cen]?.at(-1) ?? null;
   const salto = base && ultimo != null ? ultimo / base : null;
   const instavel = salto != null && (salto > 3 || salto < 0.5);
-  const limites = selecionada?.experimental || historico.length < 4 || instavel;
+  const crescimentoAgregadoExtremo = erro?.cagr != null && Math.abs(erro.cagr) > 0.5;
+  const limites = selecionada?.experimental || historico.length < 4 || instavel || crescimentoAgregadoExtremo;
 
   if (!selecionada) return null;
 
@@ -89,6 +90,7 @@ export function MetodologiaEmpresa({ p }: { p: ProdutoCenarios }) {
         <h4>Função aplicada — {modelo.nome}</h4>
         <p><code>{modelo.formula}</code></p>
         <p>Família: {modelo.familia}. Parâmetros de implementação e tratamento de entradas são documentados no catálogo do motor. {atualId === "ridge_painel_ext" || atualId === "ridge_painel" ? "Ridge utiliza regularização L2 (α=1) sobre variáveis transformadas/padronizadas. O produto atual não exporta os coeficientes β e o intercepto estimados por métrica; por isso não permite reproduzir a equação numérica a partir da interface." : atualId === "knn_analogos" ? "KNN usa 9 vizinhos em espaço de atributos padronizado e a mediana dos crescimentos. O produto não publica a lista e distância dos vizinhos selecionados para cada empresa." : atualId === "random_forest_painel" || atualId === "hgb_painel" ? "Modelos de árvores não têm um único coeficiente linear interpretável. A versão atual não exporta atribuições locais ou importâncias por variável para cada empresa." : "O modelo usa somente o histórico da própria série e o tempo, sem coeficientes externos de regressão em painel."}</p>
+        <p className="caption">O contrato informa quais features entram no algoritmo, mas não publica o vetor numérico dessas features na data de corte para esta distribuidora. Portanto, não se afirma aqui que todos os coeficientes ou contribuições locais sejam auditáveis de ponta a ponta.</p>
         <h4>Variáveis efetivamente usadas pelo modelo</h4>
         {vars.length ? <div className={s.scroll} role="region" tabIndex={0} aria-label="Features efetivas do modelo">
           <table className={s.tbl}><thead><tr><th>Variável</th><th>Tipo</th><th>Transformação</th><th>Fonte</th><th>Disponibilidade</th></tr></thead>
@@ -102,7 +104,7 @@ export function MetodologiaEmpresa({ p }: { p: ProdutoCenarios }) {
           <div className={s.rule}><dt>Diagnóstico individual da distribuidora</dt><dd>{cen === "moderado" && serie?.erro_moderado != null ? `Erro percentual retrospectivo mediano da DIST: ${pct(serie.erro_moderado)}.` : "Não há erro individual neste produto para este cenário; apenas para o moderado, quando disponível."} Este valor não é probabilidade nem intervalo de confiança.</dd></div>
           <div className={s.rule}><dt>Confiança estatística da previsão</dt><dd><b>Não estimada.</b> Não há intervalo preditivo calibrado de 80%, 90% ou 95%, nem distribuição de erros por empresa e horizonte suficiente para atribuir probabilidade à projeção. Os dados de 2022–2025 oferecem validação retrospectiva apenas até h=2.</dd></div>
         </dl>
-        {limites && <p role="note"><b>Ressalva adicional:</b> {selecionada.experimental ? "A potência desta métrica é experimental. " : ""}{historico.length < 4 ? "O histórico desta empresa contém menos de quatro observações elegíveis. " : ""}{instavel ? "A trajetória 2030/2025 está fora do intervalo ilustrativo de 0,5 a 3 vezes e precisa de auditoria específica. " : ""}Não interpretar a simulação como plano de investimentos.</p>}
+        {limites && <p role="note"><b>Ressalva adicional:</b> {selecionada.experimental ? "A potência desta métrica é experimental. " : ""}{historico.length < 4 ? "O histórico desta empresa contém menos de quatro observações elegíveis. " : ""}{instavel ? "A trajetória 2030/2025 está fora do intervalo ilustrativo de 0,5 a 3 vezes e precisa de auditoria específica. " : ""}{crescimentoAgregadoExtremo ? `O crescimento agregado modelado (${pct(erro?.cagr)}/ano) é extremo e exige investigação de valores-base e outliers. ` : ""}Não interpretar a simulação como plano de investimentos.</p>}
       </> : <p role="status">Não há modelo elegível para este cenário. Nenhum coeficiente, resultado ou intervalo de confiança foi imputado.</p>}
 
       <h4>Histórico e projeção publicados para a distribuidora</h4>
