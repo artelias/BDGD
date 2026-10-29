@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PrevisoesExploratorias } from "@/components/pages/PrevisoesExploratorias";
 import { MotorUniversal } from "@/components/pages/MotorUniversal";
+import { CenariosMotor } from "@/components/pages/CenariosMotor";
 import { Activity, ArrowUpRight, ChartSpline, CircleHelp, Database, GitBranch, Layers3, Wallet } from "lucide-react";
 
 export const metadata: Metadata = { title: "Previsões | Expansão elétrica" };
@@ -35,8 +36,8 @@ const entregas = [
   { nome: "Históricos 2022–2024", detalhe: "Extração, validação técnica e auditoria das bases por competência e distribuidora. Homologação humana dos anos anteriores pendente.", situacao: "Auditoria concluída" },
   { nome: "Perímetros comparáveis", detalhe: "EMR/ENF tratada contra dupla contagem; ponte EPB/EBO ainda depende de decisão humana.", situacao: "Parcialmente reconciliado" },
   { nome: "Variáveis elétricas e econômicas", detalhe: "Demanda, capacidade, topologia, PIB regional, indústria, juros e custos, conforme disponibilidade histórica.", situacao: "Contrato definido" },
-  { nome: "Validação dos modelos", detalhe: "Backtest exploratório de persistência e tendência linear com corte em 2025; uma origem de teste, sem suficiência para homologação preditiva.", situacao: "Exploratório" },
-  { nome: "Projeções publicáveis", detalhe: "Valores, horizontes e intervalos só após aprovação dos critérios de elegibilidade.", situacao: "Indisponível" },
+  { nome: "Validação dos modelos", detalhe: "Backtest com origens 2023 e 2024 (horizontes de 1 e 2 anos), mesmos pontos para todos os modelos; 2028–2030 sem verificação retrospectiva.", situacao: "Executado" },
+  { nome: "Cenários 2026–2030", detalhe: "Conservador, Moderado e Agressivo por métrica, quando sustentados pelo erro observado; sem intervalos probabilísticos nem homologação preditiva.", situacao: "Simulação condicional" },
 ] as const;
 
 export default function Page() {
@@ -49,11 +50,12 @@ export default function Page() {
           Motor de Expansão Elétrica
         </h1>
         <p className="lede" style={{ marginTop: 12 }}>
-          Explore a evolução observada de 2022 a 2025 e compare cenários condicionais de ativos até 2030.
-          Resultados simulados não representam investimentos previstos ou obras necessárias.
+          Compare, por ativo e métrica física, os cenários Conservador, Moderado e Agressivo de 2026 a 2030, gerados por modelos
+          executados e validados retrospectivamente sobre 2022–2025. Resultados simulados não representam investimentos previstos ou obras necessárias.
         </p>
       </header>
 
+      <CenariosMotor />
       <PrevisoesExploratorias />
       <MotorUniversal />
       <Patrimonio />
@@ -63,7 +65,7 @@ export default function Page() {
           Entenda a diferença entre simulação e previsão validada
         </summary>
         <p className="muted" style={{ margin: "12px 0 0", lineHeight: 1.6, fontSize: ".87rem" }}>
-          Os cenários extrapolam o estoque histórico observado de 2022 a 2025. Como há apenas uma origem temporal
+          Os cenários extrapolam o estoque histórico observado de 2022 a 2025. Como há apenas duas origens temporais
           de backtest e os anos anteriores não estão integralmente homologados, o modelo ainda não oferece previsões
           estatisticamente validadas, necessidade técnica de expansão, CAPEX ou intervalos probabilísticos.
         </p>

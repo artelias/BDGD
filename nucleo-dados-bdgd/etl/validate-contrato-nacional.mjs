@@ -32,6 +32,21 @@ if (S.length !== dists.size * anos.size * conc.size) erros.push(`universo incomp
 if (conc.size !== 25) erros.push(`esperados 25 conceitos, encontrados ${conc.size}`);
 const M = new Map(csv(matrizFile).filter((r) => r.nivel === "DIST").map((r) => [`${r.ano}|${r.dist}|${r.ativo}`, r]));
 const PUB = new Set(["HOMOLOGADO", "COMPLETO_TECNICO", "APTO_COM_RESSALVAS"]);
+// Seleção editorial das republicações (13 pares): a matriz Fase 4 antecede a decisão. Essas células são conferidas
+// contra a decisão registrada (política + DECISOES_DUPLICATAS_13_PARES.csv), com item, SHA-256, competência e valor.
+const polFile = path.join(path.dirname(matrizFile), "../../web/public/data/historico/politica-republicacoes.json");
+const POL = fs.existsSync(polFile) ? JSON.parse(fs.readFileSync(polFile, "utf8")) : { pares: [] };
+const SEL = new Map(POL.pares.map((p) => [`${p.ano}|${p.dist}`, p]));
+const DEC = new Map(csv(path.join(path.dirname(matrizFile), "DECISOES_DUPLICATAS_13_PARES.csv")).filter((r) => SEL.has(`${r.ano}|${r.dist}`)).map((r) => [`${r.ano}|${r.dist}|${r.ativo}`, r]));
+const carimbo = (v) => (/^V\d+_(\d{8})-(\d{4})$/.exec(v ?? "") ?? []).slice(1).join("");
+for (const [k, p] of SEL) {
+  const [ano] = k.split("|");
+  if (!carimbo(p.selecionada?.versao) || !carimbo(p.anterior?.versao) || carimbo(p.selecionada.versao) <= carimbo(p.anterior.versao)) erros.push(`par ${k}: versão selecionada não é posterior à anterior`);
+  if (!/^[0-9a-f]{64}$/.test(p.selecionada?.sha256 ?? "") || !/^[0-9a-f]{64}$/.test(p.anterior?.sha256 ?? "")) erros.push(`par ${k}: SHA-256 ausente`);
+  const linhas = [...DEC.values()].filter((r) => `${r.ano}|${r.dist}` === k);
+  if (linhas.length !== conc.size) erros.push(`par ${k}: decisão sem os ${conc.size} conceitos`);
+  for (const r of linhas) if (r.item_B !== p.selecionada.item_id || r.sha256_B !== p.selecionada.sha256 || r.item_A !== p.anterior.item_id || r.competencia_declarada_B !== `${ano}-12-31` || r.DAT_FNL_B !== `31/12/${ano}`) erros.push(`par ${k}/${r.ativo}: decisão diverge da publicação selecionada`);
+}
 for (const r of S) {
   const k = `${r.ano}|${r.dist}|${r.conceitoId}|${r.metrica}|${r.perimetroId}`;
   if (chaves.has(k)) erros.push(`chave duplicada ${k}`); chaves.add(k);
@@ -41,6 +56,18 @@ for (const r of S) {
   if (r.estado === "observado" && !(Number(r.valor) > 0)) erros.push(`${k}: observado sem valor positivo`);
   if ((r.fonte_homologada === "true") !== (r.status_homologacao === "HOMOLOGADO")) erros.push(`${k}: fonte_homologada só vale para HOMOLOGADO`);
   if (r.cobertura !== "" && (r.cobertura !== "1" || !OBS.has(r.estado))) erros.push(`${k}: cobertura 1 só para célula observada integral`);
+  const sel = SEL.get(`${r.ano}|${r.dist}`), dec = DEC.get(`${r.ano}|${r.dist}|${r.conceitoId}`);
+  if (sel) {
+    if (!dec) erros.push(`${k}: célula de par selecionado sem decisão registrada`);
+    else if (dec.status_B === "validado") {
+      if (!OBS.has(r.estado) || Math.abs(Number(r.valor) - Number(dec.valor_B)) > 1e-9 || r.publicacao_id !== sel.selecionada.item_id ||
+        r.sha256 !== sel.selecionada.sha256 || r.status_homologacao !== "APTO_COM_RESSALVAS" || r.fonte_homologada === "true" || r.dataBase !== `${r.ano}-12-31`)
+        erros.push(`${k}: diverge da republicação selecionada (valor, item, SHA-256 ou estado)`);
+    } else if (dec.status_B === "ausente") {
+      if (r.estado !== "ausente" || r.valor !== "") erros.push(`${k}: conceito ausente na republicação selecionada deve ser N/D, nunca zero`);
+    } else erros.push(`${k}: status de decisão inesperado ${dec.status_B}`);
+    continue;
+  }
   if (OBS.has(r.estado)) {
     if (!/^[0-9a-f]{64}$/.test(r.sha256) || !r.publicacao_id) erros.push(`${k}: observação sem publicação/SHA-256`);
     if (r.dataBase !== `${r.ano}-12-31`) erros.push(`${k}: dataBase ${r.dataBase} fora de 31/12`);
@@ -59,4 +86,4 @@ for (const r of A.filter((x) => x.nivel === "brasil")) {
 }
 for (const e of erros.slice(0, 40)) console.error("ERRO: " + e);
 if (erros.length) { console.error(`BLOQUEADO: ${erros.length} erro(s).`); process.exitCode = 1; }
-else console.log(`CONTRATO NACIONAL OK: ${S.length} linhas (${dists.size} DIST × ${anos.size} anos × ${conc.size} conceitos), ${A.length} agregados, Brasil 2022–2023 sem total nacional`);
+else console.log(`CONTRATO NACIONAL OK: ${S.length} linhas (${dists.size} DIST × ${anos.size} anos × ${conc.size} conceitos), ${A.length} agregados, ${SEL.size} republicações selecionadas conferidas, Brasil 2022–2023 sem total nacional`);

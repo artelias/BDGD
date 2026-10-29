@@ -72,7 +72,7 @@ test("@iphone motor universal: tabela de cobertura acessível sem alargar a pág
   await page.goto("/previsoes/");
   await page.getByText("Explorar experimentos do motor universal", { exact: true }).click();
   const section = page.getByTestId("motor-universal");
-  await expect(section.getByTestId("motor-universal-universo")).toContainText("1.305 bloqueadas");
+  await expect(section.getByTestId("motor-universal-universo")).toContainText("1.102 bloqueadas");
   await section.getByText("Cobertura por métrica", { exact: true }).click();
   const region = section.getByRole("region", { name: "Cobertura das métricas do motor", exact: true });
   await region.focus(); await page.keyboard.press("ArrowRight");

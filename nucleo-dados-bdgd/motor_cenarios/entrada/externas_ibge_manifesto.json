@@ -1,0 +1,38 @@
+{
+ "pop_2010": {
+  "arquivo_bruto": "pop_censo2010.json",
+  "sha256_bruto": "c2beb71ac54f3be4070e65886600386abb02e36cacd85798f8beb33a65b5eeec",
+  "url": "https://apisidra.ibge.gov.br/values/t/1378/n6/all/v/93/p/2010/c1/0/c2/0/c287/0/c455/0",
+  "descricao": "IBGE Censo Demográfico 2010 — população residente (SIDRA 1378, v93)",
+  "periodo": "2010",
+  "divulgacao": "2011-11-29",
+  "obtido_em": "2026-10-28"
+ },
+ "pop_2022": {
+  "arquivo_bruto": "pop_censo2022.json",
+  "sha256_bruto": "ec3c169ff4e6f59641c3ec681aabe2b96b65edf2273e2f319eaa37d565413558",
+  "url": "https://apisidra.ibge.gov.br/values/t/4709/n6/all/v/93/p/2022",
+  "descricao": "IBGE Censo Demográfico 2022 — população residente, revisão de 31/08/2023 (SIDRA 4709, v93)",
+  "periodo": "2022",
+  "divulgacao": "2023-08-31",
+  "obtido_em": "2026-10-28"
+ },
+ "pop_2021": {
+  "arquivo_bruto": "pop_estimativa_2021.json",
+  "sha256_bruto": "38cd175e7f345de65baec455672bf7204115e2bc9f863f0740628b1e813900d7",
+  "url": "https://apisidra.ibge.gov.br/values/t/6579/n6/all/v/9324/p/2021",
+  "descricao": "IBGE Estimativas da População 2021, ref. 01/07/2021 (SIDRA 6579, v9324)",
+  "periodo": "2021",
+  "divulgacao": "2021-08-27",
+  "obtido_em": "2026-10-28"
+ },
+ "pib_2021_mil_reais": {
+  "arquivo_bruto": "pib_mun_2020_2023.json",
+  "sha256_bruto": "e4a54e08d2831789095fe60092aac218154439e68f01245937381dbde7850e92",
+  "url": "https://apisidra.ibge.gov.br/values/t/5938/n6/all/v/37/p/2020,2021,2022,2023",
+  "descricao": "IBGE PIB dos Municípios 2021, preços correntes, mil R$ (SIDRA 5938, v37)",
+  "periodo": "2021",
+  "divulgacao": "2023-12-15",
+  "obtido_em": "2026-10-28"
+ }
+}

@@ -73,6 +73,7 @@ for i in INV:
             mt = {**mt, "valor": rec["valor_B"], "motivo": "Republicacao mais recente: escolha tecnica com ressalva (sem homologacao)"}
         elif rec["status_B"] == "ausente":
             causa, st_mat = "INDICADOR_AUSENTE_OUTRA_RAZAO", "NAO_DISPONIVEL"
+            i = {**i, "detalhe": "Ausente na publicação selecionada, não zero"}
         else:
             raise RuntimeError(f"Status nao esperado no par {d}/{y}/{a}")
     if causa == "DISPONIVEL":
@@ -142,6 +143,9 @@ esquema = dict(versao=VERSAO, descricao="Série física nacional BDGD 2022–202
                regras_de_uso=["treinar só com estado observado/zero_verificado", "não somar linhas com nao_somar_em_agregados=true", "cortar a série em ruptura_desde_ano_anterior=true",
                               "fonte_homologada=false não autoriza previsão validada", "agregado Brasil só com cobertura_completa=true; 2022–2023 nunca"],
                estados_ts=["observado", "zero_verificado", "ausente", "nao_homologado", "nao_aplicavel", "ruptura"])
+if POL["pares"]:
+    esquema.update(politica_republicacoes="web/public/data/historico/politica-republicacoes.json",
+                   ressalva_selecao=f"Versão posterior de cada par com BASE válida selecionada para {len(POL['pares'])} pares; diferenças preservadas; sem homologação regulatória.")
 (OUT / "esquema.json").write_text(json.dumps(esquema, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 import collections
 cnt = collections.Counter((r["ano"], r["estado"]) for r in linhas)
@@ -150,7 +154,7 @@ cob = {str(y): {e: cnt[(y, e)] for e in ("observado", "zero_verificado", "ausent
        for y in (2022, 2023, 2024, 2025)}
 man = dict(versao=VERSAO, data_geracao=DATA_GERACAO, linhas=len(linhas), agregados=len(ag), pontes=len(pontes), cobertura_por_ano=cob,
            entradas={str(p.relative_to(RAIZ)).replace("\\", "/"): sha(p) for p in [F4 / "MATRIZ_HOMOLOGACAO_2022_2025.csv", F4 / "MATRIZ_CONFORMIDADE_BDGD_ORDINARIA.csv",
-                     F4 / "RANKING_ANOMALIAS_TEMPORAIS.csv", F6 / "INVENTARIO_LACUNAS_NACIONAL.csv", F6 / "CORRECOES_AUSENCIAS.csv", RAIZ / "web/public/data/historico/homologacao.json", RAIZ / "auditoria/reconciliacao/observacoes.json"]},
+                     F4 / "RANKING_ANOMALIAS_TEMPORAIS.csv", F6 / "INVENTARIO_LACUNAS_NACIONAL.csv", F6 / "CORRECOES_AUSENCIAS.csv", RAIZ / "web/public/data/historico/homologacao.json", RAIZ / "auditoria/reconciliacao/observacoes.json", F4 / "DECISOES_DUPLICATAS_13_PARES.csv"] + ([POL_P] if POL_P.exists() else [])},
            saidas={n: sha(OUT / n) for n in ("serie_fisica_nacional.csv", "agregados_nacionais.csv", "pontes_sucessao.csv", "esquema.json")})
 (OUT / "MANIFESTO.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 print(f"{VERSAO}: {len(linhas)} linhas, {len(ag)} agregados, {len(pontes)} pontes"); print(json.dumps(cob, ensure_ascii=False))
