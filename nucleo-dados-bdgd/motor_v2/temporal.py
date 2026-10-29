@@ -1,11 +1,13 @@
 """Explicit evaluation vintages; reconciled experiments never acquire PIT credentials."""
 MODES=('point_in_time','reconciled_retrospective')
-def usable(row,origin,mode,training=True):
+def usable(row,origin,mode,training=True,origin_date=None):
+ """`origin` is the last observed competence year; `origin_date` (ISO) is the explicit date the forecast is issued. Without it the legacy
+ clock `origin-12-31` applies, unchanged. Dates in rows are never altered."""
  if mode not in MODES:raise ValueError('unknown validation mode')
  if row['year']>(origin if training else origin+1):return False
  if row['feature_year']>=row['year']:return False
  if mode=='reconciled_retrospective':return True
- cutoff=f'{origin}-12-31'
+ cutoff=origin_date or f'{origin}-12-31'
  # Historical training examples retain features available at their own forecast origin.
  feature_cutoff=f"{row['feature_year']}-12-31" if training else cutoff
  releases=[row.get('feature_available'),row.get('feature_revision_available')]

@@ -113,7 +113,7 @@ def auditoria():
         slope_bt, intercept_bt = linear_regression([2022, 2023, 2024], valores[:3])
         assert math.isclose(s[7][0], abs(valores[3] - valores[2]), abs_tol=1e-6)
         assert math.isclose(s[7][1], abs(valores[3] - max(0, intercept_bt + slope_bt * 2025)), rel_tol=1e-9, abs_tol=1e-6)
-    raw = contrato_path.read_bytes()
+    raw = contrato_path.read_bytes().replace(b"\r\n", b"\n")   # blob do git = LF, igual em Windows (CRLF) e Linux
     blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
     assert pacote["blobShaOrigem"] == estados["blobShaOrigem"] == blob
     return {

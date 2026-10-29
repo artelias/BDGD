@@ -67,6 +67,39 @@ class Natures(unittest.TestCase):
         p = mc.prediction_pair(2.5, 'discrete_count')
         self.assertEqual((p['raw_prediction'], p['physical_prediction'], p['rounding']), (2.5, 3, 'half_up'))
 
+    def test_valid_conversions_inside_one_kind_need_no_hypothesis(self):
+        self.assertEqual(mc.convert(1.5, 'MVA', 'kVA'), 1500.)
+        self.assertEqual(mc.convert(2500., 'kW', 'MW'), 2.5)
+        self.assertEqual(mc.convert(3.2, 'MWh', 'kWh'), 3200.)
+        self.assertEqual(mc.convert(2500., 'm', 'km'), 2.5)
+        self.assertEqual(mc.convert(1000., 'W', 'kW'), 1.)
+        self.assertEqual(mc.convert(7., 'kVA', 'kVA'), 7.)
+
+    def test_apparent_and_active_power_are_not_interchangeable_without_an_explicit_power_factor(self):
+        for a, b in (('kVA', 'kW'), ('MVA', 'MW'), ('kW', 'kVA'), ('MW', 'MVA'), ('kVA', 'MW'), ('W', 'kVA')):
+            with self.assertRaisesRegex(ValueError, 'power factor'):
+                mc.convert(100., a, b)
+        self.assertEqual((mc.power_kind('kVA'), mc.power_kind('MVA'), mc.power_kind('kW'), mc.power_kind('MW'), mc.power_kind('km')),
+                         ('apparent', 'apparent', 'active', 'active', None))
+
+    def test_explicit_power_factor_converts_across_kinds_and_round_trips(self):
+        self.assertAlmostEqual(mc.convert(1000., 'kVA', 'kW', power_factor=.92), 920.)
+        self.assertAlmostEqual(mc.convert(1., 'MVA', 'kW', power_factor=.9), 900.)
+        self.assertAlmostEqual(mc.convert(920., 'kW', 'kVA', power_factor=.92), 1000.)
+        self.assertAlmostEqual(mc.convert(mc.convert(750., 'kVA', 'MW', power_factor=.85), 'MW', 'kVA', power_factor=.85), 750.)
+
+    def test_invalid_power_factors_and_misplaced_hypotheses_are_refused(self):
+        for pf in (0, -.5, 1.01, float('nan'), float('inf'), True, '0.9'):
+            with self.assertRaises(ValueError):
+                mc.convert(100., 'kVA', 'kW', power_factor=pf)
+        with self.assertRaises(ValueError):
+            mc.convert(100., 'kVA', 'MVA', power_factor=.9)            # same kind: a hypothesis would be applied silently
+        with self.assertRaises(ValueError):
+            mc.convert(100., 'km', 'm', power_factor=.9)
+        for bad in (float('nan'), True, None, '5'):
+            with self.assertRaises(ValueError):
+                mc.convert(bad, 'kVA', 'MVA')
+
     def test_unit_conversion_stays_inside_one_nature_and_refuses_counts(self):
         self.assertEqual(mc.convert(1.5, 'MVA', 'kVA'), 1500.)
         self.assertEqual(mc.convert(2500., 'm', 'km'), 2.5)

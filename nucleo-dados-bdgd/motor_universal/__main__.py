@@ -18,7 +18,7 @@ from .coverage import write_coverage
 def code_digest():
     h = hashlib.sha256()
     for path in sorted(Path(__file__).parent.glob("*.py")):
-        h.update(path.name.encode()); h.update(path.read_bytes())
+        h.update(path.name.encode()); h.update(path.read_bytes().replace(b"\r\n", b"\n"))   # code identity independent of CRLF checkouts
     return h.hexdigest()
 
 

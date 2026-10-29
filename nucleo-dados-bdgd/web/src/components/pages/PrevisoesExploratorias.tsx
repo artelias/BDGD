@@ -121,7 +121,7 @@ export function PrevisoesExploratorias() {
   const csv = serie && futuros && dados
     ? toCSV(["ano", "valor", "classe", "metodo", "dist", "conceitoId", "unidade", "metrica",
       "status_homologacao", "publicacao_id", "verificacao_independente_zero", "versao_dados", "commit_origem", "blob_sha_origem", "avisos_estatisticos", ...COLUNAS_OBSERVACOES],
-      ANOS.map((ano, i) => [ano, valorPublico(i < 4 ? serie[5][i] : futuros[i - 4], naturezaDe(serie[4])),
+      ANOS.map((ano, i) => [ano, valorPublico(i < 4 ? serie[5][i] : futuros[i - 4], naturezaDe(serie[4]), `exportação ${serie[0]}/${serie[2]}/${ano}`),
         i < 4 ? (serie[10][i] === "Z" ? "zero_tecnico" : "observado") : "simulacao_condicional",
         i < 4 ? "BDGD" : metodo, serie[0], serie[2], serie[4], serie[3],
         i < 4 ? serie[9][i] : "NAO_VALIDADA", i < 4 ? serie[8][i] : "",

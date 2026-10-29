@@ -1,4 +1,4 @@
-import { exigirContagemInteira, ehContagem, naturezaDe, type Natureza } from "./natureza-fisica";
+import { exigirCoerencia, exigirContagemInteira, ehContagem, naturezaDe, type Natureza } from "./natureza-fisica";
 
 /** Produto estático do Motor de Expansão Elétrica: cenários Conservador | Moderado | Agressivo, pré-calculados fora do navegador. */
 export type Cenario = "conservador" | "moderado" | "agressivo";
@@ -55,6 +55,7 @@ export function parseCenarios(v: unknown): ProdutoCenarios {
     if (!rec(m) || typeof m.conceito !== "string" || typeof m.metrica !== "string" || !rec(m.cenarios) || !rec(m.modelos) || !rec(m.series))
       throw Error("Métrica inválida no produto de cenários.");
     const k = `${m.conceito}|${m.metrica}`;
+    const natureza = exigirCoerencia(m, k);                    // natureza declarada, unidade e métrica precisam concordar
     if (chaves.has(k)) throw Error(`Métrica duplicada: ${k}`);
     chaves.add(k);
     for (const c of CENARIOS) {
@@ -71,7 +72,7 @@ export function parseCenarios(v: unknown): ProdutoCenarios {
       for (const c of CENARIOS) {
         if (!trajetoria(s[c], n)) throw Error(`Trajetória inválida em ${k}/${c}.`);
         // Contrato de natureza física: contagem fracionária em produto público é recusada, não arredondada em silêncio.
-        if (s[c] !== null && ehContagem(naturezaMetrica(m as unknown as MetricaCenario))) (s[c] as number[]).forEach((x, i) => exigirContagemInteira(x, `${k}/${c}[${i}]`));
+        if (s[c] !== null && ehContagem(natureza)) (s[c] as number[]).forEach((x, i) => exigirContagemInteira(x, `${k}/${c}[${i}]`));
         if (s[c] !== null && m.cenarios[c] === null) throw Error(`Trajetória sem modelo em ${k}/${c}.`);
       }
     }

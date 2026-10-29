@@ -11,7 +11,9 @@ def national_panel(directory, registry):
     root = Path(directory)
     manifest = json.loads((root / "MANIFESTO.json").read_text())
     filename = "serie_fisica_nacional.csv"
-    digest = hashlib.sha256((root / filename).read_bytes()).hexdigest()
+    # SHA-256 over LF-normalised text, like every other gate of the project (87_contrato_nacional.py, the .mjs validators): the
+    # same contract must verify on a Windows checkout with CRLF (autocrlf) and on Linux.
+    digest = hashlib.sha256((root / filename).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
     if digest != manifest["saidas"][filename]:
         raise ValueError("SHA-256 do contrato nacional divergente")
     rows = []

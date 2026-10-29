@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import type { EChartsCoreOption } from "echarts/core";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import { useData } from "@/lib/data-context";
-import { casasDe, formatarFisico } from "@/lib/natureza-fisica";
+import { ehContagem, formatarFisico } from "@/lib/natureza-fisica";
 import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
 import {
   CENARIOS, ROTULO_CENARIO, ROTULO_ESTADO, exportarCsv, naturezaMetrica, parseCenarios, somaGrupo, variacoes,
@@ -87,9 +87,11 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
       grid: { left: 64, right: 18, top: 34, bottom: 34, containLabel: false },
       legend: { top: 0, textStyle: { color: t.text2 } },
       // contagens nunca aparecem com casas decimais no gráfico; extensão e potência mantêm 1 casa
-      tooltip: { trigger: "axis", valueFormatter: (v: unknown) => typeof v === "number" && m ? formatarFisico(v, naturezaMetrica(m)) : "N/D" },
+      tooltip: { trigger: "axis", valueFormatter: (v: unknown) => { if (typeof v !== "number" || !m) return "N/D"; try { return formatarFisico(v, naturezaMetrica(m)); } catch { return "valor inválido"; } } },
       xAxis: { type: "category", data: anos.map(String), axisLine: { lineStyle: { color: t.hairline } }, axisLabel: { color: t.text2 } },
-      yAxis: { type: "value", scale: true, axisLabel: { color: t.text2 }, splitLine: { lineStyle: { color: t.hairline, opacity: 0.5 } } },
+      yAxis: { type: "value", scale: true, minInterval: m && ehContagem(naturezaMetrica(m)) ? 1 : undefined,
+        // rótulos do eixo em pt-BR (milhar com ponto): "260,000" em formato en-US seria lido como 260 com três casas decimais
+        axisLabel: { color: t.text2, formatter: (v: number) => v.toLocaleString("pt-BR", { maximumFractionDigits: m && ehContagem(naturezaMetrica(m)) ? 0 : 1 }) }, splitLine: { lineStyle: { color: t.hairline, opacity: 0.5 } } },
       series: [
         { name: "Observado", type: "line", data: anos.map((a) => serie?.hist.get(a) ?? null), lineStyle: { width: 2.5, color: t.text }, itemStyle: { color: t.text }, symbolSize: 7 },
         ...visiveis.filter((c) => serie?.traj[c]).map((c) => ({
@@ -102,6 +104,7 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
   };
 
   if (!m) return <p role="status">Sem métricas no produto de cenários.</p>;
+  const fis = (n: number | null | undefined) => formatarFisico(n, naturezaMetrica(m));   // contagem fracionária lança erro, nunca é arredondada
   const modeloId = m.cenarios[cenarioAtivo];
   const modelo = modeloId ? data.modelos[modeloId] : null;
   const erroM = modeloId ? m.modelos[modeloId] : null;
@@ -147,12 +150,12 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
             <caption className={s.caption}>{m.ativo} — {MEDIDA[m.metrica]} ({m.unidade}) · {nomeEscopo}</caption>
             <thead><tr><th scope="col">Ano</th><th scope="col">Natureza</th>{CENARIOS.map((c) => <th scope="col" key={c}>{ROTULO_CENARIO[c]}</th>)}<th scope="col">Variação vs {data.base} ({ROTULO_CENARIO[cenarioAtivo]})</th></tr></thead>
             <tbody>
-              {anosHist.map((a) => <tr key={a}><th scope="row">{a}</th><td>Observado</td><td colSpan={3}>{num(serie.hist.get(a), casasDe(naturezaMetrica(m)))}</td><td>—</td></tr>)}
+              {anosHist.map((a) => <tr key={a}><th scope="row">{a}</th><td>Observado</td><td colSpan={3}>{fis(serie.hist.get(a))}</td><td>—</td></tr>)}
               {data.horizonte.map((a, i) => {
                 const v = base != null ? variacoes(base, traj)?.[i] : null;
                 return <tr key={a}><th scope="row">{a}</th><td>Simulação condicional</td>
-                  {CENARIOS.map((c) => <td key={c} data-ativo={c === cenarioAtivo}>{serie.traj[c] ? num(serie.traj[c]![i], casasDe(naturezaMetrica(m))) : "Indisponível"}</td>)}
-                  <td>{v ? `${v.abs >= 0 ? "+" : ""}${num(v.abs, casasDe(naturezaMetrica(m)))} (${pct(v.pct)})` : "N/D"}</td></tr>;
+                  {CENARIOS.map((c) => <td key={c} data-ativo={c === cenarioAtivo}>{serie.traj[c] ? fis(serie.traj[c]![i]) : "Indisponível"}</td>)}
+                  <td>{v ? `${v.abs >= 0 ? "+" : ""}${fis(v.abs)} (${pct(v.pct)})` : "N/D"}</td></tr>;
               })}
             </tbody>
           </table>

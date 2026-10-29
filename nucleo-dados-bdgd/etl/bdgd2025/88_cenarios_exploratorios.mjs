@@ -20,7 +20,9 @@ if (!/^[0-9a-f]{7,40}$/i.test(commitOrigem ?? "")) {
   console.error("Informe --source-commit SHA do contrato nacional (PR #4).");
   process.exit(2);
 }
-const arquivo = readFileSync(entrada);
+// Blob do git = conteudo em LF: o mesmo contrato precisa dar o mesmo blob num checkout Windows (autocrlf/CRLF) e no runner Linux.
+const bruto = readFileSync(entrada);
+const arquivo = Buffer.from(bruto.toString("latin1").replace(/\r\n/g, "\n"), "latin1");
 const blobShaOrigem = createHash("sha1").update("blob " + arquivo.length + "\0").update(arquivo).digest("hex");
 
 function csv(texto) {

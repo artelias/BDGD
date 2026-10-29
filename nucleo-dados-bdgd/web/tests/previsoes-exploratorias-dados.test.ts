@@ -59,7 +59,8 @@ describe("dados de cenários exploratórios — contrato nacional", () => {
 
   it("usa o mesmo blob da origem quando o contrato nacional está no checkout", () => {
     if (!existsSync(CONTRATO)) return;
-    const b = readFileSync(CONTRATO);
+    // blob do git = conteudo em LF, independente do autocrlf do checkout
+    const b = Buffer.from(readFileSync(CONTRATO).toString("latin1").replace(/\r\n/g, "\n"), "latin1");
     const sha = createHash("sha1").update("blob " + b.length + "\0").update(b).digest("hex");
     expect(dados.blobShaOrigem).toBe(sha);
   });

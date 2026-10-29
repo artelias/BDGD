@@ -58,12 +58,43 @@ def check_nature(nature):
     return nature
 
 
-def convert(value, from_unit, to_unit):
-    """Unit conversion inside one nature (e.g. MVA -> kVA). Different natures or discrete units are refused."""
+# Apparent (kVA, MVA) and active (kW, MW) power are different physical quantities: S = P / pf. They are NEVER interchangeable by
+# the prefix scale alone; a conversion across them needs an explicit power-factor hypothesis supplied by the caller.
+_POWER_KIND = {'kva': 'apparent', 'mva': 'apparent', 'kw': 'active', 'mw': 'active', 'w': 'active'}
+
+
+def power_kind(unit):
+    """'apparent' (kVA, MVA), 'active' (W, kW, MW) or None for non-power units."""
+    return _POWER_KIND.get(str(unit).strip().lower())
+
+
+def convert(value, from_unit, to_unit, power_factor=None):
+    """Unit conversion inside one nature (e.g. MVA -> kVA, m -> km, MWh -> kWh). Refused: different natures, counts and ratios,
+    and apparent <-> active power without an explicit `power_factor` in (0, 1] (kW = kVA * pf; kVA = kW / pf). A power factor given
+    for a conversion that does not cross apparent/active power is also refused, so a hypothesis is never applied silently."""
     a, b = nature_of(from_unit), nature_of(to_unit)
     if a != b or a in ('discrete_count', 'ratio'):
         raise ValueError(f'cannot convert {from_unit!r} to {to_unit!r}')
-    return value * _SCALE[str(from_unit).strip().lower()] / _SCALE[str(to_unit).strip().lower()]
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+        raise ValueError('value to convert must be a finite number')
+    f, t = str(from_unit).strip().lower(), str(to_unit).strip().lower()
+    scaled = value * _SCALE[f] / _SCALE[t]
+    kf, kt = power_kind(f), power_kind(t)
+    if a != 'continuous_capacity':
+        if power_factor is not None:
+            raise ValueError('a power factor only applies to apparent <-> active power conversions')
+        return scaled
+    if kf is None or kt is None:
+        raise ValueError(f'unclassified power unit in {from_unit!r} -> {to_unit!r}')
+    if kf == kt:
+        if power_factor is not None:
+            raise ValueError('a power factor only applies to apparent <-> active power conversions')
+        return scaled
+    if power_factor is None:
+        raise ValueError(f'{from_unit} ({kf} power) and {to_unit} ({kt} power) are not interchangeable without an explicit power factor')
+    if isinstance(power_factor, bool) or not isinstance(power_factor, (int, float)) or not math.isfinite(power_factor) or not 0 < power_factor <= 1:
+        raise ValueError('power factor must be a finite number in (0, 1]')
+    return scaled * power_factor if kf == 'apparent' else scaled / power_factor
 
 
 def round_count(raw, policy=DEFAULT_POLICY):
