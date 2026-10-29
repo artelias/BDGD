@@ -25,24 +25,42 @@ def auditoria():
     audit = json.loads((DATA / "historico/publicacoes-auditadas.json").read_text())
     origem = {r["item_id"]: r for r in inventario}
     assert len(origem) == len(audit["items"]) == 414
+    # Política editorial das republicações: a matriz Fase 4 antecede a decisão. Os 26 itens dos 13 pares são
+    # conferidos contra a política (item, versão e SHA-256); os demais campos continuam idênticos à matriz.
+    pol = json.loads((DATA / "historico/politica-republicacoes.json").read_text(encoding="utf-8"))
+    papel = {}
+    for p in pol["pares"]:
+        papel[p["selecionada"]["item_id"]] = ("em_uso_na_serie", "criterio_editorial_mais_recente", p)
+        papel[p["anterior"]["item_id"]] = ("versao_anterior_preservada", "substituida_pela_versao_mais_recente", p)
+    assert len(papel) == 26
     for ano, dist, empresa, item, uso, fnl, base, versao, decisao, recomendacao, intervalo in audit["items"]:
         r = origem[item]
-        assert (ano, dist, empresa, uso, fnl, base, versao, decisao, recomendacao, intervalo) == (
-            int(r["ano_alvo"]), int(r["dist"]), r["empresa"], r["uso_na_serie"], r["DAT_FNL"],
-            r["data_base_titulo"], r["versao_titulo"], r["DECISAO_HUMANA"], r["recomendacao"], r["classe_intervalo"])
+        assert (ano, dist, empresa, fnl, base, versao, intervalo) == (
+            int(r["ano_alvo"]), int(r["dist"]), r["empresa"], r["DAT_FNL"], r["data_base_titulo"], r["versao_titulo"], r["classe_intervalo"])
+        if item in papel:
+            uso_esperado, decisao_esperada, p = papel[item]
+            assert r["uso_na_serie"] == "par_divergente_pendente" and (ano, dist) == (p["ano"], p["dist"])
+            assert (uso, decisao) == (uso_esperado, decisao_esperada)
+            assert fnl == f"31/12/{ano}" and intervalo == "INTERVALO_ANUAL_COMPATIVEL"
+        else:
+            assert (uso, decisao, recomendacao) == (r["uso_na_serie"], r["DECISAO_HUMANA"], r["recomendacao"])
     status = Counter(r[4] for r in audit["items"])
-    assert status["par_divergente_pendente"] == 26
+    assert status["em_uso_na_serie"] >= 13 and status["versao_anterior_preservada"] == 13 and status["par_divergente_pendente"] == 0
     assert status["excluido_competencia"] + status["par_item_excluido_competencia"] == 14
 
     pares = json.loads((DATA / "historico/pares-divergentes.json").read_text())
     decis = carregar(ROOT / "auditoria/fase4/DECISOES_DUPLICATAS_13_PARES.csv")
     for p in pares["pares"]:
         fonte = [r for r in decis if (int(r["dist"]), int(r["ano"])) == (p["dist"], p["ano"])]
-        assert len(fonte) == 25 and p["decisao"] == "PENDENTE"
+        # Seleção técnico-editorial registrada na política; a decisão humana/homologação continua PENDENTE na fonte.
+        sel = next(x for x in pol["pares"] if (x["dist"], x["ano"]) == (p["dist"], p["ano"]))
+        assert len(fonte) == 25 and p["decisao"] == "VERSAO_MAIS_RECENTE_SELECIONADA"
+        assert p["itemSelecionado"] == p["itemB"] == sel["selecionada"]["item_id"] and p["itemA"] == sel["anterior"]["item_id"]
         assert all((r["item_A"], r["item_B"], r["DECISAO_HUMANA"]) == (p["itemA"], p["itemB"], "PENDENTE") for r in fonte)
         diferentes = sorted(r["ativo"] for r in fonte if r["valor_A"] != r["valor_B"])
         assert diferentes == sorted(p["ativosDiferentes"])
-    assert len(pares["pares"]) == 13 and not pares["selecionadaAutomaticamente"]
+    # seleção por critério reprodutível (versão mais recente), documentada na política, não decisão implícita
+    assert len(pares["pares"]) == 13 and pares["selecionadaAutomaticamente"] is True and pares["fontePolitica"] == "politica-republicacoes.json"
 
     contrato_path = ROOT / "output-historico/contrato-integracao/serie_fisica_nacional.csv"
     contrato = carregar(contrato_path)
@@ -71,8 +89,9 @@ def auditoria():
                r["perimetroBridgeId"] for r in pontos):
             continue
         elegiveis[int(chave[0]), chave[1]] = pontos
-    assert len(elegiveis) == len(pacote["series"]) == 1555
-    assert len({s[0] for s in pacote["series"]}) == 71
+    # 1.792 séries após a seleção das 13 republicações (antes: 1.555 com os pares pendentes)
+    assert len(elegiveis) == len(pacote["series"]) == 1792
+    assert len({s[0] for s in pacote["series"]}) == 81
     assert len({s[2] for s in pacote["series"]}) == 25
     for s in pacote["series"]:
         pontos = elegiveis[s[0], s[2]]
