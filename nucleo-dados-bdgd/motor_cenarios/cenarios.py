@@ -555,8 +555,9 @@ def verificar(contrato, internas, raw, saida, web):
             for i, (x, y) in enumerate(zip(a, b)): cmp(x, y, f"{cam}[{i}]")
         elif isinstance(a, float) or isinstance(b, float):
             # Random Forest/HistGradientBoosting variam no último dígito entre plataformas (Windows × Linux):
-            # números com tolerância de 0,1% relativo ou 1e-4 absoluto; escolhas de modelo e estados são exatos.
-            if a is None or b is None or abs(a - b) > max(1e-3 * max(abs(a), abs(b)), 1e-4): erros.append(f"{cam}: {a} ≠ {b}")
+            # e a diferença se acumula no horizonte de 5 anos (observado: até 0,15%). Números com tolerância de 0,5%
+            # relativo ou 1e-4 absoluto; escolhas de modelo e estados continuam exatos.
+            if a is None or b is None or abs(a - b) > max(5e-3 * max(abs(a), abs(b)), 1e-4): erros.append(f"{cam}: {a} ≠ {b}")
         elif a != b and not cam.endswith("codigo/cenarios.py"):
             erros.append(f"{cam}: {a!r} ≠ {b!r}")
     cmp(novo, pub, "")
