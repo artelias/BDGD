@@ -3,7 +3,7 @@ export type Cenario = "conservador" | "moderado" | "agressivo";
 export const CENARIOS: readonly Cenario[] = ["conservador", "moderado", "agressivo"];
 export const ROTULO_CENARIO: Record<Cenario, string> = { conservador: "Conservador", moderado: "Moderado", agressivo: "Agressivo" };
 export const ROTULO_ESTADO: Record<string, string> = {
-  tres_cenarios: "Três cenários validados retrospectivamente",
+  tres_cenarios: "Três cenários comparados em backtest",
   dois_cenarios: "Dois cenários disponíveis",
   somente_moderado: "Somente cenário moderado",
   somente_baseline: "Somente baseline de persistência",
