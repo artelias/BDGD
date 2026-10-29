@@ -1,5 +1,5 @@
 "use client";
-import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Monitor, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
+import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,7 +11,7 @@ import { useModalFocus } from "@/components/ui/useModalFocus";
 import { useData } from "@/lib/data-context";
 import { fmtDate } from "@/lib/format";
 import { useStoredValue } from "@/lib/hooks";
-import { useTheme, type ThemePref } from "@/lib/theme";
+import { useTheme } from "@/lib/theme";
 import { CommandMenu } from "./CommandMenu";
 import s from "./shell.module.css";
 
@@ -33,17 +33,18 @@ const NAV2: NavItem[] = [
 ];
 const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional", "/evolucao/": "Evolução histórica", "/comparar/": "Comparador", "/explorar/": "Explorar ativos", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Previsões", "/design/": "Sistema de componentes" };
 
-const THEME_NEXT: Record<ThemePref, ThemePref> = { system: "light", light: "dark", dark: "system" };
-const THEME_LABEL: Record<ThemePref, string> = { system: "Tema do sistema", light: "Tema claro", dark: "Tema escuro" };
-
+/** O sistema define apenas a aparência inicial. Cada clique alterna o tema VISÍVEL,
+ * nunca percorre um terceiro estado "system" que poderia parecer um clique sem efeito. */
 function ThemeButton() {
-  const { pref, setPref } = useTheme();
-  const Icon = pref === "light" ? Sun : pref === "dark" ? Moon : Monitor;
+  const { resolved, setPref } = useTheme();
+  const isDark = resolved === "dark";
+  const next = isDark ? "light" : "dark";
+  const Icon = isDark ? Moon : Sun;
   return (
-    <Tip text={`${THEME_LABEL[pref]} — alternar`}>
-      <Button variant="ghost" icon aria-label={`${THEME_LABEL[pref]}. Alternar tema`} onClick={() => setPref(THEME_NEXT[pref])} data-testid="theme-toggle">
+    <Tip text={`Tema ${isDark ? "escuro" : "claro"} — ativar ${isDark ? "claro" : "escuro"}`}>
+      <Button variant="ghost" icon aria-label="Modo escuro" aria-pressed={isDark} onClick={() => setPref(next)} data-testid="theme-toggle">
         <AnimatePresence mode="wait" initial={false}>
-          <motion.span key={pref} initial={{ opacity: 0, rotate: -40, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 40, scale: 0.7 }} transition={{ duration: 0.18 }} style={{ display: "inline-flex" }}>
+          <motion.span key={resolved} initial={{ opacity: 0, rotate: -40, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 40, scale: 0.7 }} transition={{ duration: 0.18 }} style={{ display: "inline-flex" }}>
             <Icon size={17} />
           </motion.span>
         </AnimatePresence>
