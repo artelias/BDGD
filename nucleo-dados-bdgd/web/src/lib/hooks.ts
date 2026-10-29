@@ -12,8 +12,11 @@ export function useMediaQuery(query: string): boolean {
 }
 
 const EVT = "nucleo-bdgd-storage";
+// Fallback por aba: mesmo que o navegador bloqueie escrita no localStorage,
+// a escolha deve surtir efeito imediato durante a sessão atual.
+const volatileValues = new Map<string, string>();
 function read(key: string): string | null {
-  try { return localStorage.getItem(key); } catch { return null; }
+  try { return localStorage.getItem(key); } catch { return volatileValues.get(key) ?? null; }
 }
 
 /** Preferência persistida em localStorage (com fallback silencioso quando o armazenamento é bloqueado). */
@@ -26,7 +29,8 @@ export function useStoredValue(key: string, fallback: string): [string, (v: stri
   }, [key]);
   const value = useSyncExternalStore(subscribe, () => read(key) ?? fallback, () => fallback);
   const set = useCallback((v: string) => {
-    try { localStorage.setItem(key, v); } catch { /* sem persistência */ }
+    volatileValues.set(key, v);
+    try { localStorage.setItem(key, v); } catch { /* preferência válida nesta aba, mas não persistida */ }
     window.dispatchEvent(new Event(EVT));
   }, [key]);
   return [value, set];
