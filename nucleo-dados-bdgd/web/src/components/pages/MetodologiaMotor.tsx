@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { CENARIOS, ROTULO_CENARIO, ROTULO_ESTADO, parseCenarios, type ProdutoCenarios } from "@/lib/cenarios-motor";
 import s from "./metodologia.module.css";
+import { MetodologiaEmpresa } from "./MetodologiaEmpresa";
 
 const pct = (n: number | null | undefined) => n == null ? "N/D" : `${(n * 100).toLocaleString("pt-BR", { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%`;
 
@@ -35,6 +36,7 @@ export function MetodologiaMotor() {
   const par = p.parametros as Record<string, number | number[]>;
   return <>
     <p>Esta seção é gerada a partir do produto efetivamente publicado em <span className="mono">/data/previsoes/cenarios-motor.json</span> (esquema <span className="mono">{p.schema_version}</span>). Ano-base {p.base}; horizonte {p.horizonte[0]}–{p.horizonte[p.horizonte.length - 1]}; origens de backtest {p.origens_backtest.join(" e ")}. Nenhum modelo é treinado no navegador.</p>
+    <MetodologiaEmpresa p={p} />
     <h3>Alvo, amostra e validação</h3>
     <p><b>Alvo:</b> estoque físico anual por distribuidora, ativo e métrica, a partir do contrato nacional (2022–2025). Usa-se apenas o segmento contíguo de observações positivas que termina em {p.base}, cortado em ruptura cadastral; ausências, pendências e zeros não entram no treino e nunca são preenchidos. A projeção exige ao menos três anos comparáveis. Modelos de painel aprendem o log-crescimento anual <code>g(i,t) = ln y(i,t) − ln y(i,t−1)</code> a partir de variáveis observadas em <code>t−1</code>; o alvo é winsorizado nos percentis 5–95 ajustados somente no treino.</p>
     <p><b>Backtest com origem móvel:</b> na origem 2023 o treino usa 2022–2023 e prevê 2024 (h=1) e 2025 (h=2); na origem 2024 usa 2022–2024 e prevê 2025 (h=1). Todos os modelos são avaliados exatamente nos mesmos pontos; um candidato que não prevê todos os pontos fica inelegível. Métricas: <code>WAPE = Σ|ŷ−y| / Σ|y|</code>, MAE, RMSE, viés relativo <code>Σ(ŷ−y)/Σy</code>, MdAPE e estabilidade (diferença do WAPE de h=1 entre as origens). Horizontes de 3 a 5 anos não têm verificação retrospectiva.</p>
