@@ -1,0 +1,629 @@
+fonte,nivel,DIST,objeto,ano,status,motivo
+extracao,A,40,trafo_dist_potencia_kva,2022,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,40,trafo_dist_potencia_kva,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,40,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,43,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,47,trafo_dist_potencia_kva,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,103,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,103,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,103,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,103,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,103,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,382,trafo_dist_potencia_kva,2022,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,382,trafo_dist_potencia_kva,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,382,trafo_dist_potencia_kva,2024,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,382,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,390,trafo_dist_potencia_kva,2022,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,390,trafo_dist_potencia_kva,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,390,trafo_dist_potencia_kva,2024,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,390,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,390,rede_bt_extensao_km,2022,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,390,rede_bt_extensao_km,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,391,trafo_dist_potencia_kva,2022,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,391,trafo_dist_potencia_kva,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,391,trafo_dist_potencia_kva,2024,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,391,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,400,trafo_dist_potencia_kva,2023,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,400,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,2351,ucbt_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2351,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=PENDENTE_DECISAO
+extracao,A,2351,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2351,trafo_dist_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2351,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=PENDENTE_DECISAO
+extracao,A,2351,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2351,trafo_dist_potencia_kva,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2351,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=PENDENTE_DECISAO
+extracao,A,2351,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2351,rede_mt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2351,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=PENDENTE_DECISAO
+extracao,A,2351,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2351,rede_bt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2351,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=PENDENTE_DECISAO
+extracao,A,2351,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2381,ucbt_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2381,trafo_dist_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2381,trafo_dist_potencia_kva,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2381,rede_mt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2381,rede_bt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,2904,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,ucbt_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,trafo_dist_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,trafo_dist_potencia_kva,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,rede_mt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,2904,rede_bt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,3223,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,3223,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,3223,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,3223,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,3223,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,4950,ucbt_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,4950,trafo_dist_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,4950,trafo_dist_potencia_kva,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,4950,rede_mt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,4950,rede_bt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5274,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5274,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,ucbt_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5274,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,trafo_dist_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5274,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,trafo_dist_potencia_kva,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5274,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,rede_mt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5274,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5274,rede_bt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,ucbt_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,trafo_dist_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,trafo_dist_potencia_kva,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,rede_mt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5279,rede_bt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,5343,ucbt_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5343,trafo_dist_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5343,trafo_dist_potencia_kva,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5343,rede_mt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5343,rede_bt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5351,ucbt_quantidade,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,ucbt_quantidade,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,trafo_dist_quantidade,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,trafo_dist_quantidade,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,trafo_dist_potencia_kva,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,trafo_dist_potencia_kva,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,rede_mt_extensao_km,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,rede_mt_extensao_km,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,rede_bt_extensao_km,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,rede_bt_extensao_km,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,5351,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,5364,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5364,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5364,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5364,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5364,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5370,ucbt_quantidade,2025,indisponivel,contract cell not observed: estado=nao_homologado status=PENDENTE_DECISAO
+extracao,A,5371,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5371,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5371,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5371,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5371,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5372,ucbt_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5372,trafo_dist_quantidade,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5372,trafo_dist_potencia_kva,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5372,rede_mt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5372,rede_bt_extensao_km,2022,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5379,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5379,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5379,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5379,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,5379,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,6587,trafo_dist_potencia_kva,2025,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,6603,ucbt_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,6603,trafo_dist_quantidade,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,6603,trafo_dist_potencia_kva,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,6603,rede_mt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,6603,rede_bt_extensao_km,2023,indisponivel,contract cell not observed: estado=nao_homologado status=BLOQUEADO
+extracao,A,6611,ucbt_quantidade,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,ucbt_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,trafo_dist_quantidade,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,trafo_dist_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,trafo_dist_potencia_kva,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,trafo_dist_potencia_kva,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,rede_mt_extensao_km,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,rede_mt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,rede_bt_extensao_km,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6611,rede_bt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,ucbt_quantidade,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,ucbt_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,ucbt_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,trafo_dist_quantidade,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,trafo_dist_quantidade,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,trafo_dist_quantidade,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,trafo_dist_potencia_kva,2022,extraido_sem_valor_valido,regra de qualidade do extrator (cobertura de vinculo/potencia invalida/duplicidade)
+extracao,A,6612,trafo_dist_potencia_kva,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,trafo_dist_potencia_kva,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,trafo_dist_potencia_kva,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,rede_mt_extensao_km,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,rede_mt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,rede_mt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,rede_bt_extensao_km,2023,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,rede_bt_extensao_km,2024,indisponivel,missing or ambiguous contract publication
+extracao,A,6612,rede_bt_extensao_km,2025,indisponivel,missing or ambiguous contract publication
+extracao,A,7467,ucbt_quantidade,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,7467,trafo_dist_quantidade,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,7467,trafo_dist_potencia_kva,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,7467,rede_mt_extensao_km,2022,indisponivel,missing or ambiguous contract publication
+extracao,A,7467,rede_bt_extensao_km,2022,indisponivel,missing or ambiguous contract publication
+contrato,B,70,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5366,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,bancos_capacitores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,87,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,88,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,386,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,401,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,4248,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5217,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5279,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5343,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5345,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5346,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5351,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5352,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5353,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5355,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5363,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5366,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5369,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5372,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5373,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5374,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5375,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5377,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5381,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5382,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5384,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5385,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6603,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,6610,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6897,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7016,barramentos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,70,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,chaves,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,82,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,83,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,84,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,87,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,88,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,95,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,386,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,399,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,400,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,401,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,504,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,527,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,598,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,2351,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:ENTIDADE_VAZIA_NA_ORIGEM; ausente:PUBLICACAO_NAO_LOCALIZADA; nao_homologado:BASE_INCONSISTENTE; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,2381,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,2783,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,3223,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,4248,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5217,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5274,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5279,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5343,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5345,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5346,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5351,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5352,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5353,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5355,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5356,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5363,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5365,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5366,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5367,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5369,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5370,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5371,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5372,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5373,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5374,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5375,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5377,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5379,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5381,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5382,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5384,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5385,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5386,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6603,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,6609,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6610,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6897,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6898,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7016,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7467,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7883,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,11825,circuitos_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,70,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,conjuntos,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,consumidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,disjuntores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,geradores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,iluminacao,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,medidores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,postes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,ramais,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5366,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; zero_verificado:)
+contrato,B,6896,reatores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,82,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,83,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,84,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,87,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,88,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,386,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,400,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,401,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,504,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,598,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,2783,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,4248,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5217,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5274,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5279,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5343,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5345,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5346,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5351,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5352,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5355,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5356,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5363,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5364,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5365,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5366,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5367,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5369,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5372,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5373,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5374,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5375,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5377,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5379,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5381,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5382,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5384,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5385,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5386,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6603,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,6609,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6610,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6897,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6898,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7016,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7883,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,11825,rede_at,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,70,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,rede_bt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,rede_mt,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,88,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,95,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,386,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5274,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5366,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5377,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5382,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6610,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6897,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7883,reguladores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,70,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,religadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; zero_verificado:)
+contrato,B,6896,seccionalizadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,87,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,88,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,386,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,4248,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5217,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5274,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5279,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5343,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5345,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5346,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5351,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:PUBLICACAO_NAO_LOCALIZADA; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5352,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5355,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5363,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5366,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5369,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5372,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,5373,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5374,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5375,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5377,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5381,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (ausente:INDICADOR_AUSENTE_OUTRA_RAZAO; nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5382,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5384,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,5385,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6603,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL; nao_homologado:BLOQUEIO_COMPETENCIA)
+contrato,B,6610,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,6612,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6897,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,7016,subestacoes,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:ATIVO_NAO_APLICAVEL)
+contrato,B,70,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,torres,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,trafo_dist,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,trafo_forca,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,70,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,71,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,72,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,73,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,75,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,84,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,386,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,397,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,5217,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+contrato,B,6612,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
+contrato,B,6896,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
+catalogo,catalogo,,trafo_forca/potencia_kva,,bloqueado,potencia: TUC 570 no EQ e POT_NOM da UNTRAT/UNTRMT vinculada nao homologados para esta familia; o contrato nacional nao publica a metrica
+catalogo,catalogo,,trafo_medida/potencia_kva,,bloqueado,transformador de medida (TUC 575) nao tem potencia de transformacao; POT_NOM da instalacao vinculada nao representa o equipamento
+catalogo,catalogo,,reguladores/potencia_kva,,bloqueado,EQRE.POT_NOM sem dominio/unidade comprovados; o contrato nacional nao publica a metrica
+conversao_zip,A,103,publicacao_4e4da507d1a04fd08e00db551778f26f,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario b5c82a08b6334d3483ec4bafe42e7243 de 2024 em 15 entidades (ex.: {'BE': (11, 12), 'CTMT': (40, 32), 'EP': (1, 5)})"
+conversao_zip,A,2351,publicacao_15b23d4fbb964981b29d5bb1b79cee29,2022,quarentena,competencia_indeterminada: BASE.DAT_INC = DAT_FNL = data de extracao (2024-03-06); periodo de referencia nao declarado
+conversao_zip,A,2381,publicacao_9023484df13b4fcab81b90571f381bff,2022,quarentena,"competencia_divergente_2023: BASE 2023-01-01 a 2023-12-31; difere do item ordinario 61672ea3de6c47baa27929c56c7f1cba de 2023 em 17 entidades (ex.: {'BE': (11, 9), 'CTMT': (13, 15), 'EQME': (28742, 28960)})"
+conversao_zip,A,3223,publicacao_24964098ead842c8a743af4a97a07469,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario ddc1475f9a074b9db912402154e2c4df de 2024 em 14 entidades (ex.: {'BE': (8, 9), 'CTMT': (23, 21), 'EQME': (26691, 26709)})"
+conversao_zip,A,4950,publicacao_7d20595de6c3432098d1f8ba3690eec2,2022,quarentena,"competencia_confirmada_data_base_divergente: BASE 2022-01-01 a 2022-11-30: competencia 2022, mas data-base nao e 31/12 (intervalo ate a competencia seguinte nao e anual)"
+conversao_zip,A,5274,publicacao_fe0ac68201b4433ba621236763d27985,2023,quarentena,"competencia_divergente_2022: BASE 2022-01-01 a 2022-12-31; difere do item ordinario 0af857b342e1495d9bf2f912b85e3ff1 de 2022 em 2 entidades (ex.: {'UGMT': (0, 2), 'UNREMT': (2, 0)})"
+conversao_zip,A,5343,publicacao_5c6b3c2d4c0b4704a174af9d6c59dca8,2022,quarentena,"competencia_divergente_2023: BASE 2022-09-01 a 2023-08-31; difere do item ordinario becc39151024466793632626c02536a4 de 2023 em 23 entidades (ex.: {'BE': (8, 7), 'EP': (1, 2), 'EQCR': (281, 287)})"
+conversao_zip,A,5364,publicacao_855e08a700a144d7bea44d93d54d3bb4,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario d9ef4e21c97e4ce4a3268b3366a1a647 de 2024 em 11 entidades (ex.: {'BE': (9, 8), 'EP': (1, 2), 'EQME': (16868, 16870)})"
+conversao_zip,A,5371,publicacao_713833ce3c5042ae85f28ca763adacfb,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario 17c27244d7a94cdbbf0fcdbf7874f76d de 2024 em 12 entidades (ex.: {'EP': (1, 2), 'EQME': (12173, 12176), 'EQTRM': (191, 197)})"
+conversao_zip,A,5372,publicacao_406f1d6bd52549d78a8bc46a8ccb0420,2022,quarentena,"competencia_divergente_2023: BASE 2023-01-01 a 2023-12-31; difere do item ordinario 7c1f2236e027453b9c04c3492741b81b de 2023 em 4 entidades (ex.: {'EQSE': (683, 685), 'RAMLIG': (5078, 5074), 'SSDMT': (6255, 6254)})"
+conversao_zip,A,5379,publicacao_d70572f92648474fa2338ae4cfed8e70,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario 8f9341132b3d484ea6ea6f3f7d1ed0ac de 2024 em 10 entidades (ex.: {'BE': (7, 8), 'EP': (1, 2), 'EQSE': (3584, 3516)})"
+conversao_zip,A,6603,publicacao_34727428a26d4f179ca549caf83b40cc,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario 720a0f1a2bb74a7b987ba63eaf73c65b de 2024 em 7 entidades (ex.: {'BE': (6, 7), 'EP': (1, 2), 'PNT': (1, 2)})"
+quarentena,A,5697,painel_territorial,2023,quarentena,ponte de recodificacao municipal MUN_RECODE_5697_2023 pendente de homologacao

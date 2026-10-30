@@ -56,7 +56,8 @@ class Natures(unittest.TestCase):
     def test_every_asset_has_a_nature_consistent_with_its_unit(self):
         self.assertEqual({a: s['nature'] for a, s in ASSETS.items()},
                          {'ucbt_quantidade': 'discrete_count', 'trafo_dist_quantidade': 'discrete_count',
-                          'trafo_dist_potencia_kva': 'continuous_capacity', 'rede_mt_extensao_km': 'continuous_length'})
+                          'trafo_dist_potencia_kva': 'continuous_capacity', 'rede_mt_extensao_km': 'continuous_length',
+                          'rede_bt_extensao_km': 'continuous_length'})
         for a, s in ASSETS.items():
             self.assertEqual(s['count'], s['nature'] == 'discrete_count')                               # count flag and nature never disagree
 

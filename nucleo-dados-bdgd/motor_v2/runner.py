@@ -65,11 +65,14 @@ def resolve_sources(dist,concept='consumidores',metric='quantidade'):
   ids={x['publicacao_id'] for x in hits if x['publicacao_id']};
   if len(ids)!=1:out.append(dict(year=year,error='missing or ambiguous contract publication'));continue
   it=next(iter(ids));x=next(x for x in hits if x['publicacao_id']==it);p=pubs.get(it,{})
+  # Only contract cells observed under the national rule are ordinary training data; blocked/pending cells (e.g. items whose
+  # BASE contradicts the competence) are recorded as failures of that year, never read.
+  if x['estado']!='observado':out.append(dict(year=year,item=it,error='contract cell not observed: estado=%s status=%s'%(x['estado'],x['status_homologacao'])));continue
   # Availability of the specific revision, not the competence year.
   dates=[p.get(k,'')[:10] for k in ['publicado_em','atualizado_em'] if p.get(k)]
   available=max(dates) if dates else None
   base=Path('D:/NUCLEO_BDGD_2025/staging_parquet')/f'DIST={dist}'/'DATA_BASE=2025-12-31' if year==2025 else Path('D:/NUCLEO_BDGD_2022_2024/parquet')/str(year)/str(dist)/it
-  out.append(dict(year=year,item=it,base=str(base),available=available,source_sha=x['sha256'],rupture=x['ruptura_desde_ano_anterior']=='true',homologation=x['status_homologacao']))
+  out.append(dict(year=year,item=it,base=str(base),available=available,source_sha=x['sha256'],rupture=x['ruptura_desde_ano_anterior']=='true',homologation=x['status_homologacao'],contract_value=float(x['valor']) if x['valor'] else None))
  return out
 
 def extract_uc(con,src,dest):

@@ -1,0 +1,91 @@
+{
+  "dist_no_contrato_nacional": 114,
+  "dist_no_inventario_local": 104,
+  "dist_elegiveis_extracao": 104,
+  "dist_processadas_extracao": 104,
+  "dist_treinadas_ml": 97,
+  "dist_com_projecao": 104,
+  "dist_com_projecao_nivel_A": 104,
+  "dist_com_projecao_nivel_B": 103,
+  "combinacoes_catalogo": {
+    "objetivos_metricas_no_catalogo": 29,
+    "com_projecao": 26,
+    "bloqueados": 3,
+    "series_dist_x_objeto_calculadas_A": 516,
+    "series_dist_x_objeto_calculadas_B": 2412,
+    "series_dist_x_objeto_bloqueadas_A": 0,
+    "series_dist_x_objeto_bloqueadas_B": 438
+  },
+  "modelos": {
+    "candidatos_ml_avaliados_A": 3700,
+    "ajustes_ml_externos_A": 18172,
+    "ajustes_ml_selecao_interna_A": 139775,
+    "candidatos_ml_avaliados_B": 16871,
+    "escolhas_experimentais_ml_A": 42,
+    "escolhas_experimentais_tendencia_A": 178,
+    "escolhas_experimentais_ml_B": 392,
+    "escolhas_experimentais_tendencia_B": 436,
+    "modelos_homologados": 0
+  },
+  "projecoes": {
+    "series_A": 516,
+    "series_B": 2412,
+    "linhas_A_distribuidora": 7740,
+    "linhas_B": 36180,
+    "series_completas_nos_totais_A": 487,
+    "series_completas_nos_totais_B": 2274,
+    "excluidas_dos_totais_A": 29,
+    "excluidas_dos_totais_B": 576
+  },
+  "cobertura": [
+    {
+      "ativo": "ucbt_quantidade",
+      "dist_projetadas_ancora_2025": 98,
+      "total_fisico_2025": 89932832.0,
+      "coorte_territorial_2025": 89932808.0,
+      "cobertura_territorial": 0.9999997331341683,
+      "dist_com_2025_extraido": 98
+    },
+    {
+      "ativo": "trafo_dist_quantidade",
+      "dist_projetadas_ancora_2025": 99,
+      "total_fisico_2025": 6103972.0,
+      "coorte_territorial_2025": 5668365.0,
+      "cobertura_territorial": 0.928635485221754,
+      "dist_com_2025_extraido": 99
+    },
+    {
+      "ativo": "trafo_dist_potencia_kva",
+      "dist_projetadas_ancora_2025": 92,
+      "total_fisico_2025": 192761443.23499998,
+      "coorte_territorial_2025": 192761443.23499998,
+      "cobertura_territorial": 1.0,
+      "dist_com_2025_extraido": 92
+    },
+    {
+      "ativo": "rede_mt_extensao_km",
+      "dist_projetadas_ancora_2025": 99,
+      "total_fisico_2025": 3146152.063448573,
+      "coorte_territorial_2025": 3146152.063448573,
+      "cobertura_territorial": 1.0,
+      "dist_com_2025_extraido": 99
+    },
+    {
+      "ativo": "rede_bt_extensao_km",
+      "dist_projetadas_ancora_2025": 99,
+      "total_fisico_2025": 1750884.3804569533,
+      "coorte_territorial_2025": 1750884.3804569533,
+      "cobertura_territorial": 1.0,
+      "dist_com_2025_extraido": 99
+    }
+  ],
+  "quarentena": [
+    [
+      5697,
+      2023,
+      "ponte de recodificacao municipal MUN_RECODE_5697_2023 pendente de homologacao"
+    ]
+  ],
+  "status": "experimental_interno_nao_publicavel",
+  "modelo_homologado": "nenhum (2 origens < 3)"
+}

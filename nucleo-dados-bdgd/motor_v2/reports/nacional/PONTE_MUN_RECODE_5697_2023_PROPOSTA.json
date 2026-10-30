@@ -1,0 +1,5260 @@
+{
+  "id": "MUN_RECODE_5697_2023",
+  "tipo": "recodificacao_municipal",
+  "dist": 5697,
+  "ano": 2023,
+  "status": "PENDENTE_HOMOLOGACAO",
+  "regra": "codigo publicado = '0' + 6 primeiros digitos do codigo IBGE; candidato = unico codigo IBGE com esse prefixo",
+  "evidencia_suficiente_para_proposta": true,
+  "verificacoes": {
+    "codigos_fora_ibge": 275,
+    "com_candidato_unico": 275,
+    "candidatos_distintos": 275,
+    "colisoes": 0,
+    "ufs_dos_candidatos": [
+      "PR",
+      "SC"
+    ],
+    "ufs_da_empresa_nos_anos_adjacentes": [
+      "PR",
+      "SC"
+    ],
+    "conj_estaveis": 121,
+    "conj_no_ano": 121,
+    "presentes_nos_dois_anos_adjacentes": 275,
+    "concordancia_conj_ponderada": 0.9999988109792982,
+    "razao_clientes_vs_ano_anterior_min": 0.9444444444444444,
+    "razao_clientes_vs_ano_anterior_max": 1.155848508546531,
+    "clientes_cobertos": 3364113,
+    "clientes_fora_ibge": 3364113
+  },
+  "mapeamento": [
+    {
+      "codigo_publicado": "0410260",
+      "clientes": 17,
+      "candidato_ibge": "4102604",
+      "candidatos": [
+        "4102604"
+      ],
+      "nome": "Barracão",
+      "uf": "PR",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 18,
+      "clientes_ano_seguinte": 16,
+      "razao_vs_anterior": 0.9444444444444444,
+      "razao_vs_seguinte": 0.9411764705882353,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0410785",
+      "clientes": 1,
+      "candidato_ibge": "4107850",
+      "candidatos": [
+        "4107850"
+      ],
+      "nome": "Flor da Serra do Sul",
+      "uf": "PR",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1,
+      "clientes_ano_seguinte": 1,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0411540",
+      "clientes": 19,
+      "candidato_ibge": "4115408",
+      "candidatos": [
+        "4115408"
+      ],
+      "nome": "Marmeleiro",
+      "uf": "PR",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 19,
+      "clientes_ano_seguinte": 21,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.105263157894737,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0412160",
+      "clientes": 1,
+      "candidato_ibge": "4121604",
+      "candidatos": [
+        "4121604"
+      ],
+      "nome": "Renascença",
+      "uf": "PR",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1,
+      "clientes_ano_seguinte": 1,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0412230",
+      "clientes": 11330,
+      "candidato_ibge": "4122305",
+      "candidatos": [
+        "4122305"
+      ],
+      "nome": "Rio Negro",
+      "uf": "PR",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 11204,
+      "clientes_ano_seguinte": 11566,
+      "razao_vs_anterior": 1.0112459835772938,
+      "razao_vs_seguinte": 1.020829655781112,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420005",
+      "clientes": 1421,
+      "candidato_ibge": "4200051",
+      "candidatos": [
+        "4200051"
+      ],
+      "nome": "Abdon Batista",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1406,
+      "clientes_ano_seguinte": 1430,
+      "razao_vs_anterior": 1.0106685633001422,
+      "razao_vs_seguinte": 1.0063335679099226,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420010",
+      "clientes": 6820,
+      "candidato_ibge": "4200101",
+      "candidatos": [
+        "4200101"
+      ],
+      "nome": "Abelardo Luz",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6723,
+      "clientes_ano_seguinte": 6969,
+      "razao_vs_anterior": 1.0144280827011751,
+      "razao_vs_seguinte": 1.0218475073313782,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420020",
+      "clientes": 4904,
+      "candidato_ibge": "4200200",
+      "candidatos": [
+        "4200200"
+      ],
+      "nome": "Agrolândia",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4865,
+      "clientes_ano_seguinte": 4995,
+      "razao_vs_anterior": 1.008016443987667,
+      "razao_vs_seguinte": 1.0185562805872757,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420030",
+      "clientes": 2691,
+      "candidato_ibge": "4200309",
+      "candidatos": [
+        "4200309"
+      ],
+      "nome": "Agronômica",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2617,
+      "clientes_ano_seguinte": 2734,
+      "razao_vs_anterior": 1.0282766526557126,
+      "razao_vs_seguinte": 1.0159791898922335,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420040",
+      "clientes": 3188,
+      "candidato_ibge": "4200408",
+      "candidatos": [
+        "4200408"
+      ],
+      "nome": "Água Doce",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3136,
+      "clientes_ano_seguinte": 3243,
+      "razao_vs_anterior": 1.0165816326530612,
+      "razao_vs_seguinte": 1.0172521957340026,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420050",
+      "clientes": 2804,
+      "candidato_ibge": "4200507",
+      "candidatos": [
+        "4200507"
+      ],
+      "nome": "Águas de Chapecó",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2760,
+      "clientes_ano_seguinte": 2836,
+      "razao_vs_anterior": 1.0159420289855072,
+      "razao_vs_seguinte": 1.0114122681883024,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420055",
+      "clientes": 1337,
+      "candidato_ibge": "4200556",
+      "candidatos": [
+        "4200556"
+      ],
+      "nome": "Águas Frias",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1328,
+      "clientes_ano_seguinte": 1361,
+      "razao_vs_anterior": 1.006777108433735,
+      "razao_vs_seguinte": 1.0179506357516828,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420060",
+      "clientes": 2531,
+      "candidato_ibge": "4200606",
+      "candidatos": [
+        "4200606"
+      ],
+      "nome": "Águas Mornas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2487,
+      "clientes_ano_seguinte": 2607,
+      "razao_vs_anterior": 1.0176919983916366,
+      "razao_vs_seguinte": 1.0300276570525484,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420070",
+      "clientes": 6234,
+      "candidato_ibge": "4200705",
+      "candidatos": [
+        "4200705"
+      ],
+      "nome": "Alfredo Wagner",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5787,
+      "clientes_ano_seguinte": 6394,
+      "razao_vs_anterior": 1.0772420943494039,
+      "razao_vs_seguinte": 1.025665704202759,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420075",
+      "clientes": 1089,
+      "candidato_ibge": "4200754",
+      "candidatos": [
+        "4200754"
+      ],
+      "nome": "Alto Bela Vista",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1075,
+      "clientes_ano_seguinte": 1093,
+      "razao_vs_anterior": 1.0130232558139536,
+      "razao_vs_seguinte": 1.0036730945821855,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420080",
+      "clientes": 2960,
+      "candidato_ibge": "4200804",
+      "candidatos": [
+        "4200804"
+      ],
+      "nome": "Anchieta",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2932,
+      "clientes_ano_seguinte": 3025,
+      "razao_vs_anterior": 1.009549795361528,
+      "razao_vs_seguinte": 1.0219594594594594,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420090",
+      "clientes": 2197,
+      "candidato_ibge": "4200903",
+      "candidatos": [
+        "4200903"
+      ],
+      "nome": "Angelina",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2183,
+      "clientes_ano_seguinte": 2256,
+      "razao_vs_anterior": 1.0064131928538709,
+      "razao_vs_seguinte": 1.026854802002731,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420100",
+      "clientes": 4269,
+      "candidato_ibge": "4201000",
+      "candidatos": [
+        "4201000"
+      ],
+      "nome": "Anita Garibaldi",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4203,
+      "clientes_ano_seguinte": 4316,
+      "razao_vs_anterior": 1.0157030692362599,
+      "razao_vs_seguinte": 1.0110096041227454,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420120",
+      "clientes": 4194,
+      "candidato_ibge": "4201208",
+      "candidatos": [
+        "4201208"
+      ],
+      "nome": "Antônio Carlos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4002,
+      "clientes_ano_seguinte": 4347,
+      "razao_vs_anterior": 1.047976011994003,
+      "razao_vs_seguinte": 1.036480686695279,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420125",
+      "clientes": 4647,
+      "candidato_ibge": "4201257",
+      "candidatos": [
+        "4201257"
+      ],
+      "nome": "Apiúna",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4542,
+      "clientes_ano_seguinte": 4704,
+      "razao_vs_anterior": 1.0231175693527081,
+      "razao_vs_seguinte": 1.0122659780503551,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420127",
+      "clientes": 1984,
+      "candidato_ibge": "4201273",
+      "candidatos": [
+        "4201273"
+      ],
+      "nome": "Arabutã",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1957,
+      "clientes_ano_seguinte": 2024,
+      "razao_vs_anterior": 1.0137966274910577,
+      "razao_vs_seguinte": 1.0201612903225807,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420130",
+      "clientes": 20692,
+      "candidato_ibge": "4201307",
+      "candidatos": [
+        "4201307"
+      ],
+      "nome": "Araquari",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 17902,
+      "clientes_ano_seguinte": 21976,
+      "razao_vs_anterior": 1.155848508546531,
+      "razao_vs_seguinte": 1.0620529673303691,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420140",
+      "clientes": 35544,
+      "candidato_ibge": "4201406",
+      "candidatos": [
+        "4201406"
+      ],
+      "nome": "Araranguá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 34698,
+      "clientes_ano_seguinte": 36767,
+      "razao_vs_anterior": 1.0243818087497838,
+      "razao_vs_seguinte": 1.034408057618726,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420160",
+      "clientes": 1848,
+      "candidato_ibge": "4201604",
+      "candidatos": [
+        "4201604"
+      ],
+      "nome": "Arroio Trinta",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1822,
+      "clientes_ano_seguinte": 1882,
+      "razao_vs_anterior": 1.0142700329308452,
+      "razao_vs_seguinte": 1.0183982683982684,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420165",
+      "clientes": 1042,
+      "candidato_ibge": "4201653",
+      "candidatos": [
+        "4201653"
+      ],
+      "nome": "Arvoredo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1030,
+      "clientes_ano_seguinte": 1060,
+      "razao_vs_anterior": 1.0116504854368933,
+      "razao_vs_seguinte": 1.017274472168906,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420170",
+      "clientes": 3822,
+      "candidato_ibge": "4201703",
+      "candidatos": [
+        "4201703"
+      ],
+      "nome": "Ascurra",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3778,
+      "clientes_ano_seguinte": 3850,
+      "razao_vs_anterior": 1.011646373742721,
+      "razao_vs_seguinte": 1.0073260073260073,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420180",
+      "clientes": 1619,
+      "candidato_ibge": "4201802",
+      "candidatos": [
+        "4201802"
+      ],
+      "nome": "Atalanta",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1608,
+      "clientes_ano_seguinte": 1641,
+      "razao_vs_anterior": 1.0068407960199004,
+      "razao_vs_seguinte": 1.0135886349598517,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420190",
+      "clientes": 3174,
+      "candidato_ibge": "4201901",
+      "candidatos": [
+        "4201901"
+      ],
+      "nome": "Aurora",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3094,
+      "clientes_ano_seguinte": 3243,
+      "razao_vs_anterior": 1.0258564964447316,
+      "razao_vs_seguinte": 1.0217391304347827,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420195",
+      "clientes": 14486,
+      "candidato_ibge": "4201950",
+      "candidatos": [
+        "4201950"
+      ],
+      "nome": "Balneário Arroio do Silva",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 14349,
+      "clientes_ano_seguinte": 14970,
+      "razao_vs_anterior": 1.0095477036727298,
+      "razao_vs_seguinte": 1.033411569791523,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420200",
+      "clientes": 93122,
+      "candidato_ibge": "4202008",
+      "candidatos": [
+        "4202008"
+      ],
+      "nome": "Balneário Camboriú",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 91947,
+      "clientes_ano_seguinte": 94131,
+      "razao_vs_anterior": 1.0127791010038392,
+      "razao_vs_seguinte": 1.0108352483838405,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420205",
+      "clientes": 11707,
+      "candidato_ibge": "4202057",
+      "candidatos": [
+        "4202057"
+      ],
+      "nome": "Balneário Barra do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 11144,
+      "clientes_ano_seguinte": 11921,
+      "razao_vs_anterior": 1.0505204594400575,
+      "razao_vs_seguinte": 1.0182796617408387,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420207",
+      "clientes": 12704,
+      "candidato_ibge": "4202073",
+      "candidatos": [
+        "4202073"
+      ],
+      "nome": "Balneário Gaivota",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 12144,
+      "clientes_ano_seguinte": 13379,
+      "razao_vs_anterior": 1.0461133069828723,
+      "razao_vs_seguinte": 1.053132871536524,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420208",
+      "clientes": 1567,
+      "candidato_ibge": "4202081",
+      "candidatos": [
+        "4202081"
+      ],
+      "nome": "Bandeirante",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1540,
+      "clientes_ano_seguinte": 1615,
+      "razao_vs_anterior": 1.0175324675324675,
+      "razao_vs_seguinte": 1.03063178047224,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420209",
+      "clientes": 897,
+      "candidato_ibge": "4202099",
+      "candidatos": [
+        "4202099"
+      ],
+      "nome": "Barra Bonita",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 883,
+      "clientes_ano_seguinte": 903,
+      "razao_vs_anterior": 1.0158550396375992,
+      "razao_vs_seguinte": 1.0066889632107023,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420210",
+      "clientes": 30805,
+      "candidato_ibge": "4202107",
+      "candidatos": [
+        "4202107"
+      ],
+      "nome": "Barra Velha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 29307,
+      "clientes_ano_seguinte": 31580,
+      "razao_vs_anterior": 1.051114068311325,
+      "razao_vs_seguinte": 1.025158253530271,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420213",
+      "clientes": 2524,
+      "candidato_ibge": "4202131",
+      "candidatos": [
+        "4202131"
+      ],
+      "nome": "Bela Vista do Toldo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2484,
+      "clientes_ano_seguinte": 2555,
+      "razao_vs_anterior": 1.0161030595813205,
+      "razao_vs_seguinte": 1.0122820919175912,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420215",
+      "clientes": 1243,
+      "candidato_ibge": "4202156",
+      "candidatos": [
+        "4202156"
+      ],
+      "nome": "Belmonte",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1235,
+      "clientes_ano_seguinte": 1268,
+      "razao_vs_anterior": 1.0064777327935224,
+      "razao_vs_seguinte": 1.0201126307320998,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420220",
+      "clientes": 2677,
+      "candidato_ibge": "4202206",
+      "candidatos": [
+        "4202206"
+      ],
+      "nome": "Benedito Novo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2636,
+      "clientes_ano_seguinte": 2703,
+      "razao_vs_anterior": 1.0155538694992412,
+      "razao_vs_seguinte": 1.0097123645872246,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420230",
+      "clientes": 30853,
+      "candidato_ibge": "4202305",
+      "candidatos": [
+        "4202305"
+      ],
+      "nome": "Biguaçu",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 29661,
+      "clientes_ano_seguinte": 31979,
+      "razao_vs_anterior": 1.0401874515356866,
+      "razao_vs_seguinte": 1.0364956406184163,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420240",
+      "clientes": 168573,
+      "candidato_ibge": "4202404",
+      "candidatos": [
+        "4202404"
+      ],
+      "nome": "Blumenau",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 166226,
+      "clientes_ano_seguinte": 172244,
+      "razao_vs_anterior": 1.0141193315125192,
+      "razao_vs_seguinte": 1.021776915638922,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420243",
+      "clientes": 1871,
+      "candidato_ibge": "4202438",
+      "candidatos": [
+        "4202438"
+      ],
+      "nome": "Bocaina do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1827,
+      "clientes_ano_seguinte": 1916,
+      "razao_vs_anterior": 1.0240831964969896,
+      "razao_vs_seguinte": 1.0240513094601817,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420245",
+      "clientes": 24422,
+      "candidato_ibge": "4202453",
+      "candidatos": [
+        "4202453"
+      ],
+      "nome": "Bombinhas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 23514,
+      "clientes_ano_seguinte": 24851,
+      "razao_vs_anterior": 1.0386152930169261,
+      "razao_vs_seguinte": 1.017566128900172,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420250",
+      "clientes": 2195,
+      "candidato_ibge": "4202503",
+      "candidatos": [
+        "4202503"
+      ],
+      "nome": "Bom Jardim da Serra",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2133,
+      "clientes_ano_seguinte": 2253,
+      "razao_vs_anterior": 1.0290670417252696,
+      "razao_vs_seguinte": 1.0264236902050115,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420253",
+      "clientes": 189,
+      "candidato_ibge": "4202537",
+      "candidatos": [
+        "4202537"
+      ],
+      "nome": "Bom Jesus",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 187,
+      "clientes_ano_seguinte": 193,
+      "razao_vs_anterior": 1.0106951871657754,
+      "razao_vs_seguinte": 1.0211640211640212,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420257",
+      "clientes": 874,
+      "candidato_ibge": "4202578",
+      "candidatos": [
+        "4202578"
+      ],
+      "nome": "Bom Jesus do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 860,
+      "clientes_ano_seguinte": 877,
+      "razao_vs_anterior": 1.0162790697674418,
+      "razao_vs_seguinte": 1.0034324942791761,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420260",
+      "clientes": 4309,
+      "candidato_ibge": "4202602",
+      "candidatos": [
+        "4202602"
+      ],
+      "nome": "Bom Retiro",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4065,
+      "clientes_ano_seguinte": 4383,
+      "razao_vs_anterior": 1.0600246002460025,
+      "razao_vs_seguinte": 1.0171733580877234,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420270",
+      "clientes": 3080,
+      "candidato_ibge": "4202701",
+      "candidatos": [
+        "4202701"
+      ],
+      "nome": "Botuverá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3025,
+      "clientes_ano_seguinte": 3171,
+      "razao_vs_anterior": 1.018181818181818,
+      "razao_vs_seguinte": 1.0295454545454545,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420285",
+      "clientes": 1883,
+      "candidato_ibge": "4202859",
+      "candidatos": [
+        "4202859"
+      ],
+      "nome": "Braço do Trombudo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1853,
+      "clientes_ano_seguinte": 1892,
+      "razao_vs_anterior": 1.0161899622234214,
+      "razao_vs_seguinte": 1.0047796070100903,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420287",
+      "clientes": 1333,
+      "candidato_ibge": "4202875",
+      "candidatos": [
+        "4202875"
+      ],
+      "nome": "Brunópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1293,
+      "clientes_ano_seguinte": 1346,
+      "razao_vs_anterior": 1.0309358081979891,
+      "razao_vs_seguinte": 1.0097524381095273,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420290",
+      "clientes": 62241,
+      "candidato_ibge": "4202909",
+      "candidatos": [
+        "4202909"
+      ],
+      "nome": "Brusque",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 61292,
+      "clientes_ano_seguinte": 63996,
+      "razao_vs_anterior": 1.0154832604581348,
+      "razao_vs_seguinte": 1.0281968477370222,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420300",
+      "clientes": 29984,
+      "candidato_ibge": "4203006",
+      "candidatos": [
+        "4203006"
+      ],
+      "nome": "Caçador",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 29940,
+      "clientes_ano_seguinte": 30462,
+      "razao_vs_anterior": 1.0014696058784236,
+      "razao_vs_seguinte": 1.0159418356456777,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420310",
+      "clientes": 2873,
+      "candidato_ibge": "4203105",
+      "candidatos": [
+        "4203105"
+      ],
+      "nome": "Caibi",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2824,
+      "clientes_ano_seguinte": 2911,
+      "razao_vs_anterior": 1.0173512747875355,
+      "razao_vs_seguinte": 1.0132265924121129,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420315",
+      "clientes": 1342,
+      "candidato_ibge": "4203154",
+      "candidatos": [
+        "4203154"
+      ],
+      "nome": "Calmon",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1252,
+      "clientes_ano_seguinte": 1382,
+      "razao_vs_anterior": 1.071884984025559,
+      "razao_vs_seguinte": 1.0298062593144561,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420320",
+      "clientes": 44023,
+      "candidato_ibge": "4203204",
+      "candidatos": [
+        "4203204"
+      ],
+      "nome": "Camboriú",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 42435,
+      "clientes_ano_seguinte": 45478,
+      "razao_vs_anterior": 1.0374219394367856,
+      "razao_vs_seguinte": 1.033050905208641,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420325",
+      "clientes": 1693,
+      "candidato_ibge": "4203253",
+      "candidatos": [
+        "4203253"
+      ],
+      "nome": "Capão Alto",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1672,
+      "clientes_ano_seguinte": 1748,
+      "razao_vs_anterior": 1.01255980861244,
+      "razao_vs_seguinte": 1.0324867099822799,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420330",
+      "clientes": 6784,
+      "candidato_ibge": "4203303",
+      "candidatos": [
+        "4203303"
+      ],
+      "nome": "Campo Alegre",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6619,
+      "clientes_ano_seguinte": 6969,
+      "razao_vs_anterior": 1.0249282368937906,
+      "razao_vs_seguinte": 1.0272700471698113,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420340",
+      "clientes": 3436,
+      "candidato_ibge": "4203402",
+      "candidatos": [
+        "4203402"
+      ],
+      "nome": "Campo Belo do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3409,
+      "clientes_ano_seguinte": 3489,
+      "razao_vs_anterior": 1.0079202112056322,
+      "razao_vs_seguinte": 1.0154249126891735,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420350",
+      "clientes": 4073,
+      "candidato_ibge": "4203501",
+      "candidatos": [
+        "4203501"
+      ],
+      "nome": "Campo Erê",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3992,
+      "clientes_ano_seguinte": 4166,
+      "razao_vs_anterior": 1.0202905811623246,
+      "razao_vs_seguinte": 1.0228332924134544,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420360",
+      "clientes": 17181,
+      "candidato_ibge": "4203600",
+      "candidatos": [
+        "4203600"
+      ],
+      "nome": "Campos Novos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 16936,
+      "clientes_ano_seguinte": 17373,
+      "razao_vs_anterior": 1.014466225791214,
+      "razao_vs_seguinte": 1.0111751353239042,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420370",
+      "clientes": 5622,
+      "candidato_ibge": "4203709",
+      "candidatos": [
+        "4203709"
+      ],
+      "nome": "Canelinha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5385,
+      "clientes_ano_seguinte": 5926,
+      "razao_vs_anterior": 1.0440111420612814,
+      "razao_vs_seguinte": 1.0540732835289932,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420380",
+      "clientes": 24315,
+      "candidato_ibge": "4203808",
+      "candidatos": [
+        "4203808"
+      ],
+      "nome": "Canoinhas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 24001,
+      "clientes_ano_seguinte": 24566,
+      "razao_vs_anterior": 1.0130827882171576,
+      "razao_vs_seguinte": 1.010322845979848,
+      "concordancia_conj": 0.9999588731235862
+    },
+    {
+      "codigo_publicado": "0420390",
+      "clientes": 11140,
+      "candidato_ibge": "4203907",
+      "candidatos": [
+        "4203907"
+      ],
+      "nome": "Capinzal",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 11071,
+      "clientes_ano_seguinte": 11276,
+      "razao_vs_anterior": 1.0062324993225544,
+      "razao_vs_seguinte": 1.0122082585278276,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420395",
+      "clientes": 10302,
+      "candidato_ibge": "4203956",
+      "candidatos": [
+        "4203956"
+      ],
+      "nome": "Capivari de Baixo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 10183,
+      "clientes_ano_seguinte": 10527,
+      "razao_vs_anterior": 1.011686143572621,
+      "razao_vs_seguinte": 1.0218404193360513,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420400",
+      "clientes": 4926,
+      "candidato_ibge": "4204004",
+      "candidatos": [
+        "4204004"
+      ],
+      "nome": "Catanduvas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4838,
+      "clientes_ano_seguinte": 5007,
+      "razao_vs_anterior": 1.0181893344357171,
+      "razao_vs_seguinte": 1.0164433617539586,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420410",
+      "clientes": 2136,
+      "candidato_ibge": "4204103",
+      "candidatos": [
+        "4204103"
+      ],
+      "nome": "Caxambu do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2130,
+      "clientes_ano_seguinte": 2188,
+      "razao_vs_anterior": 1.0028169014084507,
+      "razao_vs_seguinte": 1.0243445692883895,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420415",
+      "clientes": 1478,
+      "candidato_ibge": "4204152",
+      "candidatos": [
+        "4204152"
+      ],
+      "nome": "Celso Ramos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1436,
+      "clientes_ano_seguinte": 1522,
+      "razao_vs_anterior": 1.0292479108635098,
+      "razao_vs_seguinte": 1.0297699594046008,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420417",
+      "clientes": 1660,
+      "candidato_ibge": "4204178",
+      "candidatos": [
+        "4204178"
+      ],
+      "nome": "Cerro Negro",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1645,
+      "clientes_ano_seguinte": 1674,
+      "razao_vs_anterior": 1.0091185410334347,
+      "razao_vs_seguinte": 1.008433734939759,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420419",
+      "clientes": 1405,
+      "candidato_ibge": "4204194",
+      "candidatos": [
+        "4204194"
+      ],
+      "nome": "Chapadão do Lageado",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1373,
+      "clientes_ano_seguinte": 1432,
+      "razao_vs_anterior": 1.0233066278222869,
+      "razao_vs_seguinte": 1.0192170818505337,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420420",
+      "clientes": 109239,
+      "candidato_ibge": "4204202",
+      "candidatos": [
+        "4204202"
+      ],
+      "nome": "Chapecó",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 106890,
+      "clientes_ano_seguinte": 112049,
+      "razao_vs_anterior": 1.0219758630367668,
+      "razao_vs_seguinte": 1.0257234137991011,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420430",
+      "clientes": 37770,
+      "candidato_ibge": "4204301",
+      "candidatos": [
+        "4204301"
+      ],
+      "nome": "Concórdia",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 37169,
+      "clientes_ano_seguinte": 38588,
+      "razao_vs_anterior": 1.0161693884688854,
+      "razao_vs_seguinte": 1.0216574000529521,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420435",
+      "clientes": 2165,
+      "candidato_ibge": "4204350",
+      "candidatos": [
+        "4204350"
+      ],
+      "nome": "Cordilheira Alta",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2103,
+      "clientes_ano_seguinte": 2189,
+      "razao_vs_anterior": 1.0294816928197812,
+      "razao_vs_seguinte": 1.0110854503464204,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420440",
+      "clientes": 4684,
+      "candidato_ibge": "4204400",
+      "candidatos": [
+        "4204400"
+      ],
+      "nome": "Coronel Freitas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4648,
+      "clientes_ano_seguinte": 4751,
+      "razao_vs_anterior": 1.0077452667814113,
+      "razao_vs_seguinte": 1.0143040136635355,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420445",
+      "clientes": 966,
+      "candidato_ibge": "4204459",
+      "candidatos": [
+        "4204459"
+      ],
+      "nome": "Coronel Martins",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 965,
+      "clientes_ano_seguinte": 990,
+      "razao_vs_anterior": 1.0010362694300519,
+      "razao_vs_seguinte": 1.0248447204968945,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420450",
+      "clientes": 6936,
+      "candidato_ibge": "4204509",
+      "candidatos": [
+        "4204509"
+      ],
+      "nome": "Corupá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6849,
+      "clientes_ano_seguinte": 6962,
+      "razao_vs_anterior": 1.0127025843188786,
+      "razao_vs_seguinte": 1.0037485582468282,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420455",
+      "clientes": 6799,
+      "candidato_ibge": "4204558",
+      "candidatos": [
+        "4204558"
+      ],
+      "nome": "Correia Pinto",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6712,
+      "clientes_ano_seguinte": 6940,
+      "razao_vs_anterior": 1.0129618593563767,
+      "razao_vs_seguinte": 1.0207383438740991,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420460",
+      "clientes": 83525,
+      "candidato_ibge": "4204608",
+      "candidatos": [
+        "4204608"
+      ],
+      "nome": "Criciúma",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 81696,
+      "clientes_ano_seguinte": 86183,
+      "razao_vs_anterior": 1.0223878770074422,
+      "razao_vs_seguinte": 1.0318228075426519,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420470",
+      "clientes": 4337,
+      "candidato_ibge": "4204707",
+      "candidatos": [
+        "4204707"
+      ],
+      "nome": "Cunha Porã",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4295,
+      "clientes_ano_seguinte": 4401,
+      "razao_vs_anterior": 1.009778812572759,
+      "razao_vs_seguinte": 1.0147567442932903,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420475",
+      "clientes": 85,
+      "candidato_ibge": "4204756",
+      "candidatos": [
+        "4204756"
+      ],
+      "nome": "Cunhataí",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 85,
+      "clientes_ano_seguinte": 89,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0470588235294118,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420480",
+      "clientes": 17611,
+      "candidato_ibge": "4204806",
+      "candidatos": [
+        "4204806"
+      ],
+      "nome": "Curitibanos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 17422,
+      "clientes_ano_seguinte": 17949,
+      "razao_vs_anterior": 1.0108483526575593,
+      "razao_vs_seguinte": 1.0191925501107262,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420490",
+      "clientes": 4068,
+      "candidato_ibge": "4204905",
+      "candidatos": [
+        "4204905"
+      ],
+      "nome": "Descanso",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4003,
+      "clientes_ano_seguinte": 4133,
+      "razao_vs_anterior": 1.0162378216337746,
+      "razao_vs_seguinte": 1.0159783677482792,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420500",
+      "clientes": 6700,
+      "candidato_ibge": "4205001",
+      "candidatos": [
+        "4205001"
+      ],
+      "nome": "Dionísio Cerqueira",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6632,
+      "clientes_ano_seguinte": 6791,
+      "razao_vs_anterior": 1.0102533172496984,
+      "razao_vs_seguinte": 1.0135820895522387,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420510",
+      "clientes": 1842,
+      "candidato_ibge": "4205100",
+      "candidatos": [
+        "4205100"
+      ],
+      "nome": "Dona Emma",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1825,
+      "clientes_ano_seguinte": 1859,
+      "razao_vs_anterior": 1.0093150684931507,
+      "razao_vs_seguinte": 1.009229098805646,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420515",
+      "clientes": 1541,
+      "candidato_ibge": "4205159",
+      "candidatos": [
+        "4205159"
+      ],
+      "nome": "Doutor Pedrinho",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1507,
+      "clientes_ano_seguinte": 1541,
+      "razao_vs_anterior": 1.0225613802256137,
+      "razao_vs_seguinte": 1.0,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420520",
+      "clientes": 2511,
+      "candidato_ibge": "4205209",
+      "candidatos": [
+        "4205209"
+      ],
+      "nome": "Erval Velho",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2489,
+      "clientes_ano_seguinte": 2542,
+      "razao_vs_anterior": 1.008838891120932,
+      "razao_vs_seguinte": 1.0123456790123457,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420530",
+      "clientes": 4543,
+      "candidato_ibge": "4205308",
+      "candidatos": [
+        "4205308"
+      ],
+      "nome": "Faxinal dos Guedes",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4477,
+      "clientes_ano_seguinte": 4607,
+      "razao_vs_anterior": 1.0147420147420148,
+      "razao_vs_seguinte": 1.0140876073079463,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420535",
+      "clientes": 917,
+      "candidato_ibge": "4205357",
+      "candidatos": [
+        "4205357"
+      ],
+      "nome": "Flor do Sertão",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 908,
+      "clientes_ano_seguinte": 941,
+      "razao_vs_anterior": 1.0099118942731278,
+      "razao_vs_seguinte": 1.0261723009814614,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420540",
+      "clientes": 274605,
+      "candidato_ibge": "4205407",
+      "candidatos": [
+        "4205407"
+      ],
+      "nome": "Florianópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 270036,
+      "clientes_ano_seguinte": 280145,
+      "razao_vs_anterior": 1.0169199662267254,
+      "razao_vs_seguinte": 1.02017443236649,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420543",
+      "clientes": 1193,
+      "candidato_ibge": "4205431",
+      "candidatos": [
+        "4205431"
+      ],
+      "nome": "Formosa do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1177,
+      "clientes_ano_seguinte": 1216,
+      "razao_vs_anterior": 1.0135938827527613,
+      "razao_vs_seguinte": 1.019279128248114,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420545",
+      "clientes": 73,
+      "candidato_ibge": "4205456",
+      "candidatos": [
+        "4205456"
+      ],
+      "nome": "Forquilhinha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 70,
+      "clientes_ano_seguinte": 72,
+      "razao_vs_anterior": 1.042857142857143,
+      "razao_vs_seguinte": 0.9863013698630136,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420550",
+      "clientes": 14327,
+      "candidato_ibge": "4205506",
+      "candidatos": [
+        "4205506"
+      ],
+      "nome": "Fraiburgo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 14213,
+      "clientes_ano_seguinte": 14504,
+      "razao_vs_anterior": 1.0080208260043622,
+      "razao_vs_seguinte": 1.0123542960843164,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420555",
+      "clientes": 1108,
+      "candidato_ibge": "4205555",
+      "candidatos": [
+        "4205555"
+      ],
+      "nome": "Frei Rogério",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1095,
+      "clientes_ano_seguinte": 1125,
+      "razao_vs_anterior": 1.0118721461187214,
+      "razao_vs_seguinte": 1.0153429602888087,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420560",
+      "clientes": 1470,
+      "candidato_ibge": "4205605",
+      "candidatos": [
+        "4205605"
+      ],
+      "nome": "Galvão",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1472,
+      "clientes_ano_seguinte": 1475,
+      "razao_vs_anterior": 0.998641304347826,
+      "razao_vs_seguinte": 1.0034013605442176,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420570",
+      "clientes": 17584,
+      "candidato_ibge": "4205704",
+      "candidatos": [
+        "4205704"
+      ],
+      "nome": "Garopaba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 17010,
+      "clientes_ano_seguinte": 18268,
+      "razao_vs_anterior": 1.033744855967078,
+      "razao_vs_seguinte": 1.0388989990900819,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420580",
+      "clientes": 7560,
+      "candidato_ibge": "4205803",
+      "candidatos": [
+        "4205803"
+      ],
+      "nome": "Garuva",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7276,
+      "clientes_ano_seguinte": 7816,
+      "razao_vs_anterior": 1.039032435404068,
+      "razao_vs_seguinte": 1.0338624338624338,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420590",
+      "clientes": 29967,
+      "candidato_ibge": "4205902",
+      "candidatos": [
+        "4205902"
+      ],
+      "nome": "Gaspar",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 29420,
+      "clientes_ano_seguinte": 30457,
+      "razao_vs_anterior": 1.018592794017675,
+      "razao_vs_seguinte": 1.0163513197850969,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420600",
+      "clientes": 14104,
+      "candidato_ibge": "4206009",
+      "candidatos": [
+        "4206009"
+      ],
+      "nome": "Governador Celso Ramos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 13627,
+      "clientes_ano_seguinte": 14586,
+      "razao_vs_anterior": 1.0350040361047919,
+      "razao_vs_seguinte": 1.0341747022121384,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420630",
+      "clientes": 10074,
+      "candidato_ibge": "4206306",
+      "candidatos": [
+        "4206306"
+      ],
+      "nome": "Guabiruba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 9825,
+      "clientes_ano_seguinte": 10400,
+      "razao_vs_anterior": 1.0253435114503817,
+      "razao_vs_seguinte": 1.0323605320627358,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420640",
+      "clientes": 5091,
+      "candidato_ibge": "4206405",
+      "candidatos": [
+        "4206405"
+      ],
+      "nome": "Guaraciaba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5055,
+      "clientes_ano_seguinte": 5212,
+      "razao_vs_anterior": 1.0071216617210683,
+      "razao_vs_seguinte": 1.0237674327244157,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420650",
+      "clientes": 19797,
+      "candidato_ibge": "4206504",
+      "candidatos": [
+        "4206504"
+      ],
+      "nome": "Guaramirim",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 19190,
+      "clientes_ano_seguinte": 20623,
+      "razao_vs_anterior": 1.0316310578426264,
+      "razao_vs_seguinte": 1.0417234934586048,
+      "concordancia_conj": 0.99989897459211
+    },
+    {
+      "codigo_publicado": "0420660",
+      "clientes": 2406,
+      "candidato_ibge": "4206603",
+      "candidatos": [
+        "4206603"
+      ],
+      "nome": "Guarujá do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2392,
+      "clientes_ano_seguinte": 2420,
+      "razao_vs_anterior": 1.0058528428093645,
+      "razao_vs_seguinte": 1.0058187863674148,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420665",
+      "clientes": 3712,
+      "candidato_ibge": "4206652",
+      "candidatos": [
+        "4206652"
+      ],
+      "nome": "Guatambú",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3635,
+      "clientes_ano_seguinte": 3834,
+      "razao_vs_anterior": 1.0211829436038515,
+      "razao_vs_seguinte": 1.0328663793103448,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420670",
+      "clientes": 9303,
+      "candidato_ibge": "4206702",
+      "candidatos": [
+        "4206702"
+      ],
+      "nome": "Herval d'Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 9243,
+      "clientes_ano_seguinte": 9415,
+      "razao_vs_anterior": 1.006491398896462,
+      "razao_vs_seguinte": 1.0120391271632807,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420675",
+      "clientes": 1016,
+      "candidato_ibge": "4206751",
+      "candidatos": [
+        "4206751"
+      ],
+      "nome": "Ibiam",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1000,
+      "clientes_ano_seguinte": 1040,
+      "razao_vs_anterior": 1.016,
+      "razao_vs_seguinte": 1.0236220472440944,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420680",
+      "clientes": 1730,
+      "candidato_ibge": "4206801",
+      "candidatos": [
+        "4206801"
+      ],
+      "nome": "Ibicaré",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1706,
+      "clientes_ano_seguinte": 1764,
+      "razao_vs_anterior": 1.0140679953106682,
+      "razao_vs_seguinte": 1.0196531791907515,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420690",
+      "clientes": 8937,
+      "candidato_ibge": "4206900",
+      "candidatos": [
+        "4206900"
+      ],
+      "nome": "Ibirama",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8928,
+      "clientes_ano_seguinte": 9018,
+      "razao_vs_anterior": 1.001008064516129,
+      "razao_vs_seguinte": 1.0090634441087614,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420700",
+      "clientes": 655,
+      "candidato_ibge": "4207007",
+      "candidatos": [
+        "4207007"
+      ],
+      "nome": "Içara",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 655,
+      "clientes_ano_seguinte": 669,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0213740458015268,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420710",
+      "clientes": 8040,
+      "candidato_ibge": "4207106",
+      "candidatos": [
+        "4207106"
+      ],
+      "nome": "Ilhota",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7635,
+      "clientes_ano_seguinte": 8254,
+      "razao_vs_anterior": 1.0530451866404715,
+      "razao_vs_seguinte": 1.0266169154228855,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420720",
+      "clientes": 7468,
+      "candidato_ibge": "4207205",
+      "candidatos": [
+        "4207205"
+      ],
+      "nome": "Imaruí",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7234,
+      "clientes_ano_seguinte": 7705,
+      "razao_vs_anterior": 1.0323472491014654,
+      "razao_vs_seguinte": 1.0317354043920728,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420730",
+      "clientes": 23001,
+      "candidato_ibge": "4207304",
+      "candidatos": [
+        "4207304"
+      ],
+      "nome": "Imbituba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 22714,
+      "clientes_ano_seguinte": 23518,
+      "razao_vs_anterior": 1.0126353790613718,
+      "razao_vs_seguinte": 1.0224772835963654,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420740",
+      "clientes": 2999,
+      "candidato_ibge": "4207403",
+      "candidatos": [
+        "4207403"
+      ],
+      "nome": "Imbuia",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2938,
+      "clientes_ano_seguinte": 3029,
+      "razao_vs_anterior": 1.0207624234172907,
+      "razao_vs_seguinte": 1.010003334444815,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420750",
+      "clientes": 30035,
+      "candidato_ibge": "4207502",
+      "candidatos": [
+        "4207502"
+      ],
+      "nome": "Indaial",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 29270,
+      "clientes_ano_seguinte": 30841,
+      "razao_vs_anterior": 1.026135975401435,
+      "razao_vs_seguinte": 1.0268353587481271,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420757",
+      "clientes": 1506,
+      "candidato_ibge": "4207577",
+      "candidatos": [
+        "4207577"
+      ],
+      "nome": "Iomerê",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1473,
+      "clientes_ano_seguinte": 1544,
+      "razao_vs_anterior": 1.0224032586558045,
+      "razao_vs_seguinte": 1.0252324037184595,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420760",
+      "clientes": 2481,
+      "candidato_ibge": "4207601",
+      "candidatos": [
+        "4207601"
+      ],
+      "nome": "Ipira",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2441,
+      "clientes_ano_seguinte": 2512,
+      "razao_vs_anterior": 1.0163867267513313,
+      "razao_vs_seguinte": 1.0124949617089882,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420765",
+      "clientes": 4335,
+      "candidato_ibge": "4207650",
+      "candidatos": [
+        "4207650"
+      ],
+      "nome": "Iporã do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4258,
+      "clientes_ano_seguinte": 4448,
+      "razao_vs_anterior": 1.0180836073273838,
+      "razao_vs_seguinte": 1.0260668973471743,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420768",
+      "clientes": 1151,
+      "candidato_ibge": "4207684",
+      "candidatos": [
+        "4207684"
+      ],
+      "nome": "Ipuaçu",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1143,
+      "clientes_ano_seguinte": 1183,
+      "razao_vs_anterior": 1.0069991251093613,
+      "razao_vs_seguinte": 1.0278019113814074,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420770",
+      "clientes": 3457,
+      "candidato_ibge": "4207700",
+      "candidatos": [
+        "4207700"
+      ],
+      "nome": "Ipumirim",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3432,
+      "clientes_ano_seguinte": 3480,
+      "razao_vs_anterior": 1.0072843822843822,
+      "razao_vs_seguinte": 1.0066531674862598,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420775",
+      "clientes": 2011,
+      "candidato_ibge": "4207759",
+      "candidatos": [
+        "4207759"
+      ],
+      "nome": "Iraceminha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1995,
+      "clientes_ano_seguinte": 2068,
+      "razao_vs_anterior": 1.0080200501253134,
+      "razao_vs_seguinte": 1.0283441074092492,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420780",
+      "clientes": 4268,
+      "candidato_ibge": "4207809",
+      "candidatos": [
+        "4207809"
+      ],
+      "nome": "Irani",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4222,
+      "clientes_ano_seguinte": 4339,
+      "razao_vs_anterior": 1.0108953102794884,
+      "razao_vs_seguinte": 1.0166354264292408,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420785",
+      "clientes": 979,
+      "candidato_ibge": "4207858",
+      "candidatos": [
+        "4207858"
+      ],
+      "nome": "Irati",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 970,
+      "clientes_ano_seguinte": 989,
+      "razao_vs_anterior": 1.0092783505154639,
+      "razao_vs_seguinte": 1.0102145045965272,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420790",
+      "clientes": 4336,
+      "candidato_ibge": "4207908",
+      "candidatos": [
+        "4207908"
+      ],
+      "nome": "Irineópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4238,
+      "clientes_ano_seguinte": 4395,
+      "razao_vs_anterior": 1.023124115148655,
+      "razao_vs_seguinte": 1.0136070110701108,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420800",
+      "clientes": 3530,
+      "candidato_ibge": "4208005",
+      "candidatos": [
+        "4208005"
+      ],
+      "nome": "Itá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3501,
+      "clientes_ano_seguinte": 3587,
+      "razao_vs_anterior": 1.008283347614967,
+      "razao_vs_seguinte": 1.0161473087818698,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420810",
+      "clientes": 9733,
+      "candidato_ibge": "4208104",
+      "candidatos": [
+        "4208104"
+      ],
+      "nome": "Itaiópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 9533,
+      "clientes_ano_seguinte": 9938,
+      "razao_vs_anterior": 1.020979754536872,
+      "razao_vs_seguinte": 1.0210623651494914,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420820",
+      "clientes": 115322,
+      "candidato_ibge": "4208203",
+      "candidatos": [
+        "4208203"
+      ],
+      "nome": "Itajaí",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 111729,
+      "clientes_ano_seguinte": 117575,
+      "razao_vs_anterior": 1.0321581684253864,
+      "razao_vs_seguinte": 1.0195366018626109,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420830",
+      "clientes": 56590,
+      "candidato_ibge": "4208302",
+      "candidatos": [
+        "4208302"
+      ],
+      "nome": "Itapema",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 53968,
+      "clientes_ano_seguinte": 57655,
+      "razao_vs_anterior": 1.0485843462792765,
+      "razao_vs_seguinte": 1.0188195794309949,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420840",
+      "clientes": 7238,
+      "candidato_ibge": "4208401",
+      "candidatos": [
+        "4208401"
+      ],
+      "nome": "Itapiranga",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7166,
+      "clientes_ano_seguinte": 7342,
+      "razao_vs_anterior": 1.010047446274072,
+      "razao_vs_seguinte": 1.014368610113291,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420845",
+      "clientes": 27352,
+      "candidato_ibge": "4208450",
+      "candidatos": [
+        "4208450"
+      ],
+      "nome": "Itapoá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 24922,
+      "clientes_ano_seguinte": 28562,
+      "razao_vs_anterior": 1.0975042131450123,
+      "razao_vs_seguinte": 1.0442380813103247,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420850",
+      "clientes": 12264,
+      "candidato_ibge": "4208500",
+      "candidatos": [
+        "4208500"
+      ],
+      "nome": "Ituporanga",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 12004,
+      "clientes_ano_seguinte": 12459,
+      "razao_vs_anterior": 1.0216594468510496,
+      "razao_vs_seguinte": 1.0159001956947162,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420860",
+      "clientes": 2006,
+      "candidato_ibge": "4208609",
+      "candidatos": [
+        "4208609"
+      ],
+      "nome": "Jaborá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1981,
+      "clientes_ano_seguinte": 2044,
+      "razao_vs_anterior": 1.0126198889449773,
+      "razao_vs_seguinte": 1.0189431704885343,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420870",
+      "clientes": 158,
+      "candidato_ibge": "4208708",
+      "candidatos": [
+        "4208708"
+      ],
+      "nome": "Jacinto Machado",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 148,
+      "clientes_ano_seguinte": 158,
+      "razao_vs_anterior": 1.0675675675675675,
+      "razao_vs_seguinte": 1.0,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420880",
+      "clientes": 14545,
+      "candidato_ibge": "4208807",
+      "candidatos": [
+        "4208807"
+      ],
+      "nome": "Jaguaruna",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 14338,
+      "clientes_ano_seguinte": 14913,
+      "razao_vs_anterior": 1.0144371599944204,
+      "razao_vs_seguinte": 1.0253007906497078,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420890",
+      "clientes": 80773,
+      "candidato_ibge": "4208906",
+      "candidatos": [
+        "4208906"
+      ],
+      "nome": "Jaraguá do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 79310,
+      "clientes_ano_seguinte": 81754,
+      "razao_vs_anterior": 1.0184466019417475,
+      "razao_vs_seguinte": 1.0121451475121637,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420895",
+      "clientes": 862,
+      "candidato_ibge": "4208955",
+      "candidatos": [
+        "4208955"
+      ],
+      "nome": "Jardinópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 849,
+      "clientes_ano_seguinte": 869,
+      "razao_vs_anterior": 1.0153121319199059,
+      "razao_vs_seguinte": 1.0081206496519721,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420900",
+      "clientes": 15107,
+      "candidato_ibge": "4209003",
+      "candidatos": [
+        "4209003"
+      ],
+      "nome": "Joaçaba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 14960,
+      "clientes_ano_seguinte": 15398,
+      "razao_vs_anterior": 1.009826203208556,
+      "razao_vs_seguinte": 1.0192625934997022,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420910",
+      "clientes": 257648,
+      "candidato_ibge": "4209102",
+      "candidatos": [
+        "4209102"
+      ],
+      "nome": "Joinville",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 252772,
+      "clientes_ano_seguinte": 265849,
+      "razao_vs_anterior": 1.019290111246499,
+      "razao_vs_seguinte": 1.0318302490219213,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420915",
+      "clientes": 2087,
+      "candidato_ibge": "4209151",
+      "candidatos": [
+        "4209151"
+      ],
+      "nome": "José Boiteux",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2056,
+      "clientes_ano_seguinte": 2119,
+      "razao_vs_anterior": 1.015077821011673,
+      "razao_vs_seguinte": 1.0153330138955439,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420917",
+      "clientes": 1082,
+      "candidato_ibge": "4209177",
+      "candidatos": [
+        "4209177"
+      ],
+      "nome": "Jupiá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1076,
+      "clientes_ano_seguinte": 1101,
+      "razao_vs_anterior": 1.0055762081784387,
+      "razao_vs_seguinte": 1.0175600739371533,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420920",
+      "clientes": 1154,
+      "candidato_ibge": "4209201",
+      "candidatos": [
+        "4209201"
+      ],
+      "nome": "Lacerdópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1150,
+      "clientes_ano_seguinte": 1173,
+      "razao_vs_anterior": 1.0034782608695652,
+      "razao_vs_seguinte": 1.016464471403813,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420930",
+      "clientes": 73624,
+      "candidato_ibge": "4209300",
+      "candidatos": [
+        "4209300"
+      ],
+      "nome": "Lages",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 72722,
+      "clientes_ano_seguinte": 75077,
+      "razao_vs_anterior": 1.0124033992464454,
+      "razao_vs_seguinte": 1.019735412365533,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420940",
+      "clientes": 28027,
+      "candidato_ibge": "4209409",
+      "candidatos": [
+        "4209409"
+      ],
+      "nome": "Laguna",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 27750,
+      "clientes_ano_seguinte": 28475,
+      "razao_vs_anterior": 1.009981981981982,
+      "razao_vs_seguinte": 1.01598458629179,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420945",
+      "clientes": 88,
+      "candidato_ibge": "4209458",
+      "candidatos": [
+        "4209458"
+      ],
+      "nome": "Lajeado Grande",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 89,
+      "clientes_ano_seguinte": 89,
+      "razao_vs_anterior": 0.9887640449438202,
+      "razao_vs_seguinte": 1.0113636363636365,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420950",
+      "clientes": 3717,
+      "candidato_ibge": "4209508",
+      "candidatos": [
+        "4209508"
+      ],
+      "nome": "Laurentino",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3636,
+      "clientes_ano_seguinte": 3778,
+      "razao_vs_anterior": 1.0222772277227723,
+      "razao_vs_seguinte": 1.0164110842076943,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420960",
+      "clientes": 5689,
+      "candidato_ibge": "4209607",
+      "candidatos": [
+        "4209607"
+      ],
+      "nome": "Lauro Müller",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5674,
+      "clientes_ano_seguinte": 5720,
+      "razao_vs_anterior": 1.0026436376454,
+      "razao_vs_seguinte": 1.005449112322025,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420970",
+      "clientes": 4497,
+      "candidato_ibge": "4209706",
+      "candidatos": [
+        "4209706"
+      ],
+      "nome": "Lebon Régis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4256,
+      "clientes_ano_seguinte": 4582,
+      "razao_vs_anterior": 1.056625939849624,
+      "razao_vs_seguinte": 1.0189014898821436,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420980",
+      "clientes": 709,
+      "candidato_ibge": "4209805",
+      "candidatos": [
+        "4209805"
+      ],
+      "nome": "Leoberto Leal",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 696,
+      "clientes_ano_seguinte": 717,
+      "razao_vs_anterior": 1.0186781609195403,
+      "razao_vs_seguinte": 1.0112834978843441,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420985",
+      "clientes": 2105,
+      "candidato_ibge": "4209854",
+      "candidatos": [
+        "4209854"
+      ],
+      "nome": "Lindóia do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2091,
+      "clientes_ano_seguinte": 2112,
+      "razao_vs_anterior": 1.0066953610712577,
+      "razao_vs_seguinte": 1.0033254156769595,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0420990",
+      "clientes": 5802,
+      "candidato_ibge": "4209904",
+      "candidatos": [
+        "4209904"
+      ],
+      "nome": "Lontras",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5593,
+      "clientes_ano_seguinte": 5888,
+      "razao_vs_anterior": 1.0373681387448597,
+      "razao_vs_seguinte": 1.0148224750086177,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421000",
+      "clientes": 5540,
+      "candidato_ibge": "4210001",
+      "candidatos": [
+        "4210001"
+      ],
+      "nome": "Luiz Alves",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5467,
+      "clientes_ano_seguinte": 5637,
+      "razao_vs_anterior": 1.0133528443387598,
+      "razao_vs_seguinte": 1.0175090252707581,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421003",
+      "clientes": 3145,
+      "candidato_ibge": "4210035",
+      "candidatos": [
+        "4210035"
+      ],
+      "nome": "Luzerna",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3061,
+      "clientes_ano_seguinte": 3213,
+      "razao_vs_anterior": 1.0274420124142438,
+      "razao_vs_seguinte": 1.0216216216216216,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421005",
+      "clientes": 863,
+      "candidato_ibge": "4210050",
+      "candidatos": [
+        "4210050"
+      ],
+      "nome": "Macieira",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 819,
+      "clientes_ano_seguinte": 879,
+      "razao_vs_anterior": 1.0537240537240538,
+      "razao_vs_seguinte": 1.018539976825029,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421010",
+      "clientes": 26293,
+      "candidato_ibge": "4210100",
+      "candidatos": [
+        "4210100"
+      ],
+      "nome": "Mafra",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 25873,
+      "clientes_ano_seguinte": 26798,
+      "razao_vs_anterior": 1.0162331387933368,
+      "razao_vs_seguinte": 1.0192066329441296,
+      "concordancia_conj": 0.999961967063477
+    },
+    {
+      "codigo_publicado": "0421020",
+      "clientes": 1191,
+      "candidato_ibge": "4210209",
+      "candidatos": [
+        "4210209"
+      ],
+      "nome": "Major Gercino",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1133,
+      "clientes_ano_seguinte": 1235,
+      "razao_vs_anterior": 1.0511915269196823,
+      "razao_vs_seguinte": 1.0369437447523089,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421030",
+      "clientes": 3445,
+      "candidato_ibge": "4210308",
+      "candidatos": [
+        "4210308"
+      ],
+      "nome": "Major Vieira",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3389,
+      "clientes_ano_seguinte": 3485,
+      "razao_vs_anterior": 1.016524048391856,
+      "razao_vs_seguinte": 1.011611030478955,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421040",
+      "clientes": 2989,
+      "candidato_ibge": "4210407",
+      "candidatos": [
+        "4210407"
+      ],
+      "nome": "Maracajá",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2957,
+      "clientes_ano_seguinte": 3046,
+      "razao_vs_anterior": 1.0108217788298952,
+      "razao_vs_seguinte": 1.0190699230511877,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421050",
+      "clientes": 12109,
+      "candidato_ibge": "4210506",
+      "candidatos": [
+        "4210506"
+      ],
+      "nome": "Maravilha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 11816,
+      "clientes_ano_seguinte": 12524,
+      "razao_vs_anterior": 1.024796885578876,
+      "razao_vs_seguinte": 1.0342720290692873,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421055",
+      "clientes": 57,
+      "candidato_ibge": "4210555",
+      "candidatos": [
+        "4210555"
+      ],
+      "nome": "Marema",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 57,
+      "clientes_ano_seguinte": 58,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0175438596491229,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421060",
+      "clientes": 7548,
+      "candidato_ibge": "4210605",
+      "candidatos": [
+        "4210605"
+      ],
+      "nome": "Massaranduba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7466,
+      "clientes_ano_seguinte": 7644,
+      "razao_vs_anterior": 1.010983123493169,
+      "razao_vs_seguinte": 1.012718600953895,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421070",
+      "clientes": 1117,
+      "candidato_ibge": "4210704",
+      "candidatos": [
+        "4210704"
+      ],
+      "nome": "Matos Costa",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1101,
+      "clientes_ano_seguinte": 1150,
+      "razao_vs_anterior": 1.0145322434150772,
+      "razao_vs_seguinte": 1.0295434198746642,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421080",
+      "clientes": 70,
+      "candidato_ibge": "4210803",
+      "candidatos": [
+        "4210803"
+      ],
+      "nome": "Meleiro",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 70,
+      "clientes_ano_seguinte": 71,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0142857142857142,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421085",
+      "clientes": 1133,
+      "candidato_ibge": "4210852",
+      "candidatos": [
+        "4210852"
+      ],
+      "nome": "Mirim Doce",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1126,
+      "clientes_ano_seguinte": 1145,
+      "razao_vs_anterior": 1.0062166962699823,
+      "razao_vs_seguinte": 1.0105913503971757,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421090",
+      "clientes": 1652,
+      "candidato_ibge": "4210902",
+      "candidatos": [
+        "4210902"
+      ],
+      "nome": "Modelo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1648,
+      "clientes_ano_seguinte": 1689,
+      "razao_vs_anterior": 1.0024271844660195,
+      "razao_vs_seguinte": 1.0223970944309928,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421100",
+      "clientes": 4611,
+      "candidato_ibge": "4211009",
+      "candidatos": [
+        "4211009"
+      ],
+      "nome": "Mondaí",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4538,
+      "clientes_ano_seguinte": 4690,
+      "razao_vs_anterior": 1.0160863816659322,
+      "razao_vs_seguinte": 1.017132942962481,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421105",
+      "clientes": 3458,
+      "candidato_ibge": "4211058",
+      "candidatos": [
+        "4211058"
+      ],
+      "nome": "Monte Carlo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3427,
+      "clientes_ano_seguinte": 3484,
+      "razao_vs_anterior": 1.0090458126641377,
+      "razao_vs_seguinte": 1.0075187969924813,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421110",
+      "clientes": 3732,
+      "candidato_ibge": "4211108",
+      "candidatos": [
+        "4211108"
+      ],
+      "nome": "Monte Castelo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3687,
+      "clientes_ano_seguinte": 3817,
+      "razao_vs_anterior": 1.0122050447518307,
+      "razao_vs_seguinte": 1.022775991425509,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421130",
+      "clientes": 42376,
+      "candidato_ibge": "4211306",
+      "candidatos": [
+        "4211306"
+      ],
+      "nome": "Navegantes",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 41074,
+      "clientes_ano_seguinte": 43315,
+      "razao_vs_anterior": 1.0316988849393778,
+      "razao_vs_seguinte": 1.0221587691145932,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421140",
+      "clientes": 1469,
+      "candidato_ibge": "4211405",
+      "candidatos": [
+        "4211405"
+      ],
+      "nome": "Nova Erechim",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1454,
+      "clientes_ano_seguinte": 1498,
+      "razao_vs_anterior": 1.0103163686382393,
+      "razao_vs_seguinte": 1.0197413206262764,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421145",
+      "clientes": 2120,
+      "candidato_ibge": "4211454",
+      "candidatos": [
+        "4211454"
+      ],
+      "nome": "Nova Itaberaba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2108,
+      "clientes_ano_seguinte": 2151,
+      "razao_vs_anterior": 1.0056925996204933,
+      "razao_vs_seguinte": 1.014622641509434,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421150",
+      "clientes": 6046,
+      "candidato_ibge": "4211504",
+      "candidatos": [
+        "4211504"
+      ],
+      "nome": "Nova Trento",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5947,
+      "clientes_ano_seguinte": 6149,
+      "razao_vs_anterior": 1.0166470489322348,
+      "razao_vs_seguinte": 1.017036056897122,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421160",
+      "clientes": 2026,
+      "candidato_ibge": "4211603",
+      "candidatos": [
+        "4211603"
+      ],
+      "nome": "Nova Veneza",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1990,
+      "clientes_ano_seguinte": 2056,
+      "razao_vs_anterior": 1.0180904522613066,
+      "razao_vs_seguinte": 1.014807502467917,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421165",
+      "clientes": 1092,
+      "candidato_ibge": "4211652",
+      "candidatos": [
+        "4211652"
+      ],
+      "nome": "Novo Horizonte",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1088,
+      "clientes_ano_seguinte": 1091,
+      "razao_vs_anterior": 1.0036764705882353,
+      "razao_vs_seguinte": 0.9990842490842491,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421170",
+      "clientes": 8073,
+      "candidato_ibge": "4211702",
+      "candidatos": [
+        "4211702"
+      ],
+      "nome": "Orleans",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8001,
+      "clientes_ano_seguinte": 8179,
+      "razao_vs_anterior": 1.0089988751406074,
+      "razao_vs_seguinte": 1.0131301870432305,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421175",
+      "clientes": 7429,
+      "candidato_ibge": "4211751",
+      "candidatos": [
+        "4211751"
+      ],
+      "nome": "Otacílio Costa",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7420,
+      "clientes_ano_seguinte": 7537,
+      "razao_vs_anterior": 1.001212938005391,
+      "razao_vs_seguinte": 1.0145376228294523,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421180",
+      "clientes": 3526,
+      "candidato_ibge": "4211801",
+      "candidatos": [
+        "4211801"
+      ],
+      "nome": "Ouro",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3512,
+      "clientes_ano_seguinte": 3548,
+      "razao_vs_anterior": 1.003986332574032,
+      "razao_vs_seguinte": 1.0062393647192285,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421185",
+      "clientes": 886,
+      "candidato_ibge": "4211850",
+      "candidatos": [
+        "4211850"
+      ],
+      "nome": "Ouro Verde",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 894,
+      "clientes_ano_seguinte": 901,
+      "razao_vs_anterior": 0.9910514541387024,
+      "razao_vs_seguinte": 1.0169300225733635,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421187",
+      "clientes": 871,
+      "candidato_ibge": "4211876",
+      "candidatos": [
+        "4211876"
+      ],
+      "nome": "Paial",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 847,
+      "clientes_ano_seguinte": 893,
+      "razao_vs_anterior": 1.0283353010625738,
+      "razao_vs_seguinte": 1.0252583237657864,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421189",
+      "clientes": 1258,
+      "candidato_ibge": "4211892",
+      "candidatos": [
+        "4211892"
+      ],
+      "nome": "Painel",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1217,
+      "clientes_ano_seguinte": 1371,
+      "razao_vs_anterior": 1.0336894001643386,
+      "razao_vs_seguinte": 1.089825119236884,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421190",
+      "clientes": 108919,
+      "candidato_ibge": "4211900",
+      "candidatos": [
+        "4211900"
+      ],
+      "nome": "Palhoça",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 105998,
+      "clientes_ano_seguinte": 112570,
+      "razao_vs_anterior": 1.0275571237193155,
+      "razao_vs_seguinte": 1.0335203224414473,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421200",
+      "clientes": 3257,
+      "candidato_ibge": "4212007",
+      "candidatos": [
+        "4212007"
+      ],
+      "nome": "Palma Sola",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3236,
+      "clientes_ano_seguinte": 3315,
+      "razao_vs_anterior": 1.0064894932014834,
+      "razao_vs_seguinte": 1.0178077985876575,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421205",
+      "clientes": 1464,
+      "candidato_ibge": "4212056",
+      "candidatos": [
+        "4212056"
+      ],
+      "nome": "Palmeira",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1436,
+      "clientes_ano_seguinte": 1469,
+      "razao_vs_anterior": 1.0194986072423398,
+      "razao_vs_seguinte": 1.0034153005464481,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421210",
+      "clientes": 7678,
+      "candidato_ibge": "4212106",
+      "candidatos": [
+        "4212106"
+      ],
+      "nome": "Palmitos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7615,
+      "clientes_ano_seguinte": 7799,
+      "razao_vs_anterior": 1.0082731451083389,
+      "razao_vs_seguinte": 1.015759312320917,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421220",
+      "clientes": 8415,
+      "candidato_ibge": "4212205",
+      "candidatos": [
+        "4212205"
+      ],
+      "nome": "Papanduva",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8275,
+      "clientes_ano_seguinte": 8564,
+      "razao_vs_anterior": 1.016918429003021,
+      "razao_vs_seguinte": 1.017706476530006,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421223",
+      "clientes": 1887,
+      "candidato_ibge": "4212239",
+      "candidatos": [
+        "4212239"
+      ],
+      "nome": "Paraíso",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1869,
+      "clientes_ano_seguinte": 1915,
+      "razao_vs_anterior": 1.0096308186195826,
+      "razao_vs_seguinte": 1.0148383677795443,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421225",
+      "clientes": 148,
+      "candidato_ibge": "4212254",
+      "candidatos": [
+        "4212254"
+      ],
+      "nome": "Passo de Torres",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 142,
+      "clientes_ano_seguinte": 153,
+      "razao_vs_anterior": 1.0422535211267605,
+      "razao_vs_seguinte": 1.0337837837837838,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421227",
+      "clientes": 1631,
+      "candidato_ibge": "4212270",
+      "candidatos": [
+        "4212270"
+      ],
+      "nome": "Passos Maia",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1614,
+      "clientes_ano_seguinte": 1666,
+      "razao_vs_anterior": 1.0105328376703842,
+      "razao_vs_seguinte": 1.0214592274678111,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421240",
+      "clientes": 1051,
+      "candidato_ibge": "4212403",
+      "candidatos": [
+        "4212403"
+      ],
+      "nome": "Pedras Grandes",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1025,
+      "clientes_ano_seguinte": 1080,
+      "razao_vs_anterior": 1.0253658536585366,
+      "razao_vs_seguinte": 1.027592768791627,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421250",
+      "clientes": 22662,
+      "candidato_ibge": "4212502",
+      "candidatos": [
+        "4212502"
+      ],
+      "nome": "Penha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 22061,
+      "clientes_ano_seguinte": 22922,
+      "razao_vs_anterior": 1.0272426453923214,
+      "razao_vs_seguinte": 1.0114729503132998,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421260",
+      "clientes": 1510,
+      "candidato_ibge": "4212601",
+      "candidatos": [
+        "4212601"
+      ],
+      "nome": "Peritiba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1480,
+      "clientes_ano_seguinte": 1535,
+      "razao_vs_anterior": 1.0202702702702702,
+      "razao_vs_seguinte": 1.0165562913907285,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421265",
+      "clientes": 4719,
+      "candidato_ibge": "4212650",
+      "candidatos": [
+        "4212650"
+      ],
+      "nome": "Pescaria Brava",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4660,
+      "clientes_ano_seguinte": 4817,
+      "razao_vs_anterior": 1.0126609442060086,
+      "razao_vs_seguinte": 1.0207671116762025,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421270",
+      "clientes": 3274,
+      "candidato_ibge": "4212700",
+      "candidatos": [
+        "4212700"
+      ],
+      "nome": "Petrolândia",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3217,
+      "clientes_ano_seguinte": 3300,
+      "razao_vs_anterior": 1.0177183711532483,
+      "razao_vs_seguinte": 1.0079413561392792,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421280",
+      "clientes": 21280,
+      "candidato_ibge": "4212809",
+      "candidatos": [
+        "4212809"
+      ],
+      "nome": "Balneário Piçarras",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 20263,
+      "clientes_ano_seguinte": 21910,
+      "razao_vs_anterior": 1.050190001480531,
+      "razao_vs_seguinte": 1.0296052631578947,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421290",
+      "clientes": 8169,
+      "candidato_ibge": "4212908",
+      "candidatos": [
+        "4212908"
+      ],
+      "nome": "Pinhalzinho",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8003,
+      "clientes_ano_seguinte": 8438,
+      "razao_vs_anterior": 1.020742221666875,
+      "razao_vs_seguinte": 1.0329293671195985,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421300",
+      "clientes": 1460,
+      "candidato_ibge": "4213005",
+      "candidatos": [
+        "4213005"
+      ],
+      "nome": "Pinheiro Preto",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1440,
+      "clientes_ano_seguinte": 1482,
+      "razao_vs_anterior": 1.0138888888888888,
+      "razao_vs_seguinte": 1.015068493150685,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421310",
+      "clientes": 4132,
+      "candidato_ibge": "4213104",
+      "candidatos": [
+        "4213104"
+      ],
+      "nome": "Piratuba",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4044,
+      "clientes_ano_seguinte": 4233,
+      "razao_vs_anterior": 1.0217606330365974,
+      "razao_vs_seguinte": 1.0244433688286545,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421315",
+      "clientes": 1447,
+      "candidato_ibge": "4213153",
+      "candidatos": [
+        "4213153"
+      ],
+      "nome": "Planalto Alegre",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1415,
+      "clientes_ano_seguinte": 1476,
+      "razao_vs_anterior": 1.0226148409893994,
+      "razao_vs_seguinte": 1.0200414651002074,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421320",
+      "clientes": 13897,
+      "candidato_ibge": "4213203",
+      "candidatos": [
+        "4213203"
+      ],
+      "nome": "Pomerode",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 13591,
+      "clientes_ano_seguinte": 14094,
+      "razao_vs_anterior": 1.0225148995658893,
+      "razao_vs_seguinte": 1.0141757213787148,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421330",
+      "clientes": 2091,
+      "candidato_ibge": "4213302",
+      "candidatos": [
+        "4213302"
+      ],
+      "nome": "Ponte Alta",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2091,
+      "clientes_ano_seguinte": 2126,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0167384026781445,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421335",
+      "clientes": 1243,
+      "candidato_ibge": "4213351",
+      "candidatos": [
+        "4213351"
+      ],
+      "nome": "Ponte Alta do Norte",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1243,
+      "clientes_ano_seguinte": 1268,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0201126307320998,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421340",
+      "clientes": 4463,
+      "candidato_ibge": "4213401",
+      "candidatos": [
+        "4213401"
+      ],
+      "nome": "Ponte Serrada",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4367,
+      "clientes_ano_seguinte": 4559,
+      "razao_vs_anterior": 1.0219830547286466,
+      "razao_vs_seguinte": 1.0215101949361416,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421350",
+      "clientes": 16300,
+      "candidato_ibge": "4213500",
+      "candidatos": [
+        "4213500"
+      ],
+      "nome": "Porto Belo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 15600,
+      "clientes_ano_seguinte": 16604,
+      "razao_vs_anterior": 1.044871794871795,
+      "razao_vs_seguinte": 1.0186503067484662,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421360",
+      "clientes": 2494,
+      "candidato_ibge": "4213609",
+      "candidatos": [
+        "4213609"
+      ],
+      "nome": "Porto União",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2448,
+      "clientes_ano_seguinte": 2502,
+      "razao_vs_anterior": 1.0187908496732025,
+      "razao_vs_seguinte": 1.0032076984763432,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421370",
+      "clientes": 7221,
+      "candidato_ibge": "4213708",
+      "candidatos": [
+        "4213708"
+      ],
+      "nome": "Pouso Redondo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7093,
+      "clientes_ano_seguinte": 7421,
+      "razao_vs_anterior": 1.018045960806429,
+      "razao_vs_seguinte": 1.027696994876056,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421390",
+      "clientes": 756,
+      "candidato_ibge": "4213906",
+      "candidatos": [
+        "4213906"
+      ],
+      "nome": "Presidente Castello Branco",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 751,
+      "clientes_ano_seguinte": 761,
+      "razao_vs_anterior": 1.0066577896138482,
+      "razao_vs_seguinte": 1.0066137566137565,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421400",
+      "clientes": 8568,
+      "candidato_ibge": "4214003",
+      "candidatos": [
+        "4214003"
+      ],
+      "nome": "Presidente Getúlio",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8414,
+      "clientes_ano_seguinte": 8826,
+      "razao_vs_anterior": 1.0183028286189684,
+      "razao_vs_seguinte": 1.030112044817927,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421410",
+      "clientes": 1212,
+      "candidato_ibge": "4214102",
+      "candidatos": [
+        "4214102"
+      ],
+      "nome": "Presidente Nereu",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1191,
+      "clientes_ano_seguinte": 1226,
+      "razao_vs_anterior": 1.0176322418136021,
+      "razao_vs_seguinte": 1.0115511551155116,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421415",
+      "clientes": 1305,
+      "candidato_ibge": "4214151",
+      "candidatos": [
+        "4214151"
+      ],
+      "nome": "Princesa",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1290,
+      "clientes_ano_seguinte": 1316,
+      "razao_vs_anterior": 1.0116279069767442,
+      "razao_vs_seguinte": 1.0084291187739463,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421420",
+      "clientes": 4820,
+      "candidato_ibge": "4214201",
+      "candidatos": [
+        "4214201"
+      ],
+      "nome": "Quilombo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4766,
+      "clientes_ano_seguinte": 4879,
+      "razao_vs_anterior": 1.0113302559798574,
+      "razao_vs_seguinte": 1.012240663900415,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421430",
+      "clientes": 2052,
+      "candidato_ibge": "4214300",
+      "candidatos": [
+        "4214300"
+      ],
+      "nome": "Rancho Queimado",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1978,
+      "clientes_ano_seguinte": 2140,
+      "razao_vs_anterior": 1.0374115267947421,
+      "razao_vs_seguinte": 1.0428849902534114,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421440",
+      "clientes": 2740,
+      "candidato_ibge": "4214409",
+      "candidatos": [
+        "4214409"
+      ],
+      "nome": "Rio das Antas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2696,
+      "clientes_ano_seguinte": 2783,
+      "razao_vs_anterior": 1.0163204747774481,
+      "razao_vs_seguinte": 1.0156934306569343,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421450",
+      "clientes": 3021,
+      "candidato_ibge": "4214508",
+      "candidatos": [
+        "4214508"
+      ],
+      "nome": "Rio do Campo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2997,
+      "clientes_ano_seguinte": 3057,
+      "razao_vs_anterior": 1.008008008008008,
+      "razao_vs_seguinte": 1.0119165839126116,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421460",
+      "clientes": 3569,
+      "candidato_ibge": "4214607",
+      "candidatos": [
+        "4214607"
+      ],
+      "nome": "Rio do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3551,
+      "clientes_ano_seguinte": 3603,
+      "razao_vs_anterior": 1.0050689946493945,
+      "razao_vs_seguinte": 1.0095264780050435,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421470",
+      "clientes": 6163,
+      "candidato_ibge": "4214706",
+      "candidatos": [
+        "4214706"
+      ],
+      "nome": "Rio dos Cedros",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6036,
+      "clientes_ano_seguinte": 6259,
+      "razao_vs_anterior": 1.021040424121935,
+      "razao_vs_seguinte": 1.0155768294661691,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421480",
+      "clientes": 32837,
+      "candidato_ibge": "4214805",
+      "candidatos": [
+        "4214805"
+      ],
+      "nome": "Rio do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 32381,
+      "clientes_ano_seguinte": 33142,
+      "razao_vs_anterior": 1.0140823322318644,
+      "razao_vs_seguinte": 1.0092883028291257,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421500",
+      "clientes": 16436,
+      "candidato_ibge": "4215000",
+      "candidatos": [
+        "4215000"
+      ],
+      "nome": "Rio Negrinho",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 16163,
+      "clientes_ano_seguinte": 16686,
+      "razao_vs_anterior": 1.0168904287570377,
+      "razao_vs_seguinte": 1.015210513506936,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421505",
+      "clientes": 1291,
+      "candidato_ibge": "4215059",
+      "candidatos": [
+        "4215059"
+      ],
+      "nome": "Rio Rufino",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1235,
+      "clientes_ano_seguinte": 1329,
+      "razao_vs_anterior": 1.045344129554656,
+      "razao_vs_seguinte": 1.029434546862897,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421507",
+      "clientes": 2297,
+      "candidato_ibge": "4215075",
+      "candidatos": [
+        "4215075"
+      ],
+      "nome": "Riqueza",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2245,
+      "clientes_ano_seguinte": 2331,
+      "razao_vs_anterior": 1.0231625835189309,
+      "razao_vs_seguinte": 1.0148019155420114,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421510",
+      "clientes": 5877,
+      "candidato_ibge": "4215109",
+      "candidatos": [
+        "4215109"
+      ],
+      "nome": "Rodeio",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5831,
+      "clientes_ano_seguinte": 5957,
+      "razao_vs_anterior": 1.0078888698336477,
+      "razao_vs_seguinte": 1.0136123872724179,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421520",
+      "clientes": 2391,
+      "candidato_ibge": "4215208",
+      "candidatos": [
+        "4215208"
+      ],
+      "nome": "Romelândia",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2370,
+      "clientes_ano_seguinte": 2418,
+      "razao_vs_anterior": 1.008860759493671,
+      "razao_vs_seguinte": 1.0112923462986199,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421530",
+      "clientes": 3441,
+      "candidato_ibge": "4215307",
+      "candidatos": [
+        "4215307"
+      ],
+      "nome": "Salete",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3399,
+      "clientes_ano_seguinte": 3519,
+      "razao_vs_anterior": 1.0123565754633717,
+      "razao_vs_seguinte": 1.022667829119442,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421535",
+      "clientes": 1593,
+      "candidato_ibge": "4215356",
+      "candidatos": [
+        "4215356"
+      ],
+      "nome": "Saltinho",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1589,
+      "clientes_ano_seguinte": 1597,
+      "razao_vs_anterior": 1.0025173064820643,
+      "razao_vs_seguinte": 1.002510985561833,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421540",
+      "clientes": 2002,
+      "candidato_ibge": "4215406",
+      "candidatos": [
+        "4215406"
+      ],
+      "nome": "Salto Veloso",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1970,
+      "clientes_ano_seguinte": 2023,
+      "razao_vs_anterior": 1.016243654822335,
+      "razao_vs_seguinte": 1.0104895104895104,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421545",
+      "clientes": 4456,
+      "candidato_ibge": "4215455",
+      "candidatos": [
+        "4215455"
+      ],
+      "nome": "Sangão",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4371,
+      "clientes_ano_seguinte": 4531,
+      "razao_vs_anterior": 1.0194463509494396,
+      "razao_vs_seguinte": 1.0168312387791743,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421550",
+      "clientes": 5854,
+      "candidato_ibge": "4215505",
+      "candidatos": [
+        "4215505"
+      ],
+      "nome": "Santa Cecília",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5833,
+      "clientes_ano_seguinte": 5955,
+      "razao_vs_anterior": 1.0036002057260416,
+      "razao_vs_seguinte": 1.0172531602323198,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421555",
+      "clientes": 1157,
+      "candidato_ibge": "4215554",
+      "candidatos": [
+        "4215554"
+      ],
+      "nome": "Santa Helena",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1149,
+      "clientes_ano_seguinte": 1180,
+      "razao_vs_anterior": 1.0069625761531766,
+      "razao_vs_seguinte": 1.0198789974070872,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421565",
+      "clientes": 4404,
+      "candidato_ibge": "4215653",
+      "candidatos": [
+        "4215653"
+      ],
+      "nome": "Santa Rosa do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4305,
+      "clientes_ano_seguinte": 4514,
+      "razao_vs_anterior": 1.0229965156794425,
+      "razao_vs_seguinte": 1.024977293369664,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421567",
+      "clientes": 3647,
+      "candidato_ibge": "4215679",
+      "candidatos": [
+        "4215679"
+      ],
+      "nome": "Santa Terezinha",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3576,
+      "clientes_ano_seguinte": 3715,
+      "razao_vs_anterior": 1.0198545861297539,
+      "razao_vs_seguinte": 1.018645462023581,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421568",
+      "clientes": 1205,
+      "candidato_ibge": "4215687",
+      "candidatos": [
+        "4215687"
+      ],
+      "nome": "Santa Terezinha do Progresso",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1190,
+      "clientes_ano_seguinte": 1214,
+      "razao_vs_anterior": 1.0126050420168067,
+      "razao_vs_seguinte": 1.0074688796680498,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421569",
+      "clientes": 707,
+      "candidato_ibge": "4215695",
+      "candidatos": [
+        "4215695"
+      ],
+      "nome": "Santiago do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 702,
+      "clientes_ano_seguinte": 717,
+      "razao_vs_anterior": 1.0071225071225072,
+      "razao_vs_seguinte": 1.0141442715700142,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421570",
+      "clientes": 14137,
+      "candidato_ibge": "4215703",
+      "candidatos": [
+        "4215703"
+      ],
+      "nome": "Santo Amaro da Imperatriz",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 13811,
+      "clientes_ano_seguinte": 14587,
+      "razao_vs_anterior": 1.02360437332561,
+      "razao_vs_seguinte": 1.0318313645044919,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421575",
+      "clientes": 1110,
+      "candidato_ibge": "4215752",
+      "candidatos": [
+        "4215752"
+      ],
+      "nome": "São Bernardino",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1097,
+      "clientes_ano_seguinte": 1119,
+      "razao_vs_anterior": 1.0118505013673655,
+      "razao_vs_seguinte": 1.008108108108108,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421580",
+      "clientes": 36327,
+      "candidato_ibge": "4215802",
+      "candidatos": [
+        "4215802"
+      ],
+      "nome": "São Bento do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 35888,
+      "clientes_ano_seguinte": 36881,
+      "razao_vs_anterior": 1.0122325011145787,
+      "razao_vs_seguinte": 1.015250364742478,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421600",
+      "clientes": 4286,
+      "candidato_ibge": "4216008",
+      "candidatos": [
+        "4216008"
+      ],
+      "nome": "São Carlos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4238,
+      "clientes_ano_seguinte": 4340,
+      "razao_vs_anterior": 1.0113260972156677,
+      "razao_vs_seguinte": 1.0125991600559963,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421605",
+      "clientes": 1768,
+      "candidato_ibge": "4216057",
+      "candidatos": [
+        "4216057"
+      ],
+      "nome": "São Cristóvão do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1765,
+      "clientes_ano_seguinte": 1838,
+      "razao_vs_anterior": 1.001699716713881,
+      "razao_vs_seguinte": 1.0395927601809956,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421610",
+      "clientes": 4213,
+      "candidato_ibge": "4216107",
+      "candidatos": [
+        "4216107"
+      ],
+      "nome": "São Domingos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4185,
+      "clientes_ano_seguinte": 4264,
+      "razao_vs_anterior": 1.0066905615292712,
+      "razao_vs_seguinte": 1.0121053880845003,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421620",
+      "clientes": 35358,
+      "candidato_ibge": "4216206",
+      "candidatos": [
+        "4216206"
+      ],
+      "nome": "São Francisco do Sul",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 34322,
+      "clientes_ano_seguinte": 36610,
+      "razao_vs_anterior": 1.030184721170095,
+      "razao_vs_seguinte": 1.0354092426042196,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421625",
+      "clientes": 3018,
+      "candidato_ibge": "4216255",
+      "candidatos": [
+        "4216255"
+      ],
+      "nome": "São João do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2981,
+      "clientes_ano_seguinte": 3036,
+      "razao_vs_anterior": 1.0124119423012412,
+      "razao_vs_seguinte": 1.0059642147117296,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421630",
+      "clientes": 14242,
+      "candidato_ibge": "4216305",
+      "candidatos": [
+        "4216305"
+      ],
+      "nome": "São João Batista",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 14021,
+      "clientes_ano_seguinte": 14616,
+      "razao_vs_anterior": 1.015762071178946,
+      "razao_vs_seguinte": 1.0262603566914759,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421635",
+      "clientes": 2099,
+      "candidato_ibge": "4216354",
+      "candidatos": [
+        "4216354"
+      ],
+      "nome": "São João do Itaperiú",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2002,
+      "clientes_ano_seguinte": 2136,
+      "razao_vs_anterior": 1.0484515484515484,
+      "razao_vs_seguinte": 1.0176274416388758,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421650",
+      "clientes": 11726,
+      "candidato_ibge": "4216503",
+      "candidatos": [
+        "4216503"
+      ],
+      "nome": "São Joaquim",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 11646,
+      "clientes_ano_seguinte": 11968,
+      "razao_vs_anterior": 1.006869311351537,
+      "razao_vs_seguinte": 1.020637898686679,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421660",
+      "clientes": 128777,
+      "candidato_ibge": "4216602",
+      "candidatos": [
+        "4216602"
+      ],
+      "nome": "São José",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 127231,
+      "clientes_ano_seguinte": 132178,
+      "razao_vs_anterior": 1.0121511266908223,
+      "razao_vs_seguinte": 1.0264099955737438,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421670",
+      "clientes": 6663,
+      "candidato_ibge": "4216701",
+      "candidatos": [
+        "4216701"
+      ],
+      "nome": "São José do Cedro",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 6567,
+      "clientes_ano_seguinte": 6747,
+      "razao_vs_anterior": 1.0146185472818638,
+      "razao_vs_seguinte": 1.0126069338135975,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421680",
+      "clientes": 4623,
+      "candidato_ibge": "4216800",
+      "candidatos": [
+        "4216800"
+      ],
+      "nome": "São José do Cerrito",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 4506,
+      "clientes_ano_seguinte": 4745,
+      "razao_vs_anterior": 1.025965379494008,
+      "razao_vs_seguinte": 1.0263897901795371,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421690",
+      "clientes": 11007,
+      "candidato_ibge": "4216909",
+      "candidatos": [
+        "4216909"
+      ],
+      "nome": "São Lourenço do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 10852,
+      "clientes_ano_seguinte": 11369,
+      "razao_vs_anterior": 1.0142830814596389,
+      "razao_vs_seguinte": 1.0328881620786772,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421715",
+      "clientes": 727,
+      "candidato_ibge": "4217154",
+      "candidatos": [
+        "4217154"
+      ],
+      "nome": "São Miguel da Boa Vista",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 709,
+      "clientes_ano_seguinte": 752,
+      "razao_vs_anterior": 1.0253878702397743,
+      "razao_vs_seguinte": 1.034387895460798,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421720",
+      "clientes": 21658,
+      "candidato_ibge": "4217204",
+      "candidatos": [
+        "4217204"
+      ],
+      "nome": "São Miguel do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 21244,
+      "clientes_ano_seguinte": 22055,
+      "razao_vs_anterior": 1.0194878553944644,
+      "razao_vs_seguinte": 1.0183304090867116,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421725",
+      "clientes": 1896,
+      "candidato_ibge": "4217253",
+      "candidatos": [
+        "4217253"
+      ],
+      "nome": "São Pedro de Alcântara",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1822,
+      "clientes_ano_seguinte": 1956,
+      "razao_vs_anterior": 1.0406147091108673,
+      "razao_vs_seguinte": 1.0316455696202531,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421730",
+      "clientes": 1670,
+      "candidato_ibge": "4217303",
+      "candidatos": [
+        "4217303"
+      ],
+      "nome": "Saudades",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1664,
+      "clientes_ano_seguinte": 1683,
+      "razao_vs_anterior": 1.0036057692307692,
+      "razao_vs_seguinte": 1.0077844311377246,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421740",
+      "clientes": 7769,
+      "candidato_ibge": "4217402",
+      "candidatos": [
+        "4217402"
+      ],
+      "nome": "Schroeder",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7625,
+      "clientes_ano_seguinte": 7863,
+      "razao_vs_anterior": 1.0188852459016393,
+      "razao_vs_seguinte": 1.0120993692881968,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421750",
+      "clientes": 8117,
+      "candidato_ibge": "4217501",
+      "candidatos": [
+        "4217501"
+      ],
+      "nome": "Seara",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8018,
+      "clientes_ano_seguinte": 8225,
+      "razao_vs_anterior": 1.0123472187577949,
+      "razao_vs_seguinte": 1.013305408402119,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421755",
+      "clientes": 1301,
+      "candidato_ibge": "4217550",
+      "candidatos": [
+        "4217550"
+      ],
+      "nome": "Serra Alta",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1297,
+      "clientes_ano_seguinte": 1327,
+      "razao_vs_anterior": 1.0030840400925212,
+      "razao_vs_seguinte": 1.0199846272098385,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421760",
+      "clientes": 1,
+      "candidato_ibge": "4217600",
+      "candidatos": [
+        "4217600"
+      ],
+      "nome": "Siderópolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1,
+      "clientes_ano_seguinte": 1,
+      "razao_vs_anterior": 1.0,
+      "razao_vs_seguinte": 1.0,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421770",
+      "clientes": 13523,
+      "candidato_ibge": "4217709",
+      "candidatos": [
+        "4217709"
+      ],
+      "nome": "Sombrio",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 13382,
+      "clientes_ano_seguinte": 13887,
+      "razao_vs_anterior": 1.0105365416230758,
+      "razao_vs_seguinte": 1.0269171041928566,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421775",
+      "clientes": 344,
+      "candidato_ibge": "4217758",
+      "candidatos": [
+        "4217758"
+      ],
+      "nome": "Sul Brasil",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 342,
+      "clientes_ano_seguinte": 340,
+      "razao_vs_anterior": 1.0058479532163742,
+      "razao_vs_seguinte": 0.9883720930232558,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421780",
+      "clientes": 8599,
+      "candidato_ibge": "4217808",
+      "candidatos": [
+        "4217808"
+      ],
+      "nome": "Taió",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 8513,
+      "clientes_ano_seguinte": 8701,
+      "razao_vs_anterior": 1.0101021966404322,
+      "razao_vs_seguinte": 1.0118618444005116,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421790",
+      "clientes": 3919,
+      "candidato_ibge": "4217907",
+      "candidatos": [
+        "4217907"
+      ],
+      "nome": "Tangará",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3899,
+      "clientes_ano_seguinte": 3955,
+      "razao_vs_anterior": 1.0051295203898436,
+      "razao_vs_seguinte": 1.009186016841031,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421795",
+      "clientes": 326,
+      "candidato_ibge": "4217956",
+      "candidatos": [
+        "4217956"
+      ],
+      "nome": "Tigrinhos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 327,
+      "clientes_ano_seguinte": 327,
+      "razao_vs_anterior": 0.9969418960244648,
+      "razao_vs_seguinte": 1.0030674846625767,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421800",
+      "clientes": 22690,
+      "candidato_ibge": "4218004",
+      "candidatos": [
+        "4218004"
+      ],
+      "nome": "Tijucas",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 21783,
+      "clientes_ano_seguinte": 23834,
+      "razao_vs_anterior": 1.0416379745673232,
+      "razao_vs_seguinte": 1.0504186866460996,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421820",
+      "clientes": 20296,
+      "candidato_ibge": "4218202",
+      "candidatos": [
+        "4218202"
+      ],
+      "nome": "Timbó",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 19975,
+      "clientes_ano_seguinte": 20589,
+      "razao_vs_anterior": 1.016070087609512,
+      "razao_vs_seguinte": 1.0144363421363816,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421825",
+      "clientes": 2849,
+      "candidato_ibge": "4218251",
+      "candidatos": [
+        "4218251"
+      ],
+      "nome": "Timbó Grande",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2830,
+      "clientes_ano_seguinte": 2891,
+      "razao_vs_anterior": 1.0067137809187279,
+      "razao_vs_seguinte": 1.0147420147420148,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421830",
+      "clientes": 7568,
+      "candidato_ibge": "4218301",
+      "candidatos": [
+        "4218301"
+      ],
+      "nome": "Três Barras",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 7445,
+      "clientes_ano_seguinte": 7701,
+      "razao_vs_anterior": 1.0165211551376763,
+      "razao_vs_seguinte": 1.0175739957716703,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421850",
+      "clientes": 4058,
+      "candidato_ibge": "4218509",
+      "candidatos": [
+        "4218509"
+      ],
+      "nome": "Treze Tílias",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3954,
+      "clientes_ano_seguinte": 4189,
+      "razao_vs_anterior": 1.026302478502782,
+      "razao_vs_seguinte": 1.0322819122720552,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421860",
+      "clientes": 3368,
+      "candidato_ibge": "4218608",
+      "candidatos": [
+        "4218608"
+      ],
+      "nome": "Trombudo Central",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3383,
+      "clientes_ano_seguinte": 3390,
+      "razao_vs_anterior": 0.9955660656222288,
+      "razao_vs_seguinte": 1.0065320665083135,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421870",
+      "clientes": 41068,
+      "candidato_ibge": "4218707",
+      "candidatos": [
+        "4218707"
+      ],
+      "nome": "Tubarão",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 40220,
+      "clientes_ano_seguinte": 42397,
+      "razao_vs_anterior": 1.0210840377921433,
+      "razao_vs_seguinte": 1.0323609623064187,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421875",
+      "clientes": 2242,
+      "candidato_ibge": "4218756",
+      "candidatos": [
+        "4218756"
+      ],
+      "nome": "Tunápolis",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2209,
+      "clientes_ano_seguinte": 2266,
+      "razao_vs_anterior": 1.0149388863739248,
+      "razao_vs_seguinte": 1.0107047279214987,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421880",
+      "clientes": 55,
+      "candidato_ibge": "4218806",
+      "candidatos": [
+        "4218806"
+      ],
+      "nome": "Turvo",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 53,
+      "clientes_ano_seguinte": 56,
+      "razao_vs_anterior": 1.0377358490566038,
+      "razao_vs_seguinte": 1.018181818181818,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421885",
+      "clientes": 1243,
+      "candidato_ibge": "4218855",
+      "candidatos": [
+        "4218855"
+      ],
+      "nome": "União do Oeste",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1226,
+      "clientes_ano_seguinte": 1255,
+      "razao_vs_anterior": 1.0138662316476346,
+      "razao_vs_seguinte": 1.009654062751408,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421890",
+      "clientes": 6611,
+      "candidato_ibge": "4218905",
+      "candidatos": [
+        "4218905"
+      ],
+      "nome": "Urubici",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 5924,
+      "clientes_ano_seguinte": 6921,
+      "razao_vs_anterior": 1.1159689399054693,
+      "razao_vs_seguinte": 1.046891544395704,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421895",
+      "clientes": 1421,
+      "candidato_ibge": "4218954",
+      "candidatos": [
+        "4218954"
+      ],
+      "nome": "Urupema",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1367,
+      "clientes_ano_seguinte": 1479,
+      "razao_vs_anterior": 1.0395025603511339,
+      "razao_vs_seguinte": 1.0408163265306123,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421910",
+      "clientes": 1570,
+      "candidato_ibge": "4219101",
+      "candidatos": [
+        "4219101"
+      ],
+      "nome": "Vargeão",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1515,
+      "clientes_ano_seguinte": 1627,
+      "razao_vs_anterior": 1.0363036303630364,
+      "razao_vs_seguinte": 1.0363057324840765,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421915",
+      "clientes": 1249,
+      "candidato_ibge": "4219150",
+      "candidatos": [
+        "4219150"
+      ],
+      "nome": "Vargem",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1232,
+      "clientes_ano_seguinte": 1253,
+      "razao_vs_anterior": 1.0137987012987013,
+      "razao_vs_seguinte": 1.0032025620496396,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421917",
+      "clientes": 1979,
+      "candidato_ibge": "4219176",
+      "candidatos": [
+        "4219176"
+      ],
+      "nome": "Vargem Bonita",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1891,
+      "clientes_ano_seguinte": 1989,
+      "razao_vs_anterior": 1.0465362242199894,
+      "razao_vs_seguinte": 1.0050530570995453,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421920",
+      "clientes": 3174,
+      "candidato_ibge": "4219200",
+      "candidatos": [
+        "4219200"
+      ],
+      "nome": "Vidal Ramos",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 3153,
+      "clientes_ano_seguinte": 3186,
+      "razao_vs_anterior": 1.0066603235014273,
+      "razao_vs_seguinte": 1.003780718336484,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421930",
+      "clientes": 25672,
+      "candidato_ibge": "4219309",
+      "candidatos": [
+        "4219309"
+      ],
+      "nome": "Videira",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 25155,
+      "clientes_ano_seguinte": 26407,
+      "razao_vs_anterior": 1.0205525740409462,
+      "razao_vs_seguinte": 1.0286304144593332,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421935",
+      "clientes": 2342,
+      "candidato_ibge": "4219358",
+      "candidatos": [
+        "4219358"
+      ],
+      "nome": "Vitor Meireles",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2332,
+      "clientes_ano_seguinte": 2372,
+      "razao_vs_anterior": 1.004288164665523,
+      "razao_vs_seguinte": 1.0128095644748079,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421940",
+      "clientes": 2036,
+      "candidato_ibge": "4219408",
+      "candidatos": [
+        "4219408"
+      ],
+      "nome": "Witmarsum",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 2023,
+      "clientes_ano_seguinte": 2056,
+      "razao_vs_anterior": 1.0064260998517054,
+      "razao_vs_seguinte": 1.0098231827111985,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421960",
+      "clientes": 1650,
+      "candidato_ibge": "4219606",
+      "candidatos": [
+        "4219606"
+      ],
+      "nome": "Xavantina",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1644,
+      "clientes_ano_seguinte": 1644,
+      "razao_vs_anterior": 1.0036496350364963,
+      "razao_vs_seguinte": 0.9963636363636363,
+      "concordancia_conj": 1.0
+    },
+    {
+      "codigo_publicado": "0421985",
+      "clientes": 1996,
+      "candidato_ibge": "4219853",
+      "candidatos": [
+        "4219853"
+      ],
+      "nome": "Zortéa",
+      "uf": "SC",
+      "prefixo_unico": true,
+      "colisao_no_mesmo_ano": false,
+      "presente_ano_anterior": true,
+      "presente_ano_seguinte": true,
+      "clientes_ano_anterior": 1965,
+      "clientes_ano_seguinte": 2032,
+      "razao_vs_anterior": 1.0157760814249364,
+      "razao_vs_seguinte": 1.0180360721442885,
+      "concordancia_conj": 1.0
+    }
+  ],
+  "efeito_no_motor": "quarentena: (DIST, ano) fora dos paineis de treino/teste ate decisao humana registrada",
+  "decisao": null
+}

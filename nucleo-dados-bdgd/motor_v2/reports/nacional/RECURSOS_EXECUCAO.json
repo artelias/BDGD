@@ -1,0 +1,1004 @@
+{
+  "extracao": {
+    "nac-01": {
+      "dists": [
+        26,
+        31,
+        32,
+        37,
+        38,
+        39,
+        40,
+        43,
+        44,
+        46,
+        47,
+        51,
+        63,
+        69,
+        82,
+        83
+      ],
+      "segundos_lote": 3028.1,
+      "segundos_ucbt": 2782.4,
+      "segundos_ativos": 238.3,
+      "ucbt_por_dist": {
+        "26": {
+          "peak_rss_gib": 0.327,
+          "wall_seconds": 16.4
+        },
+        "31": {
+          "peak_rss_gib": 0.274,
+          "wall_seconds": 10.8
+        },
+        "32": {
+          "peak_rss_gib": 0.553,
+          "wall_seconds": 22.5
+        },
+        "37": {
+          "peak_rss_gib": 0.709,
+          "wall_seconds": 165.8
+        },
+        "38": {
+          "peak_rss_gib": 0.683,
+          "wall_seconds": 64.3
+        },
+        "39": {
+          "peak_rss_gib": 0.712,
+          "wall_seconds": 325.4
+        },
+        "40": {
+          "peak_rss_gib": 0.686,
+          "wall_seconds": 70.9
+        },
+        "43": {
+          "peak_rss_gib": 0.713,
+          "wall_seconds": 349.7
+        },
+        "44": {
+          "peak_rss_gib": 0.674,
+          "wall_seconds": 47.8
+        },
+        "46": {
+          "peak_rss_gib": 0.236,
+          "wall_seconds": 8.7
+        },
+        "47": {
+          "peak_rss_gib": 0.742,
+          "wall_seconds": 1179.8
+        },
+        "51": {
+          "peak_rss_gib": 0.199,
+          "wall_seconds": 7.2
+        },
+        "63": {
+          "peak_rss_gib": 0.723,
+          "wall_seconds": 482.1
+        },
+        "69": {
+          "peak_rss_gib": 0.401,
+          "wall_seconds": 16.9
+        },
+        "82": {
+          "peak_rss_gib": 0.184,
+          "wall_seconds": 6.1
+        },
+        "83": {
+          "peak_rss_gib": 0.172,
+          "wall_seconds": 4.1
+        }
+      },
+      "pico_rss_gib": 0.742,
+      "ativos_pico_rss_gib": 0.334,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 256
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    },
+    "nac-02": {
+      "dists": [
+        86,
+        87,
+        88,
+        95,
+        103,
+        369,
+        370,
+        371,
+        380,
+        381,
+        382,
+        383,
+        385,
+        390,
+        391,
+        396
+      ],
+      "segundos_lote": 3110.7,
+      "segundos_ucbt": 2893.7,
+      "segundos_ativos": 212.4,
+      "ucbt_por_dist": {
+        "86": {
+          "peak_rss_gib": 0.279,
+          "wall_seconds": 8.2
+        },
+        "87": {
+          "peak_rss_gib": 0.283,
+          "wall_seconds": 5.6
+        },
+        "88": {
+          "peak_rss_gib": 0.278,
+          "wall_seconds": 4.1
+        },
+        "95": {
+          "peak_rss_gib": 0.28,
+          "wall_seconds": 5.1
+        },
+        "103": {
+          "peak_rss_gib": 0.292,
+          "wall_seconds": 5.1
+        },
+        "369": {
+          "peak_rss_gib": 0.702,
+          "wall_seconds": 25.8
+        },
+        "370": {
+          "peak_rss_gib": 0.363,
+          "wall_seconds": 10.8
+        },
+        "371": {
+          "peak_rss_gib": 0.809,
+          "wall_seconds": 204.2
+        },
+        "380": {
+          "peak_rss_gib": 0.794,
+          "wall_seconds": 82.9
+        },
+        "381": {
+          "peak_rss_gib": 0.317,
+          "wall_seconds": 6.6
+        },
+        "382": {
+          "peak_rss_gib": 0.828,
+          "wall_seconds": 436.0
+        },
+        "383": {
+          "peak_rss_gib": 0.799,
+          "wall_seconds": 156.5
+        },
+        "385": {
+          "peak_rss_gib": 0.81,
+          "wall_seconds": 173.8
+        },
+        "390": {
+          "peak_rss_gib": 0.852,
+          "wall_seconds": 1498.4
+        },
+        "391": {
+          "peak_rss_gib": 0.796,
+          "wall_seconds": 107.0
+        },
+        "396": {
+          "peak_rss_gib": 0.805,
+          "wall_seconds": 162.0
+        }
+      },
+      "pico_rss_gib": 0.852,
+      "ativos_pico_rss_gib": 0.271,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 252
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    },
+    "nac-03": {
+      "dists": [
+        398,
+        399,
+        400,
+        401,
+        404,
+        405,
+        504,
+        527,
+        598,
+        2351,
+        2381,
+        2763,
+        2783,
+        2866,
+        2904,
+        2937
+      ],
+      "segundos_lote": 898.8,
+      "segundos_ucbt": 769.8,
+      "segundos_ativos": 124.7,
+      "ucbt_por_dist": {
+        "398": {
+          "peak_rss_gib": 0.273,
+          "wall_seconds": 8.2
+        },
+        "399": {
+          "peak_rss_gib": 0.265,
+          "wall_seconds": 4.1
+        },
+        "400": {
+          "peak_rss_gib": 0.262,
+          "wall_seconds": 4.1
+        },
+        "401": {
+          "peak_rss_gib": 0.261,
+          "wall_seconds": 3.6
+        },
+        "404": {
+          "peak_rss_gib": 0.75,
+          "wall_seconds": 34.7
+        },
+        "405": {
+          "peak_rss_gib": 0.784,
+          "wall_seconds": 68.9
+        },
+        "504": {
+          "peak_rss_gib": 0.264,
+          "wall_seconds": 4.6
+        },
+        "527": {
+          "peak_rss_gib": 0.255,
+          "wall_seconds": 3.6
+        },
+        "598": {
+          "peak_rss_gib": 0.265,
+          "wall_seconds": 4.1
+        },
+        "2351": {
+          "peak_rss_gib": 0.273,
+          "wall_seconds": 3.1
+        },
+        "2381": {
+          "peak_rss_gib": 0.263,
+          "wall_seconds": 3.6
+        },
+        "2763": {
+          "peak_rss_gib": 0.262,
+          "wall_seconds": 3.6
+        },
+        "2783": {
+          "peak_rss_gib": 0.249,
+          "wall_seconds": 3.0
+        },
+        "2866": {
+          "peak_rss_gib": 0.816,
+          "wall_seconds": 543.6
+        },
+        "2904": {
+          "peak_rss_gib": 0.273,
+          "wall_seconds": 4.1
+        },
+        "2937": {
+          "peak_rss_gib": 0.771,
+          "wall_seconds": 71.9
+        }
+      },
+      "pico_rss_gib": 0.816,
+      "ativos_pico_rss_gib": 0.314,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 232
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    },
+    "nac-04": {
+      "dists": [
+        3223,
+        3627,
+        4248,
+        4950,
+        5160,
+        5216,
+        5274,
+        5279,
+        5343,
+        5345,
+        5346,
+        5351,
+        5352,
+        5353,
+        5355,
+        5356
+      ],
+      "segundos_lote": 2028.3,
+      "segundos_ucbt": 1892.5,
+      "segundos_ativos": 132.4,
+      "ucbt_por_dist": {
+        "3223": {
+          "peak_rss_gib": 0.3,
+          "wall_seconds": 8.2
+        },
+        "3627": {
+          "peak_rss_gib": 0.294,
+          "wall_seconds": 4.1
+        },
+        "4248": {
+          "peak_rss_gib": 0.293,
+          "wall_seconds": 3.6
+        },
+        "4950": {
+          "peak_rss_gib": 0.885,
+          "wall_seconds": 1781.9
+        },
+        "5160": {
+          "peak_rss_gib": 0.785,
+          "wall_seconds": 36.4
+        },
+        "5216": {
+          "peak_rss_gib": 0.742,
+          "wall_seconds": 24.0
+        },
+        "5274": {
+          "peak_rss_gib": 0.288,
+          "wall_seconds": 3.6
+        },
+        "5279": {
+          "peak_rss_gib": 0.295,
+          "wall_seconds": 3.1
+        },
+        "5343": {
+          "peak_rss_gib": 0.297,
+          "wall_seconds": 3.6
+        },
+        "5345": {
+          "peak_rss_gib": 0.281,
+          "wall_seconds": 3.6
+        },
+        "5346": {
+          "peak_rss_gib": 0.289,
+          "wall_seconds": 3.1
+        },
+        "5351": {
+          "peak_rss_gib": 0.29,
+          "wall_seconds": 2.5
+        },
+        "5352": {
+          "peak_rss_gib": 0.294,
+          "wall_seconds": 3.6
+        },
+        "5353": {
+          "peak_rss_gib": 0.296,
+          "wall_seconds": 4.1
+        },
+        "5355": {
+          "peak_rss_gib": 0.294,
+          "wall_seconds": 3.1
+        },
+        "5356": {
+          "peak_rss_gib": 0.289,
+          "wall_seconds": 3.1
+        }
+      },
+      "pico_rss_gib": 0.885,
+      "ativos_pico_rss_gib": 0.454,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 212
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    },
+    "nac-05": {
+      "dists": [
+        5363,
+        5364,
+        5365,
+        5366,
+        5367,
+        5368,
+        5369,
+        5370,
+        5371,
+        5372,
+        5373,
+        5374,
+        5375,
+        5377,
+        5378,
+        5379
+      ],
+      "segundos_lote": 114.8,
+      "segundos_ucbt": 60.3,
+      "segundos_ativos": 51.1,
+      "ucbt_por_dist": {
+        "5363": {
+          "peak_rss_gib": 0.275,
+          "wall_seconds": 7.7
+        },
+        "5364": {
+          "peak_rss_gib": 0.271,
+          "wall_seconds": 3.6
+        },
+        "5365": {
+          "peak_rss_gib": 0.274,
+          "wall_seconds": 3.6
+        },
+        "5366": {
+          "peak_rss_gib": 0.273,
+          "wall_seconds": 3.1
+        },
+        "5367": {
+          "peak_rss_gib": 0.274,
+          "wall_seconds": 4.1
+        },
+        "5368": {
+          "peak_rss_gib": 0.277,
+          "wall_seconds": 3.6
+        },
+        "5369": {
+          "peak_rss_gib": 0.268,
+          "wall_seconds": 3.1
+        },
+        "5370": {
+          "peak_rss_gib": 0.283,
+          "wall_seconds": 3.6
+        },
+        "5371": {
+          "peak_rss_gib": 0.276,
+          "wall_seconds": 3.1
+        },
+        "5372": {
+          "peak_rss_gib": 0.273,
+          "wall_seconds": 3.1
+        },
+        "5373": {
+          "peak_rss_gib": 0.27,
+          "wall_seconds": 3.1
+        },
+        "5374": {
+          "peak_rss_gib": 0.262,
+          "wall_seconds": 3.1
+        },
+        "5375": {
+          "peak_rss_gib": 0.273,
+          "wall_seconds": 3.6
+        },
+        "5377": {
+          "peak_rss_gib": 0.264,
+          "wall_seconds": 3.1
+        },
+        "5378": {
+          "peak_rss_gib": 0.274,
+          "wall_seconds": 3.6
+        },
+        "5379": {
+          "peak_rss_gib": 0.274,
+          "wall_seconds": 4.6
+        }
+      },
+      "pico_rss_gib": 0.283,
+      "ativos_pico_rss_gib": 0.179,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 240
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    },
+    "nac-06": {
+      "dists": [
+        5381,
+        5382,
+        5384,
+        5385,
+        5386,
+        5697,
+        5707,
+        6072,
+        6585,
+        6587,
+        6600,
+        6603,
+        6609,
+        6610,
+        6611,
+        6612
+      ],
+      "segundos_lote": 762.3,
+      "segundos_ucbt": 632.8,
+      "segundos_ativos": 124.8,
+      "ucbt_por_dist": {
+        "5381": {
+          "peak_rss_gib": 0.29,
+          "wall_seconds": 3.6
+        },
+        "5382": {
+          "peak_rss_gib": 0.285,
+          "wall_seconds": 3.1
+        },
+        "5384": {
+          "peak_rss_gib": 0.283,
+          "wall_seconds": 3.1
+        },
+        "5385": {
+          "peak_rss_gib": 0.285,
+          "wall_seconds": 3.6
+        },
+        "5386": {
+          "peak_rss_gib": 0.292,
+          "wall_seconds": 3.6
+        },
+        "5697": {
+          "peak_rss_gib": 0.822,
+          "wall_seconds": 207.0
+        },
+        "5707": {
+          "peak_rss_gib": 0.796,
+          "wall_seconds": 79.7
+        },
+        "6072": {
+          "peak_rss_gib": 0.82,
+          "wall_seconds": 186.0
+        },
+        "6585": {
+          "peak_rss_gib": 0.63,
+          "wall_seconds": 17.4
+        },
+        "6587": {
+          "peak_rss_gib": 0.729,
+          "wall_seconds": 22.5
+        },
+        "6600": {
+          "peak_rss_gib": 0.805,
+          "wall_seconds": 85.9
+        },
+        "6603": {
+          "peak_rss_gib": 0.286,
+          "wall_seconds": 3.6
+        },
+        "6609": {
+          "peak_rss_gib": 0.284,
+          "wall_seconds": 3.1
+        },
+        "6610": {
+          "peak_rss_gib": 0.278,
+          "wall_seconds": 3.1
+        },
+        "6611": {
+          "peak_rss_gib": 0.355,
+          "wall_seconds": 4.1
+        },
+        "6612": {
+          "peak_rss_gib": 0.309,
+          "wall_seconds": 3.1
+        }
+      },
+      "pico_rss_gib": 0.822,
+      "ativos_pico_rss_gib": 0.277,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 228
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    },
+    "nac-07": {
+      "dists": [
+        6897,
+        6898,
+        7016,
+        7019,
+        7371,
+        7467,
+        7883,
+        11825
+      ],
+      "segundos_lote": 91.6,
+      "segundos_ucbt": 54.5,
+      "segundos_ativos": 34.9,
+      "ucbt_por_dist": {
+        "6897": {
+          "peak_rss_gib": 0.289,
+          "wall_seconds": 7.1
+        },
+        "6898": {
+          "peak_rss_gib": 0.289,
+          "wall_seconds": 3.6
+        },
+        "7016": {
+          "peak_rss_gib": 0.284,
+          "wall_seconds": 3.6
+        },
+        "7019": {
+          "peak_rss_gib": 0.715,
+          "wall_seconds": 24.6
+        },
+        "7371": {
+          "peak_rss_gib": 0.308,
+          "wall_seconds": 5.1
+        },
+        "7467": {
+          "peak_rss_gib": 0.277,
+          "wall_seconds": 3.6
+        },
+        "7883": {
+          "peak_rss_gib": 0.286,
+          "wall_seconds": 3.1
+        },
+        "11825": {
+          "peak_rss_gib": 0.284,
+          "wall_seconds": 3.1
+        }
+      },
+      "pico_rss_gib": 0.715,
+      "ativos_pico_rss_gib": 0.208,
+      "ativos_reuso": {
+        "reused": 0,
+        "executed": 124
+      },
+      "falhas_ucbt": [],
+      "retry": null,
+      "falhas_ativos": [],
+      "estado": "concluido"
+    }
+  },
+  "comparativos": {
+    "segundos": 7252.2,
+    "lotes": {
+      "ucbt-01": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T12:59:06",
+        "fim": "2026-10-30T13:15:08",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-02": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T12:59:06",
+        "fim": "2026-10-30T13:13:23",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-03": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:13:23",
+        "fim": "2026-10-30T13:23:38",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-04": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:15:08",
+        "fim": "2026-10-30T13:21:08",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-05": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:21:08",
+        "fim": "2026-10-30T13:26:23",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-06": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:23:38",
+        "fim": "2026-10-30T13:34:39",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-07": {
+        "ativo": "ucbt_quantidade",
+        "dists": 3,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:26:23",
+        "fim": "2026-10-30T13:28:23",
+        "estado": "completed",
+        "experimentos_executados": 126,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-01": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:28:23",
+        "fim": "2026-10-30T13:46:54",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-02": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:34:39",
+        "fim": "2026-10-30T13:45:09",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-03": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:45:09",
+        "fim": "2026-10-30T13:55:55",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-04": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:46:54",
+        "fim": "2026-10-30T13:54:25",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-05": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:54:25",
+        "fim": "2026-10-30T14:01:10",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-06": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T13:55:55",
+        "fim": "2026-10-30T14:08:40",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-07": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 3,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:01:10",
+        "fim": "2026-10-30T14:03:25",
+        "estado": "completed",
+        "experimentos_executados": 126,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-01": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:03:25",
+        "fim": "2026-10-30T14:17:11",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-02": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:08:40",
+        "fim": "2026-10-30T14:18:26",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-03": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:17:11",
+        "fim": "2026-10-30T14:27:26",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-04": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:18:26",
+        "fim": "2026-10-30T14:25:11",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-05": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:25:11",
+        "fim": "2026-10-30T14:31:12",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-06": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 15,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:27:26",
+        "fim": "2026-10-30T14:36:57",
+        "estado": "completed",
+        "experimentos_executados": 540,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-01": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:31:12",
+        "fim": "2026-10-30T14:39:57",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-02": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:36:57",
+        "fim": "2026-10-30T14:41:57",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-03": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:39:57",
+        "fim": "2026-10-30T14:42:57",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-04": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:41:57",
+        "fim": "2026-10-30T14:45:42",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-05": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:42:57",
+        "fim": "2026-10-30T14:44:27",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-06": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:44:27",
+        "fim": "2026-10-30T14:48:43",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-07": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 3,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:45:42",
+        "fim": "2026-10-30T14:46:43",
+        "estado": "completed",
+        "experimentos_executados": 108,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-01": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:46:43",
+        "fim": "2026-10-30T14:55:13",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-02": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:48:43",
+        "fim": "2026-10-30T14:52:28",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-03": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:52:28",
+        "fim": "2026-10-30T14:54:43",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-04": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:54:43",
+        "fim": "2026-10-30T14:57:43",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-05": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:55:13",
+        "fim": "2026-10-30T14:56:43",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-06": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:56:43",
+        "fim": "2026-10-30T14:59:58",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-07": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 3,
+        "tentativas": 1,
+        "inicio": "2026-10-30T14:57:43",
+        "fim": "2026-10-30T14:58:43",
+        "estado": "completed",
+        "experimentos_executados": 108,
+        "experimentos_reaproveitados": 0
+      }
+    }
+  },
+  "nivel_b": 2929.3,
+  "projecao_a": 262.8
+}

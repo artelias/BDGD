@@ -20,7 +20,7 @@ FAMILIES = ('ucbt', 'trafo_count', 'trafo_kva', 'mt_km')
 CROSS = ('urban_share', 'log_energy_per_client', 'log_ucbt_clients', 'log_trafo_count', 'log_trafo_kva', 'log_clients_per_trafo', 'log_kva_per_client')
 # own-lag duplicates are never offered: the target's own previous value already is log_stock
 SELF = {'trafo_dist_quantidade': 'log_trafo_count', 'trafo_dist_potencia_kva': 'log_trafo_kva', 'ucbt_quantidade': 'log_ucbt_clients'}
-USES_CROSS = {'trafo_dist_quantidade', 'trafo_dist_potencia_kva', 'rede_mt_extensao_km'}
+USES_CROSS = {'trafo_dist_quantidade', 'trafo_dist_potencia_kva', 'rede_mt_extensao_km', 'rede_bt_extensao_km'}
 VALID = {'municipality': lambda u: bool(u) and len(u) == 7 and u.isdigit(), 'conjunto': lambda u: bool(u) and u != 'MISSING'}
 
 

@@ -1,0 +1,606 @@
+nivel,serie,motivo
+A,2904/ucbt/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,5274/ucbt/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,5279/ucbt/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,5370/ucbt/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+A,6611/ucbt/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,6612/ucbt/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,2904/trafo_dist/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,5274/trafo_dist/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,5279/trafo_dist/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,6611/trafo_dist/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,6612/trafo_dist/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,40/trafo_dist/potencia_kva,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+A,43/trafo_dist/potencia_kva,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+A,400/trafo_dist/potencia_kva,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+A,2904/trafo_dist/potencia_kva,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,5274/trafo_dist/potencia_kva,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,5279/trafo_dist/potencia_kva,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,6587/trafo_dist/potencia_kva,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+A,6611/trafo_dist/potencia_kva,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,2904/rede_mt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,5274/rede_mt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,5279/rede_mt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,6611/rede_mt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,6612/rede_mt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,2904/rede_bt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,5274/rede_bt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,5279/rede_bt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+A,6611/rede_bt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+A,6612/rede_bt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,70/alimentadores/quantidade,sem competencia utilizavel
+B,71/alimentadores/quantidade,sem competencia utilizavel
+B,72/alimentadores/quantidade,sem competencia utilizavel
+B,73/alimentadores/quantidade,sem competencia utilizavel
+B,75/alimentadores/quantidade,sem competencia utilizavel
+B,84/alimentadores/quantidade,sem competencia utilizavel
+B,386/alimentadores/quantidade,sem competencia utilizavel
+B,390/alimentadores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/alimentadores/quantidade,sem competencia utilizavel
+B,2904/alimentadores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/alimentadores/quantidade,sem competencia utilizavel
+B,5274/alimentadores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/alimentadores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/alimentadores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/alimentadores/quantidade,sem competencia utilizavel
+B,6896/alimentadores/quantidade,sem competencia utilizavel
+B,70/bancos_capacitores/quantidade,sem competencia utilizavel
+B,71/bancos_capacitores/quantidade,sem competencia utilizavel
+B,72/bancos_capacitores/quantidade,sem competencia utilizavel
+B,73/bancos_capacitores/quantidade,sem competencia utilizavel
+B,75/bancos_capacitores/quantidade,sem competencia utilizavel
+B,84/bancos_capacitores/quantidade,sem competencia utilizavel
+B,386/bancos_capacitores/quantidade,sem competencia utilizavel
+B,390/bancos_capacitores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/bancos_capacitores/quantidade,sem competencia utilizavel
+B,2904/bancos_capacitores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/bancos_capacitores/quantidade,sem competencia utilizavel
+B,5274/bancos_capacitores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/bancos_capacitores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5366/bancos_capacitores/quantidade,sem competencia utilizavel
+B,6611/bancos_capacitores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/bancos_capacitores/quantidade,sem competencia utilizavel
+B,6896/bancos_capacitores/quantidade,sem competencia utilizavel
+B,70/barramentos/quantidade,sem competencia utilizavel
+B,71/barramentos/quantidade,sem competencia utilizavel
+B,72/barramentos/quantidade,sem competencia utilizavel
+B,73/barramentos/quantidade,sem competencia utilizavel
+B,75/barramentos/quantidade,sem competencia utilizavel
+B,84/barramentos/quantidade,sem competencia utilizavel
+B,87/barramentos/quantidade,sem competencia utilizavel
+B,88/barramentos/quantidade,sem competencia utilizavel
+B,386/barramentos/quantidade,sem competencia utilizavel
+B,390/barramentos/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/barramentos/quantidade,sem competencia utilizavel
+B,401/barramentos/quantidade,sem competencia utilizavel
+B,598/barramentos/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,2904/barramentos/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,4248/barramentos/quantidade,sem competencia utilizavel
+B,5217/barramentos/quantidade,sem competencia utilizavel
+B,5274/barramentos/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/barramentos/quantidade,sem competencia utilizavel
+B,5343/barramentos/quantidade,sem competencia utilizavel
+B,5345/barramentos/quantidade,sem competencia utilizavel
+B,5346/barramentos/quantidade,sem competencia utilizavel
+B,5351/barramentos/quantidade,sem competencia utilizavel
+B,5352/barramentos/quantidade,sem competencia utilizavel
+B,5353/barramentos/quantidade,sem competencia utilizavel
+B,5355/barramentos/quantidade,sem competencia utilizavel
+B,5363/barramentos/quantidade,sem competencia utilizavel
+B,5366/barramentos/quantidade,sem competencia utilizavel
+B,5369/barramentos/quantidade,sem competencia utilizavel
+B,5370/barramentos/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,5372/barramentos/quantidade,sem competencia utilizavel
+B,5373/barramentos/quantidade,sem competencia utilizavel
+B,5374/barramentos/quantidade,sem competencia utilizavel
+B,5375/barramentos/quantidade,sem competencia utilizavel
+B,5377/barramentos/quantidade,sem competencia utilizavel
+B,5381/barramentos/quantidade,sem competencia utilizavel
+B,5382/barramentos/quantidade,sem competencia utilizavel
+B,5384/barramentos/quantidade,sem competencia utilizavel
+B,5385/barramentos/quantidade,sem competencia utilizavel
+B,6603/barramentos/quantidade,sem competencia utilizavel
+B,6610/barramentos/quantidade,sem competencia utilizavel
+B,6611/barramentos/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/barramentos/quantidade,sem competencia utilizavel
+B,6896/barramentos/quantidade,sem competencia utilizavel
+B,6897/barramentos/quantidade,sem competencia utilizavel
+B,7016/barramentos/quantidade,sem competencia utilizavel
+B,70/chaves/quantidade,sem competencia utilizavel
+B,71/chaves/quantidade,sem competencia utilizavel
+B,72/chaves/quantidade,sem competencia utilizavel
+B,73/chaves/quantidade,sem competencia utilizavel
+B,75/chaves/quantidade,sem competencia utilizavel
+B,84/chaves/quantidade,sem competencia utilizavel
+B,386/chaves/quantidade,sem competencia utilizavel
+B,390/chaves/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/chaves/quantidade,sem competencia utilizavel
+B,2904/chaves/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/chaves/quantidade,sem competencia utilizavel
+B,5274/chaves/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/chaves/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/chaves/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/chaves/quantidade,sem competencia utilizavel
+B,6896/chaves/quantidade,sem competencia utilizavel
+B,32/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,44/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,70/circuitos_at/quantidade,sem competencia utilizavel
+B,71/circuitos_at/quantidade,sem competencia utilizavel
+B,72/circuitos_at/quantidade,sem competencia utilizavel
+B,73/circuitos_at/quantidade,sem competencia utilizavel
+B,75/circuitos_at/quantidade,sem competencia utilizavel
+B,82/circuitos_at/quantidade,sem competencia utilizavel
+B,83/circuitos_at/quantidade,sem competencia utilizavel
+B,84/circuitos_at/quantidade,sem competencia utilizavel
+B,86/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,87/circuitos_at/quantidade,sem competencia utilizavel
+B,88/circuitos_at/quantidade,sem competencia utilizavel
+B,95/circuitos_at/quantidade,sem competencia utilizavel
+B,383/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,386/circuitos_at/quantidade,sem competencia utilizavel
+B,390/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/circuitos_at/quantidade,sem competencia utilizavel
+B,399/circuitos_at/quantidade,sem competencia utilizavel
+B,400/circuitos_at/quantidade,sem competencia utilizavel
+B,401/circuitos_at/quantidade,sem competencia utilizavel
+B,404/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,504/circuitos_at/quantidade,sem competencia utilizavel
+B,527/circuitos_at/quantidade,sem competencia utilizavel
+B,598/circuitos_at/quantidade,sem competencia utilizavel
+B,2351/circuitos_at/quantidade,sem competencia utilizavel
+B,2381/circuitos_at/quantidade,sem competencia utilizavel
+B,2763/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,2783/circuitos_at/quantidade,sem competencia utilizavel
+B,2904/circuitos_at/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,3223/circuitos_at/quantidade,sem competencia utilizavel
+B,3627/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,4248/circuitos_at/quantidade,sem competencia utilizavel
+B,5217/circuitos_at/quantidade,sem competencia utilizavel
+B,5274/circuitos_at/quantidade,sem competencia utilizavel
+B,5279/circuitos_at/quantidade,sem competencia utilizavel
+B,5343/circuitos_at/quantidade,sem competencia utilizavel
+B,5345/circuitos_at/quantidade,sem competencia utilizavel
+B,5346/circuitos_at/quantidade,sem competencia utilizavel
+B,5351/circuitos_at/quantidade,sem competencia utilizavel
+B,5352/circuitos_at/quantidade,sem competencia utilizavel
+B,5353/circuitos_at/quantidade,sem competencia utilizavel
+B,5355/circuitos_at/quantidade,sem competencia utilizavel
+B,5356/circuitos_at/quantidade,sem competencia utilizavel
+B,5363/circuitos_at/quantidade,sem competencia utilizavel
+B,5365/circuitos_at/quantidade,sem competencia utilizavel
+B,5366/circuitos_at/quantidade,sem competencia utilizavel
+B,5367/circuitos_at/quantidade,sem competencia utilizavel
+B,5369/circuitos_at/quantidade,sem competencia utilizavel
+B,5370/circuitos_at/quantidade,sem competencia utilizavel
+B,5371/circuitos_at/quantidade,sem competencia utilizavel
+B,5372/circuitos_at/quantidade,sem competencia utilizavel
+B,5373/circuitos_at/quantidade,sem competencia utilizavel
+B,5374/circuitos_at/quantidade,sem competencia utilizavel
+B,5375/circuitos_at/quantidade,sem competencia utilizavel
+B,5377/circuitos_at/quantidade,sem competencia utilizavel
+B,5378/circuitos_at/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5379/circuitos_at/quantidade,sem competencia utilizavel
+B,5381/circuitos_at/quantidade,sem competencia utilizavel
+B,5382/circuitos_at/quantidade,sem competencia utilizavel
+B,5384/circuitos_at/quantidade,sem competencia utilizavel
+B,5385/circuitos_at/quantidade,sem competencia utilizavel
+B,5386/circuitos_at/quantidade,sem competencia utilizavel
+B,6603/circuitos_at/quantidade,sem competencia utilizavel
+B,6609/circuitos_at/quantidade,sem competencia utilizavel
+B,6610/circuitos_at/quantidade,sem competencia utilizavel
+B,6611/circuitos_at/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/circuitos_at/quantidade,sem competencia utilizavel
+B,6896/circuitos_at/quantidade,sem competencia utilizavel
+B,6897/circuitos_at/quantidade,sem competencia utilizavel
+B,6898/circuitos_at/quantidade,sem competencia utilizavel
+B,7016/circuitos_at/quantidade,sem competencia utilizavel
+B,7371/circuitos_at/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,7467/circuitos_at/quantidade,sem competencia utilizavel
+B,7883/circuitos_at/quantidade,sem competencia utilizavel
+B,11825/circuitos_at/quantidade,sem competencia utilizavel
+B,70/conjuntos/quantidade,sem competencia utilizavel
+B,71/conjuntos/quantidade,sem competencia utilizavel
+B,72/conjuntos/quantidade,sem competencia utilizavel
+B,73/conjuntos/quantidade,sem competencia utilizavel
+B,75/conjuntos/quantidade,sem competencia utilizavel
+B,84/conjuntos/quantidade,sem competencia utilizavel
+B,386/conjuntos/quantidade,sem competencia utilizavel
+B,390/conjuntos/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/conjuntos/quantidade,sem competencia utilizavel
+B,2904/conjuntos/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/conjuntos/quantidade,sem competencia utilizavel
+B,5274/conjuntos/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/conjuntos/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/conjuntos/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/conjuntos/quantidade,sem competencia utilizavel
+B,6896/conjuntos/quantidade,sem competencia utilizavel
+B,70/consumidores/quantidade,sem competencia utilizavel
+B,71/consumidores/quantidade,sem competencia utilizavel
+B,72/consumidores/quantidade,sem competencia utilizavel
+B,73/consumidores/quantidade,sem competencia utilizavel
+B,75/consumidores/quantidade,sem competencia utilizavel
+B,84/consumidores/quantidade,sem competencia utilizavel
+B,386/consumidores/quantidade,sem competencia utilizavel
+B,390/consumidores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/consumidores/quantidade,sem competencia utilizavel
+B,2904/consumidores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/consumidores/quantidade,sem competencia utilizavel
+B,5274/consumidores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/consumidores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5370/consumidores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,6611/consumidores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/consumidores/quantidade,sem competencia utilizavel
+B,6896/consumidores/quantidade,sem competencia utilizavel
+B,70/disjuntores/quantidade,sem competencia utilizavel
+B,71/disjuntores/quantidade,sem competencia utilizavel
+B,72/disjuntores/quantidade,sem competencia utilizavel
+B,73/disjuntores/quantidade,sem competencia utilizavel
+B,75/disjuntores/quantidade,sem competencia utilizavel
+B,84/disjuntores/quantidade,sem competencia utilizavel
+B,386/disjuntores/quantidade,sem competencia utilizavel
+B,390/disjuntores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/disjuntores/quantidade,sem competencia utilizavel
+B,2904/disjuntores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/disjuntores/quantidade,sem competencia utilizavel
+B,5274/disjuntores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/disjuntores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/disjuntores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/disjuntores/quantidade,sem competencia utilizavel
+B,6896/disjuntores/quantidade,sem competencia utilizavel
+B,70/geradores/quantidade,sem competencia utilizavel
+B,71/geradores/quantidade,sem competencia utilizavel
+B,72/geradores/quantidade,sem competencia utilizavel
+B,73/geradores/quantidade,sem competencia utilizavel
+B,75/geradores/quantidade,sem competencia utilizavel
+B,84/geradores/quantidade,sem competencia utilizavel
+B,386/geradores/quantidade,sem competencia utilizavel
+B,390/geradores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/geradores/quantidade,sem competencia utilizavel
+B,2904/geradores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/geradores/quantidade,sem competencia utilizavel
+B,5274/geradores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/geradores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6072/geradores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,6611/geradores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/geradores/quantidade,sem competencia utilizavel
+B,6896/geradores/quantidade,sem competencia utilizavel
+B,70/iluminacao/quantidade,sem competencia utilizavel
+B,71/iluminacao/quantidade,sem competencia utilizavel
+B,72/iluminacao/quantidade,sem competencia utilizavel
+B,73/iluminacao/quantidade,sem competencia utilizavel
+B,75/iluminacao/quantidade,sem competencia utilizavel
+B,84/iluminacao/quantidade,sem competencia utilizavel
+B,386/iluminacao/quantidade,sem competencia utilizavel
+B,390/iluminacao/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/iluminacao/quantidade,sem competencia utilizavel
+B,2904/iluminacao/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/iluminacao/quantidade,sem competencia utilizavel
+B,5274/iluminacao/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/iluminacao/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/iluminacao/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/iluminacao/quantidade,sem competencia utilizavel
+B,6896/iluminacao/quantidade,sem competencia utilizavel
+B,70/medidores/quantidade,sem competencia utilizavel
+B,71/medidores/quantidade,sem competencia utilizavel
+B,72/medidores/quantidade,sem competencia utilizavel
+B,73/medidores/quantidade,sem competencia utilizavel
+B,75/medidores/quantidade,sem competencia utilizavel
+B,84/medidores/quantidade,sem competencia utilizavel
+B,386/medidores/quantidade,sem competencia utilizavel
+B,390/medidores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/medidores/quantidade,sem competencia utilizavel
+B,2904/medidores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/medidores/quantidade,sem competencia utilizavel
+B,5274/medidores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/medidores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/medidores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/medidores/quantidade,sem competencia utilizavel
+B,6896/medidores/quantidade,sem competencia utilizavel
+B,70/postes/quantidade,sem competencia utilizavel
+B,71/postes/quantidade,sem competencia utilizavel
+B,72/postes/quantidade,sem competencia utilizavel
+B,73/postes/quantidade,sem competencia utilizavel
+B,75/postes/quantidade,sem competencia utilizavel
+B,84/postes/quantidade,sem competencia utilizavel
+B,386/postes/quantidade,sem competencia utilizavel
+B,390/postes/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/postes/quantidade,sem competencia utilizavel
+B,2904/postes/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/postes/quantidade,sem competencia utilizavel
+B,5274/postes/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/postes/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/postes/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/postes/quantidade,sem competencia utilizavel
+B,6896/postes/quantidade,sem competencia utilizavel
+B,70/ramais/extensao_km,sem competencia utilizavel
+B,71/ramais/extensao_km,sem competencia utilizavel
+B,72/ramais/extensao_km,sem competencia utilizavel
+B,73/ramais/extensao_km,sem competencia utilizavel
+B,75/ramais/extensao_km,sem competencia utilizavel
+B,84/ramais/extensao_km,sem competencia utilizavel
+B,386/ramais/extensao_km,sem competencia utilizavel
+B,390/ramais/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/ramais/extensao_km,sem competencia utilizavel
+B,2904/ramais/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/ramais/extensao_km,sem competencia utilizavel
+B,5274/ramais/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/ramais/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/ramais/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/ramais/extensao_km,sem competencia utilizavel
+B,6896/ramais/extensao_km,sem competencia utilizavel
+B,70/reatores/quantidade,sem competencia utilizavel
+B,71/reatores/quantidade,sem competencia utilizavel
+B,72/reatores/quantidade,sem competencia utilizavel
+B,73/reatores/quantidade,sem competencia utilizavel
+B,75/reatores/quantidade,sem competencia utilizavel
+B,84/reatores/quantidade,sem competencia utilizavel
+B,386/reatores/quantidade,sem competencia utilizavel
+B,390/reatores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/reatores/quantidade,sem competencia utilizavel
+B,2904/reatores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/reatores/quantidade,sem competencia utilizavel
+B,5274/reatores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/reatores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5366/reatores/quantidade,sem competencia utilizavel
+B,6611/reatores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/reatores/quantidade,sem competencia utilizavel
+B,6896/reatores/quantidade,sem competencia utilizavel
+B,70/rede_at/extensao_km,sem competencia utilizavel
+B,71/rede_at/extensao_km,sem competencia utilizavel
+B,72/rede_at/extensao_km,sem competencia utilizavel
+B,73/rede_at/extensao_km,sem competencia utilizavel
+B,75/rede_at/extensao_km,sem competencia utilizavel
+B,82/rede_at/extensao_km,sem competencia utilizavel
+B,83/rede_at/extensao_km,sem competencia utilizavel
+B,84/rede_at/extensao_km,sem competencia utilizavel
+B,86/rede_at/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,87/rede_at/extensao_km,sem competencia utilizavel
+B,88/rede_at/extensao_km,sem competencia utilizavel
+B,386/rede_at/extensao_km,sem competencia utilizavel
+B,390/rede_at/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/rede_at/extensao_km,sem competencia utilizavel
+B,400/rede_at/extensao_km,sem competencia utilizavel
+B,401/rede_at/extensao_km,sem competencia utilizavel
+B,504/rede_at/extensao_km,sem competencia utilizavel
+B,527/rede_at/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,598/rede_at/extensao_km,sem competencia utilizavel
+B,2763/rede_at/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,2783/rede_at/extensao_km,sem competencia utilizavel
+B,2904/rede_at/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,4248/rede_at/extensao_km,sem competencia utilizavel
+B,5217/rede_at/extensao_km,sem competencia utilizavel
+B,5274/rede_at/extensao_km,sem competencia utilizavel
+B,5279/rede_at/extensao_km,sem competencia utilizavel
+B,5343/rede_at/extensao_km,sem competencia utilizavel
+B,5345/rede_at/extensao_km,sem competencia utilizavel
+B,5346/rede_at/extensao_km,sem competencia utilizavel
+B,5351/rede_at/extensao_km,sem competencia utilizavel
+B,5352/rede_at/extensao_km,sem competencia utilizavel
+B,5353/rede_at/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5355/rede_at/extensao_km,sem competencia utilizavel
+B,5356/rede_at/extensao_km,sem competencia utilizavel
+B,5363/rede_at/extensao_km,sem competencia utilizavel
+B,5364/rede_at/extensao_km,sem competencia utilizavel
+B,5365/rede_at/extensao_km,sem competencia utilizavel
+B,5366/rede_at/extensao_km,sem competencia utilizavel
+B,5367/rede_at/extensao_km,sem competencia utilizavel
+B,5369/rede_at/extensao_km,sem competencia utilizavel
+B,5372/rede_at/extensao_km,sem competencia utilizavel
+B,5373/rede_at/extensao_km,sem competencia utilizavel
+B,5374/rede_at/extensao_km,sem competencia utilizavel
+B,5375/rede_at/extensao_km,sem competencia utilizavel
+B,5377/rede_at/extensao_km,sem competencia utilizavel
+B,5379/rede_at/extensao_km,sem competencia utilizavel
+B,5381/rede_at/extensao_km,sem competencia utilizavel
+B,5382/rede_at/extensao_km,sem competencia utilizavel
+B,5384/rede_at/extensao_km,sem competencia utilizavel
+B,5385/rede_at/extensao_km,sem competencia utilizavel
+B,5386/rede_at/extensao_km,sem competencia utilizavel
+B,6603/rede_at/extensao_km,sem competencia utilizavel
+B,6609/rede_at/extensao_km,sem competencia utilizavel
+B,6610/rede_at/extensao_km,sem competencia utilizavel
+B,6611/rede_at/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/rede_at/extensao_km,sem competencia utilizavel
+B,6896/rede_at/extensao_km,sem competencia utilizavel
+B,6897/rede_at/extensao_km,sem competencia utilizavel
+B,6898/rede_at/extensao_km,sem competencia utilizavel
+B,7016/rede_at/extensao_km,sem competencia utilizavel
+B,7883/rede_at/extensao_km,sem competencia utilizavel
+B,11825/rede_at/extensao_km,sem competencia utilizavel
+B,70/rede_bt/extensao_km,sem competencia utilizavel
+B,71/rede_bt/extensao_km,sem competencia utilizavel
+B,72/rede_bt/extensao_km,sem competencia utilizavel
+B,73/rede_bt/extensao_km,sem competencia utilizavel
+B,75/rede_bt/extensao_km,sem competencia utilizavel
+B,84/rede_bt/extensao_km,sem competencia utilizavel
+B,386/rede_bt/extensao_km,sem competencia utilizavel
+B,390/rede_bt/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/rede_bt/extensao_km,sem competencia utilizavel
+B,2904/rede_bt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/rede_bt/extensao_km,sem competencia utilizavel
+B,5274/rede_bt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/rede_bt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/rede_bt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/rede_bt/extensao_km,sem competencia utilizavel
+B,6896/rede_bt/extensao_km,sem competencia utilizavel
+B,70/rede_mt/extensao_km,sem competencia utilizavel
+B,71/rede_mt/extensao_km,sem competencia utilizavel
+B,72/rede_mt/extensao_km,sem competencia utilizavel
+B,73/rede_mt/extensao_km,sem competencia utilizavel
+B,75/rede_mt/extensao_km,sem competencia utilizavel
+B,84/rede_mt/extensao_km,sem competencia utilizavel
+B,386/rede_mt/extensao_km,sem competencia utilizavel
+B,390/rede_mt/extensao_km,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/rede_mt/extensao_km,sem competencia utilizavel
+B,2904/rede_mt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/rede_mt/extensao_km,sem competencia utilizavel
+B,5274/rede_mt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/rede_mt/extensao_km,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/rede_mt/extensao_km,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/rede_mt/extensao_km,sem competencia utilizavel
+B,6896/rede_mt/extensao_km,sem competencia utilizavel
+B,70/reguladores/quantidade,sem competencia utilizavel
+B,71/reguladores/quantidade,sem competencia utilizavel
+B,72/reguladores/quantidade,sem competencia utilizavel
+B,73/reguladores/quantidade,sem competencia utilizavel
+B,75/reguladores/quantidade,sem competencia utilizavel
+B,84/reguladores/quantidade,sem competencia utilizavel
+B,88/reguladores/quantidade,sem competencia utilizavel
+B,95/reguladores/quantidade,sem competencia utilizavel
+B,386/reguladores/quantidade,sem competencia utilizavel
+B,390/reguladores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/reguladores/quantidade,sem competencia utilizavel
+B,2904/reguladores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/reguladores/quantidade,sem competencia utilizavel
+B,5274/reguladores/quantidade,sem competencia utilizavel
+B,5279/reguladores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5366/reguladores/quantidade,sem competencia utilizavel
+B,5377/reguladores/quantidade,sem competencia utilizavel
+B,5382/reguladores/quantidade,sem competencia utilizavel
+B,6610/reguladores/quantidade,sem competencia utilizavel
+B,6611/reguladores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/reguladores/quantidade,sem competencia utilizavel
+B,6896/reguladores/quantidade,sem competencia utilizavel
+B,6897/reguladores/quantidade,sem competencia utilizavel
+B,7883/reguladores/quantidade,sem competencia utilizavel
+B,70/religadores/quantidade,sem competencia utilizavel
+B,71/religadores/quantidade,sem competencia utilizavel
+B,72/religadores/quantidade,sem competencia utilizavel
+B,73/religadores/quantidade,sem competencia utilizavel
+B,75/religadores/quantidade,sem competencia utilizavel
+B,84/religadores/quantidade,sem competencia utilizavel
+B,386/religadores/quantidade,sem competencia utilizavel
+B,390/religadores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/religadores/quantidade,sem competencia utilizavel
+B,2904/religadores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/religadores/quantidade,sem competencia utilizavel
+B,5274/religadores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/religadores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/religadores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/religadores/quantidade,sem competencia utilizavel
+B,6896/religadores/quantidade,sem competencia utilizavel
+B,70/seccionalizadores/quantidade,sem competencia utilizavel
+B,71/seccionalizadores/quantidade,sem competencia utilizavel
+B,72/seccionalizadores/quantidade,sem competencia utilizavel
+B,73/seccionalizadores/quantidade,sem competencia utilizavel
+B,75/seccionalizadores/quantidade,sem competencia utilizavel
+B,84/seccionalizadores/quantidade,sem competencia utilizavel
+B,386/seccionalizadores/quantidade,sem competencia utilizavel
+B,390/seccionalizadores/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/seccionalizadores/quantidade,sem competencia utilizavel
+B,2904/seccionalizadores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/seccionalizadores/quantidade,sem competencia utilizavel
+B,5274/seccionalizadores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/seccionalizadores/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/seccionalizadores/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/seccionalizadores/quantidade,sem competencia utilizavel
+B,6896/seccionalizadores/quantidade,sem competencia utilizavel
+B,70/subestacoes/quantidade,sem competencia utilizavel
+B,71/subestacoes/quantidade,sem competencia utilizavel
+B,72/subestacoes/quantidade,sem competencia utilizavel
+B,73/subestacoes/quantidade,sem competencia utilizavel
+B,75/subestacoes/quantidade,sem competencia utilizavel
+B,84/subestacoes/quantidade,sem competencia utilizavel
+B,87/subestacoes/quantidade,sem competencia utilizavel
+B,88/subestacoes/quantidade,sem competencia utilizavel
+B,386/subestacoes/quantidade,sem competencia utilizavel
+B,390/subestacoes/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/subestacoes/quantidade,sem competencia utilizavel
+B,598/subestacoes/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,2904/subestacoes/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,4248/subestacoes/quantidade,sem competencia utilizavel
+B,5217/subestacoes/quantidade,sem competencia utilizavel
+B,5274/subestacoes/quantidade,sem competencia utilizavel
+B,5279/subestacoes/quantidade,sem competencia utilizavel
+B,5343/subestacoes/quantidade,sem competencia utilizavel
+B,5345/subestacoes/quantidade,sem competencia utilizavel
+B,5346/subestacoes/quantidade,sem competencia utilizavel
+B,5351/subestacoes/quantidade,sem competencia utilizavel
+B,5352/subestacoes/quantidade,sem competencia utilizavel
+B,5353/subestacoes/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,5355/subestacoes/quantidade,sem competencia utilizavel
+B,5363/subestacoes/quantidade,sem competencia utilizavel
+B,5366/subestacoes/quantidade,sem competencia utilizavel
+B,5367/subestacoes/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5369/subestacoes/quantidade,sem competencia utilizavel
+B,5372/subestacoes/quantidade,sem competencia utilizavel
+B,5373/subestacoes/quantidade,sem competencia utilizavel
+B,5374/subestacoes/quantidade,sem competencia utilizavel
+B,5375/subestacoes/quantidade,sem competencia utilizavel
+B,5377/subestacoes/quantidade,sem competencia utilizavel
+B,5381/subestacoes/quantidade,sem competencia utilizavel
+B,5382/subestacoes/quantidade,sem competencia utilizavel
+B,5384/subestacoes/quantidade,sem competencia utilizavel
+B,5385/subestacoes/quantidade,sem competencia utilizavel
+B,6603/subestacoes/quantidade,sem competencia utilizavel
+B,6610/subestacoes/quantidade,sem competencia utilizavel
+B,6611/subestacoes/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/subestacoes/quantidade,sem competencia utilizavel
+B,6896/subestacoes/quantidade,sem competencia utilizavel
+B,6897/subestacoes/quantidade,sem competencia utilizavel
+B,7016/subestacoes/quantidade,sem competencia utilizavel
+B,70/torres/quantidade,sem competencia utilizavel
+B,71/torres/quantidade,sem competencia utilizavel
+B,72/torres/quantidade,sem competencia utilizavel
+B,73/torres/quantidade,sem competencia utilizavel
+B,75/torres/quantidade,sem competencia utilizavel
+B,84/torres/quantidade,sem competencia utilizavel
+B,386/torres/quantidade,sem competencia utilizavel
+B,390/torres/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/torres/quantidade,sem competencia utilizavel
+B,2904/torres/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/torres/quantidade,sem competencia utilizavel
+B,5274/torres/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/torres/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/torres/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/torres/quantidade,sem competencia utilizavel
+B,6896/torres/quantidade,sem competencia utilizavel
+B,70/trafo_dist/quantidade,sem competencia utilizavel
+B,71/trafo_dist/quantidade,sem competencia utilizavel
+B,72/trafo_dist/quantidade,sem competencia utilizavel
+B,73/trafo_dist/quantidade,sem competencia utilizavel
+B,75/trafo_dist/quantidade,sem competencia utilizavel
+B,84/trafo_dist/quantidade,sem competencia utilizavel
+B,386/trafo_dist/quantidade,sem competencia utilizavel
+B,390/trafo_dist/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/trafo_dist/quantidade,sem competencia utilizavel
+B,2904/trafo_dist/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/trafo_dist/quantidade,sem competencia utilizavel
+B,5274/trafo_dist/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/trafo_dist/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/trafo_dist/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/trafo_dist/quantidade,sem competencia utilizavel
+B,6896/trafo_dist/quantidade,sem competencia utilizavel
+B,70/trafo_forca/quantidade,sem competencia utilizavel
+B,71/trafo_forca/quantidade,sem competencia utilizavel
+B,72/trafo_forca/quantidade,sem competencia utilizavel
+B,73/trafo_forca/quantidade,sem competencia utilizavel
+B,75/trafo_forca/quantidade,sem competencia utilizavel
+B,84/trafo_forca/quantidade,sem competencia utilizavel
+B,386/trafo_forca/quantidade,sem competencia utilizavel
+B,390/trafo_forca/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/trafo_forca/quantidade,sem competencia utilizavel
+B,2904/trafo_forca/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/trafo_forca/quantidade,sem competencia utilizavel
+B,5274/trafo_forca/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/trafo_forca/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/trafo_forca/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/trafo_forca/quantidade,sem competencia utilizavel
+B,6896/trafo_forca/quantidade,sem competencia utilizavel
+B,70/trafo_medida/quantidade,sem competencia utilizavel
+B,71/trafo_medida/quantidade,sem competencia utilizavel
+B,72/trafo_medida/quantidade,sem competencia utilizavel
+B,73/trafo_medida/quantidade,sem competencia utilizavel
+B,75/trafo_medida/quantidade,sem competencia utilizavel
+B,84/trafo_medida/quantidade,sem competencia utilizavel
+B,386/trafo_medida/quantidade,sem competencia utilizavel
+B,390/trafo_medida/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)
+B,397/trafo_medida/quantidade,sem competencia utilizavel
+B,2904/trafo_medida/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,5217/trafo_medida/quantidade,sem competencia utilizavel
+B,5274/trafo_medida/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,5279/trafo_medida/quantidade,ancora 2023 != 2025 (horizonte real 3..7 anos a partir de 2023)
+B,6611/trafo_medida/quantidade,ancora 2022 != 2025 (horizonte real 4..8 anos a partir de 2022)
+B,6612/trafo_medida/quantidade,sem competencia utilizavel
+B,6896/trafo_medida/quantidade,sem competencia utilizavel
+B,7371/trafo_medida/quantidade,ancora 2024 != 2025 (horizonte real 2..6 anos a partir de 2024)

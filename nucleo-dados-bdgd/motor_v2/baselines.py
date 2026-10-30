@@ -56,10 +56,16 @@ def forecast(kind, seg, last, min_points):
 def predict(kind, rows, test, origin, mode, min_points=DEFAULT_MIN_POINTS):
     """Predictions for the test rows of a fold plus fallback bookkeeping."""
     values, reasons = [], {}
+    index = {}
+    if kind != 'persistencia':      # same rows, indexed once per call (a national panel makes the plain scan quadratic)
+        wanted = {(r['dist'], r['group']) for r in test}
+        for x in rows:
+            if (x['dist'], x['group']) in wanted:
+                index.setdefault((x['dist'], x['group']), []).append(x)
     for r in test:
         if kind == 'persistencia':
             values.append(r['stock']); continue
-        seg, cut = segment(rows, r['dist'], r['group'], origin, mode)
+        seg, cut = segment(index.get((r['dist'], r['group']), []), r['dist'], r['group'], origin, mode)
         value, why = forecast(kind, seg, r['stock'], min_points)
         why = why or None
         if why == 'short_series' and cut:

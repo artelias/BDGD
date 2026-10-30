@@ -1,0 +1,125 @@
+{
+  "commit_base": "054467bd55261e13b1e0c9ffedf05f240e4ecb93",
+  "contrato": "D:\\NUCLEO_BDGD_2025\\wt-motor-v2\\nucleo-dados-bdgd\\output-historico\\contrato-integracao\\serie_fisica_nacional.csv",
+  "contrato_sha256": "8c3d7c77ef536c588c8acc8e79642cdd4a08b4b436c46b7ad9d782d4fcef18df",
+  "inventario_sha256": "2fd81edf2fa2bdbc84c6b4384d1a8a1a6bf7afd5ac2800f53bb631008e82d499",
+  "conversao_zips_sha256": "4f6f6e9e23dd656fd974675298b8fb58e7dcbdc9356f4cc3c099d2b0672d3c26",
+  "quarentena": {
+    "quarentena": [
+      [
+        5697,
+        2023,
+        "ponte de recodificacao municipal MUN_RECODE_5697_2023 pendente de homologacao"
+      ]
+    ],
+    "municipios_validos": "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\referencias\\municipios_ibge.json",
+    "limite_share_fora_ibge": 0.02,
+    "propostas": [
+      {
+        "id": "MUN_RECODE_5697_2023",
+        "suficiente": true,
+        "status": "PENDENTE_HOMOLOGACAO",
+        "verificacoes": {
+          "codigos_fora_ibge": 275,
+          "com_candidato_unico": 275,
+          "candidatos_distintos": 275,
+          "colisoes": 0,
+          "ufs_dos_candidatos": [
+            "PR",
+            "SC"
+          ],
+          "ufs_da_empresa_nos_anos_adjacentes": [
+            "PR",
+            "SC"
+          ],
+          "conj_estaveis": 121,
+          "conj_no_ano": 121,
+          "presentes_nos_dois_anos_adjacentes": 275,
+          "concordancia_conj_ponderada": 0.9999988109792982,
+          "razao_clientes_vs_ano_anterior_min": 0.9444444444444444,
+          "razao_clientes_vs_ano_anterior_max": 1.155848508546531,
+          "clientes_cobertos": 3364113,
+          "clientes_fora_ibge": 3364113
+        }
+      }
+    ]
+  },
+  "arquivos_finais": {
+    "CASOS_INDISPONIVEIS.csv": "8291e1645bc09206edb7e983bb2515c56f46aec5ac967e03ee8a186128680833",
+    "DECISOES_A.csv": "39be96d87538dd3dda08844760ff6f8d50160162379e43fae85b183ad99cddd7",
+    "DECISOES_B.csv": "0ad62ddb7daa0ec0460ffced69feb9390bb9ac70d714c1ed34d5ed6cb6f326de",
+    "ERROS_DO_MODELO_DE_PROJECAO.csv": "ec4ac4458047c8b8a512faffdd58878d840f83c45324685246f8b81e7799b3e5",
+    "INDISPONIVEIS_A.csv": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "INDISPONIVEIS_B.csv": "8ee968509304c0ef3b2bc653e304dffafaceb948faed29b820558c362c89a059",
+    "INVENTARIO_NACIONAL.csv": "0b90df6924a979bf21d26215b2038478569f82afd0482be0540ffb14a3dc9562",
+    "MATRIZ_ELEGIBILIDADE_CATALOGO.csv": "af77801ae30840a00565718ee15fa42f62e8e6beeca792e29e2dd3165a773dd6",
+    "MATRIZ_MODELOS_A_TERRITORIAL.csv": "439dcf8a9d5323a5bd6a939256fa9bccf53f381abb07f7c144ec4d36f04a8423",
+    "MODELOS_EXPERIMENTAIS_ESCOLHIDOS.csv": "7b4649db53348a945a22dfe301f2a6c85d8c9d681a3cdf4c0a27273d89264c61",
+    "PROJECOES_A_DISTRIBUIDORA.csv": "3fa5ed435e7e4bc10931e36f1fccfa3e2f24c4465567118dd7827b2cf1ffa0b0",
+    "PROJECOES_B.csv": "280c3676906a2e4f106657e3f6fe44dbe4354b8a85c21183dcddf58caa8a5799",
+    "RECURSOS_EXECUCAO.json": "36754dfb9f79a4deb4b4476f8d22d44145119d8fc374d5c6c05d03436886d574",
+    "RESULTADOS_CANDIDATOS_B.csv": "f82d5070fdf03a27904d9d3ba426029dd7ecb7966a09cffa57a6a149c73a0063",
+    "RESUMO_ESCOLHAS_POR_OBJETO.csv": "b6af8f4ceac8ebf91899e05a528899c467d36d0b9116d28feb553462a5bf1f51",
+    "RESUMO_NACIONAL.json": "28b9f566d5e3bf4fe47eb809fe995dee7a8d284024a6750bf09e56ccd6e81062",
+    "SERIES_EXCLUIDAS_DOS_TOTAIS.csv": "a76849345f47794e43613401970f9619822712a120685e382ed72cbe0ccf5baf",
+    "TOTAIS_NACIONAIS_SERIES_COMPLETAS.csv": "d2fd2b3e4cdf0ee4d3031954c9f8ab26359fe060f4e4c0a6f0343c4a19d9d57f"
+  },
+  "internos": {
+    "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\projecao\\PROJECOES_A_TERRITORIAL_INTERNO.parquet": "cfdb15a17e0a14f61ad0b7288d14e1e2f56c5cedf9948842ea6a45a70ce67646",
+    "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\projecao\\PROJECOES_A_DISTRIBUIDORA_INTERNO.parquet": "e1f88f6904167e0d4be6a98f4986978628cde5e482534d6bee9cc388fb3e7d22",
+    "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\distribuidora\\PROJECOES_B_INTERNO.parquet": "dc3fed57b93b4784f76a65ff89f3bddfc202d4841a280fe85011132f4cdbca34",
+    "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\painel\\MANIFESTO_PAINEL.json": "2af28639d239355a0a4d9046acc5b23a0a839a7356492cd2e1f82b29dc398384"
+  },
+  "codigo_nacional": {
+    "__init__.py": "1d98f95edf2b3b012eeb35b3445771b662367afaee8c4990bf6a0abae6765edb",
+    "catalogo.py": "4b23522f99fd4903cf239f14019e63571aed9f7f67a432507e48606ead7ddce9",
+    "cenarios.py": "0986148dab49ee83da62ad7fc797caecd207877f6b4fac67b91776a532b4dbae",
+    "comparativos.py": "b6227f76af1c8820677bb6045ce40da34e06aa51df21dfea7c6790e5a7292b40",
+    "consolidar.py": "872de8ca5239c462344c354a731d03209ac7247a2984f05776b6808ffce6922d",
+    "distribuidora.py": "bf5cd64b0337f605841799fb607af9f287b7bcbb3158877050d2e3fbecac7c76",
+    "extracao.py": "665e6b40d4c4b6cdaa26a176f6d65dc2236518bbf431db578aa782ee4084423a",
+    "municipios.py": "58b11caef0fef8c7fdec008c225063e44fb53c5d6d9d8c9b7b26e47e82b1931c",
+    "painel.py": "7d00049e3234a050af09c9d857ebcb5c0472831dd2ef3969e135a7470fb5865a",
+    "pipeline.py": "47d12fccfa4bd043f8c88ca914e386b4ffd90bb9aec07a8f45ff03a01f6db83d",
+    "preparar.py": "e5333cb8e9263a9c05b0d5d6962a4e30736dd453b48a20e2ef8ff38055c56c07",
+    "projecao.py": "4c1d46bd275296585717398e132f5c53ef0932721cd34344d73edc1524d2b505",
+    "relatorio.py": "5b212ddb0756f26636675d14afc96dd2884d8d5c2cfb732c383a6fe902f52b72",
+    "selecao.py": "2465ae9715c6092d121f5b6b13cfbe53b9038e03572c3fb0b0326821e6d34406"
+  },
+  "codigo_motor_v2": {
+    "__init__.py": "49f0428fbd4481849e446ffb3f5c17c7bc1797b77c75c94e410a183a54056c1e",
+    "adapters.py": "94985cc40de460f209cf50754696c1c277848d6756ffa0944946f6397fe94ca7",
+    "assets.py": "2d8c4fbf9e932fa4557f159be3a09d5e1e780a1f9a873a2690883eb6600fe8bb",
+    "audit_conj.py": "cd5ee3a9a8a910e65c08be81f1f55858da1351ea64629e9f39bb77d4fe6fad8c",
+    "audit_public_products.py": "559246aab4e13786978adcc3526e0e5d664156030274f747af4243548525c574",
+    "baselines.py": "a341acddaeb53066728d64d702d4136640a05892e58557f61cd535ff242db7ab",
+    "bridges.py": "5caa679e6c2d01ee470e208355ec25d476813b7ad6e16cb6cce3ea04f709d955",
+    "comparison.py": "b59ebacd62f6f1e746a1a38196e10f9b2425332b9c05b8bcfbd9c0194c2d26d2",
+    "conj_bridge.py": "f75430aaedc74c6fcb5f24d115dae480091a1ee8efd2c7117d383df4c1e07bda",
+    "convert_zips.py": "79a5fd0f956e5b1c1db5a690ea4dd14b78f330f7934cd50cea6796dbb0e42fab",
+    "detach.py": "f7ce0f42e6a438606d6393ebcba5c95e7f1c84cccabc3dbcbd68eb694fb3744f",
+    "diagnose_epb.py": "de8ee9dfd8aa37d3bcc5e6d062c94d477febe8342a547bdd690ec5e0b758d727",
+    "externals.py": "44baa93f0df946877b5fd186b83c998766bfdb8ed53bb12a65c1d5a840ba2610",
+    "extraordinary.py": "4a145140d927b039c5e2fbcef655eea07781fdb30ca2992738801d79614a48a5",
+    "feature_registry.py": "10791952e6b6d313138894fc0af3145812b2961aa267885e2ffaec70cc9f2a2a",
+    "features.py": "07d495eb9a116d65d82628a069a244bce86fc715a5d285d142ab5ff15afebea3",
+    "future.py": "1a46b7d9bb026191fb09077fd4ade6e1fe1e7d8dad159e65f129b3e4a2d35e76",
+    "integration.py": "bf8d628cdee0c981f7396a67119a2afd4801e18885602d01c3bf3d6c5b4a5f4c",
+    "inventory.py": "2a37eedaa45526e770ebe7da6050d7cfd635ea005786db362bbd86efb9067be4",
+    "launch.py": "cb23e14c0b14070616eb9b4f67bfdf70d05e6134bf198a6f942cc0b586b05942",
+    "lote.py": "e61a4f3b9b782d07db1cc1cb7ebb979b070df059d76a8f5016d4ece04afb2241",
+    "metric_contract.py": "18ad7182d4da5628c07075a5c352b2c00ea58873ce5bf52c8580ede64db3721d",
+    "ml.py": "6cd7823970fe4fe0424c1d0708f6c79bd82efd48d9d532e674e7eab4711b4917",
+    "origins_audit.py": "c63b5c7cb4ff717063abfbdefb2fa311f444b708ebdf321e995467eacf621da5",
+    "plan_2021.py": "629cc7c2704793ef8eab6dcb1c160ab6e7f3bc37f1f97c7101d10188092e43bc",
+    "policy.py": "df8d689c038106211d05203227a18e2554f85a440220add0cf3a89146599fe22",
+    "report_lote.py": "c9de46a5f11da0d029550e5283a0c1553cd937896620bc6f3eeb6151570a757e",
+    "report_matrix.py": "0561405d40f7e7a4a297f554751f4dcda07f7558c04ee62510025f5374abb2cd",
+    "resources.py": "80a14f130bc7371c0e7b65efd01d8d8cd428fdf3216728429e0e7eda2de85df8",
+    "runner.py": "91779032bb955033dfe1433d69d2961ee30e2bfafddb5c734c3af0d4bce7dc48",
+    "shared.py": "7955daec5d975a0ac05002e5dc2ffbfec84da4e3897c151f360f780ec8862ea9",
+    "temporal.py": "69f44bcfbf8d2934f60f7753f3ba311e43b2fcb28743b3729d8738dab5ca824f",
+    "vintage.py": "0874c616c0b3c5ed38be7481923d8f11c2caa90469a940fdae6830523df587bb"
+  },
+  "regra": "apenas publicacoes ordinarias do contrato; nenhuma extraordinaria; nada gravado em web/ ou output-*"
+}

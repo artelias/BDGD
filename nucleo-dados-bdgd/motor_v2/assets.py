@@ -5,6 +5,9 @@ trafo_dist_*  : EQTRMT/EQTRAT with TUC=565 linked bijectively to UNTRMT/UNTRAT (
                 assigned to a municipality. EQ and UN are never added together. Power: UNTRMT kVA, UNTRAT MVA x 1000;
                 EQ.POT_NOM is a domain code and A4 is a patrimonial range, so neither is used as power.
 rede_mt_extensao_km : SSDMT.COMP metres / 1000 by SSDMT.CONJ (a field of the segment itself; no spatial inference).
+rede_bt_extensao_km : SSDBT.COMP metres / 1000 by SSDBT.CONJ (same rule as the national contract `rede_bt`).
+Every extracted total is compared with the national contract cell of the same concept (`contract_value`); a difference is
+recorded in the QA, never corrected.
 """
 import argparse
 import json
@@ -27,6 +30,8 @@ ASSETS = {
                                     concept='trafo_dist', metric='quantidade', tuc='565', measure='kva', experimental=True),
     'rede_mt_extensao_km': dict(ativo='rede_mt', metrica='extensao_km', unit='km', count=False, unit_kind='conjunto',
                                 concept='rede_mt', metric='extensao_km', measure='km', experimental=False),
+    'rede_bt_extensao_km': dict(ativo='rede_bt', metrica='extensao_km', unit='km', count=False, unit_kind='conjunto',
+                                concept='rede_bt', metric='extensao_km', measure='km', entity='SSDBT', experimental=False),
 }
 from .metric_contract import nature_of
 for _spec in ASSETS.values():
@@ -94,10 +99,10 @@ def extract_transformers(con, src, dest, tuc, measure):
                 source=f'EQ TUC{tuc} linked to UN (bijective); unit=UN.MUN; ' + ('count' if measure == 'count' else 'kVA from UN.POT_NOM'))
 
 
-def extract_network(con, src, dest):
-    cols = source(con, src, 'SSDMT', 'net')
+def extract_network(con, src, dest, entity='SSDMT'):
+    cols = source(con, src, entity, 'net')
     if not cols or not {'COD_ID', 'COMP', 'CONJ'} <= cols:
-        raise ValueError('SSDMT COD_ID/COMP/CONJ missing')
+        raise ValueError(entity + ' COD_ID/COMP/CONJ missing')
     n, ids, missing, negative = con.execute("SELECT count(*),count(DISTINCT COD_ID),count(*) FILTER(WHERE try_cast(COMP AS DOUBLE) IS NULL),"
                                             "count(*) FILTER(WHERE try_cast(COMP AS DOUBLE)<0) FROM net").fetchone()
     q = f"SELECT coalesce({norm('CONJ')},'MISSING') UNIT,sum(try_cast(COMP AS DOUBLE))/1000 value,count(*) rows FROM net GROUP BY 1 ORDER BY 1"
@@ -108,7 +113,7 @@ def extract_network(con, src, dest):
     no_conj = next((r['value'] for r in rows if r['UNIT'] == 'MISSING'), 0.)
     return dict(value=total if clean else None, coverage=1 - no_conj / total if total else None, territorial_conflicts=0,
                 audit=dict(rows=n, unique_ids=ids, missing_comp=missing, negative_comp=negative, km_without_conj=no_conj),
-                source='SSDMT.COMP metres / 1000; unit=SSDMT.CONJ')
+                source=f'{entity}.COMP metres / 1000; unit={entity}.CONJ')
 
 
 def _write(rows, dest):
@@ -118,7 +123,7 @@ def _write(rows, dest):
 
 
 def inputs(spec, src):
-    entities = ['SSDMT'] if spec['measure'] == 'km' else [e for pair in PAIRS for e in pair[:2]] if 'tuc' in spec else []
+    entities = [spec.get('entity', 'SSDMT')] if spec['measure'] == 'km' else [e for pair in PAIRS for e in pair[:2]] if 'tuc' in spec else []
     return [parquet_path(src, e) for e in entities if parquet_path(src, e).exists()]
 
 
@@ -150,10 +155,12 @@ def run_asset(cfg, dist, asset, root, stats):
                 if old.get('signature') == signature and out.exists() and digest(out) == old.get('output_sha256'):
                     qa = old['qa']; stats['reused'] += 1
                 else:
-                    qa = extract_network(con, src, dest) if spec['measure'] == 'km' else extract_transformers(con, src, dest, spec['tuc'], spec['measure'])
+                    qa = extract_network(con, src, dest, spec.get('entity', 'SSDMT')) if spec['measure'] == 'km' else extract_transformers(con, src, dest, spec['tuc'], spec['measure'])
                     qa['parquet_sha256'] = digest(out)
                     atomic(cp, dict(signature=signature, qa=qa, output_sha256=qa['parquet_sha256']))
                     stats['executed'] += 1
+                cv = src.get('contract_value') if spec['measure'] != 'kva' else None   # the contract has no kVA cell
+                qa = dict(qa, contract_value=cv, difference_vs_contract=(qa['value'] - cv) if cv is not None and qa['value'] is not None else None)
                 history.append(dict(year=year, available=src['available'], value=qa['value'], rupture=src['rupture'], qa=qa, source=src))
             except Exception as e:
                 atomic(dest / 'failure.json', dict(error=str(e), traceback=traceback.format_exc()))
@@ -177,11 +184,20 @@ def execute(cfg):
     root = out / 'asset_runs' / runid
     root.mkdir(parents=True, exist_ok=True)
     stats = dict(reused=0, executed=0)
+    failures, timings = [], {}
     with Sampler() as sampler:
         for dist in cfg['dists']:
+            t = time.monotonic()
             for asset in cfg['assets']:
-                run_asset(cfg, dist, asset, root, stats)
-    atomic(root / 'manifest.json', dict(config=cfg, code=code, version=ASSET_VERSION, runid=runid, stats=stats, resources=sampler.report()))
+                try:
+                    guard(cfg.get('min_available_gb', 3.0))
+                    run_asset(cfg, dist, asset, root, stats)
+                except Exception as e:      # one company/asset never stops the others; the failure is counted and kept
+                    failures.append(dict(dist=dist, asset=asset, error=str(e)))
+                    atomic(root / f'failure_{dist}_{asset}.json', dict(error=str(e), traceback=traceback.format_exc()))
+            timings[str(dist)] = round(time.monotonic() - t, 1)
+    atomic(root / 'manifest.json', dict(config=cfg, code=code, version=ASSET_VERSION, runid=runid, stats=stats, failures=failures,
+                                        seconds_by_dist=timings, resources=sampler.report()))
     return root
 
 
