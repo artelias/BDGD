@@ -13,11 +13,27 @@ Todas as saídas desta execução são **experimentais e internas**. Nenhuma foi
 - **Os 12 ZIPs do contrato sem Parquet** foram convertidos localmente (`motor_v2/convert_zips.py`), sem download, numa raiz separada da árvore ordinária.
   - Classificação feita pela própria `BASE` de cada item e pela comparação das contagens por entidade com o item ordinário da competência que a `BASE` declara.
   - Só `competencia_confirmada` poderia entrar no treino. Nenhum dos 12 se enquadrou; todos ficam em quarentena, com o motivo registrado.
+- **Elegibilidade: uma única política para os dois níveis** (`motor_v2/nacional/elegibilidade.py`, desde a auditoria final).
+  - **Estoque** observado numa data-base é elegível quando o `estado` é `observado` ou `zero_verificado`, a `dataBase` é 31/12 da competência e a célula pode ser somada (`nao_somar_em_agregados` falso).
+  - **Transição** t−1 → t (crescimento, alvo de treino, envelope dos cenários) é elegível quando os dois estoques são elegíveis, as datas-base são 31/12 consecutivos e o contrato não registra ruptura em t.
+  - `INTERVALO_NAO_ANUAL` (`BASE.DAT_INC` em 01/12 com `DAT_FNL` correto em 31/12) é **ressalva, não exclusão**. `DAT_INC` delimita o período dos campos de fluxo (energia); o inventário físico é a fotografia em `DAT_FNL`.
+    - Verificação empírica (25 conceitos, mediana ± 5 MAD com piso 0,02): 7,7% das 196 transições com ressalva são atípicas, contra 8,1% das 6.132 demais.
+    - 12 das 15 atípicas são da Amazonas Energia 2022 → 2023, um degrau de nível da publicação 2022 que a Equatorial GO 2022, com a mesma BASE de 31 dias, não mostra. Sem ela, 1,7%.
+    - A primeira execução (d4982e8) excluía esses estoques no nível B; a mudança afetou as séries listadas em `REVISAO_ELEGIBILIDADE_B.json`.
+  - **Sucessão societária:** uma transição também não é elegível quando a DIST é destino de uma incorporação oficial (`eventos_sucessao.csv`) efetivada entre as duas datas-base.
+    - O contrato fica no perímetro da publicação original e não marca a ruptura.
+    - Caso da Energisa PB 2022 → 2023, que absorve a Energisa Borborema (`EPB_EBO_2023`): o salto é mudança de perímetro, não crescimento. O estoque segue elegível.
+    - No nível A, as unidades da Borborema já ficam fora pela ponte de perímetro, e a série física da empresa ganha a quebra.
+  - O contrato nacional não é alterado. A homologação pendente da fase 4 (produtos públicos) não é decidida aqui.
 - **Códigos municipais.** A referência é a tabela oficial do IBGE (extratos SIDRA já em disco, com código e nome).
   - Um código fora da tabela não é unidade territorial: fica no total da empresa, como resíduo.
   - Um par (DIST, ano) com mais de 2% dos clientes fora da tabela entra em quarentena.
   - O padrão `'0' + 6 dígitos` gera uma ponte de recodificação **proposta**, com evidência auditável: prefixo único, UF coerente, presença nos anos vizinhos, concordância por CONJ e razão de clientes.
-  - A ponte nunca é homologada automaticamente; o par (DIST, ano) segue em quarentena até haver decisão humana.
+  - A ponte nunca é homologada automaticamente.
+  - **Celesc 2023 (`MUN_RECODE_5697_2023`):** aplicada em 30/10/2026, por autorização do responsável, **somente na camada derivada** (`nacional/painel`), por `motor_v2/nacional/pontes.py`. Status: `APLICADA_EXPERIMENTAL_NAO_HOMOLOGADA`.
+    - Verificações: mapeamento unívoco, sem colisão, alvos IBGE válidos, totais e demais colunas idênticos, só códigos mapeados alterados e continuidade com 2022 e 2024. Evidência cruzada: os 275 destinos aparecem em `UN.MUN` dos transformadores da mesma publicação.
+    - O arquivo original fica preservado byte a byte; a extração e o contrato não são tocados.
+    - Só a Celesc e os comparativos dependentes dela foram reexecutados (`revisao_a.py`).
 - **`recent_connection_share` está desligada por padrão.** `DAT_CON` também muda com troca de titularidade e seu padrão varia entre publicações.
 
 ## Nível A — territorial (Parquet → município ou conjunto)
@@ -71,14 +87,31 @@ Todas as saídas desta execução são **experimentais e internas**. Nenhuma foi
   - deriva: y(T+h) = y(T) + h·inclinação;
   - CAGR: y(T+h) = y(T)·g^h;
   - ML: y(T+h) = expm1(log1p y(T) + h·d), onde d é a variação de um passo do modelo, mantida constante. Não existem covariáveis futuras e nenhuma foi inventada.
-- **Conservador e agressivo.** A trajetória moderada, com o crescimento anual médio (em log1p) deslocado para o menor ou o maior crescimento anual observado nas transições comparáveis 2022–2025 da própria série, quando este for mais extremo. A ordem conservador ≤ moderado ≤ agressivo vale por construção.
-  - **Atenção à amplitude:** um único ano atípico (por exemplo, regularização cadastral) sustentado por 5 anos produz cenários largos.
-  - Isto é uma hipótese matemática, não um intervalo de confiança nem uma premissa oficial.
+- **Conservador e agressivo.** A trajetória moderada, com o crescimento anual médio (em log1p) deslocado para o menor ou o maior crescimento anual observado nas transições da própria série que entram no envelope. A ordem conservador ≤ moderado ≤ agressivo vale por construção.
+  - **Triagem v2 do envelope** (`cenarios.py`). Uma variação extrema nunca é tratada como erro só por divergir do corte nacional:
+    1. Evidência documentada por registro (`auditoria/fase4/RANKING_ANOMALIAS_TEMPORAIS.csv`, persistência de `COD_ID`):
+       - `alteracao_cadastral`, `alteracao_classificacao` e `anomalia_fonte` saem do envelope;
+       - `variacao_real_plausivel` fica, qualquer que seja o tamanho (por exemplo, geração distribuída).
+    2. Sem evidência, a referência é o mesmo objeto, no mesmo ano e no mesmo **porte** (tercil do estoque em t−1): mediana ± 5 MAD (piso de 0,02 em log1p).
+    3. Salto atípico, classificado pelo ano seguinte:
+       - `persistente` (mudança estrutural) fica;
+       - `reversao` (oscilação cadastral) sai;
+       - `degrau_isolado` (mudança de nível já embutida na âncora; o ritmo não é sustentado por 5 anos) sai;
+       - `sem_ano_seguinte` (não verificável) sai do envelope central e entra na variante de sensibilidade.
+  - A sensibilidade às variantes (sem triagem, MAD nacional v1, v2, v2 com não verificáveis, K = 3 e K = 8, v2 sem evidência) está em `AUDITORIA_CENARIOS_*`.
+  - Isto é uma hipótese matemática condicional, não um intervalo de confiança nem uma premissa oficial. A trajetória moderada não muda.
 - **Contrato físico e reconciliação (nível A).**
   - Unidades territoriais da coorte mais o resíduo `NAO_TERRITORIALIZADO` somam exatamente o total da empresa.
   - Nas contagens, o total inteiro é o arredondamento half-up, e as unidades recebem inteiros por maior resto (Hamilton).
   - km e kVA mantêm unidade e decimais.
 - **Totais nacionais.** Somam apenas séries **completas**: projeção gerada, âncora 2025, 5 anos × 3 cenários. Toda série excluída é listada com o motivo (`SERIES_EXCLUIDAS_DOS_TOTAIS.csv`).
+  - Cada total traz `status_total`. É `COMPLETO` só quando toda DIST com estoque 2025 elegível do objeto está dentro dele; caso contrário é `PARCIAL`, com a cobertura do estoque 2025 observado e as DIST de fora.
+  - Uma soma parcial nunca é apresentada como total nacional.
+- **Potência.** Matriz separada (`motor_v2/nacional/potencia.py`, `MATRIZ_POTENCIAS.csv`): aparente (kVA), ativa (kW) e reativa (kVAr) nunca são convertidas entre si.
+  - TUC 565: em uso experimental no nível A.
+  - TUC 570: liberação experimental proposta.
+  - TUC 575: não aplicável (sem campo de potência).
+  - Reguladores: bloqueados (semântica não homogênea).
 
 ## Execução
 

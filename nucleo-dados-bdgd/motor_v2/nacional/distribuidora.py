@@ -4,9 +4,10 @@
 
 Source: output-historico/contrato-integracao/serie_fisica_nacional.csv, i.e. the values the existing ETL computed under the MCPSE/TUC
 rules of each concept from the ordinary publication of each competence (no new extraction, no extraordinary base).
-A cell is usable when estado is `observado` or `zero_verificado`, the base interval is annual and compatible and the cell may be
-summed (`nao_somar_em_agregados` false). A transition t-1 -> t is comparable when both cells are usable and the contract records
-no rupture at t.
+Eligibility follows motor_v2.nacional.elegibilidade (same policy as Level A): a STOCK is usable when estado is `observado` or
+`zero_verificado`, the data-base is 31/12 of the competence and the cell may be summed; INTERVALO_NAO_ANUAL is a caveat, not an
+exclusion. A TRANSITION t-1 -> t is comparable when both stocks are usable, the data-bases are consecutive 31/12 and the contract
+records no rupture at t. (The first national run, d4982e8, also excluded INTERVALO_NAO_ANUAL stocks; `load('legado')`.)
 
 Panel row = (DIST, concept, t) with a comparable transition. Features at t-1 only: log1p stock, log1p consumers, log1p MV network
 km of the same DIST, and the previous comparable log1p growth (t-2 -> t-1, when it exists). Target: log1p growth t-1 -> t.
@@ -24,8 +25,8 @@ from pathlib import Path
 
 import numpy as np
 
-from . import CONTRACT, GROUPS, ROOT_OUT
-from .cenarios import YEARS, baseline_path, lg, ml_path, scenarios, screen_table, screened_growth
+from . import CONTRACT, GROUPS, ROOT_OUT, elegibilidade
+from .cenarios import YEARS, baseline_path, evidence, lg, ml_path, scenarios, screen_table_v2, screened_growth_v2
 from .selecao import BASELINES, choose, metrics
 from ..metric_contract import round_count
 from ..runner import atomic, digest, fingerprint
@@ -43,18 +44,29 @@ GRID = {'ols': [{}], 'ridge': [{'alpha': 1.}, {'alpha': 10.}], 'elastic_net': [{
 SEED = 42
 
 
-def load():
+def load(regra='v2'):
+    """`usable` = stock eligibility; `rupture` = the transition into this year is not eligible (elegibilidade.transicao).
+    regra='legado' reproduces the first national run (INTERVALO_NAO_ANUAL excluded the stock) only to measure the change."""
+    raw = elegibilidade.cells(CONTRACT)
     cells, meta = {}, {}
-    with open(CONTRACT, encoding='utf-8-sig') as f:
-        for r in csv.DictReader(f):
-            d, y, c = int(r['dist']), int(r['ano']), r['conceitoId']
-            ok = r['estado'] in ('observado', 'zero_verificado') and r['valor'] != '' and r['intervalo_base'] == 'INTERVALO_ANUAL_COMPATIVEL' \
-                and r['nao_somar_em_agregados'] != 'true'
-            cells[d, c, y] = dict(value=float(r['valor']) if r['valor'] != '' else None, usable=ok, rupture=r['ruptura_desde_ano_anterior'] == 'true',
-                                  estado=r['estado'], status=r['status_homologacao'], item=r['publicacao_id'], lacuna=r['tipo_lacuna'],
-                                  intervalo=r['intervalo_base'], nao_somar=r['nao_somar_em_agregados'] == 'true')
-            meta[c] = dict(metrica=r['metrica'], unidade=r['unidade'], natureza='discrete_count' if r['unidade'] == 'itens' else 'continuous_length')
-            meta.setdefault(('empresa', d), r['empresa'])
+    for (d, c, y), r in raw.items():
+        prev = raw.get((d, c, y - 1))
+        if regra not in ('v2', 'v2_sem_sucessao', 'legado'):
+            raise ValueError(regra)
+        if regra == 'legado':
+            ok, why, cav = elegibilidade.legado_b(r), None, []
+            rup = r['ruptura_desde_ano_anterior'] == 'true'
+        else:
+            ok, why, cav = elegibilidade.estoque(r)
+            rup = False
+            if ok and prev is not None and elegibilidade.estoque(prev)[0]:
+                t_ok, _, t_cav = elegibilidade.transicao(prev, r, sucessao=regra == 'v2')
+                rup = not t_ok; cav = sorted(set(cav) | set(t_cav))
+        cells[d, c, y] = dict(value=float(r['valor']) if r['valor'] != '' else None, usable=ok, rupture=rup,
+                              estado=r['estado'], status=r['status_homologacao'], item=r['publicacao_id'], lacuna=r['tipo_lacuna'],
+                              intervalo=r['intervalo_base'], nao_somar=r['nao_somar_em_agregados'] == 'true', motivo=why, ressalvas=cav)
+        meta[c] = dict(metrica=r['metrica'], unidade=r['unidade'], natureza='discrete_count' if r['unidade'] == 'itens' else 'continuous_length')
+        meta.setdefault(('empresa', d), r['empresa'])
     return cells, meta
 
 
@@ -183,10 +195,11 @@ def segment(cells, d, c, origin):
     return seg
 
 
-def run():
+def run(only=None, regra='v2'):
+    """only: optional set of (DIST, concept) series to compute (selective re-run of the series whose inputs changed)."""
     t0 = time.monotonic()
     OUT.mkdir(parents=True, exist_ok=True)
-    cells, meta = load()
+    cells, meta = load(regra)
     grp, gsha = groups()
     concepts = sorted(k for k in meta if isinstance(k, str))
     dists = sorted({d for d, _, _ in cells})
@@ -194,9 +207,12 @@ def run():
     results, decisions, projections, unavailable = [], [], [], []
     cache = {}
     tables = {c: concept_table(cells, c, dists) for c in concepts}
+    ev = evidence()
     for c in concepts:
         nature = meta[c]['natureza']
         for d in dists:
+            if only is not None and (d, c) not in only:
+                continue
             cands = {}
             preds = defaultdict(list); detail = defaultdict(list)
             for o in ORIGINS:
@@ -271,10 +287,7 @@ def run():
                 except ValueError as e:
                     path, fb = baseline_path(dec['modelo_fallback'], seg, anchor)
                     note = f'ML escolhido nao projetavel ({e}); usado o fallback {dec["modelo_fallback"]}'; chosen = dec['modelo_fallback']
-            pts, breaks = series_points(cells, d, c, anchor)
-            kept, atypical = screened_growth(pts, breaks, tables[c])
-            sc, smeta = scenarios(anchor, seg[-1][1], path, kept)
-            smeta['transicoes_atipicas_excluidas'] = atypical
+            sc, smeta = envelope(cells, d, c, anchor, seg[-1][1], path, tables[c], ev)
             rec.update(status_projecao='gerada', modelo_usado_na_projecao=chosen, nota_projecao=note, horizonte_real=f'{2026 - anchor}..{2030 - anchor} anos a partir de {anchor}',
                        ancora_2025=anchor == 2025, valor_ancora=seg[-1][1], **{'cenario_' + k: v for k, v in smeta.items() if k != 'regra'})
             decisions.append(rec)
@@ -301,7 +314,17 @@ def concept_table(cells, c, dists):
     ser, br = {}, {}
     for d in dists:
         ser[d], br[d] = series_points(cells, d, c)
-    return screen_table(ser, br)
+    return screen_table_v2(ser, br)
+
+
+def envelope(cells, d, c, anchor, anchor_value, moderate, table, ev):
+    """Scenarios of one series with the v2 envelope screen; the transitions left out are recorded with their class."""
+    pts, breaks = series_points(cells, d, c, anchor)
+    kept, cls = screened_growth_v2(pts, breaks, table, {y: ev[d, c, y] for y in pts if (d, c, y) in ev})
+    sc, smeta = scenarios(anchor, anchor_value, moderate, kept)
+    smeta['transicoes_atipicas_excluidas'] = [x for x in cls if not x['no_envelope']]
+    smeta['classes_transicoes'] = {k: sum(1 for x in cls if x['classe'] == k) for k in sorted({x['classe'] for x in cls})}
+    return sc, smeta
 
 
 def reenvelope():
@@ -312,6 +335,7 @@ def reenvelope():
     cells, meta = load()
     dists = sorted({d for d, _, _ in cells}); concepts = sorted(k for k in meta if isinstance(k, str))
     tables = {c: concept_table(cells, c, dists) for c in concepts}
+    ev = evidence()
     old = pq.read_table(OUT / 'PROJECOES_B_INTERNO.parquet').to_pylist()
     mod = defaultdict(dict); info = {}
     for r in old:
@@ -323,11 +347,8 @@ def reenvelope():
         if dec['status_projecao'] != 'gerada':
             continue
         d, c = int(dec['DIST']), dec['conceito']; anchor = int(dec['ano_ancora']); r0 = info[d, c]
-        pts, breaks = series_points(cells, d, c, anchor)
-        kept, atypical = screened_growth(pts, breaks, tables[c])
-        sc, smeta = scenarios(anchor, float(dec['valor_ancora']), mod[d, c], kept)
-        smeta['transicoes_atipicas_excluidas'] = atypical
-        dec.update({'cenario_' + k: (json.dumps(v) if isinstance(v, list) else v) for k, v in smeta.items() if k != 'regra'})
+        sc, smeta = envelope(cells, d, c, anchor, float(dec['valor_ancora']), mod[d, c], tables[c], ev)
+        dec.update({'cenario_' + k: (json.dumps(v) if isinstance(v, (list, dict)) else v) for k, v in smeta.items() if k != 'regra'})
         for s_, vals in sc.items():
             for y in YEARS:
                 v = vals[y]
@@ -336,7 +357,7 @@ def reenvelope():
     write_csv(OUT / 'PROJECOES_B.csv', [{k: v for k, v in r.items() if k != 'valor_bruto'} for r in projections])
     write_parquet(OUT / 'PROJECOES_B_INTERNO.parquet', projections)
     m = json.loads((OUT / 'MANIFESTO_B.json').read_text(encoding='utf-8'))
-    m['reenvelope'] = dict(regra='transicoes atipicas (mediana +- 5 MAD no corte nacional do conceito) fora do envelope dos cenarios; trajetoria moderada inalterada',
+    m['reenvelope'] = dict(regra='triagem v2 do envelope (evidencia fase4; objeto x ano x porte, mediana +- 5 MAD; padrao temporal do salto); trajetoria moderada inalterada',
                            series=len({(r['DIST'], r['conceito']) for r in projections}), transicoes_excluidas=sum(len(json.loads(x['cenario_transicoes_atipicas_excluidas'] or '[]')) for x in decisions if x['status_projecao'] == 'gerada'))
     atomic(OUT / 'MANIFESTO_B.json', m)
     return m['reenvelope']

@@ -1,0 +1,4593 @@
+{
+  "ucbt_quantidade": {
+    "alvos": [
+      5697,
+      32,
+      37,
+      38,
+      39,
+      40,
+      43,
+      44,
+      47,
+      63,
+      371,
+      381,
+      383,
+      385,
+      396,
+      398,
+      400,
+      2866,
+      2904,
+      4950,
+      5160,
+      5279,
+      5345,
+      5352,
+      5378,
+      6072,
+      6600,
+      11825
+    ],
+    "dependentes": [
+      32,
+      37,
+      38,
+      39,
+      40,
+      43,
+      44,
+      47,
+      63,
+      371,
+      381,
+      383,
+      385,
+      396,
+      398,
+      400,
+      2866,
+      2904,
+      4950,
+      5160,
+      5279,
+      5345,
+      5352,
+      5378,
+      6072,
+      6600,
+      11825
+    ],
+    "motivo": {
+      "32": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              44,
+              371,
+              404,
+              405,
+              5216,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              371,
+              404,
+              405,
+              5216,
+              6585,
+              6600
+            ]
+          ]
+        }
+      },
+      "37": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "38": {
+        "celesc_no_pool": true,
+        "pools_alterados": 5,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "39": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              43,
+              371,
+              405,
+              6072,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              371,
+              405,
+              5697,
+              6072,
+              6600
+            ]
+          ]
+        }
+      },
+      "40": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              40,
+              43,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              40,
+              43,
+              5697
+            ]
+          ]
+        }
+      },
+      "43": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "44": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              44,
+              380,
+              405,
+              5707,
+              7019
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              44,
+              371,
+              405,
+              5707,
+              7019
+            ]
+          ]
+        }
+      },
+      "47": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              47,
+              396
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              43,
+              47,
+              396,
+              5697
+            ]
+          ]
+        }
+      },
+      "63": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              63,
+              371,
+              385,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "371": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              43,
+              371,
+              6072,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              371,
+              6072,
+              6600
+            ]
+          ]
+        }
+      },
+      "381": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              26,
+              46,
+              82,
+              87,
+              370,
+              381,
+              5367
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              26,
+              46,
+              82,
+              87,
+              370,
+              381,
+              5370
+            ]
+          ]
+        }
+      },
+      "383": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              380,
+              383,
+              404,
+              5707,
+              6585
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              383,
+              404,
+              5216,
+              5707,
+              6585
+            ]
+          ]
+        }
+      },
+      "385": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              63,
+              371,
+              385,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "396": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              396,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              396,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "398": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              46,
+              82,
+              87,
+              381,
+              398,
+              5279,
+              5368
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              82,
+              87,
+              381,
+              398,
+              5279,
+              5368,
+              6898
+            ]
+          ]
+        }
+      },
+      "400": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              46,
+              370,
+              381,
+              400,
+              5367,
+              5368,
+              5378
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              46,
+              370,
+              381,
+              400,
+              5365,
+              5367,
+              5378
+            ]
+          ]
+        }
+      },
+      "2866": {
+        "celesc_no_pool": true,
+        "pools_alterados": 8,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              385,
+              396,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              385,
+              396,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "2904": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              51,
+              95,
+              399,
+              401,
+              2904,
+              5367,
+              5386
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              51,
+              83,
+              95,
+              399,
+              401,
+              2904,
+              5386
+            ]
+          ]
+        }
+      },
+      "4950": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              47,
+              385,
+              396,
+              2866,
+              4950
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              47,
+              396,
+              2866,
+              4950,
+              5697
+            ]
+          ]
+        }
+      },
+      "5160": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              31,
+              51,
+              83,
+              401,
+              5160
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              31,
+              51,
+              390,
+              401,
+              5160
+            ]
+          ]
+        }
+      },
+      "5279": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              82,
+              400,
+              5279,
+              5353,
+              5369,
+              5370,
+              6898
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              82,
+              87,
+              400,
+              5279,
+              5353,
+              5369,
+              6898
+            ]
+          ]
+        }
+      },
+      "5345": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              5345,
+              5355,
+              5356,
+              5363,
+              5373,
+              5378,
+              5381
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              5345,
+              5355,
+              5363,
+              5373,
+              5378,
+              5381,
+              6609
+            ]
+          ]
+        }
+      },
+      "5352": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              504,
+              527,
+              2763,
+              3627,
+              5352,
+              5385,
+              6897
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              527,
+              2763,
+              3627,
+              5352,
+              5381,
+              5385,
+              6897
+            ]
+          ]
+        }
+      },
+      "5378": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              370,
+              398,
+              5279,
+              5366,
+              5368,
+              5374,
+              5378
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              5279,
+              5366,
+              5368,
+              5374,
+              5375,
+              5378
+            ]
+          ]
+        }
+      },
+      "6072": {
+        "celesc_no_pool": true,
+        "pools_alterados": 5,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              385,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              385,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "6600": {
+        "celesc_no_pool": true,
+        "pools_alterados": 6,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "11825": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              83,
+              86,
+              88,
+              5279,
+              5365,
+              5370,
+              11825
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              83,
+              86,
+              5279,
+              5365,
+              5367,
+              5370,
+              11825
+            ]
+          ]
+        }
+      }
+    },
+    "linhas_celesc_novas": 550,
+    "segundos": 49.4
+  },
+  "trafo_dist_quantidade": {
+    "alvos": [
+      5697,
+      31,
+      37,
+      38,
+      39,
+      40,
+      43,
+      44,
+      47,
+      95,
+      370,
+      380,
+      383,
+      385,
+      398,
+      401,
+      2866,
+      4950,
+      5216,
+      5346,
+      5356,
+      5373,
+      5377,
+      5384,
+      5386,
+      6072,
+      6600,
+      7883,
+      11825
+    ],
+    "dependentes": [
+      31,
+      37,
+      38,
+      39,
+      40,
+      43,
+      44,
+      47,
+      95,
+      370,
+      380,
+      383,
+      385,
+      398,
+      401,
+      2866,
+      4950,
+      5216,
+      5346,
+      5356,
+      5373,
+      5377,
+      5384,
+      5386,
+      6072,
+      6600,
+      7883,
+      11825
+    ],
+    "motivo": {
+      "31": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              46,
+              87,
+              5370
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              46,
+              2904,
+              5370
+            ]
+          ]
+        }
+      },
+      "37": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "38": {
+        "celesc_no_pool": true,
+        "pools_alterados": 6,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "39": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              37,
+              39,
+              43,
+              371,
+              405,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              37,
+              39,
+              43,
+              371,
+              405,
+              5697
+            ]
+          ]
+        }
+      },
+      "40": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              38,
+              40,
+              44,
+              369,
+              380,
+              6587
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              38,
+              40,
+              44,
+              369,
+              380,
+              6587,
+              7371
+            ]
+          ]
+        }
+      },
+      "43": {
+        "celesc_no_pool": true,
+        "pools_alterados": 7,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "44": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              44,
+              5216,
+              6585,
+              6587
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              44,
+              5216,
+              6587,
+              7019
+            ]
+          ]
+        }
+      },
+      "47": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              47,
+              2866
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              47,
+              5697
+            ]
+          ]
+        }
+      },
+      "95": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              83,
+              86,
+              95,
+              399,
+              401
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              83,
+              88,
+              95,
+              399,
+              401
+            ]
+          ]
+        }
+      },
+      "370": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              46,
+              369,
+              370,
+              381
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              46,
+              370,
+              381,
+              6587
+            ]
+          ]
+        }
+      },
+      "380": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              43,
+              369,
+              380,
+              6587,
+              7019
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              43,
+              44,
+              369,
+              380,
+              6587
+            ]
+          ]
+        }
+      },
+      "383": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              380,
+              383,
+              404,
+              5707,
+              6585
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              383,
+              404,
+              5707,
+              6585,
+              7019
+            ]
+          ]
+        }
+      },
+      "385": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              405,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              405,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "398": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              5346,
+              5353,
+              5356,
+              5368,
+              5374,
+              5375
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              5346,
+              5353,
+              5356,
+              5368,
+              5375,
+              5382
+            ]
+          ]
+        }
+      },
+      "401": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              88,
+              399,
+              401,
+              5365,
+              5367
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              88,
+              95,
+              399,
+              401,
+              5367
+            ]
+          ]
+        }
+      },
+      "2866": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              63,
+              385,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              385,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "4950": {
+        "celesc_no_pool": true,
+        "pools_alterados": 3,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              47,
+              385,
+              2866,
+              4950,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              47,
+              385,
+              2866,
+              4950,
+              5697
+            ]
+          ]
+        }
+      },
+      "5216": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              404,
+              5216,
+              6585,
+              7019
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              383,
+              404,
+              5216,
+              6585
+            ]
+          ]
+        }
+      },
+      "5346": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5279,
+              5346,
+              5353,
+              5375,
+              6898
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5346,
+              5353,
+              5366,
+              5375,
+              6898
+            ]
+          ]
+        }
+      },
+      "5356": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              4248,
+              5356,
+              5363,
+              5366,
+              5368,
+              5374,
+              5375
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              4248,
+              5356,
+              5363,
+              5368,
+              5374,
+              5375
+            ]
+          ]
+        }
+      },
+      "5373": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              4248,
+              5345,
+              5363,
+              5373,
+              5377,
+              5384,
+              7883
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              5345,
+              5363,
+              5373,
+              5374,
+              5377,
+              5384,
+              7883
+            ]
+          ]
+        }
+      },
+      "5377": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5345,
+              5355,
+              5373,
+              5377,
+              7883
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5345,
+              5373,
+              5377,
+              5384,
+              7883
+            ]
+          ]
+        }
+      },
+      "5384": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5345,
+              5363,
+              5375,
+              5377,
+              5384
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5345,
+              5363,
+              5377,
+              5384,
+              7883
+            ]
+          ]
+        }
+      },
+      "5386": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              2904,
+              5353,
+              5365,
+              5367,
+              5386
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              83,
+              5353,
+              5365,
+              5367,
+              5386
+            ]
+          ]
+        }
+      },
+      "6072": {
+        "celesc_no_pool": true,
+        "pools_alterados": 5,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              385,
+              405,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              385,
+              405,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "6600": {
+        "celesc_no_pool": true,
+        "pools_alterados": 7,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              37,
+              38,
+              39,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              37,
+              38,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "7883": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              4248,
+              5345,
+              5346,
+              5363,
+              5373,
+              5375,
+              7883
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              4248,
+              5345,
+              5346,
+              5373,
+              5375,
+              6609,
+              7883
+            ]
+          ]
+        }
+      },
+      "11825": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              5365,
+              5367,
+              5369,
+              5370,
+              5386,
+              7016,
+              11825
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              86,
+              5365,
+              5367,
+              5369,
+              5370,
+              5386,
+              11825
+            ]
+          ]
+        }
+      }
+    },
+    "linhas_celesc_novas": 597,
+    "segundos": 69.8
+  },
+  "trafo_dist_potencia_kva": {
+    "alvos": [
+      5697,
+      26,
+      31,
+      37,
+      38,
+      39,
+      43,
+      63,
+      370,
+      371,
+      380,
+      385,
+      404,
+      2763,
+      2866,
+      4950,
+      5363,
+      5366,
+      5373,
+      5385,
+      6072,
+      6600,
+      6610,
+      6897,
+      11825
+    ],
+    "dependentes": [
+      26,
+      31,
+      37,
+      38,
+      39,
+      43,
+      63,
+      370,
+      371,
+      380,
+      385,
+      404,
+      2763,
+      2866,
+      4950,
+      5363,
+      5366,
+      5373,
+      5385,
+      6072,
+      6600,
+      6610,
+      6897,
+      11825
+    ],
+    "motivo": {
+      "26": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              69,
+              370,
+              381
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              69,
+              369,
+              381
+            ]
+          ]
+        }
+      },
+      "31": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              26,
+              31,
+              69,
+              369,
+              370,
+              381,
+              2904
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              26,
+              31,
+              69,
+              369,
+              381,
+              404,
+              2904
+            ]
+          ]
+        }
+      },
+      "37": {
+        "celesc_no_pool": true,
+        "pools_alterados": 7,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              5697
+            ]
+          ]
+        }
+      },
+      "38": {
+        "celesc_no_pool": true,
+        "pools_alterados": 5,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              5697,
+              6600
+            ]
+          ]
+        }
+      },
+      "39": {
+        "celesc_no_pool": true,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              43,
+              371,
+              385,
+              405,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              43,
+              371,
+              405,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "43": {
+        "celesc_no_pool": true,
+        "pools_alterados": 4,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              39,
+              43,
+              371
+            ]
+          ]
+        }
+      },
+      "63": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              405,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "370": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              369,
+              370,
+              381
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              46,
+              369,
+              370,
+              381
+            ]
+          ]
+        }
+      },
+      "371": {
+        "celesc_no_pool": true,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              43,
+              371,
+              405,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              371,
+              405,
+              6072
+            ]
+          ]
+        }
+      },
+      "380": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              44,
+              371,
+              380,
+              5707,
+              7019
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              43,
+              44,
+              371,
+              380,
+              7019
+            ]
+          ]
+        }
+      },
+      "385": {
+        "celesc_no_pool": true,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              63,
+              371,
+              385,
+              405,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              39,
+              63,
+              371,
+              385,
+              405,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "404": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              69,
+              380,
+              383,
+              404,
+              5216,
+              6585,
+              7019
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              69,
+              383,
+              404,
+              5216,
+              6585,
+              7019
+            ]
+          ]
+        }
+      },
+      "2763": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              598,
+              2763,
+              3627,
+              6897
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              598,
+              2763,
+              3627,
+              5385,
+              6897
+            ]
+          ]
+        }
+      },
+      "2866": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              63,
+              385,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "4950": {
+        "celesc_no_pool": true,
+        "pools_alterados": 3,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              2866,
+              4950,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              2866,
+              4950,
+              5697
+            ]
+          ]
+        }
+      },
+      "5363": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              5353,
+              5355,
+              5356,
+              5363,
+              5378,
+              5381,
+              5385
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              5355,
+              5356,
+              5363,
+              5378,
+              5381,
+              5385,
+              6609
+            ]
+          ]
+        }
+      },
+      "5366": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              86,
+              5365,
+              5366,
+              5369,
+              5382,
+              6610,
+              7016
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              5365,
+              5366,
+              5369,
+              5382,
+              5386,
+              6610,
+              7016
+            ]
+          ]
+        }
+      },
+      "5373": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              4248,
+              5345,
+              5355,
+              5363,
+              5373,
+              5377,
+              7883
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              5345,
+              5355,
+              5363,
+              5373,
+              5377,
+              5381,
+              7883
+            ]
+          ]
+        }
+      },
+      "5385": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              504,
+              527,
+              3627,
+              5352,
+              5385,
+              6609,
+              6897
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              504,
+              527,
+              2763,
+              3627,
+              5352,
+              5385,
+              6897
+            ]
+          ]
+        }
+      },
+      "6072": {
+        "celesc_no_pool": true,
+        "pools_alterados": 7,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              385,
+              405,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              371,
+              385,
+              405,
+              6072
+            ]
+          ]
+        }
+      },
+      "6600": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              43,
+              405,
+              6600
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              37,
+              38,
+              43,
+              6600
+            ]
+          ]
+        }
+      },
+      "6610": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              4248,
+              5370,
+              5374,
+              5375,
+              6610
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              5370,
+              5374,
+              5375,
+              6610,
+              7016
+            ]
+          ]
+        }
+      },
+      "6897": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              2381,
+              2763,
+              5343,
+              6897,
+              7467
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              2381,
+              2763,
+              5368,
+              6897,
+              7467
+            ]
+          ]
+        }
+      },
+      "11825": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              5279,
+              5365,
+              5367,
+              5369,
+              5370,
+              5386,
+              11825
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              86,
+              5365,
+              5367,
+              5369,
+              5370,
+              5386,
+              11825
+            ]
+          ]
+        }
+      }
+    },
+    "linhas_celesc_novas": 597,
+    "segundos": 61.4
+  },
+  "rede_mt_extensao_km": {
+    "alvos": [
+      5697,
+      32,
+      39,
+      43,
+      44,
+      63,
+      83,
+      370,
+      383,
+      385,
+      390,
+      396,
+      404,
+      598,
+      2783,
+      2866,
+      5216,
+      5378,
+      5707,
+      6072
+    ],
+    "dependentes": [
+      32,
+      39,
+      43,
+      44,
+      63,
+      83,
+      370,
+      383,
+      385,
+      390,
+      396,
+      404,
+      598,
+      2783,
+      2866,
+      5216,
+      5378,
+      5707,
+      6072
+    ],
+    "motivo": {
+      "32": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              37,
+              38,
+              39,
+              396,
+              404,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              37,
+              38,
+              39,
+              404,
+              405,
+              5697
+            ]
+          ]
+        }
+      },
+      "39": {
+        "celesc_no_pool": true,
+        "pools_alterados": 4,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              37,
+              39,
+              43,
+              371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "43": {
+        "celesc_no_pool": true,
+        "pools_alterados": 6,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "44": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              44,
+              69,
+              369,
+              370,
+              5216,
+              6585,
+              6587
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              26,
+              44,
+              69,
+              370,
+              5216,
+              6585,
+              6587
+            ]
+          ]
+        }
+      },
+      "63": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              2866,
+              5697
+            ]
+          ]
+        }
+      },
+      "83": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              83,
+              399,
+              2904,
+              5353,
+              5365
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              83,
+              399,
+              2904,
+              5365,
+              5370
+            ]
+          ]
+        }
+      },
+      "370": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              40,
+              44,
+              369,
+              370,
+              381,
+              6585,
+              6587
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              38,
+              40,
+              44,
+              370,
+              381,
+              6585,
+              6587
+            ]
+          ]
+        }
+      },
+      "383": {
+        "celesc_no_pool": true,
+        "pools_alterados": 8,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              383,
+              385,
+              396,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              383,
+              385,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "385": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              2866,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "390": {
+        "celesc_no_pool": true,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              63,
+              383,
+              385,
+              390,
+              391,
+              396,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              63,
+              383,
+              385,
+              390,
+              391,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "396": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              2866,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              385,
+              396,
+              2866,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "404": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              37,
+              38,
+              39,
+              369,
+              383,
+              404
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              37,
+              38,
+              39,
+              383,
+              404,
+              5697
+            ]
+          ]
+        }
+      },
+      "598": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              598,
+              2381,
+              5346,
+              6897
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              598,
+              2381,
+              5346,
+              7371
+            ]
+          ]
+        }
+      },
+      "2783": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              2763,
+              2783,
+              3627,
+              5381
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              2763,
+              2783,
+              3627,
+              5343
+            ]
+          ]
+        }
+      },
+      "2866": {
+        "celesc_no_pool": true,
+        "pools_alterados": 7,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              385,
+              396,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "5216": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              44,
+              391,
+              5216,
+              5707,
+              6585
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              44,
+              383,
+              391,
+              5216,
+              5707
+            ]
+          ]
+        }
+      },
+      "5378": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              381,
+              398,
+              400,
+              5279,
+              5368,
+              5378,
+              7371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              381,
+              398,
+              400,
+              5279,
+              5378,
+              5385,
+              7371
+            ]
+          ]
+        }
+      },
+      "5707": {
+        "celesc_no_pool": true,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              383,
+              385,
+              391,
+              396,
+              404,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              32,
+              383,
+              385,
+              391,
+              396,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "6072": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              371,
+              2866,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              39,
+              371,
+              2866,
+              5697,
+              6072
+            ]
+          ]
+        }
+      }
+    },
+    "linhas_celesc_novas": 242,
+    "segundos": 46.0
+  },
+  "rede_bt_extensao_km": {
+    "alvos": [
+      5697,
+      31,
+      37,
+      39,
+      40,
+      43,
+      47,
+      63,
+      95,
+      369,
+      370,
+      371,
+      385,
+      396,
+      405,
+      598,
+      2866,
+      5366,
+      5370,
+      5378,
+      5385,
+      5386,
+      6072,
+      6610
+    ],
+    "dependentes": [
+      31,
+      37,
+      39,
+      40,
+      43,
+      47,
+      63,
+      95,
+      369,
+      370,
+      371,
+      385,
+      396,
+      405,
+      598,
+      2866,
+      5366,
+      5370,
+      5378,
+      5385,
+      5386,
+      6072,
+      6610
+    ],
+    "motivo": {
+      "31": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              69,
+              7019,
+              7371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              31,
+              51,
+              69,
+              7019
+            ]
+          ]
+        }
+      },
+      "37": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              40,
+              43,
+              371,
+              404,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              40,
+              43,
+              371,
+              405,
+              5697
+            ]
+          ]
+        }
+      },
+      "39": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              396
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "40": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              38,
+              40,
+              44,
+              404,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              38,
+              40,
+              404,
+              405
+            ]
+          ]
+        }
+      },
+      "43": {
+        "celesc_no_pool": true,
+        "pools_alterados": 8,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              47,
+              371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              371,
+              5697
+            ]
+          ]
+        }
+      },
+      "47": {
+        "celesc_no_pool": true,
+        "pools_alterados": 3,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              40,
+              43,
+              47,
+              371,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              43,
+              47,
+              371,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "63": {
+        "celesc_no_pool": true,
+        "pools_alterados": 8,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              5707,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "95": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              51,
+              82,
+              95,
+              398,
+              2904
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              51,
+              82,
+              95,
+              398,
+              401
+            ]
+          ]
+        }
+      },
+      "369": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              69,
+              369,
+              370,
+              5216,
+              7019
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              69,
+              369,
+              380,
+              5216,
+              7019
+            ]
+          ]
+        }
+      },
+      "370": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              26,
+              370,
+              381,
+              6587,
+              7371
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              369,
+              370,
+              381,
+              6587,
+              7371
+            ]
+          ]
+        }
+      },
+      "371": {
+        "celesc_no_pool": true,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              43,
+              371,
+              385,
+              396,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              37,
+              39,
+              43,
+              371,
+              385,
+              405,
+              5697
+            ]
+          ]
+        }
+      },
+      "385": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              383,
+              385,
+              396,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "396": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              383,
+              385,
+              396,
+              5707
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              5697,
+              5707
+            ]
+          ]
+        }
+      },
+      "405": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              40,
+              383,
+              404,
+              405
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              32,
+              37,
+              40,
+              404,
+              405
+            ]
+          ]
+        }
+      },
+      "598": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              598,
+              2381,
+              5368,
+              7016
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "externo",
+            [
+              504,
+              598,
+              2381,
+              5368,
+              7371
+            ]
+          ]
+        }
+      },
+      "2866": {
+        "celesc_no_pool": true,
+        "pools_alterados": 3,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              371,
+              385,
+              396,
+              2866
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              63,
+              385,
+              396,
+              2866,
+              5697
+            ]
+          ]
+        }
+      },
+      "5366": {
+        "celesc_no_pool": false,
+        "pools_alterados": 2,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              5346,
+              5355,
+              5366,
+              5369,
+              5385
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            2,
+            "comparaveis",
+            "externo",
+            [
+              5346,
+              5355,
+              5366,
+              5369,
+              5374
+            ]
+          ]
+        }
+      },
+      "5370": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              51,
+              398,
+              2904,
+              5365,
+              5367,
+              5370,
+              6898
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            2,
+            "comparaveis",
+            "interno",
+            [
+              51,
+              398,
+              2904,
+              5353,
+              5365,
+              5370,
+              6898
+            ]
+          ]
+        }
+      },
+      "5378": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              86,
+              398,
+              400,
+              5356,
+              5367,
+              5378,
+              5386
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              400,
+              5356,
+              5367,
+              5375,
+              5378,
+              5386
+            ]
+          ]
+        }
+      },
+      "5385": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              86,
+              5279,
+              5353,
+              5385,
+              5386
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              5279,
+              5353,
+              5385,
+              5386,
+              6898
+            ]
+          ]
+        }
+      },
+      "5386": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              5279,
+              5353,
+              5374,
+              5385,
+              5386,
+              6898,
+              7016
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            0,
+            "comparaveis",
+            "interno",
+            [
+              381,
+              5279,
+              5353,
+              5385,
+              5386,
+              6898,
+              7016
+            ]
+          ]
+        }
+      },
+      "6072": {
+        "celesc_no_pool": true,
+        "pools_alterados": 9,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              396,
+              6072
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2023,
+            0,
+            "comparaveis",
+            "externo",
+            [
+              37,
+              39,
+              43,
+              5697,
+              6072
+            ]
+          ]
+        }
+      },
+      "6610": {
+        "celesc_no_pool": false,
+        "pools_alterados": 1,
+        "exemplo": {
+          "antes": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              5346,
+              5363,
+              5366,
+              5369,
+              5375,
+              6610
+            ]
+          ],
+          "depois": [
+            "reconciled_retrospective",
+            2024,
+            1,
+            "comparaveis",
+            "interno",
+            [
+              398,
+              5346,
+              5363,
+              5366,
+              5369,
+              6610,
+              11825
+            ]
+          ]
+        }
+      }
+    },
+    "linhas_celesc_novas": 242,
+    "segundos": 53.7
+  }
+}

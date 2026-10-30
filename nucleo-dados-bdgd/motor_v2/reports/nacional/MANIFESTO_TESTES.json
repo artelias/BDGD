@@ -1,0 +1,38 @@
+{
+  "total": 221,
+  "ok": 221,
+  "falhas": 0,
+  "erros": 0,
+  "ignorados": 0,
+  "arquivos": {
+    "test_auditoria_final.py": "c98e3f43c1f95698472a72208bbb0b6a70d4b37ea3d43736eff83888764393ab",
+    "test_baselines.py": "0cd772ace9c1a2b9f4a4ce8b493d8bf71ac5c2d45d3ca113a38d97d56e92a222",
+    "test_comparison.py": "d00f1239f4c3ec92f062368492f23ed15fa4f6d08203ede7ef1762809184da94",
+    "test_conj_plan.py": "206ff34cf7a17ae1fef0d337cd6bd30f055956e3bd6f2042314999ce2ce111d7",
+    "test_executor_integration.py": "f1fb01d8087613b2900acdcaeb7fd415989ec4a3143b37798d49b962ababfb17",
+    "test_features.py": "98fdb767bd7785a0e18ab0dc789d9e23a8f4477fe0027a9e1b24bd6ec3acbab5",
+    "test_future.py": "f5e265c63f03d8c0523fd8ac790f874c07232c5ff12efabb3a38f502ebbd30e2",
+    "test_generalization.py": "bc5c15f8e440dc3adc82a7699bfbec8c5aced2934a2368beaa7c29a3c3da1e78",
+    "test_lote.py": "dcdef8bd8d011eb6d67182eab30138bdd0222f5fc9872c13571238d35755d5fa",
+    "test_metric_contract.py": "ba662fc4d89bc3d11aa90ce76626aaf3cadb15394e39188c134d7a6b41a0d080",
+    "test_ml.py": "f34ad8987a66d4b34e87d82e63a69c244d818ce88e63ab37325fcbfca5cfeb77",
+    "test_nacional.py": "5e094f384a6fe08146ad3d39ca936605a4e94657333a4a9aa3464adf121ffd92",
+    "test_public_audit.py": "4955e4f7498c85519fc2dc179177f781caff657d426dcf1a6730ec90ff01bf26",
+    "test_scale.py": "4ba0273a272cbdab018aba4af8de9e8966edcc1af556f5b25eab99eb20cf9507",
+    "test_temporal.py": "3a3339b02a4a157ac413a92ad1327c9a79ffccba16370dc9b7bac724cd0fa87a",
+    "test_v2.py": "32ab67058dc4da0c2b5aa6df3caa9b1095c2928938a52c167d516f8e813e4bde",
+    "test_vintage.py": "01a1aedb0fb6f3beaef85b5619a84c21e063a8874badb5f6c13e2422964ebe8d"
+  },
+  "ambiente": {
+    "python": "3.12.2",
+    "executavel": "D:\\NUCLEO_BDGD_2025\\motor_v2\\.venv\\Scripts\\python.exe",
+    "pacotes": {
+      "scikit-learn": "1.9.1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "duckdb": "2.0.0",
+      "pyarrow": "26.0.0"
+    }
+  },
+  "ci_linux": "nao aplicavel: nenhum workflow do repositorio executa motor_v2 e parte das suites le dados locais (D:/)"
+}

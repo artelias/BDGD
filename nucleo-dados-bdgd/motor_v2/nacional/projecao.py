@@ -20,7 +20,8 @@ from pathlib import Path
 import numpy as np
 
 from . import LEVEL_A, ROOT_OUT
-from .cenarios import YEARS, baseline_path, ml_path, scenarios, screen_table, screened_growth
+from . import elegibilidade
+from .cenarios import YEARS, baseline_path, evidence, ml_path, scenarios, screen_table_v2, screened_growth_v2
 from .comparativos import ALIAS, EXTERNAL, OUT as CMP, grupos
 from .painel import PANEL
 from .relatorio import write_csv, write_parquet
@@ -32,14 +33,14 @@ MODE = 'reconciled_retrospective'
 
 
 def summaries(asset):
-    out = {}
-    st = read(CMP / 'STATUS.json')
-    for bid, r in st['lotes'].items():
-        if r['ativo'] != asset or r.get('estado') != 'completed':
-            continue
-        for s in read(Path(r['output']) / 'summaries.json'):
-            if s['mode'] == MODE:
-                out[s['dist']] = dict(s, _batch=bid, _output=r['output'])
+    """Comparison summary in force per DIST: a completed revision batch (revisao_a) supersedes the first-run batch of its DIST."""
+    from .revisao_a import vigentes
+    out, cache = {}, {}
+    for d, (bid, output) in vigentes(read(CMP / 'STATUS.json'), asset).items():
+        if output not in cache:
+            cache[output] = {s['dist']: s for s in read(Path(output) / 'summaries.json') if s['mode'] == MODE}
+        if d in cache[output]:
+            out[d] = dict(cache[output][d], _batch=bid, _output=output)
     return out
 
 
@@ -95,17 +96,19 @@ def panel_rows(asset, quarantine, vm, pool):
     return rows, quality, spec
 
 
-def project_dist(d, asset, spec, rows, quality, summary, table=None):
+def project_dist(d, asset, spec, rows, quality, summary, table=None, ev=None, excluir=None):
     from ..comparison import fit_predict, scope_pool
     from ..baselines import segment
     from ..metric_contract import allocate, round_count
     from ..policy import FeaturePolicy
     nature = spec['nature']; count = nature == 'discrete_count'
     q = {r['year']: r for r in quality if r['dist'] == d}
-    years = sorted(y for y, r in q.items() if r.get('physical_total') is not None)
+    excluir = excluir or {}
+    years = sorted(y for y, r in q.items() if r.get('physical_total') is not None and y not in excluir)
     base = dict(DIST=d, ativo=spec['ativo'], metrica=spec['metrica'], unidade=spec['unit'], natureza=nature, unidade_territorial=spec['unit_kind'])
     if not years:
-        return dict(base, status_projecao='bloqueada', motivo_projecao='nenhuma competencia com total fisico valido (extracao/regra de qualidade)'), [], []
+        why = '; '.join(f'{y}: {m}' for y, m in sorted(excluir.items())) if excluir else ''
+        return dict(base, status_projecao='bloqueada', motivo_projecao='nenhuma competencia com estoque elegivel' + (f' (politica de elegibilidade: {why})' if why else ' (extracao/regra de qualidade)')), [], []
     anchor = years[-1]; total0 = float(q[anchor]['physical_total'])
     cands = candidates(summary) if summary else {}
     dec = choose(cands) if cands else choose({})
@@ -159,10 +162,12 @@ def project_dist(d, asset, spec, rows, quality, summary, table=None):
         chosen = k
     mod_total = {y: sum(p[y] for p in paths.values()) + residual0 * agg[y] for y in YEARS}
     pts = {y: float(q[y]['physical_total']) for y in years}
-    breaks = _breaks(q, years)
-    kept, atypical = screened_growth(pts, breaks, table or {})
+    breaks = _breaks(q, years, d)
+    concept = elegibilidade.CONCEITO_A[asset]
+    kept, cls = screened_growth_v2(pts, breaks, table or {}, {y: (ev or {})[d, concept, y] for y in pts if (d, concept, y) in (ev or {})})
     sc, smeta = scenarios(anchor, total0, mod_total, kept)
-    smeta['transicoes_atipicas_excluidas'] = atypical
+    smeta['transicoes_atipicas_excluidas'] = [x for x in cls if not x['no_envelope']]
+    smeta['classes_transicoes'] = {k: sum(1 for x in cls if x['classe'] == k) for k in sorted({x['classe'] for x in cls})}
     terr, tot = [], []
     for s, tpath in sc.items():
         for y in YEARS:
@@ -186,16 +191,19 @@ def project_dist(d, asset, spec, rows, quality, summary, table=None):
     return dec_out, terr, tot
 
 
-def _breaks(q, years):
-    return {y for y in years if q[y].get('rupture') or (y - 1) in q and not q[y].get('gate_ok', True)}
+def _breaks(q, years, d=None):
+    """Years whose step from y-1 is not comparable: contract rupture, failed coverage gate, or a corporate succession into this DIST
+    effective between the two data-bases (elegibilidade.sucessoes, same rule as Level B)."""
+    suc = elegibilidade.sucessoes()
+    return {y for y in years if q[y].get('rupture') or (y - 1) in q and not q[y].get('gate_ok', True) or (d, y) in suc}
 
 
-def physical_series(quality):
+def physical_series(quality, excluir=None):
     pts, br = {}, {}
     for d in {r['dist'] for r in quality}:
         q = {r['year']: r for r in quality if r['dist'] == d}
-        ys = sorted(y for y, r in q.items() if r.get('physical_total') is not None)
-        pts[d] = {y: float(q[y]['physical_total']) for y in ys}; br[d] = _breaks(q, ys)
+        ys = sorted(y for y, r in q.items() if r.get('physical_total') is not None and y not in (excluir or {}).get(d, {}))
+        pts[d] = {y: float(q[y]['physical_total']) for y in ys}; br[d] = _breaks(q, ys, d)
     return pts, br
 
 
@@ -204,15 +212,24 @@ def run():
     qz = read(ROOT_OUT / 'quarentena.json')
     vm = set(json.loads(Path(qz['municipios_validos']).read_text(encoding='utf-8')))
     decisions, terr, tot, blocked = [], [], [], []
+    ev = evidence()
+    # stocks the common eligibility policy rejects (e.g. nao_somar: Energisa Nova Friburgo 2022, already inside Energisa MR)
+    cc = elegibilidade.cells(); inel = defaultdict(lambda: defaultdict(dict))
+    for asset in LEVEL_A:
+        for (d, c, y), r in cc.items():
+            if c == elegibilidade.CONCEITO_A[asset] and r['estado'] == 'observado':
+                ok, why, _ = elegibilidade.estoque(r)
+                if not ok:
+                    inel[asset][d][y] = why
     for asset in LEVEL_A:
         from .painel import dists_with
         pool = dists_with(asset, 1)
         rows, quality, spec = panel_rows(asset, qz['quarentena'], vm, pool)
         summ = summaries(asset)
-        table = screen_table(*physical_series(quality))
+        table = screen_table_v2(*physical_series(quality, inel.get(asset, {})))
         for d in pool:
             try:
-                dec, t, s = project_dist(d, asset, spec, rows, quality, summ.get(d), table)
+                dec, t, s = project_dist(d, asset, spec, rows, quality, summ.get(d), table, ev, inel.get(asset, {}).get(d))
             except Exception as e:
                 dec, t, s = dict(DIST=d, ativo=spec['ativo'], metrica=spec['metrica'], status_projecao='falha', motivo_projecao=str(e)), [], []
             decisions.append(dec); terr += t; tot += s

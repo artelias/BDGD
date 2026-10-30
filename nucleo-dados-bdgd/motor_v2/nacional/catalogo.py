@@ -23,9 +23,10 @@ LEVEL_A_MAP = {('consumidores', 'quantidade'): ('ucbt_quantidade', 'parcial: so 
                ('trafo_dist', 'potencia_kva'): ('trafo_dist_potencia_kva', 'UNTRMT kVA / UNTRAT MVA x 1000 do vinculo bijetivo; experimental'),
                ('rede_mt', 'extensao_km'): ('rede_mt_extensao_km', 'SSDMT.COMP/1000 por SSDMT.CONJ'),
                ('rede_bt', 'extensao_km'): ('rede_bt_extensao_km', 'SSDBT.COMP/1000 por SSDBT.CONJ')}
-BLOCKED = {('trafo_forca', 'potencia_kva'): 'potencia: TUC 570 no EQ e POT_NOM da UNTRAT/UNTRMT vinculada nao homologados para esta familia; o contrato nacional nao publica a metrica',
-           ('trafo_medida', 'potencia_kva'): 'transformador de medida (TUC 575) nao tem potencia de transformacao; POT_NOM da instalacao vinculada nao representa o equipamento',
-           ('reguladores', 'potencia_kva'): 'EQRE.POT_NOM sem dominio/unidade comprovados; o contrato nacional nao publica a metrica'}
+# power metrics: decided by the separate power audit (potencia.py, MATRIZ_POTENCIAS.csv); status and reason per objective
+BLOCKED = {('trafo_forca', 'potencia_kva'): ('liberacao_experimental_proposta', 'potencia APARENTE (kVA): EQTRAT/EQTRMT.POT_NOM -> TPOTAPRT, conferida com UNTRAT.POT_NOM (MVA x1000); 72 DIST com >= 2 competencias no gate (codigos validos e quantidade = contrato); POT_F01/F02 nao somadas; serie ainda nao projetada nesta execucao'),
+           ('trafo_medida', 'potencia_kva'): ('nao_aplicavel', 'transformador de medida (TUC 575, EQTRM) nao tem campo de potencia: relacao e classe de exatidao, nao potencia de transformacao'),
+           ('reguladores', 'potencia_kva'): ('bloqueado', 'EQRE.POT_NOM -> TPOTAPRT (kVA aparente) com codigos validos, mas valores misturam potencia propria e passante e a soma nacional supera a transformacao de distribuicao: semantica nao homogenea (MATRIZ_POTENCIAS.csv)')}
 TERRITORIAL_FIELDS = ('MUN', 'CONJ', 'CTMT', 'CTAT', 'SUB')
 LINKS = {'EQTRMT': 'UNTRMT', 'EQTRAT': 'UNTRAT', 'EQRE': 'UNREMT/UNREAT', 'EQSE': 'UNSEMT/UNSEAT/UNSEBT', 'EQCR': 'UNCRMT/UNCRAT/UNCRBT'}
 
@@ -72,7 +73,8 @@ def run():
                          dist_com_projecao_nivel_B=sum(1 for r in bb if r['status_projecao'] == 'gerada'),
                          nivel_A_extrator=aa_key[0] if aa_key else None, nivel_A_regra=aa_key[1] if aa_key else None,
                          dist_com_projecao_nivel_A=sum(1 for r in aa if r.get('status_projecao') == 'gerada'),
-                         status=status, motivo_bloqueio=BLOCKED.get(key) or (None if status != 'bloqueado' else 'sem serie no contrato e sem extrator definido'),
+                         status=BLOCKED[key][0] if key in BLOCKED and status == 'bloqueado' else status,
+                         motivo_bloqueio=BLOCKED[key][1] if key in BLOCKED else (None if status != 'bloqueado' else 'sem serie no contrato e sem extrator definido'),
                          nivel_A_pendente=None if aa_key else ('extracao territorial viavel por ' + ','.join(sorted({f for v in terr.values() for f in v})) +
                                                                ' mas nao implementada nesta execucao' if any(terr.values()) else
                                                                ('territorio so pelo vinculo ' + json.dumps(via) if via else 'entidade sem campo territorial'))))

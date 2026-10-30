@@ -4,7 +4,8 @@
 
 Quarantine rules (a (DIST, year) leaves the model panels as target AND as t-1 feature year; it stays in the audit):
   * municipality codes outside the IBGE list for more than 2% of the active UCBT customers of that (DIST, year);
-  * a recoding bridge proposal exists for it and is not homologated (Celesc 2023 at the time of writing).
+  * a recoding bridge proposal exists for it and is neither homologated nor applied experimentally (pontes.py; Celesc 2023 was
+    applied experimentally on 2026-10-30 after its gates, so its codes are official in the derived panel and it is not quarantined).
 Units whose code is outside the IBGE list are never territorial units (they stay in the company total)."""
 import json
 
@@ -19,6 +20,9 @@ MAX_INVALID_SHARE = 0.02
 
 def run():
     build()
+    # bridges already applied experimentally (pontes_experimentais.json) are re-applied to the fresh panel copy, after the gates
+    from .pontes import reapply_after_build
+    reapply_after_build()
     ref, sources = reference()
     vm = ROOT_OUT / 'referencias' / 'municipios_ibge.json'
     atomic(vm, sorted(ref))

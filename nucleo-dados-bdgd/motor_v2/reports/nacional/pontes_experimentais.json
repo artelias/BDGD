@@ -1,0 +1,79 @@
+{
+  "pontes": [
+    {
+      "id": "MUN_RECODE_5697_2023",
+      "dist": 5697,
+      "ano": 2023,
+      "status": "APLICADA_EXPERIMENTAL_NAO_HOMOLOGADA",
+      "camada": "nacional/painel (derivada); base original, extracao e contrato intactos",
+      "autorizacao": "Responsavel (chat, 2026-10-30, 'MOTOR V2 - AUDITORIA FINAL', prioridade 2): autorizada a aplicacao apenas na camada experimental derivada, condicionada as verificacoes; base original preservada; ponte segue experimental ate homologacao especifica",
+      "data": "2026-10-30T17:40:21",
+      "proposta_sha256": "3fe8dc50baa4ab28f71600b0dff837ca22cdfb5e186f9fa1356156d2d73f4f5e",
+      "mapeamento_sha256": "69d653da17e0e1210304479e2d617c11ad4d4a1b034ceab4686146c508e44cec",
+      "codigos": 275,
+      "verificacoes": {
+        "mapeamento_univoco": true,
+        "codigos_ibge_validos": true,
+        "alvos_presentes_nos_dois_anos_adjacentes": true,
+        "ucbt_quantidade": {
+          "aplicavel": true,
+          "colisoes": 0,
+          "exemplos_colisao": [],
+          "linhas_alteradas": 2821,
+          "linhas_esperadas": 2821,
+          "apenas_codigos_mapeados": true,
+          "demais_colunas_identicas": true,
+          "totais_preservados": true,
+          "linhas": 2821,
+          "chaves_duplicadas_apos": 0,
+          "linhas_fora_ibge_apos": 0,
+          "valor_fora_ibge_apos": 0.0,
+          "ok": true
+        },
+        "trafo_dist_quantidade": {
+          "aplicavel": false,
+          "motivo": "nenhum registro com codigo publicado da ponte; codigos ja oficiais neste arquivo",
+          "linhas": 710,
+          "linhas_fora_ibge": 0,
+          "ok": true
+        },
+        "trafo_dist_potencia_kva": {
+          "aplicavel": false,
+          "motivo": "nenhum registro com codigo publicado da ponte; codigos ja oficiais neste arquivo",
+          "linhas": 710,
+          "linhas_fora_ibge": 0,
+          "ok": true
+        },
+        "continuidade": {
+          "municipios_ibge_apos": 275,
+          "municipios_ibge_ano_anterior": 275,
+          "municipios_ibge_ano_seguinte": 275,
+          "apenas_no_ano": [],
+          "ausentes_no_ano": [],
+          "razao_clientes_vs_anterior_p01": 0.9910514541387024,
+          "razao_clientes_vs_anterior_mediana": 1.0149388863739248,
+          "razao_clientes_vs_anterior_p99": 1.0772420943494039,
+          "ok": true
+        },
+        "evidencia_cruzada_transformadores": {
+          "municipios_ucbt_apos": 275,
+          "municipios_transformadores": 299,
+          "ucbt_em_municipio_com_transformador": 275,
+          "clientes_em_municipio_com_transformador": 1.0,
+          "alvos_da_ponte_presentes_em_UN_MUN": 275
+        }
+      },
+      "arquivos": [
+        {
+          "ativo": "ucbt_quantidade",
+          "arquivo": "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\painel\\5697\\ucbt_quantidade\\2023\\territorial.parquet",
+          "coluna": "MUN",
+          "sha256_antes": "04d1ef47280b882b7d61d159e3db6948d7968306a83bcb2dcefa7039ad376fa8",
+          "sha256_depois": "31e9c32cb19cd28bcd9b8cf6ae515b18dc9ac285b261a0bd4b217ac2268d6803",
+          "original_preservado": "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\painel\\_originais_ponte\\MUN_RECODE_5697_2023\\5697\\ucbt_quantidade\\2023"
+        }
+      ],
+      "homologacao": "pendente de homologacao especifica; usada apenas na camada experimental do Motor V2"
+    }
+  ]
+}

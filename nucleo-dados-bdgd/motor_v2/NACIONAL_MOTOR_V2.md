@@ -1,5 +1,7 @@
 # Motor V2 — execução nacional experimental (2026-10-30)
 
+> **Atualizado pela auditoria final ([`AUDITORIA_FINAL_MOTOR_V2.md`](AUDITORIA_FINAL_MOTOR_V2.md)).** Valem os números de lá e de `reports/nacional/`, que substituem os números abaixo onde divergirem: política única de elegibilidade, sucessão societária, ponte experimental da Celesc 2023, triagem v2 dos cenários, totais `COMPLETO`/`PARCIAL` e matriz de potência. Este texto descreve a primeira execução (`d4982e8`).
+
 O estado é **experimental e interno**. Nenhum modelo foi homologado, porque há 2 origens independentes e são exigidas 3. Nenhuma previsão foi publicada, nenhum produto público foi alterado e não houve merge, deploy nem download.
 
 A metodologia completa está em [`nacional/METODOLOGIA.md`](nacional/METODOLOGIA.md). Os artefatos compactos estão em [`reports/nacional/`](reports/nacional/). Os artefatos completos ficam em `D:/NUCLEO_BDGD_2025/motor_v2/nacional/`.

@@ -996,9 +996,109 @@
         "estado": "completed",
         "experimentos_executados": 108,
         "experimentos_reaproveitados": 0
+      },
+      "ucbt-rev-celesc-1": {
+        "ativo": "ucbt_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:25:06",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "ucbt-rev-celesc-2": {
+        "ativo": "ucbt_quantidade",
+        "dists": 12,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:12:20",
+        "estado": "completed",
+        "experimentos_executados": 504,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-rev-celesc-1": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:30:36",
+        "estado": "completed",
+        "experimentos_executados": 672,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_qty-rev-celesc-2": {
+        "ativo": "trafo_dist_quantidade",
+        "dists": 13,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:35:37",
+        "estado": "completed",
+        "experimentos_executados": 546,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-rev-celesc-1": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:50:38",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "trafo_kva-rev-celesc-2": {
+        "ativo": "trafo_dist_potencia_kva",
+        "dists": 9,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:42:07",
+        "estado": "completed",
+        "experimentos_executados": 324,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-rev-celesc-1": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:51:38",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_mt-rev-celesc-2": {
+        "ativo": "rede_mt_extensao_km",
+        "dists": 4,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:54:23",
+        "estado": "completed",
+        "experimentos_executados": 144,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-rev-celesc-1": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 16,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T19:00:09",
+        "estado": "completed",
+        "experimentos_executados": 576,
+        "experimentos_reaproveitados": 0
+      },
+      "rede_bt-rev-celesc-2": {
+        "ativo": "rede_bt_extensao_km",
+        "dists": 8,
+        "tentativas": 1,
+        "inicio": null,
+        "fim": "2026-10-30T18:55:53",
+        "estado": "completed",
+        "experimentos_executados": 288,
+        "experimentos_reaproveitados": 0
       }
     }
   },
-  "nivel_b": 2929.3,
-  "projecao_a": 262.8
+  "nivel_b": 1031.0,
+  "projecao_a": 281.3
 }

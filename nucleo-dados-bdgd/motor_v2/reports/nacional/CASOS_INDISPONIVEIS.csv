@@ -173,6 +173,10 @@ extracao,A,7467,trafo_dist_quantidade,2022,indisponivel,missing or ambiguous con
 extracao,A,7467,trafo_dist_potencia_kva,2022,indisponivel,missing or ambiguous contract publication
 extracao,A,7467,rede_mt_extensao_km,2022,indisponivel,missing or ambiguous contract publication
 extracao,A,7467,rede_bt_extensao_km,2022,indisponivel,missing or ambiguous contract publication
+projecao,A,6612,ucbt_quantidade,,bloqueada,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
+projecao,A,6612,trafo_dist_quantidade,,bloqueada,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
+projecao,A,6612,rede_mt_extensao_km,,bloqueada,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
+projecao,A,6612,rede_bt_extensao_km,,bloqueada,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
 contrato,B,70,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
 contrato,B,71,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
 contrato,B,72,alimentadores,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
@@ -611,9 +615,9 @@ contrato,B,397,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrat
 contrato,B,5217,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
 contrato,B,6612,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA; observado:)
 contrato,B,6896,trafo_medida,,bloqueada,nenhuma competencia utilizavel no contrato (nao_aplicavel:SUCESSAO_SOCIETARIA)
-catalogo,catalogo,,trafo_forca/potencia_kva,,bloqueado,potencia: TUC 570 no EQ e POT_NOM da UNTRAT/UNTRMT vinculada nao homologados para esta familia; o contrato nacional nao publica a metrica
-catalogo,catalogo,,trafo_medida/potencia_kva,,bloqueado,transformador de medida (TUC 575) nao tem potencia de transformacao; POT_NOM da instalacao vinculada nao representa o equipamento
-catalogo,catalogo,,reguladores/potencia_kva,,bloqueado,EQRE.POT_NOM sem dominio/unidade comprovados; o contrato nacional nao publica a metrica
+catalogo,catalogo,,trafo_forca/potencia_kva,,liberacao_experimental_proposta,"potencia APARENTE (kVA): EQTRAT/EQTRMT.POT_NOM -> TPOTAPRT, conferida com UNTRAT.POT_NOM (MVA x1000); 72 DIST com >= 2 competencias no gate (codigos validos e quantidade = contrato); POT_F01/F02 nao somadas; serie ainda nao projetada nesta execucao"
+catalogo,catalogo,,trafo_medida/potencia_kva,,nao_aplicavel,"transformador de medida (TUC 575, EQTRM) nao tem campo de potencia: relacao e classe de exatidao, nao potencia de transformacao"
+catalogo,catalogo,,reguladores/potencia_kva,,bloqueado,"EQRE.POT_NOM -> TPOTAPRT (kVA aparente) com codigos validos, mas valores misturam potencia propria e passante e a soma nacional supera a transformacao de distribuicao: semantica nao homogenea (MATRIZ_POTENCIAS.csv)"
 conversao_zip,A,103,publicacao_4e4da507d1a04fd08e00db551778f26f,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario b5c82a08b6334d3483ec4bafe42e7243 de 2024 em 15 entidades (ex.: {'BE': (11, 12), 'CTMT': (40, 32), 'EP': (1, 5)})"
 conversao_zip,A,2351,publicacao_15b23d4fbb964981b29d5bb1b79cee29,2022,quarentena,competencia_indeterminada: BASE.DAT_INC = DAT_FNL = data de extracao (2024-03-06); periodo de referencia nao declarado
 conversao_zip,A,2381,publicacao_9023484df13b4fcab81b90571f381bff,2022,quarentena,"competencia_divergente_2023: BASE 2023-01-01 a 2023-12-31; difere do item ordinario 61672ea3de6c47baa27929c56c7f1cba de 2023 em 17 entidades (ex.: {'BE': (11, 9), 'CTMT': (13, 15), 'EQME': (28742, 28960)})"
@@ -626,4 +630,3 @@ conversao_zip,A,5371,publicacao_713833ce3c5042ae85f28ca763adacfb,2023,quarentena
 conversao_zip,A,5372,publicacao_406f1d6bd52549d78a8bc46a8ccb0420,2022,quarentena,"competencia_divergente_2023: BASE 2023-01-01 a 2023-12-31; difere do item ordinario 7c1f2236e027453b9c04c3492741b81b de 2023 em 4 entidades (ex.: {'EQSE': (683, 685), 'RAMLIG': (5078, 5074), 'SSDMT': (6255, 6254)})"
 conversao_zip,A,5379,publicacao_d70572f92648474fa2338ae4cfed8e70,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario 8f9341132b3d484ea6ea6f3f7d1ed0ac de 2024 em 10 entidades (ex.: {'BE': (7, 8), 'EP': (1, 2), 'EQSE': (3584, 3516)})"
 conversao_zip,A,6603,publicacao_34727428a26d4f179ca549caf83b40cc,2023,quarentena,"competencia_divergente_2024: BASE 2024-01-01 a 2024-12-31; difere do item ordinario 720a0f1a2bb74a7b987ba63eaf73c65b de 2024 em 7 entidades (ex.: {'BE': (6, 7), 'EP': (1, 2), 'PNT': (1, 2)})"
-quarentena,A,5697,painel_territorial,2023,quarentena,ponte de recodificacao municipal MUN_RECODE_5697_2023 pendente de homologacao

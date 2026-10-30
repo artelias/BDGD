@@ -1,1 +1,5 @@
-
+nivel,DIST,ativo,motivo
+A,6612,ucbt_quantidade,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
+A,6612,trafo_dist_quantidade,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
+A,6612,rede_mt_extensao_km,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))
+A,6612,rede_bt_extensao_km,nenhuma competencia com estoque elegivel (politica de elegibilidade: 2022: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST))

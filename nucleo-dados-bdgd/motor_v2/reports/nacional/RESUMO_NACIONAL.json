@@ -4,38 +4,51 @@
   "dist_elegiveis_extracao": 104,
   "dist_processadas_extracao": 104,
   "dist_treinadas_ml": 97,
-  "dist_com_projecao": 104,
-  "dist_com_projecao_nivel_A": 104,
+  "dist_com_projecao": 103,
+  "dist_com_projecao_nivel_A": 103,
   "dist_com_projecao_nivel_B": 103,
   "combinacoes_catalogo": {
     "objetivos_metricas_no_catalogo": 29,
     "com_projecao": 26,
-    "bloqueados": 3,
-    "series_dist_x_objeto_calculadas_A": 516,
+    "status": {
+      "distribuidora+territorial": 4,
+      "distribuidora": 21,
+      "territorial": 1,
+      "liberacao_experimental_proposta": 1,
+      "nao_aplicavel": 1,
+      "bloqueado": 1
+    },
+    "bloqueados": 1,
+    "series_dist_x_objeto_calculadas_A": 512,
     "series_dist_x_objeto_calculadas_B": 2412,
-    "series_dist_x_objeto_bloqueadas_A": 0,
+    "series_dist_x_objeto_bloqueadas_A": 4,
     "series_dist_x_objeto_bloqueadas_B": 438
   },
   "modelos": {
-    "candidatos_ml_avaliados_A": 3700,
+    "candidatos_ml_avaliados_A": 3754,
     "ajustes_ml_externos_A": 18172,
     "ajustes_ml_selecao_interna_A": 139775,
-    "candidatos_ml_avaliados_B": 16871,
-    "escolhas_experimentais_ml_A": 42,
-    "escolhas_experimentais_tendencia_A": 178,
-    "escolhas_experimentais_ml_B": 392,
-    "escolhas_experimentais_tendencia_B": 436,
+    "revisao_celesc_A": {
+      "candidatos_ml_medidos": 1489,
+      "ajustes_externos": 7631,
+      "ajustes_selecao_interna": 60155
+    },
+    "candidatos_ml_avaliados_B": 17857,
+    "escolhas_experimentais_ml_A": 43,
+    "escolhas_experimentais_tendencia_A": 183,
+    "escolhas_experimentais_ml_B": 405,
+    "escolhas_experimentais_tendencia_B": 463,
     "modelos_homologados": 0
   },
   "projecoes": {
-    "series_A": 516,
+    "series_A": 512,
     "series_B": 2412,
-    "linhas_A_distribuidora": 7740,
+    "linhas_A_distribuidora": 7680,
     "linhas_B": 36180,
     "series_completas_nos_totais_A": 487,
-    "series_completas_nos_totais_B": 2274,
+    "series_completas_nos_totais_B": 2298,
     "excluidas_dos_totais_A": 29,
-    "excluidas_dos_totais_B": 576
+    "excluidas_dos_totais_B": 552
   },
   "cobertura": [
     {
@@ -79,13 +92,42 @@
       "dist_com_2025_extraido": 99
     }
   ],
-  "quarentena": [
-    [
-      5697,
-      2023,
-      "ponte de recodificacao municipal MUN_RECODE_5697_2023 pendente de homologacao"
-    ]
-  ],
+  "quarentena": [],
   "status": "experimental_interno_nao_publicavel",
-  "modelo_homologado": "nenhum (2 origens < 3)"
+  "modelo_homologado": "nenhum (2 origens < 3)",
+  "auditoria_final": {
+    "politica_elegibilidade": "elegibilidade-v2 (estoque x transicao; INTERVALO_NAO_ANUAL = ressalva, nao exclusao; sucessao societaria = transicao nao comparavel)",
+    "pontes_experimentais": [
+      "MUN_RECODE_5697_2023:APLICADA_EXPERIMENTAL_NAO_HOMOLOGADA"
+    ],
+    "triagem_cenarios": "v2 (evidencia fase4; objeto x ano x porte; padrao temporal)",
+    "totais_parciais": [
+      "A/rede_bt/extensao_km",
+      "A/rede_mt/extensao_km",
+      "A/trafo_dist/potencia_kva",
+      "A/trafo_dist/quantidade",
+      "A/ucbt/quantidade",
+      "B/alimentadores/quantidade",
+      "B/bancos_capacitores/quantidade",
+      "B/barramentos/quantidade",
+      "B/chaves/quantidade",
+      "B/circuitos_at/quantidade",
+      "B/conjuntos/quantidade",
+      "B/consumidores/quantidade",
+      "B/geradores/quantidade",
+      "B/iluminacao/quantidade",
+      "B/medidores/quantidade",
+      "B/postes/quantidade",
+      "B/ramais/extensao_km",
+      "B/rede_at/extensao_km",
+      "B/rede_bt/extensao_km",
+      "B/rede_mt/extensao_km",
+      "B/reguladores/quantidade",
+      "B/religadores/quantidade",
+      "B/subestacoes/quantidade",
+      "B/trafo_dist/quantidade",
+      "B/trafo_forca/quantidade",
+      "B/trafo_medida/quantidade"
+    ]
+  }
 }

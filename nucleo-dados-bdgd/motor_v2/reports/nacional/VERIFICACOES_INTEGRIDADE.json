@@ -1,0 +1,37 @@
+{
+  "B": {
+    "linhas": 36180,
+    "contagens_nao_inteiras": 0,
+    "valores_negativos_ou_nao_finitos": 0,
+    "ordem_cenarios_violada": 0
+  },
+  "A_distribuidora": {
+    "linhas": 7680,
+    "contagens_nao_inteiras": 0,
+    "valores_negativos_ou_nao_finitos": 0,
+    "ordem_cenarios_violada": 0
+  },
+  "A_territorial": {
+    "linhas": 377115,
+    "contagens_nao_inteiras": 0,
+    "falhas_reconciliacao_territorio_empresa": 0
+  },
+  "painel": {
+    "agregados": 2049,
+    "divergencias_de_hash": [],
+    "pontes": [
+      {
+        "arquivo": "D:\\NUCLEO_BDGD_2025\\motor_v2\\nacional\\painel\\5697\\ucbt_quantidade\\2023\\territorial.parquet",
+        "original_preservado": true,
+        "painel_atual": true
+      }
+    ]
+  },
+  "produtos_publicos": {
+    "alteracoes_git": [
+      " M nucleo-dados-bdgd/web/src/lib/maplibre-version.ts"
+    ],
+    "nota": "web/src/lib/maplibre-version.ts: alteracao so de fim de linha anterior a esta execucao, mantida fora dos commits"
+  },
+  "ok": true
+}
