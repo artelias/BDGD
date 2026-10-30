@@ -204,7 +204,18 @@ def run(repo_copy=None):
     ua, ub = universes(inv)
     tA = totals(pa, ('DIST', 'ativo', 'metrica'), okA, ('ativo', 'metrica', 'unidade'), ua)
     tB = totals(pb, ('DIST', 'conceito', 'metrica'), okB, ('conceito', 'metrica', 'unidade'), ub)
-    write_csv(FINAL / 'TOTAIS_NACIONAIS_SERIES_COMPLETAS.csv', [dict(nivel='A', **x) for x in tA] + [dict(nivel='B', **x) for x in tB])
+    # consumers reconciled with UCBT (hierarquia.py): only the comparable cohort (A and B anchored on 2025, complement observed)
+    tR = []
+    hp = ROOT_OUT / 'hierarquia_consumidores' / 'PROJECOES_CONSUMIDORES_RECONCILIADAS.parquet'
+    if hp.exists():
+        import pyarrow.parquet as pq
+        rr = [dict(DIST=r['DIST'], conceito='consumidores_reconciliado_hierarquia', metrica='quantidade', unidade='itens', ano=r['ano'], cenario=r['cenario'],
+                   valor=r['consumidores_reconciliado']) for r in pq.read_table(hp).to_pylist() if r['status'] == 'reconciliada' and r['ancora'] == 2025]
+        okR = {(str(r['DIST']), r['conceito'], r['metrica']) for r in rr if (str(r['DIST']), 'consumidores', 'quantidade') in okB}
+        ub[('consumidores_reconciliado_hierarquia', 'quantidade')] = ub[('consumidores', 'quantidade')]
+        tR = totals(rr, ('DIST', 'conceito', 'metrica'), okR, ('conceito', 'metrica', 'unidade'), ub)
+    write_csv(FINAL / 'TOTAIS_NACIONAIS_SERIES_COMPLETAS.csv', [dict(nivel='A', **x) for x in tA] + [dict(nivel='B', **x) for x in tB] +
+              [dict(nivel='B_reconciliado_A', **x) for x in tR])
     write_csv(FINAL / 'SERIES_EXCLUIDAS_DOS_TOTAIS.csv', [dict(nivel='A', serie='/'.join(map(str, x['serie'])), motivo=x['motivo']) for x in exA] +
               [dict(nivel='B', serie='/'.join(map(str, x['serie'])), motivo=x['motivo']) for x in exB])
     # unavailable cases
@@ -296,7 +307,8 @@ def run(repo_copy=None):
     # audit artefacts of the final revision, hashed with the rest
     for src in [*(ROOT_OUT / 'reconciliacao_ab').glob('*'), *(ROOT_OUT / 'auditoria_cenarios').glob('*'), *(ROOT_OUT / 'potencia').glob('*'),
                 *(ROOT_OUT / 'comparacao_v1_v2').glob('*'), ROOT_OUT / 'pontes_experimentais.json', ROOT_OUT / 'distribuidora' / 'REVISAO_ELEGIBILIDADE_B.json', ROOT_OUT / 'distribuidora' / 'REVISAO_SUCESSAO_B.json',
-                ROOT_OUT / 'testes' / 'MANIFESTO_TESTES.json',
+                ROOT_OUT / 'testes' / 'MANIFESTO_TESTES.json', *(ROOT_OUT / 'hierarquia_consumidores').glob('*.csv'),
+                ROOT_OUT / 'hierarquia_consumidores' / 'CONTRATO_HIERARQUIA_CONSUMIDORES.json', ROOT_OUT / 'potencia' / 'INVESTIGACAO_TUC570.csv',
                 ROOT_OUT / 'comparativos' / 'DEPENDENCIAS_CELESC.json', ROOT_OUT / 'testes' / 'MATRIZ_TESTES.csv']:
         if src.is_file():
             shutil.copyfile(src, FINAL / src.name)

@@ -1,0 +1,13 @@
+{
+ "schema": "baseline-produtos-publicos-1",
+ "registrado_em": "2026-10-30",
+ "regra": "alteracoes de caminhos publicos (web/, output-historico/, output-publicavel/, motor_cenarios/) existentes ANTES das execucoes do Motor V2; uma alteracao so e preexistente se caminho, status git e SHA-256 do arquivo de trabalho coincidirem",
+ "alteracoes": [
+  {
+   "caminho": "nucleo-dados-bdgd/web/src/lib/maplibre-version.ts",
+   "status_git": " M",
+   "sha256_arquivo": "0cec1917a428f25cb4f63979f73b3091cfbd8b4efe270548ae8fe104e0d70a2a",
+   "motivo": "alteracao somente de fim de linha (CRLF/LF) do checkout, anterior as execucoes do Motor V2; git diff --ignore-cr-at-eol vazio; mantida fora dos commits"
+  }
+ ]
+}

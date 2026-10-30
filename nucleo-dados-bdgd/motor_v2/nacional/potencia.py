@@ -202,8 +202,39 @@ def summarize(rows):
     return out
 
 
+def investigacao_tuc570():
+    """Additional, experimental-only investigation of the TUC 570 apparent power (no release): per DIST x year the agreement between
+    the equipment code (EQ, TPOTAPRT) and the linked installation (UN, MVA x 1000), kVA per unit, share of units with forced
+    ventilation ratings (never added) and the year-on-year change of kVA against the change of the unit count (continuity).
+    Writes INVESTIGACAO_TUC570.csv; the metric stays `liberacao_experimental_proposta` until a specific decision."""
+    import math
+    rows = [r for r in csv.DictReader(open(OUT / 'POTENCIA_POR_DIST_ANO.csv', encoding='utf-8')) if r['familia'] == 'trafo_forca_570' and int(r['registros_auditados']) > 0]
+    by = defaultdict(dict)
+    for r in rows:
+        by[int(r['DIST'])][int(r['ano'])] = r
+    out = []
+    for d, ys in sorted(by.items()):
+        for y, r in sorted(ys.items()):
+            n, eq, un = int(r['registros_auditados']), float(r['kva_aparente_eq']), float(r['kva_aparente_instalacao'])
+            p_ = ys.get(y - 1)
+            dk = math.log(eq / float(p_['kva_aparente_eq'])) if p_ and eq > 0 and float(p_['kva_aparente_eq']) > 0 else None
+            dn = math.log(n / int(p_['registros_auditados'])) if p_ and int(p_['registros_auditados']) > 0 else None
+            out.append(dict(DIST=d, ano=y, unidades=n, gate=r['gate_liberacao_experimental'], kva_eq=eq, kva_instalacao=un,
+                            diferenca_relativa_eq_instalacao=(eq - un) / un if un > 0 else None, kva_por_unidade=eq / n if n else None,
+                            share_ventilacao_forcada=int(r['com_ventilacao_forcada_nao_somada']) / n if n else None,
+                            variacao_log_kva=dk, variacao_log_unidades=dn,
+                            kva_varia_sem_unidades=(dk is not None and dn is not None and abs(dk - dn) > .1)))
+    write_csv(OUT / 'INVESTIGACAO_TUC570.csv', out)
+    g = [x for x in out if x['gate'] == 'True' and x['diferenca_relativa_eq_instalacao'] is not None]
+    return dict(dist_ano=len(out), no_gate=len(g), eq_instalacao_ate_1pct=sum(abs(x['diferenca_relativa_eq_instalacao']) <= .01 for x in g),
+                ate_5pct=sum(abs(x['diferenca_relativa_eq_instalacao']) <= .05 for x in g),
+                kva_varia_mais_que_unidades_10pct=sum(1 for x in g if x['kva_varia_sem_unidades']), status='investigacao experimental; metrica nao liberada')
+
+
 if __name__ == '__main__':
     import sys
+    if '--tuc570' in sys.argv:
+        print(json.dumps(investigacao_tuc570(), indent=1)); sys.exit(0)
     if '--resumo' in sys.argv:      # recompute the matrix from the saved per-DIST audit (no re-reading of the Parquets)
         rr = [dict(r, **{k: (int(r[k]) if k in ('DIST', 'ano', 'registros_auditados', 'sem_campo_potencia', 'cod_potencia_valido') else float(r[k]) if k.startswith('kva_') else r[k] == 'True' if k in ('gate_liberacao_experimental', 'quantidade_confere_contrato') else r[k]) for k in r})
               for r in csv.DictReader(open(OUT / 'POTENCIA_POR_DIST_ANO.csv', encoding='utf-8'))]

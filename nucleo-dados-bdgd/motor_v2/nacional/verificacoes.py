@@ -7,16 +7,38 @@
   * Level A: territorial units + residual == company value, exactly for counts, within 1e-3 for km/kVA;
   * the panel aggregates match their checkpoint hashes; the bridged Celesc file keeps its original byte for byte and the
     extraction source of the panel copy is unchanged;
-  * nothing written under web/, output-historico/ or output-publicavel/ by this run (git status of those paths)."""
+  * nothing written under web/, output-historico/, output-publicavel/ or motor_cenarios/ by the motor: every change git reports
+    there must be listed in the versioned baseline (baseline_produtos_publicos.json) with the same SHA-256 of the working file;
+    any other change (new, different content, deleted) is attributed to the run and makes `ok` false;
+  * consumers hierarchy: no reconciled DIST x year x scenario with Consumidores < UCBT, integers >= 0, ordered scenarios, and the
+    observed closures (UCBT = audit UCBT, Consumidores = audit union) all exact."""
 import json
 import math
 import subprocess
 from collections import defaultdict
+from pathlib import Path
 
 import pyarrow.parquet as pq
 
 from . import ROOT_OUT
 from ..runner import ROOT, atomic, digest, read
+
+PUBLIC = ('web', 'output-historico', 'output-publicavel', 'motor_cenarios')
+BASELINE = Path(__file__).parent / 'baseline_produtos_publicos.json'
+
+
+def classify_public_changes(status_lines, baseline, sha_of):
+    """git porcelain lines of the public paths -> (preexisting, caused by the run). A change is preexisting only when the baseline lists
+    the path with the same working-file SHA-256 (sha_of(path) -> sha or None when the file no longer exists)."""
+    pre, run = [], []
+    known = {x['caminho']: x for x in baseline.get('alteracoes', [])}
+    for line in status_lines:
+        if not line.strip():
+            continue
+        code, path = line[:2], line[3:].strip().strip('"')
+        b = known.get(path); sha = sha_of(path)
+        (pre if b and b['sha256_arquivo'] == sha and b['status_git'] == code else run).append(dict(caminho=path, status_git=code, sha256_arquivo=sha))
+    return pre, run
 
 
 def run():
@@ -58,12 +80,25 @@ def run():
     orig = [dict(arquivo=f['arquivo'], original_preservado=digest(f['original_preservado'] + '/territorial.parquet') == f['sha256_antes'],
                  painel_atual=digest(f['arquivo']) == f['sha256_depois']) for p in pontes for f in p['arquivos']]
     out['painel'] = dict(agregados=len(man['agregados']), divergencias_de_hash=bad_hash, pontes=orig)
-    st = subprocess.run(['git', 'status', '--porcelain', '--', 'web', 'output-historico', 'output-publicavel', 'motor_cenarios'], cwd=ROOT, capture_output=True, text=True).stdout
-    out['produtos_publicos'] = dict(alteracoes_git=[x for x in st.splitlines() if x.strip()],
-                                    nota='web/src/lib/maplibre-version.ts: alteracao so de fim de linha anterior a esta execucao, mantida fora dos commits')
+    st = subprocess.run(['git', 'status', '--porcelain', '--untracked-files=all', '--', *PUBLIC], cwd=ROOT, capture_output=True, text=True).stdout
+    top = subprocess.run(['git', 'rev-parse', '--show-toplevel'], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    sha_of = lambda p: digest(Path(top) / p) if (Path(top) / p).is_file() else None
+    pre, by_run = classify_public_changes(st.splitlines(), read(BASELINE) if BASELINE.exists() else {}, sha_of)
+    out['produtos_publicos'] = dict(alteracoes_preexistentes_na_baseline=pre, alteracoes_atribuidas_a_execucao=by_run, baseline=str(BASELINE.name))
+    # consumers hierarchy (UCBT within Consumidores)
+    from . import hierarquia
+    hp = hierarquia.OUT / 'PROJECOES_CONSUMIDORES_RECONCILIADAS.parquet'
+    if hp.exists():
+        rr = [r for r in pq.read_table(hp).to_pylist() if r['status'] == 'reconciliada']
+        ab = read(ROOT_OUT / 'reconciliacao_ab' / 'RECONCILIACAO_AB_RESUMO.json')['fechamento_dist_ano']
+        out['hierarquia_consumidores'] = dict(linhas_reconciliadas=len(rr), violacoes=len(hierarquia.violations(rr)),
+                                              fechamentos_historicos=ab['com_auditoria'], fechamentos_exatos=ab['exatos'],
+                                              violacoes_originais_preservadas=sum(1 for r in rr if r['violacao_original']))
     out['ok'] = all(v.get('contagens_nao_inteiras', 0) == 0 and v.get('valores_negativos_ou_nao_finitos', 0) == 0 and v.get('ordem_cenarios_violada', 0) == 0
-                    and v.get('falhas_reconciliacao_territorio_empresa', 0) == 0 for v in out.values() if isinstance(v, dict)) \
-        and not bad_hash and all(x['original_preservado'] and x['painel_atual'] for x in orig)
+                    and v.get('falhas_reconciliacao_territorio_empresa', 0) == 0 for v in out.values() if isinstance(v, dict) and 'linhas' in v) \
+        and not bad_hash and all(x['original_preservado'] and x['painel_atual'] for x in orig) and not by_run
+    hc = out.get('hierarquia_consumidores') or {}
+    out['ok'] = out['ok'] and hc.get('violacoes', 1) == 0 and hc.get('fechamentos_exatos') == hc.get('fechamentos_historicos')
     atomic(ROOT_OUT / 'final' / 'VERIFICACOES_INTEGRIDADE.json', out)
     return out
 

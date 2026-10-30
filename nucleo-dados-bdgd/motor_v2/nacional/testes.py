@@ -17,6 +17,10 @@ from .relatorio import write_csv
 from ..runner import ROOT, atomic, digest
 
 OUT = ROOT_OUT / 'testes'
+# suites that read no local data (D:/, knowledge base): run on Linux CI (.github/workflows/motor-v2-sintetico.yml); checked by
+# emulating the absence of those paths. The others need the local data and run only in this full local audit.
+SINTETICOS = ('test_hierarquia', 'test_auditoria_final', 'test_nacional', 'test_baselines', 'test_conj_plan', 'test_future',
+              'test_metric_contract', 'test_public_audit', 'test_temporal', 'test_vintage')
 
 
 class _Result(unittest.TextTestResult):
@@ -28,7 +32,7 @@ class _Result(unittest.TextTestResult):
 
     def _add(self, test, status, detail=None):
         mod, cls, name = (test.id().split('.')[-3:] + ['', '', ''])[:3]
-        self.rows.append(dict(arquivo=mod, classe=cls, teste=name, resultado=status, segundos=round(time.monotonic() - self._t.get(test.id(), time.monotonic()), 3),
+        self.rows.append(dict(arquivo=mod, classe=cls, teste=name, resultado=status, ci_linux_sintetico=mod in SINTETICOS, segundos=round(time.monotonic() - self._t.get(test.id(), time.monotonic()), 3),
                               detalhe=(detail or '')[-500:]))
 
     def addSuccess(self, test):
@@ -54,7 +58,9 @@ def run():
              arquivos={p.name: digest(p) for p in sorted((ROOT / 'motor_v2' / 'tests').glob('*.py'))},
              ambiente=dict(python=platform.python_version(), executavel=sys.executable,
                            pacotes={n: importlib.metadata.version(n) for n in ('scikit-learn', 'numpy', 'scipy', 'duckdb', 'pyarrow')}),
-             ci_linux='nao aplicavel: nenhum workflow do repositorio executa motor_v2 e parte das suites le dados locais (D:/)')
+             ci_linux=dict(workflow='.github/workflows/motor-v2-sintetico.yml', suites=list(SINTETICOS),
+                           testes=sum(1 for r in res.rows if r['ci_linux_sintetico']),
+                           nota='suites com dados reais rodam so nesta auditoria local'))
     atomic(OUT / 'MANIFESTO_TESTES.json', m)
     return m
 

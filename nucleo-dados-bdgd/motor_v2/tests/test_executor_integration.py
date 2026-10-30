@@ -31,7 +31,8 @@ class ExecutorIntegration(unittest.TestCase):
      for pid in pids:
       try:psutil.Process(pid).wait(timeout=10)
       except psutil.NoSuchProcess:pass
-     self.done=True;return r
+     # keep the run for audit unless it completed cleanly (a completed_with_errors run is evidence, not garbage)
+     self.done=r['state']=='completed';return r
    time.sleep(.2)
   self.fail('executor did not finish')
  def test_detached_resume_and_invalidation(self):

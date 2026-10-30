@@ -28,10 +28,22 @@
     ]
   },
   "produtos_publicos": {
-    "alteracoes_git": [
-      " M nucleo-dados-bdgd/web/src/lib/maplibre-version.ts"
+    "alteracoes_preexistentes_na_baseline": [
+      {
+        "caminho": "nucleo-dados-bdgd/web/src/lib/maplibre-version.ts",
+        "status_git": " M",
+        "sha256_arquivo": "0cec1917a428f25cb4f63979f73b3091cfbd8b4efe270548ae8fe104e0d70a2a"
+      }
     ],
-    "nota": "web/src/lib/maplibre-version.ts: alteracao so de fim de linha anterior a esta execucao, mantida fora dos commits"
+    "alteracoes_atribuidas_a_execucao": [],
+    "baseline": "baseline_produtos_publicos.json"
+  },
+  "hierarquia_consumidores": {
+    "linhas_reconciliadas": 1545,
+    "violacoes": 0,
+    "fechamentos_historicos": 385,
+    "fechamentos_exatos": 385,
+    "violacoes_originais_preservadas": 101
   },
   "ok": true
 }

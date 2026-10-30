@@ -173,5 +173,20 @@ class PartialTotals(unittest.TestCase):
         self.assertEqual(t['status_total'], 'PARCIAL'); self.assertIsNone(t['cobertura_estoque_2025'])
 
 
+class PublicVerifier(unittest.TestCase):
+    def test_only_baseline_changes_are_preexisting(self):
+        from motor_v2.nacional.verificacoes import classify_public_changes
+        base = dict(alteracoes=[dict(caminho='n/web/a.ts', status_git=' M', sha256_arquivo='h1')])
+        sha = {'n/web/a.ts': 'h1', 'n/web/b.json': 'h2', 'n/output-publicavel/x.csv': 'h3'}.get
+        pre, run = classify_public_changes([' M n/web/a.ts'], base, sha)
+        self.assertEqual(len(pre), 1); self.assertEqual(run, [])
+        pre, run = classify_public_changes([' M n/web/a.ts'], base, {'n/web/a.ts': 'outro'}.get)       # same path, new content
+        self.assertEqual(pre, []); self.assertEqual(len(run), 1)
+        pre, run = classify_public_changes([' M n/web/a.ts', '?? n/web/b.json', ' D n/output-publicavel/x.csv'], base, sha)
+        self.assertEqual({x['caminho'] for x in run}, {'n/web/b.json', 'n/output-publicavel/x.csv'})
+        pre, run = classify_public_changes([], base, sha)
+        self.assertEqual((pre, run), ([], []))
+
+
 if __name__ == '__main__':
     unittest.main()

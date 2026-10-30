@@ -1,0 +1,21 @@
+{
+  "contrato": "hierarquia-consumidores-1",
+  "relacao": "Consumidores = UCBT + complemento; complemento = UCMT + UCAT - sobreposicao >= 0 (identidade UC-v3)",
+  "regra": "para a mesma DIST, competencia e cenario: consumidores_reconciliado >= ucbt_A; inteiros >= 0; Conservador <= Moderado <= Agressivo",
+  "ucbt": "projecao do nivel A preservada (modelo e cenarios), sem alteracao",
+  "complemento": "`hierarquica_complemento`:\n  1. the UCBT projection of Level A (moderate path and scenarios) is kept unchanged;\n  2. the observed complement series C_t = B_t - A_t is built only from compatible pairs: same publication, both stocks eligible\n     under the common policy, exact closure with the ETL UC-v3 audit; a transition of C is comparable when the Level B transition\n     is eligible (elegibilidade.transicao) and Level A records no rupture;\n  3. C is modelled with the baselines that its 4-point history supports (persistence, drift, CAGR), chosen per DIST with the same\n     backtest and choice rule as the rest of the motor (origins 2023/2024, selecao.choose: a trend only if >= 5% better than\n     persistence and not worse in any origin); its scenarios follow cenarios.scenarios with the v2 envelope screen computed on the\n     national cross-section of complements; C >= 0 by construction (baseline fallbacks and zero floor);\n  4. Consumidores_reconciliado = A + C for every year and scenario; integers: A integer (as published) + half-up rounding of C, so\n     the reconciled value is an integer >= UCBT and the scenario order holds (both terms are ordered).\nThe independent Level B projection is preserved in its own column, with the model that produced it. Only DIST whose A and B series\nshare the anchor competence and whose complement is observed at that anchor are reconciled; the rest is reported as `sem_coorte`.",
+  "pares_compativeis": "mesma publicacao, estoques elegiveis (politica comum), fechamento exato com a auditoria UC-v3 do ETL",
+  "fechamento_historico": {
+    "pares": 384,
+    "complemento_negativo": 0
+  },
+  "previsao_original": "consumidores_B_original (modelo independente do nivel B) mantida em coluna propria para auditoria",
+  "violacoes_remanescentes": 0,
+  "dist_reconciliadas": 103,
+  "dist_sem_coorte": [],
+  "status": "experimental_interno_nao_publicavel; nao homologado",
+  "hashes": {
+    "projecoes_A": "1f7db2917b7013dbc9a92c4e51df1e34ed1d6577ac91babe41157edc7108c5f1",
+    "projecoes_B": "aff0594912adc32ef1cb2fa9bdb5203e6a6eabce8e5995709cc59eecd6d2f72c"
+  }
+}

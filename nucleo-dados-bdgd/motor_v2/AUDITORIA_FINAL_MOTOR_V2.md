@@ -1,5 +1,7 @@
 # Motor V2 — auditoria final da execução nacional (2026-10-30)
 
+> **Complementado por [`HIERARQUIA_CONSUMIDORES_MOTOR_V2.md`](HIERARQUIA_CONSUMIDORES_MOTOR_V2.md).** As projeções de Consumidores reconciliadas com a UCBT (Consumidores ≥ UCBT em toda DIST, ano e cenário) estão em `PROJECOES_CONSUMIDORES_RECONCILIADAS.csv`. A previsão B independente citada aqui fica preservada para auditoria.
+
 O estado é **experimental e interno**. Nenhuma previsão foi homologada.
 
 O que **não** foi feito nesta revisão:

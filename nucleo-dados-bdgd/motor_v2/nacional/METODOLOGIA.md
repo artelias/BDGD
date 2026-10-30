@@ -107,6 +107,12 @@ Todas as saídas desta execução são **experimentais e internas**. Nenhuma foi
 - **Totais nacionais.** Somam apenas séries **completas**: projeção gerada, âncora 2025, 5 anos × 3 cenários. Toda série excluída é listada com o motivo (`SERIES_EXCLUIDAS_DOS_TOTAIS.csv`).
   - Cada total traz `status_total`. É `COMPLETO` só quando toda DIST com estoque 2025 elegível do objeto está dentro dele; caso contrário é `PARCIAL`, com a cobertura do estoque 2025 observado e as DIST de fora.
   - Uma soma parcial nunca é apresentada como total nacional.
+- **Hierarquia UCBT ⊂ Consumidores** (`hierarquia.py`, `CONTRATO_HIERARQUIA_CONSUMIDORES.json`).
+  - Para a mesma DIST, competência e cenário: Consumidores = UCBT + complemento, com complemento = UCMT + UCAT − sobreposição ≥ 0.
+  - A UCBT do nível A é preservada. O complemento observado B − A (pares compatíveis com fechamento exato UC-v3) é modelado por persistência, deriva ou CAGR, escolhidos com o backtest e a regra do motor; os cenários vêm da triagem v2.
+  - Consumidores reconciliado = UCBT + complemento, inteiro, ≥ UCBT e com cenários ordenados.
+  - A previsão independente do nível B fica preservada em coluna própria.
+  - Os totais reconciliados somam só a coorte comparável (âncora 2025 em A e B) e são marcados `PARCIAL`.
 - **Potência.** Matriz separada (`motor_v2/nacional/potencia.py`, `MATRIZ_POTENCIAS.csv`): aparente (kVA), ativa (kW) e reativa (kVAr) nunca são convertidas entre si.
   - TUC 565: em uso experimental no nível A.
   - TUC 570: liberação experimental proposta.
