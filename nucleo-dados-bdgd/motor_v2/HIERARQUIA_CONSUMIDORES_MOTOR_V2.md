@@ -136,7 +136,7 @@ No total, 605 células foram elevadas, 610 reduzidas e 330 ficaram inalteradas.
 - **CI Linux:** novo workflow `.github/workflows/motor-v2-sintetico.yml`, com 10 suítes que não leem `D:` nem a base local.
   - A ausência desses caminhos foi emulada localmente, com bloqueio de leitura, e as 10 suítes passaram.
   - `test_features`, `test_ml` e `test_scale` dependem de dados locais e ficam só na auditoria completa local.
-  - A execução no GitHub ainda não foi conferida a partir desta máquina.
+  - Primeira execução no GitHub falhou por falta de `pyogrio` (importado por `convert_zips`); a dependência foi fixada no workflow e o ambiente equivalente foi reproduzido localmente.
 - **`VERIFICACOES_INTEGRIDADE.json`: ok.**
   - Hierarquia: 1.545 células reconciliadas, 0 violações, 385/385 fechamentos exatos e 101 violações originais preservadas para auditoria.
   - Além do que já era verificado: contagens, ordem, território = empresa, hashes do painel e original da Celesc.

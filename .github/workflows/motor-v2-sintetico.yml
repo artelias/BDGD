@@ -31,7 +31,7 @@ jobs:
       - name: Ambiente e dependências fixadas
         run: |
           python3 -m venv "$RUNNER_TEMP/motor-v2-env"
-          "$RUNNER_TEMP/motor-v2-env/bin/python" -m pip install -r motor_universal/requirements.txt -r motor_universal/requirements-ml.txt duckdb==2.0.0
+          "$RUNNER_TEMP/motor-v2-env/bin/python" -m pip install -r motor_universal/requirements.txt -r motor_universal/requirements-ml.txt duckdb==2.0.0 pyogrio==0.13.0
       # Suítes que não leem D:/ nem a base de conhecimento local (conferido emulando o bloqueio desses caminhos).
       # As suítes com dados reais (test_features, test_ml, test_scale, test_comparison, test_executor_integration,
       # test_generalization, test_lote, test_v2) rodam na auditoria completa local: python -m motor_v2.nacional.testes
