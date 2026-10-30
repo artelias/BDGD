@@ -8,7 +8,10 @@ from .runner import read, digest, atomic, fingerprint
 BASE_FEATURES = ('log_stock', 'urban_share', 'log_energy_per_client')
 EXTERNAL_FEATURES = ('log_population', 'population_growth_census', 'log_gdp', 'dec', 'fec')
 SHARED_FEATURES = ('log_ucbt_clients', 'log_trafo_count', 'log_trafo_kva', 'log_clients_per_trafo', 'log_kva_per_client')
-FEATURES = BASE_FEATURES + EXTERNAL_FEATURES + SHARED_FEATURES
+# Within-snapshot activity at t-1: share of active UCs connected in the 12 months up to the data-base (UCBT only; last position so
+# that the external/shared blocks keep their indices).
+SNAPSHOT_FEATURES = ('recent_connection_share',)
+FEATURES = BASE_FEATURES + EXTERNAL_FEATURES + SHARED_FEATURES + SNAPSHOT_FEATURES
 
 
 # Official TARE domain (BDGD DDA catalog M10 v1.1): UB=Urbano, NU=Nao Urbano, 0=Nao informado.
@@ -53,11 +56,14 @@ def snapshots(input_run, asset='ucbt_quantidade'):
                         data[dist, year, unit] = dict(n=float(value), areas={}, energy_n=0, energy_sum=0., urban=None, area_known=0,
                                                       area_unknown=0, area_reason='not_applicable', energy=None)
                     continue
-                query = '''SELECT MUN,upper(trim(ARE_LOC)),sum(clientes_ativos),
-                           sum(energia_denominador),sum(energia_kwh)
+                cols = {c[0] for c in db.execute('DESCRIBE SELECT * FROM read_parquet(?)', [str(f)]).fetchall()}
+                recent = 'sum(conexoes_12m)' if 'conexoes_12m' in cols else 'NULL'     # aggregates built before the feature: unavailable
+                query = f'''SELECT MUN,upper(trim(ARE_LOC)),sum(clientes_ativos),
+                           sum(energia_denominador),sum(energia_kwh),{recent}
                            FROM read_parquet(?) GROUP BY ALL'''
-                for mun, area, n, en, energy in db.execute(query, [str(f)]).fetchall():
-                    s = data.setdefault((dist, year, mun), dict(n=0, areas={}, energy_n=0, energy_sum=0.))
+                for mun, area, n, en, energy, conn in db.execute(query, [str(f)]).fetchall():
+                    s = data.setdefault((dist, year, mun), dict(n=0, areas={}, energy_n=0, energy_sum=0., connections=None))
+                    if conn is not None: s['connections'] = (s['connections'] or 0) + conn
                     s['n'] += n; s['areas'][area or 'MISSING'] = s['areas'].get(area or 'MISSING', 0)+n
                     s['energy_n'] += en
                     if energy is not None: s['energy_sum'] += energy
@@ -67,6 +73,21 @@ def snapshots(input_run, asset='ucbt_quantidade'):
         return data, metadata, provenance
     finally:
         db.close()
+
+
+def attach_snapshot_features(rows):
+    """Place recent_connection_share (computed at t-1 from the t-1 snapshot only) at its FEATURES index; absent -> None."""
+    i = FEATURES.index('recent_connection_share')
+    out = []
+    for r in rows:
+        x = list(r['x']) + [None] * (len(FEATURES) - len(r['x']))
+        x[i] = r.get('recent_connection_share')
+        meta = dict(r.get('feature_meta', {}))
+        if x[i] is not None:   # same publication as the t-1 stock: same reference year and availability (gated like the stock)
+            meta['recent_connection_share'] = dict(reference_year=r['feature_year'], available=r['feature_available'],
+                                                   source='UCBT.DAT_CON of the t-1 snapshot', cross_family=False)
+        out.append(dict(r, x=x, feature_meta=meta))
+    return out
 
 
 def csv_write(path, rows):

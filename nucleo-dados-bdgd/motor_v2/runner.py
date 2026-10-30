@@ -83,19 +83,25 @@ def extract_uc(con,src,dest):
  energy_expr=' + '.join(f'try_cast({c} as double)' for c in energy) if len(energy)==12 else 'NULL::DOUBLE'
  sel=','.join((norm(c) if c in cols else 'NULL::VARCHAR')+' '+c for c in dims)
  pn="coalesce("+norm('PN_CON')+",'')" if 'PN_CON' in cols else "''"
- con.execute('CREATE OR REPLACE TEMP TABLE rawkeys AS SELECT '+norm('COD_ID')+' id,'+pn+' pn,'+norm('SIT_ATIV')+' sit,'+sel+','+energy_expr+' energy FROM raw')
+ # Connection date of the UC as recorded IN THIS snapshot (dd/mm/yyyy in the BDGD); known at the snapshot's own data-base.
+ dcon="try_strptime(CAST(DAT_CON AS VARCHAR),'%d/%m/%Y')::DATE" if 'DAT_CON' in cols else 'NULL::DATE'
+ con.execute('CREATE OR REPLACE TEMP TABLE rawkeys AS SELECT '+norm('COD_ID')+' id,'+pn+' pn,'+norm('SIT_ATIV')+' sit,'+sel+','+energy_expr+' energy,'+dcon+' dcon FROM raw')
  n,dup,null,active=con.execute("SELECT count(*),count(*)-count(distinct (id,pn)),count(*) FILTER(WHERE id IS NULL),count(distinct (id,pn)) FILTER(WHERE sit='AT' AND id IS NOT NULL) FROM rawkeys").fetchone()
  conflicts=con.execute("SELECT count(*) FROM (SELECT id,pn FROM rawkeys WHERE sit='AT' GROUP BY id,pn HAVING count(distinct (MUN,CONJ,CTMT,ARE_LOC))>1)").fetchone()[0]
  # Reuse UC-v3 activation/energy precedence, deterministic territorial tie-break.
  con.execute("CREATE OR REPLACE TEMP TABLE ids AS SELECT *,1 mult FROM rawkeys WHERE id IS NOT NULL QUALIFY row_number() OVER(PARTITION BY id,pn ORDER BY (sit='AT') DESC,energy DESC NULLS LAST,ARE_LOC,MUN,CTMT,CONJ)=1")
- query="SELECT MUN,CONJ,CTMT,ARE_LOC,count(*) clientes_ativos,count(energy) energia_denominador,sum(energy) energia_kwh FROM ids WHERE sit='AT' GROUP BY ALL"
+ base=f"DATE '{int(src['year'])}-12-31'"
+ # Active UCs whose connection date falls in the 12 months up to the data-base: new connections plus account/ownership
+ # changes that create a new UC. A within-snapshot quantity (no later publication is read), so it is available at the origin.
+ query="SELECT MUN,CONJ,CTMT,ARE_LOC,count(*) clientes_ativos,count(energy) energia_denominador,sum(energy) energia_kwh,count(*) FILTER(WHERE dcon>"+base+"-INTERVAL 1 YEAR AND dcon<="+base+") conexoes_12m,count(dcon) dat_con_validas FROM ids WHERE sit='AT' GROUP BY ALL"
  con.execute('COPY ('+query+') TO '+lit((dest/'territorial.parquet').as_posix())+" (FORMAT PARQUET,COMPRESSION ZSTD)")
  valid=con.execute("SELECT count(*) FROM ids WHERE sit='AT'").fetchone()[0]
  municipalities=con.execute("SELECT MUN,count(*) n FROM ids WHERE sit='AT' AND mult=1 AND id IS NOT NULL GROUP BY MUN").fetchall()
  invalid=sum(n for m,n in municipalities if m is None or len(m)!=7 or not m.isdigit())
  ufs=sorted({m[:2] for m,n in municipalities if m and len(m)==7 and m.isdigit()})
  urban=con.execute("SELECT count(*) FILTER(WHERE ARE_LOC='UB'),count(*) FILTER(WHERE ARE_LOC IN ('UB','NU')) FROM ids WHERE sit='AT' AND mult=1 AND id IS NOT NULL").fetchone()
- return dict(value=valid if n and active else None,source_rows=n,active_rows=active,duplicate_rows_collapsed=dup,territorial_conflicts=conflicts,identity_rule="COD_ID+PN_CON UC-v3",null_ids=null,coverage=valid/active if active else None,missing_fields=missing,energy_columns=len(energy),invalid_municipality_rows=invalid,municipality_ufs=ufs,urban_numerator=urban[0],urban_denominator=urban[1],density=None,density_reason='no validated served area denominator',flows=None,flows_reason='identifier continuity not certified; no physical expansion label',source=str(p),parquet_sha256=digest(p))
+ dc=con.execute("SELECT count(dcon),count(*) FILTER(WHERE dcon>"+base+"),count(*) FILTER(WHERE dcon>"+base+"-INTERVAL 1 YEAR AND dcon<="+base+") FROM ids WHERE sit='AT'").fetchone()
+ return dict(value=valid if n and active else None,source_rows=n,active_rows=active,duplicate_rows_collapsed=dup,territorial_conflicts=conflicts,identity_rule="COD_ID+PN_CON UC-v3",null_ids=null,coverage=valid/active if active else None,missing_fields=missing,energy_columns=len(energy),invalid_municipality_rows=invalid,municipality_ufs=ufs,urban_numerator=urban[0],urban_denominator=urban[1],density=None,density_reason='no validated served area denominator',flows=None,flows_reason='identifier continuity not certified; no physical expansion label',dat_con_valid=dc[0],dat_con_after_base=dc[1],connections_12m=dc[2],connections_rule='active UCs with DAT_CON in (data-base - 1 year, data-base]; includes ownership changes; not net growth',source=str(p),parquet_sha256=digest(p))
 
 def run_task(cfg,dist,runroot,stop):
  task=runroot/str(dist)/'ucbt_quantidade';task.mkdir(parents=True,exist_ok=True);hist=[];audits=[];sources=read(cfg['sources_manifest'])[str(dist)] if cfg.get('sources_manifest') else resolve_sources(dist)
@@ -155,6 +161,13 @@ def run_task(cfg,dist,runroot,stop):
   atomic(task/'result.json',report);return report
  finally:con.close()
 
+def memory_gib(text):
+ """DuckDB memory_limit text ('512MB', '2GB') in GiB."""
+ t=str(text).strip().upper();unit={'KB':2**-20,'MB':2**-10,'GB':1.,'TB':2**10}
+ for k,v in unit.items():
+  if t.endswith(k):return float(t[:-len(k)])*v
+ return float(t)/2**30
+
 def execute(cfg):
  out=Path(cfg['output']).resolve()
  if out.drive.upper()!='D:':raise ValueError('output must be on D:')
@@ -180,14 +193,16 @@ def execute(cfg):
    return
   atomic(runroot/'manifest.json',dict(version=VERSION,config=cfg,code=code,python=sys.version,platform=platform.platform(),runid=runid))
   atomic(runroot/'externas_catalogo.json',catalog());atomic(runroot/'registry.json',registry_from_catalog(read(ROOT/'etl/bdgd2025/config/conceitos_2025.json')))
-  outputs=[]
+  outputs=[];from .resources import Sampler,guard
+  timings=read(runroot/'timings.json') if (runroot/'timings.json').exists() else {}
   for i,dist in enumerate(cfg['dists']):
    if stop.exists():break
    atomic(status,dict(**owner,state='running',runid=runid,current_dist=dist,completed=i,total=len(cfg['dists'])))
    try:
     command=[sys.executable,'-u','-m','motor_v2.runner','--config',str(runroot/'effective_config.json'),'--dist',str(dist),'--runroot',str(runroot)]
     atomic(runroot/'effective_config.json',cfg)
-    with open(runroot/f'task_{dist}.log','a',encoding='utf-8') as log:
+    guard(cfg.get('min_available_gb',memory_gib(cfg['memory'])+.25))   # refuse to start a DIST when RAM is short: DuckDB limit + margin
+    with open(runroot/f'task_{dist}.log','a',encoding='utf-8') as log,Sampler() as sampler:
      worker=subprocess.Popen(command,cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)
      atomic(child_guard,dict(pid=worker.pid,created=psutil.Process(worker.pid).create_time()))
      try:worker.wait(timeout=cfg['task_timeout_seconds'])
@@ -195,6 +210,8 @@ def execute(cfg):
       worker.terminate();worker.wait();raise TimeoutError('task budget exceeded; annual checkpoints retained')
      child_guard.unlink(missing_ok=True)
      if worker.returncode:raise RuntimeError('worker failed; inspect task log')
+    # Wall time and peak RSS (executor + worker) per DIST: the basis of the national resource estimate.
+    timings[str(dist)]=sampler.report();atomic(runroot/'timings.json',timings)
     result_path=runroot/str(dist)/'ucbt_quantidade/result.json'
     if result_path.exists():outputs.append(read(result_path))
    except Exception as e:atomic(runroot/f'failure_{dist}.json',dict(error=str(e),traceback=traceback.format_exc()))

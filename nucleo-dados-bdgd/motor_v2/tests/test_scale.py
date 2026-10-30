@@ -190,9 +190,11 @@ class ForwardSelection(unittest.TestCase):
             for y in (2023, 2024, 2025):
                 for m in range(80):
                     informative = float(rng.normal())
-                    noise = [float(rng.normal()) for _ in range(len(FEATURES))]
+                    # 13 draws: the panel the test was designed on; later FEATURES (absent here) are padded with None so that
+                    # adding a feature to the registry does not reshuffle this synthetic data
+                    noise = [float(rng.normal()) for _ in range(13)]
                     base = 3. + (m % 7) * .2
-                    x = [base, None, None] + noise[3:]
+                    x = [base, None, None] + noise[3:] + [None] * (len(FEATURES) - 13)
                     x[8] = informative
                     yv = np.expm1(base + .5 * informative + rng.normal(0, .01))
                     if perturb_outer and y > 2024:

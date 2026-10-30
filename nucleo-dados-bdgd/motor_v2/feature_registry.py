@@ -75,7 +75,12 @@ SPECS = (
     FeatureSpec('log_kva_per_client', 'unit x year, declared ratio nominal kVA / customers at t-1', 'ln(1 + kVA per customer)',
                 ('trafo_kva', 'ucbt_clients'), 'internal', 'ratio of two aggregates (experimental power)', 'later of the two publication availabilities',
                 ('municipality', 'conjunto'), ('trafo_dist_quantidade', 'trafo_dist_potencia_kva', 'rede_mt_extensao_km'), 'engine_estimate',
-                source_variable='kva_per_client', original_unit='kVA per customer', transform='log1p'))
+                source_variable='kva_per_client', original_unit='kVA per customer', transform='log1p'),
+    # Within-snapshot activity: read from the t-1 publication itself (no later snapshot), so it is available exactly when the stock is.
+    FeatureSpec('recent_connection_share', 'municipality x year, active UCBT customers (UC-v3) at t-1', 'fraction of active UCs connected in the 12 months up to the data-base',
+                ('UCBT.DAT_CON (dd/mm/yyyy)', 'UCBT.SIT_ATIV', 'UC-v3 identity COD_ID+PN_CON'), 'internal', 'UCBT aggregate of the t-1 snapshot',
+                'revision availability of the t-1 publication', ('municipality',), ('ucbt_quantidade',), 'scenario_required',
+                source_variable='connections_12m / active customers', original_unit='fraction', transform='identity'))
 UNIT_KIND = {'ucbt_quantidade': 'municipality', 'trafo_dist_quantidade': 'municipality', 'trafo_dist_potencia_kva': 'municipality',
              'rede_mt_extensao_km': 'conjunto'}
 

@@ -12,6 +12,9 @@ from .baselines import BASELINES,DEFAULT_MIN_POINTS,predict as baseline_predict
 from .features import FEATURES, snapshots, csv_write
 MODELS=('ols','ridge','elastic_net','poisson','random_forest','hist_gradient_boosting')
 SCOPES=('individual','shared_pilot','peers_pilot')
+# Validation batch beyond the pilot: global pool of the batch, pool of the same economic group, and the 3 most similar companies.
+SCOPES_LOTE=('individual','shared_lote','group_lote','peers_lote')
+MAX_LOTE=16   # a batch is a controlled validation set, not national processing
 
 def bucket(group,n):return int(hashlib.sha256(group.encode()).hexdigest()[:8],16)%n
 
@@ -41,7 +44,7 @@ def load_panel(input_run,asset='ucbt_quantidade',bridges=None,min_coverage=None,
   prior=valid.get((d,y-1,mun))
   if prior is None:continue
   h=metadata[d,y];lag=metadata[d,y-1];held=quarantine(bridges,d,y,kind);bad=[k for k in ((d,y),(d,y-1)) if not gate[k]['gate_ok']];cbad=not gate[d,y]['continuity_ok']
-  rows.append(dict(dist=d,year=y,group=mun,feature_year=y-1,feature_available=lag['available'],feature_revision_available=lag['available'],target_available=h['available'],stock=prior['n'],y=float(s['n']),x=[math.log1p(prior['n']),prior['urban'],math.log1p(prior['energy']) if prior['energy'] is not None else None],rupture=h['rupture'] or mun in held or bool(bad) or cbad,rupture_reason=('perimeter_bridge_pending:'+held[mun]) if mun in held else ('coverage_gate:%s-%s'%bad[0]) if bad else ('continuity_gate:%s-%s'%(d,y)) if cbad else None,unit_kind=kind,territorial_conflicts=h['qa'].get('territorial_conflicts',0),key=f'{d}:{y}:{mun}'))
+  rows.append(dict(dist=d,year=y,group=mun,feature_year=y-1,feature_available=lag['available'],feature_revision_available=lag['available'],target_available=h['available'],stock=prior['n'],y=float(s['n']),recent_connection_share=(prior['connections']/prior['n']) if prior.get('connections') is not None and prior['n'] else None,x=[math.log1p(prior['n']),prior['urban'],math.log1p(prior['energy']) if prior['energy'] is not None else None],rupture=h['rupture'] or mun in held or bool(bad) or cbad,rupture_reason=('perimeter_bridge_pending:'+held[mun]) if mun in held else ('coverage_gate:%s-%s'%bad[0]) if bad else ('continuity_gate:%s-%s'%(d,y)) if cbad else None,unit_kind=kind,territorial_conflicts=h['qa'].get('territorial_conflicts',0),key=f'{d}:{y}:{mun}'))
  for d,y in sorted(metadata):
   total=sum(v['n'] for (dd,yy,m),v in data.items() if (dd,yy)==(d,y))
   matched=sum(r['y'] for r in rows if (r['dist'],r['year'])==(d,y))
@@ -51,9 +54,15 @@ def load_panel(input_run,asset='ucbt_quantidade',bridges=None,min_coverage=None,
 def scope_pool(rows,dist,origin,mode,scope,heldout):
  candidates=[r for r in rows if usable(r,origin,mode) and r['group'] not in heldout and not r['rupture']]
  if scope=='individual':return [r for r in candidates if r['dist']==dist],[]
- if scope=='shared_pilot':return candidates,sorted({r['dist'] for r in candidates})
+ if scope in ('shared_pilot','shared_lote'):return candidates,sorted({r['dist'] for r in candidates})
+ if scope=='group_lote':
+  # Companies of the same economic group (declared in the batch manifest); the company itself is part of its group pool.
+  group=next((r.get('grupo') for r in rows if r['dist']==dist and r.get('grupo')),None)
+  if not group or group=='nao_confirmado':return [],[]
+  members=sorted({r['dist'] for r in candidates if r.get('grupo')==group})
+  return ([r for r in candidates if r['dist'] in members],members) if len(members)>1 else ([],[])
  others=sorted({r['dist'] for r in candidates if r['dist']!=dist})
- if scope=='peers_pilot':
+ if scope in ('peers_pilot','peers_lote'):
   # Similarity uses training stock/urbanization, never outer targets or future GDP.
   # Assets that carry no urbanization at all (network, transformers) are compared on stock only; when urbanization exists
   # for the pool, a company lacking it is excluded rather than imputed.
@@ -67,7 +76,7 @@ def scope_pool(rows,dist,origin,mode,scope,heldout):
   target=vector(dist)
   if target is None:return [],[]
   others=[d for d in others if vector(d) is not None]
-  others=sorted(others,key=lambda d:(float(np.linalg.norm(vector(d)-target)),d))[:1]
+  others=sorted(others,key=lambda d:(float(np.linalg.norm(vector(d)-target)),d))[:1 if scope=='peers_pilot' else 3]
  return [r for r in candidates if r['dist'] in others],others
 
 def eligible_features(train,val,mode,n_features,policy=None):
@@ -246,7 +255,14 @@ def investigate(input_run,dists):
 def run(cfg,stop):
  from threadpoolctl import threadpool_limits
  import importlib.metadata,platform
- if set(cfg['dists'])!={26,6585,6600}:raise ValueError('controlled comparison requires the three-company pilot pool only')
+ pool=cfg.get('pool','piloto')
+ if pool=='piloto' and set(cfg['dists'])!={26,6585,6600}:raise ValueError('controlled comparison requires the three-company pilot pool only')
+ if pool=='lote':
+  lote=cfg.get('lote') or {}
+  if set(lote.get('dists',[]))!=set(cfg['dists']) or not lote.get('id'):raise ValueError('batch comparison requires an explicit batch manifest (id, dists) matching cfg.dists')
+  if len(cfg['dists'])>MAX_LOTE:raise ValueError('batch larger than the controlled limit; national processing is not authorised here')
+ elif pool!='piloto':raise ValueError('unknown pool '+str(pool))
+ scopes=SCOPES_LOTE if pool=='lote' else SCOPES
  asset=cfg.get('asset','ucbt_quantidade')
  from .assets import ASSETS
  from . import bridges as bridge_lib,feature_registry
@@ -260,7 +276,10 @@ def run(cfg,stop):
   si=cfg['shared_inputs'];matrix=shared.build(si['asset_root'],si['ucbt_root'],cfg['dists'],spec['unit_kind']);rows=shared.attach(rows,matrix,asset)
   provenance['shared_matrix']=fingerprint({str(k):v for k,v in matrix.items()});shared_matrix=matrix
  else:shared_matrix=None
- rows=[r for r in rows if r['dist'] in cfg['dists']];quality=[r for r in quality if r['dist'] in cfg['dists']]
+ from .features import attach_snapshot_features
+ rows=attach_snapshot_features(rows)
+ groups={int(k):v for k,v in (cfg.get('lote') or {}).get('grupos',{}).items()}
+ rows=[dict(r,grupo=groups.get(r['dist'])) for r in rows if r['dist'] in cfg['dists']];quality=[r for r in quality if r['dist'] in cfg['dists']]
  environment=dict(python=platform.python_version(),packages={name:importlib.metadata.version(name) for name in ['scikit-learn','numpy','scipy','duckdb','threadpoolctl']})
  provenance['environment']=environment
  models=[m for m in cfg['models'] if spec['count'] or m!='poisson']  # Poisson is a count model: not used for km/kVA
@@ -271,7 +290,7 @@ def run(cfg,stop):
   for mode in MODES:
    for dist in cfg['dists']:
     experiments={}
-    for model,scope in [(b,'individual') for b in BASELINES]+[(m,s) for m in models for s in SCOPES]:
+    for model,scope in [(b,'individual') for b in BASELINES]+[(m,s) for m in models for s in scopes]:
      if stop.exists():atomic(out/'progress.json',dict(state='stopped',reused=reused,executed=executed));return out
      name=model+':'+scope;cp=out/'checkpoints'/f'{mode}_{dist}_{model}_{scope}.json'
      try:cached=read(cp) if cp.exists() else {}
@@ -284,7 +303,7 @@ def run(cfg,stop):
       atomic(cp,dict(signature=signature,sha256=fingerprint(result),result=result));executed+=1
      experiments[name]=result
      atomic(out/'progress.json',dict(state='running',mode=mode,dist=dist,candidate=name,reused=reused,executed=executed))
-    summary=dict(dist=dist,asset=spec['ativo'],metric=spec['metrica'],unit=spec['unit'],nature=spec['nature'],experimental_asset=spec['experimental'],models_used=models,feature_policy=cfg.get('feature_policy') or 'strict',mode=mode,evaluation_label=label(mode),scope_limit='pool das tres distribuidoras (26, 6585, 6600); no national model',**summarise(experiments,cfg['min_independent_origins'],spec['nature'],cfg.get('rounding_policy','half_up')))
+    summary=dict(dist=dist,asset=spec['ativo'],metric=spec['metrica'],unit=spec['unit'],nature=spec['nature'],experimental_asset=spec['experimental'],models_used=models,feature_policy=cfg.get('feature_policy') or 'strict',mode=mode,evaluation_label=label(mode),scope_limit=('pool das tres distribuidoras (26, 6585, 6600); no national model' if pool=='piloto' else 'lote de validacao %s (%d DIST); no national model'%(cfg['lote']['id'],len(cfg['dists']))),**summarise(experiments,cfg['min_independent_origins'],spec['nature'],cfg.get('rounding_policy','half_up')))
     summaries.append(summary);atomic(out/f'{mode}_{dist}.json',summary)
  atomic(out/'summaries.json',summaries)
  from .externals import coverage_rows
