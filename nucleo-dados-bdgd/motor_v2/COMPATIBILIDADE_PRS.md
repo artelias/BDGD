@@ -6,12 +6,12 @@ Método: grafo de ancestrais (`git merge-base`), listas de arquivos por PR (`git
 ## 1. Estrutura da pilha
 
 ```
-main ── … ── #16 fix/limpeza-paineis-seletores ── #17 feat/motor-cenarios-publicacao ──┬── #18 feat/metodologia-modelos-por-empresa ── Motor V2 (12 commits)
+main ── … ── #16 fix/limpeza-paineis-seletores ── #17 feat/motor-cenarios-publicacao ──┬── #18 feat/metodologia-modelos-por-empresa ── Motor V2 (13 commits)
                                                                                        ├── #19 fix/natureza-fisica-contagens-inteiras   (1 commit)
                                                                                        └── #20 fix/alternancia-tema-claro-escuro        (4 commits)
 ```
 
-- A branch do Motor V2 **descende** de #17 e #18 (e de #16). O PR do Motor V2 deve usar como base a branch do **#18** (`feat/metodologia-modelos-por-empresa-20261028`), seguindo a convenção de PRs empilhados já usada em #17–#20. O diff do PR fica restrito aos 12 commits próprios.
+- A branch do Motor V2 **descende** de #17 e #18 (e de #16). O PR do Motor V2 deve usar como base a branch do **#18** (`feat/metodologia-modelos-por-empresa-20261028`), seguindo a convenção de PRs empilhados já usada em #17–#20. O diff do PR fica restrito aos 13 commits próprios.
 - #19 e #20 saem do #17 **em paralelo**: não contêm o #18 nem o Motor V2.
 
 ## 2. Matriz
