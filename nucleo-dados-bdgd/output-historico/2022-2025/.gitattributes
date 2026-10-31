@@ -1,0 +1,3 @@
+# Os checksums do manifesto identificam os bytes LF publicados no Git.
+# Impede que core.autocrlf altere as cópias de checkout no Windows.
+*.csv text eol=lf

@@ -66,6 +66,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [showTitle, setShowTitle] = useState(false);
   const [cmd, setCmd] = useState(false);
   const [more, setMore] = useState(false);
+  const [navTip, setNavTip] = useState<{ label: string; top: number } | null>(null);
   const moreDialog = useRef<HTMLDivElement>(null);
   const moreTrigger = useRef<HTMLButtonElement>(null);
   const searchTrigger = useRef<HTMLButtonElement>(null);
@@ -96,12 +97,17 @@ export function AppShell({ children }: { children: ReactNode }) {
     const on = isActive(path, n.href);
     const Icon = n.icon;
     return (
-      <Link key={n.href} href={n.href} className={s.navItem} aria-current={on ? "page" : undefined} title={collapsed ? n.label : undefined}>
+      <Link key={n.href} href={n.href} className={s.navItem} aria-label={n.label} aria-current={on ? "page" : undefined} title={collapsed ? n.label : undefined}
+        aria-describedby={collapsed && navTip?.label === n.label ? "sidebar-tooltip" : undefined}
+        onMouseEnter={(e) => setNavTip({ label: n.label, top: e.currentTarget.getBoundingClientRect().top })}
+        onFocus={(e) => setNavTip({ label: n.label, top: e.currentTarget.getBoundingClientRect().top })}
+        onMouseLeave={() => setNavTip(null)} onBlur={() => setNavTip(null)} onClick={() => setNavTip(null)}
+        onKeyDown={(e) => { if (e.key === "Escape") setNavTip(null); }}>
         <span className={s.navHover} aria-hidden />
         {on && <motion.span layoutId="nav-active" className={s.navActive} transition={{ type: "spring", stiffness: 480, damping: 38 }} />}
         <Icon className={s.navIcon} strokeWidth={1.8} aria-hidden />
         <span className={s.navLabel}>{n.label}</span>
-        {n.tag && <span className={s.navTag}>{n.tag}</span>}
+        {n.tag && <span className={s.navTag} aria-hidden>{n.tag}</span>}
       </Link>
     );
   };
@@ -109,21 +115,23 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className={s.app} data-collapsed={collapsed}>
       <a href="#conteudo" className={s.skip} inert={modalAberto}>Ir para o conteúdo</a>
-      <aside className={s.sidebar} aria-label="Navegação principal" inert={modalAberto}>
+      <aside id="sidebar" className={s.sidebar} aria-label="Navegação principal" inert={modalAberto}>
+        <div className={s.sideScroll} onScroll={() => setNavTip(null)}>
         <div className={s.sideTop}>
-          {collapsed ? <BrandMark /> : <Link href="/" aria-label="Núcleo de Dados da BDGD — início"><Brand /></Link>}
+          <Link href="/" aria-label="Núcleo de Dados da BDGD — início">{collapsed ? <BrandMark /> : <Brand />}</Link>
         </div>
         <nav className={s.nav}>{NAV.map(navLink)}</nav>
         <div className={s.sectionLabel}>Referência</div>
         <nav className={s.nav}>{NAV2.map(navLink)}</nav>
-        <div className={s.sideBottom}>
-          <div className={s.sideMeta}>
+          <div className={s.sideMeta} hidden={collapsed}>
             <div>Data-base <strong>31/12/2025</strong></div>
             {rel && <div>{rel.cobertura.processadas} GDBs processados{rel.cobertura.sem_publicacao_2025.length > 0 && ` · ${rel.cobertura.sem_publicacao_2025.length} publicações 2025 não localizadas`}</div>}
             <div>Desenvolvido por <strong>{AUTOR}</strong></div>
             <a href={`mailto:${CONTATO}`} className={s.sideMail}><Mail size={12} aria-hidden /> Contato</a>
           </div>
-          <Button variant="ghost" icon onClick={toggle} aria-label={collapsed ? "Expandir navegação" : "Recolher navegação"} aria-expanded={!collapsed} style={{ alignSelf: collapsed ? "center" : "flex-start" }}>
+        </div>
+        <div className={s.sideBottom}>
+          <Button variant="ghost" icon onClick={() => { setNavTip(null); toggle(); }} aria-label={collapsed ? "Expandir navegação" : "Recolher navegação"} aria-controls="sidebar" aria-expanded={!collapsed} style={{ alignSelf: collapsed ? "center" : "flex-start" }}>
             {collapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </Button>
         </div>
@@ -184,6 +192,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </AnimatePresence>
 
       <CommandMenu open={cmd} onClose={() => setCmd(false)} trigger={searchTrigger} />
+      {collapsed && navTip && !modalAberto && <span id="sidebar-tooltip" role="tooltip" className={s.navTooltip} style={{ top: navTip.top }}>{navTip.label}</span>}
     </div>
   );
 }
