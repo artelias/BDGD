@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { readFileSync } from "node:fs";
 
 const paginas = ["/", "/explorar/", "/matriz/", "/comparar/", "/evolucao/", "/previsoes/", "/metodologia/"];
 const pronto = (p: Page, rota: string) => rota === "/" ? p.getByTestId("kpi-uc") : rota === "/explorar/" ? p.getByTestId("conceito-titulo")
@@ -52,6 +53,32 @@ function csv(text: string): string[][] {
   if (field || row.length) { row.push(field.replace(/\r$/, "")); rows.push(row); }
   return rows;
 }
+
+test("Evolução: 12 observações de EPB, Coopera e Enel SP confrontadas ao contrato nacional", async ({ page }) => {
+  const records = csv(readFileSync("../output-historico/contrato-integracao/serie_fisica_nacional.csv", "utf8"));
+  const header = records.shift()!;
+  const col = (name: string) => header.indexOf(name);
+  for (const dist of ["6600", "5370", "390"]) {
+    const expected = records.filter((r) => r[col("dist")] === dist && r[col("conceitoId")] === "consumidores");
+    expect(expected).toHaveLength(4);
+    await page.goto(`/evolucao/?escopo=dists&dists=${dist}&ativo=consumidores`);
+    const cells = page.getByTestId("evo-tabela").locator("tbody tr").first().locator("td");
+    for (const r of expected) {
+      const value = r[col("valor")];
+      await expect(cells.nth(Number(r[col("ano")]) - 2022)).toContainText(value === "" ? "N/D" : Number(value).toLocaleString("pt-BR"));
+    }
+    const [dl] = await Promise.all([page.waitForEvent("download"), page.getByTestId("evo-csv").click()]);
+    const exported = csv(Buffer.concat(await (await dl.createReadStream()).toArray()).toString("utf8"));
+    const keys = exported.shift()!;
+    for (const r of expected) {
+      const year = r[col("ano")];
+      const entry = exported.find((row) => row[keys.indexOf("ano")] === year);
+      expect(entry).toBeDefined();
+      const value = r[col("valor")];
+      expect(entry![keys.indexOf("valor")]).toBe(value === "" ? "" : String(Number(value)));
+    }
+  }
+});
 
 test("homologação matriz: filtros combinados, ordenação e CSV confrontados ao contrato", async ({ page }) => {
   const raw = await (await page.request.get("/data/2025-12-31/index.json")).json();

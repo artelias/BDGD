@@ -3,33 +3,48 @@ import { expect, test } from "@playwright/test";
 
 type Cube = { dims: string[]; entidades: string[]; rows: (number | null)[][] };
 type Concept = { medidas: string[]; valores: Record<string, string[]>; cubos: Record<string, Cube> };
+type Menu = { id: string; conceito?: string; filtro?: Record<string, string[]>; excluir?: Record<string, string[]> };
+const catalog = JSON.parse(readFileSync("public/data/2025-12-31/index.json", "utf8")).conceitos;
 const source = (name: string): Concept => JSON.parse(readFileSync(`public/data/2025-12-31/conceitos/${name}.json`, "utf8"));
 
 // Oráculo independente: seleciona linhas do cubo público e soma a coluna física,
 // sem importar agregar(), escolherCubo() ou componentes usados pela interface.
-function total(cd: Concept, dim: string, code?: string) {
-  const candidates = Object.entries(cd.cubos).filter(([, c]) => c.dims.includes(dim));
+function total(cd: Concept, dim: string, code: string, item: Menu) {
+  const required = [dim, ...Object.keys(item.filtro ?? {}), ...Object.keys(item.excluir ?? {})];
+  const candidates = Object.entries(cd.cubos).filter(([, c]) => required.every((key) => c.dims.includes(key)));
   candidates.sort(([a, ca], [b, cb]) => Number(b === "principal") - Number(a === "principal") || cb.entidades.length - ca.entidades.length || ca.rows.length - cb.rows.length);
   const cube = candidates[0][1];
   const rows = cube.rows.filter((r) => r[0] === 6600);
   if (!rows.length) return null;
   const pos = cube.dims.length + 1;
-  const selected = rows.filter((r) => code === undefined || cd.valores[dim][r[cube.dims.indexOf(dim) + 1]!] === code);
+  const selected = rows.filter((r) => {
+    const value = (key: string) => cd.valores[key][r[cube.dims.indexOf(key) + 1]!];
+    return value(dim) === code && Object.entries(item.filtro ?? {}).every(([k, allowed]) => allowed.includes(value(k))) &&
+      Object.entries(item.excluir ?? {}).every(([k, excluded]) => !excluded.includes(value(k)));
+  });
   if (selected.some((r) => r[pos] === null)) return null;
   return selected.reduce((sum, r) => sum + Math.max(0, r[pos]!), 0);
 }
 const formatted = (n: number | null, measure: string) => n == null ? "N/D" : n.toLocaleString("pt-BR", measure === "extensao_km" && n < 100
   ? { minimumFractionDigits: 1, maximumFractionDigits: 1 } : { maximumFractionDigits: 0 }) + (measure === "extensao_km" ? " km" : "");
 
-for (const concept of ["consumidores", "transformadores", "redes"]) {
+for (const item of catalog.menu.flatMap((group: { itens: Menu[] }) => group.itens) as Menu[]) {
+  if (!item.conceito) continue;
+  const concept = item.conceito;
   const cd = source(concept);
-  const cardDim = concept === "transformadores" ? "tipo" : "nivel";
-  const dims = [...new Set(Object.values(cd.cubos).flatMap((c) => c.dims))].filter((dim) => dim !== cardDim);
-  for (const dim of dims) test(`fonte original: Explorar ${concept}, filtro ${dim}, duas opções e limpeza`, async ({ page }, info) => {
-    await page.goto(`/explorar/?ativo=${concept}&escopo=dists&dists=6600`);
+  const category = catalog.conceitos[concept].categoria;
+  const cardDim = item.filtro?.[category]?.length ? (cd.cubos.principal.dims.includes("a1") ? "a1" : null) : category;
+  const dims = [...new Set(Object.values(cd.cubos).flatMap((c) => c.dims))].filter((dim) => dim !== cardDim && !item.filtro?.[dim]);
+  for (const dim of dims) test(`fonte original: Explorar ${item.id}, filtro ${dim}, duas opções e limpeza`, async ({ page }, info) => {
+    await page.goto(`/explorar/?ativo=${item.id}&escopo=dists&dists=6600`);
     await expect(page.getByTestId("valor-recorte")).toBeVisible();
     if (await page.getByTestId("mais-caracteristicas").count()) await page.getByTestId("mais-caracteristicas").click();
     const filter = page.getByTestId(`filtro-${dim}`);
+    const required = [dim, ...Object.keys(item.filtro ?? {}), ...Object.keys(item.excluir ?? {})];
+    if (!Object.values(cd.cubos).some((c) => required.every((key) => c.dims.includes(key)))) {
+      await expect(filter).toBeDisabled();
+      return;
+    }
     await expect(filter).toBeEnabled();
     const evidence = [];
     for (const optionIndex of [0, 1]) {
@@ -44,7 +59,7 @@ for (const concept of ["consumidores", "transformadores", "redes"]) {
       await expect.poll(() => new URL(page.url()).searchParams.get("f")).toContain(`${dim}:`);
       const f = new URL(page.url()).searchParams.get("f")!;
       const code = f.split(";").find((v) => v.startsWith(`${dim}:`))!.slice(dim.length + 1);
-      const expected = total(cd, dim, code);
+      const expected = total(cd, dim, code, item);
       await expect(page.getByTestId("valor-recorte")).toHaveText(formatted(expected, cd.medidas[0]));
       evidence.push({ concept, dim, label, code, expected, medida: cd.medidas[0], source: `conceitos/${concept}.json` });
       await page.reload();

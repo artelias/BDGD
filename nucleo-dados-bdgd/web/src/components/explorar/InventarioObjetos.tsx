@@ -79,7 +79,7 @@ function Tabela({ ds, tipo, dist }: { ds: Dataset; tipo: Tipo; dist: number }) {
     const nome = `bdgd_2025-12-31_inventario_${tipo}_${dist}.csv`;
     const header = ["data_base", "dist", "codigo", "nome", ...t.cols.filter((c) => !["chave", "nome"].includes(c))];
     const esc = (v: unknown) => { const s2 = v === null || v === undefined ? "" : String(v); return /[",\n]/.test(s2) ? `"${s2.replace(/"/g, '""')}"` : s2; };
-    downloadText(nome, [header.join(","), ...t.rows.map((r) => ["2025-12-31", dist, r[t.cols.indexOf("chave")], r[t.cols.indexOf("nome")], ...t.cols.filter((c) => !["chave", "nome"].includes(c)).map((c) => r[t.cols.indexOf(c)])].map(esc).join(","))].join("\n"));
+    downloadText(nome, [header.join(","), ...linhas.map(({ r }) => ["2025-12-31", dist, r[t.cols.indexOf("chave")], r[t.cols.indexOf("nome")], ...t.cols.filter((c) => !["chave", "nome"].includes(c)).map((c) => r[t.cols.indexOf(c)])].map(esc).join(","))].join("\n"));
     toast(`${nome} exportado`);
   };
   return (
@@ -88,7 +88,7 @@ function Tabela({ ds, tipo, dist }: { ds: Dataset; tipo: Tipo; dist: number }) {
         <label className={s.searchMini}><Search size={14} aria-hidden /><input value={q} onChange={(e) => setQ(e.target.value)} placeholder={`Buscar ${SINGULAR[tipo]} por nome ou código`} aria-label={`Buscar ${SINGULAR[tipo]}`} data-testid="inv-busca" />{q && <button onClick={() => setQ("")} aria-label="Limpar"><X size={13} /></button>}</label>
         <span className="caption">{linhas.filter((x) => !(x.chave in ESPECIAL)).length} {TITULO[tipo].toLowerCase()}</span>
         <span style={{ flex: 1 }} />
-        <Button size="sm" onClick={exportCSV} data-testid="inv-csv"><Download size={13} /> CSV</Button>
+        <Button size="sm" onClick={exportCSV} disabled={!linhas.length} data-testid="inv-csv"><Download size={13} /> CSV</Button>
       </div>
       <div className={s.invWrap} tabIndex={0} role="region" aria-label={`Tabela de ${TITULO[tipo].toLowerCase()}`}>
         <table className={s.invTable} data-testid="inv-tabela">
@@ -109,7 +109,7 @@ function Tabela({ ds, tipo, dist }: { ds: Dataset; tipo: Tipo; dist: number }) {
                 onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setSel(sel?.chave === x.chave ? null : x.chave); } }}>
                 <td><span className={s.invName} title={nomeDe(x)}>{nomeDe(x)}</span>{!(x.chave in ESPECIAL) && <span className={s.code} style={{ marginLeft: 0 }}>{x.chave}</span>}</td>
                 {tipo === "ctmt" && <td style={{ textAlign: "left" }}>{subNome.get(String(x.get("sub") ?? x.r[t.cols.indexOf("sub")])) || <span className="faint">—</span>}</td>}
-                {cols.map((c) => <td key={c}>{x.get(c) === null ? <span className="faint">0</span> : fmt(x.get(c), meta(c)[2] === "km" ? "extensao_km" : meta(c)[2] === "kVA" ? "potencia_kva" : "quantidade")}</td>)}
+                {cols.map((c) => <td key={c}>{fmt(x.get(c), meta(c)[2] === "km" ? "extensao_km" : meta(c)[2] === "kVA" ? "potencia_kva" : "quantidade")}</td>)}
               </tr>
             ))}
           </tbody>
@@ -126,7 +126,7 @@ function Tabela({ ds, tipo, dist }: { ds: Dataset; tipo: Tipo; dist: number }) {
             {METRICAS.filter(([c]) => t.cols.includes(c)).map(([c, label, un]) => (
               <div key={c} className={s.detailItem}>
                 <div className={s.detailLabel}>{label}</div>
-                <div className={s.detailValue}>{fmt(sel.get(c) ?? 0, un === "km" ? "extensao_km" : un === "kVA" ? "potencia_kva" : "quantidade")}{un !== "itens" && <span className="caption"> {un}</span>}</div>
+                <div className={s.detailValue}>{fmt(sel.get(c), un === "km" ? "extensao_km" : un === "kVA" ? "potencia_kva" : "quantidade")}{un !== "itens" && <span className="caption"> {un}</span>}</div>
               </div>
             ))}
           </div>
