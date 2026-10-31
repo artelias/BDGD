@@ -41,6 +41,8 @@
   "hierarquia_consumidores": {
     "linhas_reconciliadas": 1545,
     "violacoes": 0,
+    "incompletude": 0,
+    "dist_reconciliadas": 103,
     "fechamentos_historicos": 385,
     "fechamentos_exatos": 385,
     "violacoes_originais_preservadas": 101

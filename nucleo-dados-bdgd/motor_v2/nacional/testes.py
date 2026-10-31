@@ -19,7 +19,7 @@ from ..runner import ROOT, atomic, digest
 OUT = ROOT_OUT / 'testes'
 # suites that read no local data (D:/, knowledge base): run on Linux CI (.github/workflows/motor-v2-sintetico.yml); checked by
 # emulating the absence of those paths. The others need the local data and run only in this full local audit.
-SINTETICOS = ('test_hierarquia', 'test_auditoria_final', 'test_nacional', 'test_baselines', 'test_conj_plan', 'test_future',
+SINTETICOS = ('test_hierarquia', 'test_erro_retrospectivo', 'test_auditoria_final', 'test_nacional', 'test_baselines', 'test_conj_plan', 'test_future',
               'test_metric_contract', 'test_public_audit', 'test_temporal', 'test_vintage')
 
 

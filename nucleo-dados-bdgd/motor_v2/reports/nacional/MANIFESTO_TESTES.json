@@ -1,6 +1,6 @@
 {
-  "total": 230,
-  "ok": 230,
+  "total": 243,
+  "ok": 243,
   "falhas": 0,
   "erros": 0,
   "ignorados": 0,
@@ -9,11 +9,12 @@
     "test_baselines.py": "0cd772ace9c1a2b9f4a4ce8b493d8bf71ac5c2d45d3ca113a38d97d56e92a222",
     "test_comparison.py": "d00f1239f4c3ec92f062368492f23ed15fa4f6d08203ede7ef1762809184da94",
     "test_conj_plan.py": "206ff34cf7a17ae1fef0d337cd6bd30f055956e3bd6f2042314999ce2ce111d7",
-    "test_executor_integration.py": "9affccc4593259a39e5db62d62f6700cb3c414955a21b73d4111b02d8a05e6b2",
+    "test_erro_retrospectivo.py": "2adc2307f90abfaf0337a047931f5ba7631115494769755d8c50cefc524b10e3",
+    "test_executor_integration.py": "162b1086b331e3c5c8bb658b87b2ea7d336ec9514a7c178659cc36a90b669b3b",
     "test_features.py": "98fdb767bd7785a0e18ab0dc789d9e23a8f4477fe0027a9e1b24bd6ec3acbab5",
     "test_future.py": "f5e265c63f03d8c0523fd8ac790f874c07232c5ff12efabb3a38f502ebbd30e2",
     "test_generalization.py": "bc5c15f8e440dc3adc82a7699bfbec8c5aced2934a2368beaa7c29a3c3da1e78",
-    "test_hierarquia.py": "df0e80b82ec70d5e62d2a0237b256ea38bdd4fa6df070a5dc7c319790ffd8574",
+    "test_hierarquia.py": "543f8792c50afeb87215ccf1a96044a7cd93908976e2a462bba408b3368acab4",
     "test_lote.py": "dcdef8bd8d011eb6d67182eab30138bdd0222f5fc9872c13571238d35755d5fa",
     "test_metric_contract.py": "ba662fc4d89bc3d11aa90ce76626aaf3cadb15394e39188c134d7a6b41a0d080",
     "test_ml.py": "f34ad8987a66d4b34e87d82e63a69c244d818ce88e63ab37325fcbfca5cfeb77",
@@ -39,6 +40,7 @@
     "workflow": ".github/workflows/motor-v2-sintetico.yml",
     "suites": [
       "test_hierarquia",
+      "test_erro_retrospectivo",
       "test_auditoria_final",
       "test_nacional",
       "test_baselines",
@@ -49,7 +51,7 @@
       "test_temporal",
       "test_vintage"
     ],
-    "testes": 141,
+    "testes": 150,
     "nota": "suites com dados reais rodam so nesta auditoria local"
   }
 }

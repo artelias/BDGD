@@ -10,7 +10,8 @@
   * nothing written under web/, output-historico/, output-publicavel/ or motor_cenarios/ by the motor: every change git reports
     there must be listed in the versioned baseline (baseline_produtos_publicos.json) with the same SHA-256 of the working file;
     any other change (new, different content, deleted) is attributed to the run and makes `ok` false;
-  * consumers hierarchy: no reconciled DIST x year x scenario with Consumidores < UCBT, integers >= 0, ordered scenarios, and the
+  * consumers hierarchy: no reconciled DIST x year x scenario with Consumidores < UCBT, integers >= 0, ordered scenarios, exactly 15 unique
+    (ano, cenario) pairs per reconciled DIST (no duplicate, none missing), and the
     observed closures (UCBT = audit UCBT, Consumidores = audit union) all exact."""
 import json
 import math
@@ -91,14 +92,15 @@ def run():
     if hp.exists():
         rr = [r for r in pq.read_table(hp).to_pylist() if r['status'] == 'reconciliada']
         ab = read(ROOT_OUT / 'reconciliacao_ab' / 'RECONCILIACAO_AB_RESUMO.json')['fechamento_dist_ano']
-        out['hierarquia_consumidores'] = dict(linhas_reconciliadas=len(rr), violacoes=len(hierarquia.violations(rr)),
+        out['hierarquia_consumidores'] = dict(linhas_reconciliadas=len(rr), violacoes=len(hierarquia.violations(rr)), incompletude=len(hierarquia.incompletude(rr)),
+                                              dist_reconciliadas=len({r['DIST'] for r in rr}),
                                               fechamentos_historicos=ab['com_auditoria'], fechamentos_exatos=ab['exatos'],
                                               violacoes_originais_preservadas=sum(1 for r in rr if r['violacao_original']))
     out['ok'] = all(v.get('contagens_nao_inteiras', 0) == 0 and v.get('valores_negativos_ou_nao_finitos', 0) == 0 and v.get('ordem_cenarios_violada', 0) == 0
                     and v.get('falhas_reconciliacao_territorio_empresa', 0) == 0 for v in out.values() if isinstance(v, dict) and 'linhas' in v) \
         and not bad_hash and all(x['original_preservado'] and x['painel_atual'] for x in orig) and not by_run
     hc = out.get('hierarquia_consumidores') or {}
-    out['ok'] = out['ok'] and hc.get('violacoes', 1) == 0 and hc.get('fechamentos_exatos') == hc.get('fechamentos_historicos')
+    out['ok'] = out['ok'] and hc.get('violacoes', 1) == 0 and hc.get('incompletude', 1) == 0 and hc.get('fechamentos_exatos') == hc.get('fechamentos_historicos')
     atomic(ROOT_OUT / 'final' / 'VERIFICACOES_INTEGRIDADE.json', out)
     return out
 

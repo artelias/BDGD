@@ -112,6 +112,22 @@ def violations(rows, a_key='ucbt_A', b_key='consumidores_reconciliado'):
     return bad
 
 
+def incompletude(rows, years=YEARS, scenarios=SCEN):
+    """Completeness of the reconciled series: every DIST must hold exactly len(years) x len(scenarios) unique (ano, cenario) pairs
+    (15 for 2026-2030 x 3 scenarios): no duplicate pair, no missing pair, no pair outside the horizon. [] when complete."""
+    want = {(y, s) for y in years for s in scenarios}
+    seen = defaultdict(list)
+    for r in rows:
+        seen[r['DIST']].append((r['ano'], r['cenario']))
+    bad = []
+    for d, pairs in sorted(seen.items()):
+        c = Counter(pairs)
+        dup, miss, extra = sorted(k for k, n in c.items() if n > 1), sorted(want - set(c)), sorted(set(c) - want)
+        if dup or miss or extra:
+            bad.append(dict(DIST=d, regra='15 pares (ano, cenario) unicos por DIST', pares=len(pairs), unicos=len(c), duplicados=dup, ausentes=miss, fora_do_horizonte=extra))
+    return bad
+
+
 # ----------------------------------------------------------------------------------------------------------- data
 def history():
     """{dist: dict(A={y: v}, B={y: v}, C={y: v}, breaks=set, motivo_fora={y: reason})}, compatible pairs only."""
@@ -223,7 +239,7 @@ def run():
         for k, v in st.items():
             strat[k] += v
     rec_rows = [r for r in rows if r['status'] == 'reconciliada']
-    bad = violations(rec_rows)
+    bad = violations(rec_rows) + incompletude(rec_rows)
     comp = compare(strat, decisions)
     nat = national(rows)
     write_csv(OUT / 'PROJECOES_CONSUMIDORES_RECONCILIADAS.csv', rows)
@@ -234,12 +250,12 @@ def run():
     write_csv(OUT / 'TOTAIS_CONSUMIDORES_RECONCILIADOS.csv', nat)
     contract = dict(
         contrato='hierarquia-consumidores-1', relacao='Consumidores = UCBT + complemento; complemento = UCMT + UCAT - sobreposicao >= 0 (identidade UC-v3)',
-        regra='para a mesma DIST, competencia e cenario: consumidores_reconciliado >= ucbt_A; inteiros >= 0; Conservador <= Moderado <= Agressivo',
+        regra='para a mesma DIST, competencia e cenario: consumidores_reconciliado >= ucbt_A; inteiros >= 0; Conservador <= Moderado <= Agressivo; 15 pares (ano, cenario) unicos por DIST reconciliada, sem duplicidade nem ausencia',
         ucbt='projecao do nivel A preservada (modelo e cenarios), sem alteracao', complemento=__doc__.split('Adopted strategy')[1].split('Strategies compared')[0].strip(),
         pares_compativeis='mesma publicacao, estoques elegiveis (politica comum), fechamento exato com a auditoria UC-v3 do ETL',
         fechamento_historico=dict(pares=sum(len(h['C']) for h in H.values()), complemento_negativo=sum(1 for h in H.values() for v in h['C'].values() if v < 0)),
         previsao_original='consumidores_B_original (modelo independente do nivel B) mantida em coluna propria para auditoria',
-        violacoes_remanescentes=len(bad), dist_reconciliadas=sum(1 for x in decisions if x['status'] == 'reconciliada'),
+        violacoes_remanescentes=len(bad), pares_por_dist_exigidos=len(YEARS) * len(SCEN), dist_reconciliadas=sum(1 for x in decisions if x['status'] == 'reconciliada'),
         dist_sem_coorte=[dict(DIST=x['DIST'], motivo=x['motivo']) for x in decisions if x['status'] == 'sem_coorte'],
         status='experimental_interno_nao_publicavel; nao homologado',
         hashes=dict(projecoes_A=digest(ROOT_OUT / 'projecao' / 'PROJECOES_A_DISTRIBUIDORA_INTERNO.parquet'),

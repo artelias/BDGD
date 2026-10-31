@@ -100,6 +100,25 @@ class Hierarchy(unittest.TestCase):
         with self.assertRaises(ValueError):
             H.reconcile(10, -1.)
 
+    def test_completeness_exactly_15_unique_pairs_per_dist(self):
+        rows, _ = self.run_all()
+        self.assertEqual(len([r for r in rows if r['DIST'] == 1]), 15)
+        self.assertEqual(H.incompletude(rows), [])
+        gone = [r for r in rows if not (r['DIST'] == 2 and r['ano'] == 2028 and r['cenario'] == 'Moderado')]
+        bad = H.incompletude(gone)
+        self.assertEqual([b['DIST'] for b in bad], [2]); self.assertEqual(bad[0]['ausentes'], [(2028, 'Moderado')])
+        # a duplicated pair is reported as such (violations() alone overwrites it in its per-scenario dict and would not see it)
+        dup = rows + [r for r in rows if r['DIST'] == 3 and r['ano'] == 2026 and r['cenario'] == 'Agressivo']
+        bad = H.incompletude(dup)
+        self.assertEqual([b['DIST'] for b in bad], [3]); self.assertEqual(bad[0]['duplicados'], [(2026, 'Agressivo')])
+        self.assertEqual(H.violations(dup), [])
+        out = rows + [dict(rows[0], ano=2031)]
+        self.assertEqual(H.incompletude(out)[0]['fora_do_horizonte'], [(2031, rows[0]['cenario'])])
+        # 15 rows for the DIST, but not the 15 required pairs (one pair replaced by a year outside the horizon)
+        swapped = [dict(r, ano=2031) if (r['DIST'] == 1 and r['ano'] == 2030 and r['cenario'] == 'Moderado') else r for r in rows]
+        self.assertEqual(len([r for r in swapped if r['DIST'] == 1]), 15)
+        self.assertTrue(H.incompletude(swapped))
+
     def test_complement_breaks_cut_the_segment(self):
         self.assertEqual(H.segment({2022: 1., 2023: 2., 2024: 3., 2025: 4.}, {2024}, 2025), [(2024, 3.), (2025, 4.)])
 

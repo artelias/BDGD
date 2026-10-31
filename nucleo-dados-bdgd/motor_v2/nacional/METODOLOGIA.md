@@ -124,3 +124,10 @@ Todas as saídas desta execução são **experimentais e internas**. Nenhuma foi
 - **Lotes.** De até 16 DIST, com DuckDB limitado a 512 MB e um worker pesado de cada vez.
 - **Controles.** Guarda de RAM, checkpoints por ano e por candidato com SHA-256, retomada idempotente, uma nova tentativa para DIST que falhe e falhas contadas por DIST, ativo e ano. `completed_with_errors` nunca é tratado como sucesso.
 - **Processos.** Todos são destacados da sessão (`motor_v2/detach.py`) e encadeados por `motor_v2/nacional/pipeline.py`: extração → preparação (painel, IBGE, quarentena) → comparativos → projeção → consolidação.
+
+## Fechamento da hierarquia de consumidores (2026-10-30)
+
+- **Completude.** Cada DIST reconciliada tem exatamente 15 pares (ano, cenário) únicos; duplicidade, ausência ou par fora de 2026–2030 reprovam `hierarquia.run()`, `verificacoes.run()` e `fonte_canonica`.
+- **Erro retrospectivo ponta a ponta** (`erro_retrospectivo.py`). Previsão de 1 passo do nível A (total da distribuidora, armazenada) + previsão de 1 passo do complemento, contra o realizado de Consumidores e contra o backtest armazenado do nível B, nas mesmas células. Duas origens, horizonte de 1 ano, seleção nas mesmas origens: diagnóstico, **não validação**.
+- **Fonte canônica interna** (`fonte_canonica.py`). `consumidores_reconciliado` é o valor interno de consumidores; `consumidores_B_original` é só resultado independente e auditoria, nunca substituto.
+- **Idempotência.** Reexecutar a reconciliação e o erro retrospectivo reproduz todos os arquivos com o mesmo SHA-256.

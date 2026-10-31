@@ -1,0 +1,339 @@
+{
+  "celulas": 176,
+  "dist": 96,
+  "excluidas": 30,
+  "motivos_exclusao": {
+    "complemento nao observado em o e o+1 (par incompativel)": 19,
+    "real do nivel A difere da UCBT auditada": 9,
+    "transicao com ruptura/sucessao": 2
+  },
+  "resultados": {
+    "todas": {
+      "E2E_reconciliado_escolhido": {
+        "celulas": 176,
+        "mae": 22333.187673968452,
+        "wape": 0.02592196006261043,
+        "mediana_ape": 0.006440203894567745,
+        "vence_B_escolhido": 0.3693181818181818,
+        "vies_relativo": -0.005750515682128887,
+        "pareado_vitorias": 65,
+        "pareado_derrotas": 71,
+        "pareado_empates": 40,
+        "pareado_p_teste_dos_sinais": 0.6682658523131811
+      },
+      "E2E_persistencia": {
+        "celulas": 176,
+        "mae": 28678.420454545456,
+        "wape": 0.03328682320383601,
+        "mediana_ape": 0.01993190134377791,
+        "vence_B_escolhido": 0.07954545454545454,
+        "vies_relativo": -0.013019921338692434,
+        "pareado_vitorias": 14,
+        "pareado_derrotas": 116,
+        "pareado_empates": 46,
+        "pareado_p_teste_dos_sinais": 3.6437336224421384e-21
+      },
+      "E2E_A_escolhido_C_persistencia": {
+        "celulas": 176,
+        "mae": 22332.647055623278,
+        "wape": 0.025921332571033445,
+        "mediana_ape": 0.006440203894567745,
+        "vence_B_escolhido": 0.32954545454545453,
+        "vies_relativo": -0.005802750297283792,
+        "pareado_vitorias": 58,
+        "pareado_derrotas": 73,
+        "pareado_empates": 45,
+        "pareado_p_teste_dos_sinais": 0.22111601916299536
+      },
+      "B_escolhido": {
+        "celulas": 176,
+        "mae": 23953.858270598354,
+        "wape": 0.027803060024415495,
+        "mediana_ape": 0.006370720569499357,
+        "vence_B_escolhido": 0.0
+      },
+      "B_persistencia": {
+        "celulas": 176,
+        "mae": 28693.875,
+        "wape": 0.03330476117650283,
+        "mediana_ape": 0.01993190134377791,
+        "vence_B_escolhido": 0.056818181818181816,
+        "vies_relativo": -0.013000242327502074,
+        "pareado_vitorias": 10,
+        "pareado_derrotas": 114,
+        "pareado_empates": 52,
+        "pareado_p_teste_dos_sinais": 1.6790570008398702e-23
+      },
+      "B_deriva": {
+        "celulas": 176,
+        "mae": 39897.14772727273,
+        "wape": 0.04630831411513679,
+        "mediana_ape": 0.007375159883911211,
+        "vence_B_escolhido": 0.10795454545454546,
+        "pareado_vitorias": 19,
+        "pareado_derrotas": 96,
+        "pareado_empates": 61,
+        "pareado_p_teste_dos_sinais": 1.4467477786679854e-13
+      },
+      "B_cagr": {
+        "celulas": 176,
+        "mae": 39263.65380621559,
+        "wape": 0.04557302256780921,
+        "mediana_ape": 0.007609494414390286,
+        "vence_B_escolhido": 0.13636363636363635,
+        "pareado_vitorias": 24,
+        "pareado_derrotas": 91,
+        "pareado_empates": 61,
+        "pareado_p_teste_dos_sinais": 2.2576566137993833e-10
+      }
+    },
+    "origem_2023": {
+      "E2E_reconciliado_escolhido": {
+        "celulas": 86,
+        "mae": 26453.258860844842,
+        "wape": 0.027337641414882378,
+        "mediana_ape": 0.006577085177314921,
+        "vence_B_escolhido": 0.3953488372093023,
+        "vies_relativo": 0.004237299120941656,
+        "pareado_vitorias": 34,
+        "pareado_derrotas": 35,
+        "pareado_empates": 17,
+        "pareado_p_teste_dos_sinais": 1.0
+      },
+      "E2E_persistencia": {
+        "celulas": 86,
+        "mae": 34054.848837209305,
+        "wape": 0.035193366943823086,
+        "mediana_ape": 0.01979612012359312,
+        "vence_B_escolhido": 0.11627906976744186,
+        "vies_relativo": -0.001893187147101784,
+        "pareado_vitorias": 10,
+        "pareado_derrotas": 57,
+        "pareado_empates": 19,
+        "pareado_p_teste_dos_sinais": 4.042104433067337e-09
+      },
+      "E2E_A_escolhido_C_persistencia": {
+        "celulas": 86,
+        "mae": 26460.38447108633,
+        "wape": 0.02734500524777226,
+        "mediana_ape": 0.00655676630872196,
+        "vence_B_escolhido": 0.37209302325581395,
+        "vies_relativo": 0.0041828999681622625,
+        "pareado_vitorias": 32,
+        "pareado_derrotas": 35,
+        "pareado_empates": 19,
+        "pareado_p_teste_dos_sinais": 0.807194691367025
+      },
+      "B_escolhido": {
+        "celulas": 86,
+        "mae": 28418.922562104686,
+        "wape": 0.029369020977225494,
+        "mediana_ape": 0.0064093179673898526,
+        "vence_B_escolhido": 0.0
+      },
+      "B_persistencia": {
+        "celulas": 86,
+        "mae": 34087.61627906977,
+        "wape": 0.0352272298633362,
+        "mediana_ape": 0.01979612012359312,
+        "vence_B_escolhido": 0.08139534883720931,
+        "vies_relativo": -0.0018585311286930454,
+        "pareado_vitorias": 7,
+        "pareado_derrotas": 56,
+        "pareado_empates": 23,
+        "pareado_p_teste_dos_sinais": 1.363671398024735e-10
+      },
+      "B_deriva": {
+        "celulas": 86,
+        "mae": 55860.09302325582,
+        "wape": 0.057727601748610025,
+        "mediana_ape": 0.008981912173304688,
+        "vence_B_escolhido": 0.05813953488372093,
+        "pareado_vitorias": 5,
+        "pareado_derrotas": 52,
+        "pareado_empates": 29,
+        "pareado_p_teste_dos_sinais": 6.401865149108232e-11
+      },
+      "B_cagr": {
+        "celulas": 86,
+        "mae": 54636.87854960139,
+        "wape": 0.05646349289797026,
+        "mediana_ape": 0.008153894561087654,
+        "vence_B_escolhido": 0.11627906976744186,
+        "pareado_vitorias": 10,
+        "pareado_derrotas": 45,
+        "pareado_empates": 31,
+        "pareado_p_teste_dos_sinais": 2.0572645155203517e-06
+      }
+    },
+    "origem_2024": {
+      "E2E_reconciliado_escolhido": {
+        "celulas": 90,
+        "mae": 18396.230762064344,
+        "wape": 0.02419998876553967,
+        "mediana_ape": 0.0063454356633447844,
+        "vence_B_escolhido": 0.34444444444444444,
+        "vies_relativo": -0.017899245609061008,
+        "pareado_vitorias": 31,
+        "pareado_derrotas": 36,
+        "pareado_empates": 23,
+        "pareado_p_teste_dos_sinais": 0.6254068289416487
+      },
+      "E2E_persistencia": {
+        "celulas": 90,
+        "mae": 23540.944444444445,
+        "wape": 0.030967788915788795,
+        "mediana_ape": 0.020627334595739122,
+        "vence_B_escolhido": 0.044444444444444446,
+        "vies_relativo": -0.026553981724037116,
+        "pareado_vitorias": 4,
+        "pareado_derrotas": 59,
+        "pareado_empates": 27,
+        "pareado_p_teste_dos_sinais": 1.3821257506541063e-13
+      },
+      "E2E_A_escolhido_C_persistencia": {
+        "celulas": 90,
+        "mae": 18388.364636403025,
+        "wape": 0.02418964098532891,
+        "mediana_ape": 0.0063454356633447844,
+        "vence_B_escolhido": 0.28888888888888886,
+        "vies_relativo": -0.017948847377738972,
+        "pareado_vitorias": 26,
+        "pareado_derrotas": 38,
+        "pareado_empates": 26,
+        "pareado_p_teste_dos_sinais": 0.16864291143970336
+      },
+      "B_escolhido": {
+        "celulas": 90,
+        "mae": 19687.24128093675,
+        "wape": 0.0258982953619829,
+        "mediana_ape": 0.00630131522766807,
+        "vence_B_escolhido": 0.0
+      },
+      "B_persistencia": {
+        "celulas": 90,
+        "mae": 23539.855555555554,
+        "wape": 0.03096635649741903,
+        "mediana_ape": 0.020627334595739122,
+        "vence_B_escolhido": 0.03333333333333333,
+        "vies_relativo": -0.026552520072639398,
+        "pareado_vitorias": 3,
+        "pareado_derrotas": 58,
+        "pareado_empates": 29,
+        "pareado_p_teste_dos_sinais": 3.2857397358476703e-14
+      },
+      "B_deriva": {
+        "celulas": 90,
+        "mae": 24643.666666666668,
+        "wape": 0.03241840484545624,
+        "mediana_ape": 0.006872773265448679,
+        "vence_B_escolhido": 0.15555555555555556,
+        "pareado_vitorias": 14,
+        "pareado_derrotas": 44,
+        "pareado_empates": 32,
+        "pareado_p_teste_dos_sinais": 0.00010049669926914806
+      },
+      "B_cagr": {
+        "celulas": 90,
+        "mae": 24573.683495869165,
+        "wape": 0.03232634294598448,
+        "mediana_ape": 0.007437027200604152,
+        "vence_B_escolhido": 0.15555555555555556,
+        "pareado_vitorias": 14,
+        "pareado_derrotas": 46,
+        "pareado_empates": 30,
+        "pareado_p_teste_dos_sinais": 4.223704562267977e-05
+      }
+    },
+    "sem_3_maiores": {
+      "E2E_reconciliado_escolhido": {
+        "celulas": 173,
+        "mae": 20407.013763393526,
+        "wape": 0.027983861282844014,
+        "mediana_ape": 0.006352843157675484,
+        "vence_B_escolhido": 0.3583815028901734,
+        "vies_relativo": -0.004051461403378192,
+        "pareado_vitorias": 62,
+        "pareado_derrotas": 71,
+        "pareado_empates": 40,
+        "pareado_p_teste_dos_sinais": 0.4880223438308659
+      },
+      "E2E_persistencia": {
+        "celulas": 173,
+        "mae": 25620.323699421966,
+        "wape": 0.035132802512843564,
+        "mediana_ape": 0.0198722498225692,
+        "vence_B_escolhido": 0.06936416184971098,
+        "vies_relativo": -0.011085669828404032,
+        "pareado_vitorias": 12,
+        "pareado_derrotas": 115,
+        "pareado_empates": 46,
+        "pareado_p_teste_dos_sinais": 2.8158175808425007e-22
+      },
+      "E2E_A_escolhido_C_persistencia": {
+        "celulas": 173,
+        "mae": 20406.463770163755,
+        "wape": 0.027983107084585176,
+        "mediana_ape": 0.006352843157675484,
+        "vence_B_escolhido": 0.3179190751445087,
+        "vies_relativo": -0.004114243530255545,
+        "pareado_vitorias": 55,
+        "pareado_derrotas": 73,
+        "pareado_empates": 45,
+        "pareado_p_teste_dos_sinais": 0.13262480132498225
+      },
+      "B_escolhido": {
+        "celulas": 173,
+        "mae": 21478.055543850965,
+        "wape": 0.029452566354539283,
+        "mediana_ape": 0.006353932267458614,
+        "vence_B_escolhido": 0.0
+      },
+      "B_persistencia": {
+        "celulas": 173,
+        "mae": 25635.895953757226,
+        "wape": 0.03515415653407526,
+        "mediana_ape": 0.0198722498225692,
+        "vence_B_escolhido": 0.05202312138728324,
+        "vies_relativo": -0.01106222320820976,
+        "pareado_vitorias": 9,
+        "pareado_derrotas": 113,
+        "pareado_empates": 51,
+        "pareado_p_teste_dos_sinais": 4.976849729843443e-24
+      },
+      "B_deriva": {
+        "celulas": 173,
+        "mae": 37677.939306358385,
+        "wape": 0.05166724731003537,
+        "mediana_ape": 0.007367692013756209,
+        "vence_B_escolhido": 0.10982658959537572,
+        "pareado_vitorias": 19,
+        "pareado_derrotas": 94,
+        "pareado_empates": 60,
+        "pareado_p_teste_dos_sinais": 4.045693021158809e-13
+      },
+      "B_cagr": {
+        "celulas": 173,
+        "mae": 37053.33886332283,
+        "wape": 0.05081074119121933,
+        "mediana_ape": 0.0075233404313168354,
+        "vence_B_escolhido": 0.13872832369942195,
+        "pareado_vitorias": 24,
+        "pareado_derrotas": 91,
+        "pareado_empates": 58,
+        "pareado_p_teste_dos_sinais": 2.2576566137993833e-10
+      }
+    },
+    "_maiores_excluidos": [
+      390,
+      4950
+    ]
+  },
+  "status": "diagnostico_retrospectivo_NAO_e_validacao_cientifica",
+  "limites": [
+    "2 origens (2023, 2024), horizonte de 1 ano: o horizonte 2026-2030 nao foi validado",
+    "os modelos escolhidos (A, complemento e B) foram selecionados nas mesmas origens: comparacao otimista para as variantes escolhidas",
+    "sem vintage point-in-time",
+    "erro assinado do B disponivel so para a persistencia; os demais usam o erro absoluto armazenado"
+  ]
+}

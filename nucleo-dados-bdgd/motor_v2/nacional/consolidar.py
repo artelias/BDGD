@@ -118,7 +118,7 @@ def totals(proj, key_fields, ok, group_fields, universe=None):
     for g, v in sorted(t.items()):
         u = (universe or {}).get((g[0], g[1]), {})
         inc = n[g] & set(u); den = sum(u.values()) if u and None not in u.values() else 0
-        missing = sorted(set(u) - n[g], key=lambda x: -(u[x] or 0))
+        missing = sorted(set(u) - n[g], key=lambda x: (-(u[x] or 0), str(x)))      # ties (equal or missing stock) ordered by id: set order is per-process
         out.append(dict(zip(group_fields + ('ano', 'cenario'), g), valor=v if not float(v).is_integer() else int(v), dist_incluidas=len(n[g]),
                         dist_com_estoque_2025_elegivel=len(u), cobertura_estoque_2025=(sum(u[d] for d in inc) / den) if den else None,
                         status_total=('COMPLETO' if not missing else 'PARCIAL') if u else 'SEM_UNIVERSO',
@@ -308,7 +308,7 @@ def run(repo_copy=None):
     for src in [*(ROOT_OUT / 'reconciliacao_ab').glob('*'), *(ROOT_OUT / 'auditoria_cenarios').glob('*'), *(ROOT_OUT / 'potencia').glob('*'),
                 *(ROOT_OUT / 'comparacao_v1_v2').glob('*'), ROOT_OUT / 'pontes_experimentais.json', ROOT_OUT / 'distribuidora' / 'REVISAO_ELEGIBILIDADE_B.json', ROOT_OUT / 'distribuidora' / 'REVISAO_SUCESSAO_B.json',
                 ROOT_OUT / 'testes' / 'MANIFESTO_TESTES.json', *(ROOT_OUT / 'hierarquia_consumidores').glob('*.csv'),
-                ROOT_OUT / 'hierarquia_consumidores' / 'CONTRATO_HIERARQUIA_CONSUMIDORES.json', ROOT_OUT / 'potencia' / 'INVESTIGACAO_TUC570.csv',
+                ROOT_OUT / 'hierarquia_consumidores' / 'CONTRATO_HIERARQUIA_CONSUMIDORES.json', ROOT_OUT / 'hierarquia_consumidores' / 'FONTE_CANONICA_CONSUMIDORES_INTERNA.json', ROOT_OUT / 'hierarquia_consumidores' / 'ERRO_RETROSPECTIVO_CONSUMIDORES_RESUMO.json', ROOT_OUT / 'potencia' / 'INVESTIGACAO_TUC570.csv',
                 ROOT_OUT / 'comparativos' / 'DEPENDENCIAS_CELESC.json', ROOT_OUT / 'testes' / 'MATRIZ_TESTES.csv']:
         if src.is_file():
             shutil.copyfile(src, FINAL / src.name)
