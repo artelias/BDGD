@@ -142,8 +142,12 @@ test("homologação matriz: filtros combinados, ordenação e CSV confrontados a
   const sort = page.getByTestId("matriz-tabela").locator("thead").getByRole("button", { name: /^Unidades consumidoras/ });
   for (const asc of [false, true]) {
     await sort.click();
-    const ids = await rows.evaluateAll((els) => els.map((e) => Number(e.getAttribute("data-dist"))));
-    const values = ids.map((id) => valores.get(id)).filter((v): v is number => v != null);
-    expect(values).toEqual([...values].sort((a, b) => asc ? a - b : b - a));
+    // a ordenação passa pela URL e re-renderiza depois do clique: esperar o estado em vez de ler a tabela de imediato
+    await expect(sort.locator("xpath=ancestor::th[1]")).toHaveAttribute("aria-sort", asc ? "ascending" : "descending");
+    await expect.poll(async () => {
+      const ids = await rows.evaluateAll((els) => els.map((e) => Number(e.getAttribute("data-dist"))));
+      const values = ids.map((id) => valores.get(id)).filter((v): v is number => v != null);
+      return values.length > 1 && values.every((v, i) => i === 0 || (asc ? values[i - 1] <= v : values[i - 1] >= v));
+    }).toBe(true);
   }
 });
