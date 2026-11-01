@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { DataError, LoadingBlock } from "@/components/ui/Feedback";
 import { Pill } from "@/components/ui/Value";
 import { MetodologiaMotor } from "./MetodologiaMotor";
+import { MetodologiaMotorV2 } from "./MetodologiaMotorV2";
 import { CONCEITOS, INDICADORES } from "@/lib/catalogo";
 import type { Dataset } from "@/lib/dataset";
 import { useData, useQualidade } from "@/lib/data-context";
@@ -16,6 +17,7 @@ import s from "./metodologia.module.css";
 const SECS = [
   ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["dicionario", "Dicionário de indicadores"],
   ["grupos", "Grupos econômicos"], ["dda", "Classificação e vínculos"], ["privacidade", "Privacidade e licença"], ["modelo-matematico", "Modelagem matemática"], ["motor-cenarios", "Modelos executados e cenários"],
+  ["motor-v2", "Motor V2 por empresa"],
 ] as const;
 
 export function Metodologia() {
@@ -206,6 +208,10 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="motor-cenarios" className={s.sec}>
             <h2>Modelos executados e cenários do Motor de Expansão</h2>
             <MetodologiaMotor />
+          </section>
+          <section id="motor-v2" className={s.sec}>
+            <h2>Motor V2: metodologia por empresa, ativo e métrica</h2>
+            <MetodologiaMotorV2 />
           </section>
         </article>
       </div>

@@ -12,8 +12,8 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "validate:data": "node scripts/validate-assets.mjs",
-    "predev": "node scripts/copy-maplibre-worker.mjs",
-    "prebuild": "node scripts/copy-maplibre-worker.mjs",
+    "predev": "node scripts/copy-maplibre-worker.mjs && node scripts/motor-v2-gate.mjs",
+    "prebuild": "node scripts/copy-maplibre-worker.mjs && node scripts/motor-v2-gate.mjs",
     "postbuild": "node scripts/flatten-segment-prefetch.mjs out"
   },
   "dependencies": {
