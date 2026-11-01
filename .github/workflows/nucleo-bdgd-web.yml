@@ -10,7 +10,8 @@ on:
       - "nucleo-dados-bdgd/motor_cenarios/**"
       - "nucleo-dados-bdgd/motor_v2/metric_contract.py"
       - "nucleo-dados-bdgd/motor_v2/audit_public_products.py"
-      - "nucleo-dados-bdgd/motor_v2/tests/**"
+      - "nucleo-dados-bdgd/motor_v2/tests/test_metric_contract.py"
+      - "nucleo-dados-bdgd/motor_v2/tests/test_public_audit.py"
       - "nucleo-dados-bdgd/etl/**"
       - "nucleo-dados-bdgd/output-publicavel/**"
       - "nucleo-dados-bdgd/output-historico/**"
@@ -23,7 +24,8 @@ on:
       - "nucleo-dados-bdgd/motor_cenarios/**"
       - "nucleo-dados-bdgd/motor_v2/metric_contract.py"
       - "nucleo-dados-bdgd/motor_v2/audit_public_products.py"
-      - "nucleo-dados-bdgd/motor_v2/tests/**"
+      - "nucleo-dados-bdgd/motor_v2/tests/test_metric_contract.py"
+      - "nucleo-dados-bdgd/motor_v2/tests/test_public_audit.py"
       - "nucleo-dados-bdgd/etl/**"
       - "nucleo-dados-bdgd/output-publicavel/**"
       - "nucleo-dados-bdgd/output-historico/**"
@@ -74,7 +76,10 @@ jobs:
       - name: Contrato de natureza física — testes e auditoria dos produtos públicos (contagem fracionária ou negativa reprova)
         working-directory: nucleo-dados-bdgd
         run: |
-          "$RUNNER_TEMP/motor-web-env/bin/python" -m unittest discover -s motor_v2/tests -v
+          # So as duas suites do contrato publico. motor_v2/tests tambem tem suites que exigem a base local (D:\) e DuckDB:
+          # as sinteticas rodam no workflow motor-v2-sintetico.yml (motor_v2/tests/suites.py), as locais na auditoria local.
+          "$RUNNER_TEMP/motor-web-env/bin/python" -m unittest discover -s motor_v2/tests -p test_metric_contract.py -v
+          "$RUNNER_TEMP/motor-web-env/bin/python" -m unittest discover -s motor_v2/tests -p test_public_audit.py -v
           "$RUNNER_TEMP/motor-web-env/bin/python" -m motor_v2.audit_public_products --output "$RUNNER_TEMP/auditoria_produtos_publicos.json"
       - name: Contrato de dados (smoke)
         run: node ../etl/tests/smoke.mjs
