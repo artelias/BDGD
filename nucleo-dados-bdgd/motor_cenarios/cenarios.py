@@ -283,6 +283,18 @@ class Motor:
 
 
 # ---------------------------------------------------------------- avaliação e cenários
+def fisico(pts, discreta):
+    """Error of the PUBLISHABLE (integer) predictions on the same backtest points; the continuous error stays in the other fields.
+    Selection keeps using the continuous error; this block only reports what the published integers would have missed."""
+    if not discreta or not pts:
+        return {}
+    if any(not math.isfinite(yh) or yh < 0 for _, yh, *_ in pts):
+        # a negative prediction is not a publishable count; the contract rejects it instead of clipping, so no physical error exists
+        return {"mae_fisico": None, "wape_fisico": None, "vies_fisico": None, "fisico_motivo": "PREVISAO_NEGATIVA_NAO_PUBLICAVEL"}
+    e = erros([(y, mc.round_count(yh)) for y, yh, *_ in pts])
+    return {"mae_fisico": e["mae"], "wape_fisico": e["wape"], "vies_fisico": e["vies_rel"]}
+
+
 def erros(pares):
     if not pares:
         return {"n": 0, "mae": None, "rmse": None, "wape": None, "vies_rel": None, "mdape": None}
@@ -478,7 +490,8 @@ def main(contrato, internas, raw, saida, web=None, internal_dir=None):
                              "cenarios": cen, "justificativas": just,
                              "modelos": {m: {"wape": x["erros"]["wape"], "mae": x["erros"]["mae"], "rmse": x["erros"]["rmse"], "vies": x["erros"]["vies_rel"],
                                              "mdape": x["erros"]["mdape"], "n": x["erros"]["n"], "wape_h1": x["por_h"][1]["wape"], "wape_h2": x["por_h"][2]["wape"],
-                                             "estabilidade": x["estabilidade_wape_h1"], "cagr": x["cagr_agregado"], "elegivel": x["elegivel"], "motivo": x["motivo"]}
+                                             "estabilidade": x["estabilidade_wape_h1"], "cagr": x["cagr_agregado"], "elegivel": x["elegivel"], "motivo": x["motivo"],
+                                             **fisico(bt.get(m), discreta)}
                                          for m, x in met.items()},
                              "diagnostico_painel": {str(o): {m: v for m, v in dg.items()} for o, dg in {**diag_bt, BASE: diag_final}.items()},
                              "series": series_pub})

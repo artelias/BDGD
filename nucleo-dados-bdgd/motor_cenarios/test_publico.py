@@ -76,5 +76,27 @@ class CsvPublico(unittest.TestCase):
             self.assertLessEqual(mc.round_count(bruto[0]), mc.round_count(bruto[1]))
 
 
+class ErroFisico(unittest.TestCase):
+    """Patch B (Motor V2): erro das previsões inteiras publicáveis ao lado do erro contínuo, só para contagens."""
+    def test_erro_fisico_registrado_ao_lado_do_continuo_para_contagens(self):
+        with open(ROOT / "web/public/data/previsoes/cenarios-motor.json", encoding="utf-8") as f:
+            doc = json.load(f)
+        com = 0
+        for m in doc["metricas"]:
+            for e in m["modelos"].values():
+                if m["natureza"] == "discrete_count":
+                    if not e["n"]:
+                        continue                                                     # modelo sem pontos de backtest: sem erro algum
+                    self.assertIn("mae_fisico", e)
+                    if e.get("mae_fisico") is not None:
+                        com += 1
+                        self.assertIsNotNone(e["mae"])                               # o erro contínuo continua publicado
+                    else:
+                        self.assertEqual(e.get("fisico_motivo"), "PREVISAO_NEGATIVA_NAO_PUBLICAVEL")
+                else:
+                    self.assertNotIn("mae_fisico", e)
+        self.assertGreater(com, 100)
+
+
 if __name__ == "__main__":
     unittest.main()
