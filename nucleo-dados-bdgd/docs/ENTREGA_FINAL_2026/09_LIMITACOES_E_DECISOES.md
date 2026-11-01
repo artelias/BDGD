@@ -11,7 +11,8 @@
 7. **TUC 570 kVA:** 37 DIST ficam fora porque o kVA do equipamento diverge mais de 5% do da instalação, ou não passam o gate. É preciso decidir qual fonte prevalece (ver decisão 5).
 8. **Territorialização:** só as cinco séries do nível A são territoriais. As demais entidades têm campos territoriais, mas exigem extração e modelagem territorial ainda não feitas.
 9. **Covariáveis externas:** PIB e população do IBGE, DEC e FEC não entram nas séries por distribuidora. EPE e IPEA não estão integrados.
-10. **Ambiente:** os testes que dependem da base local em `D:` (93) rodam só nesta máquina. O Safari em aparelho físico não foi testado; o "iPhone estreito" é emulado no Chromium.
+10. **Interface (P2, anterior a esta integração):** uma cópia oculta e não hidratada da página pode ficar em `<div hidden id="S:0">`, por causa do Suspense do layout raiz. É invisível, mas duplica ids no DOM (ver `06_TESTES_E_CI.md`).
+11. **Ambiente:** os testes que dependem da base local em `D:` (93) rodam só nesta máquina. O Safari em aparelho físico não foi testado; o "iPhone estreito" é emulado no Chromium.
 
 ## Decisões que cabem a você
 
