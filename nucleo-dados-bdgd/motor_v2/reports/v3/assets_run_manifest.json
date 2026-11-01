@@ -1,0 +1,52 @@
+{
+  "config": {
+    "output": "D:/NUCLEO_BDGD_2025/motor_v2/assets_v2",
+    "dists": [
+      26,
+      6585,
+      6600
+    ],
+    "assets": [
+      "trafo_dist_quantidade",
+      "trafo_dist_potencia_kva",
+      "rede_mt_extensao_km"
+    ],
+    "memory": "1GB",
+    "threads": 1,
+    "min_available_gb": 0.6,
+    "resource_note": "small EQ/UN and SSDMT Parquets; machine has 7.9 GiB total and was at ~1 GiB free; peak RSS is measured"
+  },
+  "code": {
+    "adapters.py": "94985cc40de460f209cf50754696c1c277848d6756ffa0944946f6397fe94ca7",
+    "assets.py": "1a713c2b82f6b991560a6b35db244dff8b269841f39470a87b74e65caf340395",
+    "audit_conj.py": "cd5ee3a9a8a910e65c08be81f1f55858da1351ea64629e9f39bb77d4fe6fad8c",
+    "baselines.py": "2b95e5776a8c0a5afe906993dfe8354649fac9de78e3f1777b43cf77b9a8449c",
+    "bridges.py": "ccf9f8e24fb815f4a5030edd9d45379fa8ea65c613376744bbcdcce5d946eab6",
+    "comparison.py": "109476c2cd83e721de88b548806ebe9681b580b4da0d3a24257010d1558573e6",
+    "diagnose_epb.py": "de8ee9dfd8aa37d3bcc5e6d062c94d477febe8342a547bdd690ec5e0b758d727",
+    "externals.py": "44baa93f0df946877b5fd186b83c998766bfdb8ed53bb12a65c1d5a840ba2610",
+    "features.py": "a38cb1db5c9dc5d739c2dda7732e97cf4230803a4af2efb9e2cae0a07082de0f",
+    "feature_registry.py": "aa6251eca27bb5858ce6e7f3c61776b4f797043b56ff85c184a9e94f989fe18d",
+    "future.py": "1a46b7d9bb026191fb09077fd4ade6e1fe1e7d8dad159e65f129b3e4a2d35e76",
+    "integration.py": "bf8d628cdee0c981f7396a67119a2afd4801e18885602d01c3bf3d6c5b4a5f4c",
+    "launch.py": "cb23e14c0b14070616eb9b4f67bfdf70d05e6134bf198a6f942cc0b586b05942",
+    "ml.py": "6cd7823970fe4fe0424c1d0708f6c79bd82efd48d9d532e674e7eab4711b4917",
+    "origins_audit.py": "c63b5c7cb4ff717063abfbdefb2fa311f444b708ebdf321e995467eacf621da5",
+    "policy.py": "df8d689c038106211d05203227a18e2554f85a440220add0cf3a89146599fe22",
+    "resources.py": "80a14f130bc7371c0e7b65efd01d8d8cd428fdf3216728429e0e7eda2de85df8",
+    "runner.py": "10264fe12860d68ab89d08d9464ee6cc39dfac94dafd43498fe641c7ce467206",
+    "shared.py": "203dbf1eaafb784e8febb3b24f724f3f8a41eea55d39afad76741c7921ce9571",
+    "temporal.py": "aa6d685a2621198e0bd1598cf9d3d2d8716abf60df23304f6c77b69bfbefd3f5",
+    "__init__.py": "49f0428fbd4481849e446ffb3f5c17c7bc1797b77c75c94e410a183a54056c1e"
+  },
+  "version": "assets-3",
+  "runid": "b2325c3628aa29b2",
+  "stats": {
+    "reused": 0,
+    "executed": 36
+  },
+  "resources": {
+    "peak_rss_gib": 0.142,
+    "wall_seconds": 31.3
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "auditoria-produtos-publicos-1",
+  "produtos": [
+    {
+      "produto": "cenarios-motor.json",
+      "contagens": 22224,
+      "contagens_fracionarias": 0,
+      "contagens_negativas": 0,
+      "continuas": 8208,
+      "continuas_com_decimais": 7535,
+      "incoerencias": [],
+      "n_incoerencias": 0,
+      "exemplos_violacao": [],
+      "ok": true
+    },
+    {
+      "produto": "motor-universal-resumo.json.gz",
+      "contagens": 29132,
+      "contagens_fracionarias": 0,
+      "contagens_negativas": 0,
+      "continuas": 6013,
+      "continuas_com_decimais": 6013,
+      "incoerencias": [],
+      "n_incoerencias": 0,
+      "exemplos_violacao": [],
+      "ok": true
+    },
+    {
+      "produto": "cenarios-exploratorios-2026-2030.json",
+      "contagens": 13590,
+      "contagens_fracionarias": 0,
+      "contagens_negativas": 0,
+      "continuas": 2538,
+      "continuas_com_decimais": 2535,
+      "incoerencias": [],
+      "n_incoerencias": 0,
+      "exemplos_violacao": [],
+      "ok": true
+    },
+    {
+      "produto": "CENARIOS_CONSERVADOR_MODERADO_AGRESSIVO.csv",
+      "contagens": 21094,
+      "contagens_fracionarias": 0,
+      "contagens_negativas": 0,
+      "continuas": 7832,
+      "continuas_com_decimais": 7233,
+      "incoerencias": [],
+      "n_incoerencias": 0,
+      "exemplos_violacao": [],
+      "ok": true,
+      "contagens_grafadas_com_casa_decimal": 5049
+    }
+  ],
+  "ok": true
+}

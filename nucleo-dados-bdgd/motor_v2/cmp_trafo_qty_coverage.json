@@ -1,0 +1,38 @@
+{
+ "output": "D:/NUCLEO_BDGD_2025/motor_v2/comparative_assets/trafo_qty_coverage",
+ "comparison_input": "D:/NUCLEO_BDGD_2025/motor_v2/assets_v2/asset_runs/d01f01b49354ec7e",
+ "experiment": "comparison",
+ "dists": [
+  6600,
+  6585,
+  26
+ ],
+ "memory": "2GB",
+ "threads": 2,
+ "models": [
+  "ols",
+  "ridge",
+  "elastic_net",
+  "poisson",
+  "random_forest",
+  "hist_gradient_boosting"
+ ],
+ "max_trials": 8,
+ "seconds_per_candidate": 90,
+ "territorial_folds": 3,
+ "min_independent_origins": 3,
+ "origins": [
+  2023,
+  2024
+ ],
+ "seed": 42,
+ "external_manifest": "D:/NUCLEO_BDGD_2025/motor_v2/externals/versions/810b13c6844f36d6/manifest.json",
+ "bridges_dir": "D:/NUCLEO_BDGD_2025/wt-motor-v2/nucleo-dados-bdgd/motor_v2/bridges",
+ "asset": "trafo_dist_quantidade",
+ "feature_policy": {
+  "strategy": "coverage",
+  "min_train_coverage": 0.95,
+  "imputation": "median",
+  "missing_indicator": false
+ }
+}

@@ -1,0 +1,48 @@
+{
+  "config": {
+    "output": "D:/NUCLEO_BDGD_2025/motor_v2/assets_v2",
+    "dists": [
+      26,
+      6585,
+      6600
+    ],
+    "assets": [
+      "trafo_dist_quantidade",
+      "trafo_dist_potencia_kva",
+      "rede_mt_extensao_km"
+    ],
+    "memory": "1GB",
+    "threads": 1,
+    "min_available_gb": 0.6,
+    "resource_note": "small EQ/UN and SSDMT Parquets; machine has 7.9 GiB total and was at ~1 GiB free; peak RSS is measured"
+  },
+  "code": {
+    "adapters.py": "94985cc40de460f209cf50754696c1c277848d6756ffa0944946f6397fe94ca7",
+    "assets.py": "8c5d7c3fc4dcc9ca7035bf2dec68ca09e0909fda7ce839b7ded78378637ad5da",
+    "bridges.py": "ccf9f8e24fb815f4a5030edd9d45379fa8ea65c613376744bbcdcce5d946eab6",
+    "comparison.py": "deb0fff70545282cb00cac6adb86b3f13118617a53b89b898d3cecd33470dce6",
+    "diagnose_epb.py": "de8ee9dfd8aa37d3bcc5e6d062c94d477febe8342a547bdd690ec5e0b758d727",
+    "externals.py": "1f80bcd2dad6b9e6a2720dc0d053b010bf6c06ceb912c32c90f25b988916b3db",
+    "features.py": "76fc612c35f5b747530905be04d97556d033686f6e7d6a931e420519f311c1ff",
+    "feature_registry.py": "d6157e9159f42485308e9f2fe6fb72e52200cd4454e4b96ada6a6d168226bdfb",
+    "future.py": "72ee7837fea21da8e12f8d5e7a0fc5583b86f2b51f56e18cbdc4dbd007c12bbc",
+    "integration.py": "bf8d628cdee0c981f7396a67119a2afd4801e18885602d01c3bf3d6c5b4a5f4c",
+    "launch.py": "cb23e14c0b14070616eb9b4f67bfdf70d05e6134bf198a6f942cc0b586b05942",
+    "ml.py": "6cd7823970fe4fe0424c1d0708f6c79bd82efd48d9d532e674e7eab4711b4917",
+    "policy.py": "df8d689c038106211d05203227a18e2554f85a440220add0cf3a89146599fe22",
+    "resources.py": "80a14f130bc7371c0e7b65efd01d8d8cd428fdf3216728429e0e7eda2de85df8",
+    "runner.py": "10264fe12860d68ab89d08d9464ee6cc39dfac94dafd43498fe641c7ce467206",
+    "temporal.py": "aa6d685a2621198e0bd1598cf9d3d2d8716abf60df23304f6c77b69bfbefd3f5",
+    "__init__.py": "49f0428fbd4481849e446ffb3f5c17c7bc1797b77c75c94e410a183a54056c1e"
+  },
+  "version": "assets-1",
+  "runid": "d01f01b49354ec7e",
+  "stats": {
+    "reused": 0,
+    "executed": 36
+  },
+  "resources": {
+    "peak_rss_gib": 0.14,
+    "wall_seconds": 49.0
+  }
+}

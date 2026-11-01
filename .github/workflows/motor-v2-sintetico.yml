@@ -1,0 +1,41 @@
+name: Motor V2 — testes sintéticos (sem dados locais)
+on:
+  push:
+    branches:
+      - "feat/motor-v2-granular-territorial"
+      - "feat/motor-v2-entrega-*"
+    paths:
+      - "nucleo-dados-bdgd/motor_v2/**"
+      - ".github/workflows/motor-v2-sintetico.yml"
+  pull_request:
+    paths:
+      - "nucleo-dados-bdgd/motor_v2/**"
+      - ".github/workflows/motor-v2-sintetico.yml"
+permissions:
+  contents: read
+jobs:
+  sintetico:
+    name: Hierarquia UCBT ⊂ Consumidores, elegibilidade, cenários e contratos físicos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: nucleo-dados-bdgd
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Ambiente e dependências fixadas
+        run: |
+          python3 -m venv "$RUNNER_TEMP/motor-v2-env"
+          "$RUNNER_TEMP/motor-v2-env/bin/python" -m pip install -r motor_universal/requirements.txt -r motor_universal/requirements-ml.txt duckdb==2.0.0 pyogrio==0.13.0
+      # A lista das suítes sintéticas vive em motor_v2/tests/suites.py (fonte única, verificada por test_suites). Não descobrir
+      # todas as suítes de motor_v2/tests sem filtro: isso rodaria as suítes LOCAIS, que exigem D:\ e a base de conhecimento.
+      # As suítes locais rodam só na auditoria completa: python -m motor_v2.nacional.testes
+      - name: Testes sintéticos do Motor V2
+        run: |
+          "$RUNNER_TEMP/motor-v2-env/bin/python" -m motor_v2.tests.suites

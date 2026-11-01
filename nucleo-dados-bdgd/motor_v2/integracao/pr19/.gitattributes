@@ -1,0 +1,2 @@
+# patches aplicados com git am: bytes preservados (sem conversao de fim de linha no checkout)
+*.patch -text
