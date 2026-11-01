@@ -167,7 +167,7 @@ for _m in ('ols', 'ridge', 'elastic_net', 'poisson'):
 
 def run(saida):
     saida = Path(saida)
-    (saida / 'dist').mkdir(parents=True, exist_ok=True)
+    (saida / 'distribuidoras').mkdir(parents=True, exist_ok=True)
     linhas, valores, contract, suc = COB.montar(False)
     res = COB.resumo(linhas, valores, contract)
     hist, hpot, _ = historicos(contract)
@@ -247,7 +247,7 @@ def run(saida):
     grupos_cfg = json.loads(Path(GROUPS).read_text(encoding='utf-8'))
     grupo_de = {r['DIST']: r['grupo'] for r in linhas}
     for d, ss in por_dist.items():
-        (saida / 'dist' / f'{d}.json').write_text(json.dumps(dict(schema=SCHEMA, dist=d, empresa=empresas[d], grupo=grupo_de[d] or None, series=ss),
+        (saida / 'distribuidoras' / f'{d}.json').write_text(json.dumps(dict(schema=SCHEMA, dist=d, empresa=empresas[d], grupo=grupo_de[d] or None, series=ss),
                                                              ensure_ascii=False, separators=(',', ':'), allow_nan=False), encoding='utf-8')
     objetivos = []
     for p in res['por_objetivo']:
