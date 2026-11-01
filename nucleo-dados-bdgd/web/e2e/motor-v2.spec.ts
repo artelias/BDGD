@@ -1,7 +1,10 @@
 import { expect, test, type Page } from "@playwright/test";
 
 // Build de homologação (NEXT_PUBLIC_MOTOR_V2=homologacao): confere a interface do Motor V2 contra o produto servido.
-const sec = (page: Page) => page.getByTestId("motor-v2");
+// Só elementos visíveis: o layout raiz suspende e o React pode deixar uma cópia não hidratada da página em <div hidden id="S:0">
+// (defeito anterior a esta integração, documentado em docs/ENTREGA_FINAL_2026/06_TESTES_E_CI.md).
+const vis = (page: Page, id: string) => page.getByTestId(id).filter({ visible: true });
+const sec = (page: Page) => vis(page, "motor-v2");
 const fmt = (v: number | null, conta: boolean) => v == null ? "N/D" : v.toLocaleString("pt-BR", { maximumFractionDigits: conta ? 0 : 1 });
 async function semRolagemHorizontal(page: Page) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
@@ -57,11 +60,11 @@ test("motor v2: sucessão sem números, grupo PARCIAL e potência de reguladores
 
 test("motor v2: metodologia por empresa mostra modelo, equação e coeficientes verificados", async ({ page }) => {
   await page.goto("/metodologia/#motor-v2");
-  const m = page.getByTestId("metodologia-motor-v2-auditoria");
+  const m = vis(page, "metodologia-motor-v2-auditoria");
   await expect(m).toBeVisible();
   await m.getByLabel("Distribuidora da metodologia do Motor V2").selectOption("11825");
   await m.getByLabel("Ativo e métrica da metodologia do Motor V2").selectOption("trafo_medida|quantidade");
-  const ficha = page.getByTestId("metodologia-motor-v2-ficha");
+  const ficha = vis(page, "metodologia-motor-v2-ficha");
   await expect(ficha).toContainText("ols:comparaveis");
   await expect(ficha).toContainText(/recuperados por reajuste/);
   await expect(ficha).toContainText(/Não homologado/);
@@ -76,11 +79,11 @@ for (const w of [1440, 1024, 901, 900, 768, 390, 320]) {
     await page.setViewportSize({ width: w, height: 860 });
     for (const p of PAGINAS) {
       await page.goto(p);
-      await expect(page.locator("main, [role=main]").first()).toBeVisible();
+      await expect(page.locator("main, [role=main]").filter({ visible: true }).first()).toBeVisible();
       await page.waitForLoadState("networkidle");
       await semRolagemHorizontal(page);
     }
-    const lateral = page.locator('aside[aria-label="Navegação principal"]');
+    const lateral = page.locator('aside[aria-label="Navegação principal"]').first();
     if (w >= 901) {
       const medir = () => lateral.evaluate((el) => [el.getBoundingClientRect().width, el.nextElementSibling!.getBoundingClientRect().x]);
       const botao = lateral.getByRole("button", { name: /(?:Recolher|Expandir) navegação/ });

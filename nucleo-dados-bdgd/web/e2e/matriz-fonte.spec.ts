@@ -11,7 +11,8 @@ test("Matriz: aguarda a fonte filtrada para exportar e distingue falha de ausên
   const exp = page.getByTestId("matriz-csv");
   await expect(exp).toBeDisabled();
   fail();
-  await expect(page.getByRole("alert")).toContainText("Fonte do recorte indisponível");
+  // o Next mantém um anunciador de rotas com role="alert": filtrar pelo texto do alerta da Matriz
+  await expect(page.getByRole("alert").filter({ hasText: "Fonte do recorte indisponível" })).toBeVisible();
   await expect(exp).toBeDisabled();
   await page.unroute(source);
   await page.reload();
