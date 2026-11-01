@@ -395,7 +395,16 @@ def contagem_publica(v, onde):
     return int(v)
 
 
-def main(contrato, internas, raw, saida, web=None):
+def main(contrato, internas, raw, saida, web=None, internal_dir=None):
+    """internal_dir (optional): writes INTERNAL_RAW_PREDICTIONS.csv with the continuous prediction next to the published value, for the
+    statistical diagnostics (Motor V2). Refused under a public root; the published products are identical with or without it."""
+    if internal_dir:
+        pasta = Path(internal_dir).resolve()
+        raiz = Path(__file__).resolve().parents[1]
+        for publica in (raiz / "web", raiz / "motor_cenarios" / "saida", raiz / "output-publicavel", raiz / "output-historico"):
+            if pasta == publica or publica in pasta.parents:
+                raise ValueError(f"diagnostico interno sob raiz publica recusado: {pasta}")
+    internos = []
     saida = Path(saida); saida.mkdir(parents=True, exist_ok=True)
     series, empresas, unidades = carregar_contrato(contrato)
     pot, diag_pot = carregar_potencia(internas, series)
@@ -441,6 +450,9 @@ def main(contrato, internas, raw, saida, web=None):
                 # Public numbers follow the physical nature: discrete counts are integers (half-up, declared); extension and power keep their decimals.
                 pub = [mc.physical_prediction(v, natureza) if discreta else round(v, 3) for v in traj] if traj else None
                 linha[slot] = pub
+                if traj:                                     # continuous value kept for diagnostics only; the public number is `pub`
+                    internos.extend({"conceito": conc, "metrica": metr, "dist": d, "cenario": slot, "modelo": m, "ano": a, "raw_prediction": v,
+                                     "physical_prediction": p, "rounding": "half_up" if discreta else ""} for a, v, p in zip(HORIZONTE, traj, pub))
                 cen_rows.append({"conceito": conc, "metrica": metr, "natureza": natureza, "dist": d, "empresa": empresas.get(d, ""), "cenario": slot, "modelo": m or "",
                                  **{str(a): (v if traj else "") for a, v in zip(HORIZONTE, pub or [None] * 5)},
                                  "base_2025": hist[-1][1], "anos_historico": len(s),
@@ -526,6 +538,10 @@ def main(contrato, internas, raw, saida, web=None):
         Path(web).parent.mkdir(parents=True, exist_ok=True)
         txt = json.dumps(web_doc, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
         Path(web).write_text(txt, encoding="utf-8", newline="\n")
+    if internal_dir and internos:
+        Path(internal_dir).mkdir(parents=True, exist_ok=True)
+        with open(Path(internal_dir) / "INTERNAL_RAW_PREDICTIONS.csv", "w", encoding="utf-8", newline="\n") as f:
+            w = csv.DictWriter(f, fieldnames=list(internos[0]), lineterminator="\n"); w.writeheader(); w.writerows(internos)
     return matriz
 
 
@@ -617,5 +633,9 @@ def verificar(contrato, internas, raw, saida, web):
 if __name__ == "__main__":
     import warnings
     warnings.filterwarnings("ignore", category=UserWarning)
-    args = [a for a in sys.argv[1:] if a != "--check"]
-    (verificar if "--check" in sys.argv else main)(*args)
+    interno = next((a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--internal-dir=")), None)
+    args = [a for a in sys.argv[1:] if a != "--check" and not a.startswith("--internal-dir=")]
+    if "--check" in sys.argv:
+        verificar(*args)
+    else:
+        main(*args, internal_dir=interno)
