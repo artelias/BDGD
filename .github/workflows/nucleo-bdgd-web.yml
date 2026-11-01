@@ -116,7 +116,8 @@ jobs:
       - name: E2E (desktop, Android e iPhone estreito emulado)
         env:
           CI: "1"
-        run: npx playwright test
+        # reporter github: cada falha vira anotação pública do check-run (os logs do job exigem autenticação)
+        run: npx playwright test --reporter=list,github,html
       - name: Evidências Playwright (relatório, capturas e traces de falhas)
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
