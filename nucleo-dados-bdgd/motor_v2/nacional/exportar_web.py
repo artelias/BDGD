@@ -226,7 +226,8 @@ def run(saida):
                 id=modelo, algoritmo=mid, escopo=modelo.split(':')[1] if modelo and ':' in modelo else ('individual' if mid in BASELINES else None),
                 tipo='baseline' if mid in BASELINES else 'reconciliacao' if r['fonte'] == 'consumidores_reconciliado' else 'ml',
                 base_da_projecao=r['base_da_projecao'] or None, mecanismo=MECANISMO.get(mid) if mid else None,
-                justificativa=dec.get('motivo_experimental') if r['base_da_projecao'] == 'melhor_modelo_experimental' else dec.get('motivo_fallback'),
+                justificativa=dec.get('motivo_experimental') if r['base_da_projecao'] == 'melhor_modelo_experimental' else
+                '; '.join(x for x in (dec.get('motivo_fallback'), f"ML nao escolhido: {dec['motivo_experimental']}" if dec.get('motivo_experimental') else None) if x) or None,
                 nota=dec.get('nota_projecao') or None, melhor_baseline=r['melhor_baseline'] or None, melhor_ml=r['melhor_ml'] or None,
                 homologado=False, motivo_nao_homologado=dec.get('motivo_nao_homologado') or '2 origens independentes < 3 exigidas; point-in-time sem vintage comprovada',
                 coeficientes=coefs.get((d, o)) if r['fonte'] == 'nivel_B' and mid in ('ols', 'ridge', 'elastic_net', 'poisson') else
