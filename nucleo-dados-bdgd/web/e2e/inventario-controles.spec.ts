@@ -32,9 +32,16 @@ for (const [route, ready] of states) test(`inventário observado ${route}`, asyn
     await expect(page.getByTestId("col-filtro-area")).toBeVisible();
     rows.push(...await controles(page, route + " · filtro de coluna"));
   }
-  for (const summary of await page.locator("details:not([open]) > summary:visible").all()) {
-    await summary.click();
-    await expect(summary.locator("..")).toHaveAttribute("open", "");
+  // Cada resumo fechado precisa abrir o próprio <details>. O alvo é marcado antes do clique: o localizador
+  // `details:not([open]) > summary` deixa de apontar para o elemento assim que ele abre (o teste falhava com
+  // "element(s) not found" ou conferia outro <details>).
+  const fechados = page.locator("details:not([open]) > summary:visible");
+  for (let i = 0, n = await fechados.count(); i < n && await fechados.count() > 0; i++) {
+    await fechados.first().evaluate((s) => s.parentElement!.setAttribute("data-qa-alvo", ""));
+    const alvo = page.locator("details[data-qa-alvo]");
+    await alvo.locator(":scope > summary").click();
+    await expect(alvo).toHaveAttribute("open", "");
+    await alvo.evaluate((d) => d.removeAttribute("data-qa-alvo"));
   }
   if (route === "/previsoes/") await expect(page.getByRole("combobox", { name: "Família do motor", exact: true })).toBeVisible();
   rows.push(...await controles(page, route + " · detalhes"));
