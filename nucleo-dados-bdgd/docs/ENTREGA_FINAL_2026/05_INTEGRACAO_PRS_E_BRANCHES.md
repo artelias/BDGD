@@ -59,6 +59,8 @@ Durante esta etapa, a branch do Codex ficou em `de225f5`. O worktree dele (`wt-q
 - `e2e/matriz-fonte.spec.ts` e `e2e/panorama-comparador-fontes.spec.ts`;
 - documentos de homologação.
 
+A correção da Matriz que estava em andamento ali foi **portada sem alteração** para esta branch, com os dois testes de dados dele (commit `f0eaa45`). Ela bloqueia a exportação do CSV enquanto a fonte de uma coluna filtrada carrega ou falhou e mostra o alerta de fonte indisponível. Como o diff de `Matriz.tsx` é idêntico, o merge futuro do commit dele será limpo.
+
 Quando ele publicar novos commits, o caminho é fazer o merge de `origin/codex/qa-frontend-homologacao-20261031` nesta branch e repetir as baterias de `06_TESTES_E_CI.md`. Os defeitos já corrigidos por ele (LAT-01 P1, LAT-02, FIL-01, INV-01 P0, INV-02 P1, QA-01) estão nesta integração com as regressões dele.
 
 ## Ordem de merge recomendada para a branch principal
