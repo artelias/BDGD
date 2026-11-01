@@ -1,0 +1,102 @@
+From 7a6faf9ce7b14359bc054af1733b665792c61a3f Mon Sep 17 00:00:00 2001
+From: artelias <arthur.henrique.elias@gmail.com>
+Date: Sat, 31 Oct 2026 21:09:46 -0300
+Subject: [PATCH 1/3] feat(cenarios): diagnostico interno com o valor continuo
+ (--internal-dir), fora das raizes publicas
+
+O produto publico nao muda: regenerado com e sem --internal-dir, os 7 arquivos sao identicos; --check
+com scikit-learn 1.8.0 (versao fixada) aprova as 29 metricas. A gravacao sob web/, motor_cenarios/saida,
+output-publicavel e output-historico e recusada.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ nucleo-dados-bdgd/motor_cenarios/cenarios.py  | 26 ++++++++++++++++---
+ .../test_diagnostico_interno.py               | 21 +++++++++++++++
+ 2 files changed, 44 insertions(+), 3 deletions(-)
+ create mode 100644 nucleo-dados-bdgd/motor_cenarios/test_diagnostico_interno.py
+
+diff --git a/nucleo-dados-bdgd/motor_cenarios/cenarios.py b/nucleo-dados-bdgd/motor_cenarios/cenarios.py
+index a10a714..abd180b 100644
+--- a/nucleo-dados-bdgd/motor_cenarios/cenarios.py
++++ b/nucleo-dados-bdgd/motor_cenarios/cenarios.py
+@@ -395,7 +395,16 @@ def contagem_publica(v, onde):
+     return int(v)
+ 
+ 
+-def main(contrato, internas, raw, saida, web=None):
++def main(contrato, internas, raw, saida, web=None, internal_dir=None):
++    """internal_dir (optional): writes INTERNAL_RAW_PREDICTIONS.csv with the continuous prediction next to the published value, for the
++    statistical diagnostics (Motor V2). Refused under a public root; the published products are identical with or without it."""
++    if internal_dir:
++        pasta = Path(internal_dir).resolve()
++        raiz = Path(__file__).resolve().parents[1]
++        for publica in (raiz / "web", raiz / "motor_cenarios" / "saida", raiz / "output-publicavel", raiz / "output-historico"):
++            if pasta == publica or publica in pasta.parents:
++                raise ValueError(f"diagnostico interno sob raiz publica recusado: {pasta}")
++    internos = []
+     saida = Path(saida); saida.mkdir(parents=True, exist_ok=True)
+     series, empresas, unidades = carregar_contrato(contrato)
+     pot, diag_pot = carregar_potencia(internas, series)
+@@ -441,6 +450,9 @@ def main(contrato, internas, raw, saida, web=None):
+                 # Public numbers follow the physical nature: discrete counts are integers (half-up, declared); extension and power keep their decimals.
+                 pub = [mc.physical_prediction(v, natureza) if discreta else round(v, 3) for v in traj] if traj else None
+                 linha[slot] = pub
++                if traj:                                     # continuous value kept for diagnostics only; the public number is `pub`
++                    internos.extend({"conceito": conc, "metrica": metr, "dist": d, "cenario": slot, "modelo": m, "ano": a, "raw_prediction": v,
++                                     "physical_prediction": p, "rounding": "half_up" if discreta else ""} for a, v, p in zip(HORIZONTE, traj, pub))
+                 cen_rows.append({"conceito": conc, "metrica": metr, "natureza": natureza, "dist": d, "empresa": empresas.get(d, ""), "cenario": slot, "modelo": m or "",
+                                  **{str(a): (v if traj else "") for a, v in zip(HORIZONTE, pub or [None] * 5)},
+                                  "base_2025": hist[-1][1], "anos_historico": len(s),
+@@ -526,6 +538,10 @@ def main(contrato, internas, raw, saida, web=None):
+         Path(web).parent.mkdir(parents=True, exist_ok=True)
+         txt = json.dumps(web_doc, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
+         Path(web).write_text(txt, encoding="utf-8", newline="\n")
++    if internal_dir and internos:
++        Path(internal_dir).mkdir(parents=True, exist_ok=True)
++        with open(Path(internal_dir) / "INTERNAL_RAW_PREDICTIONS.csv", "w", encoding="utf-8", newline="\n") as f:
++            w = csv.DictWriter(f, fieldnames=list(internos[0]), lineterminator="\n"); w.writeheader(); w.writerows(internos)
+     return matriz
+ 
+ 
+@@ -617,5 +633,9 @@ def verificar(contrato, internas, raw, saida, web):
+ if __name__ == "__main__":
+     import warnings
+     warnings.filterwarnings("ignore", category=UserWarning)
+-    args = [a for a in sys.argv[1:] if a != "--check"]
+-    (verificar if "--check" in sys.argv else main)(*args)
++    interno = next((a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--internal-dir=")), None)
++    args = [a for a in sys.argv[1:] if a != "--check" and not a.startswith("--internal-dir=")]
++    if "--check" in sys.argv:
++        verificar(*args)
++    else:
++        main(*args, internal_dir=interno)
+diff --git a/nucleo-dados-bdgd/motor_cenarios/test_diagnostico_interno.py b/nucleo-dados-bdgd/motor_cenarios/test_diagnostico_interno.py
+new file mode 100644
+index 0000000..2a9f4f7
+--- /dev/null
++++ b/nucleo-dados-bdgd/motor_cenarios/test_diagnostico_interno.py
+@@ -0,0 +1,21 @@
++"""Diagnóstico interno do Motor V2 (--internal-dir): o valor contínuo fica fora das raízes públicas e não altera o produto publicado."""
++import sys
++import tempfile
++import unittest
++from pathlib import Path
++
++sys.path.insert(0, str(Path(__file__).parent))
++import cenarios as C  # noqa: E402
++
++RAIZ = Path(__file__).resolve().parents[1]
++
++
++class DiagnosticoInterno(unittest.TestCase):
++    def test_recusa_gravar_sob_raiz_publica(self):
++        for publica in (RAIZ / "web" / "public" / "data" / "x", RAIZ / "motor_cenarios" / "saida", RAIZ / "output-publicavel" / "y", RAIZ / "output-historico"):
++            with self.assertRaises(ValueError, msg=str(publica)):
++                C.main("contrato", "internas", "raw", tempfile.gettempdir(), None, internal_dir=str(publica))
++
++
++if __name__ == "__main__":
++    unittest.main()
+-- 
+2.53.0.windows.2
+

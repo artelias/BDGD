@@ -1,62 +1,106 @@
-# Motor V2 — compatibilidade com os PRs #17, #18, #19 e #20 (2026-10-30)
+# Motor V2 — compatibilidade com os PRs #17, #18, #19 e #20 (2026-10-31)
 
-Análise **somente leitura**, feita sobre as branches remotas buscadas em 2026-10-30. Nada foi mesclado nem alterado nas branches dos outros PRs.
-Método: grafo de ancestrais (`git merge-base`), listas de arquivos por PR (`git diff --name-status`) e simulação de merge sem tocar a árvore de trabalho (`git merge-tree --write-tree`).
+Análise sobre as cabeças **atuais** dos PRs, buscadas em 2026-10-31 (`refs/pull/N/head`):
 
-## 1. Estrutura da pilha
+| PR | Branch | Cabeça |
+|---|---|---|
+| #17 | `feat/motor-cenarios-publicacao-20261028` | `f0ad962` |
+| #18 | `feat/metodologia-modelos-por-empresa-20261028` | `74190e2` |
+| #19 | `fix/natureza-fisica-contagens-inteiras-20261029` | `09cd749` (avançou desde 30/10: `b60f3ae` e `09cd749`) |
+| #20 | `fix/alternancia-tema-claro-escuro-20261029` | `10be0e0` (avançou desde 30/10: `33d84b7`, `5cf4e1d` e `10be0e0`) |
 
-```
-main ── … ── #16 fix/limpeza-paineis-seletores ── #17 feat/motor-cenarios-publicacao ──┬── #18 feat/metodologia-modelos-por-empresa ── Motor V2 (13 commits)
-                                                                                       ├── #19 fix/natureza-fisica-contagens-inteiras   (1 commit)
-                                                                                       └── #20 fix/alternancia-tema-claro-escuro        (4 commits)
-```
+Nenhuma dessas branches foi alterada.
 
-- A branch do Motor V2 **descende** de #17 e #18 (e de #16). O PR do Motor V2 deve usar como base a branch do **#18** (`feat/metodologia-modelos-por-empresa-20261028`), seguindo a convenção de PRs empilhados já usada em #17–#20. O diff do PR fica restrito aos 13 commits próprios.
-- #19 e #20 saem do #17 **em paralelo**: não contêm o #18 nem o Motor V2.
+**Método:**
+- simulação de merge sem tocar árvore alguma (`git merge-tree --write-tree`);
+- validação executável da árvore combinada (entrega + #19), num worktree temporário destacado e descartado ao fim.
+
+## 1. Branch de entrega do Motor V2
+
+O PR usa a branch **`feat/motor-v2-entrega-20261031`**, criada a partir do #18 (`74190e2`). Ela contém **somente** `nucleo-dados-bdgd/motor_v2/**` e `.github/workflows/motor-v2-sintetico.yml`.
+
+A branch de trabalho `feat/motor-v2-granular-territorial` fica preservada, com todo o histórico (`badfd24`). Ela carregava, de commits anteriores, 25 arquivos fora de `motor_v2/`:
+- **16 são hoje idênticos ao #19.** Ficam com o #19.
+- **9 divergem do #19:**
+  - 7 dos oito conflitos originais: `motor_cenarios/cenarios.py`, `motor_cenarios/test_publico.py`, quatro arquivos de `motor_cenarios/saida/` e `web/public/data/previsoes/cenarios-motor.json` (o oitavo conflito era `motor_v2/tests/test_metric_contract.py`);
+  - `motor_cenarios/saida/BACKTEST_MODELOS_POR_HORIZONTE.csv`, que só a branch do Motor V2 alterava;
+  - `web/src/lib/cenarios-motor.ts`, que mesclava sem conflito.
+
+Nenhum deles entra na entrega; ver §3.
+
+Dentro de `motor_v2/`:
+- **`metric_contract.py` e `__init__.py`** são usados pelo código do Motor V2 e são **idênticos byte a byte** ao #19: o merge é limpo em qualquer ordem.
+- **`test_metric_contract.py`** agora é idêntico ao do #19. Os 7 testes que só o Motor V2 tinha foram para `test_metric_contract_motor_v2.py`, sem perda: 25 + 7 = 32.
+- **`audit_public_products.py` e `test_public_audit.py`** só auditam produtos públicos reais e pertencem ao #19. Saem da entrega e chegam com o #19, já classificados como `PUBLICAS` em `tests/suites.py`.
 
 ## 2. Matriz
 
-| PR | Relação com o Motor V2 | Arquivos próprios | Sobreposição com o Motor V2 | Conflito de merge (simulado) | Veredicto |
-|---|---|---|---|---|---|
-| #17 Motor de Expansão: cenários e integridade do contrato nacional | **Ancestral** (base da pilha) | 50 vs #16 | nenhuma a resolver | não | Precisa entrar antes. Sem ele o Motor V2 não aplica. |
-| #18 Metodologia por distribuidora, métrica e modelo | **Ancestral** (base direta do PR) | 3 vs #17 | nenhuma a resolver | não | Precisa entrar antes (ou ser a base do PR). |
-| #19 Contagens inteiras e contrato de natureza física no dashboard | **Irmão divergente** (mesma origem #17) | 32 | 20 arquivos idênticos; **12 divergentes** | **sim: 8 arquivos** | **Incompatível sem decisão** (ver §3). |
-| #20 Alternância estável tema claro/escuro | Irmão independente | 3 (`web/`) | nenhuma | não (nem com #19) | Compatível. Pode entrar em qualquer ordem. |
+| | Relação | Conflitos simulados | Verificação executável | Veredicto |
+|---|---|---|---|---|
+| **Motor V2 × #17** | ancestral | 0 | — | Compatível; #17 entra antes. |
+| **Motor V2 × #18** | ancestral (base do PR) | 0 | auditoria completa sobre a base #18: 245/245 | Compatível; #18 entra antes ou é a base. |
+| **Motor V2 × #19** | irmão | **0** (eram 8 na branch de trabalho) | árvore combinada: runner sintético 152/152 com `D:\` bloqueado; `test_public_audit` 3/3; testes do `motor_cenarios` OK | **Compatível no texto; incompatível no CI do #19 até aplicar o patch C** (§4). |
+| **Motor V2 × #20** | irmão, só `web/` | 0 | — | Compatível em qualquer ordem. |
+| #19 × #20 | irmãos | 0 | — | Compatíveis. |
+| (Motor V2 + #19) × #20 | — | 0 | — | Compatíveis. |
 
-Conflitos entre os próprios #19 e #20: nenhum.
+Os testes do dashboard (Node, Playwright) não foram executados aqui; são responsabilidade do Codex.
 
-## 3. #19 × Motor V2 — o que colide
+## 3. Resolução dos oito conflitos com o #19
 
-A branch do Motor V2 carrega **40 arquivos fora de `motor_v2/`** (web, `motor_cenarios`, `etl`, `motor_universal`), herdados dos commits anteriores `d6729d3` e `f2bb937`. O commit único do #19 (`c544e7b`, "independente do Motor V2") foi extraído da mesma linha de trabalho e **diverge** dela:
+**Princípio: uma única implementação do contrato físico público, a do #19.** O Motor V2 não leva a sua cópia antiga. O que ele tinha de complementar vira patch **sobre** o #19, testado.
 
-| Arquivo | Estado | Observação |
+| # | Arquivo | Natureza | Resolução |
+|---|---|---|---|
+| 1 | `motor_v2/tests/test_metric_contract.py` | teste do contrato | **Eliminado:** arquivo idêntico ao #19; extras em `test_metric_contract_motor_v2.py`. |
+| 2 | `motor_cenarios/cenarios.py` | gerador do produto público | **#19 prevalece:** histórico e `base_2025` inteiros, `contagem_publica`, folga de 1 unidade limitada (`FOLGA_MAXIMA`), `comparar_produtos`. Do Motor V2 entram só os complementos, como patches A e B. |
+| 3 | `motor_cenarios/test_publico.py` | teste público | **#19 prevalece;** o teste do erro físico vai junto com o patch B. |
+| 4–7 | `motor_cenarios/saida/{CENARIOS_…, MANIFESTO.json, MATRIZ_MODELO_POR_METRICA.csv, TABELA_FINAL_METRICA_DISTRIBUIDORA.csv}` | **produtos derivados** | **Nunca mesclar à mão:** ficam os do #19. Se o patch B for aceito, regenerar com `cenarios.py` (scikit-learn 1.8.0) e aprovar `--check`. |
+| 8 | `web/public/data/previsoes/cenarios-motor.json` | **produto derivado** (dashboard) | Idem; regenerar só se o patch B for aceito. |
+
+**Complementares × incompatíveis**
+
+| Alteração | Classe | Evidência |
 |---|---|---|
-| `motor_v2/__init__.py`, `metric_contract.py`, `audit_public_products.py`, `tests/test_public_audit.py` | idênticos | Sem conflito. |
-| `motor_v2/tests/test_metric_contract.py` | **conflito** | O Motor V2 é superconjunto (281 contra 215 linhas; o #19 não tem nada que falte aqui). Resolver com a versão do Motor V2. |
-| `motor_cenarios/cenarios.py` | **conflito** | Implementações complementares do mesmo contrato. #19: `contagem_publica` (histórico publicado como inteiro, nunca `123.0`) e tolerância de ±1 em contagens inteiras na comparação `--check`. Motor V2: `fisico()` (erro físico no backtest) e diagnóstico interno `INTERNAL_RAW_PREDICTIONS.csv`. Exige **união manual** das duas. |
-| `motor_cenarios/test_publico.py` | **conflito** | Mesma união manual (+11/−17). |
-| `motor_cenarios/saida/*` (3 arquivos) e `web/public/data/previsoes/cenarios-motor.json` | **conflito** | Saídas **geradas**. Não mesclar à mão: resolver o código e regenerar com `cenarios.py … --check`. |
-| `motor_cenarios/relatorio.py`, `web/src/lib/cenarios-motor.ts` | mescla automática | Diferenças pequenas (+6/−1, +1/−2). |
-| `.github/workflows/nucleo-bdgd-web.yml`, `docs/homologacao-natureza-fisica/HOMOLOGACAO.md` | só no #19 | Entram sem conflito. |
+| #19: histórico inteiro, `base_2025` inteira, folga limitada, `test_tolerancia` | adotada (implementação única) | — |
+| **Patch A:** `--internal-dir`, valor contínuo bruto em diagnóstico interno | **complementar, sem efeito público** | 7 arquivos públicos regenerados idênticos com e sem a opção; `--check` OK com scikit-learn 1.8.0 (29 métricas; 2 de 16.045 contagens na folga de 1); recusa gravar sob `web/`, `motor_cenarios/saida`, `output-*` |
+| **Patch B:** `fisico()`, erro pós-arredondamento (`mae_fisico`, `wape_fisico`, `vies_fisico`, `fisico_motivo`) ao lado do contínuo | **complementar e aditivo, com efeito público** | sem os campos novos, o JSON regenerado é idêntico; CSVs idênticos; 168 modelos de contagem ganham o erro físico e 16 o motivo de previsão negativa; contínuos não ganham o campo; o teste novo passa com o produto regenerado e reprova com o atual (por desenho) |
+| Versão antiga do Motor V2 de `main`/`verificar`: histórico não convertido em inteiro, `base_2025` fora do gate e comparação `--check` sem a folga limitada de contagens | **incompatível; descartada** | substituída pela do #19 |
+| Texto público de `tres_cenarios`: #19 "Três cenários **validados** retrospectivamente" × Motor V2 "comparados em backtest" | **incompatível (semântica)** | decisão humana e do Codex (UI). O Motor V2 não declara validação. |
+| Status público `simulacao_validada_retrospectivamente` no CSV do #19 | mesma questão semântica | decisão humana |
 
-### Risco de CI que a mescla cria (sem conflito textual)
+Patches em `integracao/pr19/`, gerados com `git format-patch` e conferidos com `git am --3way` sobre o #19 puro, sem conflito:
+- `0001` = A;
+- `0002` = B, que também exige tipar os campos em `web/src/lib/cenarios-motor.ts`, arquivo do Codex;
+- `0003` = C (CI, §4).
 
-O #19 acrescenta ao `nucleo-bdgd-web.yml` o passo `python -m unittest discover -s motor_v2/tests -v`, que roda **todas** as suítes de `motor_v2/tests`. No #19 isolado são 2 arquivos. Com o Motor V2 incorporado serão 19 arquivos de teste (18 já versionados e a nova suíte de erro retrospectivo), vários dos quais exigem `D:\`, DuckDB, pyogrio e a base local, e o ambiente desse workflow só instala `motor_universal/requirements-ml.txt`. **O passo passaria a falhar.** A correção é restringir o passo às duas suítes de produtos públicos (`-p test_metric_contract.py` e `-p test_public_audit.py`), como já faz o workflow sintético do Motor V2 por lista explícita. Essa alteração fica no #19 (ou num commit de reconciliação); **não foi feita aqui**.
+## 4. CI: separação de suítes
 
-## 4. Ordens de integração possíveis
+**Problema.** O #19 acrescenta a `nucleo-bdgd-web.yml` o passo `python -m unittest discover -s motor_v2/tests -v`. Hoje, no #19 isolado, são 2 arquivos. Com o Motor V2 na árvore, o passo descobre também as suítes locais.
 
-| Ordem | Efeito | Avaliação |
+**Medido na árvore combinada** com `D:\` bloqueado (`emular_ci`):
+- passo atual: 248 testes, **5 erros**;
+- passo proposto (patch C, só `-p test_metric_contract.py` e `-p test_public_audit.py`): 25 + 3 testes, todos OK.
+
+**Separação implementada na entrega** (`motor_v2/tests/suites.py`, fonte única):
+
+| Grupo | Suítes | Onde roda |
 |---|---|---|
-| **A (recomendada).** #17 → #18 → #19 → #20 → Motor V2 | Motor V2 rebaseado depois do #19. Nos arquivos públicos adota-se a versão do #19, e o que só existe no Motor V2 (`fisico()`, diagnóstico interno) vai para um PR pequeno à parte ou é descartado por decisão sua. O diff do Motor V2 fica **só em `motor_v2/` + workflow sintético**, sem tocar produtos públicos. | Deixa o PR do Motor V2 com zero alteração em produtos públicos. Exige a decisão do §5. |
-| B. #17 → #18 → Motor V2 → #19 | #19 passa a conflitar com o que já está na base (8 arquivos, §3) e o passo de CI acima quebra. | Mais retrabalho no PR menor. |
-| C. Motor V2 mantido como está, antes de qualquer outro | Carrega as 40 alterações públicas junto. | Contraria "não tocar produtos públicos" e mantém o conflito. |
+| `SINTETICAS` | 12 (152 testes) | GitHub Actions, `motor-v2-sintetico.yml` → `python -m motor_v2.tests.suites` |
+| `LOCAIS` | 8 (93 testes) | auditoria completa local, `python -m motor_v2.nacional.testes` |
+| `PUBLICAS` | `test_public_audit` (PR #19) | workflow da web do #19 |
+| Dashboard | Node/Playwright | Codex (fora do Motor V2) |
 
-## 5. Decisões que dependem de você
+**Salvaguardas** (nenhum teste foi enfraquecido):
+- `test_suites` reprova arquivo de teste sem grupo, nome em dois grupos, suíte listada e ausente, ou workflow com descoberta sem filtro.
+- O runner reprova suíte que não carregue nenhum teste.
+- `emular_ci` aborta se o bloqueio de `D:\` não estiver de fato ativo.
 
-1. **Divergência #19 × Motor V2 em `motor_cenarios/cenarios.py`.** Unir as duas (histórico inteiro do #19 + erro físico e diagnóstico interno do Motor V2) ou adotar só a do #19.
-2. **Escopo do PR do Motor V2.** Manter a branch como está (inclui as 40 alterações públicas) ou, após o #19, reduzir o diff a `motor_v2/` + workflow (recomendado).
-3. **Restrição do passo de CI do #19** às duas suítes públicas antes da incorporação do Motor V2.
+## 5. Ordem de integração recomendada
 
-## 6. Não avaliado
+1. **#17 → #18** (ancestrais).
+2. **#19 com o patch C** (CI), e com A e B se aprovados. Se B for aceito: regenerar os produtos derivados com scikit-learn 1.8.0, aprovar `--check` e tipar o TS (Codex).
+3. **#20** (qualquer posição).
+4. **Motor V2** (`feat/motor-v2-entrega-20261031`). Merge limpo antes ou depois de #19 e #20.
 
-Não foram executados testes do dashboard (Node, Playwright) nem builds das branches #19 e #20. A compatibilidade acima é de **código e árvore de arquivos** (merge simulado), não de execução integrada. O PR #15 (`fix/ux-panorama-evolucao-comparador-clean`) fora da lista pedida **não** é ancestral do Motor V2 (13 commits próprios) e não foi analisado.
+Se o Motor V2 entrar antes do #19 sem o patch C, o workflow da web do #19 passa a falhar (§4).

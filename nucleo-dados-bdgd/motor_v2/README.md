@@ -1,6 +1,8 @@
 # Motor V2 — execução isolada e auditável
 
-Esta entrega implementa a infraestrutura e o piloto UCBT; **não é a conclusão do motor nacional completo**. O motor V1, seus resultados e o dashboard não são alterados. A base é o commit 74190e2 do PR #18.
+> **Comece por [MOTOR_V2_RELATORIO_CONSOLIDADO.md](MOTOR_V2_RELATORIO_CONSOLIDADO.md)** (estado, metodologia, erros, limitações e política de publicação), [REPRODUCAO_MOTOR_V2.md](REPRODUCAO_MOTOR_V2.md) e [COMPATIBILIDADE_PRS.md](COMPATIBILIDADE_PRS.md). Tudo é experimental e interno; nada é homologado nem publicado. As seções abaixo documentam o executor e o piloto UCBT que deram origem à execução nacional.
+
+O motor V1, seus resultados e o dashboard não são alterados. A base é o commit 74190e2 do PR #18.
 
 ## Execução sem agente
 

@@ -17,10 +17,11 @@ from .relatorio import write_csv
 from ..runner import ROOT, atomic, digest
 
 OUT = ROOT_OUT / 'testes'
-# suites that read no local data (D:/, knowledge base): run on Linux CI (.github/workflows/motor-v2-sintetico.yml); checked by
-# emulating the absence of those paths. The others need the local data and run only in this full local audit.
-SINTETICOS = ('test_hierarquia', 'test_erro_retrospectivo', 'test_auditoria_final', 'test_nacional', 'test_baselines', 'test_conj_plan', 'test_future',
-              'test_metric_contract', 'test_public_audit', 'test_temporal', 'test_vintage')
+# where each suite runs (GitHub Actions / local audit / PR #19 public products): single source of truth in motor_v2/tests/suites.py
+from ..tests.suites import LOCAIS, PUBLICAS, SINTETICAS as _S
+
+SINTETICOS = tuple(_S)
+GRUPO = {**{n: 'sintetica' for n in _S}, **{n: 'local' for n in LOCAIS}, **{n: 'publica_pr19' for n in PUBLICAS}}
 
 
 class _Result(unittest.TextTestResult):
@@ -32,7 +33,7 @@ class _Result(unittest.TextTestResult):
 
     def _add(self, test, status, detail=None):
         mod, cls, name = (test.id().split('.')[-3:] + ['', '', ''])[:3]
-        self.rows.append(dict(arquivo=mod, classe=cls, teste=name, resultado=status, ci_linux_sintetico=mod in SINTETICOS, segundos=round(time.monotonic() - self._t.get(test.id(), time.monotonic()), 3),
+        self.rows.append(dict(arquivo=mod, classe=cls, teste=name, resultado=status, ci_linux_sintetico=mod in SINTETICOS, grupo=GRUPO.get(mod, 'SEM_CLASSIFICACAO'), segundos=round(time.monotonic() - self._t.get(test.id(), time.monotonic()), 3),
                               detalhe=(detail or '')[-500:]))
 
     def addSuccess(self, test):
@@ -60,7 +61,8 @@ def run():
                            pacotes={n: importlib.metadata.version(n) for n in ('scikit-learn', 'numpy', 'scipy', 'duckdb', 'pyarrow')}),
              ci_linux=dict(workflow='.github/workflows/motor-v2-sintetico.yml', suites=list(SINTETICOS),
                            testes=sum(1 for r in res.rows if r['ci_linux_sintetico']),
-                           nota='suites com dados reais rodam so nesta auditoria local'))
+                           nota='suites com dados reais rodam so nesta auditoria local'),
+             por_grupo={g: sum(1 for r in res.rows if r['grupo'] == g) for g in sorted({r['grupo'] for r in res.rows})})
     atomic(OUT / 'MANIFESTO_TESTES.json', m)
     return m
 

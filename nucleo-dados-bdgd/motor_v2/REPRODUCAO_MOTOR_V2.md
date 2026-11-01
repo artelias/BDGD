@@ -1,33 +1,68 @@
-# Motor V2 — como reproduzir (2026-10-30)
+# Motor V2 — como reproduzir (2026-10-31)
 
 O Motor V2 é **ferramenta local de pesquisa**, sem passo de deploy. O dashboard e os produtos públicos não leem nada de `motor_v2/`, e nenhum artefato daqui é exigido pelo deploy. Os resultados nacionais continuam **internos e experimentais**, sem homologação científica.
 
+## 0. Onde cada suíte roda (fonte única: `motor_v2/tests/suites.py`)
+
+| Grupo | Suítes | Comando | Onde |
+|---|---|---|---|
+| `SINTETICAS` | 12 (152 testes) | `python -m motor_v2.tests.suites` | qualquer máquina; GitHub Actions (`motor-v2-sintetico.yml`) |
+| `LOCAIS` | 8 (93 testes) | `python -m motor_v2.nacional.testes` (roda **todas** as suítes) | só na máquina com a base local |
+| `PUBLICAS` | `test_public_audit` | workflow da web do PR #19 | auditam os produtos públicos reais; chegam com o #19 |
+| Dashboard | Node/Playwright | — | Codex; fora do Motor V2 |
+
+`python -m motor_v2.tests.suites --listar` mostra a classificação. `test_suites` reprova:
+- arquivo de teste sem grupo;
+- nome em dois grupos;
+- suíte listada mas ausente;
+- workflow que descubra todas as suítes sem filtro.
+
+O runner também reprova uma suíte que não carregue nenhum teste.
+
 ## 1. Testes sintéticos (qualquer máquina, Linux inclusive, sem dados locais)
 
-É o que o CI roda (`.github/workflows/motor-v2-sintetico.yml`, 11 suítes, 150 testes). Sem acesso a `D:\`, à base BDGD ou a rede.
+É exatamente o que o CI roda. Sem acesso a `D:\`, à base BDGD ou à rede.
 
 ```bash
 cd nucleo-dados-bdgd
 python3 -m venv .venv-motor-v2
 .venv-motor-v2/bin/python -m pip install -r motor_universal/requirements.txt -r motor_universal/requirements-ml.txt duckdb==2.0.0 pyogrio==0.13.0
-for t in test_hierarquia test_erro_retrospectivo test_auditoria_final test_nacional test_baselines test_conj_plan test_future \
-         test_metric_contract test_public_audit test_temporal test_vintage; do
-  .venv-motor-v2/bin/python -m unittest discover -s motor_v2/tests -p "$t.py" -v
-done
+.venv-motor-v2/bin/python -m motor_v2.tests.suites
 ```
 
 No Windows, troque `.venv-motor-v2/bin/python` por `.venv-motor-v2\Scripts\python.exe`.
 
+**Emulação do CI na máquina local** (prova de que nenhuma suíte sintética depende de `D:\`):
+
+```bash
+python -m motor_v2.tests.emular_ci
+```
+
+O emulador:
+- copia o código para um diretório temporário fora do disco de dados;
+- bloqueia toda leitura sob `D:/` (só o interpretador e seus `site-packages` continuam legíveis, como o venv do Actions);
+- verifica que o bloqueio está ativo antes de rodar.
+
+Ele aceita outro comando, por exemplo para avaliar um passo de workflow:
+
+```bash
+python -m motor_v2.tests.emular_ci --incluir web/public/data --incluir motor_cenarios -- -m unittest discover -s motor_v2/tests -p test_public_audit.py
+```
+
 ## 2. Auditoria completa (somente na máquina com a base local)
 
-Depende de `D:\NUCLEO_BDGD_2025` (caminhos fixos no código de `motor_v2/`, que é ferramenta local) e dos resultados nacionais já calculados em `D:\NUCLEO_BDGD_2025\motor_v2\nacional`. Interpretador: `D:\NUCLEO_BDGD_2025\motor_v2\.venv` (Python 3.12.2, scikit-learn 1.9.1, DuckDB 2.0.0, pyarrow 26.0.0).
+Depende de `D:\NUCLEO_BDGD_2025` (caminhos fixos no código de `motor_v2/`, que é ferramenta local) e dos resultados nacionais já calculados em `D:\NUCLEO_BDGD_2025\motor_v2\nacional`.
+
+**Interpretador:** `D:\NUCLEO_BDGD_2025\motor_v2\.venv` (Python 3.12.2, scikit-learn 1.9.1, DuckDB 2.0.0, pyarrow 26.0.0). Esse venv carrega parte dos pacotes (DuckDB, psutil) de `D:\NUCLEO_BDGD_2022_2024\.venv` por `.pth`; as versões efetivas ficam em `MANIFESTO_TESTES.json`.
+
+**Gerador público:** `motor_cenarios/cenarios.py` (PR #19) deve rodar com scikit-learn **1.8.0** (`motor_universal/requirements-ml.txt`, por exemplo `D:\NUCLEO_BDGD_2025\.venv-motor`). Com 1.9.1 o HistGradientBoosting diverge do produto publicado.
 
 ```bash
 cd nucleo-dados-bdgd
 D:/NUCLEO_BDGD_2025/motor_v2/.venv/Scripts/python.exe -m motor_v2.nacional.testes
 ```
 
-Resultado esperado: 243 testes, 243 OK. A matriz fica em `D:\NUCLEO_BDGD_2025\motor_v2\nacional\testes\MATRIZ_TESTES.csv`.
+Resultado esperado: **245 testes, 245 OK** (152 sintéticos e 93 locais). A matriz fica em `D:\NUCLEO_BDGD_2025\motor_v2\nacional\testes\MATRIZ_TESTES.csv`, com o grupo de cada teste.
 
 ## 3. Regenerar a reconciliação e os relatórios (sem retreinar nada)
 
@@ -45,14 +80,20 @@ $PY -m motor_v2.nacional.consolidar --repo-copy motor_v2/reports/nacional   # c�
 
 Cada passo é idempotente: executá-lo duas vezes produz arquivos de saída com SHA-256 idêntico.
 
-**Conferências:** `VERIFICACOES_INTEGRIDADE.json` com `ok: true`; `CONTRATO_HIERARQUIA_CONSUMIDORES.json` com `violacoes_remanescentes: 0` e `pares_por_dist_exigidos: 15`; `FONTE_CANONICA_CONSUMIDORES_INTERNA.json` com 1.545 linhas e 103 DIST.
+**Conferências:**
+- `VERIFICACOES_INTEGRIDADE.json` com `ok: true`;
+- `CONTRATO_HIERARQUIA_CONSUMIDORES.json` com `violacoes_remanescentes: 0` e `pares_por_dist_exigidos: 15`;
+- `FONTE_CANONICA_CONSUMIDORES_INTERNA.json` com 1.545 linhas e 103 DIST.
 
 ## 4. O que **não** é reproduzido aqui
 
-A extração das publicações BDGD, a montagem do painel e os comparativos de ML (≈ 20 mil candidatos) levaram, medidos na execução nacional, ≈ 2,8 h de extração e ≈ 2,0 h de comparativos na máquina local, e dependem da base. Eles foram executados uma vez e **não são repetidos**. O PR traz apenas o código, os testes, a metodologia e os relatórios compactos (CSV e JSON; nenhum Parquet).
+A extração das publicações BDGD, a montagem do painel e os comparativos de ML (≈ 20 mil candidatos) dependem da base. Medidos na execução nacional, levaram ≈ 2,8 h de extração e ≈ 2,0 h de comparativos na máquina local. Eles foram executados uma vez e **não são repetidos**.
+
+O PR traz apenas o código, os testes, a metodologia e os relatórios compactos (CSV e JSON; nenhum Parquet).
 
 ## 5. O que o PR não carrega
 
 - Nenhum Parquet nem arquivo grande: os maiores relatórios têm ≈ 2 MB e, acima de 4 MB, são compactados com `gzip` determinístico.
 - Nenhum caminho local é exigido pelo deploy.
 - Os Parquets internos (`PROJECOES_*_INTERNO.parquet`, `PROJECOES_CONSUMIDORES_RECONCILIADAS.parquet`) ficam apenas em `D:\NUCLEO_BDGD_2025\motor_v2\nacional`. O equivalente compacto da fonte canônica é `reports/nacional/PROJECOES_CONSUMIDORES_RECONCILIADAS.csv`.
+- Nenhum arquivo fora de `motor_v2/` além do workflow sintético: os produtos públicos e o dashboard ficam com os PRs #19 e #20 e com o Codex.

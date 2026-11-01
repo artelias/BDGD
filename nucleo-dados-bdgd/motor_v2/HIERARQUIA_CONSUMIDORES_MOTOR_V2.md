@@ -234,6 +234,8 @@ Artefatos: `ERRO_RETROSPECTIVO_CONSUMIDORES.csv` (por recorte e variante), `…_
 
 ### 9.6 Testes
 
+> Estado atualizado em 2026-10-31, na branch de entrega: **245 testes, 245 OK** (152 sintéticos, 93 locais). Saem os 3 de `test_public_audit`, que passa ao PR #19, e entram os 5 de `test_suites`. Ver `MOTOR_V2_RELATORIO_CONSOLIDADO.md` e `REPRODUCAO_MOTOR_V2.md`. O registro abaixo é o de 2026-10-30.
+
 - **Auditoria completa local: 243 testes, 243 OK, 0 falhas, 0 erros, 0 ignorados** (`MATRIZ_TESTES.csv`, `MANIFESTO_TESTES.json` com hashes). São os 230 anteriores mais 13 novos:
   - 1 de completude de 15 pares (`test_hierarquia`);
   - 8 de erro retrospectivo ponta a ponta e fonte canônica (`test_erro_retrospectivo`);
