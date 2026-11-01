@@ -29,7 +29,7 @@ Todos os resultados abaixo são da branch `integracao/produto-final-20261101`, e
 | Validadores ETL (smoke, pacote 2025-12-31, série histórica, homologação web, contrato nacional, cenários exploratórios, auditoria PR6, assets web) | local e Actions | OK (260 assets; 11.025 células; 11.400 linhas do contrato) |
 | Playwright, bateria completa (321 testes: desktop, Android e iPhone estreito emulado) | local, build `d98fe1a` | **312 passaram, 9 falharam**. As 9 eram dois defeitos dos próprios testes, corrigidos abaixo; os testes do Motor V2 (10) e de layout em 7 larguras passaram |
 | Playwright, rodada dos specs corrigidos ou novos na build final | local | inventário 12/12; homologação da Matriz ok; `matriz-fonte` ok; `panorama-comparador-fontes` ok; `motor-v2` 11/11; `sidebar` ok |
-| Playwright no CI Linux | Actions | 1º run (`d98fe1a`) e 2º run (`35684cd`): falha. Com o reporter `github`, o 2º run mostra uma **única** falha, `matriz-fonte.spec.ts:14` (o seletor do alerta, corrigido em `56f0d1a`); todos os outros testes passaram. O run final está registrado no relatório da entrega |
+| Playwright no CI Linux | Actions | 1º run (`d98fe1a`) e 2º run (`35684cd`): falha. Com o reporter `github`, o 2º run mostra uma **única** falha, `matriz-fonte.spec.ts:14` (o seletor do alerta, corrigido em `56f0d1a`); todos os outros testes passaram. **Run final em `6c72c57`: success**, todos os passos, incluindo o E2E completo ([run 41355080905](https://github.com/artelias/BDGD/actions/runs/41355080905)) |
 
 ### Defeitos encontrados nos testes e corrigidos (sem enfraquecer as asserções)
 
