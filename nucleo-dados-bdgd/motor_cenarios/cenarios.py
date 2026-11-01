@@ -1,7 +1,7 @@
 """Motor de Expansão Elétrica — cenários CONSERVADOR | MODERADO | AGRESSIVO por métrica física.
 
-Os cenários são interpretações de modelos efetivamente executados e validados com a mesma origem temporal,
-não nomes de algoritmos:
+Os cenários são interpretações de modelos efetivamente executados e comparados retrospectivamente com a mesma
+origem temporal (comparação retrospectiva, não validação científica independente), não nomes de algoritmos:
   MODERADO     = modelo de menor erro retrospectivo (WAPE sobre os mesmos pontos), entre os fisicamente plausíveis;
   CONSERVADOR  = modelo plausível, dentro da tolerância de erro do moderado, com a menor trajetória agregada abaixo dele;
   AGRESSIVO    = idem, com a maior trajetória agregada acima dele.
@@ -469,7 +469,7 @@ def main(contrato, internas, raw, saida, web=None, internal_dir=None):
                                  **{str(a): (v if traj else "") for a, v in zip(HORIZONTE, pub or [None] * 5)},
                                  "base_2025": hist[-1][1], "anos_historico": len(s),
                                  "status": ("indisponivel_metrica" if not m else "indisponivel_serie" if not traj else
-                                            ("experimental" if experimental else "simulacao_validada_retrospectivamente"))})
+                                            ("experimental" if experimental else "simulacao_comparada_retrospectivamente"))})
             # erro observado da série no modelo moderado (pontos de backtest da própria DIST)
             pts = [(y, yh) for y, yh, h, o, dd in (bt.get(cen["moderado"]) or []) if dd == d] if cen["moderado"] else []
             linha["erro_moderado"] = erros(pts)["mdape"] if pts else None

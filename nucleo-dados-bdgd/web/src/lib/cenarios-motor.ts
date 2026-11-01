@@ -16,6 +16,8 @@ export interface ModeloDoc { nome: string; familia: string; complexidade: number
 export interface ErroModelo {
   wape: number | null; mae: number | null; rmse: number | null; vies: number | null; mdape: number | null; n: number;
   wape_h1: number | null; wape_h2: number | null; estabilidade: number | null; cagr: number | null; elegivel: boolean; motivo: string | null;
+  /** Só em métricas de contagem: erro depois de arredondar a previsão para inteiro (patch B do PR #19); ausente em métricas contínuas. */
+  mae_fisico?: number | null; wape_fisico?: number | null; vies_fisico?: number | null; fisico_motivo?: string | null;
 }
 export interface SerieCenario {
   hist: [number, number][];

@@ -52,3 +52,18 @@ Uma das opções, pelos mecanismos oficiais:
 - Potência de reguladores e de transformadores de medida: bloqueada (sem POT_NOM numérico auditável).
 - Variáveis externas de mercado ANEEL (SAMP), DEC/FEC e EPE: não integradas; estimativas populacionais 2024–2025 e PIB 2022–2023 não usadas por disponibilidade/ano-base (ver `VARIAVEIS_INTERNAS_EXTERNAS.csv`).
 - Homologação humana dos 13 pares, ponte EPB←EBO e demais decisões da Fase 4 continuam pendentes; a seleção da versão mais recente é critério técnico-editorial com ressalva.
+
+## Erro físico e terminologia (2026-11-01, integração final)
+
+O patch B do PR #19 acrescenta, só às métricas de contagem, o erro depois do arredondamento para unidade inteira:
+- `mae_fisico`, `wape_fisico` e `vies_fisico`;
+- `fisico_motivo`, quando a previsão é negativa e não publicável.
+
+São 184 modelos. O status `simulacao_validada_retrospectivamente` passou a `simulacao_comparada_retrospectivamente`: a comparação retrospectiva não é validação científica independente.
+
+A regeneração usou o gerador oficial com scikit-learn 1.8.0, no Windows. Ela concorda com o produto publicado (gerado no runner Linux) dentro da tolerância de plataforma. Três contagens em 16.045 diferem em 1 unidade, por arredondamento de um valor bruto com ruído. Para não alterar números publicados por ruído de plataforma, `motor_cenarios/preservar_publicado.py` compõe o produto final:
+- produto publicado;
+- campos novos da regeneração;
+- status renomeado.
+
+O script falha se a regeneração divergir além da tolerância. Depois disso, `cenarios.py ... --check` aprovou: 29 métricas, 16.045 contagens comparadas e 2 dentro da folga de 1 unidade.

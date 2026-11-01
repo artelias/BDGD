@@ -33,7 +33,7 @@ export function CenariosMotor() {
   return <section className={s.section} aria-labelledby="cenarios-title" data-testid="cenarios-motor">
     <div className="eyebrow">Modelos executados · backtest com origem móvel</div>
     <h2 id="cenarios-title">Cenários de expansão por métrica física</h2>
-    <p className={s.lede}>Trajetórias 2026–2030 de modelos efetivamente executados e comparados nos mesmos pontos de backtest. Os cenários são interpretações dos modelos validados — não são nomes de algoritmos, previsões homologadas, necessidade técnica de expansão ou CAPEX.</p>
+    <p className={s.lede}>Trajetórias 2026–2030 de modelos efetivamente executados e comparados nos mesmos pontos de backtest. Os cenários são interpretações dos modelos comparados retrospectivamente, sem validação científica independente — não são nomes de algoritmos, previsões homologadas, necessidade técnica de expansão ou CAPEX.</p>
     {!data ? erro ? <div role="alert" className={s.alert}><p>{erro}</p><button type="button" onClick={() => { setErro(""); setTentativa((t) => t + 1); }}>Tentar novamente</button></div>
       : <p role="status">Carregando cenários do motor…</p> : <Explorador data={data} />}
   </section>;
@@ -165,6 +165,7 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
       <h3>{ROTULO_CENARIO[cenarioAtivo]}: {modelo.nome}</h3>
       <p>{modelo.familia}. <code>{modelo.formula}</code></p>
       <p>Backtest com origens {data.origens_backtest.join(" e ")} sobre os mesmos {num(erroM.n)} pontos para todos os modelos: WAPE {pct((erroM.wape ?? 0) * 100, 2)} (h=1: {pct(erroM.wape_h1 == null ? null : erroM.wape_h1 * 100, 2)}; h=2: {pct(erroM.wape_h2 == null ? null : erroM.wape_h2 * 100, 2)}) · MdAPE {pct(erroM.mdape == null ? null : erroM.mdape * 100, 2)} · viés relativo {pct(erroM.vies == null ? null : erroM.vies * 100, 2)} · persistência WAPE {pct(pers?.wape == null ? null : pers.wape * 100, 2)}.{distId && serie?.erro != null && cenarioAtivo === "moderado" ? ` Erro mediano nesta distribuidora: ${pct(serie.erro * 100, 2)}.` : ""}</p>
+      {(erroM.wape_fisico != null || erroM.fisico_motivo) && <p data-testid="cenarios-erro-fisico">Erro físico (previsão arredondada para unidade inteira, como publicada): {erroM.fisico_motivo ? `N/D — ${erroM.fisico_motivo}` : `WAPE ${pct((erroM.wape_fisico ?? 0) * 100, 2)} · MAE ${num(erroM.mae_fisico, 2)} · viés ${num(erroM.vies_fisico, 2)}`}.</p>}
       <p>Variáveis utilizadas: {vars.length ? vars.map((v) => `${v.variavel} (${v.tipo})`).join(", ") : "somente o histórico da própria série e o tempo"}.</p>
       <p className={s.limite}>Limites: o backtest cobre horizontes de 1 e 2 anos; 2028–2030 são extrapolações sem verificação retrospectiva. Sem intervalo probabilístico calibrado: a diferença entre cenários não é intervalo de confiança. Estoque físico não identifica entradas, baixas, obras ou investimento.</p>
     </div>}
