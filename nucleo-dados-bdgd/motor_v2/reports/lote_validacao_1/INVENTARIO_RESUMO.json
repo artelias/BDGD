@@ -1,0 +1,315 @@
+{
+ "publicacoes_locais": 412,
+ "ordinarias": 399,
+ "extraordinarias": 13,
+ "extraordinarias_por_tipo": {
+  "versao_alternativa_mesma_competencia": 13
+ },
+ "extraordinarias_novas_observacoes_temporais": 0,
+ "ordinarias_sem_parquet_local": [
+  {
+   "dist": "103",
+   "competencia": 2023,
+   "item_id": "4e4da507d1a04fd08e00db551778f26f",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "2351",
+   "competencia": 2022,
+   "item_id": "15b23d4fbb964981b29d5bb1b79cee29",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "2381",
+   "competencia": 2022,
+   "item_id": "9023484df13b4fcab81b90571f381bff",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "3223",
+   "competencia": 2023,
+   "item_id": "24964098ead842c8a743af4a97a07469",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "4950",
+   "competencia": 2022,
+   "item_id": "7d20595de6c3432098d1f8ba3690eec2",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "5274",
+   "competencia": 2023,
+   "item_id": "fe0ac68201b4433ba621236763d27985",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "5343",
+   "competencia": 2022,
+   "item_id": "5c6b3c2d4c0b4704a174af9d6c59dca8",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "5364",
+   "competencia": 2023,
+   "item_id": "855e08a700a144d7bea44d93d54d3bb4",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "5371",
+   "competencia": 2023,
+   "item_id": "713833ce3c5042ae85f28ca763adacfb",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "5372",
+   "competencia": 2022,
+   "item_id": "406f1d6bd52549d78a8bc46a8ccb0420",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "5379",
+   "competencia": 2023,
+   "item_id": "d70572f92648474fa2338ae4cfed8e70",
+   "origem": "zip_bruto_sem_conversao"
+  },
+  {
+   "dist": "6603",
+   "competencia": 2023,
+   "item_id": "34727428a26d4f179ca549caf83b40cc",
+   "origem": "zip_bruto_sem_conversao"
+  }
+ ],
+ "nao_convertidas": [
+  {
+   "ano": 2022,
+   "dist": "2351",
+   "item_id": "15b23d4fbb964981b29d5bb1b79cee29",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2022,
+   "dist": "2381",
+   "item_id": "9023484df13b4fcab81b90571f381bff",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2022,
+   "dist": "4950",
+   "item_id": "7d20595de6c3432098d1f8ba3690eec2",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2022,
+   "dist": "5279",
+   "item_id": "f5679c496b6e40efa39402b45c691d9c",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2022,
+   "dist": "5343",
+   "item_id": "5c6b3c2d4c0b4704a174af9d6c59dca8",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2022,
+   "dist": "5372",
+   "item_id": "406f1d6bd52549d78a8bc46a8ccb0420",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "103",
+   "item_id": "4e4da507d1a04fd08e00db551778f26f",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "2351",
+   "item_id": "be28e75ad8df439e89d574ec1493fd35",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "3223",
+   "item_id": "24964098ead842c8a743af4a97a07469",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "5274",
+   "item_id": "fe0ac68201b4433ba621236763d27985",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "5364",
+   "item_id": "855e08a700a144d7bea44d93d54d3bb4",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "5371",
+   "item_id": "713833ce3c5042ae85f28ca763adacfb",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "5379",
+   "item_id": "d70572f92648474fa2338ae4cfed8e70",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": 2023,
+   "dist": "6603",
+   "item_id": "34727428a26d4f179ca549caf83b40cc",
+   "motivo": "download sem Parquet convertido"
+  },
+  {
+   "ano": null,
+   "dist": null,
+   "item_id": "6c228d808d7548819b51859a8b2a775d",
+   "motivo": "item ArcGIS com título 'DUP' não reconhecido: DIST e competência desconhecidos"
+  }
+ ],
+ "dist_com_ordinaria": 104,
+ "dist_por_numero_de_competencias": {
+  "1": 4,
+  "2": 3,
+  "3": 11,
+  "4": 86
+ },
+ "dist_com_2022_2025_completo": [
+  26,
+  31,
+  32,
+  37,
+  38,
+  39,
+  40,
+  43,
+  44,
+  46,
+  47,
+  51,
+  63,
+  69,
+  82,
+  83,
+  86,
+  87,
+  88,
+  95,
+  369,
+  370,
+  371,
+  380,
+  381,
+  382,
+  383,
+  385,
+  390,
+  391,
+  396,
+  398,
+  399,
+  400,
+  401,
+  404,
+  405,
+  504,
+  527,
+  598,
+  2763,
+  2783,
+  2866,
+  2937,
+  3627,
+  4248,
+  5160,
+  5216,
+  5345,
+  5346,
+  5352,
+  5353,
+  5355,
+  5356,
+  5363,
+  5365,
+  5366,
+  5367,
+  5368,
+  5369,
+  5370,
+  5373,
+  5374,
+  5375,
+  5377,
+  5378,
+  5381,
+  5382,
+  5384,
+  5385,
+  5386,
+  5697,
+  5707,
+  6072,
+  6585,
+  6587,
+  6600,
+  6609,
+  6610,
+  6897,
+  6898,
+  7016,
+  7019,
+  7371,
+  7883,
+  11825
+ ],
+ "competencias": [
+  2022,
+  2023,
+  2024,
+  2025
+ ],
+ "datas_base": {
+  "2022-12-31": 104,
+  "2023-12-31": 112,
+  "2024-12-31": 97,
+  "2025-12-31": 99
+ },
+ "registros_ordinarios": 1871303328,
+ "registros_extraordinarios": 75641210,
+ "linhas_ordinarias_por_entidade": {
+  "UCBT": 396919666,
+  "UCMT": 1309694,
+  "UCAT": 8242,
+  "EQTRMT": 23351143,
+  "UNTRMT": 22998129,
+  "EQTRAT": 29209,
+  "UNTRAT": 28875,
+  "SSDMT": 157593111,
+  "SSDBT": 153507161,
+  "CONJ": 12195,
+  "CTMT": 104000
+ },
+ "intervalo_disponibilidade": {
+  "2022": [
+   "2025-10-08",
+   "2025-10-14"
+  ],
+  "2023": [
+   "2025-10-08",
+   "2025-10-08"
+  ],
+  "2024": [
+   "2025-10-07",
+   "2025-10-07"
+  ],
+  "2025": [
+   "2026-09-01",
+   "2026-09-01"
+  ]
+ }
+}

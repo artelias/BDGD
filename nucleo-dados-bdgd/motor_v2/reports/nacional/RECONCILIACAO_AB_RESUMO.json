@@ -1,0 +1,187 @@
+{
+  "dist_coorte_comum": 98,
+  "dist_so_A": 0,
+  "dist_so_B": 0,
+  "coorte_2025": {
+    "A_ucbt": 89932832,
+    "B_consumidores": 90251993.0,
+    "ucmt": 318422,
+    "ucat": 2029,
+    "sobreposicao": 1290
+  },
+  "coorte_totais": {
+    "Conservador_2026": {
+      "A": 89291828.0,
+      "B": 89620373.0
+    },
+    "Conservador_2030": {
+      "A": 87326180.0,
+      "B": 87620142.0
+    },
+    "Moderado_2026": {
+      "A": 90528171.0,
+      "B": 91109612.0
+    },
+    "Moderado_2030": {
+      "A": 93112341.0,
+      "B": 94715778.0
+    },
+    "Agressivo_2026": {
+      "A": 92831895.0,
+      "B": 93084651.0
+    },
+    "Agressivo_2030": {
+      "A": 106236504.0,
+      "B": 105983865.0
+    }
+  },
+  "fechamento_dist_ano": {
+    "com_auditoria": 385,
+    "exatos": 385,
+    "nao_exatos": []
+  },
+  "enel_sp_390": [
+    {
+      "ano": 2022,
+      "A_ucbt_ativas_v3": 7625104,
+      "B_consumidores_contrato": 7639826.0,
+      "auditoria_ucmt": 14529,
+      "auditoria_ucat": 193,
+      "intervalo_base": "INTERVALO_NAO_ANUAL",
+      "estoque_elegivel_v1_B": false,
+      "estoque_elegivel_v2": true
+    },
+    {
+      "ano": 2023,
+      "A_ucbt_ativas_v3": 7604701,
+      "B_consumidores_contrato": 7619633.0,
+      "auditoria_ucmt": 14755,
+      "auditoria_ucat": 191,
+      "intervalo_base": "INTERVALO_ANUAL_COMPATIVEL",
+      "estoque_elegivel_v1_B": true,
+      "estoque_elegivel_v2": true
+    },
+    {
+      "ano": 2024,
+      "A_ucbt_ativas_v3": 7889437,
+      "B_consumidores_contrato": 7903207.0,
+      "auditoria_ucmt": 13586,
+      "auditoria_ucat": 184,
+      "intervalo_base": "INTERVALO_ANUAL_COMPATIVEL",
+      "estoque_elegivel_v1_B": true,
+      "estoque_elegivel_v2": true
+    },
+    {
+      "ano": 2025,
+      "A_ucbt_ativas_v3": 8200759,
+      "B_consumidores_contrato": 8215027.0,
+      "auditoria_ucmt": 14080,
+      "auditoria_ucat": 188,
+      "intervalo_base": "INTERVALO_NAO_ANUAL",
+      "estoque_elegivel_v1_B": false,
+      "estoque_elegivel_v2": true
+    }
+  ],
+  "enel_sp_390_projecao": {
+    "DIST": 390,
+    "empresa": "Enel SP",
+    "A_ancora": "2025",
+    "B_ancora": "2025",
+    "B_ancora_v1": "2024",
+    "A_completa_nos_totais": true,
+    "B_completa_nos_totais": true,
+    "coorte_comum": true,
+    "A_2025": 8200759,
+    "B_2025": 8215027.0,
+    "A_moderado_2030": 8306139.0,
+    "B_moderado_2030": 9271533.0,
+    "A_cagr_moderado": 0.0025568970992893014,
+    "B_cagr_moderado": 0.024491856575883597,
+    "A_modelo": "ols:individual",
+    "B_modelo": "cagr",
+    "motivo_fora_A": null,
+    "motivo_fora_B": null
+  },
+  "celulas_que_mudaram_de_elegibilidade": [
+    {
+      "DIST": 380,
+      "ano": 2024,
+      "v1": false,
+      "v2": true,
+      "motivo": null,
+      "ressalvas": "intervalo_base_nao_anual"
+    },
+    {
+      "DIST": 390,
+      "ano": 2022,
+      "v1": false,
+      "v2": true,
+      "motivo": null,
+      "ressalvas": "intervalo_base_nao_anual"
+    },
+    {
+      "DIST": 390,
+      "ano": 2025,
+      "v1": false,
+      "v2": true,
+      "motivo": null,
+      "ressalvas": "intervalo_base_nao_anual"
+    },
+    {
+      "DIST": 391,
+      "ano": 2024,
+      "v1": false,
+      "v2": true,
+      "motivo": null,
+      "ressalvas": "intervalo_base_nao_anual"
+    },
+    {
+      "DIST": 6072,
+      "ano": 2022,
+      "v1": false,
+      "v2": true,
+      "motivo": null,
+      "ressalvas": "intervalo_base_nao_anual"
+    },
+    {
+      "DIST": 7019,
+      "ano": 2022,
+      "v1": false,
+      "v2": true,
+      "motivo": null,
+      "ressalvas": "intervalo_base_nao_anual"
+    }
+  ],
+  "evidencia_intervalo_nao_anual": {
+    "publicacoes_nao_anuais": [
+      [
+        380,
+        2024
+      ],
+      [
+        390,
+        2022
+      ],
+      [
+        390,
+        2025
+      ],
+      [
+        391,
+        2024
+      ],
+      [
+        6072,
+        2022
+      ],
+      [
+        7019,
+        2022
+      ]
+    ],
+    "transicoes_com_ressalva": 196,
+    "share_atipica_com_ressalva": 0.07653061224489796,
+    "transicoes_demais": 6107,
+    "share_atipica_demais": 0.0795808089078107
+  }
+}

@@ -1,0 +1,6 @@
+﻿etapa,titulo,conteudo,autorizacao,saida_de_aceite
+0,Consulta de metadados (sem arquivos),"tamanho, datas created/modified e formato dos 5–8 itens de 2021 (EAC, EMR, EPB x2, EBO, ENF)",aprovação para requisição HTTP de metadados,tabela de tamanhos e datas; decisão sobre a duplicata da EPB
+1,Inspeção de esquema (1 DIST),"baixar o pacote 2021 da EAC (o menor) para D:, converter, comparar esquema com 2022",aprovação de download + uso do conversor existente,relatório de diferenças V10×V11 por entidade/coluna; veredito de compatibilidade
+2,Conformidade e identidade (EAC),"BASE.DAT_INC/FNL, tag Extra, regra UC v3, TUC, vínculo EQ→UN e unicidade, CONJ",nenhuma além da etapa 1,matriz de conformidade 2021 e decisão go/no-go por ativo
+3,Ampliar para EMR e EPB (+ EBO e ENF para perímetro),mesmas verificações; transições 2021→2022 e quarentenas de perímetro,aprovação de download dos demais pacotes,séries 2021–2025 comparáveis por ativo; lista de bloqueios
+4,Reavaliação do motor,"comparativo com baselines nas mesmas origens, em modalidade retrospectiva; contar origens elegíveis por DIST × ativo",nenhuma,número real de origens elegíveis (pode ser < 3); nada de reduzir o mínimo

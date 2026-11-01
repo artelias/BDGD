@@ -1,0 +1,419 @@
+{
+  "id": "CONJ_26_2024",
+  "version": 1,
+  "kind": "conjunto_redefinition",
+  "unit_kind": "conjunto",
+  "successor_dist": 26,
+  "predecessor_dist": 26,
+  "effective_year": 2024,
+  "entering_units": [
+    "17306",
+    "17307",
+    "17308",
+    "17309",
+    "17310",
+    "17311"
+  ],
+  "overlap_units": [
+    "12591",
+    "12592",
+    "12594"
+  ],
+  "status": "PENDING_HOMOLOGATION",
+  "decision": null,
+  "evidence": {
+    "coverage": {
+      "ctmt_continuity": 0.9975210610491562,
+      "km_total_new": 20118.605172999996,
+      "share_strong": 0.23795041563938354,
+      "share_partial": 0.7620495843606165,
+      "share_insufficient": 0.0,
+      "customers_ctmt_continuity": 0.8928550471635835,
+      "codes_new": 6,
+      "codes_gone": 3,
+      "codes_changed": 3
+    },
+    "rule": {
+      "strong_flow": 0.9,
+      "changed_share": 0.05,
+      "min_ctmt_continuity": 0.8,
+      "evidence": "SSDMT km and UCBT customers through shared CTMT codes; NOME and Shape_Area are supporting only"
+    },
+    "sources": {
+      "ssdmt_prev": "8df23bcab93ead5f9506b918b56d979e07047010a8eb379b5ec876a968e7f8f1",
+      "ssdmt_cur": "936cca804779afd34eedf1278838466ccdee08cb2508fcec319a81a9c21860af"
+    }
+  },
+  "mapping": [
+    {
+      "new_code": "12589",
+      "kind": "persisting_unchanged",
+      "name_new": "SANTA ROSA",
+      "best_old_code": "12589",
+      "name_old": "SANTA ROSA",
+      "name_equal": true,
+      "km_new": 43.137,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "12589",
+        "share": 0.9986468200270636
+      },
+      "sources_km": {
+        "12589": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999999484358245,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12591",
+      "kind": "persisting_changed",
+      "name_new": "FEIJO",
+      "best_old_code": "12591",
+      "name_old": "FEIJO",
+      "name_equal": true,
+      "km_new": 861.625,
+      "share_from_best_old_km": 0.9417,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "12591",
+        "share": 0.9944191376526705
+      },
+      "sources_km": {
+        "12591": 0.9417,
+        "12593": 0.0497
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0182646804729543,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12592",
+      "kind": "persisting_changed",
+      "name_new": "TARAUACA",
+      "best_old_code": "12592",
+      "name_old": "TARAUACA",
+      "name_equal": true,
+      "km_new": 663.315,
+      "share_from_best_old_km": 0.8367,
+      "share_of_old_in_new": 0.9869,
+      "customers_best_old": {
+        "top": "12592",
+        "share": 0.9775370773342784
+      },
+      "sources_km": {
+        "12592": 0.8367,
+        "12595": 0.1633
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0953933937301457,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12593",
+      "kind": "persisting_unchanged",
+      "name_new": "SENA MADUREIRA",
+      "best_old_code": "12593",
+      "name_old": "SENA MADUREIRA",
+      "name_equal": true,
+      "km_new": 2017.204,
+      "share_from_best_old_km": 0.9548,
+      "share_of_old_in_new": 0.9607,
+      "customers_best_old": {
+        "top": "12593",
+        "share": 0.6839533382616407
+      },
+      "sources_km": {
+        "12593": 0.9548,
+        "12597": 0.0449
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9845831835280843,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12594",
+      "kind": "persisting_changed",
+      "name_new": "EPITACIOLANDIA",
+      "best_old_code": "12594",
+      "name_old": "EPITACIOLANDIA",
+      "name_equal": true,
+      "km_new": 4356.869,
+      "share_from_best_old_km": 0.9408,
+      "share_of_old_in_new": 0.9953,
+      "customers_best_old": {
+        "top": "12594",
+        "share": 0.866320735225654
+      },
+      "sources_km": {
+        "12594": 0.9408,
+        "12590": 0.059
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0346892631615674,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12595",
+      "kind": "persisting_unchanged",
+      "name_new": "CRUZEIRO DO SUL",
+      "best_old_code": "12595",
+      "name_old": "CRUZEIRO DO SUL",
+      "name_equal": true,
+      "km_new": 2304.335,
+      "share_from_best_old_km": 0.9749,
+      "share_of_old_in_new": 0.954,
+      "customers_best_old": {
+        "top": "12595",
+        "share": 0.7822947135769979
+      },
+      "sources_km": {
+        "12595": 0.9749
+      },
+      "share_new_circuits": 0.02,
+      "area_ratio_new_over_old": 0.9121363525693263,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12598",
+      "kind": "persisting_unchanged",
+      "name_new": "MARECHAL THAUMATURGO",
+      "best_old_code": "12598",
+      "name_old": "MARECHAL THAUMATURGO",
+      "name_equal": true,
+      "km_new": 202.816,
+      "share_from_best_old_km": 0.9812,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "12598",
+        "share": 0.9250817650245349
+      },
+      "sources_km": {
+        "12598": 0.9812
+      },
+      "share_new_circuits": 0.0188,
+      "area_ratio_new_over_old": 1.0000634058112168,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12599",
+      "kind": "persisting_unchanged",
+      "name_new": "PORTO WALTER",
+      "best_old_code": "12599",
+      "name_old": "PORTO WALTER",
+      "name_equal": true,
+      "km_new": 156.344,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 0.9296,
+      "customers_best_old": {
+        "top": "12599",
+        "share": 0.9944160074453235
+      },
+      "sources_km": {
+        "12599": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9896244669010987,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "12600",
+      "kind": "persisting_unchanged",
+      "name_new": "JORDAO",
+      "best_old_code": "12600",
+      "name_old": "JORDAO",
+      "name_equal": true,
+      "km_new": 63.394,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "12600",
+        "share": 0.9941373534338357
+      },
+      "sources_km": {
+        "12600": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999850574131322,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "17306",
+      "kind": "carved_from",
+      "name_new": "TAQUARI",
+      "best_old_code": "12590",
+      "name_old": "TAQUARI",
+      "name_equal": true,
+      "km_new": 3258.234,
+      "share_from_best_old_km": 0.9902,
+      "share_of_old_in_new": 0.5836,
+      "customers_best_old": {
+        "top": "12590",
+        "share": 0.9140934205445483
+      },
+      "sources_km": {
+        "12590": 0.9902
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.5970944499924232,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "17307",
+      "kind": "carved_from",
+      "name_new": "TANGARA",
+      "best_old_code": "12597",
+      "name_old": "TANGARA",
+      "name_equal": true,
+      "km_new": 2444.042,
+      "share_from_best_old_km": 0.9724,
+      "share_of_old_in_new": 0.6394,
+      "customers_best_old": {
+        "top": "12597",
+        "share": 0.9971057740907736
+      },
+      "sources_km": {
+        "12597": 0.9724,
+        "12593": 0.0147
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.7565043451152964,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "17308",
+      "kind": "carved_from",
+      "name_new": "SAO FRANCISCO",
+      "best_old_code": "12596",
+      "name_old": "SAO FRANCISCO",
+      "name_equal": true,
+      "km_new": 480.307,
+      "share_from_best_old_km": 0.9247,
+      "share_of_old_in_new": 0.8903,
+      "customers_best_old": {
+        "top": "12596",
+        "share": 0.8759650520428851
+      },
+      "sources_km": {
+        "12596": 0.9247,
+        "12597": 0.0473,
+        "12590": 0.028
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9237710634823163,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "17309",
+      "kind": "merge",
+      "name_new": "FLORESTA",
+      "best_old_code": "12590",
+      "name_old": "TAQUARI",
+      "name_equal": false,
+      "km_new": 684.193,
+      "share_from_best_old_km": 0.848,
+      "share_of_old_in_new": 0.105,
+      "customers_best_old": {
+        "top": "12590",
+        "share": 0.7029875919444919
+      },
+      "sources_km": {
+        "12590": 0.848,
+        "12597": 0.1494
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.09470698897345473,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "17310",
+      "kind": "carved_from",
+      "name_new": "ALTO ALEGRE",
+      "best_old_code": "12597",
+      "name_old": "TANGARA",
+      "name_equal": false,
+      "km_new": 1140.162,
+      "share_from_best_old_km": 0.9833,
+      "share_of_old_in_new": 0.3016,
+      "customers_best_old": {
+        "top": "12597",
+        "share": 0.5202151258431137
+      },
+      "sources_km": {
+        "12597": 0.9833,
+        "12596": 0.0161
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.2005716476624644,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "17311",
+      "kind": "carved_from",
+      "name_new": "ACRELANDIA",
+      "best_old_code": "12590",
+      "name_old": "TAQUARI",
+      "name_equal": false,
+      "km_new": 1442.628,
+      "share_from_best_old_km": 0.9999,
+      "share_of_old_in_new": 0.261,
+      "customers_best_old": {
+        "top": "12590",
+        "share": 0.9401003301031495
+      },
+      "sources_km": {
+        "12590": 0.9999
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.32036745466876515,
+      "name_in_predecessor": false
+    },
+    {
+      "old_code": "12590",
+      "kind": "gone",
+      "name_old": "TAQUARI",
+      "km_old": 4863.519,
+      "destinations_km": {
+        "17306": 0.5836,
+        "17311": 0.261,
+        "17309": 0.105,
+        "12594": 0.0465
+      },
+      "name_continues_as": [
+        "17306"
+      ]
+    },
+    {
+      "old_code": "12596",
+      "kind": "gone",
+      "name_old": "SAO FRANCISCO",
+      "km_old": 530.733,
+      "destinations_km": {
+        "17308": 0.8903,
+        "17306": 0.0567,
+        "17310": 0.0369,
+        "17307": 0.0107
+      },
+      "name_continues_as": [
+        "17308"
+      ]
+    },
+    {
+      "old_code": "12597",
+      "kind": "gone",
+      "name_old": "TANGARA",
+      "km_old": 3866.876,
+      "destinations_km": {
+        "17307": 0.6394,
+        "17310": 0.3016,
+        "17309": 0.0275,
+        "12593": 0.0244
+      },
+      "name_continues_as": [
+        "17307"
+      ]
+    }
+  ],
+  "policy": "proposal only: no equivalence between old and new codes is assumed; new and changed codes are quarantined for the effective year; a human decision is required before any comparable-perimeter series is built"
+}
