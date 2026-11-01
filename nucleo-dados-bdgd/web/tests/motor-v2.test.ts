@@ -10,8 +10,8 @@ import {
 
 const raiz = resolve(__dirname, "../data-motor-v2");
 const indice = validarIndice(JSON.parse(readFileSync(join(raiz, "indice.json"), "utf8")));
-const arquivos = readdirSync(join(raiz, "dist")).filter((f) => f.endsWith(".json"));
-const dists: DistV2[] = arquivos.map((f) => validarDist(JSON.parse(readFileSync(join(raiz, "dist", f), "utf8"))));
+const arquivos = readdirSync(join(raiz, "distribuidoras")).filter((f) => f.endsWith(".json"));
+const dists: DistV2[] = arquivos.map((f) => validarDist(JSON.parse(readFileSync(join(raiz, "distribuidoras", f), "utf8"))));
 const ESTADOS = ["PROJETADA_EXPERIMENTAL", "PROJETADA_BASELINE", "SEM_ANCORA_2025", "HISTORICO_INSUFICIENTE", "DADO_NAO_HOMOLOGADO",
   "SEM_PUBLICACAO", "SUCESSAO_SOCIETARIA", "NAO_APLICAVEL", "SEM_SEMANTICA_FISICA_HOMOGENEA", "BLOQUEIO_TECNICO"];
 
@@ -84,7 +84,7 @@ describe("produto do Motor V2 (data-motor-v2, homologação)", () => {
   });
 
   it("não expõe identificador individual nem credencial; arquivos pequenos para carga sob demanda", () => {
-    for (const f of ["indice.json", ...arquivos.map((a) => `dist/${a}`)]) {
+    for (const f of ["indice.json", ...arquivos.map((a) => `distribuidoras/${a}`)]) {
       const t = readFileSync(join(raiz, f), "utf8");
       expect(t).not.toMatch(/COD_ID|PAC_1|\bCPF\b|password|token|secret|BEGIN [A-Z ]*KEY/i);
       expect(statSync(join(raiz, f)).size).toBeLessThan(200_000);

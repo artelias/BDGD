@@ -53,7 +53,7 @@ export function motorV2Habilitado(env: string | undefined = process.env.NEXT_PUB
 }
 
 export const URL_INDICE = "/data/motor-v2/indice.json";
-export const urlDist = (d: number | string) => `/data/motor-v2/dist/${d}.json`;
+export const urlDist = (d: number | string) => `/data/motor-v2/distribuidoras/${d}.json`;
 
 export function chaveSerie(s: Pick<SerieV2, "objetivo" | "metrica">) { return `${s.objetivo}|${s.metrica}`; }
 export function projetada(s: Pick<SerieV2, "estado">) { return (ESTADOS_PROJETADOS as readonly string[]).includes(s.estado); }
