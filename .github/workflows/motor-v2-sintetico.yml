@@ -4,6 +4,7 @@ on:
     branches:
       - "feat/motor-v2-granular-territorial"
       - "feat/motor-v2-entrega-*"
+      - "integracao/produto-final-*"
     paths:
       - "nucleo-dados-bdgd/motor_v2/**"
       - ".github/workflows/motor-v2-sintetico.yml"

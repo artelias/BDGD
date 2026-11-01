@@ -4,6 +4,7 @@ on:
     branches:
       - "feat/nucleo-dados-bdgd-portal"
       - "feat/dashboard-bdgd-2025"
+      - "integracao/produto-final-*"
     paths:
       - "nucleo-dados-bdgd/web/**"
       - "nucleo-dados-bdgd/motor_universal/**"
@@ -39,7 +40,7 @@ jobs:
   web:
     name: Lint, tipos, testes, build e E2E
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     defaults:
       run:
         working-directory: nucleo-dados-bdgd/web
@@ -97,8 +98,15 @@ jobs:
         run: node ../etl/validate-homologacao-web.mjs ../auditoria/fase4 public/data/historico/homologacao.json public/data/historico/serie.json
       - name: Validar contrato de integração nacional (consumido pelo motor do PR #6)
         run: node ../etl/validate-contrato-nacional.mjs ../output-historico/contrato-integracao ../auditoria/fase4/MATRIZ_HOMOLOGACAO_2022_2025.csv
-      - name: Build estático
-        run: npm run build
+      - name: Build de produção (portão do Motor V2 fechado)
+        run: |
+          npm run build
+          test ! -e out/data/motor-v2 || { echo "::error::build de produção expôs o produto experimental do Motor V2"; exit 1; }
+          ! grep -rl "PROJETADA_EXPERIMENTAL" out --include=*.json --include=*.html > /dev/null || { echo "::error::estado do Motor V2 encontrado na build de produção"; exit 1; }
+      - name: Build de homologação para o E2E (Motor V2 visível, nunca publicada por este workflow)
+        env:
+          NEXT_PUBLIC_MOTOR_V2: homologacao
+        run: npm run build && test -f out/data/motor-v2/indice.json
       - name: Cenários e estados correspondem ao contrato versionado
         run: node ../etl/bdgd2025/88_cenarios_exploratorios.mjs --source-commit e5115f49b67e18d6939f6559990341fefebece9c --check
       - name: Auditoria independente de publicações, estados, OLS e backtests
