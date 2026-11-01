@@ -1,0 +1,94 @@
+{
+  "contrato": "D:\\NUCLEO_BDGD_2025\\wt-motor-v2-entrega\\nucleo-dados-bdgd\\output-historico\\contrato-integracao\\serie_fisica_nacional.csv",
+  "contrato_sha256": "8c3d7c77ef536c588c8acc8e79642cdd4a08b4b436c46b7ad9d782d4fcef18df",
+  "grupos_sha256": "134775db6c470a169665cd8b8a4cc93421eaa1d6a4d3c0f4b78b44f460a44b2d",
+  "codigo": "68b9576e74cd310fdae9d487c5ffe0a0c4bc20d0054a99a92e8c048a2b2766b5",
+  "origens": [
+    2023,
+    2024
+  ],
+  "modelos": [
+    "ols",
+    "ridge",
+    "elastic_net",
+    "poisson",
+    "random_forest",
+    "hist_gradient_boosting"
+  ],
+  "escopos": [
+    "grupo_economico",
+    "comparaveis"
+  ],
+  "k_comparaveis": 9,
+  "features": [
+    "log_estoque",
+    "log_consumidores",
+    "log_rede_mt_km",
+    "crescimento_anterior"
+  ],
+  "subsets": [
+    [
+      0
+    ],
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      3
+    ]
+  ],
+  "grade": {
+    "ols": [
+      {}
+    ],
+    "ridge": [
+      {
+        "alpha": 1.0
+      },
+      {
+        "alpha": 10.0
+      }
+    ],
+    "elastic_net": [
+      {
+        "alpha": 0.01,
+        "l1_ratio": 0.5
+      },
+      {
+        "alpha": 0.1,
+        "l1_ratio": 0.5
+      }
+    ],
+    "poisson": [
+      {
+        "alpha": 0.1
+      },
+      {
+        "alpha": 1.0
+      }
+    ],
+    "random_forest": [
+      {
+        "max_depth": 3,
+        "min_samples_leaf": 2
+      }
+    ],
+    "hist_gradient_boosting": [
+      {
+        "max_leaf_nodes": 7,
+        "learning_rate": 0.1,
+        "min_samples_leaf": 3
+      }
+    ]
+  },
+  "semente": 42,
+  "linhas_painel": 6573,
+  "segundos": 205.8
+}

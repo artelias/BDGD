@@ -303,9 +303,16 @@ def run(repo_copy=None):
                                       (read(ROOT_OUT / 'pontes_experimentais.json')['pontes'] if (ROOT_OUT / 'pontes_experimentais.json').exists() else [])],
                                       triagem_cenarios='v2 (evidencia fase4; objeto x ano x porte; padrao temporal)',
                                       totais_parciais=sorted({f"{x['nivel']}/{x.get('ativo') or x.get('conceito')}/{x['metrica']}" for x in [dict(nivel='A', **t) for t in tA] + [dict(nivel='B', **t) for t in tB] if x['status_total'] != 'COMPLETO'}))
+    cob = ROOT_OUT / 'cobertura' / 'RESUMO_COBERTURA.json'
+    if cob.exists():      # definitive coverage matrix (motor_v2.nacional.cobertura), including the power metrics of potencia_b
+        summary['cobertura_final'] = {k: v for k, v in read(cob).items() if k not in ('por_objetivo', 'fontes')}
     atomic(FINAL / 'RESUMO_NACIONAL.json', summary)
+    # power series at distributor level (potencia_b) keep the Level B file names, so they are copied with a prefix
+    for src in (ROOT_OUT / 'distribuidora_potencia').glob('*'):
+        if src.is_file() and src.suffix in ('.csv', '.json'):
+            shutil.copyfile(src, FINAL / ('POTENCIA_' + src.name if not src.name.startswith(('ESTOQUES_POTENCIA', 'SERIES_POTENCIA')) else src.name))
     # audit artefacts of the final revision, hashed with the rest
-    for src in [*(ROOT_OUT / 'reconciliacao_ab').glob('*'), *(ROOT_OUT / 'auditoria_cenarios').glob('*'), *(ROOT_OUT / 'potencia').glob('*'),
+    for src in [*(ROOT_OUT / 'reconciliacao_ab').glob('*'), *(ROOT_OUT / 'auditoria_cenarios').glob('*'), *(ROOT_OUT / 'potencia').glob('*'), *(ROOT_OUT / 'cobertura').glob('*'),
                 *(ROOT_OUT / 'comparacao_v1_v2').glob('*'), ROOT_OUT / 'pontes_experimentais.json', ROOT_OUT / 'distribuidora' / 'REVISAO_ELEGIBILIDADE_B.json', ROOT_OUT / 'distribuidora' / 'REVISAO_SUCESSAO_B.json',
                 ROOT_OUT / 'testes' / 'MANIFESTO_TESTES.json', *(ROOT_OUT / 'hierarquia_consumidores').glob('*.csv'),
                 ROOT_OUT / 'hierarquia_consumidores' / 'CONTRATO_HIERARQUIA_CONSUMIDORES.json', ROOT_OUT / 'hierarquia_consumidores' / 'FONTE_CANONICA_CONSUMIDORES_INTERNA.json', ROOT_OUT / 'hierarquia_consumidores' / 'ERRO_RETROSPECTIVO_CONSUMIDORES_RESUMO.json', ROOT_OUT / 'potencia' / 'INVESTIGACAO_TUC570.csv',

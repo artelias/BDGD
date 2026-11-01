@@ -195,11 +195,12 @@ def segment(cells, d, c, origin):
     return seg
 
 
-def run(only=None, regra='v2'):
-    """only: optional set of (DIST, concept) series to compute (selective re-run of the series whose inputs changed)."""
+def run(only=None, regra='v2', fonte=None):
+    """only: optional set of (DIST, concept) series to compute (selective re-run of the series whose inputs changed).
+    fonte: optional callable -> (cells, meta) in the format of load(), for a series built outside the contract (power metrics,
+    motor_v2.nacional.potencia_b); the panel, the selection and the scenarios are the same."""
     t0 = time.monotonic()
-    OUT.mkdir(parents=True, exist_ok=True)
-    cells, meta = load(regra)
+    cells, meta = fonte() if fonte else load(regra)
     grp, gsha = groups()
     concepts = sorted(k for k in meta if isinstance(k, str))
     dists = sorted({d for d, _, _ in cells})
@@ -379,15 +380,15 @@ def one_step(kind, seg):
     return y1 * (y1 / y0) ** (1 / (t1 - t0)), None
 
 
-def write(res):
+def write(res, out=OUT):
     from .relatorio import write_csv, write_parquet
-    OUT.mkdir(parents=True, exist_ok=True)
-    write_csv(OUT / 'RESULTADOS_CANDIDATOS_B.csv', res['results'])
-    write_csv(OUT / 'DECISOES_B.csv', res['decisions'])
-    write_csv(OUT / 'PROJECOES_B.csv', [{k: v for k, v in r.items() if k != 'valor_bruto'} for r in res['projections']])
-    write_parquet(OUT / 'PROJECOES_B_INTERNO.parquet', res['projections'])
-    write_csv(OUT / 'INDISPONIVEIS_B.csv', res['unavailable'])
-    atomic(OUT / 'MANIFESTO_B.json', res['provenance'])
+    out.mkdir(parents=True, exist_ok=True)
+    write_csv(out / 'RESULTADOS_CANDIDATOS_B.csv', res['results'])
+    write_csv(out / 'DECISOES_B.csv', res['decisions'])
+    write_csv(out / 'PROJECOES_B.csv', [{k: v for k, v in r.items() if k != 'valor_bruto'} for r in res['projections']])
+    write_parquet(out / 'PROJECOES_B_INTERNO.parquet', res['projections'])
+    write_csv(out / 'INDISPONIVEIS_B.csv', res['unavailable'])
+    atomic(out / 'MANIFESTO_B.json', res['provenance'])
 
 
 if __name__ == '__main__':

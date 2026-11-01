@@ -131,3 +131,56 @@ Todas as saídas desta execução são **experimentais e internas**. Nenhuma foi
 - **Erro retrospectivo ponta a ponta** (`erro_retrospectivo.py`). Previsão de 1 passo do nível A (total da distribuidora, armazenada) + previsão de 1 passo do complemento, contra o realizado de Consumidores e contra o backtest armazenado do nível B, nas mesmas células. Duas origens, horizonte de 1 ano, seleção nas mesmas origens: diagnóstico, **não validação**.
 - **Fonte canônica interna** (`fonte_canonica.py`). `consumidores_reconciliado` é o valor interno de consumidores; `consumidores_B_original` é só resultado independente e auditoria, nunca substituto.
 - **Idempotência.** Reexecutar a reconciliação e o erro retrospectivo reproduz todos os arquivos com o mesmo SHA-256.
+
+## Cobertura definitiva e métricas de potência (2026-11-01)
+
+**Matriz de cobertura** (`motor_v2/nacional/cobertura.py`, só leitura). O universo é 114 DIST do contrato × 29 pares objetivo/métrica do catálogo, mais a UCBT como sub-série hierárquica: 3.420 combinações e 51.300 células ano × cenário. Cada combinação recebe exatamente um estado com motivo específico:
+
+| Estado | Significado |
+|---|---|
+| `PROJETADA_EXPERIMENTAL` | 15 valores, âncora 2025, modelo escolhido pela comparação retrospectiva |
+| `PROJETADA_BASELINE` | 15 valores, âncora 2025, baseline por política |
+| `SEM_ANCORA_2025` | 15 valores a partir de âncora anterior (ano e horizonte real registrados); nunca entra em total |
+| `HISTORICO_INSUFICIENTE` | há estoque utilizável, mas menos competências do que a regra da métrica exige (potência: 2) |
+| `DADO_NAO_HOMOLOGADO` | o registro existe, mas não passa o contrato ou o gate físico |
+| `SEM_PUBLICACAO` | nenhuma publicação localizada |
+| `SUCESSAO_SOCIETARIA` | código sem perímetro próprio; incorporadas (6611 → 6600 em 2023, 6612 → 6585 em 2022) não são tratadas como empresa ativa |
+| `NAO_APLICAVEL` | entidade sem registros na DIST, conferida nos Parquets locais (`--verificar-na`: 589 células, 0 com registros), ou métrica sem sentido físico |
+| `SEM_SEMANTICA_FISICA_HOMOGENEA` | o campo mistura grandezas físicas (reguladores) |
+| `BLOQUEIO_TECNICO` | limitação do código: deve ser zero (é zero) |
+
+As 438 combinações do nível B sem série em `6327239` foram auditadas uma a uma. As classes são:
+- **A**, sem publicação: 0 isoladas.
+- **B**, sucessão: 275, mais 25 da Energisa Borborema reclassificadas.
+- **C**, não aplicável comprovado: 162.
+- **D**, não homologado: 1 (Coprel, circuitos AT: 2022 com bloqueio de competência, 2023 com base inconsistente, 2024 sem publicação e 2025 com a entidade vazia na origem).
+- **E**, histórico parcial: já projetadas como `SEM_ANCORA_2025`.
+- **F**, defeito de código: **0**.
+- **G**: 0.
+
+Os 10 códigos do contrato ausentes do inventário local são identificadores históricos. A CPFL Mococa, Leste Paulista, Santa Cruz (72), Sul Paulista, a CNEE, a CFLO, a EEB e a EDEVP são reportadas pela DIST 69; a RGE (397) é reportada pela 396; e a Cejama (6896) é reportada pela 5372. Nenhuma tem publicação própria em 2022–2025, e nenhum dado foi adquirido.
+
+**Potência de transformadores de força, TUC 570, kVA** (`potencia_b.py`). Um estoque DIST × ano é utilizável quando atende a todas as condições:
+- passa o gate de `potencia.py`: todo registro tem código de potência válido e a quantidade é igual à do contrato;
+- é estoque elegível no contrato;
+- o kVA do equipamento (EQ, TPOTAPRT) e o da instalação vinculada (UNTRAT, MVA × 1000) concordam em até 5%.
+
+Sem vínculo com a instalação, a concordância não é verificável e o estoque não é usado. A ventilação forçada (POT_F01/F02) nunca é somada. Uma transição em que a variação log do kVA se afasta mais de 0,5 da variação log das unidades é tratada como mudança de cadastro (ruptura), não como crescimento. A série só é liberada com pelo menos 2 competências utilizáveis. Resultado: 60 DIST projetadas (53 com âncora 2025), 37 `DADO_NAO_HOMOLOGADO` (EQ × UN divergentes ou gate) e 5 `HISTORICO_INSUFICIENTE`.
+
+**Potência de reguladores** (`reguladores.py`). EQRE.POT_NOM é kVA aparente, mas pode ser a potência **própria** (placa: passante × faixa de regulação) ou a **passante**. Cada registro é classificado assim:
+- V = tensão do circuito, via UNREMT.CTMT → CTMT.TEN_NOM → TTEN;
+- I = COR_NOM → TCOR;
+- passante = V/√3 · I (fase-neutro), V · I (fase-fase) ou √3 · V · I (trifásico);
+- r = POT_NOM / passante: r ∈ [0,02; 0,30] é PRÓPRIA, r ∈ [0,60; 1,70] é PASSANTE e o resto é indeterminado.
+
+A DIST × ano tem convenção única quando pelo menos 90% dos registros são classificados e pelo menos 95% deles caem numa classe. A série é liberada só com pelo menos 2 competências de uma mesma convenção, sem troca de convenção. O valor é o kVA dos registros dessa convenção.
+
+Resultado: 59 séries (55 próprias e 4 passantes) e 33 DIST `SEM_SEMANTICA_FISICA_HOMOGENEA`. Própria e passante **nunca** são somadas nem convertidas entre si, então não há total nacional. A quantidade de reguladores continua aditiva.
+
+**Transformadores de medida, TUC 575.** A EQTRM não tem campo de potência (transformador de instrumento: relação e classe de exatidão), então a métrica fica `NAO_APLICAVEL`. Não há previsão artificial.
+
+**Transformadores de distribuição em kVA por DIST** vêm do nível A agregado (99 DIST, 92 com âncora 2025).
+
+**Consumidores** usam a fonte canônica `consumidores_reconciliado` (UCBT do nível A + complemento ≥ 0). O estado segue o modelo da UCBT, e os erros publicados são os do caminho reconciliado ponta a ponta. O B independente fica como comparação.
+
+**Coeficientes.** A execução nacional não persistiu os coeficientes dos modelos lineares do nível B. `exportar_web.py` os recupera reajustando a mesma seleção determinística no mesmo pool e só os publica quando o reajuste reproduz a trajetória moderada armazenada: 214 de 214 reproduzem. Random Forest e HistGradientBoosting não têm equação linear e aparecem como N/D com o mecanismo descrito.

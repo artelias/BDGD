@@ -1,0 +1,589 @@
+{
+  "regra": {
+    "propria": [
+      0.02,
+      0.3
+    ],
+    "passante": [
+      0.6,
+      1.7
+    ],
+    "min_classificados": 0.9,
+    "min_dominante": 0.95
+  },
+  "dist_ano": 353,
+  "convencoes": {
+    "PROPRIA": 212,
+    "MISTA": 113,
+    "PASSANTE": 28
+  },
+  "series_liberadas": [
+    {
+      "DIST": 26,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 32,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 44,
+      "convencao": "PASSANTE",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 46,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2025
+      ]
+    },
+    {
+      "DIST": 47,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 82,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 83,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 87,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024
+      ]
+    },
+    {
+      "DIST": 103,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 369,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 370,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 398,
+      "convencao": "PROPRIA",
+      "anos": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 399,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 400,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 404,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 405,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 504,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 527,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 2381,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 2763,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2025
+      ]
+    },
+    {
+      "DIST": 2904,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023
+      ]
+    },
+    {
+      "DIST": 3223,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 3627,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 4248,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 4950,
+      "convencao": "PASSANTE",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5279,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023
+      ]
+    },
+    {
+      "DIST": 5343,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5345,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5346,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5352,
+      "convencao": "PROPRIA",
+      "anos": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5353,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5355,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5356,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5363,
+      "convencao": "PASSANTE",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5364,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5365,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5367,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5368,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2025
+      ]
+    },
+    {
+      "DIST": 5369,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5370,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5371,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5372,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5374,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5375,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5381,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5384,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5385,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 5697,
+      "convencao": "PASSANTE",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 6585,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 6587,
+      "convencao": "PROPRIA",
+      "anos": [
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 6600,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 6603,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 6609,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 6898,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 7016,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 7019,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 7371,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 7467,
+      "convencao": "PROPRIA",
+      "anos": [
+        2023,
+        2024,
+        2025
+      ]
+    },
+    {
+      "DIST": 11825,
+      "convencao": "PROPRIA",
+      "anos": [
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    }
+  ],
+  "por_convencao": {
+    "PROPRIA": 55,
+    "PASSANTE": 4
+  },
+  "total_nacional": "nao_definido (proprio e passante nao sao somaveis)",
+  "dda_sha256": "97784523000c308be171684c3c6f4390f3b657e5854a07b35f6f0840cad1ba11",
+  "contrato_sha256": "8c3d7c77ef536c588c8acc8e79642cdd4a08b4b436c46b7ad9d782d4fcef18df",
+  "erros": [],
+  "segundos": 74.4
+}

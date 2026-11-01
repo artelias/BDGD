@@ -129,5 +129,65 @@
       "B/trafo_forca/quantidade",
       "B/trafo_medida/quantidade"
     ]
+  },
+  "cobertura_final": {
+    "universo": {
+      "dist": 114,
+      "objetivos_metricas_catalogo": 29,
+      "subseries_hierarquicas": 1,
+      "combinacoes": 3420,
+      "celulas_ano_cenario": 51300
+    },
+    "cobertura_processamento": {
+      "combinacoes_com_estado": 3420,
+      "sem_estado": 0,
+      "fracao": 1.0
+    },
+    "cobertura_previsao": {
+      "com_15_valores": 2707,
+      "ancora_2025": 2597,
+      "ancora_anterior": 110,
+      "fracao": 0.7915204678362573,
+      "fracao_aplicavel": 0.9712952996053104
+    },
+    "estados": {
+      "PROJETADA_BASELINE": 1602,
+      "PROJETADA_EXPERIMENTAL": 995,
+      "NAO_APLICAVEL": 273,
+      "DADO_NAO_HOMOLOGADO": 41,
+      "SEM_SEMANTICA_FISICA_HOMOGENEA": 33,
+      "SEM_ANCORA_2025": 110,
+      "HISTORICO_INSUFICIENTE": 6,
+      "SUCESSAO_SOCIETARIA": 360
+    },
+    "estados_catalogo": {
+      "PROJETADA_BASELINE": 1558,
+      "PROJETADA_EXPERIMENTAL": 941,
+      "NAO_APLICAVEL": 273,
+      "DADO_NAO_HOMOLOGADO": 41,
+      "SEM_SEMANTICA_FISICA_HOMOGENEA": 33,
+      "SEM_ANCORA_2025": 106,
+      "HISTORICO_INSUFICIENTE": 6,
+      "SUCESSAO_SOCIETARIA": 348
+    },
+    "combinacoes_objetivo_metrica_com_previsao": 28,
+    "dist_com_alguma_projecao": 102,
+    "bloqueio_tecnico": 0,
+    "classes_auditoria": {
+      "C": 273,
+      "D": 47,
+      "G": 33,
+      "E": 110,
+      "B": 360
+    },
+    "anterior_6327239": {
+      "series_B_geradas": 2412,
+      "series_B_bloqueadas": 438,
+      "combinacoes_com_previsao": 26,
+      "combinacoes_catalogo": 29,
+      "series_A": 512,
+      "dist_com_projecao": 103
+    },
+    "contrato_sha256": "8c3d7c77ef536c588c8acc8e79642cdd4a08b4b436c46b7ad9d782d4fcef18df"
   }
 }

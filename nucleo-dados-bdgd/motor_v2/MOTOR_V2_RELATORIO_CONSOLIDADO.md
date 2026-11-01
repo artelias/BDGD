@@ -214,3 +214,47 @@ Ver `REPRODUCAO_MOTOR_V2.md`. Em resumo:
 - **Proteção dos produtos públicos:** `verificacoes.py` reprova qualquer alteração em `web/`, `output-historico/`, `output-publicavel/` ou `motor_cenarios/` que não esteja na baseline versionada (caminho, status git e SHA-256).
 - **Fonte canônica de consumidores:** interna. O contrato proíbe publicar, exibir no dashboard e declarar homologação.
 - **Publicar** qualquer previsão exigirá decisão humana, homologação científica (≥ 3 origens, point-in-time) e a homologação funcional do dashboard, que é separada (responsabilidade do Codex).
+
+## 14. Fechamento da cobertura (2026-11-01)
+
+Sem retreinar o que já estava válido, sem nova aquisição e sem repetir os candidatos nacionais. Só foram calculadas as séries novas de potência (`potencia_b.py`, cerca de 4 min) e a classificação dos reguladores (`reguladores.py`, cerca de 1 min, leitura de EQRE/UNREMT/CTMT).
+
+| Indicador | 6327239 | Agora |
+|---|---|---|
+| Universo | 114 DIST × 29 pares (B: 2.850 séries) | 114 × 30 (29 do catálogo + UCBT) = **3.420** combinações |
+| Cobertura de processamento | — | **100%** (todas com estado e motivo; `BLOQUEIO_TECNICO` = 0) |
+| Combinações com 15 valores | 2.412 (B) + 512 (A) | **2.707** (2.597 com âncora 2025 e 110 `SEM_ANCORA_2025`): 79,2% do universo, **97,1% do aplicável** |
+| Pares do catálogo com previsão | 26 de 29 | **28 de 29** (falta só TUC 575 kVA, que é `NAO_APLICAVEL`) |
+| DIST com alguma projeção | 103 | **102** (a Energisa Borborema, incorporada em 2023, deixou de ser tratada como empresa ativa) |
+| Defeitos de código (classe F) | — | **0** |
+
+Estados finais:
+- `PROJETADA_BASELINE`: 1.602;
+- `PROJETADA_EXPERIMENTAL`: 995;
+- `SEM_ANCORA_2025`: 110;
+- `SUCESSAO_SOCIETARIA`: 360 (12 códigos × 30);
+- `NAO_APLICAVEL`: 273;
+- `DADO_NAO_HOMOLOGADO`: 41;
+- `SEM_SEMANTICA_FISICA_HOMOGENEA`: 33;
+- `HISTORICO_INSUFICIENTE`: 6.
+
+As métricas liberadas nesta etapa:
+- **TUC 570 kVA:** 60 DIST, todas experimentais;
+- **reguladores kVA:** 59 DIST com convenção única (55 de potência própria e 4 de passante), **sem total nacional**;
+- **transformadores de distribuição kVA por DIST:** 99 DIST, vindas do nível A.
+
+Totais 2030 nesta etapa, todos `PARCIAL`:
+
+| Métrica | Conservador | Moderado | Agressivo |
+|---|---|---|---|
+| TUC 570 (kVA) | 103.926.264 | 111.442.669 | 127.036.261 |
+| TUC 565 (kVA) | 213.286.945 | 216.696.491 | 245.379.290 |
+| Consumidores reconciliados | 87.642.247 | 93.460.778 | 106.671.042 |
+
+Os dois últimos são idênticos aos de 6327239.
+
+Os coeficientes de 214 modelos lineares foram recuperados e verificados pela reprodução exata da trajetória. Os detalhes estão em `nacional/METODOLOGIA.md` (§ Cobertura definitiva e métricas de potência), `reports/nacional/MATRIZ_COBERTURA_SERIES.csv`, `AUDITORIA_COMBINACOES_SEM_PREVISAO.csv`, `LACUNAS_VERSUS_6327239.csv` e `COBERTURA_POR_OBJETIVO.csv`.
+
+**Testes:** 256 de 256 na auditoria local (163 sintéticos e 93 locais). Na emulação do CI com `D:` bloqueado, 163 passam com 1 skip herdado.
+
+**Produto para o dashboard:** `exportar_web.py` gera `web/data-motor-v2/` (índice e um JSON por DIST, cerca de 7 MB no total). Esse produto só entra em `public/` numa build de homologação ou preview, pelo portão `web/scripts/motor-v2-gate.mjs`. Produção continua fechada até a autorização final.

@@ -1,14 +1,15 @@
 {
-  "total": 245,
-  "ok": 245,
+  "total": 256,
+  "ok": 256,
   "falhas": 0,
   "erros": 0,
   "ignorados": 0,
   "arquivos": {
-    "emular_ci.py": "4cfc6615da3200eea94f21cef8254439eedaebbb63b01e6d10069f4790f690bc",
-    "suites.py": "063fdae7c39a24e2e975a61e5a32af7b9be01ca3e3f8b424c056a2a829ce7c4d",
+    "emular_ci.py": "290c5d0ee6bafe59b2c8c37df3aeabfff2b54110e3d587443e3240492fe8d434",
+    "suites.py": "55886e304537eb0065ba651fc9d8ebaffca2b827a736e7c1e00fcd05a8151c6d",
     "test_auditoria_final.py": "d4dffecb2634953ca373c34a054dfe580bb568d8cc1d5171b7dfbb2cea6ef7e4",
     "test_baselines.py": "5c01f7653ef6d2c39457520b2356956db675d99cd013df6ea3de765082d3d2f7",
+    "test_cobertura.py": "218566b6796946ca5923b68a7fb54440ce4a032f4fd8950b641905aac2072392",
     "test_comparison.py": "3b3a6b9548c387ed1f2a53749e20d07c79cf35a828fcb46156d8013132c0db72",
     "test_conj_plan.py": "9cb23a4d9aa49258efdfd01e2a9744630d3e322116b6de27de6d7dca7fdd11fc",
     "test_erro_retrospectivo.py": "28913890304e9c4ae03675d5891780dabb00deec2907e86d37177314fc58f540",
@@ -53,13 +54,14 @@
       "test_metric_contract_motor_v2",
       "test_temporal",
       "test_vintage",
-      "test_suites"
+      "test_suites",
+      "test_cobertura"
     ],
-    "testes": 152,
+    "testes": 163,
     "nota": "suites com dados reais rodam so nesta auditoria local"
   },
   "por_grupo": {
     "local": 93,
-    "sintetica": 152
+    "sintetica": 163
   }
 }

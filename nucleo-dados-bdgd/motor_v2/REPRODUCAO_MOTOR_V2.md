@@ -6,7 +6,7 @@ O Motor V2 é **ferramenta local de pesquisa**, sem passo de deploy. O dashboard
 
 | Grupo | Suítes | Comando | Onde |
 |---|---|---|---|
-| `SINTETICAS` | 12 (152 testes) | `python -m motor_v2.tests.suites` | qualquer máquina; GitHub Actions (`motor-v2-sintetico.yml`) |
+| `SINTETICAS` | 13 (163 testes) | `python -m motor_v2.tests.suites` | qualquer máquina; GitHub Actions (`motor-v2-sintetico.yml`) |
 | `LOCAIS` | 8 (93 testes) | `python -m motor_v2.nacional.testes` (roda **todas** as suítes) | só na máquina com a base local |
 | `PUBLICAS` | `test_public_audit` | workflow da web do PR #19 | auditam os produtos públicos reais; chegam com o #19 |
 | Dashboard | Node/Playwright | — | Codex; fora do Motor V2 |
@@ -62,7 +62,7 @@ cd nucleo-dados-bdgd
 D:/NUCLEO_BDGD_2025/motor_v2/.venv/Scripts/python.exe -m motor_v2.nacional.testes
 ```
 
-Resultado esperado: **245 testes, 245 OK** (152 sintéticos e 93 locais). A matriz fica em `D:\NUCLEO_BDGD_2025\motor_v2\nacional\testes\MATRIZ_TESTES.csv`, com o grupo de cada teste.
+Resultado esperado: **256 testes, 256 OK** (163 sintéticos e 93 locais). A matriz fica em `D:\NUCLEO_BDGD_2025\motor_v2\nacional\testes\MATRIZ_TESTES.csv`, com o grupo de cada teste.
 
 ## 3. Regenerar a reconciliação e os relatórios (sem retreinar nada)
 
@@ -76,6 +76,16 @@ $PY -m motor_v2.nacional.erro_retrospectivo   # erro ponta a ponta (diagnóstico
 $PY -m motor_v2.nacional.fonte_canonica       # declara o contrato da fonte canônica interna
 $PY -m motor_v2.nacional.verificacoes         # integridade, hashes e produtos públicos
 $PY -m motor_v2.nacional.consolidar --repo-copy motor_v2/reports/nacional   # cópia compacta para o repositório
+```
+
+**Cobertura definitiva e potência (2026-11-01).** Só a classificação dos reguladores e `potencia_b` leem ou ajustam algo novo, e só para as séries de potência:
+
+```bash
+$PY -m motor_v2.nacional.reguladores          # convencao propria/passante por registro (EQRE x UNREMT x CTMT), ~1 min
+$PY -m motor_v2.nacional.potencia_b           # TUC 570 kVA e reguladores kVA no nivel B, mesma selecao e cenarios, ~4 min
+$PY -m motor_v2.nacional.cobertura --verificar-na   # matriz DIST x objetivo x metrica (x ano x cenario); confere NA nos Parquets
+$PY -m motor_v2.nacional.exportar_web --saida web/data-motor-v2   # produto compacto do dashboard (portao de homologacao)
+$PY -m motor_v2.nacional.consolidar --repo-copy motor_v2/reports/nacional
 ```
 
 Cada passo é idempotente: executá-lo duas vezes produz arquivos de saída com SHA-256 idêntico.
