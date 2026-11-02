@@ -1,0 +1,28 @@
+{
+  "series_auditadas": 2707,
+  "alertas": 420,
+  "por_severidade": {
+    "ALTA": 223,
+    "MEDIA": 31,
+    "BAIXA": 166
+  },
+  "cenarios_bloqueados": 255,
+  "cenarios_corrigidos": 25,
+  "series_bloqueadas_inteiras": 4,
+  "series_com_extremo_bloqueado": 219,
+  "series_com_15_valores": 2484,
+  "por_classe": {
+    "PLAUSIVEL_COM_EVIDENCIA": 25,
+    "EXTRAPOLACAO_EXTREMA_NAO_SUSTENTADA": 113,
+    "RUPTURA_CADASTRAL": 86,
+    "BASE_HISTORICA_PEQUENA": 6,
+    "HISTORICO_INSUFICIENTE": 16
+  },
+  "niveis_de_referencia": {
+    "objeto_metrica_porte": 1226,
+    "unidade_porte": 1429,
+    "unidade": 52,
+    "sem_referencia": 0
+  },
+  "erros_de_calculo": 0
+}

@@ -103,7 +103,8 @@ class CoverageStates(unittest.TestCase):
         self.assertEqual(st[0], 'SEM_SEMANTICA_FISICA_HOMOGENEA')
 
     def test_states_are_the_documented_list(self):
-        self.assertEqual(len(C.ESTADOS), 10)
+        self.assertEqual(len(C.ESTADOS), 11)        # 10 documented states + BLOQUEIO_PLAUSIBILIDADE (release candidate gate)
+        self.assertIn("BLOQUEIO_PLAUSIBILIDADE", C.ESTADOS)
         self.assertTrue(set(C.PROJETADOS) <= set(C.ESTADOS))
 
 

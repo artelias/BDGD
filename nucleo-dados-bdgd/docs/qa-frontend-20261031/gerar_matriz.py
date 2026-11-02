@@ -24,7 +24,7 @@ def pagina(url):
 def resumo(p):
     target = p.get('locator', '')
     val = p.get('expected')
-    return f'{target} {str(val)[:95]}' .strip() if val is not None else target
+    return f'{target} {str(val)[:95]}'.strip() if val is not None else target
 
 
 def main():
@@ -59,7 +59,7 @@ def main():
             # Limitar ao mesmo fluxo e página. Uma asserção de uma página posterior não prova este controle.
             checks = []
             for s in r['steps'][i+1:]:
-                if s['title'] == 'Navigate':
+                if s['title'] == 'Navigate' or (s['category'] == 'pw:api' and re.match(r'Click|Fill|Select option|Press|Check|Uncheck|Reload|Tap', s['title'])):
                     break
                 if s['category'] == 'expect':
                     description = (s['title'] + ' ' + resumo(s.get('params') or {})).strip()

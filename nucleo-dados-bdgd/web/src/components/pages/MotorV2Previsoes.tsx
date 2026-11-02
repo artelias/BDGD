@@ -122,7 +122,7 @@ function useArquivos(ids: number[]) {
 }
 
 function grafico(anosHist: number[], anosProj: number[], hist: Map<number, number>, ancora: number | null, valorAncora: number | null,
-  traj: Partial<Record<CenarioV2, (number | null)[]>>, ativo: CenarioV2, comparar: boolean, conta: boolean) {
+  traj: Partial<Record<CenarioV2, (number | null)[] | null>>, ativo: CenarioV2, comparar: boolean, conta: boolean) {
   return (t: ChartTokens): EChartsCoreOption => {
     const anos = [...anosHist, ...anosProj];
     const cores: Record<CenarioV2, string> = { Conservador: t.sideB, Moderado: t.accent, Agressivo: t.warn };
@@ -152,6 +152,7 @@ function SerieDist({ ix, d, serie, cenario, comparar }: { ix: IndiceV2; d: DistV
   const csv = csvSerieV2(d, serie);
   return <>
     <p className={s.estado} data-testid="motor-v2-estado"><b>{est?.rotulo ?? serie.estado}</b> · experimental, não homologado. {serie.motivo}</p>
+    <AlertasPlausibilidade serie={serie} cenario={cenario} />
     {serie.estado === "SEM_ANCORA_2025" && <p className={s.alert} role="note">Âncora {serie.ancora}: horizonte real {serie.horizonte_real}. Esta série não entra em totais que exigem âncora 2025.</p>}
     <EChart build={build} height={320} ariaLabel={`Histórico e cenários do Motor V2 — ${serie.nome} (${serie.unidade}) — ${d.empresa}`} testId="motor-v2-grafico" />
     <div className={s.scroll} role="region" tabIndex={0} aria-label="Tabela anual do Motor V2">
@@ -161,7 +162,7 @@ function SerieDist({ ix, d, serie, cenario, comparar }: { ix: IndiceV2; d: DistV
         <tbody>
           {serie.historico.map(([a, v, e]) => <tr key={a}><th scope="row">{a}</th><td>Observado · {e}</td><td colSpan={3}>{fmtV2(v, serie)}</td></tr>)}
           {ix.anos_projecao.map((a, i) => <tr key={a}><th scope="row">{a}</th><td>Projeção experimental</td>
-            {CENARIOS_V2.map((c) => <td key={c} data-ativo={c === cenario}>{serie.cenarios ? fmtV2(serie.cenarios[c][i], serie) : "N/D"}</td>)}</tr>)}
+            {CENARIOS_V2.map((c) => <td key={c} data-ativo={c === cenario} data-estado-cenario={serie.cenarios_status?.[c] ?? ""}>{serie.cenarios && serie.cenarios[c] ? fmtV2(serie.cenarios[c]![i], serie) : serie.cenarios_status?.[c] === "BLOQUEADO" ? <span title={serie.plausibilidade?.cenarios?.[c as "Conservador" | "Agressivo"]?.motivo ?? ""}>Bloqueado</span> : "N/D"}{serie.cenarios_status?.[c] === "CORRIGIDO" ? " *" : ""}</td>)}</tr>)}
         </tbody>
       </table>
     </div>
@@ -170,6 +171,27 @@ function SerieDist({ ix, d, serie, cenario, comparar }: { ix: IndiceV2; d: DistV
       <a className={s.export} data-testid="motor-v2-csv" download={`motor_v2_${serie.objetivo}_${serie.metrica}_DIST_${d.dist}.csv`} href={`data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`}>Exportar série e cenários (CSV)</a>
     </div>
   </>;
+}
+
+const ROTULO_CLASSE: Record<string, string> = {
+  PLAUSIVEL_COM_EVIDENCIA: "plausível, com evidência na própria série", EXTRAPOLACAO_EXTREMA_NAO_SUSTENTADA: "extrapolação extrema não sustentada", RUPTURA_CADASTRAL: "ruptura cadastral",
+  MUDANCA_DE_PERIMETRO: "mudança de perímetro", BASE_HISTORICA_PEQUENA: "base histórica pequena", HISTORICO_INSUFICIENTE: "histórico insuficiente", ERRO_DE_CALCULO: "erro de cálculo",
+  PENDENTE_DE_HOMOLOGACAO: "pendente de homologação",
+};
+
+/** Alertas do portão de plausibilidade: o que foi bloqueado, o que foi corrigido (com o método) e o alerta de intensidade. */
+function AlertasPlausibilidade({ serie, cenario }: { serie: SerieV2; cenario: CenarioV2 }) {
+  const pl = serie.plausibilidade;
+  if (!pl) return null;
+  const cs = (["Conservador", "Agressivo"] as const).filter((c) => pl.cenarios[c] && (pl.cenarios[c].estado !== "ACEITO" || pl.cenarios[c].severidade));
+  const ativoBloqueado = serie.cenarios_status?.[cenario] === "BLOQUEADO";
+  return <div role="note" data-testid="motor-v2-plausibilidade" className={s.alert}>
+    <p><b>Alerta de extrapolação{pl.severidade ? ` · severidade ${pl.severidade.toLowerCase()}` : ""}.</b> Os cenários extremos passam por um portão de plausibilidade: valores fora do que a própria série e as demais distribuidoras sustentaram não são publicados como previsão.</p>
+    {ativoBloqueado && <p data-testid="motor-v2-cenario-bloqueado"><b>O cenário {cenario} está bloqueado</b> para esta série e não tem valor publicável. O valor original fica apenas no artefato de auditoria.</p>}
+    <ul>{cs.map((c) => { const x = pl.cenarios[c]; return <li key={c}><b>{c}: {x.estado === "BLOQUEADO" ? "bloqueado" : x.estado === "CORRIGIDO" ? "corrigido (*)" : "aceito com alerta"}</b>{x.classe ? ` · ${ROTULO_CLASSE[x.classe] ?? x.classe}` : ""}. {x.motivo}</li>; })}</ul>
+    {pl.alerta_intensidade && <p>{pl.alerta_intensidade}.</p>}
+    {cs.some((c) => pl.cenarios[c].estado === "CORRIGIDO") && <p>* Corrigido: a taxa extrema foi substituída pelo crescimento que a própria série demonstrou nos últimos anos; o valor original está no artefato de auditoria.</p>}
+  </div>;
 }
 
 function Modelo({ serie }: { serie: SerieV2 }) {
@@ -191,7 +213,7 @@ function SerieGrupo({ ix, nome, series, cenario, comparar }: { ix: IndiceV2; nom
   const somas = Object.fromEntries(CENARIOS_V2.map((c) => [c, somaGrupo(series, c)])) as Record<CenarioV2, ReturnType<typeof somaGrupo>>;
   const g = somas[cenario];
   const build = useMemo(() => grafico(ix.anos_historicos, ix.anos_projecao, g.hist, 2025, g.hist.get(2025) ?? null,
-    Object.fromEntries(CENARIOS_V2.map((c) => [c, somas[c].total])) as Record<CenarioV2, (number | null)[]>, cenario, comparar, ref ? ehContagemV2(ref) : true),
+    Object.fromEntries(CENARIOS_V2.map((c) => [c, somas[c].total])) as Record<CenarioV2, (number | null)[] | null>, cenario, comparar, ref ? ehContagemV2(ref) : true),
   // eslint-disable-next-line react-hooks/exhaustive-deps -- somas e g derivam de series, que já está nas dependências
   [ix, series, cenario, comparar]);
   if (!ref) return <p role="status" className={s.alert}>Nenhuma distribuidora do grupo tem esta combinação.</p>;
@@ -214,8 +236,8 @@ function Cobertura({ ix, chave }: { ix: IndiceV2; chave: string }) {
   const total = ix.dists.length;
   return <div className={s.modelo} data-testid="motor-v2-cobertura">
     <h3>Cobertura nacional de {o.nome} ({o.unidade})</h3>
-    <p>{o.series_com_15_valores} de {total} distribuidoras com os 15 valores (5 anos × 3 cenários). Estado das demais: {Object.entries(o.estados).filter(([e]) => !projetada({ estado: e })).map(([e, n]) => `${ix.estados[e]?.rotulo ?? e}: ${n}`).join(" · ") || "nenhuma"}.</p>
-    {o.total_2030 ? <p>Total 2030 <b data-testid="motor-v2-rotulo-total">{o.rotulo_total}</b>{o.cobertura_estoque_2025 != null ? ` (cobre ${pctV2(o.cobertura_estoque_2025, 2)} do estoque 2025 do contrato)` : ""}: {CENARIOS_V2.map((c) => `${c} ${fmtV2(o.total_2030![c], o)}`).join(" · ")}.</p>
+    <p>{o.series_com_15_valores} de {total} distribuidoras com os 15 valores (5 anos × 3 cenários){o.series_com_cenario_bloqueado ? `; ${o.series_com_cenario_bloqueado} com cenário extremo bloqueado pela plausibilidade (sem os 15 valores)` : ""}. Estado das demais: {Object.entries(o.estados).filter(([e]) => !projetada({ estado: e })).map(([e, n]) => `${ix.estados[e]?.rotulo ?? e}: ${n}`).join(" · ") || "nenhuma"}.</p>
+    {o.total_2030 ? <p>Total 2030 <b data-testid="motor-v2-rotulo-total">{o.rotulo_total}</b>{o.cobertura_estoque_2025 != null ? ` (cobre ${pctV2(o.cobertura_estoque_2025, 2)} do estoque 2025 do contrato)` : ""}: {CENARIOS_V2.map((c) => `${c} ${fmtV2(o.total_2030![c], o)}`).join(" · ")}, somando as mesmas {o.n_series_total?.Moderado ?? "N/D"} séries (as que têm os três cenários publicáveis).{o.series_com_cenario_bloqueado ? ` Moderado com todas as ${o.n_series_moderado_todas} séries projetadas: ${fmtV2(o.total_2030_moderado_todas ?? null, o)}.` : ""}</p>
       : <p>{o.observacao ?? "Sem total nacional."}</p>}
   </div>;
 }

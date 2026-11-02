@@ -144,34 +144,68 @@
       "fracao": 1.0
     },
     "cobertura_previsao": {
-      "com_15_valores": 2707,
-      "ancora_2025": 2597,
-      "ancora_anterior": 110,
-      "fracao": 0.7915204678362573,
-      "fracao_aplicavel": 0.9712952996053104
+      "com_15_valores": 2484,
+      "com_moderado_e_extremo_bloqueado": 219,
+      "series_bloqueadas_inteiras": 4,
+      "cenarios_extremos_bloqueados": 255,
+      "cenarios_extremos_corrigidos": 25,
+      "ancora_2025": 2594,
+      "ancora_anterior": 109,
+      "fracao": 0.7263157894736842,
+      "fracao_aplicavel": 0.891280947255113
     },
     "estados": {
-      "PROJETADA_BASELINE": 1602,
-      "PROJETADA_EXPERIMENTAL": 995,
+      "PROJETADA_BASELINE": 1601,
+      "PROJETADA_EXPERIMENTAL": 993,
       "NAO_APLICAVEL": 273,
       "DADO_NAO_HOMOLOGADO": 41,
       "SEM_SEMANTICA_FISICA_HOMOGENEA": 33,
-      "SEM_ANCORA_2025": 110,
+      "SEM_ANCORA_2025": 109,
       "HISTORICO_INSUFICIENTE": 6,
-      "SUCESSAO_SOCIETARIA": 360
+      "SUCESSAO_SOCIETARIA": 360,
+      "BLOQUEIO_PLAUSIBILIDADE": 4
     },
     "estados_catalogo": {
-      "PROJETADA_BASELINE": 1558,
-      "PROJETADA_EXPERIMENTAL": 941,
+      "PROJETADA_BASELINE": 1557,
+      "PROJETADA_EXPERIMENTAL": 939,
       "NAO_APLICAVEL": 273,
       "DADO_NAO_HOMOLOGADO": 41,
       "SEM_SEMANTICA_FISICA_HOMOGENEA": 33,
-      "SEM_ANCORA_2025": 106,
+      "SEM_ANCORA_2025": 105,
       "HISTORICO_INSUFICIENTE": 6,
-      "SUCESSAO_SOCIETARIA": 348
+      "SUCESSAO_SOCIETARIA": 348,
+      "BLOQUEIO_PLAUSIBILIDADE": 4
     },
     "combinacoes_objetivo_metrica_com_previsao": 28,
     "dist_com_alguma_projecao": 102,
+    "plausibilidade": {
+      "series_auditadas": 2707,
+      "alertas": 420,
+      "por_severidade": {
+        "ALTA": 223,
+        "MEDIA": 31,
+        "BAIXA": 166
+      },
+      "cenarios_bloqueados": 255,
+      "cenarios_corrigidos": 25,
+      "series_bloqueadas_inteiras": 4,
+      "series_com_extremo_bloqueado": 219,
+      "series_com_15_valores": 2484,
+      "por_classe": {
+        "PLAUSIVEL_COM_EVIDENCIA": 25,
+        "EXTRAPOLACAO_EXTREMA_NAO_SUSTENTADA": 113,
+        "RUPTURA_CADASTRAL": 86,
+        "BASE_HISTORICA_PEQUENA": 6,
+        "HISTORICO_INSUFICIENTE": 16
+      },
+      "niveis_de_referencia": {
+        "objeto_metrica_porte": 1226,
+        "unidade_porte": 1429,
+        "unidade": 52,
+        "sem_referencia": 0
+      },
+      "erros_de_calculo": 0
+    },
     "bloqueio_tecnico": 0,
     "classes_auditoria": {
       "C": 273,

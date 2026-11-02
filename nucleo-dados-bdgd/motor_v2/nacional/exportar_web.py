@@ -43,6 +43,7 @@ ROTULOS = {
     'SUCESSAO_SOCIETARIA': ('Sucessão societária', 'O código não é perímetro independente (incorporado ou reportado por outra DIST).'),
     'NAO_APLICAVEL': ('Não aplicável', 'O ativo não existe na distribuidora ou a métrica não tem sentido físico.'),
     'SEM_SEMANTICA_FISICA_HOMOGENEA': ('Sem semântica física homogênea', 'O campo mistura grandezas físicas diferentes.'),
+    'BLOQUEIO_PLAUSIBILIDADE': ('Bloqueada · plausibilidade', 'A trajetória moderada não é sustentada por evidência comparável; nenhum cenário é publicado como previsão utilizável. O valor original fica só no artefato de auditoria.'),
     'BLOQUEIO_TECNICO': ('Bloqueio técnico', 'Limitação do código; deve ser zero.'),
 }
 BASELINES = ('persistencia', 'deriva', 'cagr')
@@ -168,7 +169,9 @@ for _m in ('ols', 'ridge', 'elastic_net', 'poisson'):
 def run(saida):
     saida = Path(saida)
     (saida / 'distribuidoras').mkdir(parents=True, exist_ok=True)
-    linhas, valores, contract, suc = COB.montar(False)
+    from . import plausibilidade as PL
+    linhas, valores, contract, suc, audit, brutos, plres = PL.montar_final()
+    COB.PLAUS_RESUMO = plres
     res = COB.resumo(linhas, valores, contract)
     hist, hpot, _ = historicos(contract)
     candB = candidatos(ROOT_OUT / 'distribuidora' / 'RESULTADOS_CANDIDATOS_B.csv')
@@ -219,7 +222,9 @@ def run(saida):
         projetada = r['estado'] in COB.PROJETADOS
         serie = dict(
             objetivo=o, metrica=m, nome=r['nome'], familia=r['familia'], unidade=r['unidade'], natureza=r['natureza'], variante=r['variante'] or None,
-            estado=r['estado'], classe=r['classe_auditoria'] or None, motivo=r['motivo'], fonte=r['fonte'],
+            estado=r['estado'], classe=r['classe_auditoria'] or None, motivo=(r['plaus_motivo'] if r['estado'] == 'BLOQUEIO_PLAUSIBILIDADE' else r['motivo']), fonte=r['fonte'],
+            plausibilidade=(dict(severidade=r['plaus_severidade'] or None, classe=r['plaus_classe'] or None, motivo=r['plaus_motivo'] or None, alerta_intensidade=r['plaus_alerta_intensidade'] or None,
+                                 cenarios=json.loads(r['plaus_json'])) if r['plaus_json'] and (r['plaus_severidade'] or r['cenarios_bloqueados'] or r['cenarios_corrigidos']) else None),
             historico=h, ancora=int(r['ano_ancora']) if r['ano_ancora'] else None, horizonte_real=r['horizonte_real'] or None,
             valor_ancora=_n(r['valor_ancora']), entra_em_totais=bool(r['entra_em_totais']),
             modelo=None if not projetada else dict(
@@ -235,7 +240,8 @@ def run(saida):
                  dict(status='N/D', motivo='baseline sem coeficientes estimados; formula no mecanismo') if mid in BASELINES else
                  dict(status='N/D', motivo='coeficientes nao persistidos para este nivel'))),
             erros=e, baselines=bl or None, melhor_baseline_medido=best_b, ganho_vs_melhor_baseline=ganho,
-            cenarios={s: [vals[d, o, m].get(s, {}).get(y) for y in COB.YEARS] for s in COB.CENARIOS} if projetada else None,
+            cenarios={s: ([vals[d, o, m].get(s, {}).get(y) for y in COB.YEARS] if s not in r['cenarios_bloqueados'].split('|') else None) for s in COB.CENARIOS} if projetada else None,
+            cenarios_status={s: ('BLOQUEADO' if s in r['cenarios_bloqueados'].split('|') else 'CORRIGIDO' if s in r['cenarios_corrigidos'].split('|') else 'ACEITO') for s in COB.CENARIOS} if projetada else None,
             cenarios_meta=None if not projetada else dict(
                 degenerados=dec.get('cenario_cenarios_degenerados') == 'True', piso_zero=dec.get('cenario_piso_zero_aplicado') == 'True',
                 crescimento_log1p={k: _r(dec.get('cenario_crescimento_log1p_' + k), 6) for k in ('conservador', 'moderado', 'agressivo')},
@@ -256,13 +262,17 @@ def run(saida):
         objetivos.append(dict(objetivo=p['objetivo'], metrica=p['metrica'], nome=cat['nome'], familia=cat['familia'], unidade=p['unidade'], natureza=cat['natureza'],
                               no_catalogo=cat['no_catalogo'], estados={k: p[k] for k in COB.ESTADOS if p[k]}, series_com_15_valores=p['series_com_15_valores'],
                               cobertura_estoque_2025=_r(p['cobertura_estoque_2025'], 6), rotulo_total=p['rotulo_total'] or None, observacao=p['observacao'] or None,
-                              total_2030={s: _r(p['total_2030_' + s.lower()], 3) for s in COB.CENARIOS} if p['rotulo_total'] else None))
+                              total_2030={s: _r(p['total_2030_' + s.lower()], 3) for s in COB.CENARIOS} if p['rotulo_total'] else None,
+                              n_series_total={s: p['n_series_total_' + s.lower()] for s in COB.CENARIOS} if p['rotulo_total'] else None,
+                              total_2030_moderado_todas=_r(p['total_2030_moderado_todas_as_series'], 3) if p['rotulo_total'] else None, n_series_moderado_todas=p['n_series_moderado_todas'] if p['rotulo_total'] else None,
+                              series_com_cenario_bloqueado=p['series_com_cenario_bloqueado'], series_com_cenario_corrigido=p['series_com_cenario_corrigido']))
     indice = dict(schema=SCHEMA, status_publicacao='HOMOLOGACAO_EXPERIMENTAL_NAO_PUBLICAVEL_EM_PRODUCAO', contrato_sha256=digest(CONTRACT),
                   anos_historicos=[2022, 2023, 2024, 2025], anos_projecao=list(COB.YEARS), cenarios=list(COB.CENARIOS),
                   estados={k: dict(rotulo=v[0], descricao=v[1], com_valores=k in COB.PROJETADOS) for k, v in ROTULOS.items()},
                   objetivos=objetivos, grupos={g['grupo_id']: g['nome'] for g in grupos_cfg['grupos']},
                   dists=[dict(dist=d, empresa=empresas[d], grupo=grupo_de[d] or None, projetadas=sum(1 for s in por_dist[d] if s['estado'] in COB.PROJETADOS),
                               series=len(por_dist[d])) for d in sorted(por_dist)],
+                  plausibilidade=plres,
                   resumo={k: res[k] for k in ('universo', 'cobertura_processamento', 'cobertura_previsao', 'estados', 'combinacoes_objetivo_metrica_com_previsao',
                                                 'dist_com_alguma_projecao', 'bloqueio_tecnico', 'classes_auditoria')},
                   coeficientes=dict(recuperados=sum(1 for v in coefs.values() if v['status'] == 'recuperado_e_verificado'), tentados=len(coefs)),

@@ -324,6 +324,11 @@ def estoque_2025(contract):
     return out
 
 
+def completa(r):
+    """A series counts as having the 15 values only when its state projects and no scenario was blocked by the plausibility gate."""
+    return r['estado'] in PROJETADOS and not r.get('cenarios_bloqueados')
+
+
 def resumo(linhas, valores, contract):
     est = Counter(r['estado'] for r in linhas)
     cat = Counter(r['estado'] for r in linhas if r['no_catalogo'])
@@ -334,31 +339,48 @@ def resumo(linhas, valores, contract):
         proj = [r for r in rr if r['entra_em_totais']]
         anc = sum(_num(r['valor_ancora']) or 0 for r in proj)
         tot, nd = st25.get((o, m), (None, None))
-        tot2030 = {s: sum(_num(v['valor']) or 0 for v in valores if v['objetivo'] == o and v['metrica'] == m and v['ano'] == 2030 and v['cenario'] == s
-                          and v['estado'] in ('PROJETADA_EXPERIMENTAL', 'PROJETADA_BASELINE')) for s in CENARIOS} if proj else {}
+        # the three scenario totals sum the SAME set of series: those with the three scenarios publishable (a total per scenario over
+        # different sets would break Conservador <= Moderado <= Agressivo). Moderate over every projected series is reported apart.
+        comum = {r['DIST'] for r in proj if completa(r)}
+        todas = {r['DIST'] for r in proj}
+        v30 = [v for v in valores if v['objetivo'] == o and v['metrica'] == m and v['ano'] == 2030 and v['estado'] in ('PROJETADA_EXPERIMENTAL', 'PROJETADA_BASELINE') and v['valor'] != '']
+        tot2030 = {s: sum(_num(v['valor']) or 0 for v in v30 if v['cenario'] == s and v['DIST'] in comum) for s in CENARIOS} if proj else {}
+        n_tot = {s: len(comum) for s in CENARIOS} if proj else {}
+        tot_mod_todas = sum(_num(v['valor']) or 0 for v in v30 if v['cenario'] == 'Moderado' and v['DIST'] in todas) if proj else None
         cobert = anc / tot if tot else None
         por.append(dict(objetivo=o, metrica=m, unidade=rr[0]['unidade'], dist_universo=len(rr), **{k: e.get(k, 0) for k in ESTADOS},
-                        series_com_15_valores=sum(e.get(k, 0) for k in PROJETADOS), dist_ancora_2025_nos_totais=len(proj),
+                        series_com_15_valores=sum(1 for r in rr if completa(r)), series_com_cenario_bloqueado=sum(1 for r in rr if r['estado'] in PROJETADOS and r.get('cenarios_bloqueados')),
+                        series_com_cenario_corrigido=sum(1 for r in rr if r.get('cenarios_corrigidos')), dist_ancora_2025_nos_totais=len(proj),
+                        n_series_total_conservador=n_tot.get('Conservador'), n_series_total_moderado=n_tot.get('Moderado'), n_series_total_agressivo=n_tot.get('Agressivo'),
                         estoque_2025_contrato=tot, dist_estoque_2025_contrato=nd, ancora_2025_projetada=anc if proj else None,
                         cobertura_estoque_2025=cobert,
-                        total_2030_conservador=tot2030.get('Conservador'), total_2030_moderado=tot2030.get('Moderado'), total_2030_agressivo=tot2030.get('Agressivo'),
-                        rotulo_total='' if not proj or (o, m) in NAO_ADITIVAS else ('COMPLETO' if cobert is not None and cobert >= 0.9999 and e.get('SEM_ANCORA_2025', 0) == 0 else 'PARCIAL'),
+                        total_2030_conservador=tot2030.get('Conservador'), total_2030_moderado=tot2030.get('Moderado'), total_2030_agressivo=tot2030.get('Agressivo'), n_series_total_comum=len(comum) if proj else None,
+                        total_2030_moderado_todas_as_series=tot_mod_todas, n_series_moderado_todas=len(todas) if proj else None,
+                        rotulo_total='' if not proj or (o, m) in NAO_ADITIVAS else ('COMPLETO' if cobert is not None and cobert >= 0.9999 and e.get('SEM_ANCORA_2025', 0) == 0 and all(r.get('cenarios_bloqueados', '') == '' for r in proj) and e.get('BLOQUEIO_PLAUSIBILIDADE', 0) == 0 else 'PARCIAL'),
                         observacao='potencia propria e passante nao somaveis: sem total nacional' if (o, m) in NAO_ADITIVAS else
                         (f"{e.get('SEM_ANCORA_2025', 0)} DIST com ancora anterior a 2025 e {len(rr) - len(proj) - sum(e.get(k, 0) for k in ('SEM_ANCORA_2025', 'NAO_APLICAVEL', 'SUCESSAO_SOCIETARIA'))} "
                          f"DIST aplicaveis sem projecao ficam fora do total; {e.get('NAO_APLICAVEL', 0)} nao aplicaveis e {e.get('SUCESSAO_SOCIETARIA', 0)} codigos de sucessao nao tem perimetro proprio" if proj else '')))
     univ = len(linhas)
-    com15 = sum(est.get(k, 0) for k in PROJETADOS)
+    com15 = sum(1 for r in linhas if completa(r))
+    parciais = sum(1 for r in linhas if r['estado'] in PROJETADOS and r.get('cenarios_bloqueados'))
+    ncen = Counter()
+    for r in linhas:
+        for k in ('cenarios_bloqueados', 'cenarios_corrigidos'):
+            ncen[k] += len(r[k].split('|')) if r.get(k) else 0
     return dict(
         universo=dict(dist=len({r['DIST'] for r in linhas}), objetivos_metricas_catalogo=len({(r['objetivo'], r['metrica']) for r in linhas if r['no_catalogo']}),
                       subseries_hierarquicas=len({(r['objetivo'], r['metrica']) for r in linhas if not r['no_catalogo']}), combinacoes=univ,
                       celulas_ano_cenario=len(valores)),
         cobertura_processamento=dict(combinacoes_com_estado=sum(est.values()), sem_estado=univ - sum(est.values()), fracao=sum(est.values()) / univ),
-        cobertura_previsao=dict(com_15_valores=com15, ancora_2025=est.get('PROJETADA_EXPERIMENTAL', 0) + est.get('PROJETADA_BASELINE', 0),
+        cobertura_previsao=dict(com_15_valores=com15, com_moderado_e_extremo_bloqueado=parciais, series_bloqueadas_inteiras=est.get('BLOQUEIO_PLAUSIBILIDADE', 0),
+                                cenarios_extremos_bloqueados=ncen['cenarios_bloqueados'], cenarios_extremos_corrigidos=ncen['cenarios_corrigidos'],
+                                ancora_2025=est.get('PROJETADA_EXPERIMENTAL', 0) + est.get('PROJETADA_BASELINE', 0),
                                 ancora_anterior=est.get('SEM_ANCORA_2025', 0), fracao=com15 / univ,
                                 fracao_aplicavel=com15 / max(1, univ - est.get('NAO_APLICAVEL', 0) - est.get('SUCESSAO_SOCIETARIA', 0))),
         estados=dict(est), estados_catalogo=dict(cat),
         combinacoes_objetivo_metrica_com_previsao=sum(1 for p in por if p['series_com_15_valores'] > 0 and p['objetivo'] != 'ucbt'),
         dist_com_alguma_projecao=len({r['DIST'] for r in linhas if r['estado'] in PROJETADOS}),
+        plausibilidade=PLAUS_RESUMO,
         bloqueio_tecnico=est.get('BLOQUEIO_TECNICO', 0),
         classes_auditoria=dict(Counter(r['classe_auditoria'] for r in linhas if r['classe_auditoria'])),
         por_objetivo=por, anterior_6327239=ANTERIOR)
@@ -392,10 +414,24 @@ def lacunas(linhas):
     return out
 
 
+PLAUS_RESUMO = {}
+
+
 def run(verificar=False):
+    global PLAUS_RESUMO
+    from . import plausibilidade as PL
     linhas, valores, contract, suc = montar(verificar)
+    from . import exportar_web as EW
+    hist, hpot, _ = EW.historicos(contract)
+    for v in valores:
+        v.setdefault('estado_cenario', '')
+    for r in linhas:
+        for k in ('cenarios_bloqueados', 'cenarios_corrigidos', 'plaus_classe', 'plaus_severidade', 'plaus_motivo', 'plaus_json', 'plaus_alerta_intensidade'):
+            r.setdefault(k, '')
+    linhas, valores, audit, brutos, PLAUS_RESUMO = PL.avaliar(linhas, valores, lambda r: sorted(hpot.get((r['DIST'], r['variante']), [])) if r['variante'] else sorted(hist.get((r['DIST'], r['objetivo'], r['metrica']), [])))
+    PL.gravar(audit, brutos, PLAUS_RESUMO)
     OUT.mkdir(parents=True, exist_ok=True)
-    write_csv(OUT / 'MATRIZ_COBERTURA_SERIES.csv', linhas)
+    write_csv(OUT / 'MATRIZ_COBERTURA_SERIES.csv', [{k: v for k, v in r.items() if k != 'plaus_json'} for r in linhas])
     with gzip.GzipFile(OUT / 'MATRIZ_COBERTURA_COMPLETA.csv.gz', 'wb', mtime=0) as gz:
         import io
         buf = io.StringIO(); w = csv.DictWriter(buf, fieldnames=list(valores[0]), lineterminator='\n'); w.writeheader(); w.writerows(valores)

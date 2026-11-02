@@ -278,6 +278,7 @@ DIST,empresa,objetivo,metrica,antes_6327239,depois,classe,resolvido,motivo
 87,Dcelt,barramentos,quantidade,bloqueada,NAO_APLICAVEL,C,False,entidade sem registros na publicacao da DIST (verificado: 0 registro(s) na entidade local) | 2022: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2023: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2024: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2025: nao_aplicavel:ATIVO_NAO_APLICAVEL
 87,Dcelt,ucbt,quantidade,nivel A,PROJETADA_EXPERIMENTAL,,True,tendencia >= 5% melhor que a persistencia e nao pior em nenhuma origem
 88,Joao Cesa,rede_at,extensao_km,bloqueada,NAO_APLICAVEL,C,False,entidade sem registros na publicacao da DIST (verificado: 0 registro(s) na entidade local) | 2022: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2023: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2024: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2025: nao_aplicavel:ATIVO_NAO_APLICAVEL
+88,Joao Cesa,ramais,extensao_km,gerada,BLOQUEIO_PLAUSIBILIDADE,,False,melhor baseline medido
 88,Joao Cesa,trafo_dist,potencia_kva,so territorial (nivel A),PROJETADA_BASELINE,,True,melhor baseline medido
 88,Joao Cesa,trafo_forca,potencia_kva,sem serie por DIST (nivel B),DADO_NAO_HOMOLOGADO,D,False,"trafo_forca_kva: 2022 gate de potencia (codigo invalido ou quantidade != contrato), 2023 gate de potencia (codigo invalido ou quantidade != contrato), 2024 gate de potencia (codigo invalido ou quantidade != contrato), 2025 gate de potencia (codigo invalido ou quantidade != contrato)"
 88,Joao Cesa,trafo_medida,potencia_kva,nao_aplicavel,NAO_APLICAVEL,C,False,"TUC 575 (transformador de medida, EQTRM) nao tem campo de potencia: relacao e classe de exatidao, nao potencia de transformacao"
@@ -312,6 +313,7 @@ DIST,empresa,objetivo,metrica,antes_6327239,depois,classe,resolvido,motivo
 371,Equatorial PA,trafo_dist,potencia_kva,so territorial (nivel A),PROJETADA_BASELINE,,True,melhor baseline medido
 371,Equatorial PA,trafo_forca,potencia_kva,sem serie por DIST (nivel B),DADO_NAO_HOMOLOGADO,D,False,"trafo_forca_kva: 2022 EQ x UN divergem 679.1% (> 5%), 2023 EQ x UN divergem 45.3% (> 5%), 2024 EQ x UN divergem 45.1% (> 5%), 2025 EQ x UN divergem 32.3% (> 5%)"
 371,Equatorial PA,trafo_medida,potencia_kva,nao_aplicavel,NAO_APLICAVEL,C,False,"TUC 575 (transformador de medida, EQTRM) nao tem campo de potencia: relacao e classe de exatidao, nao potencia de transformacao"
+371,Equatorial PA,seccionalizadores,quantidade,gerada,BLOQUEIO_PLAUSIBILIDADE,,False,ML >= 5% melhor que o melhor baseline (persistencia) no score robusto e nao pior em nenhuma origem
 371,Equatorial PA,reguladores,potencia_kva,sem serie por DIST (nivel B),SEM_SEMANTICA_FISICA_HOMOGENEA,G,False,"convencao de POT_NOM por ano: {'MISTA': 4}; reguladores_kva_propria: 2022 convencao MISTA != PROPRIA, 2023 convencao MISTA != PROPRIA, 2024 convencao MISTA != PROPRIA, 2025 convencao MISTA != PROPRIA; reguladores_kva_passante: 2022 convencao MISTA != PASSANTE, 2023 convencao MISTA != PASSANTE, 2024 convencao MISTA != PASSANTE, 2025 convencao MISTA != PASSANTE"
 371,Equatorial PA,ucbt,quantidade,nivel A,PROJETADA_EXPERIMENTAL,,True,ML >= 5% melhor que o melhor baseline (persistencia) no score robusto e nao pior em nenhuma origem
 380,EDP ES,trafo_dist,potencia_kva,so territorial (nivel A),PROJETADA_EXPERIMENTAL,,True,tendencia >= 5% melhor que a persistencia e nao pior em nenhuma origem
@@ -482,6 +484,7 @@ DIST,empresa,objetivo,metrica,antes_6327239,depois,classe,resolvido,motivo
 2381,Cermissoes,reguladores,potencia_kva,sem serie por DIST (nivel B),PROJETADA_BASELINE,,True,melhor baseline medido
 2381,Cermissoes,circuitos_at,quantidade,bloqueada,NAO_APLICAVEL,C,False,entidade sem registros na publicacao da DIST (verificado: 0 registro(s) na entidade local) | 2022: nao_homologado:BLOQUEIO_COMPETENCIA; 2023: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2024: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2025: nao_aplicavel:ATIVO_NAO_APLICAVEL
 2381,Cermissoes,ucbt,quantidade,nivel A,PROJETADA_BASELINE,,True,melhor baseline medido
+2763,Ceriluz,rede_at,extensao_km,gerada,BLOQUEIO_PLAUSIBILIDADE,E,False,ancora 2024; horizonte real 2..6 anos a partir de 2024; fora dos totais com ancora 2025
 2763,Ceriluz,trafo_dist,potencia_kva,so territorial (nivel A),PROJETADA_EXPERIMENTAL,,True,tendencia >= 5% melhor que a persistencia e nao pior em nenhuma origem
 2763,Ceriluz,trafo_forca,potencia_kva,sem serie por DIST (nivel B),PROJETADA_BASELINE,,True,melhor baseline medido
 2763,Ceriluz,trafo_medida,potencia_kva,nao_aplicavel,NAO_APLICAVEL,C,False,"TUC 575 (transformador de medida, EQTRM) nao tem campo de potencia: relacao e classe de exatidao, nao potencia de transformacao"
@@ -695,6 +698,7 @@ DIST,empresa,objetivo,metrica,antes_6327239,depois,classe,resolvido,motivo
 5366,Cedri,barramentos,quantidade,bloqueada,NAO_APLICAVEL,C,False,entidade sem registros na publicacao da DIST (verificado: 0 registro(s) na entidade local) | 2022: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2023: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2024: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2025: nao_aplicavel:ATIVO_NAO_APLICAVEL
 5366,Cedri,ucbt,quantidade,nivel A,PROJETADA_EXPERIMENTAL,,True,tendencia >= 5% melhor que a persistencia e nao pior em nenhuma origem
 5367,Ceprag,rede_at,extensao_km,bloqueada,NAO_APLICAVEL,C,False,entidade sem registros na publicacao da DIST (verificado: 0 registro(s) na entidade local) | 2022: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2023: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2024: nao_aplicavel:ATIVO_NAO_APLICAVEL; 2025: nao_aplicavel:ATIVO_NAO_APLICAVEL
+5367,Ceprag,ramais,extensao_km,gerada,BLOQUEIO_PLAUSIBILIDADE,,False,tendencia >= 5% melhor que a persistencia e nao pior em nenhuma origem
 5367,Ceprag,trafo_dist,potencia_kva,so territorial (nivel A),PROJETADA_EXPERIMENTAL,,True,tendencia >= 5% melhor que a persistencia e nao pior em nenhuma origem
 5367,Ceprag,trafo_forca,potencia_kva,sem serie por DIST (nivel B),PROJETADA_BASELINE,,True,melhor baseline medido
 5367,Ceprag,trafo_medida,potencia_kva,nao_aplicavel,NAO_APLICAVEL,C,False,"TUC 575 (transformador de medida, EQTRM) nao tem campo de potencia: relacao e classe de exatidao, nao potencia de transformacao"

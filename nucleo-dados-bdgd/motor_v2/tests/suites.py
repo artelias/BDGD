@@ -33,6 +33,7 @@ SINTETICAS = {
     'test_vintage': 'vintages point-in-time',
     'test_suites': 'esta classificacao e o workflow sintetico',
     'test_cobertura': 'estados da matriz de cobertura e regras de liberacao de potencia (sinteticos)',
+    'test_plausibilidade': 'portao de plausibilidade dos cenarios (sinteticos)',
 }
 LOCAIS = {
     'test_comparison': 'comparativo de candidatos sobre o painel real em D:/',

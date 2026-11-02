@@ -8,6 +8,12 @@ export const CENARIOS_V2 = ["Conservador", "Moderado", "Agressivo"] as const;
 export type CenarioV2 = (typeof CENARIOS_V2)[number];
 export const ESTADOS_PROJETADOS = ["PROJETADA_EXPERIMENTAL", "PROJETADA_BASELINE", "SEM_ANCORA_2025"] as const;
 
+export type EstadoCenario = "ACEITO" | "CORRIGIDO" | "BLOQUEADO";
+export interface PlausibilidadeCenario { estado: EstadoCenario; classe: string | null; severidade: string | null; motivo: string | null; g: number | null; g_pub: number | null; evidencias: Record<string, unknown> | null }
+export interface PlausibilidadeV2 {
+  severidade: "ALTA" | "MEDIA" | "BAIXA" | null; classe: string | null; motivo: string | null; alerta_intensidade: string | null;
+  cenarios: Record<"Conservador" | "Agressivo", PlausibilidadeCenario>;
+}
 export interface ErrosV2 { mae: number | null; rmse?: number | null; wape: number | null; vies: number | null; origens: number; previsoes?: number; mae_por_origem?: Record<string, number> }
 export interface CoeficientesV2 {
   status: "recuperado_e_verificado" | "N/D"; motivo?: string; forma?: string; intercepto?: number;
@@ -25,7 +31,10 @@ export interface SerieV2 {
   estado: string; classe: string | null; motivo: string; fonte: string;
   historico: [number, number | null, string][]; ancora: number | null; horizonte_real: string | null; valor_ancora: number | null; entra_em_totais: boolean;
   modelo: ModeloV2 | null; erros: ErrosV2 | null; baselines: Record<string, ErrosV2> | null; melhor_baseline_medido: string | null; ganho_vs_melhor_baseline: number | null;
-  cenarios: Record<CenarioV2, (number | null)[]> | null;
+  /** Cenário bloqueado pelo portão de plausibilidade = null (sem valor publicável); o original fica só no artefato de auditoria. */
+  cenarios: Record<CenarioV2, (number | null)[] | null> | null;
+  cenarios_status: Record<CenarioV2, EstadoCenario> | null;
+  plausibilidade: PlausibilidadeV2 | null;
   cenarios_meta: { degenerados: boolean; piso_zero: boolean; crescimento_log1p: Record<string, number | null>; transicoes_historicas: number | null; transicoes_atipicas_excluidas: unknown[]; regra: string } | null;
 }
 export interface DistV2 { schema: string; dist: number; empresa: string; grupo: string | null; series: SerieV2[] }
@@ -33,6 +42,7 @@ export interface ObjetivoV2 {
   objetivo: string; metrica: string; nome: string; familia: string; unidade: string; natureza: string; no_catalogo: boolean;
   estados: Record<string, number>; series_com_15_valores: number; cobertura_estoque_2025: number | null; rotulo_total: "PARCIAL" | "COMPLETO" | null;
   observacao: string | null; total_2030: Record<CenarioV2, number | null> | null;
+  n_series_total?: Record<CenarioV2, number | null> | null; total_2030_moderado_todas?: number | null; n_series_moderado_todas?: number | null; series_com_cenario_bloqueado?: number; series_com_cenario_corrigido?: number;
 }
 export interface IndiceV2 {
   schema: string; status_publicacao: string; contrato_sha256: string; anos_historicos: number[]; anos_projecao: number[]; cenarios: CenarioV2[];
@@ -41,7 +51,7 @@ export interface IndiceV2 {
   resumo: {
     universo: { dist: number; objetivos_metricas_catalogo: number; combinacoes: number; celulas_ano_cenario: number };
     cobertura_processamento: { combinacoes_com_estado: number; fracao: number };
-    cobertura_previsao: { com_15_valores: number; ancora_2025: number; ancora_anterior: number; fracao: number; fracao_aplicavel: number };
+    cobertura_previsao: { com_15_valores: number; com_moderado_e_extremo_bloqueado: number; series_bloqueadas_inteiras: number; cenarios_extremos_bloqueados: number; cenarios_extremos_corrigidos: number; ancora_2025: number; ancora_anterior: number; fracao: number; fracao_aplicavel: number };
     estados: Record<string, number>; combinacoes_objetivo_metrica_com_previsao: number; dist_com_alguma_projecao: number; bloqueio_tecnico: number;
   };
   coeficientes: { recuperados: number; tentados: number }; limitacoes: string[];
@@ -65,9 +75,15 @@ export function validarDist(j: unknown): DistV2 {
   if (!d || d.schema !== SCHEMA_MOTOR_V2 || !Array.isArray(d.series)) throw new Error("Arquivo do Motor V2 fora do contrato.");
   for (const s of d.series) {
     if (projetada(s)) {
-      if (!s.cenarios) throw new Error(`Série projetada sem cenários: ${chaveSerie(s)}`);
+      if (!s.cenarios || !s.cenarios_status) throw new Error(`Série projetada sem cenários: ${chaveSerie(s)}`);
+      if (s.cenarios_status.Moderado === "BLOQUEADO") throw new Error(`Moderado bloqueado deve ter estado próprio: ${chaveSerie(s)}`);
       for (const c of CENARIOS_V2) {
         const v = s.cenarios[c];
+        if (s.cenarios_status[c] === "BLOQUEADO") {
+          if (v !== null) throw new Error(`Cenário bloqueado ${c} publicou valores: ${chaveSerie(s)}`);
+          if (!s.plausibilidade?.cenarios?.[c as "Conservador" | "Agressivo"]?.motivo) throw new Error(`Cenário bloqueado ${c} sem motivo: ${chaveSerie(s)}`);
+          continue;
+        }
         if (!Array.isArray(v) || v.length !== 5 || v.some((x) => typeof x !== "number" || !Number.isFinite(x) || x < 0)) throw new Error(`Cenário ${c} inválido: ${chaveSerie(s)}`);
         if (ehContagemV2(s) && v.some((x) => !Number.isInteger(x))) throw new Error(`Contagem fracionária: ${chaveSerie(s)}`);
       }
@@ -93,9 +109,12 @@ export function somaGrupo(series: { dist: number; empresa: string; serie: SerieV
   const histFaltam = new Set<number>();
   let n = 0;
   for (const { empresa, serie } of series) {
-    if (!serie || !serie.entra_em_totais || !serie.cenarios) { faltam.push(empresa); continue; }
+    // os três totais somam o MESMO conjunto: só entra a DIST com os três cenários publicáveis (senão Conservador ≤ Moderado ≤ Agressivo se perderia)
+    const vc = serie?.cenarios?.[cenario];
+    const tres = serie?.cenarios_status && CENARIOS_V2.every((c) => serie.cenarios_status![c] !== "BLOQUEADO");
+    if (!serie || !serie.entra_em_totais || !vc || !tres) { faltam.push(empresa); continue; }
     n += 1;
-    serie.cenarios[cenario].forEach((v, i) => { total[i] += v ?? 0; });
+    vc.forEach((v, i) => { total[i] += v ?? 0; });
     for (const [a, v] of serie.historico) { if (v == null) histFaltam.add(a); else hist.set(a, (hist.get(a) ?? 0) + v); }
   }
   for (const a of histFaltam) hist.delete(a);
@@ -113,9 +132,9 @@ const esc = (v: unknown) => { const t = v == null ? "" : String(v); return /[";\
 
 /** CSV coerente com o recorte: uma série de uma DIST, histórico com estado do contrato e os 15 valores; N/D fica vazio. */
 export function csvSerieV2(d: Pick<DistV2, "dist" | "empresa">, s: SerieV2): string {
-  const linhas = [["DIST", "empresa", "objetivo", "metrica", "unidade", "estado_serie", "ano", "tipo", "cenario", "valor", "estado_celula", "modelo", "status_publicacao"].join(";")];
-  for (const [a, v, est] of s.historico) linhas.push([d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, a, "observado", "", v, est, "", "experimental_nao_homologado"].map(esc).join(";"));
-  if (s.cenarios) for (const c of CENARIOS_V2) s.cenarios[c].forEach((v, i) => linhas.push(
-    [d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, 2026 + i, "projecao", c, v, "", s.modelo?.id ?? "", "experimental_nao_homologado"].map(esc).join(";")));
+  const linhas = [["DIST", "empresa", "objetivo", "metrica", "unidade", "estado_serie", "ano", "tipo", "cenario", "valor", "estado_celula", "estado_cenario", "modelo", "status_publicacao"].join(";")];
+  for (const [a, v, est] of s.historico) linhas.push([d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, a, "observado", "", v, est, "", "", "experimental_nao_homologado"].map(esc).join(";"));
+  if (s.cenarios) for (const c of CENARIOS_V2) for (let i = 0; i < 5; i += 1) linhas.push(
+    [d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, 2026 + i, "projecao", c, s.cenarios[c]?.[i] ?? null, "", s.cenarios_status?.[c] ?? "", s.modelo?.id ?? "", "experimental_nao_homologado"].map(esc).join(";"));
   return linhas.join("\n") + "\n";
 }

@@ -2,7 +2,8 @@
 
     python nucleo-dados-bdgd/docs/ENTREGA_FINAL_2026/gerar_matriz.py
 
-Uma linha por DIST x objetivo x métrica (3.420): estado, motivo, modelo, baseline, erros, cobertura e os 15 valores 2026-2030."""
+Uma linha por DIST x objetivo x métrica (3.420): estado, motivo, modelo, baseline, erros, cobertura e os valores 2026-2030.
+Cenário bloqueado pelo portão de plausibilidade sai com valores vazios e estado BLOQUEADO (nunca zero)."""
 import csv
 import json
 from pathlib import Path
@@ -30,9 +31,12 @@ def main():
                        ganho_vs_melhor_baseline=s['ganho_vs_melhor_baseline'] if s['ganho_vs_melhor_baseline'] is not None else '',
                        coeficientes=(m.get('coeficientes') or {}).get('status', ''), cenarios_degenerados=(s['cenarios_meta'] or {}).get('degenerados', ''),
                        entra_em_totais=s['entra_em_totais'], homologado=False if m else '')
+            pl = s.get('plausibilidade') or {}
+            row.update(plausibilidade_severidade=pl.get('severidade') or '', plausibilidade_classe=pl.get('classe') or '',
+                       **{f'estado_{c.lower()}': (s['cenarios_status'] or {}).get(c, '') for c in CEN})
             for c in CEN:
                 for i, a in enumerate(ANOS):
-                    row[f'{c.lower()}_{a}'] = s['cenarios'][c][i] if s['cenarios'] else ''
+                    row[f'{c.lower()}_{a}'] = s['cenarios'][c][i] if s['cenarios'] and s['cenarios'][c] else ''
             linhas.append(row)
     with open(AQUI / '02_MATRIZ_COMPLETA_MODELOS.csv', 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=list(linhas[0]), lineterminator='\n')

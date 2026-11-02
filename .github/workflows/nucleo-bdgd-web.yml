@@ -5,6 +5,7 @@ on:
       - "feat/nucleo-dados-bdgd-portal"
       - "feat/dashboard-bdgd-2025"
       - "integracao/produto-final-*"
+      - "rc/1.0-*"
     paths:
       - "nucleo-dados-bdgd/web/**"
       - "nucleo-dados-bdgd/motor_universal/**"

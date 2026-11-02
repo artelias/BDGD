@@ -13,7 +13,7 @@ const indice = validarIndice(JSON.parse(readFileSync(join(raiz, "indice.json"), 
 const arquivos = readdirSync(join(raiz, "distribuidoras")).filter((f) => f.endsWith(".json"));
 const dists: DistV2[] = arquivos.map((f) => validarDist(JSON.parse(readFileSync(join(raiz, "distribuidoras", f), "utf8"))));
 const ESTADOS = ["PROJETADA_EXPERIMENTAL", "PROJETADA_BASELINE", "SEM_ANCORA_2025", "HISTORICO_INSUFICIENTE", "DADO_NAO_HOMOLOGADO",
-  "SEM_PUBLICACAO", "SUCESSAO_SOCIETARIA", "NAO_APLICAVEL", "SEM_SEMANTICA_FISICA_HOMOGENEA", "BLOQUEIO_TECNICO"];
+  "SEM_PUBLICACAO", "SUCESSAO_SOCIETARIA", "NAO_APLICAVEL", "SEM_SEMANTICA_FISICA_HOMOGENEA", "BLOQUEIO_PLAUSIBILIDADE", "BLOQUEIO_TECNICO"];
 
 describe("produto do Motor V2 (data-motor-v2, homologação)", () => {
   it("cobre o universo do contrato: 114 DIST, catálogo inteiro, todo registro com estado documentado", () => {
@@ -33,19 +33,21 @@ describe("produto do Motor V2 (data-motor-v2, homologação)", () => {
     }
   });
 
-  it("toda série projetada tem exatamente 15 valores, não negativos, inteiros nas contagens e ordenados entre cenários", () => {
-    let n = 0;
+  it("série com os 15 valores só quando nenhum cenário foi bloqueado; valores não negativos, inteiros nas contagens e ordenados", () => {
+    let n = 0, parciais = 0;
     for (const d of dists) for (const s of d.series.filter(projetada)) {
-      n += 1;
-      for (const c of CENARIOS_V2) expect(s.cenarios![c]).toHaveLength(5);
+      const bloqueados = CENARIOS_V2.filter((c) => s.cenarios_status![c] === "BLOQUEADO");
+      if (bloqueados.length) parciais += 1; else n += 1;
+      for (const c of CENARIOS_V2) expect(s.cenarios![c] === null).toBe(s.cenarios_status![c] === "BLOQUEADO");
       for (let i = 0; i < 5; i += 1) {
-        const [c0, m0, a0] = CENARIOS_V2.map((c) => s.cenarios![c][i]!);
-        expect(c0).toBeLessThanOrEqual(m0 + 1e-6);
-        expect(m0).toBeLessThanOrEqual(a0 + 1e-6);
+        const [c0, m0, a0] = CENARIOS_V2.map((c) => s.cenarios![c]?.[i] ?? null);
+        if (c0 != null) expect(c0).toBeLessThanOrEqual(m0! + 1e-6);
+        if (a0 != null) expect(m0!).toBeLessThanOrEqual(a0 + 1e-6);
       }
       expect(s.modelo?.homologado).toBe(false);
     }
     expect(n).toBe(indice.resumo.cobertura_previsao.com_15_valores);
+    expect(parciais).toBe(indice.resumo.cobertura_previsao.com_moderado_e_extremo_bloqueado);
   });
 
   it("série sem projeção nunca traz números; ausência histórica fica null, nunca zero inventado", () => {
@@ -61,7 +63,10 @@ describe("produto do Motor V2 (data-motor-v2, homologação)", () => {
       const c = d.series.find((s) => s.objetivo === "consumidores");
       const u = d.series.find((s) => s.objetivo === "ucbt");
       if (!c?.cenarios || !u?.cenarios || c.ancora !== 2025 || u.ancora !== 2025) continue;
-      for (const k of CENARIOS_V2) c.cenarios[k].forEach((v, i) => { celulas += 1; expect(v!).toBeGreaterThanOrEqual(u.cenarios![k][i]!); });
+      for (const k of CENARIOS_V2) {
+        expect(c.cenarios_status![k] === "BLOQUEADO").toBe(u.cenarios_status![k] === "BLOQUEADO");   // a block on one blocks both (Consumidores = UCBT + complemento)
+        c.cenarios[k]?.forEach((v, i) => { celulas += 1; expect(v!).toBeGreaterThanOrEqual(u.cenarios![k]![i]!); });
+      }
     }
     expect(celulas).toBeGreaterThan(1000);
   });
@@ -83,6 +88,48 @@ describe("produto do Motor V2 (data-motor-v2, homologação)", () => {
     }
   });
 
+  it("outliers auditados: torres, seccionalizadores e transformadores de medida não publicam extremos sem evidência", () => {
+    const get = (dist: number, o: string, m = "quantidade") => dists.find((d) => d.dist === dist)!.series.find((x) => x.objetivo === o && x.metrica === m)!;
+    for (const [dist, o] of [[86, "torres"], [5356, "torres"], [405, "seccionalizadores"], [5697, "seccionalizadores"], [370, "trafo_medida"], [5707, "trafo_medida"]] as [number, string][]) {
+      const x = get(dist, o);
+      expect(x.cenarios_status!.Agressivo, `${dist} ${o}`).toBe("BLOQUEADO");
+      expect(x.cenarios!.Agressivo).toBeNull();
+      expect(x.plausibilidade!.cenarios.Agressivo.motivo).toBeTruthy();
+    }
+    for (const o of ["torres", "seccionalizadores", "trafo_medida"]) {
+      for (const d of dists) {
+        const x = d.series.find((s) => s.objetivo === o && s.metrica === "quantidade")!;
+        const a = x.cenarios?.Agressivo?.[4];
+        if (a != null && x.valor_ancora) expect(a / x.valor_ancora, `${d.dist} ${o}`).toBeLessThan(30);
+      }
+    }
+  });
+
+  it("todo cenário corrigido traz método e proveniência; todo bloqueado traz classe e motivo", () => {
+    let corr = 0, bloq = 0;
+    for (const d of dists) for (const s of d.series.filter(projetada)) for (const c of ["Conservador", "Agressivo"] as const) {
+      const p = s.plausibilidade?.cenarios?.[c];
+      if (s.cenarios_status![c] === "CORRIGIDO") { corr += 1; expect(p?.g_pub).not.toBeNull(); expect(p?.motivo).toMatch(/serie demonstrou|propria serie/); expect(p?.classe).toBe("PLAUSIVEL_COM_EVIDENCIA"); }
+      if (s.cenarios_status![c] === "BLOQUEADO") { bloq += 1; expect(p?.classe).toBeTruthy(); expect(p?.motivo).toBeTruthy(); }
+    }
+    expect(corr).toBe(indice.resumo.cobertura_previsao.cenarios_extremos_corrigidos);
+    expect(bloq).toBeGreaterThan(0);
+  });
+
+  it("série bloqueada inteira não tem cenários e tem motivo; totais nunca somam bloqueados", () => {
+    for (const d of dists) for (const s of d.series.filter((x) => x.estado === "BLOQUEIO_PLAUSIBILIDADE")) {
+      expect(s.cenarios).toBeNull(); expect(s.motivo.length).toBeGreaterThan(10); expect(s.entra_em_totais).toBe(false);
+    }
+    for (const o of indice.objetivos.filter((x) => x.total_2030 && x.n_series_total)) {
+      const t = o.total_2030!;
+      expect(t.Conservador!, o.objetivo).toBeLessThanOrEqual(t.Moderado! + 1e-6); expect(t.Moderado!, o.objetivo).toBeLessThanOrEqual(t.Agressivo! + 1e-6);
+      for (const c of CENARIOS_V2) {
+        const soma = dists.reduce((t, d) => { const x = d.series.find((s) => s.objetivo === o.objetivo && s.metrica === o.metrica); return t + (x?.entra_em_totais && CENARIOS_V2.every((k) => x.cenarios_status![k] !== "BLOQUEADO") ? x.cenarios?.[c]?.[4] ?? 0 : 0); }, 0);
+        if (o.objetivo !== "consumidores") expect(Math.abs(soma - (o.total_2030![c] ?? 0)), `${o.objetivo} ${c}`).toBeLessThanOrEqual(Math.max(1, 1e-6 * soma));
+      }
+    }
+  });
+
   it("não expõe identificador individual nem credencial; arquivos pequenos para carga sob demanda", () => {
     for (const f of ["indice.json", ...arquivos.map((a) => `distribuidoras/${a}`)]) {
       const t = readFileSync(join(raiz, f), "utf8");
@@ -97,7 +144,8 @@ describe("regras da interface do Motor V2", () => {
     objetivo: "postes", metrica: "quantidade", nome: "Postes", familia: "Estruturas", unidade: "itens", natureza: "discrete_count", variante: null,
     estado: "PROJETADA_BASELINE", classe: null, motivo: "", fonte: "nivel_B", historico: [[2024, 10, "observado"], [2025, 11, "observado"]], ancora: 2025,
     horizonte_real: "1..5", valor_ancora: 11, entra_em_totais: true, modelo: null, erros: null, baselines: null, melhor_baseline_medido: null, ganho_vs_melhor_baseline: null,
-    cenarios: { Conservador: [11, 11, 11, 11, 11], Moderado: [12, 13, 14, 15, 16], Agressivo: [13, 15, 17, 19, 21] }, cenarios_meta: null, ...over,
+    cenarios: { Conservador: [11, 11, 11, 11, 11], Moderado: [12, 13, 14, 15, 16], Agressivo: [13, 15, 17, 19, 21] }, cenarios_status: { Conservador: "ACEITO", Moderado: "ACEITO", Agressivo: "ACEITO" },
+    plausibilidade: null, cenarios_meta: null, ...over,
   });
 
   it("portão fechado por padrão e aberto só com NEXT_PUBLIC_MOTOR_V2=homologacao", () => {
@@ -134,6 +182,28 @@ describe("regras da interface do Motor V2", () => {
     expect(linhas[1]).toContain(';2024;observado;;;ausente:PUBLICACAO_NAO_LOCALIZADA;');
     expect(linhas[1]).toContain('"A; B"');
     expect(csv).toContain("experimental_nao_homologado");
+  });
+
+  it("soma de grupo: cenário bloqueado deixa a DIST fora daquele cenário e rotula PARCIAL", () => {
+    const a = { dist: 1, empresa: "A", serie: serie({}) };
+    const b = { dist: 2, empresa: "B", serie: serie({ cenarios: { Conservador: [11, 11, 11, 11, 11], Moderado: [12, 13, 14, 15, 16], Agressivo: null }, cenarios_status: { Conservador: "ACEITO", Moderado: "ACEITO", Agressivo: "BLOQUEADO" } }) };
+    // os três totais somam o mesmo conjunto (DIST com os três cenários): a ordem Conservador ≤ Moderado ≤ Agressivo é preservada
+    for (const c of CENARIOS_V2) expect(somaGrupo([a, b], c)).toMatchObject({ rotulo: "PARCIAL", incluidas: 1, faltam: ["B"] });
+    expect(somaGrupo([a, b], "Agressivo").total).toEqual([13, 15, 17, 19, 21]);
+  });
+
+  it("CSV: cenário bloqueado sai com valor vazio e estado BLOQUEADO; corrigido sai marcado", () => {
+    const csv = csvSerieV2({ dist: 1, empresa: "A" }, serie({ cenarios: { Conservador: [11, 11, 11, 11, 11], Moderado: [12, 13, 14, 15, 16], Agressivo: null },
+      cenarios_status: { Conservador: "CORRIGIDO", Moderado: "ACEITO", Agressivo: "BLOQUEADO" } }));
+    const l = csv.trim().split("\n");
+    expect(l).toHaveLength(1 + 2 + 15);
+    expect(l.filter((x) => x.includes(";Agressivo;;;BLOQUEADO;")).length).toBe(5);
+    expect(l.filter((x) => x.includes(";Conservador;11;;CORRIGIDO;")).length).toBe(5);
+  });
+
+  it("valida contra contrato: cenário bloqueado que publica valores é rejeitado", () => {
+    const d = (x: SerieV2): DistV2 => ({ schema: SCHEMA_MOTOR_V2, dist: 1, empresa: "A", grupo: null, series: [x] });
+    expect(() => validarDist(d(serie({ cenarios_status: { Conservador: "ACEITO", Moderado: "ACEITO", Agressivo: "BLOQUEADO" } })))).toThrow(/bloqueado.*valores/i);
   });
 
   it("valida contra contrato: contagem fracionária ou série sem projeção com valores é rejeitada", () => {
