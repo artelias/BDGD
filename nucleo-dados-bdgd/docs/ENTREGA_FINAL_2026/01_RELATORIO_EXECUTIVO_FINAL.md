@@ -27,12 +27,13 @@ Cada contrato tem uma única implementação (ver `05_INTEGRACAO_PRS_E_BRANCHES.
 | Indicador | 6327239 (31/10) | Agora |
 |---|---|---|
 | Universo tratado | 114 DIST × 25 conceitos no nível B (2.850) | **114 DIST × 30 objetivos/métricas = 3.420 combinações** |
-| Combinações com estado e motivo | 2.850 (438 só "bloqueada") | **3.420 (100%)**, com 10 estados documentados e `BLOQUEIO_TECNICO` = 0 |
-| Combinações com 15 valores (5 anos × 3 cenários) | 2.412 (B) + 512 (A) | **2.707** (97,1% das aplicáveis) |
+| Combinações com estado e motivo | 2.850 (438 só "bloqueada") | **3.420 (100%)**, com 11 estados documentados e `BLOQUEIO_TECNICO` = 0 |
+| Combinações com 15 valores (5 anos × 3 cenários) | 2.412 (B) + 512 (A) | **2.484** (89,1% das aplicáveis) depois do portão de plausibilidade; 219 séries têm Moderado e um extremo bloqueado; 4 séries ficam bloqueadas inteiras. A cobertura preliminar de 2.707 contava séries com extremos indefensáveis |
 | Pares do catálogo com previsão | 26 de 29 | **28 de 29** (TUC 575 kVA é não aplicável por semântica) |
 | Métricas de potência por DIST | nenhuma | TUC 565 kVA (99 DIST), TUC 570 kVA (60), reguladores kVA (59, sem total) |
 | Coeficientes de modelos lineares | não publicados | **214 de 214** recuperados e verificados |
 | Modelos cientificamente homologados | 0 | **0** (2 origens < 3 exigidas, sem point-in-time) |
+| Cenários extremos | 2.707 séries publicavam extremos sem triagem (torres Agressivo 2030 = 124 bilhões) | **255 bloqueados, 25 corrigidos pela taxa que a série demonstrou, 0 erros de cálculo**; ver `11_AUDITORIA_PLAUSIBILIDADE_CENARIOS.md` |
 
 As 438 combinações sem série foram auditadas uma a uma:
 - 275 são sucessão societária;

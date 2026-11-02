@@ -27,7 +27,7 @@ python ../docs/ENTREGA_FINAL_2026/gerar_matriz.py
 
 ```bash
 PY=D:/NUCLEO_BDGD_2025/motor_v2/.venv/Scripts/python.exe     # Python 3.12.2, scikit-learn 1.9.1
-$PY -m motor_v2.nacional.testes                                # 256 testes (163 sintéticos, 93 locais)
+$PY -m motor_v2.nacional.testes                                # 275 testes (179 sintéticos, 93 locais, 3 públicos)
 $PY -m motor_v2.tests.emular_ci                                # sintéticos com D:\ bloqueado
 $PY -m motor_v2.nacional.reguladores                           # convenção de potência dos reguladores (~1 min)
 $PY -m motor_v2.nacional.potencia_b                            # TUC 570 e reguladores no nível B (~4 min)

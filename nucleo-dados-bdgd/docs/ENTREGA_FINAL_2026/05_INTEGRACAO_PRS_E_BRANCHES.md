@@ -66,3 +66,9 @@ Quando ele publicar novos commits, o caminho é fazer o merge de `origin/codex/q
 ## Ordem de merge recomendada para a branch principal
 
 #17 → #18 → #19 (com A, C e B) → #20 → Motor V2 → interface do Codex. Equivale a fazer o merge desta branch composta, que já resolveu tudo e passou nas baterias. **Nenhum merge na branch principal nem deploy de produção foi feito**: dependem de autorização.
+
+## Release candidate (`rc/1.0-20261101`)
+
+Partiu de `81263e0` (que continua intacta em `integracao/produto-final-20261101`) e acrescenta, sem reescrever histórico: o portão de plausibilidade, a integração dele ao produto, a correção do defeito P2 do React, os documentos do Codex que estavam só no worktree dele (`DEFEITOS.md`, `HOMOLOGACAO_FUNCIONAL_FINAL.md`, `INTEGRACAO_CI.md`, `gerar_matriz.py`) e os documentos 11 a 13.
+
+**Codex.** A branch `codex/qa-frontend-homologacao-20261031` continua em `de225f5`. O worktree dele tem as mesmas alterações que já estavam integradas (o diff de `Matriz.tsx` é idêntico ao porte do commit `f0eaa45`) e nada novo desde 31/10. O worktree dele não foi alterado.

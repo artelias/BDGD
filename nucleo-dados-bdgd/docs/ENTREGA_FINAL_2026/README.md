@@ -14,3 +14,6 @@
 | [10 — Reprodução](10_REPRODUCAO.md) | Comandos com e sem a base local |
 
 Fonte dos números: `motor_v2/reports/nacional/` (`RESUMO_COBERTURA.json`, `COBERTURA_POR_OBJETIVO.csv`, `MATRIZ_COBERTURA_SERIES.csv`) e `web/data-motor-v2/`.
+| [11 — Auditoria de plausibilidade](11_AUDITORIA_PLAUSIBILIDADE_CENARIOS.md) | Outliers, causas, regra do portão, antes/depois, ressalvas |
+| [12 — Matriz de plausibilidade](12_MATRIZ_PLAUSIBILIDADE.csv) | As 2.707 séries auditadas: crescimento, razões, limiares, estados e classe |
+| [13 — Checklist do release candidate](13_CHECKLIST_RELEASE_CANDIDATE.md) | Critérios de aceite, resultados e estado final |

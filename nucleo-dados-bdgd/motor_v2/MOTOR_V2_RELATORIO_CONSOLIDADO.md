@@ -258,3 +258,7 @@ Os coeficientes de 214 modelos lineares foram recuperados e verificados pela rep
 **Testes:** 256 de 256 na auditoria local (163 sintéticos e 93 locais). Na emulação do CI com `D:` bloqueado, 163 passam com 1 skip herdado.
 
 **Produto para o dashboard:** `exportar_web.py` gera `web/data-motor-v2/` (índice e um JSON por DIST, cerca de 7 MB no total). Esse produto só entra em `public/` numa build de homologação ou preview, pelo portão `web/scripts/motor-v2-gate.mjs`. Produção continua fechada até a autorização final.
+
+## 15. Release candidate: portão de plausibilidade (2026-11-02)
+
+Os números da seção 14 que contam séries com 15 valores (2.707 e 97,1%) **foram superados**: o portão de plausibilidade (`nacional/plausibilidade.py`, `docs/ENTREGA_FINAL_2026/11_AUDITORIA_PLAUSIBILIDADE_CENARIOS.md`) bloqueou 255 cenários extremos sem evidência, corrigiu 25 e bloqueou 4 séries inteiras. Agora são **2.484 séries com os 15 valores** (89,1% das aplicáveis), 219 com Moderado e extremo bloqueado e 4 `BLOQUEIO_PLAUSIBILIDADE`. A auditoria local tem 275 testes (179 sintéticos, 93 locais, 3 públicos). Os totais de 2030 somam, para os três cenários, o mesmo conjunto de séries. Os valores originais ficam em `reports/nacional/PLAUSIBILIDADE_VALORES_BRUTOS.csv.gz`.

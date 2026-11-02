@@ -52,3 +52,24 @@ O layout raiz envolve o `AppShell` num `<Suspense>`. Com o agendamento de revela
 - Os testes que leem a base em `D:` (93) rodam só nesta máquina; não são disfarçados de portáveis.
 - Safari em aparelho físico não foi testado; o projeto `iphone-estreito` emula viewport, toque e agente no Chromium.
 - No Windows, o `serve` usado pelo Playwright caiu com `EMFILE` depois de 129 testes na primeira rodada local; todas as falhas seguintes eram de conexão. A rodada foi repetida com `scripts/servir-estatico.mjs`.
+
+## Release candidate 1.0 (`rc/1.0-20261101`)
+
+| Bateria | Resultado |
+|---|---|
+| Auditoria local completa do Motor V2 | **275 de 275 OK** (179 sintéticos, 93 locais, 3 públicos) |
+| Emulação do Actions com `D:` bloqueado | 179 OK, 1 skip herdado |
+| `test_plausibilidade` (16 sintéticos: crescimento sustentado, primeira entrada, renumeração, estoque zero, base pequena, queda sustentada, arredondamento, erro de cálculo verdadeiro, unidades separadas) | OK |
+| ESLint / TypeScript | 0 / 0 |
+| Vitest | **182 de 182** (contrato do Motor V2 com cenário bloqueado ou corrigido, outliers auditados, totais sobre o mesmo conjunto) |
+| `e2e/hidratacao.spec.ts` (15: sete páginas em desktop e mobile, parâmetros da URL, tema, lateral, console) | 15 de 15 |
+| GitHub Actions, `motor-v2-sintetico.yml` | success ([run 41445552399](https://github.com/artelias/BDGD/actions/runs/41445552399)) em `ae3ef26` |
+| GitHub Actions, web (lint, tipos, testes, contratos, build de produção e de homologação, E2E completo) | **success** ([run 41445552427](https://github.com/artelias/BDGD/actions/runs/41445552427)) em `ae3ef26` |
+
+O resultado do Playwright local completo e o CI do commit final estão em `13_CHECKLIST_RELEASE_CANDIDATE.md`.
+
+### Defeito P2 do React (ids duplicados): corrigido
+
+- **Causa.** O `<Suspense>` na raiz do layout envolvia o `AppShell`. Esse limite não é necessário (o shell só usa `usePathname`; as páginas que leem a URL já têm o próprio `Suspense`). No prerender estático ele virava um segmento adiado: `<template id="B:0">` vazio mais `<div hidden id="S:0">` com a página inteira, revelado por script. Quando a hidratação do React 19 assumia o limite antes do reveal agendado, a página era renderizada de novo no cliente e a cópia do servidor ficava retida no `<body>`, com ids e landmarks duplicados.
+- **Correção.** O `Suspense` da raiz saiu de `app/layout.tsx`.
+- **Prova.** O HTML de `/previsoes/` e `/evolucao/` deixou de ter `S:0`. `/matriz/`, `/explorar/` e `/comparar/` mantêm o `S:0` e o `B:0` no HTML estático, por causa do `Suspense` da própria página com `useSearchParams`, mas o DOM hidratado fica sem `S:0`, sem ids duplicados e com um único `#conteudo` (medido nas sete páginas, 6 s depois da carga). A regressão confere o DOM, não os seletores. Os seletores do `motor-v2.spec.ts` continuam filtrando por elementos visí& veis, o que agora é só uma salvaguarda.

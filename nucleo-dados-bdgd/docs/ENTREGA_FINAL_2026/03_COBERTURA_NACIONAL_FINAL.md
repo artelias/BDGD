@@ -16,12 +16,17 @@ Este documento descreve a cobertura gerada por `motor_v2/nacional/cobertura.py`,
 | Indicador | Resultado |
 |---|---|
 | Cobertura de **processamento** (combinações analisadas, com estado e motivo) | **3.420 de 3.420 (100%)** |
-| Cobertura de **previsão** (combinações com os 15 valores: 5 anos × 3 cenários) | **2.707** (79,2% do universo; **97,1% das aplicáveis**, sem `NAO_APLICAVEL` e sem `SUCESSAO_SOCIETARIA`) |
+| Cobertura de **previsão** (combinações com os 15 valores: 5 anos × 3 cenários, nenhum cenário bloqueado) | **2.484** (72,6% do universo; **89,1% das aplicáveis**, sem `NAO_APLICAVEL` e sem `SUCESSAO_SOCIETARIA`). Antes do portão de plausibilidade eram 2.707 (97,1%) |
+| … séries projetadas com Moderado e um extremo bloqueado | 219 |
+| … cenários extremos bloqueados / corrigidos | 255 / 25 |
+| … séries bloqueadas inteiras (`BLOQUEIO_PLAUSIBILIDADE`) | 4 |
 | … das quais com âncora 2025 | 2.597 |
 | … das quais com âncora anterior (`SEM_ANCORA_2025`, fora dos totais) | 110 |
 | Pares do catálogo com previsão em pelo menos uma DIST | **28 de 29** (falta só TUC 575 kVA, não aplicável) |
 | DIST com alguma projeção | 102 |
 | `BLOQUEIO_TECNICO` (defeito de código) | **0** |
+
+> **Atualização do release candidate.** Os números de projeção desta página foram recalculados depois do portão de plausibilidade (`11_AUDITORIA_PLAUSIBILIDADE_CENARIOS.md`). Os totais de 2030 abaixo, que somavam séries com extremos sem triagem, foram substituídos pelos de `motor_v2/reports/nacional/COBERTURA_POR_OBJETIVO.csv`: os três cenários de cada objeto somam o mesmo conjunto de séries e o Moderado de todas as séries vem à parte.
 
 **Cobertura do estoque físico em 2025.** Para as 25 métricas do contrato, as séries projetadas com âncora 2025 cobrem **100% do estoque elegível de 2025** do contrato. Mesmo assim, todo total nacional é **PARCIAL**, porque três DIST aplicáveis não têm publicação de 2025 e o estoque delas em 2025 é desconhecido:
 - Cerci (5279), última publicação em 2023;
@@ -80,14 +85,19 @@ Não há duplicidade nem publicação disponível sem integração, e nenhuma no
 
 ## Totais 2030 (todos PARCIAL)
 
-| Métrica | Conservador | Moderado | Agressivo |
-|---|---|---|---|
-| Consumidores reconciliados | 87.642.247 | 93.460.778 | 106.671.042 |
-| UCBT | 87.326.180 | 93.112.341 | 106.236.504 |
-| TUC 565 (kVA) | 213.286.945 | 216.696.491 | 245.379.290 |
-| TUC 570 (kVA) | 103.926.264 | 111.442.669 | 127.036.261 |
-| Rede MT (km, nível B) | 3.326.741 | 3.380.970 | 3.560.958 |
-| Rede BT (km, nível B) | 1.751.603 | 1.801.194 | 2.003.331 |
+Os três cenários somam o mesmo conjunto de séries: as que têm os três publicáveis. Por isso ficam abaixo do total do contrato.
+
+| Métrica | Séries (conjunto comum) | Conservador | Moderado | Agressivo | Moderado, todas as séries projetadas |
+|---|---|---|---|---|---|
+| Consumidores reconciliados | 85 de 98 | 74.932.450 | 77.242.868 | 84.311.526 | 93.460.778 |
+| UCBT | 85 de 98 | 74.683.888 | 76.970.335 | 83.990.059 | 93.112.341 |
+| TUC 565 (kVA) | 90 de 92 | 212.317.697 | 215.727.243 | 243.112.079 | 216.696.491 |
+| TUC 570 (kVA) | 47 de 53 | 67.378.392 | 69.648.261 | 79.310.505 | 111.442.669 |
+| Rede MT (km, nível B) | 92 de 99 | 3.257.068 | 3.306.498 | 3.473.416 | 3.380.970 |
+| Rede BT (km, nível B) | 90 de 99 | 1.718.865 | 1.759.807 | 1.957.778 | 1.801.194 |
+| Torres | 89 de 99 | 306.054 | 342.676 | 400.511 | 396.968 |
+| Seccionalizadores | 82 de 98 | 14.022 | 16.486 | 17.877 | 28.655 |
+| Transformadores de medida | 82 de 98 | 600.803 | 744.039 | 857.018 | 1.026.949 |
 
 Os totais de todas as métricas, por cenário, estão em `motor_v2/reports/nacional/COBERTURA_POR_OBJETIVO.csv`. As redes MT e BT aqui vêm do nível B (contrato) e diferem do nível A territorial do relatório anterior, que usa outro extrator.
 

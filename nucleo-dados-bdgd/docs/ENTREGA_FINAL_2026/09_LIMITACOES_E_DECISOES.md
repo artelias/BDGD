@@ -11,10 +11,12 @@
 7. **TUC 570 kVA:** 37 DIST ficam fora porque o kVA do equipamento diverge mais de 5% do da instalação, ou não passam o gate. É preciso decidir qual fonte prevalece (ver decisão 5).
 8. **Territorialização:** só as cinco séries do nível A são territoriais. As demais entidades têm campos territoriais, mas exigem extração e modelagem territorial ainda não feitas.
 9. **Covariáveis externas:** PIB e população do IBGE, DEC e FEC não entram nas séries por distribuidora. EPE e IPEA não estão integrados.
-10. **Interface (P2, anterior a esta integração):** uma cópia oculta e não hidratada da página pode ficar em `<div hidden id="S:0">`, por causa do Suspense do layout raiz. É invisível, mas duplica ids no DOM (ver `06_TESTES_E_CI.md`).
-11. **Ambiente:** os testes que dependem da base local em `D:` (93) rodam só nesta máquina. O Safari em aparelho físico não foi testado; o "iPhone estreito" é emulado no Chromium.
+10. **Interface:** o defeito P2 (cópia oculta da página em `<div hidden id="S:0">`) foi **corrigido** no release candidate (ver `06_TESTES_E_CI.md`).
+11. **Portão de plausibilidade:** os limiares são percentis empíricos de 4 anos de histórico, e dois parâmetros (`TOL_MODELO` = 25% e `BASE_MINIMA` = 10) não vêm dos dados. 255 cenários extremos ficaram bloqueados por falta de evidência e as classes são hipóteses (ver `11_AUDITORIA_PLAUSIBILIDADE_CENARIOS.md`).
+12. **Geradores, nível nacional:** a soma dos Agressivos individuais (32,7 milhões, 8 vezes o estoque de 2025) é um composto de extremos, não um cenário nacional. É alerta de severidade alta; decidir se o total nacional agressivo desse objeto deve ser omitido.
+13. **Ambiente:** os testes que dependem da base local em `D:` (93) rodam só nesta máquina. O Safari em aparelho físico não foi testado; o "iPhone estreito" é emulado no Chromium.
 
-## Decisões que cabem a você
+## Decisões que cabem a você (atualizado no release candidate)
 
 1. **Abrir os PRs em DRAFT** pelos links do relatório final, porque não há integração GitHub autorizada nesta sessão:
    - a integração, `integracao/produto-final-20261101` → `feat/motor-cenarios-publicacao-20261028` (#17);
