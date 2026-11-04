@@ -1,0 +1,84 @@
+From 0a587ae9bb17685aac842152e3c31ad347ec145b Mon Sep 17 00:00:00 2001
+From: artelias <arthur.henrique.elias@gmail.com>
+Date: Sat, 31 Oct 2026 21:09:47 -0300
+Subject: [PATCH 2/3] feat(cenarios): erro fisico (pos-arredondamento) ao lado
+ do erro continuo, so para contagens
+
+Aditivo: retirados mae_fisico/wape_fisico/vies_fisico/fisico_motivo, o JSON regenerado e identico ao
+anterior e os CSVs nao mudam. A selecao continua pelo erro continuo. Exige regenerar
+web/public/data/previsoes/cenarios-motor.json e tipar os campos em web/src/lib/cenarios-motor.ts.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ nucleo-dados-bdgd/motor_cenarios/cenarios.py  | 15 ++++++++++++-
+ .../motor_cenarios/test_publico.py            | 22 +++++++++++++++++++
+ 2 files changed, 36 insertions(+), 1 deletion(-)
+
+diff --git a/nucleo-dados-bdgd/motor_cenarios/cenarios.py b/nucleo-dados-bdgd/motor_cenarios/cenarios.py
+index abd180b..06f0b6b 100644
+--- a/nucleo-dados-bdgd/motor_cenarios/cenarios.py
++++ b/nucleo-dados-bdgd/motor_cenarios/cenarios.py
+@@ -283,6 +283,18 @@ class Motor:
+ 
+ 
+ # ---------------------------------------------------------------- avaliação e cenários
++def fisico(pts, discreta):
++    """Error of the PUBLISHABLE (integer) predictions on the same backtest points; the continuous error stays in the other fields.
++    Selection keeps using the continuous error; this block only reports what the published integers would have missed."""
++    if not discreta or not pts:
++        return {}
++    if any(not math.isfinite(yh) or yh < 0 for _, yh, *_ in pts):
++        # a negative prediction is not a publishable count; the contract rejects it instead of clipping, so no physical error exists
++        return {"mae_fisico": None, "wape_fisico": None, "vies_fisico": None, "fisico_motivo": "PREVISAO_NEGATIVA_NAO_PUBLICAVEL"}
++    e = erros([(y, mc.round_count(yh)) for y, yh, *_ in pts])
++    return {"mae_fisico": e["mae"], "wape_fisico": e["wape"], "vies_fisico": e["vies_rel"]}
++
++
+ def erros(pares):
+     if not pares:
+         return {"n": 0, "mae": None, "rmse": None, "wape": None, "vies_rel": None, "mdape": None}
+@@ -478,7 +490,8 @@ def main(contrato, internas, raw, saida, web=None, internal_dir=None):
+                              "cenarios": cen, "justificativas": just,
+                              "modelos": {m: {"wape": x["erros"]["wape"], "mae": x["erros"]["mae"], "rmse": x["erros"]["rmse"], "vies": x["erros"]["vies_rel"],
+                                              "mdape": x["erros"]["mdape"], "n": x["erros"]["n"], "wape_h1": x["por_h"][1]["wape"], "wape_h2": x["por_h"][2]["wape"],
+-                                             "estabilidade": x["estabilidade_wape_h1"], "cagr": x["cagr_agregado"], "elegivel": x["elegivel"], "motivo": x["motivo"]}
++                                             "estabilidade": x["estabilidade_wape_h1"], "cagr": x["cagr_agregado"], "elegivel": x["elegivel"], "motivo": x["motivo"],
++                                             **fisico(bt.get(m), discreta)}
+                                          for m, x in met.items()},
+                              "diagnostico_painel": {str(o): {m: v for m, v in dg.items()} for o, dg in {**diag_bt, BASE: diag_final}.items()},
+                              "series": series_pub})
+diff --git a/nucleo-dados-bdgd/motor_cenarios/test_publico.py b/nucleo-dados-bdgd/motor_cenarios/test_publico.py
+index 50f5c29..182fe50 100644
+--- a/nucleo-dados-bdgd/motor_cenarios/test_publico.py
++++ b/nucleo-dados-bdgd/motor_cenarios/test_publico.py
+@@ -76,5 +76,27 @@ class CsvPublico(unittest.TestCase):
+             self.assertLessEqual(mc.round_count(bruto[0]), mc.round_count(bruto[1]))
+ 
+ 
++class ErroFisico(unittest.TestCase):
++    """Patch B (Motor V2): erro das previsões inteiras publicáveis ao lado do erro contínuo, só para contagens."""
++    def test_erro_fisico_registrado_ao_lado_do_continuo_para_contagens(self):
++        with open(ROOT / "web/public/data/previsoes/cenarios-motor.json", encoding="utf-8") as f:
++            doc = json.load(f)
++        com = 0
++        for m in doc["metricas"]:
++            for e in m["modelos"].values():
++                if m["natureza"] == "discrete_count":
++                    if not e["n"]:
++                        continue                                                     # modelo sem pontos de backtest: sem erro algum
++                    self.assertIn("mae_fisico", e)
++                    if e.get("mae_fisico") is not None:
++                        com += 1
++                        self.assertIsNotNone(e["mae"])                               # o erro contínuo continua publicado
++                    else:
++                        self.assertEqual(e.get("fisico_motivo"), "PREVISAO_NEGATIVA_NAO_PUBLICAVEL")
++                else:
++                    self.assertNotIn("mae_fisico", e)
++        self.assertGreater(com, 100)
++
++
+ if __name__ == "__main__":
+     unittest.main()
+-- 
+2.53.0.windows.2
+

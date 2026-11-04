@@ -213,7 +213,7 @@ function Corpo({ ds, item, cd }: { ds: Dataset; item: MenuItem | null; cd: Conce
               const ok = compat.has(d) || (filtro[d]?.length ?? 0) > 0;
               return (
                 <span key={d} style={ok ? undefined : { opacity: 0.45, pointerEvents: "none" }} title={ok ? undefined : "Sem cubo exato para combinar com o filtro atual"}>
-                  <MultiPick label={cat.dimensoes[d]?.rotulo ?? d} value={filtro[d] ?? []} allLabel="Todos" testId={`cmp-filtro-${d}`} width={320}
+                  <MultiPick disabled={!ok} label={cat.dimensoes[d]?.rotulo ?? d} value={filtro[d] ?? []} allLabel="Todos" testId={`cmp-filtro-${d}`} width={320}
                     options={(cd.valores[d] ?? []).map((code) => ({ value: code, label: rotulo(cd, d, code, recorte), keywords: code }))} onChange={(v) => setFiltro(d, v)} />
                 </span>
               );

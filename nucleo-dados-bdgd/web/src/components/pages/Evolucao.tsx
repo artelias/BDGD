@@ -22,7 +22,7 @@ import {
   aplicarMatriz, coberturaAtivo, DESCRICAO_PUB, indexarHom, indiceHom, NATUREZA, naturezaVariacoes, pontosHom, ROTULO_PUB,
   serieBrasil, seriePainel, serieSubtotalObservado, sinaisNoEscopo, urlItem, type EstadoPub, type Homologacao, type PontoHom,
 } from "@/lib/homologacao";
-import { fmt, fmtCompact, toCSV } from "@/lib/format";
+import { ehMetricaContagem, fmt, fmtEixo, toCSV } from "@/lib/format";
 import { aplicarEstadosContrato, pontosContrato, type EstadosContrato } from "@/lib/historico-contrato";
 import { useQueryPatch, useQueryState } from "@/lib/url-state";
 import p from "./pages.module.css";
@@ -135,7 +135,9 @@ function EvolucaoReady({ ds, sd, h, estados }: { ds: Dataset; sd: SerieData; h: 
     tooltip: { trigger: "axis", backgroundColor: t.surface, borderColor: t.hairline, textStyle: { color: t.text, fontFamily: t.font, fontSize: 12 },
       valueFormatter: (v: number | null) => (v === null || v === undefined ? "N/D" : escala === "indice" ? v.toLocaleString("pt-BR", { maximumFractionDigits: 1 }) : `${fmt(v, a.medida)} ${UNIDADE[a.medida]}`) },
     xAxis: { type: "category", data: anos.map(String), axisLine: { lineStyle: { color: t.hairline } }, axisLabel: { color: t.text2, fontFamily: t.font } },
-    yAxis: { type: "value", scale: true, axisLabel: { color: t.text3, fontFamily: t.font, fontSize: 10, formatter: (v: number) => (escala === "indice" ? String(v) : fmtCompact(v, a.medida)) }, splitLine: { lineStyle: { color: t.hairline } } },
+    // contagem: marcas só em inteiros (minInterval 1) e rótulo inteiro; índice (base 100) é razão e mantém decimais
+    yAxis: { type: "value", scale: true, minInterval: escala !== "indice" && ehMetricaContagem(a.medida) ? 1 : undefined,
+      axisLabel: { color: t.text3, fontFamily: t.font, fontSize: 10, formatter: (v: number) => (escala === "indice" ? String(v) : fmtEixo(v, a.medida)) }, splitLine: { lineStyle: { color: t.hairline } } },
     series: exibidas.map((x, i) => ({ name: x.nome, type: "line", connectNulls: false, symbolSize: 7,
       data: x.pontos.map((pt) => ({ value: pt.v, symbol: (pt as PontoHom).pub === "R" || pt.quebra ? "triangle" : "circle" })),
       lineStyle: { width: i === 0 ? 2.5 : 1.6, type: x.id === "painel" ? "dashed" : "solid" }, emphasis: { focus: "series" } })),

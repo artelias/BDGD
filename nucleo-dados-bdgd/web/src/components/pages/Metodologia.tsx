@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { DataError, LoadingBlock } from "@/components/ui/Feedback";
 import { Pill } from "@/components/ui/Value";
 import { MetodologiaMotor } from "./MetodologiaMotor";
+import { MetodologiaMotorV2 } from "./MetodologiaMotorV2";
 import { CONCEITOS, INDICADORES } from "@/lib/catalogo";
 import type { Dataset } from "@/lib/dataset";
 import { useData, useQualidade } from "@/lib/data-context";
@@ -16,6 +17,7 @@ import s from "./metodologia.module.css";
 const SECS = [
   ["fonte", "Fonte e competência"], ["cobertura", "Cobertura"], ["regras", "Regras de contagem"], ["dicionario", "Dicionário de indicadores"],
   ["grupos", "Grupos econômicos"], ["dda", "Classificação e vínculos"], ["privacidade", "Privacidade e licença"], ["modelo-matematico", "Modelagem matemática"], ["motor-cenarios", "Modelos executados e cenários"],
+  ["motor-v2", "Motor V2 por empresa"],
 ] as const;
 
 export function Metodologia() {
@@ -67,6 +69,7 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
               <div className={s.stat}><div className={s.statNum}>{ds.entidades.length}</div><div className="caption">entidades com agregados</div></div>
               <div className={s.stat}><div className={s.statNum}>{q.data ? fmt(q.data.reconciliacao.ok ?? 0) : "…"}</div><div className="caption">reconciliações exatas com a origem</div></div>
             </div>
+            <p className="caption" data-testid="metodologia-gdbs">{rel.cobertura.processadas} GDBs processados · {rel.cobertura.sem_publicacao_2025.length} publicações 2025 não localizadas (estado por distribuidora em <a href="#cobertura">Cobertura</a>).</p>
             <p className="caption">Release <span className="mono">{rel.release_id}</span> · gerado em {fmtDate(rel.generated_at)} · estado {rel.status === "homologado" ? "auditado tecnicamente" : "parcial (em validação)"} · contrato {rel.schema_version}</p>
           </section>
 
@@ -206,6 +209,10 @@ function MetodologiaReady({ ds }: { ds: Dataset }) {
           <section id="motor-cenarios" className={s.sec}>
             <h2>Modelos executados e cenários do Motor de Expansão</h2>
             <MetodologiaMotor />
+          </section>
+          <section id="motor-v2" className={s.sec}>
+            <h2>Motor V2: metodologia por empresa, ativo e métrica</h2>
+            <MetodologiaMotorV2 />
           </section>
         </article>
       </div>

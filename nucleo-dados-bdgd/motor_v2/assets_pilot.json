@@ -1,0 +1,17 @@
+{
+ "output": "D:/NUCLEO_BDGD_2025/motor_v2/assets_v2",
+ "dists": [
+  26,
+  6585,
+  6600
+ ],
+ "assets": [
+  "trafo_dist_quantidade",
+  "trafo_dist_potencia_kva",
+  "rede_mt_extensao_km"
+ ],
+ "memory": "1GB",
+ "threads": 1,
+ "min_available_gb": 0.6,
+ "resource_note": "small EQ/UN and SSDMT Parquets; machine has 7.9 GiB total and was at ~1 GiB free; peak RSS is measured"
+}

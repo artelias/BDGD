@@ -1,0 +1,88 @@
+"""Gera HOMOLOGACAO/ENGENHARIA/01_MATRIZ_REQUISITOS.csv (requisito, critério de aceite, evidência verificável, resultado).
+
+Resultados possíveis: ATENDIDO · ATENDIDO_COM_RESSALVA · NAO_ATENDIDO · NAO_VERIFICADO. Evidência = arquivo, teste ou comando reexecutável."""
+import csv
+import sys
+
+R = [
+ # id, área, requisito, critério de aceite, evidência, resultado, observação
+ ("ENG-01", "Integridade BDGD/ETL", "Competência única 31/12/2025, sem preencher DIST sem GDB 2025 com outro ano",
+  "Validador do pacote aprova; release declara 99 processadas e 15 sem publicação 2025 como estado próprio",
+  "CI web: 'Validar pacote publicado 2025-12-31 (gate obrigatório)'; web/public/data/2025-12-31/index.json (release.cobertura)", "ATENDIDO",
+  "Release bdgd-2025-12-31-v1-99d-2f6fa3879a-rec1, status com_ressalvas (homologação final pendente na própria release)"),
+ ("ENG-02", "Integridade BDGD/ETL", "Contratos de dados versionados e verificados (smoke, série histórica, homologação web, contrato nacional, cenários exploratórios)",
+  "Todos os validadores ETL do workflow web aprovam", "CI web: passos 'Contrato de dados (smoke)', 'Validar série histórica', 'Validar matriz de homologação', 'Validar contrato de integração nacional', 'Cenários e estados correspondem ao contrato versionado'",
+  "ATENDIDO", "Ver 02_EVIDENCIAS_TESTES.md (runs do commit final)"),
+ ("ENG-03", "Reconciliação de entidades físicas", "Agregados reconciliados com os arquivos de origem",
+  "Reconciliações exatas registradas; nenhuma divergência sem alerta", "web/public/data/2025-12-31/qualidade.json (reconciliacao.ok = 13.238); e2e/reconciliacao.spec.ts",
+  "ATENDIDO", "13.238 reconciliações exatas; alertas por tipo publicados em qualidade.json"),
+ ("ENG-04", "Reconciliação de entidades físicas", "Hierarquia UCBT/Consumidores coerente (Consumidores = UCBT + complemento) também nas projeções",
+  "0 violações; bloqueio de um bloqueia o outro", "motor_v2 test_hierarquia (15 pares por DIST); plausibilidade.py regra 7", "ATENDIDO", ""),
+ ("ENG-05", "Contagens inteiras e unidades", "Contagem física publicada sempre inteira em JSON, CSV, cards, gráficos, tooltips, tabelas e comparadores; km/kVA com decimais",
+  "0 contagens fracionárias ou negativas em todos os produtos; JSON com inteiros (nunca 123.0); front não arredonda em silêncio",
+  "test_public_audit; test_produto_web_v2; motor_cenarios/test_publico.py; web/tests/release-correcoes.test.ts; web/tests/natureza-fisica.test.ts; e2e/release-correcoes.spec.ts",
+  "ATENDIDO", "Corrigido nesta rodada: 41.027 contagens do JSON do Motor V2 grafadas como x.0; eixo da Evolução sem minInterval; fmt() com 2 casas; notação compacta '12,5 mil' em contagens"),
+ ("ENG-06", "Portão de plausibilidade", "Cenários extremos implausíveis não são divulgados como válidos; corrigidos só com evidência; sem teto arbitrário",
+  "Classes e decisões por série; valores originais fora do produto; 0 erros de cálculo", "motor_v2/nacional/plausibilidade.py; test_plausibilidade (16); docs/ENTREGA_FINAL_2026/11 e 12",
+  "ATENDIDO_COM_RESSALVA", "Limiares são percentis empíricos de 4 anos; TOL_MODELO=25% e BASE_MINIMA=10 são parâmetros, não derivados dos dados"),
+ ("ENG-07", "Bloqueios e ressalvas", "Todo cenário ou série sem valor publicável aparece com estado e motivo, nunca como zero ou valor preenchido",
+  "Completude COMPLETA/PARCIAL/SEM_PREVISAO coerente com os cenários publicados; extremo sem Moderado recusado",
+  "web/src/lib/completude.ts; parseCenarios/validarDist; test_produto_web_v2; test_publico; release-correcoes (Vitest e E2E)", "ATENDIDO",
+  "Corrigido nesta rodada: 8 extremos sem Moderado no produto público; tela mostrava o estado da métrica para séries parciais"),
+ ("ENG-08", "Segurança e publicação", "Motor V2 nunca aparece na build de produção; só em homologação/preview protegido",
+  "Build de produção reprova se out/data/motor-v2 existir ou PROJETADA_EXPERIMENTAL aparecer", "CI web: 'Build de produção (portão do Motor V2 fechado)'; web/scripts/motor-v2-gate.mjs; web/tests/motor-v2.test.ts (portão em 4 ambientes)",
+  "ATENDIDO", ""),
+ ("ENG-09", "Segurança e publicação", "Produtos públicos sem identificador individual, credencial ou segredo; dependências sem vulnerabilidade alta",
+  "Varredura de COD_ID, CPF, token, chave; npm audit --omit=dev --audit-level=high", "web/tests/motor-v2.test.ts ('não expõe identificador'); CI web: 'Auditoria de dependências de produção'", "ATENDIDO", ""),
+ ("ENG-10", "Segurança e publicação", "Nenhuma publicação em produção, merge ou deploy sem autorização humana",
+  "Produção na Vercel inalterada desde 28/10/2026; nenhum merge na main", "Vercel: último deploy de produção 28/10 (74190e2); git: main = fcf5699 (sem a RC)", "ATENDIDO", ""),
+ ("ENG-11", "Cobertura das séries projetadas", "Cobertura medida com honestidade: séries parciais não contam como completas",
+  "Contagens por série e por métrica publicadas e testadas", "docs/ENTREGA_FINAL_2026/14_COMPLETUDE_CENARIOS.csv; índice do Motor V2 (completude_cenarios)",
+  "ATENDIDO_COM_RESSALVA", "Motor V2: 2.484 completas, 219 parciais, 4 bloqueadas. Produto público: 755 completas, 1.206 parciais, 241 sem previsão: a maioria das parciais vem da regra de seleção por métrica"),
+ ("ENG-12", "Interface, filtros e exportações", "Filtros, cenários, tabela, gráfico e CSV sincronizados com o produto; layout sem rolagem horizontal em 7 larguras",
+  "Playwright completo aprova (desktop, Android, iPhone estreito emulado)", "web/e2e (suíte completa); motor-v2.spec.ts (7 larguras × 7 páginas)", "ATENDIDO", "Safari em aparelho físico não testado"),
+ ("ENG-13", "Interface, filtros e exportações", "Tema claro/escuro estável no mapa e nos gráficos após alternâncias repetidas",
+  "10 alternâncias sem mistura de cores (pixels do canvas), 1 instância, controles presentes, desktop e mobile", "e2e/mapa-tema.spec.ts; web/src/lib/theme.tsx (useLayoutEffect)", "ATENDIDO",
+  "Corrigido nesta rodada (causa: ordem dos efeitos do React)"),
+ ("ENG-14", "Interface, filtros e exportações", "Navegação principal sem informação técnica; auditoria disponível em Metodologia",
+  "Lateral sem data-base, GDBs processados e publicações não localizadas", "e2e/release-correcoes.spec.ts (desktop e mobile)", "ATENDIDO", "Corrigido nesta rodada"),
+ ("ENG-15", "Interface, filtros e exportações", "Hidratação sem cópia oculta da página nem ids duplicados", "0 ids duplicados, sem S:0/B:0 em 7 páginas", "e2e/hidratacao.spec.ts", "ATENDIDO", "Corrigido na RC (P2 do Suspense raiz)"),
+ ("ENG-16", "Testes", "Python (Motor V2 e gerador público), TypeScript, ESLint, Vitest e Playwright aprovados sem enfraquecer asserções",
+  "Todas as baterias aprovadas no commit final", "02_EVIDENCIAS_TESTES.md", "ATENDIDO", "Os 93 testes do Motor V2 que leem D: só rodam nesta máquina"),
+ ("ENG-17", "CI e versionamento", "CI Linux aprovado no commit final; branch e SHA rastreáveis; PR em rascunho", "Workflows web e sintético com success no SHA avaliado",
+  "02_EVIDENCIAS_TESTES.md (runs); git rc/1.0-20261101; PR #22 (rascunho)", "ATENDIDO",
+  "PR #22 aberto em rascunho pelo responsável. O commit 26ec937, que não tinha chegado ao remoto (push falho sem mensagem), foi publicado nesta rodada"),
+ ("ENG-18", "Coerência histórico × projeção na mesma coorte", "Totais e somas de grupo comparam histórico e projeção sobre o mesmo conjunto de séries",
+  "Soma de grupo/nacional usa as mesmas séries no histórico e nos três cenários; cobertura do estoque declarada", "web/src/lib/motor-v2.ts somaGrupo; web/src/lib/cenarios-motor.ts somaGrupo/completudeGrupo; web/tests/motor-v2.test.ts (totais = soma do conjunto comum)",
+  "ATENDIDO", ""),
+ ("ENG-19", "Agregados nacionais", "Agregado nacional de cenários extremos não é apresentado como cenário nacional",
+  "Total nacional = Moderado; extremos rotulados como soma de extremos individuais, com alerta quando fora do crescimento nacional observado na mesma coorte",
+  "motor_v2/nacional/exportar_web.py agregado_extremos; test_produto_web_v2; e2e/release-correcoes.spec.ts (geradores)", "ATENDIDO_COM_RESSALVA",
+  "NC-ENG-01 corrigida nesta rodada: 23 de 28 totais de extremos saem da faixa observada. A decisão de publicar ou não totais de extremos é humana"),
+ ("ENG-20", "Agregados nacionais", "Cenário Agressivo nacional de geradores avaliado", "Classificação explícita e sinalização na tela",
+  "índice do Motor V2: geradores.agregado_extremos (Agressivo 53,3%/ano × observado 27,7–43,5%/ano)", "ATENDIDO_COM_RESSALVA",
+  "Sinalizado como soma de extremos acima do observado; não deve ser lido como cenário nacional. Decisão de publicação pendente (humana)"),
+ ("ENG-21", "Publicação", "Preview de homologação verificado em conteúdo", "Inspeção humana do preview autenticado pelo checklist 05, sem falha crítica",
+  "05_CHECKLIST_INSPECAO_PREVIEW.md; Vercel preview do SHA avaliado (SSO)", "NAO_VERIFICADO",
+  "Depende da inspeção humana: o preview exige login SSO, que a ferramenta não alcança. O build log confirma a build de homologação"),
+ ("ENG-23", "Interface, filtros e exportações", "Uma única experiência pública de cenários (painel 'Cenários de expansão por métrica física'), sem perder ressalvas do painel retirado (PR #21)",
+  "Painel exploratório ausente; Coopera selecionável e bloqueada; observações cadastrais no painel principal; 8 specs adaptados sem desativar testes; dados exploratórios preservados",
+  "merge 81414e6 (PR #21) + 1be7a43; e2e auditoria-pr6, motor-universal, natureza-fisica, previsoes-integracao, publicacoes-previsoes, qa-final, reconciliacao, riscos-cenarios, cenarios-motor",
+  "ATENDIDO", "A lógica exploratória (riscos, zeros técnicos) continua coberta no Vitest; o produto cenarios-exploratorios-2026-2030.json continua publicado e validado no CI"),
+ ("ENG-24", "Segurança e publicação", "Nenhum modelo experimental publicado ou substituído automaticamente; modelos atuais preservados",
+  "Produto de cenários idêntico à regeneração oficial; nenhuma configuração do piloto ou da otimização no produto", "cenarios.py --check OK (29 métricas); branches exp/* fora da RC",
+  "ATENDIDO", "Candidatos confirmatórios só registrados na branch científica"),
+ ("ENG-22", "Ciência (fora do escopo de engenharia)", "Homologação científica dos modelos", "Dossiê científico próprio", "HOMOLOGACAO/CIENTIFICA (branch separada)", "NAO_VERIFICADO",
+  "Não faz parte do aceite de engenharia: um motor tecnicamente aprovado pode ser cientificamente experimental"),
+]
+
+
+def main(saida):
+    with open(saida, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, lineterminator="\n")
+        w.writerow(["id", "area", "requisito", "criterio_aceite", "evidencia", "resultado", "observacao"])
+        w.writerows(R)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])

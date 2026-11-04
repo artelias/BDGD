@@ -131,14 +131,15 @@ test("@iphone QA: matriz sem resultados não exporta um total vazio", async ({ p
 
 test("@iphone QA: cenários permitem filtros e exportam a seleção no celular", async ({ page }) => {
   await page.goto("/previsoes/");
-  const section = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-  await section.getByRole("combobox", { name: "Método", exact: true }).selectOption("persistencia");
-  await section.getByRole("combobox", { name: "Ano simulado", exact: true }).selectOption("2030");
-  await expect(section.getByText("Cenário condicional para 2030")).toBeVisible();
-  await expect(section.getByRole("region", { name: "Valores dos cenários — tabela rolável", exact: true }).locator("tbody tr")).toHaveCount(9);
-  const [dl] = await Promise.all([page.waitForEvent("download"), section.getByRole("link", { name: "Exportar série selecionada (CSV)" }).click()]);
-  expect(dl.suggestedFilename()).toContain("persistencia.csv");
-  const csv = Buffer.concat(await (await dl.createReadStream()).toArray()).toString("utf8");
+  const section = page.getByTestId("cenarios-motor");
+  await section.getByRole("combobox", { name: "Ativo", exact: true }).selectOption("rede_mt");
+  await section.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true }).selectOption("dist:7019");
+  await section.getByRole("radio", { name: /Agressivo/ }).click();
+  await expect(section.getByRole("radio", { name: /Agressivo/ })).toHaveAttribute("aria-checked", "true");
+  await expect(section.getByRole("region", { name: "Tabela anual de histórico e cenários", exact: true }).locator("tbody tr")).toHaveCount(9);
+  const link = section.getByRole("link", { name: "Exportar série e cenários (CSV)" });
+  await expect(link).toHaveAttribute("download", "cenarios_rede_mt_extensao_km_DIST_7019.csv");
+  const csv = decodeURIComponent((await link.getAttribute("href"))!.split(",").slice(1).join(","));
   expect(csv).toContain("2030");
   expect(csv).toMatch(/simulacao_condicional/);
   await test.info().attach("exportacao-cenario.csv", { body: csv, contentType: "text/csv" });
@@ -174,7 +175,7 @@ for (const dispositivo of ["desktop", "iphone"] as const) {
         // Espera pelo dado efetivo da página; h1 sozinho não comprova a carga.
         const alvo = rota === "/" ? page.getByTestId("kpi-uc") : rota === "/explorar/" ? page.getByTestId("conceito-titulo")
           : rota === "/matriz/" ? page.getByTestId("matriz-tabela") : rota === "/comparar/" ? page.getByTestId("comparar-tabela")
-          : rota === "/evolucao/" ? page.getByTestId("evo-tabela") : rota === "/previsoes/" ? page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Ativo", exact: true })
+          : rota === "/evolucao/" ? page.getByTestId("evo-tabela") : rota === "/previsoes/" ? page.getByTestId("cenarios-motor").getByRole("combobox", { name: "Ativo", exact: true })
           : page.locator("#regras");
         await expect(alvo).toBeVisible();
         const cargaMs = Date.now() - inicio;

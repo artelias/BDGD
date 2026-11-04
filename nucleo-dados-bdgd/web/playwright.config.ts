@@ -12,7 +12,7 @@ export default defineConfig({
   workers: 1,
   retries: process.env.CI ? 1 : 0,
   reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
-  use: { baseURL: external ?? "http://localhost:3211", locale: "pt-BR", trace: "retain-on-failure" },
+  use: { baseURL: external ?? "http://localhost:3211", locale: "pt-BR", trace: "retain-on-failure", screenshot: "only-on-failure" },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"], ...chromeDoRunner, viewport: { width: 1440, height: 900 } }, grepInvert: /@mobile|@iphone/ },
     { name: "mobile", use: { ...devices["Pixel 7"], ...chromeDoRunner }, grep: /@mobile/ },

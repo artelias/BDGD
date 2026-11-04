@@ -1,0 +1,71 @@
+{
+  "total": 275,
+  "ok": 275,
+  "falhas": 0,
+  "erros": 0,
+  "ignorados": 0,
+  "arquivos": {
+    "emular_ci.py": "290c5d0ee6bafe59b2c8c37df3aeabfff2b54110e3d587443e3240492fe8d434",
+    "suites.py": "f4ad57adda41ec843a8db9316c6600182b35df0ec18ff43a560fdb7ed2af100d",
+    "test_auditoria_final.py": "d4dffecb2634953ca373c34a054dfe580bb568d8cc1d5171b7dfbb2cea6ef7e4",
+    "test_baselines.py": "5c01f7653ef6d2c39457520b2356956db675d99cd013df6ea3de765082d3d2f7",
+    "test_cobertura.py": "314e36d51d032d7a4f93add9006333df8232b1befad08236231fc36fcc4e6742",
+    "test_comparison.py": "3b3a6b9548c387ed1f2a53749e20d07c79cf35a828fcb46156d8013132c0db72",
+    "test_conj_plan.py": "9cb23a4d9aa49258efdfd01e2a9744630d3e322116b6de27de6d7dca7fdd11fc",
+    "test_erro_retrospectivo.py": "28913890304e9c4ae03675d5891780dabb00deec2907e86d37177314fc58f540",
+    "test_executor_integration.py": "162b1086b331e3c5c8bb658b87b2ea7d336ec9514a7c178659cc36a90b669b3b",
+    "test_features.py": "b4f8b4bf3895e3fab5b9629967fde00c7db338f819f69107ae209de789efd3ac",
+    "test_future.py": "5ff6f7561918479cfbd1f771aa6e032cf938c4adcf07773c6519bcdb1aead491",
+    "test_generalization.py": "01e384e7539fa613f8c282d104f14ffb825a792ca035b48a4a50b0573ddb355e",
+    "test_hierarquia.py": "543f8792c50afeb87215ccf1a96044a7cd93908976e2a462bba408b3368acab4",
+    "test_lote.py": "bcd41bc2f0b59f6f736fa8ea4ea0024c640488c927630219f4acb77a607dc746",
+    "test_metric_contract.py": "2666cee689566e9a296d08dc76bbdedb106087d0a103117c383dce70580341f9",
+    "test_metric_contract_motor_v2.py": "6260803a6d56685d57bd0b23015541893a664901bac5214a9c8cf008be437299",
+    "test_ml.py": "e8679f84b17179bafd269eca5387e74916e908bf81f0c304eeec434caa76bc4f",
+    "test_nacional.py": "5e094f384a6fe08146ad3d39ca936605a4e94657333a4a9aa3464adf121ffd92",
+    "test_plausibilidade.py": "2e65c0068f55a5ccff307bf9ba0cf0dd530a127453b6629b2a7942528644f96c",
+    "test_public_audit.py": "0311dac6359eb14826cfe61c571673571532499b283d077ca7f7147495c045fc",
+    "test_scale.py": "5493880c345c77a09a2e2fa7551da8273530f578d33921638e62d7c40c2fecb2",
+    "test_suites.py": "ef02d2529f5328deaf7b9d043a28785d72b5bfd2600ec6458786ac39092b70c5",
+    "test_temporal.py": "02f44cce146e282ed09651b4ecdf00de3cbcae6dd8e2940c5c164d692042ba45",
+    "test_v2.py": "302f39c709886117c4432a350b7ecd86c1c466a36526ba91130f2c5bd68e1df4",
+    "test_vintage.py": "499c8273307a9c8359583a1bf35facd4ab5dbf1b42b401848f6cd32fa3eb17f6"
+  },
+  "ambiente": {
+    "python": "3.12.2",
+    "executavel": "D:\\NUCLEO_BDGD_2025\\motor_v2\\.venv\\Scripts\\python.exe",
+    "pacotes": {
+      "scikit-learn": "1.9.1",
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "duckdb": "2.0.0",
+      "pyarrow": "26.0.0"
+    }
+  },
+  "ci_linux": {
+    "workflow": ".github/workflows/motor-v2-sintetico.yml",
+    "suites": [
+      "test_hierarquia",
+      "test_erro_retrospectivo",
+      "test_auditoria_final",
+      "test_nacional",
+      "test_baselines",
+      "test_conj_plan",
+      "test_future",
+      "test_metric_contract",
+      "test_metric_contract_motor_v2",
+      "test_temporal",
+      "test_vintage",
+      "test_suites",
+      "test_cobertura",
+      "test_plausibilidade"
+    ],
+    "testes": 179,
+    "nota": "suites com dados reais rodam so nesta auditoria local"
+  },
+  "por_grupo": {
+    "local": 93,
+    "publica_pr19": 3,
+    "sintetica": 179
+  }
+}

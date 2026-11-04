@@ -10,18 +10,19 @@ export interface MultiPreset { id: string; label: string; values: string[] }
 const norm = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
 /** Seleção múltipla com busca, grupos e conjuntos prontos. Vazio = todos (sem filtro). */
-export function MultiPick({ label, options, value, onChange, presets, icon, testId, allLabel = "Todos", width = 340, footer }: {
-  label: string; options: MultiOption[]; value: string[]; onChange: (v: string[]) => void; presets?: MultiPreset[]; icon?: ReactNode; testId?: string; allLabel?: string; width?: number; footer?: ReactNode;
+export function MultiPick({ label, options, value, onChange, presets, icon, testId, allLabel = "Todos", width = 340, footer, disabled = false }: {
+  label: string; options: MultiOption[]; value: string[]; onChange: (v: string[]) => void; presets?: MultiPreset[]; icon?: ReactNode; testId?: string; allLabel?: string; width?: number; footer?: ReactNode; disabled?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const box = useRef<HTMLDivElement>(null);
   const input = useRef<HTMLInputElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   useEffect(() => {
     if (!open) return;
     input.current?.focus();
     const away = (e: MouseEvent) => { if (!box.current?.contains(e.target as Node)) setOpen(false); };
-    const esc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    const esc = (e: KeyboardEvent) => { if (e.key === "Escape") { setOpen(false); trigger.current?.focus(); } };
     document.addEventListener("mousedown", away); document.addEventListener("keydown", esc);
     return () => { document.removeEventListener("mousedown", away); document.removeEventListener("keydown", esc); };
   }, [open]);
@@ -35,15 +36,15 @@ export function MultiPick({ label, options, value, onChange, presets, icon, test
     for (const o of shown) { const g = o.group ?? ""; if (!m.has(g)) m.set(g, []); m.get(g)!.push(o); }
     return [...m.entries()];
   }, [shown]);
-  const toggle = (v: string) => onChange(sel.has(v) ? value.filter((x) => x !== v) : [...value, v]);
+  const toggle = (v: string) => { if (!disabled) onChange(sel.has(v) ? value.filter((x) => x !== v) : [...value, v]); };
   const summary = value.length === 0 ? allLabel : value.length === 1 ? (options.find((o) => o.value === value[0])?.label ?? value[0]) : `${value.length} selecionados`;
   return (
     <div className={s.wrap} ref={box}>
-      <button type="button" className={s.trigger} aria-expanded={open} aria-haspopup="dialog" onClick={() => setOpen((o) => !o)} data-testid={testId} style={{ maxWidth: width }}>
+      <button ref={trigger} type="button" disabled={disabled} className={s.trigger} aria-expanded={open && !disabled} aria-haspopup="dialog" onClick={() => setOpen((o) => !o)} data-testid={testId} style={{ maxWidth: width }}>
         {icon}<span className={s.lab}>{label}</span><span className={s.sum}>{summary}</span><ChevronDown size={14} aria-hidden />
       </button>
       <AnimatePresence>
-        {open && (
+        {open && !disabled && (
           <motion.div className={s.pop} role="dialog" aria-label={label} style={{ width }} initial={{ opacity: 0, y: -4, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -2 }} transition={{ duration: 0.16 }}>
             <label className={s.search}><Search size={14} aria-hidden /><input ref={input} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar" aria-label={`Buscar em ${label}`} />{q && <button onClick={() => setQ("")} aria-label="Limpar busca"><X size={13} /></button>}</label>
             {presets && presets.length > 0 && !q && (

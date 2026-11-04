@@ -28,10 +28,15 @@ test('reconciliação: Evolução preserva 2024 e não exporta 225 como alvo 202
  const csv=await csvDownload(page,()=>page.getByTestId('evo-csv').click());expect(csv).toContain('subtotal_observado');expect(csv).toMatch(/2025,,/);expect(csv).toContain('5370-2025-consumidores-quantidade');
 });
 test('reconciliação: cenários permitem selecionar consumidores Coopera sem trocar silenciosamente de ativo',async({page})=>{
- await page.goto('/previsoes/');const s=page.locator('section[aria-labelledby="exploracao-title"]');
- await s.getByRole('combobox',{name:'Distribuidora',exact:true}).selectOption('5370');
+ // painel principal (o exploratório foi retirado no PR #21): a Coopera segue selecionável em consumidores, bloqueada e com a ressalva
+ await page.goto('/previsoes/');const s=page.getByTestId('cenarios-motor');
+ await s.getByRole('combobox',{name:'Ativo',exact:true}).selectOption('consumidores');
+ await s.getByRole('combobox',{name:'Distribuidora ou grupo',exact:true}).selectOption('dist:5370');
  await expect(s.getByRole('combobox',{name:'Ativo',exact:true})).toHaveValue('consumidores');
- await expect(s.getByTestId('coopera-bloqueio-cenario')).toBeVisible();await expect(s.getByTestId('observacoes-dados')).toContainText('225');
+ await expect(s.getByTestId('cenarios-coopera')).toBeVisible();
+ await expect(s.getByRole('region',{name:'Tabela anual de histórico e cenários'})).toHaveCount(0);
+ await expect(s.getByRole('link',{name:'Exportar série e cenários (CSV)'})).toHaveCount(0);
+ await expect(s.getByTestId('observacoes-dados')).toContainText('225');
 });
 test('reconciliação: Certel, Cooperzem e Equatorial GO têm ressalvas próprias',async({page})=>{
  for(const [dist,ativo,text] of [['7371','trafo_medida','RT/AT2'],['5374','iluminacao','1.545'],['6072','consumidores','3.449.443']]){

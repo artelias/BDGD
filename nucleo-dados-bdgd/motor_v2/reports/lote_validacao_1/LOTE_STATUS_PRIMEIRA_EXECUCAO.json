@@ -1,0 +1,48 @@
+{
+  "lote": "lote-validacao-1",
+  "state": "completed",
+  "stages": [
+    {
+      "stage": "extracao_ucbt",
+      "started": "2026-10-29T23:25:37",
+      "seconds": 697.5,
+      "result": "None"
+    },
+    {
+      "stage": "extracao_ativos",
+      "started": "2026-10-29T23:37:14",
+      "seconds": 114.6,
+      "result": "D:\\NUCLEO_BDGD_2025\\motor_v2\\lote_validacao_1\\assets\\asset_runs\\99247b37cb4527d5"
+    },
+    {
+      "stage": "comparativo_ucbt",
+      "started": "2026-10-29T23:39:09",
+      "seconds": 628.0,
+      "result": "None"
+    },
+    {
+      "stage": "comparativo_trafo_qty",
+      "started": "2026-10-29T23:49:37",
+      "seconds": 588.8,
+      "result": "None"
+    },
+    {
+      "stage": "comparativo_trafo_kva",
+      "started": "2026-10-29T23:59:26",
+      "seconds": 415.4,
+      "result": "None"
+    },
+    {
+      "stage": "comparativo_rede_mt",
+      "started": "2026-10-30T00:06:21",
+      "seconds": 226.0,
+      "result": "None"
+    },
+    {
+      "stage": "relatorio",
+      "started": "2026-10-30T00:10:07",
+      "seconds": 1.6,
+      "result": "88"
+    }
+  ]
+}

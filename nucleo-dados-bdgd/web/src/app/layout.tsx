@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Suspense, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AppShell } from "@/components/shell/AppShell";
 import { ToastProvider } from "@/components/ui/Feedback";
 import { DataProvider } from "@/lib/data-context";
@@ -32,9 +32,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <DataProvider>
             <ToastProvider>
-              <Suspense>
-                <AppShell>{children}</AppShell>
-              </Suspense>
+              {/* Sem <Suspense> aqui: o AppShell não lê a URL (só usePathname). Cada página que usa useSearchParams já tem o próprio
+                  <Suspense> em app/<rota>/page.tsx. Um limite na raiz fazia o prerender emitir o shell como segmento adiado
+                  (<template id="B:0"> + <div hidden id="S:0">) e a hidratação deixava a cópia oculta da página no <body>. */}
+              <AppShell>{children}</AppShell>
             </ToastProvider>
           </DataProvider>
         </ThemeProvider>

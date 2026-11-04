@@ -1,0 +1,29 @@
+{
+ "id": "lote-validacao-1",
+ "descricao": "Primeiro lote controlado alem das tres empresas-piloto: 8 DIST novas, diversas em tamanho e grupo economico, todas com 2022-2025 ordinarios completos e sem ruptura no contrato nacional. Nao e processamento nacional.",
+ "criterios": [
+  "competencias 2022, 2023, 2024 e 2025 ordinarias (selecionadas no contrato nacional)",
+  "zero rupturas no contrato nacional nas quatro competencias",
+  "tamanhos de 20 mil a 3,7 milhoes de linhas UCBT (2025) para medir escala",
+  "cinco DIST do mesmo grupo (Energisa) para o escopo compartilhado por grupo",
+  "inclui uma DIST com versao extraordinaria da mesma competencia (380, 2023), usada so como sensibilidade"
+ ],
+ "dists": [26, 6585, 6600, 6587, 404, 40, 380, 5697, 46, 381, 5368],
+ "grupos": {"26": "Energisa", "6585": "Energisa", "6600": "Energisa", "6587": "Energisa", "404": "Energisa", "40": "Neoenergia",
+            "380": "EDP", "5697": "Celesc", "46": "nao_confirmado", "381": "nao_confirmado", "5368": "nao_confirmado"},
+ "ativos": ["ucbt_quantidade", "trafo_dist_quantidade", "trafo_dist_potencia_kva", "rede_mt_extensao_km"],
+ "output": "D:/NUCLEO_BDGD_2025/motor_v2/lote_validacao_1",
+ "nota_recursos": "DuckDB limitado a 512 MB (despeja em disco) porque a maquina tinha ~0,7 GiB de RAM livre por aplicativos abertos; o guarda recusa iniciar uma DIST abaixo de 0,5 GiB livre.",
+ "memory": "512MB",
+ "threads": 2,
+ "min_available_gb": 0.5,
+ "task_timeout_seconds": 3600,
+ "seed": 42,
+ "comparison": {
+  "models": ["ols", "ridge", "elastic_net", "poisson", "random_forest", "hist_gradient_boosting"],
+  "max_trials": 6, "seconds_per_candidate": 400, "territorial_folds": 3, "min_independent_origins": 3, "origins": [2023, 2024],
+  "external_manifest": "D:/NUCLEO_BDGD_2025/motor_v2/externals/versions/810b13c6844f36d6/manifest.json",
+  "forward_selection": true, "max_features": 4, "min_territorial_coverage": 0.98, "baseline_min_points": 2, "rounding_policy": "half_up",
+  "min_unit_continuity_rede_mt": 0.95
+ }
+}

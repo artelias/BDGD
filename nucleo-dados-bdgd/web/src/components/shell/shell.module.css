@@ -6,6 +6,8 @@
   position: sticky; top: 0; height: 100dvh; display: flex; flex-direction: column; gap: 6px;
   padding: 14px 12px 12px; border-right: 1px solid var(--hairline); background: var(--bg); overflow: hidden; z-index: 30;
 }
+.sideScroll { flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; margin: 0 -12px; padding: 0 12px; overscroll-behavior: contain; }
+.navTooltip { position: fixed; left: calc(var(--sidebar-w-collapsed) + 8px); z-index: 80; max-width: 260px; padding: 8px 12px; background: var(--surface); color: var(--text); border: 1px solid var(--hairline-strong); border-radius: var(--r-sm); box-shadow: var(--shadow-2); pointer-events: none; }
 .sideTop { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 4px 0 6px; margin-bottom: 14px; }
 .sideTop > a { min-width: 0; max-width: 100%; }
 .nav { display: flex; flex-direction: column; gap: 2px; }
@@ -24,9 +26,10 @@
 .navLabel { transition: opacity var(--dur-2) var(--ease-out); }
 .navTag { margin-left: auto; font-size: 0.625rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); border: 1px solid var(--hairline-strong); border-radius: 5px; padding: 1px 5px; }
 .sectionLabel { padding: 16px 10px 6px; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
-.app[data-collapsed="true"] .navLabel, .app[data-collapsed="true"] .navTag, .app[data-collapsed="true"] .sectionLabel, .app[data-collapsed="true"] .sideMeta { opacity: 0; pointer-events: none; }
+.app[data-collapsed="true"] .navLabel, .app[data-collapsed="true"] .navTag { display: none; }
+.app[data-collapsed="true"] .sectionLabel { font-size: 0; padding: 8px 0; }
 .app[data-collapsed="true"] .sideTop { justify-content: center; padding: 0; }
-.sideBottom { margin-top: auto; display: flex; flex-direction: column; gap: 10px; }
+.sideBottom { flex: none; display: flex; flex-direction: column; padding-top: 6px; }
 .sideMeta { padding: 12px 10px; border-top: 1px solid var(--hairline); font-size: var(--fs-caption); color: var(--text-3); line-height: 1.5; min-width: 0; transition: opacity var(--dur-2); }
 .sideMail { display: inline-flex; align-items: center; gap: 5px; margin-top: 2px; color: var(--accent); font-weight: 560; }
 .sideMail:hover { text-decoration: underline; text-underline-offset: 3px; }

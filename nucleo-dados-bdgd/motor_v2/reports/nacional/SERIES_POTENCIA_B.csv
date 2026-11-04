@@ -1,0 +1,295 @@
+DIST,conceito,anos_utilizaveis,motivos,ressalvas
+26,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+26,reguladores_kva_propria,4,{},{}
+26,trafo_forca_kva,4,{},{}
+31,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+31,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+31,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 19.8% (> 5%)"", ""2023"": ""EQ x UN divergem 5.7% (> 5%)"", ""2024"": ""EQ x UN divergem 51.8% (> 5%)"", ""2025"": ""EQ x UN divergem 70.7% (> 5%)""}",{}
+32,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+32,reguladores_kva_propria,3,"{""2022"": ""convencao MISTA != PROPRIA""}",{}
+32,trafo_forca_kva,4,{},{}
+37,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+37,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+37,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 480.2% (> 5%)"", ""2023"": ""EQ x UN divergem 63.8% (> 5%)"", ""2024"": ""EQ x UN divergem 62.8% (> 5%)"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+38,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+38,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+38,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 77.7% (> 5%)"", ""2023"": ""EQ x UN divergem 55.0% (> 5%)"", ""2024"": ""EQ x UN divergem 59.1% (> 5%)"", ""2025"": ""EQ x UN divergem 18.5% (> 5%)""}",{}
+39,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+39,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+39,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 60.6% (> 5%)"", ""2023"": ""EQ x UN divergem 61.9% (> 5%)"", ""2024"": ""EQ x UN divergem 62.1% (> 5%)"", ""2025"": ""EQ x UN divergem 53.2% (> 5%)""}",{}
+40,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+40,reguladores_kva_propria,0,"{""2022"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+40,trafo_forca_kva,4,{},{}
+43,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+43,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+43,trafo_forca_kva,4,{},{}
+44,reguladores_kva_passante,3,"{""2022"": ""convencao MISTA != PASSANTE""}",{}
+44,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""convencao PASSANTE != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+44,trafo_forca_kva,2,"{""2022"": ""EQ x UN divergem 23.2% (> 5%)"", ""2025"": ""EQ x UN divergem 31.1% (> 5%)""}",{}
+46,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+46,reguladores_kva_propria,2,"{""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA""}",{}
+46,trafo_forca_kva,4,{},{}
+47,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+47,reguladores_kva_propria,3,"{""2022"": ""convencao MISTA != PROPRIA""}",{}
+47,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 8.1% (> 5%)"", ""2023"": ""EQ x UN divergem 8.2% (> 5%)"", ""2024"": ""EQ x UN divergem 7.7% (> 5%)"", ""2025"": ""EQ x UN divergem 8.3% (> 5%)""}",{}
+51,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+51,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+51,trafo_forca_kva,4,{},{}
+63,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+63,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+63,trafo_forca_kva,4,{},{}
+69,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+69,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+69,trafo_forca_kva,2,"{""2023"": ""EQ x UN divergem 22.2% (> 5%)"", ""2025"": ""EQ x UN divergem 20.4% (> 5%)""}",{}
+82,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+82,reguladores_kva_propria,4,{},{}
+82,trafo_forca_kva,4,{},{}
+83,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+83,reguladores_kva_propria,4,{},{}
+83,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+86,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+86,reguladores_kva_propria,0,"{""2022"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""convencao PASSANTE != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+86,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+87,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+87,reguladores_kva_propria,3,"{""2025"": ""convencao MISTA != PROPRIA""}",{}
+87,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+88,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+95,trafo_forca_kva,4,{},{}
+103,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+103,reguladores_kva_propria,3,{},{}
+103,trafo_forca_kva,3,{},{}
+369,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+369,reguladores_kva_propria,4,{},{}
+369,trafo_forca_kva,4,{},{}
+370,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+370,reguladores_kva_propria,3,"{""2022"": ""convencao MISTA != PROPRIA""}",{}
+370,trafo_forca_kva,3,"{""2022"": ""EQ x UN divergem 15.9% (> 5%)""}",{}
+371,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+371,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+371,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 679.1% (> 5%)"", ""2023"": ""EQ x UN divergem 45.3% (> 5%)"", ""2024"": ""EQ x UN divergem 45.1% (> 5%)"", ""2025"": ""EQ x UN divergem 32.3% (> 5%)""}",{}
+380,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+380,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+380,trafo_forca_kva,4,{},"{""2024"": [""intervalo_base_nao_anual""], ""2025"": [""intervalo_base_nao_anual""]}"
+381,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+381,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+381,trafo_forca_kva,4,{},{}
+382,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+382,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+382,trafo_forca_kva,4,{},{}
+383,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+383,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+383,trafo_forca_kva,2,"{""2022"": ""EQ x UN divergem 186.9% (> 5%)"", ""2023"": ""EQ x UN divergem 186.9% (> 5%)""}",{}
+385,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+385,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+385,trafo_forca_kva,4,{},{}
+390,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+390,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+390,trafo_forca_kva,3,"{""2022"": ""EQ x UN divergem 5.7% (> 5%)""}","{""2025"": [""intervalo_base_nao_anual""]}"
+391,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+391,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+391,trafo_forca_kva,4,{},"{""2024"": [""intervalo_base_nao_anual""], ""2025"": [""intervalo_base_nao_anual""]}"
+396,reguladores_kva_passante,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+396,reguladores_kva_propria,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+396,trafo_forca_kva,3,"{""2023"": ""EQ x UN divergem 99.8% (> 5%)""}",{}
+398,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+398,reguladores_kva_propria,2,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA""}",{}
+398,trafo_forca_kva,4,{},{}
+399,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+399,reguladores_kva_propria,4,{},{}
+399,trafo_forca_kva,4,{},{}
+400,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+400,reguladores_kva_propria,4,{},{}
+400,trafo_forca_kva,4,{},{}
+401,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+401,reguladores_kva_propria,0,"{""2022"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+401,trafo_forca_kva,4,{},{}
+404,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+404,reguladores_kva_propria,4,{},{}
+404,trafo_forca_kva,4,{},{}
+405,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+405,reguladores_kva_propria,4,{},{}
+405,trafo_forca_kva,4,{},{}
+504,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+504,reguladores_kva_propria,4,{},{}
+504,trafo_forca_kva,4,{},{}
+527,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+527,reguladores_kva_propria,4,{},{}
+527,trafo_forca_kva,3,"{""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}","{""2023"": [""kVA e unidades variam com diferenca de 0.70 em log (> 0.5)""]}"
+598,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+598,reguladores_kva_propria,0,"{""2022"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+598,trafo_forca_kva,3,"{""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+2351,reguladores_kva_passante,0,"{""2025"": ""convencao MISTA != PASSANTE""}",{}
+2351,reguladores_kva_propria,0,"{""2025"": ""convencao MISTA != PROPRIA""}",{}
+2351,trafo_forca_kva,0,"{""2025"": ""EQ x UN divergem 34.2% (> 5%)""}",{}
+2381,reguladores_kva_passante,0,"{""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+2381,reguladores_kva_propria,3,{},{}
+2381,trafo_forca_kva,3,{},{}
+2763,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+2763,reguladores_kva_propria,3,"{""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+2763,trafo_forca_kva,4,{},{}
+2783,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+2783,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+2783,trafo_forca_kva,4,{},{}
+2866,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+2866,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+2866,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 8.0% (> 5%)"", ""2023"": ""EQ x UN divergem 8.0% (> 5%)"", ""2024"": ""EQ x UN divergem 8.1% (> 5%)"", ""2025"": ""EQ x UN divergem 8.0% (> 5%)""}",{}
+2904,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE""}",{}
+2904,reguladores_kva_propria,2,{},{}
+2904,trafo_forca_kva,2,{},{}
+2937,reguladores_kva_passante,0,"{""2022"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2025"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)""}",{}
+2937,reguladores_kva_propria,0,"{""2022"": ""convencao PASSANTE != PROPRIA"", ""2023"": ""SEM_SEMANTICA_FISICA_HOMOGENEA: convencao muda entre competencias (propria e passante)"", ""2024"": ""convencao PASSANTE != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+2937,trafo_forca_kva,3,"{""2024"": ""EQ x UN divergem 31.7% (> 5%)""}",{}
+3223,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+3223,reguladores_kva_propria,3,{},{}
+3223,trafo_forca_kva,3,{},{}
+3627,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+3627,reguladores_kva_propria,4,{},{}
+3627,trafo_forca_kva,3,"{""2022"": ""EQ x UN divergem 82.2% (> 5%)""}",{}
+4248,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+4248,reguladores_kva_propria,4,{},"{""2023"": [""kVA e unidades variam com diferenca de 0.65 em log (> 0.5)""]}"
+4248,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+4950,reguladores_kva_passante,3,{},{}
+4950,reguladores_kva_propria,0,"{""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""convencao PASSANTE != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+4950,trafo_forca_kva,0,"{""2023"": ""EQ x UN divergem 59.8% (> 5%)"", ""2024"": ""EQ x UN divergem 42.0% (> 5%)"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+5160,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+5160,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+5160,trafo_forca_kva,0,"{""2022"": ""EQ x UN divergem 99.9% (> 5%)"", ""2023"": ""EQ x UN divergem 26.7% (> 5%)"", ""2024"": ""EQ x UN divergem 5.4% (> 5%)"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+5216,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+5216,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+5216,trafo_forca_kva,4,{},{}
+5274,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5279,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE""}",{}
+5279,reguladores_kva_propria,2,{},{}
+5279,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5343,reguladores_kva_passante,0,"{""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5343,reguladores_kva_propria,3,{},{}
+5343,trafo_forca_kva,0,"{""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5345,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5345,reguladores_kva_propria,4,{},{}
+5345,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5346,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5346,reguladores_kva_propria,4,{},{}
+5346,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5351,reguladores_kva_passante,0,"{""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5351,reguladores_kva_propria,0,"{""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+5351,trafo_forca_kva,0,"{""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5352,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5352,reguladores_kva_propria,2,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA""}",{}
+5352,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5353,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5353,reguladores_kva_propria,4,{},"{""2025"": [""kVA e unidades variam com diferenca de 0.80 em log (> 0.5)""]}"
+5353,trafo_forca_kva,3,"{""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5355,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5355,reguladores_kva_propria,4,{},{}
+5355,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5356,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5356,reguladores_kva_propria,4,{},{}
+5356,trafo_forca_kva,4,{},{}
+5363,reguladores_kva_passante,4,{},{}
+5363,reguladores_kva_propria,0,"{""2022"": ""convencao PASSANTE != PROPRIA"", ""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""convencao PASSANTE != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+5363,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5364,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5364,reguladores_kva_propria,3,{},{}
+5364,trafo_forca_kva,3,{},{}
+5365,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5365,reguladores_kva_propria,4,{},{}
+5365,trafo_forca_kva,4,{},"{""2024"": [""kVA e unidades variam com diferenca de 0.98 em log (> 0.5)""], ""2025"": [""kVA e unidades variam com diferenca de 1.25 em log (> 0.5)""]}"
+5366,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5367,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5367,reguladores_kva_propria,4,{},{}
+5367,trafo_forca_kva,4,{},{}
+5368,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5368,reguladores_kva_propria,2,"{""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5368,trafo_forca_kva,4,{},{}
+5369,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5369,reguladores_kva_propria,4,{},{}
+5369,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5370,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5370,reguladores_kva_propria,4,{},{}
+5370,trafo_forca_kva,4,{},{}
+5371,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5371,reguladores_kva_propria,3,{},{}
+5371,trafo_forca_kva,3,{},{}
+5372,reguladores_kva_passante,0,"{""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5372,reguladores_kva_propria,3,{},{}
+5372,trafo_forca_kva,0,"{""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5373,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+5373,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+5373,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5374,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5374,reguladores_kva_propria,4,{},{}
+5374,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+5375,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5375,reguladores_kva_propria,4,{},{}
+5375,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5377,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5378,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+5378,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+5378,trafo_forca_kva,4,{},{}
+5379,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5379,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+5379,trafo_forca_kva,3,{},{}
+5381,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5381,reguladores_kva_propria,4,{},{}
+5381,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5382,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5384,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5384,reguladores_kva_propria,4,{},{}
+5384,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5385,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5385,reguladores_kva_propria,4,{},{}
+5385,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5386,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+5386,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+5386,trafo_forca_kva,4,{},{}
+5697,reguladores_kva_passante,4,{},{}
+5697,reguladores_kva_propria,0,"{""2022"": ""convencao PASSANTE != PROPRIA"", ""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""convencao PASSANTE != PROPRIA"", ""2025"": ""convencao PASSANTE != PROPRIA""}",{}
+5697,trafo_forca_kva,3,"{""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+5707,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+5707,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao PASSANTE != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+5707,trafo_forca_kva,3,"{""2025"": ""EQ x UN divergem 175.5% (> 5%)""}",{}
+6072,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao MISTA != PASSANTE"", ""2025"": ""convencao MISTA != PASSANTE""}",{}
+6072,reguladores_kva_propria,0,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA"", ""2024"": ""convencao MISTA != PROPRIA"", ""2025"": ""convencao MISTA != PROPRIA""}",{}
+6072,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica"", ""2024"": ""EQ x UN divergem 7.6% (> 5%)"", ""2025"": ""EQ x UN divergem 5.1% (> 5%)""}",{}
+6585,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+6585,reguladores_kva_propria,4,{},{}
+6585,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""EQ x UN divergem 5.3% (> 5%)"", ""2024"": ""EQ x UN divergem 8.1% (> 5%)"", ""2025"": ""EQ x UN divergem 8.0% (> 5%)""}",{}
+6587,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao MISTA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+6587,reguladores_kva_propria,2,"{""2022"": ""convencao MISTA != PROPRIA"", ""2023"": ""convencao MISTA != PROPRIA""}",{}
+6587,trafo_forca_kva,4,{},{}
+6600,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+6600,reguladores_kva_propria,3,"{""2022"": ""convencao MISTA != PROPRIA""}",{}
+6600,trafo_forca_kva,4,{},{}
+6603,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+6603,reguladores_kva_propria,3,{},{}
+6603,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+6609,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+6609,reguladores_kva_propria,4,{},{}
+6609,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+6610,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+6611,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE""}",{}
+6611,reguladores_kva_propria,0,"{""2022"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+6611,trafo_forca_kva,0,"{""2022"": ""HISTORICO_INSUFICIENTE: 1 competencia(s) utilizavel(is) < 2 exigidas para liberar a metrica""}",{}
+6612,reguladores_kva_passante,0,"{""2022"": ""contrato: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST)""}",{}
+6612,reguladores_kva_propria,0,"{""2022"": ""contrato: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST)""}",{}
+6612,trafo_forca_kva,0,"{""2022"": ""contrato: nao_somar_em_agregados (sucessao/perimetro ja contido em outra DIST)""}",{}
+6897,trafo_forca_kva,2,"{""2023"": ""sem vinculo com a instalacao (EQ x UN nao verificavel)"", ""2025"": ""sem vinculo com a instalacao (EQ x UN nao verificavel)""}",{}
+6898,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+6898,reguladores_kva_propria,4,{},{}
+6898,trafo_forca_kva,4,{},{}
+7016,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+7016,reguladores_kva_propria,4,{},{}
+7016,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2025"": ""gate de potencia (codigo invalido ou quantidade != contrato)""}",{}
+7019,reguladores_kva_passante,0,"{""2022"": ""convencao MISTA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+7019,reguladores_kva_propria,3,"{""2022"": ""convencao MISTA != PROPRIA""}",{}
+7019,trafo_forca_kva,0,"{""2022"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2023"": ""gate de potencia (codigo invalido ou quantidade != contrato)"", ""2024"": ""EQ x UN divergem 6.2% (> 5%)"", ""2025"": ""EQ x UN divergem 6.2% (> 5%)""}",{}
+7371,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+7371,reguladores_kva_propria,4,{},{}
+7371,trafo_forca_kva,4,{},{}
+7467,reguladores_kva_passante,0,"{""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+7467,reguladores_kva_propria,3,{},{}
+7467,trafo_forca_kva,3,{},{}
+7883,trafo_forca_kva,4,{},{}
+11825,reguladores_kva_passante,0,"{""2022"": ""convencao PROPRIA != PASSANTE"", ""2023"": ""convencao PROPRIA != PASSANTE"", ""2024"": ""convencao PROPRIA != PASSANTE"", ""2025"": ""convencao PROPRIA != PASSANTE""}",{}
+11825,reguladores_kva_propria,4,{},{}
+11825,trafo_forca_kva,4,{},{}

@@ -10,24 +10,28 @@ test("Evolução prioriza a série física; inventário técnico permanece em p�
   await expect(page.getByTestId("auditoria-publicacoes")).toContainText("414");
 });
 
-test("Previsões apresenta resultados exploratórios antes das ressalvas longas", async ({ page }) => {
+test("Previsões apresenta o painel principal de cenários antes das ressalvas longas (painel exploratório retirado, PR #21)", async ({ page }) => {
   await page.goto("/previsoes/");
-  await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toBeVisible();
-  await expect(page.getByText("1.792", { exact: true })).toBeVisible();
-  await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Distribuidora" })).toBeVisible();
-  await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Ativo" })).toBeVisible();
-  await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Método" })).toBeVisible();
-  await page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Método" }).selectOption("persistencia");
-  await expect(page.getByRole("img", { name: /simulação condicional 2026 a 2030 pelo método persistência/ })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Exportar série selecionada/ })).toHaveAttribute("download", /cenario_DIST_/);
-  await expect(page.getByText("Entenda a diferença entre simulação e previsão validada")).toBeVisible();
+  const p = page.getByTestId("cenarios-motor");
+  await expect(page.getByRole("heading", { name: "Cenários de expansão por métrica física" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toHaveCount(0);
+  for (const nome of ["Família", "Ativo", "Métrica", "Distribuidora ou grupo"]) await expect(p.getByRole("combobox", { name: nome, exact: true })).toBeVisible();
+  await expect(p.getByRole("radiogroup", { name: "Cenário" })).toBeVisible();
+  await expect(p.getByTestId("cenarios-grafico")).toBeVisible();
+  await expect(p.getByRole("link", { name: "Exportar série e cenários (CSV)" })).toHaveAttribute("download", /^cenarios_.*_DIST_\d+\.csv$/);
+  const ressalva = page.getByText("Entenda a diferença entre simulação e previsão validada");
+  await expect(ressalva).toBeVisible();
+  // o painel de resultados vem antes da ressalva longa
+  expect((await p.boundingBox())!.y).toBeLessThan((await ressalva.boundingBox())!.y);
 });
 
 test("@mobile Previsões mantém formulário e gráficos acessíveis sem rolagem horizontal da página", async ({ page }) => {
   await page.goto("/previsoes/");
-  await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toBeVisible();
-  await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Distribuidora", exact: true })).toBeVisible();
-  await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" }).getByRole("combobox", { name: "Ano simulado" })).toBeVisible();
+  const p = page.getByTestId("cenarios-motor");
+  await expect(page.getByRole("heading", { name: "Cenários de expansão por métrica física" })).toBeVisible();
+  await expect(p.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true })).toBeVisible();
+  await expect(p.getByRole("combobox", { name: "Ativo", exact: true })).toBeVisible();
+  await expect(p.getByTestId("cenarios-grafico")).toBeVisible();
   const sobra = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(sobra).toBeLessThanOrEqual(1);
 });

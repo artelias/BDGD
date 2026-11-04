@@ -1,5 +1,5 @@
 "use client";
-import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Monitor, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
+import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -11,7 +11,7 @@ import { useModalFocus } from "@/components/ui/useModalFocus";
 import { useData } from "@/lib/data-context";
 import { fmtDate } from "@/lib/format";
 import { useStoredValue } from "@/lib/hooks";
-import { useTheme, type ThemePref } from "@/lib/theme";
+import { useTheme } from "@/lib/theme";
 import { CommandMenu } from "./CommandMenu";
 import s from "./shell.module.css";
 
@@ -33,17 +33,18 @@ const NAV2: NavItem[] = [
 ];
 const TITLES: Record<string, string> = { "/": "Panorama Brasil", "/matriz/": "Matriz nacional", "/evolucao/": "Evolução histórica", "/comparar/": "Comparador", "/explorar/": "Explorar ativos", "/metodologia/": "Metodologia e qualidade", "/previsoes/": "Previsões", "/design/": "Sistema de componentes" };
 
-const THEME_NEXT: Record<ThemePref, ThemePref> = { system: "light", light: "dark", dark: "system" };
-const THEME_LABEL: Record<ThemePref, string> = { system: "Tema do sistema", light: "Tema claro", dark: "Tema escuro" };
-
+/** O sistema define apenas a aparência inicial. Cada clique alterna o tema VISÍVEL,
+ * nunca percorre um terceiro estado "system" que poderia parecer um clique sem efeito. */
 function ThemeButton() {
-  const { pref, setPref } = useTheme();
-  const Icon = pref === "light" ? Sun : pref === "dark" ? Moon : Monitor;
+  const { resolved, setPref } = useTheme();
+  const isDark = resolved === "dark";
+  const next = isDark ? "light" : "dark";
+  const Icon = isDark ? Moon : Sun;
   return (
-    <Tip text={`${THEME_LABEL[pref]} — alternar`}>
-      <Button variant="ghost" icon aria-label={`${THEME_LABEL[pref]}. Alternar tema`} onClick={() => setPref(THEME_NEXT[pref])} data-testid="theme-toggle">
+    <Tip text={`Tema ${isDark ? "escuro" : "claro"} — ativar ${isDark ? "claro" : "escuro"}`}>
+      <Button variant="ghost" icon aria-label="Modo escuro" aria-pressed={isDark} onClick={() => setPref(next)} data-testid="theme-toggle">
         <AnimatePresence mode="wait" initial={false}>
-          <motion.span key={pref} initial={{ opacity: 0, rotate: -40, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 40, scale: 0.7 }} transition={{ duration: 0.18 }} style={{ display: "inline-flex" }}>
+          <motion.span key={resolved} initial={{ opacity: 0, rotate: -40, scale: 0.7 }} animate={{ opacity: 1, rotate: 0, scale: 1 }} exit={{ opacity: 0, rotate: 40, scale: 0.7 }} transition={{ duration: 0.18 }} style={{ display: "inline-flex" }}>
             <Icon size={17} />
           </motion.span>
         </AnimatePresence>
@@ -65,6 +66,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [showTitle, setShowTitle] = useState(false);
   const [cmd, setCmd] = useState(false);
   const [more, setMore] = useState(false);
+  const [navTip, setNavTip] = useState<{ label: string; top: number } | null>(null);
   const moreDialog = useRef<HTMLDivElement>(null);
   const moreTrigger = useRef<HTMLButtonElement>(null);
   const searchTrigger = useRef<HTMLButtonElement>(null);
@@ -95,12 +97,17 @@ export function AppShell({ children }: { children: ReactNode }) {
     const on = isActive(path, n.href);
     const Icon = n.icon;
     return (
-      <Link key={n.href} href={n.href} className={s.navItem} aria-current={on ? "page" : undefined} title={collapsed ? n.label : undefined}>
+      <Link key={n.href} href={n.href} className={s.navItem} aria-label={n.label} aria-current={on ? "page" : undefined} title={collapsed ? n.label : undefined}
+        aria-describedby={collapsed && navTip?.label === n.label ? "sidebar-tooltip" : undefined}
+        onMouseEnter={(e) => setNavTip({ label: n.label, top: e.currentTarget.getBoundingClientRect().top })}
+        onFocus={(e) => setNavTip({ label: n.label, top: e.currentTarget.getBoundingClientRect().top })}
+        onMouseLeave={() => setNavTip(null)} onBlur={() => setNavTip(null)} onClick={() => setNavTip(null)}
+        onKeyDown={(e) => { if (e.key === "Escape") setNavTip(null); }}>
         <span className={s.navHover} aria-hidden />
         {on && <motion.span layoutId="nav-active" className={s.navActive} transition={{ type: "spring", stiffness: 480, damping: 38 }} />}
         <Icon className={s.navIcon} strokeWidth={1.8} aria-hidden />
         <span className={s.navLabel}>{n.label}</span>
-        {n.tag && <span className={s.navTag}>{n.tag}</span>}
+        {n.tag && <span className={s.navTag} aria-hidden>{n.tag}</span>}
       </Link>
     );
   };
@@ -108,21 +115,22 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className={s.app} data-collapsed={collapsed}>
       <a href="#conteudo" className={s.skip} inert={modalAberto}>Ir para o conteúdo</a>
-      <aside className={s.sidebar} aria-label="Navegação principal" inert={modalAberto}>
+      <aside id="sidebar" className={s.sidebar} aria-label="Navegação principal" inert={modalAberto}>
+        <div className={s.sideScroll} onScroll={() => setNavTip(null)}>
         <div className={s.sideTop}>
-          {collapsed ? <BrandMark /> : <Link href="/" aria-label="Núcleo de Dados da BDGD — início"><Brand /></Link>}
+          <Link href="/" aria-label="Núcleo de Dados da BDGD — início">{collapsed ? <BrandMark /> : <Brand />}</Link>
         </div>
         <nav className={s.nav}>{NAV.map(navLink)}</nav>
         <div className={s.sectionLabel}>Referência</div>
         <nav className={s.nav}>{NAV2.map(navLink)}</nav>
-        <div className={s.sideBottom}>
-          <div className={s.sideMeta}>
-            <div>Data-base <strong>31/12/2025</strong></div>
-            {rel && <div>{rel.cobertura.processadas} GDBs processados{rel.cobertura.sem_publicacao_2025.length > 0 && ` · ${rel.cobertura.sem_publicacao_2025.length} publicações 2025 não localizadas`}</div>}
+          {/* Só a autoria: data-base fica no cabeçalho; GDBs processados e publicações não localizadas ficam em Metodologia e qualidade. */}
+          <div className={s.sideMeta} hidden={collapsed}>
             <div>Desenvolvido por <strong>{AUTOR}</strong></div>
             <a href={`mailto:${CONTATO}`} className={s.sideMail}><Mail size={12} aria-hidden /> Contato</a>
           </div>
-          <Button variant="ghost" icon onClick={toggle} aria-label={collapsed ? "Expandir navegação" : "Recolher navegação"} aria-expanded={!collapsed} style={{ alignSelf: collapsed ? "center" : "flex-start" }}>
+        </div>
+        <div className={s.sideBottom}>
+          <Button variant="ghost" icon onClick={() => { setNavTip(null); toggle(); }} aria-label={collapsed ? "Expandir navegação" : "Recolher navegação"} aria-controls="sidebar" aria-expanded={!collapsed} style={{ alignSelf: collapsed ? "center" : "flex-start" }}>
             {collapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}
           </Button>
         </div>
@@ -183,6 +191,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       </AnimatePresence>
 
       <CommandMenu open={cmd} onClose={() => setCmd(false)} trigger={searchTrigger} />
+      {collapsed && navTip && !modalAberto && <span id="sidebar-tooltip" role="tooltip" className={s.navTooltip} style={{ top: navTip.top }}>{navTip.label}</span>}
     </div>
   );
 }

@@ -16,6 +16,8 @@
 .check { display: inline-flex; align-items: center; gap: 8px; font-size: .84rem; min-height: 44px; flex: 1 1 220px; }
 .check input { width: 18px; height: 18px; }
 .estado { color: var(--text-2); }
+.naoPublicados { margin: 4px 0 0; padding-left: 18px; font-size: .86rem; }
+.alert p { margin: 0 0 4px; }
 .alert { border-left: 3px solid var(--warn); padding: 8px 12px; background: var(--surface); border-radius: 6px; }
 .scroll { overflow-x: auto; margin: 16px 0; }
 .scroll table { border-collapse: collapse; min-width: 520px; width: 100%; font-size: .85rem; font-variant-numeric: tabular-nums; }

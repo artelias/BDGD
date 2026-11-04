@@ -66,6 +66,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
   const filtradas = cols.filter((a) => Object.values(est(a).filtro).some((v) => v.length) || est(a).medida !== a.medida && !(a.medidas_extra ?? []).includes(est(a).medida));
   const comFiltro = cols.filter((a) => Object.values(est(a).filtro).some((v) => v.length));
   const conceitos = useConceitos(comFiltro.map((a) => a.conceito));
+  const recortesProntos = comFiltro.every((a) => Boolean(conceitos.data[a.conceito]));
 
   const distSel = lista(distsQ).map(Number).filter((d) => ds.dist(d));
   const ufSel = lista(ufsQ);
@@ -90,7 +91,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
         const cd = conceitos.data[a.conceito];
         const pd = cd ? agregarPorDist(cd, juntar(recorteDe(a), { filtro }), medida) : null;
         for (const d of ds.dists) {
-          if (!cd) { m.set(d.dist, { v: null, st: "e", motivo: "carregando" }); continue; }
+          if (!cd) { m.set(d.dist, { v: null, st: "e", motivo: conceitos.error ? "falha ao carregar a fonte do recorte" : "carregando" }); continue; }
           if (!pd) { m.set(d.dist, { v: null, st: "b", motivo: "combinação sem cubo calculado" }); continue; }
           const v = pd.get(d.dist);
           m.set(d.dist, v === undefined ? { v: null, st: "x", motivo: "tipo de ativo inexistente no GDB desta distribuidora" } : v === null ? { v: null, st: "b", motivo: "sem valor homologado nesta medida" } : { v, st: "a", motivo: "" });
@@ -99,7 +100,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
       out.set(a.id, m);
     }
     return out;
-  }, [cols, estado, conceitos.data, totaisIdx, ds]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [cols, estado, conceitos.data, conceitos.error, totaisIdx, ds]); // eslint-disable-line react-hooks/exhaustive-deps
   const cell = (a: AtivoCfg, d: number) => valores.get(a.id)?.get(d) ?? { v: null, st: "x" as const, motivo: "" };
 
   const rows = useMemo(() => {
@@ -212,7 +213,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
           Cada célula mostra quanto daquele ativo a distribuidora tem, na sua medida própria (quantidade, km ou kVA). Use o ícone de filtro no topo de cada coluna para recortar por características do próprio ativo.
         </Explain>
         <Button variant="ghost" onClick={() => setTransposed((t) => !t)} aria-pressed={transposed} title="Alternar linhas e colunas"><Rows3 size={15} /> {transposed ? "Distribuidoras nas colunas" : "Transpor"}</Button>
-        <Button variant="primary" onClick={exportCSV} disabled={rows.length === 0 || cols.length === 0} data-testid="matriz-csv"><Download size={15} /> CSV</Button>
+        <Button variant="primary" onClick={exportCSV} disabled={rows.length === 0 || cols.length === 0 || !recortesProntos} data-testid="matriz-csv"><Download size={15} /> CSV</Button>
       </div>
 
       {chips.length > 0 && (
@@ -222,6 +223,7 @@ function MatrizReady({ ds }: { ds: Dataset }) {
         </div>
       )}
       {filtradas.length > 0 && conceitos.loading && <p className={s.note} aria-live="polite">Carregando os recortes das colunas filtradas…</p>}
+      {conceitos.error && <p role="alert" className={s.note}>Fonte do recorte indisponível. Recarregue a página para tentar novamente ou remova o filtro da coluna.</p>}
 
       {rows.length === 0 || cols.length === 0 ? <EmptyState title="Nada no recorte">Revise a busca ou ajuste os ativos, o grupo, as distribuidoras ou a UF.</EmptyState> : transposed ? (
         <div className={s.tableWrap} data-testid="matriz-transposta">

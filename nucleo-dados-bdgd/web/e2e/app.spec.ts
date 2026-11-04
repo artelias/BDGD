@@ -176,14 +176,49 @@ test.describe("Núcleo de Dados da BDGD — 2025-12-31", () => {
     await expect(page).not.toHaveURL(/dist=/);
   });
 
-  test("tema persiste após recarregar", async ({ page }) => {
+  test("tema claro/escuro alterna a cada clique e persiste após navegação e recarga", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/metodologia/");
+    await page.evaluate(() => localStorage.setItem("nucleo-bdgd-tema", "system"));
+    await page.reload();
     const html = page.locator("html");
-    await page.getByTestId("theme-toggle").click(); // sistema -> claro
-    await page.getByTestId("theme-toggle").click(); // claro -> escuro
+    const button = page.getByTestId("theme-toggle");
+    await expect(html).toHaveAttribute("data-theme", "light");
+
+    await button.click(); // sistema claro -> escuro, não sistema -> claro
+    await expect(html).toHaveAttribute("data-theme", "dark");
+    await expect(button).toHaveAttribute("aria-pressed", "true");
+    await expect.poll(() => page.evaluate(() => localStorage.getItem("nucleo-bdgd-tema"))).toBe("dark");
+
+    await button.click(); // escuro -> claro, sem estado intermediário
+    await expect(html).toHaveAttribute("data-theme", "light");
+    await expect(button).toHaveAttribute("aria-pressed", "false");
+
+    await button.click(); // claro -> escuro novamente
     await expect(html).toHaveAttribute("data-theme", "dark");
     await page.reload();
     await expect(html).toHaveAttribute("data-theme", "dark");
+    await page.goto("/matriz/");
+    await expect(html).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("tema alterna na sessão mesmo sem permissão de escrita no storage", async ({ page }) => {
+    await page.addInitScript(() => {
+      const original = Storage.prototype.setItem;
+      Storage.prototype.setItem = function (key: string, value: string) {
+        if (key === "nucleo-bdgd-tema") throw new Error("storage indisponível");
+        return original.call(this, key, value);
+      };
+    });
+    await page.goto("/metodologia/");
+    const html = page.locator("html");
+    const button = page.getByTestId("theme-toggle");
+    const initial = await html.getAttribute("data-theme");
+    const next = initial === "dark" ? "light" : "dark";
+    await button.click();
+    await expect(html).toHaveAttribute("data-theme", next);
+    await button.click();
+    await expect(html).toHaveAttribute("data-theme", initial === "dark" ? "dark" : "light");
   });
 
   test("busca global por teclado abre a distribuidora", async ({ page }) => {

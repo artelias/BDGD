@@ -1,0 +1,1 @@
+{"output":"D:/NUCLEO_BDGD_2025/motor_v2","dists":[6600,6585,26],"memory":"2GB","threads":2,"min_folds":3,"as_of":"2026-10-28","scenario_rates":[0,0,0],"seed":42,"max_trials":8,"task_timeout_seconds":1800}

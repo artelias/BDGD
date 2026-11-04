@@ -14,7 +14,7 @@ function produto(): ProdutoCenarios {
       modelos: { persistencia: erro(true), deriva: erro(true) }, diagnostico_painel: {},
       series: {
         "1": { hist: [[2024, 9], [2025, 10]], conservador: [10, 10], moderado: [11, 12], agressivo: null, erro_moderado: 0.01 },
-        "2": { hist: [[2024, 4], [2025, 5]], conservador: [5, 5], moderado: null, agressivo: null, erro_moderado: null },
+        "2": { hist: [[2024, 4], [2025, 5]], conservador: null, moderado: null, agressivo: null, erro_moderado: null, motivos: { conservador: "SEM_MODERADO_NA_SERIE", moderado: "TRAJETORIA_IMPLAUSIVEL_NA_SERIE" } },   // extremo sem Moderado não é publicado
       },
     }],
   };
@@ -36,7 +36,9 @@ describe("produto de cenários do motor", () => {
   });
   it("soma de grupo só com todas as trajetórias; nunca completa faltantes", () => {
     const m = produto().metricas[0];
-    expect(somaGrupo(m, ["1", "2"], "conservador", 2).traj).toEqual([15, 15]);
+    expect(somaGrupo(m, ["1"], "conservador", 2).traj).toEqual([10, 10]);
+    // a DIST 2 não tem Moderado, logo também não tem Conservador: o grupo fica sem o cenário em vez de somar um extremo isolado
+    expect(somaGrupo(m, ["1", "2"], "conservador", 2)).toMatchObject({ traj: null, faltantes: ["2"] });
     const mod = somaGrupo(m, ["1", "2"], "moderado", 2);
     expect(mod.traj).toBeNull();
     expect(mod.faltantes).toEqual(["2"]);

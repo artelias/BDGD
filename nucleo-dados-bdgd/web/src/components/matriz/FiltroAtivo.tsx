@@ -76,7 +76,7 @@ function Conteudo({ ds, ativo, filtro, medida, onChange }: { ds: Dataset; ativo:
           const ok = compat.has(d) || (filtro[d]?.length ?? 0) > 0;
           return (
             <div key={d} style={ok ? undefined : { opacity: 0.45, pointerEvents: "none" }} title={ok ? undefined : "Sem cubo exato para combinar com o filtro atual"}>
-              <MultiPick label={rot(d)} value={filtro[d] ?? []} allLabel="Todos" width={340} testId={`col-filtro-${d}`}
+              <MultiPick disabled={!ok} label={rot(d)} value={filtro[d] ?? []} allLabel="Todos" width={340} testId={`col-filtro-${d}`}
                 options={(cd.valores[d] ?? []).map((code) => ({ value: code, label: rotulo(cd, d, code, rec), keywords: code }))}
                 onChange={(v) => onChange({ ...filtro, [d]: v }, medida)} />
             </div>

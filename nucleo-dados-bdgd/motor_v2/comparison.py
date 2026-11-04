@@ -1,0 +1,391 @@
+"""Bounded comparative experiments on cached MUNICIPAL aggregates, not raw UCs."""
+import argparse,csv,hashlib,json,math,time
+from pathlib import Path
+from collections import defaultdict
+import numpy as np
+import duckdb
+from .runner import atomic,read,digest,fingerprint,score,ROOT
+from .temporal import usable,label,MODES
+from .ml import build
+from .policy import FeaturePolicy
+from .baselines import BASELINES,DEFAULT_MIN_POINTS,predict as baseline_predict
+from .features import FEATURES, snapshots, csv_write
+MODELS=('ols','ridge','elastic_net','poisson','random_forest','hist_gradient_boosting')
+SCOPES=('individual','shared_pilot','peers_pilot')
+# Validation batch beyond the pilot: global pool of the batch, pool of the same economic group, and the 3 most similar companies.
+SCOPES_LOTE=('individual','shared_lote','group_lote','peers_lote')
+MAX_LOTE=16   # a batch is a controlled validation set, not national processing
+# National run: targets are processed in batches of <=16 DIST, but every pool is drawn from the WHOLE national panel (so a batch
+# never depends on which companies happen to share it). No indiscriminate global pool: individual, same economic group, and the
+# K most comparable companies by scale/physical profile measured on training rows only.
+SCOPES_NACIONAL=('individual','grupo_economico','comparaveis')
+K_COMPARAVEIS=4   # the company itself plus its 4 nearest companies
+
+def bucket(group,n):return int(hashlib.sha256(group.encode()).hexdigest()[:8],16)%n
+
+def load_panel(input_run,asset='ucbt_quantidade',bridges=None,min_coverage=None,min_continuity=None,future_year=None,valid_municipalities=None,quarantine=None):
+ from .assets import ASSETS
+ from .bridges import quarantine as bridge_quarantine
+ kind=ASSETS[asset]['unit_kind'];bridges=bridges or []
+ data,metadata,provenance=snapshots(input_run,asset)
+ # Syntactically invalid municipalities remain in audit/total, not the model cohort.
+ valid={k:v for k,v in data.items() if k[2] and ((len(k[2])==7 and k[2].isdigit()) if kind=='municipality' else k[2]!='MISSING')}
+ # Optional official list: a 7-digit code that is not an IBGE municipality is not a territorial unit (it stays in the total).
+ if valid_municipalities is not None and kind=='municipality':valid={k:v for k,v in valid.items() if k[2] in valid_municipalities}
+ # Explicit (DIST, year) quarantine, e.g. a recoding bridge pending homologation: neither target nor t-1 feature year.
+ quarantine={(int(d),int(y)):why for d,y,why in (quarantine or [])}
+ # Coverage gate: the territorial aggregate must reproduce the physical total under the SAME rule (and the asset's own
+ # link coverage). A (dist, year) that fails removes its rows (as target year and as t-1 feature year); never imputed.
+ gate={}
+ for d,y in metadata:
+  physical=metadata[d,y].get('value');tsum=sum(v['n'] for (dd,yy,m),v in data.items() if (dd,yy)==(d,y))
+  cov=tsum/physical if physical else None;ac=metadata[d,y].get('qa',{}).get('coverage')
+  if cov is not None and ac is not None:cov=min(cov,ac)
+  gate[d,y]=dict(physical_total=physical,territorial_sum=tsum,territorial_coverage=cov,gate_ok=(min_coverage is None) or (cov is not None and cov>=min_coverage))
+ # Continuity gate: share of the asset's stock (year y) in territorial units that already existed at y-1. A redefinition of the
+ # units (e.g. CONJ renumbering) breaks comparability even for units that keep their code, so the whole transition is withheld.
+ for d,y in metadata:
+  now={m:v['n'] for (dd,yy,m),v in valid.items() if (dd,yy)==(d,y)};before={m for (dd,yy,m) in valid if (dd,yy)==(d,y-1)}
+  tot=sum(now.values());cont=sum(v for m,v in now.items() if m in before)/tot if tot and before else None
+  gate[d,y].update(unit_continuity=cont,continuity_ok=(min_continuity is None) or cont is None or cont>=min_continuity)
+ rows=[];quality=[]
+ for (d,y,mun),s in sorted(valid.items()):
+  prior=valid.get((d,y-1,mun))
+  if prior is None:continue
+  h=metadata[d,y];lag=metadata[d,y-1];held=bridge_quarantine(bridges,d,y,kind);bad=[k for k in ((d,y),(d,y-1)) if not gate[k]['gate_ok']];cbad=not gate[d,y]['continuity_ok'];qy=[k for k in ((d,y),(d,y-1)) if k in quarantine]
+  rows.append(dict(dist=d,year=y,group=mun,feature_year=y-1,feature_available=lag['available'],feature_revision_available=lag['available'],target_available=h['available'],stock=prior['n'],y=float(s['n']),recent_connection_share=(prior['connections']/prior['n']) if prior.get('connections') is not None and prior['n'] else None,x=[math.log1p(prior['n']),prior['urban'],math.log1p(prior['energy']) if prior['energy'] is not None else None],rupture=h['rupture'] or mun in held or bool(bad) or cbad or bool(qy),rupture_reason=('quarantine:%s-%s:'%qy[0]+quarantine[qy[0]]) if qy else ('perimeter_bridge_pending:'+held[mun]) if mun in held else ('coverage_gate:%s-%s'%bad[0]) if bad else ('continuity_gate:%s-%s'%(d,y)) if cbad else None,unit_kind=kind,territorial_conflicts=h['qa'].get('territorial_conflicts',0),key=f'{d}:{y}:{mun}'))
+ if future_year:
+  # Projection rows: features at future_year-1 (the anchor), no target. They never enter training or backtests (y is None).
+  for (d,y,mun),s in sorted(valid.items()):
+   if y!=future_year-1:continue
+   lag=metadata[d,y];held=bridge_quarantine(bridges,d,y,kind);bad=not gate[d,y]['gate_ok'];qy=(d,y) in quarantine
+   rows.append(dict(dist=d,year=future_year,group=mun,feature_year=y,feature_available=lag['available'],feature_revision_available=lag['available'],target_available=None,stock=s['n'],y=None,future=True,recent_connection_share=(s['connections']/s['n']) if s.get('connections') is not None and s['n'] else None,x=[math.log1p(s['n']),s['urban'],math.log1p(s['energy']) if s['energy'] is not None else None],rupture=mun in held or bad or qy,rupture_reason=('quarantine:%s-%s:'%(d,y)+quarantine[d,y]) if qy else ('perimeter_bridge_pending:'+held[mun]) if mun in held else ('coverage_gate:%s-%s'%(d,y)) if bad else None,unit_kind=kind,territorial_conflicts=lag['qa'].get('territorial_conflicts',0),key=f'{d}:{future_year}:{mun}'))
+ for d,y in sorted(metadata):
+  total=sum(v['n'] for (dd,yy,m),v in data.items() if (dd,yy)==(d,y))
+  matched=sum(r['y'] for r in rows if (r['dist'],r['year'])==(d,y) and r['y'] is not None)
+  quality.append(dict(dist=d,year=y,**gate[d,y],municipal_total=total,matched_cohort=matched,coverage=matched/total if total else None,available=metadata[d,y]['available'],rupture=metadata[d,y]['rupture'],territorial_conflicts=metadata[d,y]['qa'].get('territorial_conflicts',0),quarantined_units=sorted(u for (dd,yy,u) in valid if (dd,yy)==(d,y) and u in bridge_quarantine(bridges,d,y,kind)),quarantine=quarantine.get((d,y)),units_outside_official_list=sum(1 for (dd,yy,u) in data if (dd,yy)==(d,y))-sum(1 for (dd,yy,u) in valid if (dd,yy)==(d,y)),limitation='territorial overlap is not proof of physical continuity'))
+ return rows,quality,provenance
+
+def scope_pool(rows,dist,origin,mode,scope,heldout):
+ candidates=[r for r in rows if not r.get('future') and usable(r,origin,mode) and r['group'] not in heldout and not r['rupture']]
+ if scope=='individual':return [r for r in candidates if r['dist']==dist],[]
+ if scope=='grupo_economico':
+  # Same controlling group at the 2025 data-base (grupos_2025.json); unconfirmed control or a group of one gives no pool.
+  group=next((r.get('grupo') for r in rows if r['dist']==dist and r.get('grupo')),None)
+  if not group or group=='nao_confirmado':return [],[]
+  members=sorted({r['dist'] for r in candidates if r.get('grupo')==group})
+  return ([r for r in candidates if r['dist'] in members],members) if len(members)>1 and dist in members else ([],[])
+ if scope=='comparaveis':
+  # Scale/physical profile per company from TRAINING rows only: log of total stock, log of the number of territorial units and
+  # (when the asset carries it) the mean urban share. Standardised across companies; nearest K plus the company itself.
+  peers=comparable(candidates,dist)
+  return ([r for r in candidates if r['dist'] in peers],peers) if len(peers)>1 else ([],[])
+ if scope in ('shared_pilot','shared_lote'):return candidates,sorted({r['dist'] for r in candidates})
+ if scope=='group_lote':
+  # Companies of the same economic group (declared in the batch manifest); the company itself is part of its group pool.
+  group=next((r.get('grupo') for r in rows if r['dist']==dist and r.get('grupo')),None)
+  if not group or group=='nao_confirmado':return [],[]
+  members=sorted({r['dist'] for r in candidates if r.get('grupo')==group})
+  return ([r for r in candidates if r['dist'] in members],members) if len(members)>1 else ([],[])
+ others=sorted({r['dist'] for r in candidates if r['dist']!=dist})
+ if scope in ('peers_pilot','peers_lote'):
+  # Similarity uses training stock/urbanization, never outer targets or future GDP.
+  # Assets that carry no urbanization at all (network, transformers) are compared on stock only; when urbanization exists
+  # for the pool, a company lacking it is excluded rather than imputed.
+  has_urban=any(r['x'][1] is not None for r in candidates)
+  def vector(d):
+   rr=[r for r in candidates if r['dist']==d]
+   if not rr:return None
+   if not has_urban:return np.array([np.mean([r['x'][0] for r in rr])])
+   urban=[r['x'][1] for r in rr if r['x'][1] is not None]
+   return np.array([np.mean([r['x'][0] for r in rr]),np.mean(urban)]) if urban else None
+  target=vector(dist)
+  if target is None:return [],[]
+  others=[d for d in others if vector(d) is not None]
+  others=sorted(others,key=lambda d:(float(np.linalg.norm(vector(d)-target)),d))[:1 if scope=='peers_pilot' else 3]
+ return [r for r in candidates if r['dist'] in others],others
+
+def profiles(candidates):
+ """{dist: (log total stock in its latest training year, log number of territorial units, mean urban share or None)}."""
+ last={}
+ for r in candidates:last[r['dist']]=max(last.get(r['dist'],0),r['year'])
+ acc=defaultdict(lambda:[0.,set(),[]])
+ for r in candidates:
+  a=acc[r['dist']]
+  if r['year']==last[r['dist']]:a[0]+=r['y'];a[1].add(r['group'])
+  if r['x'][1] is not None:a[2].append(r['x'][1])
+ return {d:(math.log1p(a[0]),math.log1p(len(a[1])),float(np.mean(a[2])) if a[2] else None) for d,a in acc.items()}
+
+def comparable(candidates,dist,k=None):
+ """The company plus its k nearest companies on the standardised profile (ties broken by DIST id). Urban share is used only
+ when every company of the pool has it; otherwise scale alone. Never uses targets beyond the training rows given."""
+ k=K_COMPARAVEIS if k is None else k;prof=profiles(candidates)
+ if dist not in prof:return []
+ use_urban=all(v[2] is not None for v in prof.values())
+ keys=sorted(prof);m=np.array([[prof[d][0],prof[d][1]]+([prof[d][2]] if use_urban else []) for d in keys],dtype=float)
+ sd=m.std(axis=0);sd[sd==0]=1.;z=(m-m.mean(axis=0))/sd;me=z[keys.index(dist)]
+ order=sorted((float(np.linalg.norm(z[i]-me)),d) for i,d in enumerate(keys) if d!=dist)
+ return sorted([dist]+[d for _,d in order[:k]])
+
+def eligible_features(train,val,mode,n_features,policy=None):
+ """Feature indices usable under the configured coverage/imputation policy (statistics from the training rows only).
+ A feature is dropped for THIS candidate set only; coverage and the reason are recorded by `feature_report`."""
+ from .externals import feature_allowed
+ from .policy import FeaturePolicy,feature_status
+ policy=policy or FeaturePolicy()
+ return [i for i in range(n_features) if feature_status(i,train,val,mode,policy,feature_allowed)['eligible']]
+
+def feature_report(train,val,mode,n_features,policy=None):
+ from .externals import feature_allowed
+ from .policy import FeaturePolicy,feature_status
+ policy=policy or FeaturePolicy()
+ return {FEATURES[i] if i<len(FEATURES) else str(i):feature_status(i,train,val,mode,policy,feature_allowed) for i in range(n_features)}
+
+def feature_subsets(eligible):
+ """Stock-only, stock+each eligible feature independently (energy never requires urbanization), then the full eligible set."""
+ order=[i for i in [2,1]+sorted(set(eligible)-{0,1,2}) if i in eligible]
+ subsets=[[0]]+[[0,i] for i in order]
+ if {1,2}<=set(order):subsets.append([0,1,2])
+ if len(order)>2:subsets.append([0]+order)
+ out=[]
+ for f in subsets:
+  if f not in out:out.append(f)
+ return out
+
+def options(model,trials,seed,n_features=3,eligible=None):
+ rng=np.random.default_rng(seed)
+ choices={'ols':[{}],'ridge':[{'alpha':a} for a in [.1,1.,10.,100.]],'elastic_net':[{'alpha':a,'l1_ratio':l} for a in [.01,.1] for l in [.2,.8]],'poisson':[{'alpha':a} for a in [.1,1.,10.]],'random_forest':[{'max_depth':d,'min_samples_leaf':l} for d in [3,6] for l in [3,8]],'hist_gradient_boosting':[{'max_leaf_nodes':d,'learning_rate':.05} for d in [7,15]]}
+ subsets=feature_subsets(list(eligible) if eligible is not None else list(range(min(n_features,3))))
+ mandatory=[dict(params=choices[model][0],features=f) for f in subsets]
+ combos=[dict(params=p,features=f) for p in choices[model] for f in subsets]
+ extra=[combos[int(i)] for i in rng.permutation(len(combos)) if combos[int(i)] not in mandatory]
+ return (mandatory+extra)[:max(len(subsets),trials)]
+
+def fit_predict(model,opt,train,test,seed):
+ from .externals import feature_allowed
+ from .policy import FeaturePolicy,feature_status,fit_imputer,design
+ fs=opt['features'];policy=FeaturePolicy(**opt.get('policy',{}));mode=opt.get('mode','point_in_time')
+ if len({r['group'] for r in train})<5 or not test:raise ValueError('insufficient independent training territories')
+ for i in fs:
+  st=feature_status(i,train,test,mode,policy,feature_allowed)
+  if not st['eligible']:raise ValueError('feature ineligible ('+st['reason']+'): '+(FEATURES[i] if i<len(FEATURES) else str(i)))
+ stats=fit_imputer(train,fs,policy)
+ x=design(train,fs,stats,policy);xt=design(test,fs,stats,policy);y=np.array([r['y'] for r in train])
+ # Log-stock regressions; Poisson retains count response with log link.
+ target=y if model=='poisson' else np.log1p(y)
+ m=build(model,opt['params'],seed);m.fit(x,target);raw=m.predict(xt)
+ pred=raw if model=='poisson' else np.expm1(raw)
+ if not np.isfinite(pred).all() or (pred<0).any():raise ValueError('negative or nonfinite forecast rejected')
+ estimator=m.named_steps['model'];explain=dict(policy=policy.as_dict(),imputation_statistics={FEATURES[i]:v for i,v in stats.items()})
+ for attr in ['coef_','feature_importances_']:
+  if hasattr(estimator,attr):explain[attr]=np.asarray(getattr(estimator,attr)).tolist()
+ return pred.tolist(),explain
+
+def choose_options(rows,dist,origin,mode,scope,heldout,model,cfg):
+ # Inner time origin is strictly earlier than outer origin; outer groups excluded throughout.
+ inner=origin-1;val=[r for r in rows if r['dist']==dist and r['year']==origin and r['group'] not in heldout and bucket(r['group'],5)==0 and usable(r,inner,mode,False) and not r['rupture'] and (mode!='point_in_time' or (r.get('target_available') and r['target_available']<=f'{origin}-12-31'))]
+ blocked=heldout|{r['group'] for r in val};train,peers=scope_pool(rows,dist,inner,mode,scope,blocked)
+ trials=[]
+ policy=FeaturePolicy.from_cfg(cfg.get('feature_policy'));elig=eligible_features(train,val,mode,len(rows[0]['x']) if rows else 3,policy)
+ def evaluate(opt):
+  opt=dict(opt,mode=mode,policy=policy.as_dict())
+  try:
+   p,_=fit_predict(model,opt,train,val,cfg['seed']);return dict(**opt,mae=score([r['y'] for r in val],p)['mae'],status='inner_validation',inner_origin=inner)
+  except Exception as e:return dict(**opt,mae=None,status=str(e),inner_origin=inner)
+ for opt in options(model,cfg['max_trials'],cfg['seed'],eligible=elig):trials.append(evaluate(opt))
+ # Optional forward selection on the INNER validation only: grow the best subset while the inner MAE improves by >=1%.
+ if cfg.get('forward_selection') and len(elig)>3:
+  ok=[t for t in trials if t['mae'] is not None]
+  if ok:
+   cur=min(ok,key=lambda t:(t['mae'],len(t['features'])));feats=list(cur['features']);pool=[i for i in elig if i not in feats]
+   while pool and len(feats)<cfg.get('max_features',4):
+    step=[(evaluate(dict(params=cur['params'],features=feats+[i])),i) for i in pool];trials.extend(t for t,_ in step)
+    cand=[(t,i) for t,i in step if t['mae'] is not None]
+    if not cand:break
+    t,i=min(cand,key=lambda z:z[0]['mae'])
+    if t['mae']<.99*cur['mae']:cur=t;feats=feats+[i];pool.remove(i)
+    else:break
+ good=[x for x in trials if x['mae'] is not None]
+ selected=min(good,key=lambda x:(x['mae'],len(x['features']))) if good else dict(params=options(model,1,cfg['seed'],eligible=[0])[0]['params'],features=[0])
+ selected=dict(selected,mode=mode,policy=policy.as_dict())
+ return selected,trials,'inner_holdout_selection' if good else 'fixed_stock_only_default_no_eligible_inner_fold'
+
+def experiment(rows,dist,mode,model,scope,cfg,stop):
+ start=time.monotonic();predictions=[];folds=[];failures=[]
+ for origin in cfg['origins']:
+  targets=[r for r in rows if r['dist']==dist and r['year']==origin+1 and usable(r,origin,mode,False) and not r['rupture']]
+  if not targets:failures.append(dict(origin=origin,reason='no eligible targets/features at forecast origin'));continue
+  for part in range(cfg['territorial_folds']):
+   if stop.exists():raise InterruptedError('stop requested')
+   if time.monotonic()-start>cfg['seconds_per_candidate']:failures.append(dict(origin=origin,reason='candidate time budget'));return dict(predictions=predictions,folds=folds,failures=failures)
+   test=[r for r in targets if bucket(r['group'],cfg['territorial_folds'])==part]
+   if not test:continue
+   heldout={r['group'] for r in rows if bucket(r['group'],cfg['territorial_folds'])==part}
+   train,peers=scope_pool(rows,dist,origin,mode,scope,heldout)
+   try:
+    if model in BASELINES:values,explain=baseline_predict(model,rows,test,origin,mode,cfg.get('baseline_min_points',DEFAULT_MIN_POINTS));opt=dict(params={},features=[0]);trials=[];selection='baseline'
+    else:
+     opt,trials,selection=choose_options(rows,dist,origin,mode,scope,heldout,model,cfg)
+     values,explain=fit_predict(model,opt,train,test,cfg['seed'])
+    folds.append(dict(origin=origin,part=part,scope=scope,peers=peers,train_n=len(train),train_territories=len({r['group'] for r in train}),test_n=len(test),selected_features=[FEATURES[i] for i in opt['features']],rejected_features=[dict(feature=f,reason='not selected by inner validation or unavailable; no claim of no effect') for i,f in enumerate(FEATURES) if i<len(test[0]['x']) and i not in opt['features']],params=opt['params'],selection=selection,trials=trials,explanation=explain))
+    predictions.extend(dict(key=r['key'],origin=origin,horizon=1,municipality=r['group'],actual=r['y'],pred=p) for r,p in zip(test,values))
+   except Exception as e:failures.append(dict(origin=origin,part=part,reason=str(e)))
+ return dict(predictions=predictions,folds=folds,failures=failures)
+
+def physical_block(rs,nature,policy):
+ """Publishable (integer) errors next to the continuous ones, same rows. Independent per-municipality rounding and the
+ largest-remainder reconciliation to the integer distributor total are both reported; selection never uses them."""
+ from . import metric_contract as mc
+ if nature!='discrete_count' or not rs:return None
+ raw=[r['pred'] for r in rs];act=[r['actual'] for r in rs];ind=[mc.round_count(v,policy) for v in raw]
+ out=dict(rounding_policy=policy,independent=mc.error_pair(act,raw,ind),totals=[],reconciled=None)
+ by=defaultdict(list)
+ for r in rs:by[r['origin']].append(r)
+ rec=[];recpred=[]
+ for o,z in sorted(by.items()):
+  rr=mc.reconcile({r['municipality']:r['pred'] for r in z},policy=policy);tot=sum(r['actual'] for r in z)
+  out['totals'].append(dict(origin=o,actual_total=int(round(tot)),raw_total=sum(r['pred'] for r in z),physical_total=rr['total'],territories=len(z),moved_by_reconciliation=sum(abs(rr['by_unit'][k]-rr['independent'][k]) for k in rr['by_unit'])))
+  for r in z:rec.append(r['actual']);recpred.append(rr['by_unit'][r['municipality']])
+ out['reconciled']=mc.error_pair(rec,[float(x) for x in recpred],recpred)['physical']
+ return out
+
+def physical_columns(candidate):
+ ph=candidate.get('physical')
+ if not ph:return {}
+ i=ph['independent'];rc=ph['reconciled']
+ return dict(physical_mae=i['physical']['mae'],physical_rmse=i['physical']['rmse'],physical_bias=i['physical']['bias'],physical_wape=i['physical']['wape'],reconciled_physical_mae=rc['mae'],reconciled_physical_wape=rc['wape'],rounding_policy=ph['rounding_policy'])
+
+def summarise(experiments,minimum_origins,nature=None,policy='half_up'):
+ baseline=experiments['persistencia:individual']['predictions'];keys={r['key'] for r in baseline};out=[]
+ for name,e in experiments.items():
+  rs=e['predictions'];equivalent=bool(keys) and {r['key'] for r in rs}==keys and len(rs)==len(keys)
+  by=defaultdict(list)
+  for r in rs:by[r['origin']].append(r)
+  fold_metrics=[dict(origin=o,**score([r['actual'] for r in z],[r['pred'] for r in z])) for o,z in sorted(by.items())]
+  metrics=score([r['actual'] for r in rs],[r['pred'] for r in rs]) if rs else {}
+  robust=float(np.mean([x['mae'] for x in fold_metrics])+np.std([x['mae'] for x in fold_metrics])) if fold_metrics else None
+  totals=[dict(origin=o,actual=sum(r['actual'] for r in z),pred=sum(r['pred'] for r in z),municipalities=len(z)) for o,z in sorted(by.items())]
+  total_metrics=score([r['actual'] for r in totals],[r['pred'] for r in totals]) if totals else {}
+  out.append(dict(physical=physical_block(rs,nature,policy),distributor_totals=totals,distributor_metrics=total_metrics,candidate=name,common_test_set=equivalent,n_predictions=len(rs),independent_origins=len(by),metrics=metrics,by_origin=fold_metrics,robust_score=robust,folds=e['folds'],failures=e['failures']))
+ eligible=[r for r in out if r['common_test_set'] and r['robust_score'] is not None]
+ best=min(eligible,key=lambda r:(r['robust_score'],r['candidate']!='persistencia:individual')) if eligible else None
+ base=next(r for r in out if r['candidate']=='persistencia:individual')
+ names={b+':individual' for b in BASELINES}
+ baselines=[r for r in eligible if r['candidate'] in names];ml=[r for r in eligible if r['candidate'] not in names]
+ best_base=min(baselines,key=lambda r:(r['robust_score'],r['candidate']!='persistencia:individual')) if baselines else None
+ best_ml=min(ml,key=lambda r:r['robust_score']) if ml else None
+ gain=lambda a,b:(1-a['robust_score']/b['robust_score']) if a and b and b['robust_score'] else None
+ gain_best=gain(best_ml,best_base);gain_pers=gain(best_ml,base)
+ winner='persistencia:individual';reason='insufficient independent temporal origins; baseline fallback'
+ enough=best and best['independent_origins']>=minimum_origins
+ # An ML candidate must beat the BEST baseline (persistence, drift or CAGR), not only persistence.
+ if enough and best_base and base['robust_score']:
+  if best_ml and best_ml['robust_score']<.95*best_base['robust_score']:winner=best_ml['candidate'];reason='>=5% robust individual gain over the best baseline on common tests'
+  elif best_base['candidate']!='persistencia:individual' and best_base['robust_score']<.95*base['robust_score']:winner=best_base['candidate'];reason='>=5% robust gain of a trend baseline over persistence'
+  else:reason='no candidate beats the best baseline by 5%'
+ if not keys:reason='no eligible evaluation; baseline policy only, no measured winner'
+ fallbacks={r['candidate']:sum(f['explanation'].get('fallback_rows',0) for f in r['folds']) for r in out if r['candidate'] in names}
+ return dict(candidates=out,winner=winner,selection_reason=reason,best_exploratory=best['candidate'] if best else None,
+  best_baseline=best_base['candidate'] if best_base else None,best_baseline_robust=best_base['robust_score'] if best_base else None,
+  best_ml=best_ml['candidate'] if best_ml else None,best_ml_robust=best_ml['robust_score'] if best_ml else None,
+  ml_gain_vs_best_baseline=gain_best,ml_gain_vs_persistence=gain_pers,ml_beats_best_baseline=bool(gain_best is not None and gain_best>0),
+  baseline_fallback_rows=fallbacks,validated_winner=reason.startswith('>='))
+
+def investigate(input_run,dists):
+ from .runner import publication_map
+ inventory=publication_map();results=[]
+ for item,r in inventory.items():
+  if int(r.get('dist') or 0) not in dists:continue
+  dates=[r.get(k,'')[:10] for k in ['publicado_em','atualizado_em'] if r.get(k)]
+  results.append(dict(item=item,dist=r['dist'],year=r.get('ano','2025'),created=r.get('publicado_em'),revision=r.get('atualizado_em'),available=max(dates) if dates else None,url=r.get('url_item'),source='local inventory; current item metadata does not reconstruct former revisions'))
+ return dict(publications=results,claim='No eligible earlier vintage proven in local inventory; this does not prove no such publication ever existed.',sources=[dict(path=p,sha256=digest(p)) for p in ['D:/NUCLEO_BDGD_2022_2024/inventario/inventario_historico_2022_2024.csv','D:/NUCLEO_BDGD_2025/inventario/inventario_2025.csv']])
+
+def run(cfg,stop):
+ from threadpoolctl import threadpool_limits
+ import importlib.metadata,platform
+ pool=cfg.get('pool','piloto')
+ if pool=='piloto' and set(cfg['dists'])!={26,6585,6600}:raise ValueError('controlled comparison requires the three-company pilot pool only')
+ if pool=='lote':
+  lote=cfg.get('lote') or {}
+  if set(lote.get('dists',[]))!=set(cfg['dists']) or not lote.get('id'):raise ValueError('batch comparison requires an explicit batch manifest (id, dists) matching cfg.dists')
+  if len(cfg['dists'])>MAX_LOTE:raise ValueError('batch larger than the controlled limit; national processing is not authorised here')
+ elif pool=='nacional':
+  if len(cfg['dists'])>MAX_LOTE:raise ValueError('a national batch has at most %d target DIST'%MAX_LOTE)
+  if not set(cfg['dists'])<=set(cfg.get('pool_dists',[])):raise ValueError('national batch: targets must belong to the national pool')
+ elif pool!='piloto':raise ValueError('unknown pool '+str(pool))
+ scopes=SCOPES_NACIONAL if pool=='nacional' else SCOPES_LOTE if pool=='lote' else SCOPES
+ asset=cfg.get('asset','ucbt_quantidade')
+ from .assets import ASSETS
+ from . import bridges as bridge_lib,feature_registry
+ spec=ASSETS[asset];bridge_list=bridge_lib.load(cfg['bridges_dir']) if cfg.get('bridges_dir') else []
+ vm=set(json.loads(Path(cfg['valid_municipalities']).read_text(encoding='utf-8'))) if cfg.get('valid_municipalities') else None
+ rows,quality,provenance=load_panel(cfg['comparison_input'],asset,bridge_list,cfg.get('min_territorial_coverage'),cfg.get('min_unit_continuity'),valid_municipalities=vm,quarantine=cfg.get('quarantine'));provenance['asset']=asset;provenance['bridges']=[dict(id=b['id'],status=b['status'],sha=b['_sha256']) for b in bridge_list];provenance['code']=fingerprint({str(p):digest(p) for p in Path(__file__).parent.glob('*.py')})
+ if cfg.get('external_manifest'):
+  from .externals import attach
+  rows=attach(rows,cfg['external_manifest']);provenance['external_manifest']=digest(cfg['external_manifest'])
+ if cfg.get('shared_inputs'):
+  from . import shared
+  si=cfg['shared_inputs'];matrix=shared.build(si['asset_root'],si['ucbt_root'],cfg.get('pool_dists') or cfg['dists'],spec['unit_kind']);rows=shared.attach(rows,matrix,asset)   # matrix of every pool member, not only the targets
+  provenance['shared_matrix']=fingerprint({str(k):v for k,v in matrix.items()});shared_matrix=matrix
+ else:shared_matrix=None
+ from .features import attach_snapshot_features
+ # recent_connection_share is OFF unless explicitly enabled: DAT_CON also moves with ownership changes (not physical connections)
+ # and its pattern changes between publications; it needs a per-DIST DAT_CON audit before entering an experiment.
+ rows=attach_snapshot_features(rows) if cfg.get('enable_recent_connection_share') else attach_snapshot_features([dict(r,recent_connection_share=None) for r in rows])
+ groups={int(k):v for k,v in ((cfg.get('lote') or {}).get('grupos') or cfg.get('grupos') or {}).items()}
+ members=set(cfg.get('pool_dists') or cfg['dists'])
+ rows=[dict(r,grupo=groups.get(r['dist'])) for r in rows if r['dist'] in members];quality=[r for r in quality if r['dist'] in cfg['dists']]
+ environment=dict(python=platform.python_version(),packages={name:importlib.metadata.version(name) for name in ['scikit-learn','numpy','scipy','duckdb','threadpoolctl']})
+ provenance['environment']=environment
+ models=[m for m in cfg['models'] if spec['count'] or m!='poisson']  # Poisson is a count model: not used for km/kVA
+ signature=fingerprint([cfg,provenance]);out=Path(cfg['output'])/'comparison'/signature[:16];out.mkdir(parents=True,exist_ok=True)
+ atomic(out/'manifest.json',dict(config=cfg,inputs=provenance,signature=signature));atomic(out/'coverage.json',quality);atomic(out/'historical_publications.json',investigate(cfg['comparison_input'],cfg['dists']))
+ summaries=[];reused=0;executed=0
+ with threadpool_limits(limits=cfg['threads']):
+  for mode in MODES:
+   for dist in cfg['dists']:
+    experiments={}
+    for model,scope in [(b,'individual') for b in BASELINES]+[(m,s) for m in models for s in scopes]:
+     if stop.exists():atomic(out/'progress.json',dict(state='stopped',reused=reused,executed=executed));return out
+     name=model+':'+scope;cp=out/'checkpoints'/f'{mode}_{dist}_{model}_{scope}.json'
+     try:cached=read(cp) if cp.exists() else {}
+     except (ValueError,OSError):cached={}
+     if cached.get('signature')==signature and cached.get('sha256')==fingerprint(cached.get('result')):result=cached['result'];reused+=1
+     else:
+      try:result=experiment(rows,dist,mode,model,scope,cfg,stop)
+      except InterruptedError:atomic(out/'progress.json',dict(state='stopped',reused=reused,executed=executed));return out
+      except Exception as e:result=dict(predictions=[],folds=[],failures=[dict(reason=str(e))])
+      atomic(cp,dict(signature=signature,sha256=fingerprint(result),result=result));executed+=1
+     experiments[name]=result
+     atomic(out/'progress.json',dict(state='running',mode=mode,dist=dist,candidate=name,reused=reused,executed=executed))
+    summary=dict(dist=dist,asset=spec['ativo'],metric=spec['metrica'],unit=spec['unit'],nature=spec['nature'],experimental_asset=spec['experimental'],models_used=models,feature_policy=cfg.get('feature_policy') or 'strict',mode=mode,evaluation_label=label(mode),scope_limit=('pool das tres distribuidoras (26, 6585, 6600); no national model' if pool=='piloto' else 'lote de validacao %s (%d DIST); no national model'%(cfg['lote']['id'],len(cfg['dists'])) if pool=='lote' else 'lote nacional %s: alvos %d DIST; pools individual/grupo economico/comparaveis tirados do painel nacional (%d DIST); sem pool global'%(cfg.get('batch_id'),len(cfg['dists']),len(members))),**summarise(experiments,cfg['min_independent_origins'],spec['nature'],cfg.get('rounding_policy','half_up')))
+    summaries.append(summary);atomic(out/f'{mode}_{dist}.json',summary)
+ atomic(out/'summaries.json',summaries)
+ from .externals import coverage_rows
+ csv_write(out/'FEATURE_COVERAGE_BY_ORIGIN.csv',coverage_rows(rows,cfg['origins']))
+ if shared_matrix:
+  shared.write(shared_matrix,out/'SHARED_FEATURE_MATRIX.csv',spec['unit_kind']);atomic(out/'SHARED_FEATURE_COVERAGE.json',shared.coverage(shared_matrix))
+ feature_registry.write(feature_registry.build(rows,asset),out)
+ reconciliation=[];internal=[];from . import metric_contract as mc
+ for summary in summaries:
+  for c in summary['candidates']:
+   physical=c.get('physical')
+   for i,t in enumerate(c['distributor_totals']):
+    total=next(q['municipal_total'] for q in quality if q['dist']==summary['dist'] and q['year']==t['origin']+1)
+    base=dict(DIST=summary['dist'],mode=summary['mode'],candidate=c['candidate'],year=t['origin']+1,origin=t['origin'],municipalities=t['municipalities'],natureza=spec['nature'])
+    if physical:   # discrete: the public file carries integers only; the raw continuous prediction stays in the internal file
+     pt=physical['totals'][i];full=int(round(total))
+     reconciliation.append(dict(base,actual=pt['actual_total'],physical_prediction=pt['physical_total'],full_observed_stock=full,coverage=pt['actual_total']/full if full else None,residual=pt['physical_total']-pt['actual_total'],moved_by_reconciliation=pt['moved_by_reconciliation'],rule='bottom_up_integer_largest_remainder; no scaling to observed target; partial if uncovered municipalities'))
+     internal.append(dict(base,actual=t['actual'],raw_prediction=t['pred'],raw_residual=t['pred']-t['actual']))
+    else:
+     reconciliation.append(dict(base,actual=t['actual'],pred=t['pred'],full_observed_stock=total,coverage=t['actual']/total if total else None,residual=t['pred']-t['actual'],rule='bottom_up_sum; no scaling to observed target; partial if uncovered municipalities'))
+ columns={**{k:'discrete_count' for k in ('actual','physical_prediction','full_observed_stock','moved_by_reconciliation')},'residual':'discrete_count:signed'} if spec['nature']=='discrete_count' else {}
+ if reconciliation:mc.write_public_csv(out/'DISTRIBUTOR_RECONCILIATION.csv',reconciliation,columns)
+ if internal:csv_write(out/'INTERNAL_DISTRIBUTOR_RAW.csv',internal)
+ flat=[]
+ for summary in summaries:
+  for r in summary['candidates']:flat.append(dict(DIST=summary['dist'],ativo=spec['ativo'],metrica=spec['metrica'],natureza=spec['nature'],**physical_columns(r),mode=summary['mode'],candidate=r['candidate'],winner=summary['winner'],validated_winner=summary['validated_winner'],best_exploratory=summary['best_exploratory'],best_baseline=summary['best_baseline'],best_ml=summary['best_ml'],ml_gain_vs_best_baseline=summary['ml_gain_vs_best_baseline'],ml_gain_vs_persistence=summary['ml_gain_vs_persistence'],common_test_set=r['common_test_set'],n=r['n_predictions'],origins=r['independent_origins'],**r['metrics'],robust_score=r['robust_score'],features=json.dumps([f['selected_features'] for f in r['folds']]),hyperparameters=json.dumps([f['params'] for f in r['folds']]),blocks=json.dumps(r['failures']),reason=summary['selection_reason']))
+ with open(out/'MATRIZ_COMPARATIVA.csv','w',newline='',encoding='utf-8-sig') as f:
+  fields=list(dict.fromkeys(k for r in flat for k in r));w=csv.DictWriter(f,fields);w.writeheader();w.writerows(flat)
+ atomic(out/'progress.json',dict(state='completed',reused=reused,executed=executed,summaries=len(summaries)))
+ return out

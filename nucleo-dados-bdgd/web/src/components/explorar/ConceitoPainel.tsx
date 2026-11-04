@@ -116,7 +116,7 @@ function Painel({ ds, item, cfg, cd, escopo, avancado }: { ds: Dataset; item: Me
     const ok = compat.has(dim) || (user.filtro[dim]?.length ?? 0) > 0;
     return (
       <span key={dim} title={ok ? undefined : "Combinação sem cubo exato calculado: remova outro filtro para usar esta característica."} style={ok ? undefined : { opacity: 0.45, pointerEvents: "none" }}>
-        <MultiPick label={rot(dim)} options={ok ? opcoes(dim) : []} value={user.filtro[dim] ?? []} onChange={(v) => setFiltro(dim, v)} allLabel="Todos" testId={`filtro-${dim}`} width={dim === "municipio" ? 360 : 320} />
+        <MultiPick disabled={!ok} label={rot(dim)} options={ok ? opcoes(dim) : []} value={user.filtro[dim] ?? []} onChange={(v) => setFiltro(dim, v)} allLabel="Todos" testId={`filtro-${dim}`} width={dim === "municipio" ? 360 : 320} />
       </span>
     );
   };

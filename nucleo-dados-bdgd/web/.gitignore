@@ -9,3 +9,5 @@ playwright-report/
 public/maplibre/
 playwright-report/
 test-results/
+# copiado por scripts/motor-v2-gate.mjs só em build de homologação
+public/data/motor-v2/

@@ -1,9 +1,9 @@
 import { Patrimonio } from "@/components/pages/Patrimonio";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PrevisoesExploratorias } from "@/components/pages/PrevisoesExploratorias";
 import { MotorUniversal } from "@/components/pages/MotorUniversal";
 import { CenariosMotor } from "@/components/pages/CenariosMotor";
+import { MotorV2Previsoes } from "@/components/pages/MotorV2Previsoes";
 import { Activity, ArrowUpRight, ChartSpline, CircleHelp, Database, GitBranch, Layers3, Wallet } from "lucide-react";
 
 export const metadata: Metadata = { title: "Previsões | Expansão elétrica" };
@@ -51,12 +51,13 @@ export default function Page() {
         </h1>
         <p className="lede" style={{ marginTop: 12 }}>
           Compare, por ativo e métrica física, os cenários Conservador, Moderado e Agressivo de 2026 a 2030, gerados por modelos
-          executados e validados retrospectivamente sobre 2022–2025. Resultados simulados não representam investimentos previstos ou obras necessárias.
+          executados e comparados retrospectivamente sobre 2022–2025 (comparação retrospectiva não é validação científica independente).
+          Resultados simulados não representam investimentos previstos ou obras necessárias.
         </p>
       </header>
 
       <CenariosMotor />
-      <PrevisoesExploratorias />
+      <MotorV2Previsoes />
       <MotorUniversal />
       <Patrimonio />
 

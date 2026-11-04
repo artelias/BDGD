@@ -1,0 +1,1661 @@
+{
+  "id": "CONJ_6600_2023",
+  "version": 1,
+  "kind": "conjunto_redefinition",
+  "unit_kind": "conjunto",
+  "successor_dist": 6600,
+  "predecessor_dist": 6600,
+  "effective_year": 2023,
+  "entering_units": [
+    "12793",
+    "12797",
+    "16229",
+    "16749",
+    "16750",
+    "16751",
+    "16752",
+    "16753"
+  ],
+  "overlap_units": [
+    "13689",
+    "13692",
+    "13704",
+    "13722",
+    "13735",
+    "15809",
+    "16187",
+    "16847",
+    "16848",
+    "16853",
+    "16854",
+    "16859"
+  ],
+  "status": "PENDING_HOMOLOGATION",
+  "decision": null,
+  "evidence": {
+    "coverage": {
+      "ctmt_continuity": 0.9435478161507262,
+      "km_total_new": 45937.635237,
+      "share_strong": 0.7976256933114365,
+      "share_partial": 0.20237430668856346,
+      "share_insufficient": 0.0,
+      "customers_ctmt_continuity": 0.8653879971155878,
+      "codes_new": 8,
+      "codes_gone": 0,
+      "codes_changed": 12
+    },
+    "rule": {
+      "strong_flow": 0.9,
+      "changed_share": 0.05,
+      "min_ctmt_continuity": 0.8,
+      "evidence": "SSDMT km and UCBT customers through shared CTMT codes; NOME and Shape_Area are supporting only"
+    },
+    "sources": {
+      "ssdmt_prev": "ba19699b8b66200c16d432cd0e736201a385591a3df6a09e6f5848d6945ade1e",
+      "ssdmt_cur": "dae6c340813be55a261e7ee502aa135d065ffb78ad1e5c0059c97b48a5277757"
+    }
+  },
+  "mapping": [
+    {
+      "new_code": "12793",
+      "kind": "new_circuits",
+      "name_new": "BOA VISTA",
+      "best_old_code": "16187",
+      "name_old": "SOLEDADE",
+      "name_equal": false,
+      "km_new": 243.365,
+      "share_from_best_old_km": 0.0028,
+      "share_of_old_in_new": 0.0011,
+      "customers_best_old": null,
+      "sources_km": {},
+      "share_new_circuits": 0.995,
+      "area_ratio_new_over_old": 0.43180435470428247,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "12797",
+      "kind": "new_circuits",
+      "name_new": "CATOLÉ",
+      "best_old_code": null,
+      "name_old": null,
+      "name_equal": false,
+      "km_new": 82.781,
+      "share_from_best_old_km": 0.0,
+      "share_of_old_in_new": 0.0,
+      "customers_best_old": {
+        "top": "16852",
+        "share": 0.00011849437427217908
+      },
+      "sources_km": {},
+      "share_new_circuits": 1.0,
+      "area_ratio_new_over_old": null,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13685",
+      "kind": "persisting_unchanged",
+      "name_new": "ARARUNA",
+      "best_old_code": "13685",
+      "name_old": "ARARUNA",
+      "name_equal": true,
+      "km_new": 711.128,
+      "share_from_best_old_km": 0.9843,
+      "share_of_old_in_new": 0.9842,
+      "customers_best_old": {
+        "top": "13685",
+        "share": 0.9713432877102349
+      },
+      "sources_km": {
+        "13685": 0.9843,
+        "15804": 0.0136
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13686",
+      "kind": "persisting_unchanged",
+      "name_new": "AROEIRAS",
+      "best_old_code": "13686",
+      "name_old": "AROEIRAS",
+      "name_equal": true,
+      "km_new": 830.145,
+      "share_from_best_old_km": 0.9947,
+      "share_of_old_in_new": 0.984,
+      "customers_best_old": {
+        "top": "13686",
+        "share": 0.9965964415929358
+      },
+      "sources_km": {
+        "13686": 0.9947
+      },
+      "share_new_circuits": 0.0041,
+      "area_ratio_new_over_old": 0.9811928016858859,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13687",
+      "kind": "persisting_unchanged",
+      "name_new": "BREJO DO CRUZ",
+      "best_old_code": "13687",
+      "name_old": "BREJO DO CRUZ",
+      "name_equal": true,
+      "km_new": 639.695,
+      "share_from_best_old_km": 0.9957,
+      "share_of_old_in_new": 0.9988,
+      "customers_best_old": {
+        "top": "13687",
+        "share": 0.9995508015464539
+      },
+      "sources_km": {
+        "13687": 0.9957
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000001029517962,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13689",
+      "kind": "persisting_changed",
+      "name_new": "BOQUEIRÃO",
+      "best_old_code": "13689",
+      "name_old": "BOQUEIROO",
+      "name_equal": false,
+      "km_new": 1517.86,
+      "share_from_best_old_km": 0.9456,
+      "share_of_old_in_new": 0.9858,
+      "customers_best_old": {
+        "top": "13689",
+        "share": 0.9795110941811126
+      },
+      "sources_km": {
+        "13689": 0.9456
+      },
+      "share_new_circuits": 0.0538,
+      "area_ratio_new_over_old": 0.9773256399010638,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13690",
+      "kind": "persisting_unchanged",
+      "name_new": "BESSA",
+      "best_old_code": "13690",
+      "name_old": "BESSA",
+      "name_equal": true,
+      "km_new": 92.187,
+      "share_from_best_old_km": 0.9851,
+      "share_of_old_in_new": 0.9868,
+      "customers_best_old": {
+        "top": "13690",
+        "share": 0.9910902959546755
+      },
+      "sources_km": {
+        "13690": 0.9851,
+        "13693": 0.0103
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13691",
+      "kind": "persisting_unchanged",
+      "name_new": "BONITO DE SANTA FE",
+      "best_old_code": "13691",
+      "name_old": "BONITO DE SANTA FE",
+      "name_equal": true,
+      "km_new": 474.151,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13691",
+        "share": 0.994070872370243
+      },
+      "sources_km": {
+        "13691": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000070980802098,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13692",
+      "kind": "persisting_changed",
+      "name_new": "CAAPORA",
+      "best_old_code": "13692",
+      "name_old": "CAAPORA",
+      "name_equal": true,
+      "km_new": 191.776,
+      "share_from_best_old_km": 0.936,
+      "share_of_old_in_new": 0.9349,
+      "customers_best_old": {
+        "top": "13692",
+        "share": 0.9974760946707294
+      },
+      "sources_km": {
+        "13692": 0.936,
+        "13717": 0.064
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0005491205519685,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13693",
+      "kind": "persisting_unchanged",
+      "name_new": "CABEDELO",
+      "best_old_code": "13693",
+      "name_old": "CABEDELO",
+      "name_equal": true,
+      "km_new": 119.22,
+      "share_from_best_old_km": 0.9919,
+      "share_of_old_in_new": 0.9921,
+      "customers_best_old": {
+        "top": "13693",
+        "share": 0.9867670671837575
+      },
+      "sources_km": {
+        "13693": 0.9919
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.999999995732744,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13696",
+      "kind": "persisting_unchanged",
+      "name_new": "CRUZ DO PEIXE",
+      "best_old_code": "13696",
+      "name_old": "CRUZ DO PEIXE",
+      "name_equal": true,
+      "km_new": 71.309,
+      "share_from_best_old_km": 0.9813,
+      "share_of_old_in_new": 0.9792,
+      "customers_best_old": {
+        "top": "13696",
+        "share": 0.9829193983871507
+      },
+      "sources_km": {
+        "13696": 0.9813,
+        "15807": 0.0163
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000000038729635,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13697",
+      "kind": "persisting_unchanged",
+      "name_new": "COREMAS",
+      "best_old_code": "13697",
+      "name_old": "COREMAS",
+      "name_equal": true,
+      "km_new": 669.757,
+      "share_from_best_old_km": 0.9881,
+      "share_of_old_in_new": 0.9984,
+      "customers_best_old": {
+        "top": "13697",
+        "share": 0.9971915549491067
+      },
+      "sources_km": {
+        "13697": 0.9881,
+        "13723": 0.0107
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13698",
+      "kind": "persisting_unchanged",
+      "name_new": "CUITE",
+      "best_old_code": "13698",
+      "name_old": "CUITE",
+      "name_equal": true,
+      "km_new": 1115.392,
+      "share_from_best_old_km": 0.9971,
+      "share_of_old_in_new": 0.9975,
+      "customers_best_old": {
+        "top": "13698",
+        "share": 0.9993051072689567
+      },
+      "sources_km": {
+        "13698": 0.9971
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000396503297726,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13699",
+      "kind": "persisting_unchanged",
+      "name_new": "CATOLE DO ROCHA",
+      "best_old_code": "13699",
+      "name_old": "CATOLE DO ROCHA",
+      "name_equal": true,
+      "km_new": 916.976,
+      "share_from_best_old_km": 0.9969,
+      "share_of_old_in_new": 0.9944,
+      "customers_best_old": {
+        "top": "13699",
+        "share": 0.9989676548861641
+      },
+      "sources_km": {
+        "13699": 0.9969
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999998816154588,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13704",
+      "kind": "persisting_changed",
+      "name_new": "IBIARA",
+      "best_old_code": "13704",
+      "name_old": "IBIARA",
+      "name_equal": true,
+      "km_new": 1053.168,
+      "share_from_best_old_km": 0.9175,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13704",
+        "share": 0.7320598532575393
+      },
+      "sources_km": {
+        "13704": 0.9175
+      },
+      "share_new_circuits": 0.0825,
+      "area_ratio_new_over_old": 1.0000002984779088,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13706",
+      "kind": "persisting_unchanged",
+      "name_new": "ITABAIANA",
+      "best_old_code": "13706",
+      "name_old": "ITABAIANA",
+      "name_equal": true,
+      "km_new": 1101.236,
+      "share_from_best_old_km": 0.9883,
+      "share_of_old_in_new": 0.9889,
+      "customers_best_old": {
+        "top": "13706",
+        "share": 0.9983919004420885
+      },
+      "sources_km": {
+        "13706": 0.9883
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13707",
+      "kind": "persisting_unchanged",
+      "name_new": "ITAPORANGA",
+      "best_old_code": "13707",
+      "name_old": "ITAPORANGA",
+      "name_equal": true,
+      "km_new": 1459.91,
+      "share_from_best_old_km": 0.9881,
+      "share_of_old_in_new": 0.9906,
+      "customers_best_old": {
+        "top": "13707",
+        "share": 0.9988329561137284
+      },
+      "sources_km": {
+        "13707": 0.9881,
+        "13723": 0.0119
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13709",
+      "kind": "persisting_unchanged",
+      "name_new": "JERICO",
+      "best_old_code": "13709",
+      "name_old": "JERICO",
+      "name_equal": true,
+      "km_new": 254.398,
+      "share_from_best_old_km": 0.9912,
+      "share_of_old_in_new": 0.9876,
+      "customers_best_old": {
+        "top": "13709",
+        "share": 0.9990872375919573
+      },
+      "sources_km": {
+        "13709": 0.9912
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13715",
+      "kind": "persisting_unchanged",
+      "name_new": "MALTA",
+      "best_old_code": "13715",
+      "name_old": "MALTA",
+      "name_equal": true,
+      "km_new": 518.886,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13715",
+        "share": 0.9996580523794911
+      },
+      "sources_km": {
+        "13715": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999999815381205,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13716",
+      "kind": "persisting_unchanged",
+      "name_new": "MONTEIRO",
+      "best_old_code": "13716",
+      "name_old": "MONTEIRO",
+      "name_equal": true,
+      "km_new": 1602.556,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 0.954,
+      "customers_best_old": {
+        "top": "13716",
+        "share": 0.999469254325864
+      },
+      "sources_km": {
+        "13716": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.000020359272339,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13717",
+      "kind": "persisting_unchanged",
+      "name_new": "MATA REDONDA",
+      "best_old_code": "13717",
+      "name_old": "MATA REDONDA",
+      "name_equal": true,
+      "km_new": 471.132,
+      "share_from_best_old_km": 0.97,
+      "share_of_old_in_new": 0.9703,
+      "customers_best_old": {
+        "top": "13717",
+        "share": 0.9915514769456039
+      },
+      "sources_km": {
+        "13717": 0.97,
+        "13692": 0.0265
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9997726866169622,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13719",
+      "kind": "persisting_unchanged",
+      "name_new": "ORATORIO",
+      "best_old_code": "13719",
+      "name_old": "ORATORIO",
+      "name_equal": true,
+      "km_new": 417.953,
+      "share_from_best_old_km": 0.9925,
+      "share_of_old_in_new": 0.9941,
+      "customers_best_old": {
+        "top": "13719",
+        "share": 0.9896331173811967
+      },
+      "sources_km": {
+        "13719": 0.9925
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000017961542045,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13720",
+      "kind": "persisting_unchanged",
+      "name_new": "POMBAL",
+      "best_old_code": "13720",
+      "name_old": "POMBAL",
+      "name_equal": true,
+      "km_new": 880.026,
+      "share_from_best_old_km": 0.9966,
+      "share_of_old_in_new": 0.9958,
+      "customers_best_old": {
+        "top": "13720",
+        "share": 0.9996472104460146
+      },
+      "sources_km": {
+        "13720": 0.9966
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13721",
+      "kind": "persisting_unchanged",
+      "name_new": "PICUI",
+      "best_old_code": "13721",
+      "name_old": "PICUI",
+      "name_equal": true,
+      "km_new": 736.075,
+      "share_from_best_old_km": 0.998,
+      "share_of_old_in_new": 0.9973,
+      "customers_best_old": {
+        "top": "13721",
+        "share": 0.9966610689494607
+      },
+      "sources_km": {
+        "13721": 0.998
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0008086406117176,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13722",
+      "kind": "persisting_changed",
+      "name_new": "POCINHOS",
+      "best_old_code": "13722",
+      "name_old": "POCINHOS",
+      "name_equal": true,
+      "km_new": 503.179,
+      "share_from_best_old_km": 0.9235,
+      "share_of_old_in_new": 0.9018,
+      "customers_best_old": {
+        "top": "13722",
+        "share": 0.9742911007342374
+      },
+      "sources_km": {
+        "13722": 0.9235,
+        "16187": 0.0752
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.8961536142415675,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13723",
+      "kind": "persisting_unchanged",
+      "name_new": "PIANCO",
+      "best_old_code": "13723",
+      "name_old": "PIANCO",
+      "name_equal": true,
+      "km_new": 1082.134,
+      "share_from_best_old_km": 0.9872,
+      "share_of_old_in_new": 0.9776,
+      "customers_best_old": {
+        "top": "13723",
+        "share": 0.9986247481012132
+      },
+      "sources_km": {
+        "13723": 0.9872,
+        "13707": 0.0126
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000279077836896,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13725",
+      "kind": "persisting_unchanged",
+      "name_new": "PAULISTA",
+      "best_old_code": "13725",
+      "name_old": "PAULISTA",
+      "name_equal": true,
+      "km_new": 354.461,
+      "share_from_best_old_km": 0.9952,
+      "share_of_old_in_new": 0.9952,
+      "customers_best_old": {
+        "top": "13725",
+        "share": 0.9975638956227253
+      },
+      "sources_km": {
+        "13725": 0.9952
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13726",
+      "kind": "persisting_unchanged",
+      "name_new": "PEDRA LAVRADA",
+      "best_old_code": "13726",
+      "name_old": "PEDRA LAVRADA",
+      "name_equal": true,
+      "km_new": 833.389,
+      "share_from_best_old_km": 0.9993,
+      "share_of_old_in_new": 0.9993,
+      "customers_best_old": {
+        "top": "13726",
+        "share": 0.9966204793003317
+      },
+      "sources_km": {
+        "13726": 0.9993
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13727",
+      "kind": "persisting_unchanged",
+      "name_new": "PRINCESA ISABEL",
+      "best_old_code": "13727",
+      "name_old": "PRINCESA ISABEL",
+      "name_equal": true,
+      "km_new": 1209.45,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13727",
+        "share": 0.9997263385594465
+      },
+      "sources_km": {
+        "13727": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13729",
+      "kind": "persisting_unchanged",
+      "name_new": "RIACHAO",
+      "best_old_code": "13729",
+      "name_old": "RIACHAO",
+      "name_equal": true,
+      "km_new": 519.075,
+      "share_from_best_old_km": 0.965,
+      "share_of_old_in_new": 0.9718,
+      "customers_best_old": {
+        "top": "13729",
+        "share": 0.9957414795854097
+      },
+      "sources_km": {
+        "13729": 0.965,
+        "13706": 0.0171
+      },
+      "share_new_circuits": 0.0164,
+      "area_ratio_new_over_old": 0.986554992332493,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13731",
+      "kind": "persisting_unchanged",
+      "name_new": "S3O BENTO",
+      "best_old_code": "13731",
+      "name_old": "S3O BENTO",
+      "name_equal": true,
+      "km_new": 353.24,
+      "share_from_best_old_km": 0.9952,
+      "share_of_old_in_new": 0.9934,
+      "customers_best_old": {
+        "top": "13731",
+        "share": 0.9995337564091331
+      },
+      "sources_km": {
+        "13731": 0.9952
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13733",
+      "kind": "persisting_unchanged",
+      "name_new": "SAO JOAO DO CARIRI",
+      "best_old_code": "13733",
+      "name_old": "SAO JOAO DO CARIRI",
+      "name_equal": true,
+      "km_new": 1269.208,
+      "share_from_best_old_km": 0.9994,
+      "share_of_old_in_new": 0.9988,
+      "customers_best_old": {
+        "top": "13733",
+        "share": 0.9961092000256665
+      },
+      "sources_km": {
+        "13733": 0.9994
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999999993220064,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13734",
+      "kind": "persisting_unchanged",
+      "name_new": "SANTA LUZIA",
+      "best_old_code": "13734",
+      "name_old": "SANTA LUZIA",
+      "name_equal": true,
+      "km_new": 924.172,
+      "share_from_best_old_km": 0.9981,
+      "share_of_old_in_new": 0.9981,
+      "customers_best_old": {
+        "top": "13734",
+        "share": 0.9981445920669424
+      },
+      "sources_km": {
+        "13734": 0.9981
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000000023363584,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13735",
+      "kind": "persisting_changed",
+      "name_new": "SUME",
+      "best_old_code": "13735",
+      "name_old": "SUME",
+      "name_equal": true,
+      "km_new": 1402.286,
+      "share_from_best_old_km": 0.9449,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13735",
+        "share": 0.9888176842689508
+      },
+      "sources_km": {
+        "13735": 0.9449,
+        "13716": 0.0551
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13737",
+      "kind": "persisting_unchanged",
+      "name_new": "SAO JOAO DO RIO DO PEIXE",
+      "best_old_code": "13737",
+      "name_old": "SAO JOAO DO RIO DO PEIXE",
+      "name_equal": true,
+      "km_new": 708.774,
+      "share_from_best_old_km": 0.984,
+      "share_of_old_in_new": 0.9936,
+      "customers_best_old": {
+        "top": "13737",
+        "share": 0.9970908717277962
+      },
+      "sources_km": {
+        "13737": 0.984
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.000000107094211,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13739",
+      "kind": "persisting_unchanged",
+      "name_new": "SOUZA",
+      "best_old_code": "13739",
+      "name_old": "SOUZA",
+      "name_equal": true,
+      "km_new": 1210.607,
+      "share_from_best_old_km": 0.995,
+      "share_of_old_in_new": 0.997,
+      "customers_best_old": {
+        "top": "13739",
+        "share": 0.9992477355353985
+      },
+      "sources_km": {
+        "13739": 0.995
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999999961845496,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13740",
+      "kind": "persisting_unchanged",
+      "name_new": "TABIRA",
+      "best_old_code": "13740",
+      "name_old": "TABIRA",
+      "name_equal": true,
+      "km_new": 193.449,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13740",
+        "share": 0.9990287541229455
+      },
+      "sources_km": {
+        "13740": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13741",
+      "kind": "persisting_unchanged",
+      "name_new": "TAMBAU",
+      "best_old_code": "13741",
+      "name_old": "TAMBAU",
+      "name_equal": true,
+      "km_new": 86.692,
+      "share_from_best_old_km": 0.9898,
+      "share_of_old_in_new": 0.9889,
+      "customers_best_old": {
+        "top": "13741",
+        "share": 0.9974990422461069
+      },
+      "sources_km": {
+        "13741": 0.9898
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999999507121676,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13742",
+      "kind": "persisting_unchanged",
+      "name_new": "TEIXEIRA",
+      "best_old_code": "13742",
+      "name_old": "TEIXEIRA",
+      "name_equal": true,
+      "km_new": 974.644,
+      "share_from_best_old_km": 0.999,
+      "share_of_old_in_new": 0.9871,
+      "customers_best_old": {
+        "top": "13742",
+        "share": 0.9990365479096885
+      },
+      "sources_km": {
+        "13742": 0.999
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000648542608042,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13743",
+      "kind": "persisting_unchanged",
+      "name_new": "UMBUZEIRO",
+      "best_old_code": "13743",
+      "name_old": "UMBUZEIRO",
+      "name_equal": true,
+      "km_new": 293.489,
+      "share_from_best_old_km": 1.0,
+      "share_of_old_in_new": 1.0,
+      "customers_best_old": {
+        "top": "13743",
+        "share": 1.0
+      },
+      "sources_km": {
+        "13743": 1.0
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.000258946184409,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "13744",
+      "kind": "persisting_unchanged",
+      "name_new": "UIRAUNA",
+      "best_old_code": "13744",
+      "name_old": "UIRAUNA",
+      "name_equal": true,
+      "km_new": 398.298,
+      "share_from_best_old_km": 0.9888,
+      "share_of_old_in_new": 0.9885,
+      "customers_best_old": {
+        "top": "13744",
+        "share": 0.9985396887298666
+      },
+      "sources_km": {
+        "13744": 0.9888,
+        "13737": 0.0112
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000014220698907,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "15801",
+      "kind": "persisting_unchanged",
+      "name_new": "JACARA",
+      "best_old_code": "15801",
+      "name_old": "JACARA",
+      "name_equal": true,
+      "km_new": 533.782,
+      "share_from_best_old_km": 0.9955,
+      "share_of_old_in_new": 0.9937,
+      "customers_best_old": {
+        "top": "15801",
+        "share": 0.9970433141861428
+      },
+      "sources_km": {
+        "15801": 0.9955
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "15804",
+      "kind": "persisting_unchanged",
+      "name_new": "DONA INES",
+      "best_old_code": "15804",
+      "name_old": "DONA INES",
+      "name_equal": true,
+      "km_new": 541.185,
+      "share_from_best_old_km": 0.9805,
+      "share_of_old_in_new": 0.9812,
+      "customers_best_old": {
+        "top": "15804",
+        "share": 0.9563977498008774
+      },
+      "sources_km": {
+        "15804": 0.9805,
+        "13685": 0.0178
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "15805",
+      "kind": "persisting_unchanged",
+      "name_new": "GUARABIRA",
+      "best_old_code": "15805",
+      "name_old": "GUARABIRA",
+      "name_equal": true,
+      "km_new": 678.473,
+      "share_from_best_old_km": 0.9865,
+      "share_of_old_in_new": 0.9868,
+      "customers_best_old": {
+        "top": "15805",
+        "share": 0.9977298537565411
+      },
+      "sources_km": {
+        "15805": 0.9865
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000000985705368,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "15807",
+      "kind": "persisting_unchanged",
+      "name_new": "JOAO PESSOA",
+      "best_old_code": "15807",
+      "name_old": "JO O PESSOA",
+      "name_equal": false,
+      "km_new": 75.558,
+      "share_from_best_old_km": 0.9787,
+      "share_of_old_in_new": 0.9788,
+      "customers_best_old": {
+        "top": "15807",
+        "share": 0.9787293911351003
+      },
+      "sources_km": {
+        "15807": 0.9787,
+        "13696": 0.0155
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999997494630427,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "15809",
+      "kind": "persisting_changed",
+      "name_new": "MUSSURE",
+      "best_old_code": "15809",
+      "name_old": "MUSSURE",
+      "name_equal": true,
+      "km_new": 141.911,
+      "share_from_best_old_km": 0.9339,
+      "share_of_old_in_new": 0.9354,
+      "customers_best_old": {
+        "top": "15809",
+        "share": 0.9032998702618354
+      },
+      "sources_km": {
+        "15809": 0.9339,
+        "16847": 0.0312,
+        "16855": 0.0108,
+        "16860": 0.0104
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.000002833473413,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16187",
+      "kind": "persisting_changed",
+      "name_new": "SOLEDADE",
+      "best_old_code": "16187",
+      "name_old": "SOLEDADE",
+      "name_equal": true,
+      "km_new": 624.271,
+      "share_from_best_old_km": 0.937,
+      "share_of_old_in_new": 0.9382,
+      "customers_best_old": {
+        "top": "16187",
+        "share": 0.9637180481078826
+      },
+      "sources_km": {
+        "16187": 0.937,
+        "13722": 0.063
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.999999820289846,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16188",
+      "kind": "persisting_unchanged",
+      "name_new": "JUAZEIRINHO",
+      "best_old_code": "16188",
+      "name_old": "JUAZEIRINHO",
+      "name_equal": true,
+      "km_new": 1648.802,
+      "share_from_best_old_km": 0.9857,
+      "share_of_old_in_new": 0.9857,
+      "customers_best_old": {
+        "top": "16188",
+        "share": 0.9932642303326665
+      },
+      "sources_km": {
+        "16188": 0.9857,
+        "16846": 0.0132
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16189",
+      "kind": "persisting_unchanged",
+      "name_new": "BANANEIRAS",
+      "best_old_code": "16189",
+      "name_old": "BANANEIRAS",
+      "name_equal": true,
+      "km_new": 903.747,
+      "share_from_best_old_km": 0.9733,
+      "share_of_old_in_new": 0.9736,
+      "customers_best_old": {
+        "top": "16189",
+        "share": 0.9871078263054742
+      },
+      "sources_km": {
+        "16189": 0.9733,
+        "16190": 0.0232
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000000046696402,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16190",
+      "kind": "persisting_unchanged",
+      "name_new": "PILOES",
+      "best_old_code": "16190",
+      "name_old": "PILOES",
+      "name_equal": true,
+      "km_new": 694.586,
+      "share_from_best_old_km": 0.9641,
+      "share_of_old_in_new": 0.9637,
+      "customers_best_old": {
+        "top": "16190",
+        "share": 0.9780285476331919
+      },
+      "sources_km": {
+        "16190": 0.9641,
+        "16189": 0.0293
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999999396823974,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16229",
+      "kind": "new_circuits",
+      "name_new": "BORBOREMA",
+      "best_old_code": "13722",
+      "name_old": "POCINHOS",
+      "name_equal": false,
+      "km_new": 311.766,
+      "share_from_best_old_km": 0.0237,
+      "share_of_old_in_new": 0.0143,
+      "customers_best_old": {
+        "top": "13722",
+        "share": 0.00019094616566886545
+      },
+      "sources_km": {
+        "13722": 0.0237
+      },
+      "share_new_circuits": 0.9762,
+      "area_ratio_new_over_old": 0.26340897862522955,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "16749",
+      "kind": "new_circuits",
+      "name_new": "CAMPINA GRANDE 1",
+      "best_old_code": "13729",
+      "name_old": "RIACHAO",
+      "name_equal": false,
+      "km_new": 282.593,
+      "share_from_best_old_km": 0.0173,
+      "share_of_old_in_new": 0.0095,
+      "customers_best_old": {
+        "top": "13729",
+        "share": 0.0018297410451232749
+      },
+      "sources_km": {
+        "13729": 0.0173
+      },
+      "share_new_circuits": 0.9823,
+      "area_ratio_new_over_old": 0.35686127197697537,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "16750",
+      "kind": "new_circuits",
+      "name_new": "QUEIMADAS",
+      "best_old_code": "13689",
+      "name_old": "BOQUEIROO",
+      "name_equal": false,
+      "km_new": 663.375,
+      "share_from_best_old_km": 0.0308,
+      "share_of_old_in_new": 0.014,
+      "customers_best_old": {
+        "top": "13686",
+        "share": 0.00028809743992582804
+      },
+      "sources_km": {
+        "13689": 0.0308,
+        "13686": 0.0186
+      },
+      "share_new_circuits": 0.9505,
+      "area_ratio_new_over_old": 0.26616093614768005,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "16751",
+      "kind": "new_circuits",
+      "name_new": "CAMPINA GRANDE 2",
+      "best_old_code": null,
+      "name_old": null,
+      "name_equal": false,
+      "km_new": 326.877,
+      "share_from_best_old_km": 0.0,
+      "share_of_old_in_new": 0.0,
+      "customers_best_old": null,
+      "sources_km": {},
+      "share_new_circuits": 1.0,
+      "area_ratio_new_over_old": null,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "16752",
+      "kind": "new_circuits",
+      "name_new": "BELA VISTA",
+      "best_old_code": "13722",
+      "name_old": "POCINHOS",
+      "name_equal": false,
+      "km_new": 92.071,
+      "share_from_best_old_km": 0.0063,
+      "share_of_old_in_new": 0.0011,
+      "customers_best_old": {
+        "top": "13690",
+        "share": 2.8262756125446687e-05
+      },
+      "sources_km": {},
+      "share_new_circuits": 0.9937,
+      "area_ratio_new_over_old": 0.028972820618533256,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "16753",
+      "kind": "new_circuits",
+      "name_new": "ALTO BRANCO",
+      "best_old_code": "13722",
+      "name_old": "POCINHOS",
+      "name_equal": false,
+      "km_new": 448.004,
+      "share_from_best_old_km": 0.0044,
+      "share_of_old_in_new": 0.0038,
+      "customers_best_old": {
+        "top": "13722",
+        "share": 0.00020978949962317778
+      },
+      "sources_km": {},
+      "share_new_circuits": 0.992,
+      "area_ratio_new_over_old": 0.3433514160420498,
+      "name_in_predecessor": true
+    },
+    {
+      "new_code": "16843",
+      "kind": "persisting_unchanged",
+      "name_new": "SAO GONCALO",
+      "best_old_code": "16843",
+      "name_old": "SAO GONCALO",
+      "name_equal": true,
+      "km_new": 791.919,
+      "share_from_best_old_km": 0.9962,
+      "share_of_old_in_new": 0.9962,
+      "customers_best_old": {
+        "top": "16843",
+        "share": 0.9980015349887326
+      },
+      "sources_km": {
+        "16843": 0.9962
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999513201226407,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16844",
+      "kind": "persisting_unchanged",
+      "name_new": "CAJAZEIRAS",
+      "best_old_code": "16844",
+      "name_old": "CAJAZEIRAS",
+      "name_equal": true,
+      "km_new": 1300.346,
+      "share_from_best_old_km": 0.9988,
+      "share_of_old_in_new": 0.9936,
+      "customers_best_old": {
+        "top": "16844",
+        "share": 0.9986907166922921
+      },
+      "sources_km": {
+        "16844": 0.9988
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0080729033032467,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16845",
+      "kind": "persisting_unchanged",
+      "name_new": "JATOBA",
+      "best_old_code": "16845",
+      "name_old": "JATOBA",
+      "name_equal": true,
+      "km_new": 663.866,
+      "share_from_best_old_km": 0.9812,
+      "share_of_old_in_new": 0.9992,
+      "customers_best_old": {
+        "top": "16845",
+        "share": 0.9981000217714285
+      },
+      "sources_km": {
+        "16845": 0.9812,
+        "13742": 0.0178
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000000013432526,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16846",
+      "kind": "persisting_unchanged",
+      "name_new": "PATOS",
+      "best_old_code": "16846",
+      "name_old": "PATOS",
+      "name_equal": true,
+      "km_new": 974.554,
+      "share_from_best_old_km": 0.9751,
+      "share_of_old_in_new": 0.9751,
+      "customers_best_old": {
+        "top": "16846",
+        "share": 0.9936534418300584
+      },
+      "sources_km": {
+        "16846": 0.9751,
+        "16188": 0.0225
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000000071099382,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16847",
+      "kind": "persisting_changed",
+      "name_new": "DISTRITO",
+      "best_old_code": "16847",
+      "name_old": "DISTRITO",
+      "name_equal": true,
+      "km_new": 90.976,
+      "share_from_best_old_km": 0.8469,
+      "share_of_old_in_new": 0.8511,
+      "customers_best_old": {
+        "top": "16847",
+        "share": 0.9488424083621835
+      },
+      "sources_km": {
+        "16847": 0.8469,
+        "16860": 0.0734,
+        "15809": 0.0472,
+        "16848": 0.0318
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9998353655034298,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16848",
+      "kind": "persisting_changed",
+      "name_new": "ILHA DO BISPO",
+      "best_old_code": "16848",
+      "name_old": "ILHA DO BISPO",
+      "name_equal": true,
+      "km_new": 66.275,
+      "share_from_best_old_km": 0.9279,
+      "share_of_old_in_new": 0.9279,
+      "customers_best_old": {
+        "top": "16848",
+        "share": 0.9797991049461484
+      },
+      "sources_km": {
+        "16848": 0.9279,
+        "16847": 0.0447,
+        "15809": 0.019
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999928489241795,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16849",
+      "kind": "persisting_unchanged",
+      "name_new": "MATARACA",
+      "best_old_code": "16849",
+      "name_old": "MATARACA",
+      "name_equal": true,
+      "km_new": 549.896,
+      "share_from_best_old_km": 0.9967,
+      "share_of_old_in_new": 0.9985,
+      "customers_best_old": {
+        "top": "16849",
+        "share": 0.9955028543885769
+      },
+      "sources_km": {
+        "16849": 0.9967
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9998948529014062,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16850",
+      "kind": "persisting_unchanged",
+      "name_new": "RIO TINTO",
+      "best_old_code": "16850",
+      "name_old": "RIO TINTO",
+      "name_equal": true,
+      "km_new": 484.084,
+      "share_from_best_old_km": 0.9805,
+      "share_of_old_in_new": 0.9786,
+      "customers_best_old": {
+        "top": "16850",
+        "share": 0.9949690248629574
+      },
+      "sources_km": {
+        "16850": 0.9805,
+        "16851": 0.0187
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000111406662453,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16851",
+      "kind": "persisting_unchanged",
+      "name_new": "LUCENA",
+      "best_old_code": "16851",
+      "name_old": "LUCENA",
+      "name_equal": true,
+      "km_new": 247.935,
+      "share_from_best_old_km": 0.9606,
+      "share_of_old_in_new": 0.9617,
+      "customers_best_old": {
+        "top": "16851",
+        "share": 0.9888987944228843
+      },
+      "sources_km": {
+        "16851": 0.9606,
+        "16850": 0.0376
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999996902924531,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16852",
+      "kind": "persisting_unchanged",
+      "name_new": "SANTA RITA",
+      "best_old_code": "16852",
+      "name_old": "SANTA RITA",
+      "name_equal": true,
+      "km_new": 411.76,
+      "share_from_best_old_km": 0.9893,
+      "share_of_old_in_new": 0.9838,
+      "customers_best_old": {
+        "top": "16852",
+        "share": 0.9861902806292715
+      },
+      "sources_km": {
+        "16852": 0.9893
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.000002075697175,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16853",
+      "kind": "persisting_changed",
+      "name_new": "SAPE",
+      "best_old_code": "16853",
+      "name_old": "SAPE",
+      "name_equal": true,
+      "km_new": 1036.234,
+      "share_from_best_old_km": 0.9439,
+      "share_of_old_in_new": 0.9604,
+      "customers_best_old": {
+        "top": "16853",
+        "share": 0.9804483207338922
+      },
+      "sources_km": {
+        "16853": 0.9439,
+        "16857": 0.0538
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999996970549015,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16854",
+      "kind": "persisting_changed",
+      "name_new": "ALTIPLANO",
+      "best_old_code": "16854",
+      "name_old": "ALTIPLANO",
+      "name_equal": true,
+      "km_new": 46.475,
+      "share_from_best_old_km": 0.8893,
+      "share_of_old_in_new": 0.9664,
+      "customers_best_old": {
+        "top": "16854",
+        "share": 0.8359273366834422
+      },
+      "sources_km": {
+        "16854": 0.8893,
+        "16856": 0.1007
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9965956815794581,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16855",
+      "kind": "persisting_unchanged",
+      "name_new": "CRISTO",
+      "best_old_code": "16855",
+      "name_old": "CRISTO",
+      "name_equal": true,
+      "km_new": 81.859,
+      "share_from_best_old_km": 0.977,
+      "share_of_old_in_new": 0.9771,
+      "customers_best_old": {
+        "top": "16855",
+        "share": 0.996139747301731
+      },
+      "sources_km": {
+        "16855": 0.977,
+        "15809": 0.0187
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9999811481025296,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16856",
+      "kind": "persisting_unchanged",
+      "name_new": "MANGABEIRA",
+      "best_old_code": "16856",
+      "name_old": "MANGABEIRA",
+      "name_equal": true,
+      "km_new": 122.705,
+      "share_from_best_old_km": 0.9842,
+      "share_of_old_in_new": 0.8905,
+      "customers_best_old": {
+        "top": "16856",
+        "share": 0.9935777502212112
+      },
+      "sources_km": {
+        "16856": 0.9842
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0007075023528067,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16857",
+      "kind": "persisting_unchanged",
+      "name_new": "AREIA",
+      "best_old_code": "16857",
+      "name_old": "AREIA",
+      "name_equal": true,
+      "km_new": 1160.235,
+      "share_from_best_old_km": 0.9635,
+      "share_of_old_in_new": 0.9467,
+      "customers_best_old": {
+        "top": "16857",
+        "share": 0.9837613953705766
+      },
+      "sources_km": {
+        "16857": 0.9635,
+        "16853": 0.0315
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.9975770204649758,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16858",
+      "kind": "persisting_unchanged",
+      "name_new": "ESPERANCA",
+      "best_old_code": "16858",
+      "name_old": "ESPERANCA",
+      "name_equal": true,
+      "km_new": 871.108,
+      "share_from_best_old_km": 0.9837,
+      "share_of_old_in_new": 0.9984,
+      "customers_best_old": {
+        "top": "16858",
+        "share": 0.9946090142967672
+      },
+      "sources_km": {
+        "16858": 0.9837
+      },
+      "share_new_circuits": 0.0145,
+      "area_ratio_new_over_old": 1.0000000026477804,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16859",
+      "kind": "persisting_changed",
+      "name_new": "PARATIBE",
+      "best_old_code": "16859",
+      "name_old": "PARATIBE",
+      "name_equal": true,
+      "km_new": 171.358,
+      "share_from_best_old_km": 0.8823,
+      "share_of_old_in_new": 0.9642,
+      "customers_best_old": {
+        "top": "16859",
+        "share": 0.853419987168602
+      },
+      "sources_km": {
+        "16859": 0.8823,
+        "16856": 0.0587,
+        "16860": 0.0557
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 0.998755073061322,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16860",
+      "kind": "persisting_unchanged",
+      "name_new": "CONDE",
+      "best_old_code": "16860",
+      "name_old": "CONDE",
+      "name_equal": true,
+      "km_new": 352.322,
+      "share_from_best_old_km": 0.9567,
+      "share_of_old_in_new": 0.9483,
+      "customers_best_old": {
+        "top": "16860",
+        "share": 0.9877689736696633
+      },
+      "sources_km": {
+        "16860": 0.9567,
+        "16847": 0.0171,
+        "16859": 0.0118,
+        "16852": 0.01
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0004711670293833,
+      "name_in_predecessor": false
+    },
+    {
+      "new_code": "16861",
+      "kind": "persisting_unchanged",
+      "name_new": "BAYEUX",
+      "best_old_code": "16861",
+      "name_old": "BAYEUX",
+      "name_equal": true,
+      "km_new": 59.102,
+      "share_from_best_old_km": 0.9567,
+      "share_of_old_in_new": 0.9458,
+      "customers_best_old": {
+        "top": "16861",
+        "share": 0.9854874909830122
+      },
+      "sources_km": {
+        "16861": 0.9567,
+        "16852": 0.0376
+      },
+      "share_new_circuits": 0.0,
+      "area_ratio_new_over_old": 1.0000101874765057,
+      "name_in_predecessor": false
+    }
+  ],
+  "policy": "proposal only: no equivalence between old and new codes is assumed; new and changed codes are quarantined for the effective year; a human decision is required before any comparable-perimeter series is built"
+}

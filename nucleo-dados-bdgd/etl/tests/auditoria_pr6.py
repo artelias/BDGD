@@ -10,6 +10,9 @@ import math
 from collections import Counter, defaultdict
 from pathlib import Path
 from statistics import linear_regression
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from motor_v2.metric_contract import round_count  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "web/public/data"
@@ -102,11 +105,15 @@ def auditoria():
         assert ["Z" if r["estado"] == "zero_verificado" else "O" for r in pontos] == s[10]
         slope, intercept = linear_regression([2022, 2023, 2024, 2025], valores)
         for ano, valor in zip(range(2026, 2031), s[6]):
-            assert math.isclose(valor, max(0, intercept + slope * ano), rel_tol=1e-9, abs_tol=1e-6)
+            bruto = max(0, intercept + slope * ano)
+            if s[4] in ("itens", "clientes"):          # contrato de natureza física: contagem = inteiro, meio para cima, declarado
+                assert isinstance(valor, int) and valor == round_count(bruto), (s[0], s[2], ano, valor, bruto)
+            else:
+                assert math.isclose(valor, bruto, rel_tol=1e-9, abs_tol=1e-6)
         slope_bt, intercept_bt = linear_regression([2022, 2023, 2024], valores[:3])
         assert math.isclose(s[7][0], abs(valores[3] - valores[2]), abs_tol=1e-6)
         assert math.isclose(s[7][1], abs(valores[3] - max(0, intercept_bt + slope_bt * 2025)), rel_tol=1e-9, abs_tol=1e-6)
-    raw = contrato_path.read_bytes()
+    raw = contrato_path.read_bytes().replace(b"\r\n", b"\n")   # blob do git = LF, igual em Windows (CRLF) e Linux
     blob = hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
     assert pacote["blobShaOrigem"] == estados["blobShaOrigem"] == blob
     return {

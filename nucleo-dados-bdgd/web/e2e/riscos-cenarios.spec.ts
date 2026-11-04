@@ -1,57 +1,39 @@
 import { expect, test } from "@playwright/test";
 
+/** Riscos da tendência exploratória (truncamento no zero, quatro zeros técnicos) eram exibidos pelo painel "Explorar cenários
+ *  2026–2030", retirado no PR #21. A lógica continua coberta no Vitest (tests/risco-cenarios.test.ts) e o produto exploratório
+ *  continua publicado. Aqui se verifica que o painel principal não reintroduz esses riscos: nenhuma trajetória truncada no zero e
+ *  nenhuma série fabricada a partir de zeros técnicos. */
 test.describe("Riscos exploratórios — dados BDGD sem imputação", () => {
-  test("registra quando o zero de 2030 resulta de truncar uma tendência negativa", async ({ page }) => {
+  test("nenhuma trajetória publicada chega a zero por truncamento; a queda forte de bancos (DIST 87) aparece como valor positivo", async ({ page, request }) => {
+    const dados = await (await request.get("/data/previsoes/cenarios-motor.json")).json();
+    for (const m of dados.metricas) for (const s of Object.values(m.series) as Record<string, number[] | null>[])
+      for (const c of ["conservador", "moderado", "agressivo"]) for (const v of s[c] ?? []) expect(v, `${m.conceito}/${c}`).toBeGreaterThan(0);
     await page.goto("/previsoes/");
-    const painel = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-    await painel.getByRole("combobox", { name: "Distribuidora" }).selectOption("87");
-    await painel.getByRole("combobox", { name: "Ativo" }).selectOption("bancos_capacitores");
-    await painel.getByRole("combobox", { name: "Método" }).selectOption("tendencia_linear");
-
-    const aviso = painel.locator('[data-risco="TENDENCIA_TRUNCADA_NO_ZERO"]');
-    await expect(aviso).toContainText("artifício matemático");
-    await expect(painel.locator('[data-risco="REDUCAO_SUPERIOR_A_70_PCT"]')).toBeVisible();
-
-    const [arquivo] = await Promise.all([
-      page.waitForEvent("download"),
-      painel.getByRole("link", { name: "Exportar série selecionada (CSV)" }).click(),
-    ]);
-    const chunks: Buffer[] = [];
-    for await (const chunk of await arquivo.createReadStream()) chunks.push(Buffer.from(chunk));
-    const csv = Buffer.concat(chunks).toString("utf8");
-    expect(csv).toContain("status_homologacao,publicacao_id");
-    expect(csv).toContain("blob_sha_origem,avisos_estatisticos");
-    expect(csv).toContain("2030,0,simulacao_condicional");
-    expect(csv).toContain("TENDENCIA_TRUNCADA_NO_ZERO");
+    await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" })).toHaveCount(0);
+    const painel = page.getByTestId("cenarios-motor");
+    await painel.getByRole("combobox", { name: "Ativo", exact: true }).selectOption("bancos_capacitores");
+    await painel.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true }).selectOption("dist:87");
+    const s87 = dados.metricas.find((x: { conceito: string }) => x.conceito === "bancos_capacitores").series["87"];
+    await expect(painel.getByRole("region", { name: "Tabela anual de histórico e cenários" }).getByRole("row", { name: /^2030/ })).toContainText(String(s87.moderado[4]));
+    await expect(painel.locator("[data-risco]")).toHaveCount(0);
   });
 
-  test("não exporta quatro zeros de origem como observações positivas comprovadas", async ({ page }) => {
+  test("não fabrica série a partir de quatro zeros técnicos: reatores da DIST 39 não são oferecidos como previsão", async ({ page, request }) => {
+    const dados = await (await request.get("/data/previsoes/cenarios-motor.json")).json();
+    const m = dados.metricas.find((x: { conceito: string }) => x.conceito === "reatores");
+    expect(m.series["39"]).toBeUndefined();
     await page.goto("/previsoes/");
-    const painel = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-    await painel.getByRole("combobox", { name: "Distribuidora" }).selectOption("39");
-    await painel.getByRole("combobox", { name: "Ativo" }).selectOption("reatores");
-    await expect(painel.locator('[data-risco="HISTORICO_QUATRO_ZEROS_TECNICOS"]')).toBeVisible();
-    await expect(painel).toContainText("Zero técnico*");
-    const [arquivo] = await Promise.all([
-      page.waitForEvent("download"),
-      painel.getByRole("link", { name: "Exportar série selecionada (CSV)" }).click(),
-    ]);
-    const chunks: Buffer[] = [];
-    for await (const chunk of await arquivo.createReadStream()) chunks.push(Buffer.from(chunk));
-    const csv = Buffer.concat(chunks).toString("utf8");
-    expect(csv).toContain("2025,0,zero_tecnico");
-    expect(csv).toContain("2022,0,zero_tecnico");
-    expect(csv).toContain("status_homologacao");
-    expect(csv).toContain("verificacao_independente_zero");
-    expect(csv).toContain("pendente");
+    const painel = page.getByTestId("cenarios-motor");
+    await painel.getByRole("combobox", { name: "Ativo", exact: true }).selectOption("reatores");
+    await expect(painel.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true }).locator('option[value="dist:39"]')).toHaveCount(0);
   });
 
-  test("@mobile riscos continuam acessíveis e a página não ganha rolagem horizontal", async ({ page }) => {
+  test("@mobile o painel de cenários continua acessível e a página não ganha rolagem horizontal", async ({ page }) => {
     await page.goto("/previsoes/");
-    const painel = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-    await painel.getByRole("combobox", { name: "Distribuidora" }).selectOption("39");
-    await painel.getByRole("combobox", { name: "Ativo" }).selectOption("reatores");
-    await expect(painel.locator('[data-risco="HISTORICO_QUATRO_ZEROS_TECNICOS"]')).toBeVisible();
+    const painel = page.getByTestId("cenarios-motor");
+    await painel.getByRole("combobox", { name: "Ativo", exact: true }).selectOption("reatores");
+    await expect(painel.getByTestId("cenarios-completude")).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
     expect(overflow).toBeLessThanOrEqual(1);
   });
