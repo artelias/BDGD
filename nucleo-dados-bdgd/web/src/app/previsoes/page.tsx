@@ -1,7 +1,6 @@
 import { Patrimonio } from "@/components/pages/Patrimonio";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PrevisoesExploratorias } from "@/components/pages/PrevisoesExploratorias";
 import { MotorUniversal } from "@/components/pages/MotorUniversal";
 import { CenariosMotor } from "@/components/pages/CenariosMotor";
 import { MotorV2Previsoes } from "@/components/pages/MotorV2Previsoes";
@@ -59,7 +58,6 @@ export default function Page() {
 
       <CenariosMotor />
       <MotorV2Previsoes />
-      <PrevisoesExploratorias />
       <MotorUniversal />
       <Patrimonio />
 
