@@ -55,3 +55,8 @@
   - regenerar o produto com essa regra;
   - o portão de plausibilidade do Motor V2 sobre os novos extremos;
   - as regressões completas e a revisão humana.
+
+## Desvios de execução (registrados)
+
+- **Depuração:** uma execução numa só métrica (`trafo_dist/quantidade`) antes do commit do protocolo, sem mudar parâmetros.
+- **Código depois da primeira execução completa:** o código não implementava a substituição do Moderado prevista em 6.1. Ele só sinalizava 3 métricas com "ver modelos otimizados". O código foi corrigido para cumprir o protocolo, sem alterar nenhum parâmetro, critério ou ajuste. A reexecução usou o cache dos mesmos 1.504 ajustes. A contagem de tentativas do resumo passou a ler `BUSCA_TENTATIVAS.csv`, da execução que fez os ajustes. Diff em `a9a6b7b` contra `bab1162`.
