@@ -7,7 +7,8 @@ test("motor universal: carga sob demanda, catálogo inteiro, diagnóstico e expo
   let requests = 0;
   page.on("request", (r) => { if (r.url().includes("motor-universal-resumo")) requests++; });
   await page.goto("/previsoes/");
-  await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Cenários de expansão por métrica física" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toHaveCount(0);   // painel retirado (PR #21)
   expect(requests).toBe(0);
   await page.getByText("Explorar experimentos do motor universal", { exact: true }).click();
   await expect(page.getByTestId("motor-universal-cobertura")).toContainText(`${catalog.ativos.length} ativos catalogados`);

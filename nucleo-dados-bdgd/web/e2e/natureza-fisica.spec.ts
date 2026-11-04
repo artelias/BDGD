@@ -82,44 +82,18 @@ for (const caso of CASOS) {
   });
 }
 
-test("cenários exploratórios — clientes, transformadores, extensão e potência: card, tabela e CSV", async ({ page }) => {
+test("cenários exploratórios: painel retirado da página (PR #21), produto preservado e com contagens inteiras", async ({ page }) => {
+  // A interface exploratória saiu; o produto de dados continua publicado e respeitando a natureza física. A exibição de
+  // clientes, transformadores, extensão e potência é auditada no painel principal pelos casos acima (gráfico, tooltip, tabela e CSV).
   const dados = (await (await page.request.get("/data/previsoes/cenarios-exploratorios-2026-2030.json")).json()) as { series: unknown[][] };
-  // linha: [dist, empresa, conceitoId, metrica, unidade, hist, tendência, erros, ...]; só combinações únicas por DIST × ativo
-  const contar = new Map<string, number>();
-  for (const s of dados.series) contar.set(`${s[0]}|${s[2]}`, (contar.get(`${s[0]}|${s[2]}`) ?? 0) + 1);
-  const escolher = (conceito: string, unidade: string) => dados.series.find((s) => s[2] === conceito && s[4] === unidade && contar.get(`${s[0]}|${s[2]}`) === 1)!;
-  const alvos = [
-    { rotulo: "clientes", s: escolher("consumidores", "itens"), contagem: true },
-    { rotulo: "transformadores", s: escolher("trafo_dist", "itens"), contagem: true },
-    { rotulo: "extensão", s: escolher("rede_mt", "km"), contagem: false },
-  ];
-  const kva = dados.series.find((s) => s[4] === "kVA" && contar.get(`${s[0]}|${s[2]}`) === 1);
-  if (kva) alvos.push({ rotulo: "potência", s: kva, contagem: false });
-
-  await page.goto("/previsoes/");
-  const sec = page.locator("section", { has: page.getByRole("heading", { name: "Explorar cenários 2026–2030" }) }).first();
-  for (const alvo of alvos) {
-    expect(alvo.s, `série ${alvo.rotulo} no produto`).toBeTruthy();
-    const [dist, , conceito, , unidade, hist, tend] = alvo.s as [string, string, string, string, string, number[], number[]];
-    await sec.getByRole("combobox", { name: "Distribuidora" }).selectOption(String(dist));
-    await sec.getByRole("combobox", { name: "Ativo" }).selectOption(String(conceito));
-    await sec.getByRole("combobox", { name: "Método" }).selectOption("tendencia_linear");
-    const tabela = sec.getByRole("region", { name: "Valores dos cenários — tabela rolável" });
-    for (const [i, ano] of [2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030].entries()) {
-      const v = i < 4 ? hist[i] : tend[i - 4];
-      const texto = (await tabela.getByRole("row", { name: new RegExp(`^${ano}`) }).innerText()).replace(/\s+/g, " ");
-      expect(texto).toContain(num(v, alvo.contagem ? 0 : 2));
-      if (alvo.contagem) expect(texto.replace(String(ano), "").split(unidade)[0].trim(), `${alvo.rotulo} ${ano}`).toMatch(CONTAGEM_PT);
-    }
-    const [dl] = await Promise.all([page.waitForEvent("download"), sec.getByRole("link", { name: "Exportar série selecionada (CSV)" }).click()]);
-    const csv = Buffer.concat(await (await dl.createReadStream()).toArray()).toString("utf8").replace(/^﻿/, "");
-    const linhas = csv.trim().split("\n").slice(1).map((l) => l.split(","));
-    expect(linhas.length).toBe(9);
-    for (const l of linhas) {
-      expect(Number.isFinite(Number(l[1]))).toBe(true);
-      if (alvo.contagem) expect(l[1], `CSV ${alvo.rotulo} ${l[0]}`).toMatch(/^\d+$/);
-    }
+  expect(dados.series.length).toBeGreaterThan(1000);
+  for (const s of dados.series) {
+    if (s[4] !== "itens") continue;
+    for (const v of [...(s[5] as number[]), ...(s[6] as number[])]) expect(Number.isInteger(v), `contagem ${s[0]}/${s[2]}: ${v}`).toBe(true);
   }
+  await page.goto("/previsoes/");
+  await expect(page.getByTestId("cenarios-motor")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Explorar cenários 2026–2030" })).toHaveCount(0);
 });
 
 test("motor universal — contagens inteiras na tabela e no JSON exportado; extensão e potência com decimais", async ({ page }) => {

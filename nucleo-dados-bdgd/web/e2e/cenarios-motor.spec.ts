@@ -30,8 +30,14 @@ test.describe("Motor de Expansão — cenários Conservador | Moderado | Agressi
     await sec.getByRole("combobox", { name: "Ativo", exact: true }).selectOption("consumidores");
     await sec.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true }).selectOption("grupo:energisa");
     await expect(sec).toContainText("Grupo Energisa");
-    // Coopera 2025: UCBT vazia na fonte, consumidores N/D; sem série projetável, não aparece como distribuidora com trajetória
-    await expect(sec.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true }).locator('option[value="dist:5370"]')).toHaveCount(0);
+    // Coopera 2025: UCBT vazia na fonte, consumidores N/D. Continua selecionável (ressalva visível), mas bloqueada: sem trajetória,
+    // tabela ou CSV (comportamento que antes só o painel exploratório retirado no PR #21 tinha)
+    const dist = sec.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true });
+    await expect(dist.locator('option[value="dist:5370"]')).toHaveCount(1);
+    await dist.selectOption("dist:5370");
+    await expect(sec.getByTestId("cenarios-coopera")).toContainText("consumidores sem projeção");
+    await expect(sec.getByRole("region", { name: "Tabela anual de histórico e cenários" })).toHaveCount(0);
+    await expect(sec.getByRole("link", { name: "Exportar série e cenários (CSV)" })).toHaveCount(0);
   });
 
   test("métrica bloqueada aparece com motivo e sem números", async ({ page }) => {

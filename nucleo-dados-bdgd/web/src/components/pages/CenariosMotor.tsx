@@ -6,6 +6,7 @@ import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import { useData } from "@/lib/data-context";
 import { ehContagem, formatarFisico } from "@/lib/natureza-fisica";
 import { COOPERA_UCBT_2025 } from "@/lib/observacoes-auditoria";
+import { ObservacoesDados } from "@/components/ui/ObservacoesDados";
 import {
   CENARIOS, ROTULO_CENARIO, ROTULO_ESTADO, completudeGrupo, completudeSerie, exportarCsv, naturezaMetrica, parseCenarios, somaGrupo, variacoes,
   type Cenario, type MetricaCenario, type ProdutoCenarios,
@@ -56,7 +57,10 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
   const ativoId = ativos.some(([id]) => id === ativo) ? ativo : ativos[0]?.[0];
   const metricas = data.metricas.filter((m) => m.conceito === ativoId);
   const m: MetricaCenario | undefined = metricas.find((x) => x.metrica === metrica) ?? metricas[0];
-  const dists = m ? Object.keys(m.series).sort((a, b) => (data.empresas[a] ?? a).localeCompare(data.empresas[b] ?? b, "pt-BR")) : [];
+  // Coopera em consumidores: sem série (UCBT 2025 vazia na fonte), mas continua selecionável e bloqueada para mostrar a ressalva
+  const coop = String(COOPERA_UCBT_2025.dist);
+  const dists = m ? [...Object.keys(m.series), ...(m.conceito === "consumidores" && !(coop in m.series) ? [coop] : [])]
+    .sort((a, b) => (data.empresas[a] ?? a).localeCompare(data.empresas[b] ?? b, "pt-BR")) : [];
   const [tipo, id] = escopo.split(":");
   const distId = tipo === "dist" ? (dists.includes(id) ? id : dists[0]) : undefined;
   const grupo = tipo === "grupo" ? grupos.find((g) => g.id === id) : undefined;
@@ -181,6 +185,8 @@ function Explorador({ data }: { data: ProdutoCenarios }) {
       {csv && <a className={s.export} download={`cenarios_${m.conceito}_${m.metrica}_DIST_${distId}.csv`} href={`data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`}>Exportar série e cenários (CSV)</a>}
       <Link className={s.export} href="/metodologia/#motor-cenarios">Metodologia dos modelos executados</Link>
     </div>
+    {/* ressalvas cadastrais da distribuidora e do ativo selecionados (antes só no painel exploratório removido) */}
+    {distId && <ObservacoesDados dists={[distId]} ativos={[m.conceito]} anos={[2022, 2023, 2024, 2025]} />}
     <details className={s.detalhes}><summary>Todos os modelos avaliados para esta métrica</summary>
       <div className={s.scroll} role="region" tabIndex={0} aria-label="Comparação de modelos">
         <table><thead><tr><th scope="col">Modelo</th><th scope="col">WAPE</th><th scope="col">h=1</th><th scope="col">h=2</th><th scope="col">Viés</th><th scope="col">Trajetória agregada</th><th scope="col">Situação</th></tr></thead>

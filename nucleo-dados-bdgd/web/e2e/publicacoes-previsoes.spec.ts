@@ -55,34 +55,34 @@ test.describe("Publicações auditadas — histórico 2022–2025", () => {
 });
 
 test.describe("Previsões — cenários reais, não previsões validadas", () => {
-  test("filtros, gráfico, histórico e CSV têm o mesmo valor e fonte", async ({ page }) => {
+  // painel principal (o exploratório foi retirado no PR #21): mesmo valor no gráfico, na tabela e no CSV, com a fonte do produto
+  test("filtros, gráfico, histórico e CSV têm o mesmo valor e fonte", async ({ page, request }) => {
+    const dados = await (await request.get("/data/previsoes/cenarios-motor.json")).json();
+    const s26 = dados.metricas.find((x: { conceito: string; metrica: string }) => x.conceito === "alimentadores" && x.metrica === "quantidade").series["26"];
     await page.goto("/previsoes/");
-    const painel = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-    await expect(painel).toContainText("1.792");
-    await painel.getByRole("combobox", { name: "Ativo" }).selectOption("alimentadores");
-    await painel.getByRole("combobox", { name: "Ano simulado" }).selectOption("2030");
-    await expect(painel).toContainText("185 itens");
-    await expect(painel).toContainText("123 itens");
-    await expect(painel.getByRole("img", { name: /Evolução histórica 2022 a 2025/ })).toBeVisible();
-    const [download] = await Promise.all([
-      page.waitForEvent("download"),
-      painel.getByRole("link", { name: "Exportar série selecionada (CSV)" }).click(),
-    ]);
-    const stream = await download.createReadStream();
-    const bufs: Buffer[] = [];
-    for await (const chunk of stream) bufs.push(Buffer.from(chunk));
-    const csv = Buffer.concat(bufs).toString("utf8");
-    expect(csv).toContain("2025,123,observado");
-    // alimentadores é contagem: o CSV exporta o inteiro publicado (185, o mesmo do card), nunca a tendência bruta 184,6
-    expect(csv.split(/\r?\n/).find((l) => l.startsWith("2030,"))?.split(",")[1]).toBe("185");
-    await expect(painel).toContainText("Não há previsão estatisticamente validada");
+    const painel = page.getByTestId("cenarios-motor");
+    await painel.getByRole("combobox", { name: "Ativo", exact: true }).selectOption("alimentadores");
+    await painel.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true }).selectOption("dist:26");
+    const tabela = painel.getByRole("region", { name: "Tabela anual de histórico e cenários" });
+    await expect(tabela.getByRole("row", { name: /^2025/ })).toContainText("123");
+    await expect(tabela.getByRole("row", { name: /^2030/ })).toContainText(String(s26.moderado[4]));
+    await expect(painel.getByTestId("cenarios-grafico")).toBeVisible();
+    const href = await painel.getByRole("link", { name: "Exportar série e cenários (CSV)" }).getAttribute("href");
+    const csv = decodeURIComponent(href!.split(",").slice(1).join(","));
+    expect(csv).toContain("2025,observado,123,");
+    // contagem: o CSV exporta o inteiro publicado, o mesmo da tabela, nunca uma tendência bruta
+    const l2030 = csv.split(/\r?\n/).find((l) => l.startsWith("2030,"))!.split(",");
+    expect(Number(l2030[4])).toBe(s26.moderado[4]);
+    expect(l2030[4]).toMatch(/^\d+$/);
+    await expect(painel).toContainText("sem validação científica independente");
+    await expect(page.getByRole("region", { name: "Explorar cenários 2026–2030" })).toHaveCount(0);
   });
 
   test("@mobile visão mostra cenários sem esconder controles e não estoura a largura", async ({ page }) => {
     await page.goto("/previsoes/");
-    const painel = page.getByRole("region", { name: "Explorar cenários 2026–2030" });
-    await expect(painel.getByRole("combobox", { name: "Distribuidora" })).toBeVisible();
-    await expect(painel.getByRole("combobox", { name: "Ativo" })).toBeVisible();
+    const painel = page.getByTestId("cenarios-motor");
+    await expect(painel.getByRole("combobox", { name: "Distribuidora ou grupo", exact: true })).toBeVisible();
+    await expect(painel.getByRole("combobox", { name: "Ativo", exact: true })).toBeVisible();
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(1);
   });
