@@ -12,6 +12,8 @@ A unidade é a célula (DIST, ativo, métrica, horizonte), agregada por ativo/m�
 
 ## 2. Dados disponíveis e viabilidade
 
+> **Emenda de 04/11/2026 (diretriz do responsável):** só as competências BDGD validadas de 2022 a 2025 entram no treinamento e na homologação; as anteriores a 2022 ficam excluídas. Os critérios da seção 6 não mudam: o nível "homologado" exige pelo menos 3 origens independentes. Painéis granulares (município, conjunto, circuito) **não criam origens temporais novas**, e com 2022–2025 continua havendo 1 origem final (2024 → 2025).
+
 Ver `02_DISPONIBILIDADE_HISTORICA.csv` e o parecer (`05`).
 
 - **Hoje no Núcleo:** competências de 31/12/2022 a 31/12/2025, quatro anos e três transições anuais.

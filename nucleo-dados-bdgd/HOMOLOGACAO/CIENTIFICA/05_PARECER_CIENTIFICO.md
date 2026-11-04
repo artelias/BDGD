@@ -35,12 +35,7 @@ Fonte: inventário do catálogo ANEEL coletado em 22/10/2026 (`02_DISPONIBILIDAD
 | **Sucessões e rupturas** | 59 competências fora de 31/12 (cortes societários no meio do ano). Mais as rupturas já tratadas em 2022–2025 (EPB/EBO, Celesc 2023 e outras) | Pontes societárias auditadas são necessárias antes de usar 2016–2021 |
 | **Reproduzir previsões sem informação futura** | Possível em princípio para as origens 2018–2024, com as restrições de vintage e leiaute acima | Permitiria origens múltiplas e horizontes de 3 e 5 anos (por exemplo origem 2020 → alvo 2025) |
 
-**O caminho para a homologação** seria:
-1. autorização para baixar os GDBs de 2016–2021;
-2. um ETL de leiaute com mapeamento auditado M6/M10/V10 → V11;
-3. o filtro de vintage pela data de geração;
-4. as pontes societárias;
-5. reexecutar a seção 3 com pelo menos 3 origens por horizonte.
+> **Diretriz de 04/11/2026:** as competências anteriores a 2022 **não serão usadas** no treinamento nem na homologação, porque não estão aprovadas quanto a qualidade e comparabilidade. O diagnóstico acima fica só como registro do catálogo. O caminho de homologação passa a ser a granularidade das competências validadas de 2022 a 2025 (`06_DIAGNOSTICO_GRANULARIDADE.md`), com prioridade para o horizonte de 1 ano. Os horizontes maiores ficam experimentais enquanto não houver evidência temporal suficiente.
 
 Esses dados históricos **não foram inventados nem interpolados**.
 
@@ -121,6 +116,6 @@ Para ativos físicos não há fonte externa compatível conhecida.
 
 Decisões que cabem aos revisores:
 1. aceitar ou não o nível "validado com restrições" para h=1 nas 7 métricas, dada a não independência da seleção;
-2. autorizar a recuperação das competências 2016–2021 (download, ETL de leiaute e vintage);
+2. avaliar o diagnóstico de granularidade 2022–2025 (`06`) e autorizar ou não a etapa de implementação proposta nele (as competências anteriores a 2022 estão excluídas pela diretriz de 04/11/2026);
 3. definir a fonte externa de consumidores;
 4. manter a comunicação de "cenários experimentais" para 2027–2030 até haver avaliação em horizontes longos.
