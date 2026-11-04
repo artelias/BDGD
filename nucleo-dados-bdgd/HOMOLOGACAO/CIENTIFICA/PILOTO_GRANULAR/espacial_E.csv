@@ -1,0 +1,6 @@
+ativo,teste,modelo,nivel,dists,grupos,wape,wape_persistencia,r2_crescimento,nota
+ucbt,espacial_grupos_nao_vistos_2022_2023,G-RIDGE,MUN,83,62,0.051990359397287654,0.0413364119535067,-0.6718728910887508,mesmo ano; não prova capacidade de prever anos futuros; efeito por DIST = 0 para DIST não vista
+trafo_qtd,espacial_grupos_nao_vistos_2022_2023,G-RIDGE,MUN,79,62,0.04321880357794777,0.043031820136050725,-1.9158869920689368,mesmo ano; não prova capacidade de prever anos futuros; efeito por DIST = 0 para DIST não vista
+trafo_kva,espacial_grupos_nao_vistos_2022_2023,G-RIDGE,CONJ,79,61,0.24697979392887587,0.18321193000001432,-1.9054501709056764,mesmo ano; não prova capacidade de prever anos futuros; efeito por DIST = 0 para DIST não vista
+rede_bt,espacial_grupos_nao_vistos_2022_2023,G-HIER,CONJ,81,60,0.01328210450982526,0.018283746181667344,-0.2334907150365162,mesmo ano; não prova capacidade de prever anos futuros; efeito por DIST = 0 para DIST não vista
+rede_mt,espacial_grupos_nao_vistos_2022_2023,G-HGB,CONJ,83,61,0.010993977179194642,0.01935171997910548,-0.2578511945050659,mesmo ano; não prova capacidade de prever anos futuros; efeito por DIST = 0 para DIST não vista

@@ -1,0 +1,136 @@
+{
+ "rede_bt": {
+  "ajustes_S": 39,
+  "dists_S": 64,
+  "exclusoes_coorte_S": {
+   "CONJ:CHAVE_INSTAVEL": 20,
+   "CONJ:PAINEL_AUSENTE": 17,
+   "CONJ:RUPTURA": 1,
+   "CONJ:SUCESSAO": 2
+  },
+  "hiper": {
+   "alpha": 0.1
+  },
+  "melhor_referencia_S": "deriva",
+  "modelo": "G-HIER",
+  "nivel": "CONJ",
+  "variaveis": [
+   "ln_kwh_cliente"
+  ],
+  "wape_S": 0.019997818617086213,
+  "wape_melhor_referencia_S": 0.01971558542586332,
+  "wape_modelo_atual_S": 0.026533763402317785
+ },
+ "rede_mt": {
+  "ajustes_S": 22,
+  "dists_S": 66,
+  "exclusoes_coorte_S": {
+   "CONJ:CHAVE_INSTAVEL": 19,
+   "CONJ:PAINEL_AUSENTE": 17,
+   "CONJ:SUCESSAO": 2
+  },
+  "hiper": {
+   "learning_rate": 0.1,
+   "max_depth": 3
+  },
+  "melhor_referencia_S": "deriva",
+  "modelo": "G-HGB",
+  "nivel": "CONJ",
+  "variaveis": [
+   "ln_clientes_por_km_mt",
+   "cresc_pop_2010_2022",
+   "ln_kwh_cliente",
+   "taxa_conexoes"
+  ],
+  "wape_S": 0.006693476006473494,
+  "wape_melhor_referencia_S": 0.005235858745063176,
+  "wape_modelo_atual_S": 0.0077627413128180675
+ },
+ "trafo_kva": {
+  "ajustes_S": 71,
+  "dists_S": 61,
+  "exclusoes_coorte_S": {
+   "CONJ:CHAVE_INSTAVEL": 16,
+   "MUN:ANOMALIA_MUN_7019_2023": 1,
+   "MUN:CHAVE_INSTAVEL": 1,
+   "MUN:PAINEL_AUSENTE": 18,
+   "MUN:RECODIFICACAO_MUN_PENDENTE_CELESC_2023": 1,
+   "MUN:RUPTURA": 4,
+   "MUN:SUCESSAO": 2
+  },
+  "hiper": {
+   "alpha": 1.0
+  },
+  "melhor_referencia_S": "hgb_painel",
+  "modelo": "G-RIDGE",
+  "nivel": "CONJ",
+  "variaveis": [
+   "ln_kva_por_trafo",
+   "ln_clientes_por_kva",
+   "ln_kwh_cliente",
+   "taxa_conexoes"
+  ],
+  "wape_S": 0.039441111578471515,
+  "wape_melhor_referencia_S": 0.05383167680868951,
+  "wape_modelo_atual_S": 0.06428214385990429
+ },
+ "trafo_qtd": {
+  "ajustes_S": 45,
+  "dists_S": 61,
+  "exclusoes_coorte_S": {
+   "CONJ:CHAVE_INSTAVEL": 16,
+   "MUN:ANOMALIA_MUN_7019_2023": 1,
+   "MUN:CHAVE_INSTAVEL": 1,
+   "MUN:PAINEL_AUSENTE": 18,
+   "MUN:RECODIFICACAO_MUN_PENDENTE_CELESC_2023": 1,
+   "MUN:RUPTURA": 4,
+   "MUN:SUCESSAO": 2
+  },
+  "hiper": {
+   "alpha": 1.0
+  },
+  "melhor_referencia_S": "knn_analogos",
+  "modelo": "G-RIDGE",
+  "nivel": "MUN",
+  "variaveis": [
+   "ln_kwh_cliente",
+   "ln_kva_por_trafo",
+   "cresc_pop_2010_2022",
+   "eletrificacao",
+   "fracao_urbana",
+   "ln_estoque",
+   "taxa_conexoes"
+  ],
+  "wape_S": 0.010417404673761687,
+  "wape_melhor_referencia_S": 0.006181712962196601,
+  "wape_modelo_atual_S": 0.006181712962196601
+ },
+ "ucbt": {
+  "ajustes_S": 64,
+  "dists_S": 64,
+  "exclusoes_coorte_S": {
+   "CONJ:CHAVE_INSTAVEL": 17,
+   "MUN:ANOMALIA_MUN_7019_2023": 1,
+   "MUN:CHAVE_INSTAVEL": 1,
+   "MUN:PAINEL_AUSENTE": 18,
+   "MUN:RECODIFICACAO_MUN_PENDENTE_CELESC_2023": 1,
+   "MUN:SUCESSAO": 2
+  },
+  "hiper": {
+   "alpha": 1.0
+  },
+  "melhor_referencia_S": "ridge_painel",
+  "modelo": "G-RIDGE",
+  "nivel": "MUN",
+  "variaveis": [
+   "fracao_urbana",
+   "ln_trafo_por_cliente",
+   "ln_kva_por_cliente",
+   "ln_kwh_cliente",
+   "eletrificacao"
+  ],
+  "wape_S": 0.027600286948481666,
+  "wape_melhor_referencia_S": 0.02763919366068541,
+  "wape_modelo_atual_S": 0.02763919366068541
+ }
+}

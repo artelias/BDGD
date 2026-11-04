@@ -1,0 +1,82 @@
+ativo,nivel,variavel,status_filtro,motivo_filtro,importancia_permutacao_S,ordem
+ucbt,MUN,ln_estoque,CANDIDATA,disponibilidade 100%,-0.0007436,7
+ucbt,MUN,taxa_conexoes,CANDIDATA,disponibilidade 100%,-0.0008688,8
+ucbt,MUN,ln_kwh_cliente,CANDIDATA,disponibilidade 100%,0.0004967,4
+ucbt,MUN,fracao_urbana,CANDIDATA,disponibilidade 100%,0.0085228,1
+ucbt,MUN,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,-0.0010141,9
+ucbt,MUN,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,-0.0002428,6
+ucbt,MUN,eletrificacao,CANDIDATA,disponibilidade 100%,0.000189,5
+ucbt,MUN,ln_trafo_por_cliente,CANDIDATA,disponibilidade 99%,0.0081071,2
+ucbt,MUN,ln_kva_por_cliente,CANDIDATA,disponibilidade 99%,0.0008461,3
+ucbt,CONJ,ln_estoque,CANDIDATA,disponibilidade 100%,-0.0012029,6
+ucbt,CONJ,taxa_conexoes,CANDIDATA,disponibilidade 100%,-0.002959,7
+ucbt,CONJ,ln_kwh_cliente,CANDIDATA,disponibilidade 100%,9.98e-05,2
+ucbt,CONJ,fracao_urbana,CANDIDATA,disponibilidade 100%,-0.0035618,8
+ucbt,CONJ,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,-0.0008506,4
+ucbt,CONJ,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,-0.0002499,3
+ucbt,CONJ,eletrificacao,DESCARTADA,disponibilidade 0% < 50% no treino S,,
+ucbt,CONJ,ln_trafo_por_cliente,CANDIDATA,disponibilidade 100%,0.0059508,1
+ucbt,CONJ,ln_kva_por_cliente,CANDIDATA,disponibilidade 100%,-0.0010368,5
+trafo_qtd,MUN,ln_estoque,CANDIDATA,disponibilidade 100%,-0.0003675,6
+trafo_qtd,MUN,taxa_conexoes,CANDIDATA,disponibilidade 98%,-0.0007719,7
+trafo_qtd,MUN,ln_kwh_cliente,CANDIDATA,disponibilidade 98%,0.0055252,1
+trafo_qtd,MUN,fracao_urbana,CANDIDATA,disponibilidade 98%,-5.64e-05,5
+trafo_qtd,MUN,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,-0.0008358,8
+trafo_qtd,MUN,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,1.57e-05,3
+trafo_qtd,MUN,eletrificacao,CANDIDATA,disponibilidade 98%,-1.76e-05,4
+trafo_qtd,MUN,ln_clientes_por_trafo,CANDIDATA,disponibilidade 98%,-0.005384,9
+trafo_qtd,MUN,ln_kva_por_trafo,CANDIDATA,disponibilidade 100%,0.0054774,2
+trafo_qtd,CONJ,ln_estoque,CANDIDATA,disponibilidade 100%,0.0003309,5
+trafo_qtd,CONJ,taxa_conexoes,CANDIDATA,disponibilidade 100%,-0.0014294,7
+trafo_qtd,CONJ,ln_kwh_cliente,CANDIDATA,disponibilidade 100%,0.0099864,1
+trafo_qtd,CONJ,fracao_urbana,CANDIDATA,disponibilidade 100%,0.0022315,4
+trafo_qtd,CONJ,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,-0.0022174,8
+trafo_qtd,CONJ,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,0.0002254,6
+trafo_qtd,CONJ,eletrificacao,DESCARTADA,disponibilidade 0% < 50% no treino S,,
+trafo_qtd,CONJ,ln_clientes_por_trafo,CANDIDATA,disponibilidade 100%,0.0093265,2
+trafo_qtd,CONJ,ln_kva_por_trafo,CANDIDATA,disponibilidade 100%,0.0076168,3
+trafo_kva,MUN,ln_estoque,CANDIDATA,disponibilidade 100%,0.0105425,2
+trafo_kva,MUN,taxa_conexoes,CANDIDATA,disponibilidade 98%,0.0044241,4
+trafo_kva,MUN,ln_kwh_cliente,CANDIDATA,disponibilidade 98%,0.0011458,7
+trafo_kva,MUN,fracao_urbana,CANDIDATA,disponibilidade 98%,-0.0102894,9
+trafo_kva,MUN,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,0.0041055,5
+trafo_kva,MUN,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,0.0004607,8
+trafo_kva,MUN,eletrificacao,CANDIDATA,disponibilidade 98%,0.0078085,3
+trafo_kva,MUN,ln_kva_por_trafo,CANDIDATA,disponibilidade 100%,0.0802814,1
+trafo_kva,MUN,ln_clientes_por_kva,CANDIDATA,disponibilidade 98%,0.0025077,6
+trafo_kva,CONJ,ln_estoque,CANDIDATA,disponibilidade 100%,-0.0044336,8
+trafo_kva,CONJ,taxa_conexoes,CANDIDATA,disponibilidade 100%,0.0067251,4
+trafo_kva,CONJ,ln_kwh_cliente,CANDIDATA,disponibilidade 100%,0.0123652,3
+trafo_kva,CONJ,fracao_urbana,CANDIDATA,disponibilidade 100%,0.0066103,5
+trafo_kva,CONJ,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,0.0059627,6
+trafo_kva,CONJ,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,-0.0011385,7
+trafo_kva,CONJ,eletrificacao,DESCARTADA,disponibilidade 0% < 50% no treino S,,
+trafo_kva,CONJ,ln_kva_por_trafo,CANDIDATA,disponibilidade 100%,0.0497431,1
+trafo_kva,CONJ,ln_clientes_por_kva,CANDIDATA,disponibilidade 100%,0.0202724,2
+rede_bt,CONJ,ln_estoque,CANDIDATA,disponibilidade 100%,-0.0001263,6
+rede_bt,CONJ,taxa_conexoes,CANDIDATA,disponibilidade 100%,-0.0012719,9
+rede_bt,CONJ,ln_kwh_cliente,CANDIDATA,disponibilidade 100%,0.0016297,1
+rede_bt,CONJ,fracao_urbana,CANDIDATA,disponibilidade 100%,9.45e-05,4
+rede_bt,CONJ,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,0.0006787,3
+rede_bt,CONJ,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,-0.0001353,7
+rede_bt,CONJ,eletrificacao,DESCARTADA,disponibilidade 0% < 50% no treino S,,
+rede_bt,CONJ,ln_clientes_por_km_bt,CANDIDATA,disponibilidade 100%,0.0014931,2
+rede_bt,CONJ,ln_trafo_por_km_bt,CANDIDATA,disponibilidade 100%,-0.0001972,8
+rede_bt,CONJ,ln_razao_mt_bt,CANDIDATA,disponibilidade 100%,2.64e-05,5
+rede_mt,CONJ,ln_estoque,CANDIDATA,disponibilidade 100%,2.87e-05,6
+rede_mt,CONJ,taxa_conexoes,CANDIDATA,disponibilidade 100%,0.0001006,4
+rede_mt,CONJ,ln_kwh_cliente,CANDIDATA,disponibilidade 100%,0.000134,3
+rede_mt,CONJ,fracao_urbana,CANDIDATA,disponibilidade 100%,-0.0002175,7
+rede_mt,CONJ,ln_pib_pc_2021,CANDIDATA,disponibilidade 100%,-0.000311,9
+rede_mt,CONJ,cresc_pop_2010_2022,CANDIDATA,disponibilidade 100%,0.0002355,2
+rede_mt,CONJ,eletrificacao,DESCARTADA,disponibilidade 0% < 50% no treino S,,
+rede_mt,CONJ,ln_clientes_por_km_mt,CANDIDATA,disponibilidade 100%,0.0038121,1
+rede_mt,CONJ,ln_trafo_por_km_mt,CANDIDATA,disponibilidade 100%,-0.0002409,8
+rede_mt,CONJ,ln_razao_bt_mt,CANDIDATA,disponibilidade 97%,7.11e-05,5
+todos,,crescimento_anterior_do_ativo,NAO_USADA,exige 2021 para pares com origem 2022 (proibido); indisponível no treino S,,
+todos,,crescimento_contemporaneo_de_consumidores_ou_trafos,NAO_USADA,informação do ano-alvo (futuro em relação à origem),,
+todos,,densidade_territorial_area,NAO_USADA,sem área servida validada no painel (o painel UCBT registra 'no validated served area denominator'),,
+todos,,circuito_CTMT_como_unidade,NAO_USADA,reconfiguração frequente (diagnóstico 06); não é unidade-alvo,,
+todos,,caracteristicas_TUC_565_detalhadas,NAO_USADA,o painel já restringe a TUC 565 com vínculo EQ→UN bijetivo; atributos adicionais exigem extração nova,,
+todos,,geracao_distribuida_UGBT,NAO_USADA,sem painel extraído; extração nova não autorizada nesta etapa,,
+todos,,conexoes_DAT_CON_do_ano_alvo,NAO_USADA,proibido: conexões de 2024 não prevêem 2024 a partir de 2023,,
