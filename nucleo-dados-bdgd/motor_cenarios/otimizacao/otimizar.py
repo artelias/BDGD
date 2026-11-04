@@ -371,9 +371,13 @@ def run(contrato, internas, raw, publicado, saida):
             var_rows.append({"conceito": conc, "metrica": metr, "variavel": n, "status_filtro": "NAO_APLICAVEL", "motivo_filtro": mot})
         # ---------- cenários por distribuidora
         m_pub = pubm[k]
-        mod_id = m_pub["cenarios"]["moderado"]
-        mod_S = cands.get(mod_id, {}).get("S", {}).get("wape") if mod_id else None
+        mod_pub_id = m_pub["cenarios"]["moderado"]
         segs = {d: C.segmento(anos) for d, anos in series[k].items()}
+        # Protocolo 6.1: o Moderado publicado só é substituído por um otimizado que melhora realmente e tem WAPE_S e WAPE_F menores
+        sub = substituto(cands, mod_pub_id)
+        mod_id = sub["id"] if sub else mod_pub_id
+        traj_sub = projetar(motor, k, sub, segs) if sub else {}
+        mod_S = cands.get(mod_id, {}).get("S", {}).get("wape") if mod_id else None
         competitivos = [c for c in cands.values() if c["id"] != mod_id and "wape" in c["S"] and mod_S is not None
                         and c["S"]["wape"] <= PROTOCOLO["tolerancia_cenario"] * mod_S]
         trajs = {c["id"]: projetar(motor, k, c, segs) for c in competitivos}
@@ -384,7 +388,18 @@ def run(contrato, internas, raw, publicado, saida):
         tipos = Counter()
         for d, s in sorted(m_pub["series"].items(), key=lambda x: int(x[0])):
             mod = s.get("moderado")
+            mod_pub_vals = mod
             y25 = s["hist"][-1][1] if s["hist"] and s["hist"][-1][0] == C.BASE else None
+            mod_tipo, mod_motivo, mod_c = "MODERADO_PUBLICADO", "Moderado do produto preservado: nenhum otimizado o supera nas etapas S e F", cands.get(mod_pub_id, {})
+            if sub and mod and y25:
+                t = traj_sub.get(d)
+                r = t[-1] / y25 if t else None
+                if t and all(v >= 0 for v in t) and PROTOCOLO["razao_plausivel"][0] <= r <= PROTOCOLO["razao_plausivel"][1]:
+                    mod = [int(math.floor(v + 0.5)) for v in t] if disc else [round(v, 3) for v in t]
+                    mod_tipo, mod_c = "MODERADO_SUBSTITUIDO_POR_OTIMIZADO", sub
+                    mod_motivo = f"{sub['id']} melhora fora da amostra e tem WAPE_S e WAPE_F menores que {mod_pub_id} (protocolo 6.1)"
+                else:
+                    mod_motivo = f"substituto {sub['id']} implausível nesta DIST; Moderado publicado mantido"
             linha_base = {"DIST": d, "empresa": empresas.get(d, ""), "ativo": conc, "familia": familia.get(conc, ""), "metrica": metr}
             if not mod or not y25:
                 for cen in ("conservador", "moderado", "agressivo"):
@@ -393,10 +408,11 @@ def run(contrato, internas, raw, publicado, saida):
                                    "motivo": (s.get("motivos") or {}).get("moderado") or "sem Moderado publicado nesta distribuidora"})
                 tipos["SEM_MODERADO"] += 1
                 continue
-            cm = cands.get(mod_id, {})
-            matriz.append({**linha_base, "cenario": "moderado", "tipo_escolha": "MODERADO_PUBLICADO", **descr(cm), "valor_2030": mod[-1], "valor_2030_anterior": mod[-1],
-                           "modelo_anterior": mod_id, "ganho_wape_F": 0.0, "estado_plausibilidade": "ACEITO", "estado_homologacao": "experimental_nao_homologado",
-                           "motivo": "Moderado do produto preservado (nenhum otimizado o supera nas etapas S e F)" if not substitui(cands, mod_id) else "ver modelos otimizados"})
+            pm = cands.get(mod_pub_id, {})
+            ganho = (pm["F"]["wape"] - mod_c["F"]["wape"]) if "wape" in pm.get("F", {}) and "wape" in mod_c.get("F", {}) else None
+            matriz.append({**linha_base, "cenario": "moderado", "tipo_escolha": mod_tipo, **descr(mod_c), "valor_2030": mod[-1], "valor_2030_anterior": mod_pub_vals[-1],
+                           "modelo_anterior": mod_pub_id, "ganho_wape_F": ganho, "estado_plausibilidade": "ACEITO", "estado_homologacao": "experimental_nao_homologado",
+                           "motivo": mod_motivo})
             gh = [g for t in (2023, 2024, 2025) for a, b in [(series[k][d].get(t - 1), series[k][d].get(t))]
                   if a and b and a[0] == b[0] == "observado" and (a[1] or 0) > 0 and (b[1] or 0) > 0 and not b[2] for g in [math.log(b[1] / a[1])]]
             for lado in ("conservador", "agressivo"):
@@ -423,7 +439,9 @@ def run(contrato, internas, raw, publicado, saida):
                 if disc and v:
                     v = [int(math.floor(x + 0.5)) for x in v]
                 tipos[tipo] += 1
+                fa = cands.get(ant_id, {}).get("F", {}).get("wape"); fn = desc.get("wape_F")
                 matriz.append({**linha_base, "cenario": lado, "tipo_escolha": tipo, **desc, "valor_2030": v[-1] if v else None, "valor_2030_anterior": ant_2030, "modelo_anterior": ant_id,
+                               "ganho_wape_F": None if fa is None or fn is None else fa - fn,
                                "estado_plausibilidade": "ACEITO" if tipo != "SEM_EVIDENCIA_COINCIDENTE" else "SEM_EVIDENCIA", "estado_homologacao": "experimental_nao_homologado", "motivo": motivo})
         # ---------- linhas por modelo
         for c in cands.values():
@@ -458,6 +476,9 @@ def run(contrato, internas, raw, publicado, saida):
     if tent_rows:
         wcsv("BUSCA_TENTATIVAS.csv", tent_rows)
     res = resumo(pub, matriz, modelos_rows, var_rows, resumo_m)
+    if not tent_rows and (saida / "BUSCA_TENTATIVAS.csv").exists():      # reexecução só com cache: custo é o da execução que fez os ajustes
+        res["tentativas_total"] = sum(1 for _ in open(saida / "BUSCA_TENTATIVAS.csv", encoding="utf-8")) - 1
+        res["tentativas_origem"] = "BUSCA_TENTATIVAS.csv da execução que fez os ajustes (esta reexecução usou só o cache)"
     res["reproducao_ridge_original_max_dif"] = max(reproducao) if reproducao else None
     res["protocolo"] = PROTOCOLO
     res["segundos_total"] = round(time.time() - t_ini, 1)
@@ -477,19 +498,24 @@ def descr(c):
             "veredito_otimizacao": c.get("veredito", "")}
 
 
-def substitui(cands, mod_id):
+def substituto(cands, mod_id):
+    """Otimizado que melhora realmente (critério 5) e tem WAPE_S e WAPE_F menores que o Moderado publicado; entre vários, o de menor WAPE_S."""
     m = cands.get(mod_id)
     if not m or "wape" not in m.get("S", {}) or "wape" not in m.get("F", {}):
-        return False
-    return any(c.get("veredito") == "MELHOROU_FORA_DA_AMOSTRA" and c["S"]["wape"] < m["S"]["wape"] and c["F"]["wape"] < m["F"]["wape"] for c in cands.values())
+        return None
+    ok = [c for c in cands.values() if c.get("veredito") == "MELHOROU_FORA_DA_AMOSTRA" and c["S"]["wape"] < m["S"]["wape"] and c["F"]["wape"] < m["F"]["wape"]]
+    return min(ok, key=lambda c: c["S"]["wape"]) if ok else None
 
 
 def resumo(pub, matriz, modelos, variaveis, resumo_m):
     antes = Counter(m["estado"] for m in pub["metricas"] if m["series"])
+    subs = Counter()
     por_m = defaultdict(lambda: defaultdict(Counter))
     for r in matriz:
         if r["cenario"] != "moderado":
             por_m[(r["ativo"], r["metrica"])][r["DIST"]][r["tipo_escolha"]] += 1
+        elif r["tipo_escolha"] == "MODERADO_SUBSTITUIDO_POR_OTIMIZADO":
+            subs[(r["ativo"], r["metrica"])] += 1
     def completa(c):
         return sum(c[t] for t in ("MODELO_INDEPENDENTE", "CONDICIONAL_DO_MODERADO")) == 2
     serie_completa = {k: sum(1 for c in v.values() if completa(c)) for k, v in por_m.items()}
@@ -513,6 +539,7 @@ def resumo(pub, matriz, modelos, variaveis, resumo_m):
         "q1b_series_com_tres_cenarios_antes": sum(pub_completa.values()),
         "q2_series_com_tres_cenarios_depois_registro_tecnico": sum(serie_completa.values()),
         "q2b_metricas_com_90pct_das_series_completas_depois": sum(1 for k in serie_completa if com_mod[k] and serie_completa[k] >= 0.9 * com_mod[k]),
+        "moderado_substituido_por_otimizado": {"/".join(k): n for k, n in subs.items()},
         "q3_modelos_que_melhoraram_fora_da_amostra": sorted(f"{r['conceito']}/{r['metrica']}:{r['modelo']}" for r in otim if r["veredito"] == "MELHOROU_FORA_DA_AMOSTRA"),
         "q4_variaveis_descartadas": {"ocorrencias": sum(desc.values()), "por_variavel": dict(desc)},
         "q5_variaveis_mais_relevantes_por_familia_S": top_fam,
