@@ -8,7 +8,7 @@
 |---|---|
 | Repositório | `artelias/BDGD` |
 | Branch | `rc/1.0-20261101` |
-| SHA avaliado | `{{SHA_FINAL}}` (parte de `a7df5e250ee2d6e521d3c52ab92c624ab5a91712`, com as correções finais de release) |
+| SHA avaliado | `e4bc55cadee8b0bb025f46475852262d26cfd423 (código testado; o commit seguinte só preenche este dossiê)` (parte de `a7df5e250ee2d6e521d3c52ab92c624ab5a91712`, com as correções finais de release) |
 | Data da avaliação técnica | 03/11/2026 |
 | Competência dos dados | 31/12/2025 (histórico 2022–2025; cenários 2026–2030) |
 | Ambiente avaliado | build estática local (produção e homologação), CI GitHub Actions (Linux) e preview Vercel (build; conteúdo não inspecionado) |
@@ -38,16 +38,16 @@
 ## 3. Requisitos e resultado
 
 Ver `01_MATRIZ_REQUISITOS.csv`. São 22 requisitos:
-- **{{N_ATENDIDO}} atendidos**;
-- **{{N_RESSALVA}} atendidos com ressalva**;
-- **{{N_NAO_ATENDIDO}} não atendidos**;
-- **{{N_NAO_VERIFICADO}} não verificados**.
+- **15 atendidos**;
+- **5 atendidos com ressalva**;
+- **0 não atendidos**;
+- **2 não verificados**.
 
 O preview em conteúdo e a ciência estão fora do aceite de engenharia.
 
 ## 4. Testes executados
 
-Ver `02_EVIDENCIAS_TESTES.md`, com comandos, contagens e identificadores dos runs. Resumo: {{RESUMO_TESTES}}.
+Ver `02_EVIDENCIAS_TESTES.md`, com comandos, contagens e identificadores dos runs. Resumo: Motor V2 281/281; emulação do CI 179 OK; gerador público 25 OK e `--check` OK; ESLint 0; TypeScript 0; Vitest 196/196; Playwright local 347/351 (4 falhas de um teste corrigido) e specs afetados 33/33 e 21/21 na build final; CI Linux web (E2E completo) e sintético success no SHA avaliado.
 
 ## 5. Ressalvas que acompanham um eventual aceite
 

@@ -1,6 +1,6 @@
 # 02 — Evidências de testes (engenharia)
 
-**Objeto:** `rc/1.0-20261101`, SHA `{{SHA_FINAL}}`. As execuções locais foram feitas em 03/11/2026, em Windows 10, Node 22 e Python 3.12.2 (Motor V2, scikit-learn 1.9.1) / 3.14 (gerador público, scikit-learn 1.8.0). O CI roda em GitHub Actions (ubuntu-latest). Cada linha traz o comando para repetir a execução.
+**Objeto:** `rc/1.0-20261101`, SHA `e4bc55cadee8b0bb025f46475852262d26cfd423 (código testado; o commit seguinte só preenche este dossiê)`. As execuções locais foram feitas em 03/11/2026, em Windows 10, Node 22 e Python 3.12.2 (Motor V2, scikit-learn 1.9.1) / 3.14 (gerador público, scikit-learn 1.8.0). O CI roda em GitHub Actions (ubuntu-latest). Cada linha traz o comando para repetir a execução.
 
 ## Python
 
@@ -28,8 +28,8 @@
 
 | Workflow | Run | Resultado |
 |---|---|---|
-| Núcleo de Dados BDGD — web 2025 (lint, tipos, Vitest, gerador `--check`, contrato físico, validadores ETL, build de produção com portão fechado, build de homologação, Playwright completo) | {{RUN_WEB}} | {{RES_WEB}} |
-| Motor V2 — testes sintéticos | {{RUN_SINT}} | {{RES_SINT}} |
+| Núcleo de Dados BDGD — web 2025 (lint, tipos, Vitest, gerador `--check`, contrato físico, validadores ETL, build de produção com portão fechado, build de homologação, Playwright completo) | [41747836815](https://github.com/artelias/BDGD/actions/runs/41747836815) | **success** |
+| Motor V2 — testes sintéticos | [41747837003](https://github.com/artelias/BDGD/actions/runs/41747837003) | **success** |
 
 ## Evidência visual
 
