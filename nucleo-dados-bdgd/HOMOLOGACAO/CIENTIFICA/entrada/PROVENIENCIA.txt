@@ -1,0 +1,1 @@
+PONTOS_AVALIACAO.csv copiado de exp/otimizacao-modelos-20261103@997c4d7 (motor_cenarios/otimizacao/saida/), sha256 e21fc1fe7efa76c91943b955ea3a36e8c9e0170343966d6d378b649368d81908
