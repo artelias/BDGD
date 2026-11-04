@@ -97,3 +97,28 @@ Novos testes de regressão:
 - `web/tests/release-correcoes.test.ts`;
 - `motor_v2/tests/test_produto_web_v2.py`;
 - teste novo em `motor_cenarios/test_publico.py`.
+
+## Integração do PR #21 (04/11/2026)
+
+O PR #21 retira o painel "Explorar cenários 2026–2030". A experiência pública de cenários passa a ser só o painel principal, "Cenários de expansão por métrica física". Os dados exploratórios continuam publicados e validados no CI.
+
+Para não perder ressalvas do painel retirado:
+- a Coopera (DIST 5370) continua selecionável e bloqueada em consumidores;
+- as observações cadastrais da distribuidora e do ativo selecionados aparecem no painel principal.
+
+Oito specs que dependiam da interface retirada foram **adaptados, não desativados**:
+
+| Spec | O que verificava | Como fica |
+|---|---|---|
+| `auditoria-pr6` | filtros, métodos e anos; CSV de zeros; rótulos do gráfico; falha de carga; visual e teclado no celular | os mesmos aspectos no painel principal, sobre `cenarios-motor.json`, mais a ausência do painel retirado. Os zeros técnicos do produto exploratório seguem no Vitest |
+| `motor-universal` | título do painel exploratório antes da carga sob demanda | título do painel principal, mais a ausência do retirado |
+| `natureza-fisica` | card, tabela e CSV do painel exploratório | o produto exploratório continua publicado com contagens inteiras; a exibição por natureza física é auditada no painel principal pelos 4 casos do mesmo arquivo |
+| `previsoes-integracao` | ordem resultados × ressalvas; celular | painel principal antes da ressalva longa (posição medida); celular sem rolagem |
+| `publicacoes-previsoes` | mesmo valor no gráfico, na tabela e no CSV | idem no painel principal (DIST 26, alimentadores) |
+| `qa-final` | filtros e exportação no iPhone; alvo de carga da página | idem no painel principal |
+| `reconciliacao` | Coopera bloqueada com ressalva | idem no painel principal (incluindo "Observações e ressalvas dos dados", 225) |
+| `riscos-cenarios` | avisos da tendência exploratória (truncamento no zero, quatro zeros técnicos) | nenhuma trajetória publicada chega a zero; DIST 39 (reatores, zeros técnicos) não é oferecida; a lógica dos riscos segue no Vitest (`risco-cenarios.test.ts`) |
+
+Também foi atualizada a asserção da Coopera em `cenarios-motor.spec.ts`: ela era "ausente da lista" e passa a ser "presente, bloqueada, sem tabela e sem CSV".
+
+Resultados no SHA da integração: ver `HOMOLOGACAO/ENGENHARIA/02_EVIDENCIAS_TESTES.md`.

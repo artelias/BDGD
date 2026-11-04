@@ -50,3 +50,13 @@ Branch `rc/1.0-20261101`, partindo de `81263e0`. Código testado: `ae3ef26`; os 
 | Agregado nacional dos extremos apresentado como cenário (NC-ENG-01) | **Corrigido** | `agregado_extremos`; o documento 11 tinha uma afirmação sem lastro, agora corrigida |
 
 O aceite formal de engenharia está em `HOMOLOGACAO/ENGENHARIA/` e **não está assinado**. A homologação científica é um processo separado.
+
+## Fechamento (04/11/2026)
+
+| Item | Estado | Evidência |
+|---|---|---|
+| Commit `26ec937` ausente no remoto | **Corrigido** (publicado e conferido com `ls-remote`) | NC-ENG-12 |
+| PR #21 integrado (painel único de cenários) | **Atendido** | merge `81414e6`; `1be7a43`; ENG-23 |
+| Regressão completa no SHA da integração `1be7a43` | **Aprovada**: Python 281/281; gerador 25 OK e `--check` OK; ESLint 0; TypeScript 0; Vitest 196/196; Playwright 352/352; CI com 6 workflows em success | `HOMOLOGACAO/ENGENHARIA/02_EVIDENCIAS_TESTES.md` |
+| Inspeção funcional do preview | **pendente (humana)** | `HOMOLOGACAO/ENGENHARIA/05_CHECKLIST_INSPECAO_PREVIEW.md` |
+| Decisões e recomendação de publicação | preparadas | `HOMOLOGACAO/ENGENHARIA/06_DECISOES_E_RECOMENDACAO_PUBLICACAO.md` |
