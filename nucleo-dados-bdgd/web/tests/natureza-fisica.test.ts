@@ -101,7 +101,7 @@ describe("produtos públicos respeitam o contrato", () => {
 
   it("exportação CSV: contagens inteiras e extensões com decimais", () => {
     const c = parseCenarios(produto("itens", "quantidade", [11, 12]));
-    expect(exportarCsv(c, c.metricas[0], "1")).toContain("2026,simulacao_condicional,,11,");
+    expect(exportarCsv(c, c.metricas[0], "1")).toContain("2026,simulacao_condicional,,,11,");   // observado vazio, conservador não publicado, moderado 11
     const k = parseCenarios(produto("km", "extensao_km", [11.25, 12.5]));
     expect(exportarCsv(k, k.metricas[0], "1")).toContain(",11.25,");
   });

@@ -42,6 +42,7 @@ export const AratMap = forwardRef<AratMapHandle, {
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState<string | null>(null);
   const { resolved } = useTheme();
+  const estado = useRef<HTMLSpanElement>(null);
   const hovered = useRef<number | null>(null);
   const allIds = useRef<number[]>([]);
   const selRef = useRef<number | null>(null);
@@ -135,10 +136,12 @@ export const AratMap = forwardRef<AratMapHandle, {
     return () => { alive = false; m?.remove(); map.current = null; };
   }, []);
 
-  // tema: recolore sem recriar o mapa
+  // tema: recolore sem recriar o mapa. As variáveis CSS lidas aqui já são as do tema novo, porque o ThemeProvider
+  // grava data-theme num efeito de layout (antes deste efeito); se não forem, o mapa não pinta um tema misturado.
   useEffect(() => {
     const m = map.current; if (!m || !ready) return;
     const t = resolved;
+    if (document.documentElement.dataset.theme !== t) return;
     m.setPaintProperty("fundo", "background-color", cssVar("--map-water"));
     m.setPaintProperty("paises", "fill-color", ["case", ["get", "br"], cssVar("--map-land-br"), cssVar("--map-land")]);
     m.setPaintProperty("paises-linha", "line-color", cssVar("--map-line"));
@@ -148,6 +151,7 @@ export const AratMap = forwardRef<AratMapHandle, {
     m.setPaintProperty("arat-hover", "line-color", cssVar("--text"));
     m.setPaintProperty("detalhe-linha", "line-color", cssVar("--accent"));
     if (m.hasImage("hachura")) { const r = window.devicePixelRatio || 1; m.updateImage("hachura", hatch(t === "dark" ? "#9aa0a8" : "#6f716b", r)); }
+    if (estado.current) { estado.current.dataset.tema = t; estado.current.dataset.fundo = String(m.getPaintProperty("fundo", "background-color")); }
   }, [resolved, ready]);
 
   // destaque de recorte (grupo) e seleção
@@ -184,7 +188,7 @@ export const AratMap = forwardRef<AratMapHandle, {
       {!ready && !failed && <div className={s.mapLoading} aria-hidden><span className="skeleton" style={{ position: "absolute", inset: 0, borderRadius: 0, opacity: 0.6 }} /></div>}
       {failed && <div className={s.mapError} role="alert">O mapa não pôde ser carregado ({failed}). Os indicadores continuam disponíveis na lista e nas tabelas.</div>}
       <noscript>O mapa requer JavaScript; use a Matriz de ativos.</noscript>
-      <span data-testid="map-ready" data-ready={ready} hidden />
+      <span ref={estado} data-testid="map-ready" data-ready={ready} hidden />
       <span hidden data-src={DATA_ROOT} />
     </div>
   );

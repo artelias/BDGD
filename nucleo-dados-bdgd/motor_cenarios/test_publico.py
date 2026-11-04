@@ -54,6 +54,21 @@ class ProdutoPublico(unittest.TestCase):
                     self.assertIs(type(v), int, (m["conceito"], v)); self.assertGreaterEqual(v, 0)
         self.assertGreater(n, 5000)
 
+    def test_extremo_nunca_sem_moderado_e_ausencia_com_motivo(self):
+        """Conservador/Agressivo são definidos em relação ao Moderado: série sem Moderado não publica extremo; quando a métrica
+        tem modelo para o cenário e a série fica sem ele, o motivo do gerador está registrado."""
+        validos = {"TRAJETORIA_IMPLAUSIVEL_NA_SERIE", "HISTORICO_CONTIGUO_INSUFICIENTE", "MODELO_SEM_PROJECAO_NA_SERIE", "SEM_MODERADO_NA_SERIE"}
+        n = 0
+        for m in self.d["metricas"]:
+            for d, s in m["series"].items():
+                if s["moderado"] is None:
+                    self.assertIsNone(s["conservador"], (m["conceito"], d)); self.assertIsNone(s["agressivo"], (m["conceito"], d))
+                for c in ("conservador", "moderado", "agressivo"):
+                    if m["cenarios"][c] and s[c] is None:
+                        n += 1
+                        self.assertIn(s.get("motivos", {}).get(c), validos, (m["conceito"], m["metrica"], d, c))
+        self.assertGreater(n, 0)
+
     def test_bruto_nao_esta_no_produto_publico(self):
         txt = PRODUTO.read_text(encoding="utf-8")
         self.assertNotIn("raw_prediction", txt)

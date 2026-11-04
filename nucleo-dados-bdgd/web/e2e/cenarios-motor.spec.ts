@@ -11,7 +11,7 @@ test.describe("Motor de Expansão — cenários Conservador | Moderado | Agressi
     const radios = sec.getByRole("radiogroup", { name: "Cenário" }).getByRole("radio");
     await expect(radios).toHaveCount(3);
     for (const [i, c] of ["conservador", "moderado", "agressivo"].entries())
-      await (m.cenarios[c] ? expect(radios.nth(i)).toBeEnabled() : expect(radios.nth(i)).toBeDisabled());
+      await (m.series["7019"][c] ? expect(radios.nth(i)).toBeEnabled() : expect(radios.nth(i)).toBeDisabled());   // publicado nesta série
     await expect(radios.nth(1)).toHaveAttribute("aria-checked", "true");
     const s = m.series["7019"];
     const tabela = sec.getByRole("region", { name: "Tabela anual de histórico e cenários" });

@@ -4,9 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import type { EChartsCoreOption } from "echarts/core";
 import { EChart, type ChartTokens } from "@/components/charts/EChart";
 import {
-  CENARIOS_V2, URL_INDICE, csvSerieV2, ehContagemV2, fmtV2, motorV2Habilitado, pctV2, projetada, somaGrupo, urlDist, validarDist, validarIndice,
-  type CenarioV2, type DistV2, type IndiceV2, type SerieV2,
+  CENARIOS_V2, URL_INDICE, completudeV2, csvSerieV2, ehContagemV2, fmtV2, motorV2Habilitado, pctV2, projetada, somaGrupo, urlDist, validarDist, validarIndice,
+  type CenarioV2, type DistV2, type IndiceV2, type ObjetivoV2, type SerieV2,
 } from "@/lib/motor-v2";
+import { resumoCompletude, type CompletudeSerie } from "@/lib/completude";
+import { CompletudeCenarios } from "./CompletudeCenarios";
 import s from "./cenarios-motor.module.css";
 
 /** Resultados experimentais do Motor V2 por distribuidora, ativo e métrica. Produto pré-calculado; nada é treinado aqui.
@@ -69,6 +71,11 @@ function Explorador({ ix }: { ix: IndiceV2 }) {
   const carregando = membros.some((d) => !arquivos.dados[d.dist] && !arquivos.erros[d.dist]);
   const erro = membros.map((d) => arquivos.erros[d.dist]).find(Boolean);
   const nomeEscopo = distSel ? `${distSel.empresa} · DIST ${distSel.dist}` : `Grupo ${ix.grupos[id] ?? id} (${membros.length} distribuidoras)`;
+  // completude no recorte: série da DIST ou soma do grupo (que só inclui DIST com os três cenários publicáveis)
+  const comp: CompletudeSerie<CenarioV2> | null = distSel ? (series[0]?.serie ? completudeV2(series[0].serie) : null)
+    : series.some((x) => x.serie) ? completudeGrupoV2(series) : null;
+  const publicado = (c: CenarioV2) => !!comp?.publicados.includes(c);
+  const ativo: CenarioV2 = publicado(cenario) ? cenario : "Moderado";
 
   return <>
     <div className={s.filters}>
@@ -81,17 +88,18 @@ function Explorador({ ix }: { ix: IndiceV2 }) {
         {grupos.length > 0 && <optgroup label="Grupos econômicos">{grupos.map(([g, nome]) => <option key={g} value={`grupo:${g}`}>{nome}</option>)}</optgroup>}
       </select></label>
     </div>
-    <div className={s.cenarios} role="radiogroup" aria-label="Cenário do Motor V2">
-      {CENARIOS_V2.map((c) => <button key={c} type="button" role="radio" aria-checked={cenario === c} className={s.cenario} data-ativo={cenario === c} onClick={() => setCenario(c)}>
+    <div className={s.cenarios} role="radiogroup" aria-label="Cenário do Motor V2" data-testid="motor-v2-cartoes">
+      {CENARIOS_V2.map((c) => { const disp = publicado(c); return <button key={c} type="button" role="radio" aria-checked={ativo === c} disabled={!disp} className={s.cenario} data-ativo={ativo === c}
+        data-publicado={disp} title={comp?.naoPublicados.find(([x]) => x === c)?.[1]} onClick={() => setCenario(c)}>
         <span className={s.cenarioNome}>{c}</span>
-        <span className={s.cenarioModelo}>{c === "Moderado" ? "trajetória do modelo" : c === "Conservador" ? "menor crescimento observado" : "maior crescimento observado"}</span>
-      </button>)}
-      <label className={s.check}><input type="checkbox" checked={comparar} onChange={(e) => setComparar(e.target.checked)} /> Comparar os três cenários</label>
+        <span className={s.cenarioModelo}>{!disp ? "Não publicado neste recorte" : c === "Moderado" ? "trajetória do modelo" : c === "Conservador" ? "menor crescimento observado" : "maior crescimento observado"}</span>
+      </button>; })}
+      {comp && comp.publicados.length > 1 && <label className={s.check}><input type="checkbox" checked={comparar} onChange={(e) => setComparar(e.target.checked)} /> Comparar os {comp.publicados.length} cenários publicados</label>}
     </div>
     {erro ? <div role="alert" className={s.alert}><p>{erro}</p><button type="button" onClick={arquivos.repetir}>Tentar novamente</button></div>
       : carregando ? <p role="status">Carregando as séries de {nomeEscopo}…</p>
-        : distSel ? <SerieDist ix={ix} d={arquivos.dados[distSel.dist]!} serie={series[0]?.serie} cenario={cenario} comparar={comparar} />
-          : <SerieGrupo ix={ix} nome={nomeEscopo} series={series} cenario={cenario} comparar={comparar} />}
+        : distSel ? <SerieDist ix={ix} d={arquivos.dados[distSel.dist]!} serie={series[0]?.serie} cenario={ativo} comparar={comparar} />
+          : <SerieGrupo ix={ix} nome={nomeEscopo} series={series} cenario={ativo} comparar={comparar} comp={comp} />}
     <Cobertura ix={ix} chave={k} />
     <details className={s.detalhes}><summary>Limitações e proveniência do Motor V2</summary>
       <ul>{ix.limitacoes.map((l) => <li key={l}>{l}</li>)}</ul>
@@ -99,6 +107,13 @@ function Explorador({ ix }: { ix: IndiceV2 }) {
     </details>
     <div className={s.acoes}><Link className={s.export} href="/metodologia/#motor-v2">Metodologia do Motor V2 por empresa e métrica</Link></div>
   </>;
+}
+
+/** Grupo: a soma só inclui DIST com os três cenários publicáveis, então o grupo tem os três ou nenhum. */
+function completudeGrupoV2(series: { dist: number; empresa: string; serie: SerieV2 | undefined }[]): CompletudeSerie<CenarioV2> {
+  const g = somaGrupo(series, "Moderado");
+  return g.total && g.rotulo !== "NAO_SOMAVEL" ? { estado: "COMPLETA", publicados: [...CENARIOS_V2], naoPublicados: [] }
+    : { estado: "SEM_PREVISAO", publicados: [], naoPublicados: CENARIOS_V2.map((c): [CenarioV2, string] => [c, g.rotulo === "NAO_SOMAVEL" ? "métrica não somável entre distribuidoras" : "nenhuma distribuidora do grupo tem os três cenários publicáveis com âncora 2025"]) };
 }
 
 function useArquivos(ids: number[]) {
@@ -150,19 +165,22 @@ function SerieDist({ ix, d, serie, cenario, comparar }: { ix: IndiceV2; d: DistV
   if (!serie || !build) return <p role="status" className={s.alert}>Combinação sem registro para esta distribuidora.</p>;
   const est = ix.estados[serie.estado];
   const csv = csvSerieV2(d, serie);
+  const comp = completudeV2(serie);
+  const pubs = CENARIOS_V2.filter((c) => comp.publicados.includes(c));
   return <>
     <p className={s.estado} data-testid="motor-v2-estado"><b>{est?.rotulo ?? serie.estado}</b> · experimental, não homologado. {serie.motivo}</p>
+    {projetada(serie) || serie.estado === "BLOQUEIO_PLAUSIBILIDADE" ? <CompletudeCenarios c={comp} rotulo={(x) => x} testId="motor-v2-completude" /> : null}
     <AlertasPlausibilidade serie={serie} cenario={cenario} />
     {serie.estado === "SEM_ANCORA_2025" && <p className={s.alert} role="note">Âncora {serie.ancora}: horizonte real {serie.horizonte_real}. Esta série não entra em totais que exigem âncora 2025.</p>}
-    <EChart build={build} height={320} ariaLabel={`Histórico e cenários do Motor V2 — ${serie.nome} (${serie.unidade}) — ${d.empresa}`} testId="motor-v2-grafico" />
+    {pubs.length > 0 && <EChart build={build} height={320} ariaLabel={`Histórico e cenários do Motor V2 — ${serie.nome} (${serie.unidade}) — ${d.empresa} — ${resumoCompletude(comp, (x) => x)}`} testId="motor-v2-grafico" />}
     <div className={s.scroll} role="region" tabIndex={0} aria-label="Tabela anual do Motor V2">
-      <table data-testid="motor-v2-tabela">
-        <caption className={s.caption}>{serie.nome} — {serie.metrica} ({serie.unidade}) · {d.empresa} · DIST {d.dist}</caption>
-        <thead><tr><th scope="col">Ano</th><th scope="col">Natureza</th>{CENARIOS_V2.map((c) => <th scope="col" key={c}>{c}</th>)}</tr></thead>
+      <table data-testid="motor-v2-tabela" data-completude={comp.estado}>
+        <caption className={s.caption}>{serie.nome} — {serie.metrica} ({serie.unidade}) · {d.empresa} · DIST {d.dist}{projetada(serie) ? ` · ${resumoCompletude(comp, (x) => x)}` : ""}</caption>
+        <thead><tr><th scope="col">Ano</th><th scope="col">Natureza</th>{pubs.map((c) => <th scope="col" key={c}>{c}</th>)}</tr></thead>
         <tbody>
-          {serie.historico.map(([a, v, e]) => <tr key={a}><th scope="row">{a}</th><td>Observado · {e}</td><td colSpan={3}>{fmtV2(v, serie)}</td></tr>)}
-          {ix.anos_projecao.map((a, i) => <tr key={a}><th scope="row">{a}</th><td>Projeção experimental</td>
-            {CENARIOS_V2.map((c) => <td key={c} data-ativo={c === cenario} data-estado-cenario={serie.cenarios_status?.[c] ?? ""}>{serie.cenarios && serie.cenarios[c] ? fmtV2(serie.cenarios[c]![i], serie) : serie.cenarios_status?.[c] === "BLOQUEADO" ? <span title={serie.plausibilidade?.cenarios?.[c as "Conservador" | "Agressivo"]?.motivo ?? ""}>Bloqueado</span> : "N/D"}{serie.cenarios_status?.[c] === "CORRIGIDO" ? " *" : ""}</td>)}</tr>)}
+          {serie.historico.map(([a, v, e]) => <tr key={a}><th scope="row">{a}</th><td>Observado · {e}</td><td colSpan={Math.max(pubs.length, 1)}>{fmtV2(v, serie)}</td></tr>)}
+          {pubs.length > 0 && ix.anos_projecao.map((a, i) => <tr key={a}><th scope="row">{a}</th><td>Projeção experimental</td>
+            {pubs.map((c) => <td key={c} data-ativo={c === cenario} data-estado-cenario={serie.cenarios_status?.[c] ?? ""}>{fmtV2(serie.cenarios![c]![i], serie)}{serie.cenarios_status?.[c] === "CORRIGIDO" ? " *" : ""}</td>)}</tr>)}
         </tbody>
       </table>
     </div>
@@ -208,7 +226,7 @@ function Modelo({ serie }: { serie: SerieV2 }) {
   </div>;
 }
 
-function SerieGrupo({ ix, nome, series, cenario, comparar }: { ix: IndiceV2; nome: string; series: { dist: number; empresa: string; serie: SerieV2 | undefined }[]; cenario: CenarioV2; comparar: boolean }) {
+function SerieGrupo({ ix, nome, series, cenario, comparar, comp }: { ix: IndiceV2; nome: string; series: { dist: number; empresa: string; serie: SerieV2 | undefined }[]; cenario: CenarioV2; comparar: boolean; comp: CompletudeSerie<CenarioV2> | null }) {
   const ref = series.find((x) => x.serie)?.serie;
   const somas = Object.fromEntries(CENARIOS_V2.map((c) => [c, somaGrupo(series, c)])) as Record<CenarioV2, ReturnType<typeof somaGrupo>>;
   const g = somas[cenario];
@@ -219,6 +237,8 @@ function SerieGrupo({ ix, nome, series, cenario, comparar }: { ix: IndiceV2; nom
   if (!ref) return <p role="status" className={s.alert}>Nenhuma distribuidora do grupo tem esta combinação.</p>;
   if (g.rotulo === "NAO_SOMAVEL") return <p role="status" className={s.alert} data-testid="motor-v2-nao-somavel">Potência de reguladores não é somável entre distribuidoras (potência própria e passante). Escolha uma distribuidora.</p>;
   return <>
+    {comp && <CompletudeCenarios c={comp} rotulo={(x) => x} testId="motor-v2-completude" />}
+    <p className={s.limite} data-testid="motor-v2-grupo-extremos">Conservador e Agressivo do grupo são a soma dos extremos de cada distribuidora, não um cenário do grupo.</p>
     <p className={s.estado} data-testid="motor-v2-grupo-rotulo"><b>{g.rotulo === "PARCIAL" ? "Total PARCIAL" : "Total do grupo"}</b> · {g.incluidas} de {series.length} distribuidoras com série ancorada em 2025.{g.faltam.length ? ` Fora da soma (sem projeção com âncora 2025): ${g.faltam.join(", ")}. Nada foi preenchido com zero.` : ""}</p>
     {g.total && <EChart build={build} height={300} ariaLabel={`Soma do Motor V2 — ${ref.nome} — ${nome}`} testId="motor-v2-grafico-grupo" />}
     <div className={s.scroll} role="region" tabIndex={0} aria-label="Tabela do grupo no Motor V2">
@@ -230,14 +250,32 @@ function SerieGrupo({ ix, nome, series, cenario, comparar }: { ix: IndiceV2; nom
   </>;
 }
 
+const pctAno = (g: number | null | undefined) => g == null ? "N/D" : `${(100 * (Math.exp(g) - 1)).toLocaleString("pt-BR", { maximumFractionDigits: 1, minimumFractionDigits: 1 })}%/ano`;
+
+/** Conservador e Agressivo nacionais são a SOMA dos extremos individuais, não um cenário nacional: as distribuidoras não atingem o
+ *  extremo ao mesmo tempo. Quando a soma implica crescimento fora do observado nacionalmente no mesmo conjunto, o alerta é explícito. */
+function AgregadoExtremos({ o }: { o: ObjetivoV2 }) {
+  const a = o.agregado_extremos;
+  const t = o.total_2030!;
+  const fora = (c: CenarioV2) => c === "Agressivo" ? a?.agressivo_acima_do_observado : c === "Conservador" ? a?.conservador_abaixo_do_observado : false;
+  return <div className={a?.alerta ? s.alert : s.estado} role={a?.alerta ? "note" : undefined} data-testid="motor-v2-agregado-extremos" data-alerta={!!a?.alerta}>
+    <p><b>Soma dos extremos individuais (não é cenário nacional):</b> Conservador {fmtV2(t.Conservador, o)} · Agressivo {fmtV2(t.Agressivo, o)}. Cada distribuidora é somada no seu próprio extremo; as distribuidoras não atingem o extremo ao mesmo tempo.</p>
+    {a?.crescimento_implicito && <p>Crescimento anual implícito 2025–2030: {(["Conservador", "Moderado", "Agressivo"] as const).map((c) => `${c} ${pctAno(a.crescimento_implicito![c])}${fora(c) ? " (fora do observado)" : ""}`).join(" · ")}. Crescimento nacional observado no mesmo conjunto de {a.n_series} séries, {a.transicoes_observadas} transições 2022–2025: de {pctAno(a.crescimento_nacional_observado_min)} a {pctAno(a.crescimento_nacional_observado_max)}.</p>}
+    {a?.alerta && <p data-testid="motor-v2-agregado-alerta"><b>Alerta:</b> {[a.agressivo_acima_do_observado && "a soma dos Agressivos supera o maior crescimento nacional observado", a.conservador_abaixo_do_observado && "a soma dos Conservadores fica abaixo do menor crescimento nacional observado"].filter(Boolean).join("; ")}. Use o Moderado como referência nacional; os extremos valem por distribuidora.</p>}
+  </div>;
+}
+
 function Cobertura({ ix, chave }: { ix: IndiceV2; chave: string }) {
   const o = ix.objetivos.find((x) => `${x.objetivo}|${x.metrica}` === chave);
   if (!o) return null;
   const total = ix.dists.length;
   return <div className={s.modelo} data-testid="motor-v2-cobertura">
     <h3>Cobertura nacional de {o.nome} ({o.unidade})</h3>
+    {o.completude_cenarios && <p data-testid="motor-v2-completude-nacional">Séries com previsão: <b>{o.completude_cenarios.COMPLETA}</b> com os três cenários · <b>{o.completude_cenarios.PARCIAL}</b> parciais (Moderado com extremo bloqueado) · <b>{o.completude_cenarios.SEM_PREVISAO}</b> bloqueadas, sem cenário publicável.</p>}
     <p>{o.series_com_15_valores} de {total} distribuidoras com os 15 valores (5 anos × 3 cenários){o.series_com_cenario_bloqueado ? `; ${o.series_com_cenario_bloqueado} com cenário extremo bloqueado pela plausibilidade (sem os 15 valores)` : ""}. Estado das demais: {Object.entries(o.estados).filter(([e]) => !projetada({ estado: e })).map(([e, n]) => `${ix.estados[e]?.rotulo ?? e}: ${n}`).join(" · ") || "nenhuma"}.</p>
-    {o.total_2030 ? <p>Total 2030 <b data-testid="motor-v2-rotulo-total">{o.rotulo_total}</b>{o.cobertura_estoque_2025 != null ? ` (cobre ${pctV2(o.cobertura_estoque_2025, 2)} do estoque 2025 do contrato)` : ""}: {CENARIOS_V2.map((c) => `${c} ${fmtV2(o.total_2030![c], o)}`).join(" · ")}, somando as mesmas {o.n_series_total?.Moderado ?? "N/D"} séries (as que têm os três cenários publicáveis).{o.series_com_cenario_bloqueado ? ` Moderado com todas as ${o.n_series_moderado_todas} séries projetadas: ${fmtV2(o.total_2030_moderado_todas ?? null, o)}.` : ""}</p>
-      : <p>{o.observacao ?? "Sem total nacional."}</p>}
+    {o.total_2030 ? <>
+      <p>Total 2030 <b data-testid="motor-v2-rotulo-total">{o.rotulo_total}</b>{o.cobertura_estoque_2025 != null ? ` (cobre ${pctV2(o.cobertura_estoque_2025, 2)} do estoque 2025 do contrato)` : ""}: Moderado <b>{fmtV2(o.total_2030.Moderado, o)}</b>, somando {o.n_series_total?.Moderado ?? "N/D"} séries (as que têm os três cenários publicáveis).{o.series_com_cenario_bloqueado ? ` Moderado com todas as ${o.n_series_moderado_todas} séries projetadas: ${fmtV2(o.total_2030_moderado_todas ?? null, o)}.` : ""}</p>
+      <AgregadoExtremos o={o} />
+    </> : <p>{o.observacao ?? "Sem total nacional."}</p>}
   </div>;
 }

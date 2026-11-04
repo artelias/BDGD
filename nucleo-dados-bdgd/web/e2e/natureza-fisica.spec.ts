@@ -69,11 +69,16 @@ for (const caso of CASOS) {
     // CSV exportado
     const href = await sec.getByRole("link", { name: "Exportar série e cenários (CSV)" }).getAttribute("href");
     const csv = decodeURIComponent(href!.split(",").slice(1).join(","));
-    const linhas = csv.trim().split("\n").slice(1).map((l) => l.split(","));
+    const [cab, ...corpo] = csv.trim().split("\n");
+    const linhas = corpo.map((l) => l.split(","));
     expect(linhas.length).toBe(m!.series[dist!].hist.length + produto.horizonte.length);
+    // colunas numéricas: observado e os três cenários (as de completude são texto); a do Moderado é localizada pelo cabeçalho
+    const col = cab.split(",");
+    const numericas = col.map((c, i) => [c, i] as const).filter(([c]) => c === "observado" || /^(conservador|moderado|agressivo)_/.test(c)).map(([, i]) => i);
+    const iMod = col.findIndex((c) => c.startsWith("moderado_") && c !== "moderado_nao_publicado");
     const sim2030 = linhas.find((l) => l[0] === "2030" && l[1] === "simulacao_condicional")!;
-    expect(Number(sim2030[3])).toBe(traj[4]);
-    for (const l of linhas) for (const v of l.slice(2)) if (v !== "" && caso.contagem) expect(v, `CSV de contagem: ${v}`).toMatch(/^\d+$/);
+    expect(Number(sim2030[iMod])).toBe(traj[4]);
+    for (const l of linhas) for (const i of numericas) if (l[i] !== "" && caso.contagem) expect(l[i], `CSV de contagem: ${l[i]}`).toMatch(/^\d+$/);
   });
 }
 

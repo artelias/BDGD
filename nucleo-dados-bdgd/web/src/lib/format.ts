@@ -24,12 +24,28 @@ export const METRIC_UNIT: Record<Metric, string> = {
   potencia_kva: "kVA",
 };
 
-/** Número completo, com separadores pt-BR. Nulo -> N/D (nunca zero). */
+/** Métricas de contagem física (unidades, registros, códigos): sempre inteiras em qualquer saída. */
+export const ehMetricaContagem = (metric?: Metric) => metric === "quantidade" || metric === "quantidade_registros" || metric === "quantidade_cod_id_distinto";
+export const VALOR_INVALIDO = "valor inválido";
+
+/** Número completo, com separadores pt-BR. Nulo -> N/D (nunca zero).
+ *  Contagem fracionária é erro de contrato da origem: não é arredondada aqui (aparece como "valor inválido" e registra o erro). */
 export function fmt(v: number | null | undefined, metric?: Metric): string {
   if (v === null || v === undefined || Number.isNaN(v)) return ND;
   if (metric === "extensao_km") return v < 100 ? nf1.format(v) : nf0.format(v);
   if (metric === "potencia_kva") return nf0.format(v);
+  if (ehMetricaContagem(metric) && !Number.isInteger(v)) {
+    console.error(`Contagem fracionária exibida como ${metric}: ${v}`);
+    return VALOR_INVALIDO;
+  }
   return Number.isInteger(v) ? nf0.format(v) : nf2.format(v);
+}
+
+/** Rótulo de eixo de gráfico. Em contagem, uma marca fracionária (12,5 entre 12 e 13) não é rotulada: os eixos de contagem
+ *  usam minInterval 1, e esta função garante que nenhuma marca fracionária apareça mesmo assim. */
+export function fmtEixo(v: number, metric?: Metric): string {
+  if (ehMetricaContagem(metric)) return Number.isInteger(v) ? nf0.format(v) : "";
+  return fmtCompact(v, metric);
 }
 
 /** Valor + unidade legível. Potência grande é exibida em MVA com a unidade explícita. */
@@ -45,12 +61,14 @@ export function fmtUnitCompact(v: number | null | undefined, metric: Metric): { 
   let x = v, unit = METRIC_UNIT[metric] === "itens" ? "" : METRIC_UNIT[metric];
   if (metric === "potencia_kva" && Math.abs(v) >= 10_000) { x = v / 1000; unit = "MVA"; }
   if (metric === "quantidade_registros" || metric === "quantidade_cod_id_distinto") unit = "";
-  const value = Math.abs(x) >= 100_000 ? compact.format(x) : fmt(x, metric === "potencia_kva" ? "potencia_kva" : metric);
+  // contagem não vira "12,5 mil": sai inteira, com separador de milhar
+  const value = Math.abs(x) >= 100_000 && !ehMetricaContagem(metric) ? compact.format(x) : fmt(x, metric === "potencia_kva" ? "potencia_kva" : metric);
   return { value, unit };
 }
 
 export function fmtCompact(v: number | null | undefined, metric?: Metric): string {
   if (v === null || v === undefined) return ND;
+  if (ehMetricaContagem(metric)) return fmt(v, metric);       // contagem: inteiro completo, nunca "1,2 mi"
   if (metric === "potencia_kva" && Math.abs(v) >= 10_000) return `${compact.format(v / 1000)} MVA`;
   const s = Math.abs(v) < 10_000 ? fmt(v, metric) : compact.format(v);
   if (metric === "extensao_km") return `${s} km`;

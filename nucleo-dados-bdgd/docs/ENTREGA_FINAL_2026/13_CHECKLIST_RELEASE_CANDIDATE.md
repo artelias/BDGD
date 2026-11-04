@@ -38,3 +38,15 @@ Branch `rc/1.0-20261101`, partindo de `81263e0`. Código testado: `ae3ef26`; os 
 ## Estado
 
 **RELEASE_CANDIDATE_1_0_APROVADO**, com duas ressalvas explícitas: o conteúdo do preview não foi inspecionado e o total nacional Agressivo de geradores está sinalizado para decisão humana. Zero modelos cientificamente homologados; isto não é homologação científica.
+
+## Correções finais de release (03/11/2026)
+
+| Defeito | Estado | Evidência |
+|---|---|---|
+| Cenários incompletos sem explicação coerente | **Corrigido** | completude única nos dois produtos; 8 extremos sem Moderado removidos do produto público; `14_*` |
+| Contagens com decimais | **Corrigido** | JSON do Motor V2 em inteiros; eixo e formatadores; testes Python, Vitest e E2E |
+| Informação técnica na lateral | **Corrigido** | `e2e/release-correcoes.spec.ts` |
+| Mapa com tema misturado | **Corrigido** | `e2e/mapa-tema.spec.ts` |
+| Agregado nacional dos extremos apresentado como cenário (NC-ENG-01) | **Corrigido** | `agregado_extremos`; o documento 11 tinha uma afirmação sem lastro, agora corrigida |
+
+O aceite formal de engenharia está em `HOMOLOGACAO/ENGENHARIA/` e **não está assinado**. A homologação científica é um processo separado.

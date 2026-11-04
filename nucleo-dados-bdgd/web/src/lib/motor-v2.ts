@@ -3,6 +3,8 @@
  * Só existe numa build de homologação (scripts/motor-v2-gate.mjs). Nada é treinado no navegador: o índice e um arquivo por
  * distribuidora são carregados sob demanda. Ausência é null e aparece como N/D, nunca como zero. */
 
+import { estadoCompletude, type Completude, type CompletudeSerie } from "./completude";
+
 export const SCHEMA_MOTOR_V2 = "motor-v2-homologacao/1";
 export const CENARIOS_V2 = ["Conservador", "Moderado", "Agressivo"] as const;
 export type CenarioV2 = (typeof CENARIOS_V2)[number];
@@ -35,6 +37,8 @@ export interface SerieV2 {
   cenarios: Record<CenarioV2, (number | null)[] | null> | null;
   cenarios_status: Record<CenarioV2, EstadoCenario> | null;
   plausibilidade: PlausibilidadeV2 | null;
+  /** Completude publicada pelo exportador; a interface confere com os cenários e recusa divergência. */
+  completude_cenarios: { estado: Completude; publicados: CenarioV2[]; nao_publicados: Partial<Record<CenarioV2, string>> };
   cenarios_meta: { degenerados: boolean; piso_zero: boolean; crescimento_log1p: Record<string, number | null>; transicoes_historicas: number | null; transicoes_atipicas_excluidas: unknown[]; regra: string } | null;
 }
 export interface DistV2 { schema: string; dist: number; empresa: string; grupo: string | null; series: SerieV2[] }
@@ -43,6 +47,13 @@ export interface ObjetivoV2 {
   estados: Record<string, number>; series_com_15_valores: number; cobertura_estoque_2025: number | null; rotulo_total: "PARCIAL" | "COMPLETO" | null;
   observacao: string | null; total_2030: Record<CenarioV2, number | null> | null;
   n_series_total?: Record<CenarioV2, number | null> | null; total_2030_moderado_todas?: number | null; n_series_moderado_todas?: number | null; series_com_cenario_bloqueado?: number; series_com_cenario_corrigido?: number;
+  completude_cenarios?: Record<Completude, number>;
+  /** Totais dos extremos = soma dos extremos individuais; comparados ao crescimento nacional observado no mesmo conjunto de séries. */
+  agregado_extremos?: AgregadoExtremosV2 | null;
+}
+export interface AgregadoExtremosV2 {
+  n_series: number; motivo?: string; estoque_2025?: number; crescimento_nacional_observado_min?: number; crescimento_nacional_observado_max?: number;
+  transicoes_observadas?: number; crescimento_implicito?: Record<CenarioV2, number | null>; agressivo_acima_do_observado?: boolean; conservador_abaixo_do_observado?: boolean; alerta?: boolean;
 }
 export interface IndiceV2 {
   schema: string; status_publicacao: string; contrato_sha256: string; anos_historicos: number[]; anos_projecao: number[]; cenarios: CenarioV2[];
@@ -88,6 +99,12 @@ export function validarDist(j: unknown): DistV2 {
         if (ehContagemV2(s) && v.some((x) => !Number.isInteger(x))) throw new Error(`Contagem fracionária: ${chaveSerie(s)}`);
       }
     } else if (s.cenarios) throw new Error(`Série sem projeção com valores: ${chaveSerie(s)}`);
+    if (ehContagemV2(s) && s.historico.some(([, v]) => v != null && !Number.isInteger(v))) throw new Error(`Contagem fracionária no histórico: ${chaveSerie(s)}`);
+    // a completude declarada precisa ser a dos cenários publicados (cards, gráfico, tabela e CSV leem a mesma)
+    const pub = CENARIOS_V2.filter((c) => s.cenarios?.[c]);
+    const est = estadoCompletude(CENARIOS_V2, "Moderado", pub, chaveSerie(s));
+    if (!s.completude_cenarios || s.completude_cenarios.estado !== est || s.completude_cenarios.publicados.join("|") !== pub.join("|"))
+      throw new Error(`Completude dos cenários divergente: ${chaveSerie(s)}`);
   }
   return d;
 }
@@ -121,6 +138,12 @@ export function somaGrupo(series: { dist: number; empresa: string; serie: SerieV
   return { total: n ? total : null, hist, faltam, incluidas: n, rotulo: naoAditiva ? "NAO_SOMAVEL" : faltam.length ? "PARCIAL" : "COMPLETO" } as const;
 }
 
+/** Completude da série para a interface: publicados e motivo de cada cenário ausente (do portão de plausibilidade ou do estado). */
+export function completudeV2(s: SerieV2): CompletudeSerie<CenarioV2> {
+  const c = s.completude_cenarios;
+  return { estado: c.estado, publicados: c.publicados, naoPublicados: CENARIOS_V2.filter((x) => !c.publicados.includes(x)).map((x): [CenarioV2, string] => [x, c.nao_publicados[x] ?? s.motivo]) };
+}
+
 export function fmtV2(v: number | null | undefined, s: Pick<SerieV2, "natureza" | "unidade">): string {
   if (v == null || !Number.isFinite(v)) return "N/D";
   return v.toLocaleString("pt-BR", { maximumFractionDigits: ehContagemV2(s) ? 0 : 1 });
@@ -132,9 +155,10 @@ const esc = (v: unknown) => { const t = v == null ? "" : String(v); return /[";\
 
 /** CSV coerente com o recorte: uma série de uma DIST, histórico com estado do contrato e os 15 valores; N/D fica vazio. */
 export function csvSerieV2(d: Pick<DistV2, "dist" | "empresa">, s: SerieV2): string {
-  const linhas = [["DIST", "empresa", "objetivo", "metrica", "unidade", "estado_serie", "ano", "tipo", "cenario", "valor", "estado_celula", "estado_cenario", "modelo", "status_publicacao"].join(";")];
-  for (const [a, v, est] of s.historico) linhas.push([d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, a, "observado", "", v, est, "", "", "experimental_nao_homologado"].map(esc).join(";"));
+  const comp = s.completude_cenarios.estado;
+  const linhas = [["DIST", "empresa", "objetivo", "metrica", "unidade", "estado_serie", "completude_cenarios", "ano", "tipo", "cenario", "valor", "estado_celula", "estado_cenario", "modelo", "status_publicacao"].join(";")];
+  for (const [a, v, est] of s.historico) linhas.push([d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, comp, a, "observado", "", v, est, "", "", "experimental_nao_homologado"].map(esc).join(";"));
   if (s.cenarios) for (const c of CENARIOS_V2) for (let i = 0; i < 5; i += 1) linhas.push(
-    [d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, 2026 + i, "projecao", c, s.cenarios[c]?.[i] ?? null, "", s.cenarios_status?.[c] ?? "", s.modelo?.id ?? "", "experimental_nao_homologado"].map(esc).join(";"));
+    [d.dist, d.empresa, s.objetivo, s.metrica, s.unidade, s.estado, comp, 2026 + i, "projecao", c, s.cenarios[c]?.[i] ?? null, "", s.cenarios_status?.[c] ?? "", s.modelo?.id ?? "", "experimental_nao_homologado"].map(esc).join(";"));
   return linhas.join("\n") + "\n";
 }

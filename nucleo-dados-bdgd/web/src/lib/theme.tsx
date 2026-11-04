@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, type ReactNode } from "react";
+import { createContext, useContext, useLayoutEffect, type ReactNode } from "react";
 import { useMediaQuery, useStoredValue } from "./hooks";
 
 export type ThemePref = "system" | "light" | "dark";
@@ -16,8 +16,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const pref: ThemePref = stored === "light" || stored === "dark" ? stored : "system";
   const systemDark = useMediaQuery("(prefers-color-scheme: dark)");
   const resolved: Resolved = pref === "dark" || (pref === "system" && systemDark) ? "dark" : "light";
-  // sincroniza o DOM (sistema externo) com o estado do React
-  useEffect(() => { document.documentElement.dataset.theme = resolved; }, [resolved]);
+  // Sincroniza o DOM (sistema externo) com o estado do React num efeito de LAYOUT: o React roda todos os efeitos de layout
+  // antes dos efeitos comuns, e os dos filhos antes dos do pai. Com useEffect, o mapa e os gráficos (filhos) liam as
+  // variáveis CSS do tema anterior ao recolorir, e o mapa ficava com o fundo de um tema e as áreas de outro.
+  useLayoutEffect(() => { document.documentElement.dataset.theme = resolved; }, [resolved]);
   return <Ctx.Provider value={{ pref, resolved, setPref: setStored }}>{children}</Ctx.Provider>;
 }
 

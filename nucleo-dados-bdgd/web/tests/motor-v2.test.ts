@@ -140,13 +140,18 @@ describe("produto do Motor V2 (data-motor-v2, homologação)", () => {
 });
 
 describe("regras da interface do Motor V2", () => {
-  const serie = (over: Partial<SerieV2>): SerieV2 => ({
+  // completude derivada dos cenários do fixture (o exportador a publica; validarDist confere)
+  const comCompletude = (x: Omit<SerieV2, "completude_cenarios"> & Partial<Pick<SerieV2, "completude_cenarios">>): SerieV2 => {
+    const pub = CENARIOS_V2.filter((c) => x.cenarios?.[c]);
+    return { ...x, completude_cenarios: x.completude_cenarios ?? { estado: pub.length === 3 ? "COMPLETA" : pub.length ? "PARCIAL" : "SEM_PREVISAO", publicados: pub, nao_publicados: {} } };
+  };
+  const serie = (over: Partial<SerieV2>): SerieV2 => comCompletude({
     objetivo: "postes", metrica: "quantidade", nome: "Postes", familia: "Estruturas", unidade: "itens", natureza: "discrete_count", variante: null,
     estado: "PROJETADA_BASELINE", classe: null, motivo: "", fonte: "nivel_B", historico: [[2024, 10, "observado"], [2025, 11, "observado"]], ancora: 2025,
     horizonte_real: "1..5", valor_ancora: 11, entra_em_totais: true, modelo: null, erros: null, baselines: null, melhor_baseline_medido: null, ganho_vs_melhor_baseline: null,
     cenarios: { Conservador: [11, 11, 11, 11, 11], Moderado: [12, 13, 14, 15, 16], Agressivo: [13, 15, 17, 19, 21] }, cenarios_status: { Conservador: "ACEITO", Moderado: "ACEITO", Agressivo: "ACEITO" },
     plausibilidade: null, cenarios_meta: null, ...over,
-  });
+  } as SerieV2);
 
   it("portão fechado por padrão e aberto só com NEXT_PUBLIC_MOTOR_V2=homologacao", () => {
     expect(motorV2Habilitado(undefined)).toBe(false);

@@ -73,3 +73,27 @@ O resultado do Playwright local completo e o CI do commit final estão em `13_CH
 - **Causa.** O `<Suspense>` na raiz do layout envolvia o `AppShell`. Esse limite não é necessário (o shell só usa `usePathname`; as páginas que leem a URL já têm o próprio `Suspense`). No prerender estático ele virava um segmento adiado: `<template id="B:0">` vazio mais `<div hidden id="S:0">` com a página inteira, revelado por script. Quando a hidratação do React 19 assumia o limite antes do reveal agendado, a página era renderizada de novo no cliente e a cópia do servidor ficava retida no `<body>`, com ids e landmarks duplicados.
 - **Correção.** O `Suspense` da raiz saiu de `app/layout.tsx`.
 - **Prova.** O HTML de `/previsoes/` e `/evolucao/` deixou de ter `S:0`. `/matriz/`, `/explorar/` e `/comparar/` mantêm o `S:0` e o `B:0` no HTML estático, por causa do `Suspense` da própria página com `useSearchParams`, mas o DOM hidratado fica sem `S:0`, sem ids duplicados e com um único `#conteudo` (medido nas sete páginas, 6 s depois da carga). A regressão confere o DOM, não os seletores. Os seletores do `motor-v2.spec.ts` continuam filtrando por elementos visí& veis, o que agora é só uma salvaguarda.
+
+## Correções finais de release (03/11/2026)
+
+Ver `14_CORRECOES_FINAIS_RELEASE.md`. Nenhum teste foi removido ou enfraquecido. O `natureza-fisica.spec.ts` lia a coluna do Moderado do CSV pela posição; com as colunas novas (`observado`, completude), a coluna passou a ser localizada pelo cabeçalho, e a exigência de contagem inteira continua valendo para toda coluna numérica.
+
+| Bateria | Onde | Resultado |
+|---|---|---|
+| Motor V2, auditoria local completa (`python -m motor_v2.nacional.testes`) | local, com `D:` | **281 de 281** (179 sintéticos, 93 locais, 9 públicos) |
+| Emulação do CI com `D:` bloqueado | local | 179 OK, 1 skip herdado |
+| Gerador público (`motor_cenarios`, 25 testes, incluindo o novo `test_extremo_nunca_sem_moderado_e_ausencia_com_motivo`) | local (scikit-learn 1.8.0) | OK |
+| `cenarios.py --check` depois da regra "extremo só com Moderado" | local | **OK**: 29 métricas, 16.010 contagens, 2 na folga de 1 unidade |
+| Produto web do Motor V2 (`test_produto_web_v2`, novo, 6 testes) | local | OK: inteiros JSON, completude 2.484/219/4, agregado nacional dos extremos |
+| ESLint, TypeScript | local | 0, 0 |
+| Vitest | local | **196 de 196** (22 arquivos; novo `release-correcoes.test.ts` com 14) |
+| Playwright completo (351 testes) | local, build com as correções | **347 de 351**: as 4 falhas eram o defeito do teste descrito acima |
+| Playwright, specs afetados, na build final (`natureza-fisica`, `release-correcoes`, `motor-v2`, `cenarios-motor`, `mapa-tema`) | local | **33 de 33** antes do último ajuste de texto; rerodados depois dele (ver relatório) |
+| CI Linux (web, com E2E completo, e sintético) no commit final | GitHub Actions | ver o relatório final |
+
+Novos testes de regressão:
+- `e2e/mapa-tema.spec.ts`: 10 alternâncias com leitura de pixels do canvas, desktop e mobile;
+- `e2e/release-correcoes.spec.ts`: completude em cards, gráfico, tabela e CSV; Evolução sem decimais; contagens sem notação compacta; lateral; agregado nacional de geradores;
+- `web/tests/release-correcoes.test.ts`;
+- `motor_v2/tests/test_produto_web_v2.py`;
+- teste novo em `motor_cenarios/test_publico.py`.

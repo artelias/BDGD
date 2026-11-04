@@ -69,7 +69,12 @@ Os três totais de cada objeto somam **o mesmo conjunto de séries** (as que tê
 
 ## Ressalvas que permanecem
 
-- **Geradores:** o Agressivo agregado (32,7 milhões, no conjunto comum) é cerca de 8 vezes o estoque de 2025. Cada série está dentro do P99 sustentado do próprio objeto, que é alto porque a geração distribuída cresce de fato, ou foi corrigida pela taxa que demonstrou. Mas somar os extremos individuais produz um **composto**, não um cenário nacional. Sinalizado como alerta de severidade alta (nível nacional); fica para decisão humana.
+- **Geradores:** o Agressivo agregado (32,7 milhões, no conjunto comum) é cerca de 8 vezes o estoque de 2025. Cada série está dentro do P99 sustentado do próprio objeto, que é alto porque a geração distribuída cresce de fato, ou foi corrigida pela taxa que demonstrou. Mas somar os extremos individuais produz um **composto**, não um cenário nacional.
+  - *Correção de 03/11/2026:* a versão anterior deste documento dizia que o caso estava "sinalizado como alerta de severidade alta (nível nacional)". Esse alerta **não existia** nos artefatos nem na tela (não conformidade NC-ENG-01).
+  - Agora o exportador compara o crescimento anual implícito de cada total de extremo com o crescimento nacional observado 2022–2025 **no mesmo conjunto de séries** (`agregado_extremos` no índice).
+  - A tela mostra o Moderado como total nacional e os extremos como "soma dos extremos individuais (não é cenário nacional)", com alerta quando a soma sai da faixa observada.
+  - Geradores: Agressivo implica 53%/ano contra 28–44%/ano observados.
+  - O mesmo efeito de composição aparece em 23 dos 28 totais.
 - Os limiares são **percentis empíricos desta amostra** (4 anos, 2022–2025), não limites físicos, e mudam se o histórico mudar. Cenários continuam sendo hipóteses, não intervalos de confiança, e **nenhum modelo é cientificamente homologado**.
 - A tolerância de 25% para o ajuste do moderado e o piso de base de 10 unidades são parâmetros do portão (`TOL_MODELO` e `BASE_MINIMA`), não derivados dos dados. Estão no código e neste documento para auditoria.
 - A correção reaplica a fórmula do motor sobre o moderado **publicado**: nas contagens pequenas o arredondamento do moderado pode alterar o valor corrigido em poucas unidades.

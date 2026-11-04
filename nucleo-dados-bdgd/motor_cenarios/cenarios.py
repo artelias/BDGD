@@ -453,12 +453,28 @@ def main(contrato, internas, raw, saida, web=None, internal_dir=None):
                 continue
             hist = [[a, contagem_publica(v, f"histórico {conc}/{metr}/{d}/{a}") if discreta else v] for a, v in s]
             linha = {"hist": hist}
+            # Trajetória de cada cenário nesta série e, quando o modelo do cenário existe mas a série fica sem número, o motivo.
+            trajs, motivos = {}, {}
             for slot, m in cen.items():
                 traj = prev.get(m, {}).get(d) if m else None
+                if m and traj is None:
+                    motivos[slot] = "HISTORICO_CONTIGUO_INSUFICIENTE" if len(s) < 3 else "MODELO_SEM_PROJECAO_NA_SERIE"
                 if traj and s[-1][1] > 0:
                     r = traj[-1] / s[-1][1]
                     if not (RAZAO_PLAUSIVEL[0] <= r <= RAZAO_PLAUSIVEL[1]):
                         traj = None
+                        motivos[slot] = "TRAJETORIA_IMPLAUSIVEL_NA_SERIE"     # 2030/2025 fora de RAZAO_PLAUSIVEL (parametros do produto)
+                trajs[slot] = traj
+            # Conservador e Agressivo são definidos em relação ao Moderado: sem Moderado publicável na série, nenhum extremo é publicado.
+            if trajs["moderado"] is None:
+                for slot in ("conservador", "agressivo"):
+                    if trajs[slot] is not None:
+                        trajs[slot] = None
+                        motivos[slot] = "SEM_MODERADO_NA_SERIE"
+            if motivos:
+                linha["motivos"] = motivos
+            for slot, m in cen.items():
+                traj = trajs[slot]
                 # Public numbers follow the physical nature: discrete counts are integers (half-up, declared); extension and power keep their decimals.
                 pub = [mc.physical_prediction(v, natureza) if discreta else round(v, 3) for v in traj] if traj else None
                 linha[slot] = pub
@@ -468,7 +484,7 @@ def main(contrato, internas, raw, saida, web=None, internal_dir=None):
                 cen_rows.append({"conceito": conc, "metrica": metr, "natureza": natureza, "dist": d, "empresa": empresas.get(d, ""), "cenario": slot, "modelo": m or "",
                                  **{str(a): (v if traj else "") for a, v in zip(HORIZONTE, pub or [None] * 5)},
                                  "base_2025": hist[-1][1], "anos_historico": len(s),
-                                 "status": ("indisponivel_metrica" if not m else "indisponivel_serie" if not traj else
+                                 "status": ("indisponivel_metrica" if not m else "indisponivel_sem_moderado" if motivos.get(slot) == "SEM_MODERADO_NA_SERIE" else "indisponivel_serie" if not traj else
                                             ("experimental" if experimental else "simulacao_comparada_retrospectivamente"))})
             # erro observado da série no modelo moderado (pontos de backtest da própria DIST)
             pts = [(y, yh) for y, yh, h, o, dd in (bt.get(cen["moderado"]) or []) if dd == d] if cen["moderado"] else []

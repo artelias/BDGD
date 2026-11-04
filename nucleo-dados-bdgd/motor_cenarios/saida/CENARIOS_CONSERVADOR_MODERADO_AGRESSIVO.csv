@@ -1054,7 +1054,7 @@ chaves,quantidade,discrete_count,5707,CEEE Equatorial,moderado,ridge_painel,1613
 chaves,quantidade,discrete_count,5707,CEEE Equatorial,agressivo,random_forest_painel,166922,178756,191429,205000,219534,155871,3,simulacao_comparada_retrospectivamente
 chaves,quantidade,discrete_count,6072,Equatorial GO,conservador,ridge_painel_ext,,,,,,282859,4,indisponivel_serie
 chaves,quantidade,discrete_count,6072,Equatorial GO,moderado,ridge_painel,,,,,,282859,4,indisponivel_serie
-chaves,quantidade,discrete_count,6072,Equatorial GO,agressivo,random_forest_painel,296690,311197,326413,342373,359114,282859,4,simulacao_comparada_retrospectivamente
+chaves,quantidade,discrete_count,6072,Equatorial GO,agressivo,random_forest_painel,,,,,,282859,4,indisponivel_sem_moderado
 chaves,quantidade,discrete_count,6585,Energisa Minas Rio,conservador,ridge_painel_ext,27797,29295,30875,32539,34293,26375,4,simulacao_comparada_retrospectivamente
 chaves,quantidade,discrete_count,6585,Energisa Minas Rio,moderado,ridge_painel,27850,29408,31053,32790,34625,26375,4,simulacao_comparada_retrospectivamente
 chaves,quantidade,discrete_count,6585,Energisa Minas Rio,agressivo,random_forest_painel,27458,28585,29759,30980,32252,26375,4,simulacao_comparada_retrospectivamente
@@ -1196,7 +1196,7 @@ circuitos_at,quantidade,discrete_count,5697,Celesc-Dis,agressivo,,,,,,,332,4,ind
 circuitos_at,quantidade,discrete_count,5707,CEEE Equatorial,conservador,persistencia,119,119,119,119,119,119,4,simulacao_comparada_retrospectivamente
 circuitos_at,quantidade,discrete_count,5707,CEEE Equatorial,moderado,ridge_painel_ext,121,123,125,126,128,119,4,simulacao_comparada_retrospectivamente
 circuitos_at,quantidade,discrete_count,5707,CEEE Equatorial,agressivo,,,,,,,119,4,indisponivel_metrica
-circuitos_at,quantidade,discrete_count,6072,Equatorial GO,conservador,persistencia,205,205,205,205,205,205,4,simulacao_comparada_retrospectivamente
+circuitos_at,quantidade,discrete_count,6072,Equatorial GO,conservador,persistencia,,,,,,205,4,indisponivel_sem_moderado
 circuitos_at,quantidade,discrete_count,6072,Equatorial GO,moderado,ridge_painel_ext,,,,,,205,4,indisponivel_serie
 circuitos_at,quantidade,discrete_count,6072,Equatorial GO,agressivo,,,,,,,205,4,indisponivel_metrica
 circuitos_at,quantidade,discrete_count,6585,Energisa Minas Rio,conservador,persistencia,82,82,82,82,82,82,4,simulacao_comparada_retrospectivamente
@@ -1967,9 +1967,9 @@ disjuntores,quantidade,discrete_count,5697,Celesc-Dis,agressivo,random_forest_pa
 disjuntores,quantidade,discrete_count,5707,CEEE Equatorial,conservador,knn_analogos,483,499,516,533,551,468,3,simulacao_comparada_retrospectivamente
 disjuntores,quantidade,discrete_count,5707,CEEE Equatorial,moderado,ridge_painel,485,503,521,540,560,468,3,simulacao_comparada_retrospectivamente
 disjuntores,quantidade,discrete_count,5707,CEEE Equatorial,agressivo,random_forest_painel,475,482,488,495,503,468,3,simulacao_comparada_retrospectivamente
-disjuntores,quantidade,discrete_count,6072,Equatorial GO,conservador,knn_analogos,1406,1406,1406,1406,1406,1406,4,simulacao_comparada_retrospectivamente
+disjuntores,quantidade,discrete_count,6072,Equatorial GO,conservador,knn_analogos,,,,,,1406,4,indisponivel_sem_moderado
 disjuntores,quantidade,discrete_count,6072,Equatorial GO,moderado,ridge_painel,,,,,,1406,4,indisponivel_serie
-disjuntores,quantidade,discrete_count,6072,Equatorial GO,agressivo,random_forest_painel,1480,1557,1639,1725,1815,1406,4,simulacao_comparada_retrospectivamente
+disjuntores,quantidade,discrete_count,6072,Equatorial GO,agressivo,random_forest_painel,,,,,,1406,4,indisponivel_sem_moderado
 disjuntores,quantidade,discrete_count,6585,Energisa Minas Rio,conservador,knn_analogos,319,324,330,335,341,314,4,simulacao_comparada_retrospectivamente
 disjuntores,quantidade,discrete_count,6585,Energisa Minas Rio,moderado,ridge_painel,321,329,337,344,352,314,4,simulacao_comparada_retrospectivamente
 disjuntores,quantidade,discrete_count,6585,Energisa Minas Rio,agressivo,random_forest_painel,324,335,346,357,369,314,4,simulacao_comparada_retrospectivamente
@@ -4723,7 +4723,7 @@ religadores,quantidade,discrete_count,5356,Cegero,moderado,knn_analogos,14,14,14
 religadores,quantidade,discrete_count,5356,Cegero,agressivo,random_forest_painel,16,18,20,22,25,14,4,simulacao_comparada_retrospectivamente
 religadores,quantidade,discrete_count,5363,Cergral,conservador,,,,,,,5,4,indisponivel_metrica
 religadores,quantidade,discrete_count,5363,Cergral,moderado,knn_analogos,,,,,,5,4,indisponivel_serie
-religadores,quantidade,discrete_count,5363,Cergral,agressivo,random_forest_painel,6,7,7,9,10,5,4,simulacao_comparada_retrospectivamente
+religadores,quantidade,discrete_count,5363,Cergral,agressivo,random_forest_painel,,,,,,5,4,indisponivel_sem_moderado
 religadores,quantidade,discrete_count,5364,Cermoful,conservador,,,,,,,59,2,indisponivel_metrica
 religadores,quantidade,discrete_count,5364,Cermoful,moderado,knn_analogos,,,,,,59,2,indisponivel_serie
 religadores,quantidade,discrete_count,5364,Cermoful,agressivo,random_forest_painel,,,,,,59,2,indisponivel_serie
@@ -5552,7 +5552,7 @@ trafo_dist,potencia_kva,continuous_capacity,5697,Celesc-Dis,agressivo,ridge_pain
 trafo_dist,potencia_kva,continuous_capacity,5707,CEEE Equatorial,conservador,knn_analogos,7019967.704,7245451.107,7478177.101,7718378.322,7966294.877,6801501.5,3,experimental
 trafo_dist,potencia_kva,continuous_capacity,5707,CEEE Equatorial,moderado,ridge_painel,7058175.545,7324535.917,7600948.156,7887791.599,8185459.897,6801501.5,3,experimental
 trafo_dist,potencia_kva,continuous_capacity,5707,CEEE Equatorial,agressivo,ridge_painel_ext,7030124.847,7266433.061,7510684.459,7763146.039,8024093.777,6801501.5,3,experimental
-trafo_dist,potencia_kva,continuous_capacity,6072,Equatorial GO,conservador,knn_analogos,9036768.107,9331506.087,9635857.07,9950134.588,10274662.398,8751339.5,4,experimental
+trafo_dist,potencia_kva,continuous_capacity,6072,Equatorial GO,conservador,knn_analogos,,,,,,8751339.5,4,indisponivel_sem_moderado
 trafo_dist,potencia_kva,continuous_capacity,6072,Equatorial GO,moderado,ridge_painel,,,,,,8751339.5,4,indisponivel_serie
 trafo_dist,potencia_kva,continuous_capacity,6072,Equatorial GO,agressivo,ridge_painel_ext,,,,,,8751339.5,4,indisponivel_serie
 trafo_dist,potencia_kva,continuous_capacity,6585,Energisa Minas Rio,conservador,knn_analogos,1713103.216,1774018.079,1837098.965,1902422.894,1970069.624,1654280.0,4,experimental
@@ -6302,9 +6302,9 @@ trafo_forca,quantidade,discrete_count,5697,Celesc-Dis,agressivo,random_forest_pa
 trafo_forca,quantidade,discrete_count,5707,CEEE Equatorial,conservador,persistencia,149,149,149,149,149,149,3,simulacao_comparada_retrospectivamente
 trafo_forca,quantidade,discrete_count,5707,CEEE Equatorial,moderado,ridge_painel,152,154,157,160,163,149,3,simulacao_comparada_retrospectivamente
 trafo_forca,quantidade,discrete_count,5707,CEEE Equatorial,agressivo,random_forest_painel,154,159,165,170,176,149,3,simulacao_comparada_retrospectivamente
-trafo_forca,quantidade,discrete_count,6072,Equatorial GO,conservador,persistencia,559,559,559,559,559,559,4,simulacao_comparada_retrospectivamente
+trafo_forca,quantidade,discrete_count,6072,Equatorial GO,conservador,persistencia,,,,,,559,4,indisponivel_sem_moderado
 trafo_forca,quantidade,discrete_count,6072,Equatorial GO,moderado,ridge_painel,,,,,,559,4,indisponivel_serie
-trafo_forca,quantidade,discrete_count,6072,Equatorial GO,agressivo,random_forest_painel,565,572,578,584,591,559,4,simulacao_comparada_retrospectivamente
+trafo_forca,quantidade,discrete_count,6072,Equatorial GO,agressivo,random_forest_painel,,,,,,559,4,indisponivel_sem_moderado
 trafo_forca,quantidade,discrete_count,6585,Energisa Minas Rio,conservador,persistencia,95,95,95,95,95,95,4,simulacao_comparada_retrospectivamente
 trafo_forca,quantidade,discrete_count,6585,Energisa Minas Rio,moderado,ridge_painel,97,99,102,104,106,95,4,simulacao_comparada_retrospectivamente
 trafo_forca,quantidade,discrete_count,6585,Energisa Minas Rio,agressivo,random_forest_painel,97,100,102,105,108,95,4,simulacao_comparada_retrospectivamente

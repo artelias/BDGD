@@ -123,9 +123,8 @@ export function AppShell({ children }: { children: ReactNode }) {
         <nav className={s.nav}>{NAV.map(navLink)}</nav>
         <div className={s.sectionLabel}>Referência</div>
         <nav className={s.nav}>{NAV2.map(navLink)}</nav>
+          {/* Só a autoria: data-base fica no cabeçalho; GDBs processados e publicações não localizadas ficam em Metodologia e qualidade. */}
           <div className={s.sideMeta} hidden={collapsed}>
-            <div>Data-base <strong>31/12/2025</strong></div>
-            {rel && <div>{rel.cobertura.processadas} GDBs processados{rel.cobertura.sem_publicacao_2025.length > 0 && ` · ${rel.cobertura.sem_publicacao_2025.length} publicações 2025 não localizadas`}</div>}
             <div>Desenvolvido por <strong>{AUTOR}</strong></div>
             <a href={`mailto:${CONTATO}`} className={s.sideMail}><Mail size={12} aria-hidden /> Contato</a>
           </div>

@@ -47,6 +47,7 @@ LOCAIS = {
 }
 PUBLICAS = {
     'test_public_audit': 'audita os produtos publicos reais do repositorio; contrato do PR #19, roda no workflow da web',
+    'test_produto_web_v2': 'produto web do Motor V2: contagens como inteiros JSON e completude dos cenarios (arquivos do repositorio)',
 }
 
 

@@ -17,3 +17,7 @@ Fonte dos números: `motor_v2/reports/nacional/` (`RESUMO_COBERTURA.json`, `COBE
 | [11 — Auditoria de plausibilidade](11_AUDITORIA_PLAUSIBILIDADE_CENARIOS.md) | Outliers, causas, regra do portão, antes/depois, ressalvas |
 | [12 — Matriz de plausibilidade](12_MATRIZ_PLAUSIBILIDADE.csv) | As 2.707 séries auditadas: crescimento, razões, limiares, estados e classe |
 | [13 — Checklist do release candidate](13_CHECKLIST_RELEASE_CANDIDATE.md) | Critérios de aceite, resultados e estado final |
+| [14 — Correções finais de release](14_CORRECOES_FINAIS_RELEASE.md) | Cenários incompletos, contagens com decimais, lateral, mapa × tema: causa, correção e testes |
+| [14 — Completude dos cenários](14_COMPLETUDE_CENARIOS.csv) | Por produto, distribuidora, ativo e métrica: cenários publicados e motivo dos ausentes (`gerar_completude.py`) |
+
+Homologação: `../../HOMOLOGACAO/ENGENHARIA/` (dossiê de engenharia, sem assinatura). A homologação científica está numa branch separada.

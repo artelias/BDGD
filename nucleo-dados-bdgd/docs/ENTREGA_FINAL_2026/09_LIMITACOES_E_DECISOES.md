@@ -29,3 +29,10 @@
 7. **Ordem de merge e destino das branches de trabalho** (`feat/motor-v2-granular-territorial`, `codex/qa-frontend-homologacao-20261031`, `wt-qa-integracao-v2-20261031`).
 8. **Fechar o PR #15** como superado pelo #16: é uma implementação concorrente da mesma limpeza de UX e não foi incorporado.
 9. **Expansão territorial** das demais entidades (geradores, iluminação, postes etc.) numa próxima etapa.
+
+## Decisões adicionadas em 03/11/2026
+
+- **Totais nacionais de Conservador/Agressivo.** A tela mostra o Moderado como total nacional e os extremos como soma de extremos individuais, com alerta em 23 de 28 totais. Decidir se a produção mostra essa soma ou só o Moderado.
+- **Produto público com 1.206 séries parciais.** Cada uma é explicada por série. Ampliar a cobertura depende da revisão da branch experimental de otimização (`exp/otimizacao-modelos-20261103`), que não substitui esta RC.
+- **Aceite de engenharia:** `HOMOLOGACAO/ENGENHARIA/04_TERMO_ACEITE_ENGENHARIA.md` (sem assinatura).
+- **Homologação científica:** branch `homologacao/cientifica-20261103` (dossiê separado).

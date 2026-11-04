@@ -63,6 +63,65 @@ def _r(v, nd=4):
     return None if x is None else round(x, nd)
 
 
+def _inteiro(v, onde):
+    """Contagem física publicada como inteiro JSON (123, nunca 123.0). Valor fracionário é erro de contrato, não é arredondado aqui."""
+    if v is None:
+        return None
+    if isinstance(v, bool) or not float(v).is_integer() or v < 0:
+        raise ValueError(f'contagem fracionaria ou negativa em {onde}: {v!r}')
+    return int(v)
+
+
+def contagens_inteiras(serie):
+    """Histórico, âncora e cenários de uma série de contagem saem como inteiros; extensão e potência ficam como estão."""
+    if serie['natureza'] != 'discrete_count':
+        return serie
+    onde = f"{serie['objetivo']}/{serie['metrica']}"
+    serie['historico'] = [[a, _inteiro(v, f'{onde}/{a}'), e] for a, v, e in serie['historico']]
+    serie['valor_ancora'] = _inteiro(serie['valor_ancora'], f'{onde}/ancora')
+    if serie['cenarios']:
+        serie['cenarios'] = {c: None if xs is None else [_inteiro(x, f'{onde}/{c}') for x in xs] for c, xs in serie['cenarios'].items()}
+    return serie
+
+
+def completude(serie):
+    """Quantos dos três cenários a série publica e, para cada um que falta, o motivo. COMPLETA = os três com os 5 anos;
+    PARCIAL = Moderado publicado sem um ou os dois extremos; SEM_PREVISAO = nenhum cenário publicável (estado da série explica)."""
+    cen = serie['cenarios'] or {}
+    pub = [c for c in COB.CENARIOS if cen.get(c) and all(v is not None for v in cen[c])]
+    pl = (serie.get('plausibilidade') or {}).get('cenarios') or {}
+    falta = {c: (pl.get(c) or {}).get('motivo') or serie['motivo'] for c in COB.CENARIOS if c not in pub}
+    estado = 'COMPLETA' if len(pub) == 3 else 'PARCIAL' if 'Moderado' in pub else 'SEM_PREVISAO'
+    if estado == 'SEM_PREVISAO' and pub:
+        raise ValueError(f"cenario extremo sem Moderado em {serie['objetivo']}/{serie['metrica']}: {pub}")
+    return dict(estado=estado, publicados=pub, nao_publicados=falta)
+
+
+def agregado_extremos(series, total_2030):
+    """Total nacional de um cenário extremo = soma dos extremos individuais das séries do conjunto comum: não é um cenário nacional
+    (as distribuidoras não atingem o extremo ao mesmo tempo). Compara o crescimento anual implícito de cada total com o crescimento
+    nacional observado no MESMO conjunto de séries (anos em que todas têm valor). Fora da faixa observada => alerta, sem teto arbitrário."""
+    conj = [x for x in series if x['entra_em_totais'] and x['completude_cenarios']['estado'] == 'COMPLETA']
+    if not conj or not total_2030:
+        return None
+    # crescimento nacional encadeado: em cada transição t−1→t, só as séries do conjunto com valor nos dois anos (mesma coorte)
+    val = [{a: v for a, v, _ in x['historico'] if v is not None} for x in conj]
+    gs = []
+    for t in (2023, 2024, 2025):
+        a = sum(h[t - 1] for h in val if t - 1 in h and t in h); b = sum(h[t] for h in val if t - 1 in h and t in h)
+        if a > 0 and b > 0:
+            gs.append(math.log(b / a))
+    base = sum(h[2025] for h in val if 2025 in h) if all(2025 in h for h in val) else None
+    if not gs or not base:
+        return dict(n_series=len(conj), motivo='sem historico nacional comparavel no conjunto comum')
+    g = {c: math.log(total_2030[c] / base) / 5 if total_2030.get(c) and total_2030[c] > 0 else None for c in COB.CENARIOS}
+    acima = g['Agressivo'] is not None and g['Agressivo'] > max(gs)
+    abaixo = g['Conservador'] is not None and g['Conservador'] < min(gs)
+    return dict(n_series=len(conj), estoque_2025=base, crescimento_nacional_observado_min=round(min(gs), 6), crescimento_nacional_observado_max=round(max(gs), 6),
+                transicoes_observadas=len(gs), crescimento_implicito={c: None if v is None else round(v, 6) for c, v in g.items()},
+                agressivo_acima_do_observado=acima, conservador_abaixo_do_observado=abaixo, alerta=acima or abaixo)
+
+
 def historicos(contract):
     """{(DIST, objective, metric): [[year, value|null, state]]} for the contract concepts, the power stocks and the Level A assets."""
     h = defaultdict(list)
@@ -249,6 +308,8 @@ def run(saida):
                 transicoes_atipicas_excluidas=json.loads(dec['cenario_transicoes_atipicas_excluidas']) if dec.get('cenario_transicoes_atipicas_excluidas', '').startswith('[') else [],
                 regra='Moderado = trajetoria do modelo; Conservador/Agressivo = crescimento log1p anual minimo/maximo das transicoes comparaveis da propria serie quando mais extremo que o moderado; senao coincidem (degeneracao registrada).'),
         )
+        serie = contagens_inteiras(serie)
+        serie['completude_cenarios'] = completude(serie)
         por_dist[d].append(serie)
     empresas = {r['DIST']: r['empresa'] for r in linhas}
     grupos_cfg = json.loads(Path(GROUPS).read_text(encoding='utf-8'))
@@ -256,6 +317,15 @@ def run(saida):
     for d, ss in por_dist.items():
         (saida / 'distribuidoras' / f'{d}.json').write_text(json.dumps(dict(schema=SCHEMA, dist=d, empresa=empresas[d], grupo=grupo_de[d] or None, series=ss),
                                                              ensure_ascii=False, separators=(',', ':'), allow_nan=False), encoding='utf-8')
+    comp = defaultdict(lambda: dict(COMPLETA=0, PARCIAL=0, SEM_PREVISAO=0))
+    for ss in por_dist.values():
+        for x in ss:
+            if x['estado'] in COB.PROJETADOS or x['estado'] == 'BLOQUEIO_PLAUSIBILIDADE':
+                comp[x['objetivo'], x['metrica']][x['completude_cenarios']['estado']] += 1
+    por_obj = defaultdict(list)
+    for ss in por_dist.values():
+        for x in ss:
+            por_obj[x['objetivo'], x['metrica']].append(x)
     objetivos = []
     for p in res['por_objetivo']:
         cat = next(c for c in COB.catalogo() if c['objetivo'] == p['objetivo'] and c['metrica'] == p['metrica'])
@@ -265,7 +335,15 @@ def run(saida):
                               total_2030={s: _r(p['total_2030_' + s.lower()], 3) for s in COB.CENARIOS} if p['rotulo_total'] else None,
                               n_series_total={s: p['n_series_total_' + s.lower()] for s in COB.CENARIOS} if p['rotulo_total'] else None,
                               total_2030_moderado_todas=_r(p['total_2030_moderado_todas_as_series'], 3) if p['rotulo_total'] else None, n_series_moderado_todas=p['n_series_moderado_todas'] if p['rotulo_total'] else None,
-                              series_com_cenario_bloqueado=p['series_com_cenario_bloqueado'], series_com_cenario_corrigido=p['series_com_cenario_corrigido']))
+                              series_com_cenario_bloqueado=p['series_com_cenario_bloqueado'], series_com_cenario_corrigido=p['series_com_cenario_corrigido'],
+                              completude_cenarios=dict(comp[p['objetivo'], p['metrica']])))
+        objetivos[-1]['agregado_extremos'] = agregado_extremos(por_obj.get((p['objetivo'], p['metrica']), []), objetivos[-1]['total_2030']) if p['rotulo_total'] else None
+        if cat['natureza'] == 'discrete_count':
+            o = objetivos[-1]
+            for k in ('total_2030',):
+                if o[k]:
+                    o[k] = {c: _inteiro(v, f"total {p['objetivo']}/{c}") for c, v in o[k].items()}
+            o['total_2030_moderado_todas'] = _inteiro(o['total_2030_moderado_todas'], f"total {p['objetivo']}")
     indice = dict(schema=SCHEMA, status_publicacao='HOMOLOGACAO_EXPERIMENTAL_NAO_PUBLICAVEL_EM_PRODUCAO', contrato_sha256=digest(CONTRACT),
                   anos_historicos=[2022, 2023, 2024, 2025], anos_projecao=list(COB.YEARS), cenarios=list(COB.CENARIOS),
                   estados={k: dict(rotulo=v[0], descricao=v[1], com_valores=k in COB.PROJETADOS) for k, v in ROTULOS.items()},

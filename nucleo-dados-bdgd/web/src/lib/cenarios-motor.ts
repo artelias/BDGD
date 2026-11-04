@@ -1,3 +1,4 @@
+import { estadoCompletude, type CompletudeSerie } from "./completude";
 import { exigirCoerencia, exigirContagemInteira, ehContagem, naturezaDe, type Natureza } from "./natureza-fisica";
 
 /** Produto estático do Motor de Expansão Elétrica: cenários Conservador | Moderado | Agressivo, pré-calculados fora do navegador. */
@@ -23,6 +24,8 @@ export interface SerieCenario {
   hist: [number, number][];
   conservador: number[] | null; moderado: number[] | null; agressivo: number[] | null;
   erro_moderado: number | null;
+  /** Por que a série fica sem um cenário cujo modelo existe na métrica (códigos do gerador). */
+  motivos?: Partial<Record<Cenario, string>>;
 }
 export interface MetricaCenario {
   conceito: string; ativo: string; familia: string; metrica: string; unidade: string; natureza?: Natureza; estado: string; experimental: boolean;
@@ -76,6 +79,8 @@ export function parseCenarios(v: unknown): ProdutoCenarios {
         if (s[c] !== null && ehContagem(natureza)) (s[c] as number[]).forEach((x, i) => exigirContagemInteira(x, `${k}/${c}[${i}]`));
         if (s[c] !== null && m.cenarios[c] === null) throw Error(`Trajetória sem modelo em ${k}/${c}.`);
       }
+      // extremo sem Moderado na própria série é estado inconsistente (os extremos são definidos em relação ao Moderado)
+      if (s.moderado === null && (s.conservador !== null || s.agressivo !== null)) throw Error(`Cenário extremo sem Moderado em ${k}.`);
     }
   }
   return v as unknown as ProdutoCenarios;
@@ -107,11 +112,44 @@ export function somaGrupo(m: MetricaCenario, dists: readonly string[], c: Cenari
   return { hist, traj, faltantes };
 }
 
+/** Motivos por série, do gerador (motor_cenarios/cenarios.py), em linguagem do usuário. */
+export const MOTIVO_SERIE: Record<string, string> = {
+  TRAJETORIA_IMPLAUSIVEL_NA_SERIE: "a trajetória do modelo nesta distribuidora sai da faixa física plausível (2030/2025 entre 0,5 e 3)",
+  HISTORICO_CONTIGUO_INSUFICIENTE: "a série não tem três anos contíguos comparáveis terminando em 2025",
+  MODELO_SEM_PROJECAO_NA_SERIE: "o modelo deste cenário não projeta esta distribuidora (variáveis do modelo ausentes)",
+  SEM_MODERADO_NA_SERIE: "sem cenário Moderado publicável nesta distribuidora; um extremo nunca é publicado sozinho",
+};
+const semPrefixo = (t: string) => t.replace(/^Indisponível:\s*/, "");
+
+/** Completude dos cenários de uma distribuidora: o que foi publicado e, para o que falta, o motivo (da métrica ou da série). */
+export function completudeSerie(m: MetricaCenario, s: SerieCenario | undefined): CompletudeSerie<Cenario> {
+  const publicados = CENARIOS.filter((c) => !!s?.[c]);
+  const naoPublicados = CENARIOS.filter((c) => !publicados.includes(c)).map((c): [Cenario, string] => [c,
+    !m.cenarios[c] ? semPrefixo(m.justificativas[c] ?? "sem modelo para o cenário")
+      : MOTIVO_SERIE[s?.motivos?.[c] ?? ""] ?? s?.motivos?.[c] ?? "sem trajetória publicável nesta distribuidora"]);
+  return { estado: estadoCompletude(CENARIOS, "moderado", publicados, `${m.conceito}|${m.metrica}`), publicados, naoPublicados };
+}
+
+/** Completude de um grupo: um cenário só é publicado para o grupo quando todas as distribuidoras o têm (soma sem completar faltantes). */
+export function completudeGrupo(m: MetricaCenario, dists: readonly string[]): CompletudeSerie<Cenario> {
+  const publicados = dists.length ? CENARIOS.filter((c) => dists.every((d) => !!m.series[d]?.[c])) : [];
+  const naoPublicados = CENARIOS.filter((c) => !publicados.includes(c)).map((c): [Cenario, string] => {
+    const sem = dists.filter((d) => !m.series[d]?.[c]);
+    return [c, !m.cenarios[c] ? semPrefixo(m.justificativas[c] ?? "sem modelo para o cenário")
+      : `${sem.length} de ${dists.length} distribuidoras do grupo sem este cenário; a soma não é completada`];
+  });
+  return { estado: estadoCompletude(CENARIOS, "moderado", publicados, `${m.conceito}|${m.metrica} (grupo)`), publicados, naoPublicados };
+}
+
 export function exportarCsv(p: ProdutoCenarios, m: MetricaCenario, dist: string): string {
   const s = m.series[dist];
-  const linhas = [["ano", "natureza", ...CENARIOS.map((c) => `${c}${m.cenarios[c] ? `_${m.cenarios[c]}` : "_indisponivel"}`)].join(",")];
+  const comp = completudeSerie(m, s);
+  // Coluna de cada cenário: modelo publicado ou "nao_publicado"; a completude e os cenários publicados aparecem em toda linha.
+  const linhas = [["ano", "natureza", "observado", ...CENARIOS.map((c) => `${c}_${s[c] ? m.cenarios[c] : "nao_publicado"}`), "completude_cenarios", "cenarios_publicados"].join(",")];
   const nat = naturezaMetrica(m);
-  for (const [a, v] of s.hist) linhas.push([a, "observado", v, v, v].join(","));
-  p.horizonte.forEach((a, i) => linhas.push([a, "simulacao_condicional", ...CENARIOS.map((c) => { const v = s[c]?.[i]; return v == null ? "" : ehContagem(nat) ? exigirContagemInteira(v, `exportação ${m.conceito}/${c}`) : v; })].join(",")));
+  const conta = (v: number, onde: string) => ehContagem(nat) ? exigirContagemInteira(v, onde) : v;
+  const fim = [comp.estado, comp.publicados.join("|")];
+  for (const [a, v] of s.hist) linhas.push([a, "observado", conta(v, `exportação ${m.conceito}/histórico`), "", "", "", ...fim].join(","));
+  p.horizonte.forEach((a, i) => linhas.push([a, "simulacao_condicional", "", ...CENARIOS.map((c) => { const v = s[c]?.[i]; return v == null ? "" : conta(v, `exportação ${m.conceito}/${c}`); }), ...fim].join(",")));
   return linhas.join("\n") + "\n";
 }
