@@ -1,0 +1,1 @@
+{"ambiente":{"numpy":"2.3.5","plataforma":"Linux-6.18.57-x86_64-with-glibc2.41","python":"3.12.14","scipy":"1.17.0","sklearn":"1.8.0"},"busca_1504_reexecutada":false,"novos_modelos":[],"recursos":[{"cache":false,"etapa":"consumidores/quantidade","pico_rss_mib":139.33984375,"segundos":2.826877},{"etapa":"TOTAL","pico_rss_mib":146.96484375,"segundos":4.345386}]}

@@ -1,0 +1,20 @@
+[
+  {
+    "indicador": "COMPLETA",
+    "antes": 755,
+    "depois": null,
+    "estado": "NAO_EXECUTADO_GATE_REPRODUCAO_BLOQUEADO"
+  },
+  {
+    "indicador": "PARCIAL",
+    "antes": 1206,
+    "depois": null,
+    "estado": "NAO_EXECUTADO_GATE_REPRODUCAO_BLOQUEADO"
+  },
+  {
+    "indicador": "SEM_PREVISAO",
+    "antes": 241,
+    "depois": null,
+    "estado": "NAO_EXECUTADO_GATE_REPRODUCAO_BLOQUEADO"
+  }
+]

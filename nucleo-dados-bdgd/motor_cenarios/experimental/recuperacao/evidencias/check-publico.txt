@@ -1,0 +1,2 @@
+::notice::contagens projetadas comparadas: 16010; aceitas só pela folga de 1 unidade: 2 (limite 80)
+CENÁRIOS OK: 29 métricas regeneradas e idênticas ao produto publicado

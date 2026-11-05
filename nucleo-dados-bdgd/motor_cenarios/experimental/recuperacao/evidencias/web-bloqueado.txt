@@ -1,0 +1,3 @@
+npm test: exit 127; vitest: not found. Nenhum teste executado.
+npm run e2e: exit 1; error: unknown command test. @playwright/test do projeto não instalado; nenhum teste executado.
+Não foram instaladas bibliotecas, conforme instrução do usuário.

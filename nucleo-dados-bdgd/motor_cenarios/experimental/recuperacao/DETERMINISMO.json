@@ -1,0 +1,37 @@
+{
+  "artefatos_identicos": {
+    "cenarios.csv": "5b1b18a113f692be73b32f24e7cda6168f15b7892b9b6f3a7bf89ced5927f0f6",
+    "cobertura.csv": "23b656cdd7cc76eb0a298c7a68afdc47bb2f428ab5f8477e031e1d6a4934e31e",
+    "cobertura.json": "69365f5ecf29156ee2ce686a54222488c4f68c138ae61b0c7608effcff023ee0",
+    "comparacao.csv": "8963a083cd595cfa9eb0ceb65ad84b749a5d6ce68eddb6eb6485619be7edce60",
+    "elegibilidade.csv": "2c4173cde2c5876370f439ff98a51727f728c7f09a92e79d9c908af42a2d35b4",
+    "gabarito.json": "4895666c7ffbb4d1182676f3e21e8ea4f96d1a789612bfe09085ecd1a37826d1",
+    "inventario.json": "ed8bf56b85f738c445b4700d4e8afc37a7cebe19fda20706ad4183015c4418f8",
+    "produto.json": "f8723b6c6ecc6b17e78d762f4020314f3cb071e1654fd5751e90af4d8ccc0cd7",
+    "proveniencia.json": "4ee97ac1c916ca90701749b0c4acaed325826da2e682bf04e2cad25d2ee958cb"
+  },
+  "execucao_repetida": {
+    "ambiente": {
+      "numpy": "2.3.5",
+      "plataforma": "Linux-6.18.57-x86_64-with-glibc2.41",
+      "python": "3.12.14",
+      "scipy": "1.17.0",
+      "sklearn": "1.8.0"
+    },
+    "busca_1504_reexecutada": false,
+    "novos_modelos": [],
+    "recursos": [
+      {
+        "cache": true,
+        "etapa": "consumidores/quantidade",
+        "pico_rss_mib": 124.83203125,
+        "segundos": 0.21936
+      },
+      {
+        "etapa": "TOTAL",
+        "pico_rss_mib": 136.33203125,
+        "segundos": 1.492584
+      }
+    ]
+  }
+}

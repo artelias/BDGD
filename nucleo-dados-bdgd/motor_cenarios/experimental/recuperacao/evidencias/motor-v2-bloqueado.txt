@@ -1,0 +1,273 @@
+test_hierarquia (unittest.loader._FailedTest.test_hierarquia) ... ERROR
+test_erro_retrospectivo (unittest.loader._FailedTest.test_erro_retrospectivo) ... ERROR
+test_auditoria_final (unittest.loader._FailedTest.test_auditoria_final) ... ERROR
+test_nacional (unittest.loader._FailedTest.test_nacional) ... ERROR
+test_baselines (unittest.loader._FailedTest.test_baselines) ... ERROR
+test_conj_plan (unittest.loader._FailedTest.test_conj_plan) ... ERROR
+test_future (unittest.loader._FailedTest.test_future) ... ERROR
+test_explicit_totals_far_from_the_sum_are_reachable_and_exact (test_metric_contract.Allocation.test_explicit_totals_far_from_the_sum_are_reachable_and_exact) ... ok
+test_negative_raw_blocks_allocation (test_metric_contract.Allocation.test_negative_raw_blocks_allocation) ... ok
+test_parts_always_sum_to_the_integer_total_property (test_metric_contract.Allocation.test_parts_always_sum_to_the_integer_total_property) ... ok
+test_reconcile_reports_the_move_against_independent_rounding (test_metric_contract.Allocation.test_reconcile_reports_the_move_against_independent_rounding) ... ok
+test_ties_break_by_unit_key_and_input_order_does_not_matter (test_metric_contract.Allocation.test_ties_break_by_unit_key_and_input_order_does_not_matter) ... ok
+test_assert_publishable_rejects_fractional_counts_only (test_metric_contract.ErrorsAndPublication.test_assert_publishable_rejects_fractional_counts_only) ... ok
+test_continuous_and_physical_errors_are_both_reported (test_metric_contract.ErrorsAndPublication.test_continuous_and_physical_errors_are_both_reported) ... ok
+test_empty_csv_cells_are_nd_and_pass_the_gate_but_text_does_not (test_metric_contract.ErrorsAndPublication.test_empty_csv_cells_are_nd_and_pass_the_gate_but_text_does_not) ... ok
+test_json_dump_of_physical_predictions_contains_no_fraction (test_metric_contract.ErrorsAndPublication.test_json_dump_of_physical_predictions_contains_no_fraction) ... ok
+test_public_csv_writer_blocks_a_fractional_count_before_writing (test_metric_contract.ErrorsAndPublication.test_public_csv_writer_blocks_a_fractional_count_before_writing) ... ok
+test_apparent_and_active_power_are_not_interchangeable_without_an_explicit_power_factor (test_metric_contract.Natures.test_apparent_and_active_power_are_not_interchangeable_without_an_explicit_power_factor) ... ok
+test_continuous_natures_keep_their_decimals (test_metric_contract.Natures.test_continuous_natures_keep_their_decimals) ... ok
+test_explicit_power_factor_converts_across_kinds_and_round_trips (test_metric_contract.Natures.test_explicit_power_factor_converts_across_kinds_and_round_trips) ... ok
+test_invalid_power_factors_and_misplaced_hypotheses_are_refused (test_metric_contract.Natures.test_invalid_power_factors_and_misplaced_hypotheses_are_refused) ... ok
+test_unit_conversion_stays_inside_one_nature_and_refuses_counts (test_metric_contract.Natures.test_unit_conversion_stays_inside_one_nature_and_refuses_counts) ... ok
+test_units_map_to_natures_and_unknown_units_fail (test_metric_contract.Natures.test_units_map_to_natures_and_unknown_units_fail) ... ok
+test_valid_conversions_inside_one_kind_need_no_hypothesis (test_metric_contract.Natures.test_valid_conversions_inside_one_kind_need_no_hypothesis) ... ok
+test_exact_binary_value_decides_near_ties (test_metric_contract.Rounding.test_exact_binary_value_decides_near_ties) ... ok
+test_minus_zero_is_zero (test_metric_contract.Rounding.test_minus_zero_is_zero) ... ok
+test_negative_nonfinite_and_non_numeric_are_rejected_never_clipped (test_metric_contract.Rounding.test_negative_nonfinite_and_non_numeric_are_rejected_never_clipped) ... ok
+test_result_is_a_python_int_and_non_negative (test_metric_contract.Rounding.test_result_is_a_python_int_and_non_negative) ... ok
+test_ties_follow_the_declared_policy_not_python_round (test_metric_contract.Rounding.test_ties_follow_the_declared_policy_not_python_round) ... ok
+test_nested_allocation_orders_every_unit_and_sums_every_scenario (test_metric_contract.ScenarioStability.test_nested_allocation_orders_every_unit_and_sums_every_scenario) ... ok
+test_totals_must_be_ordered_and_scenarios_must_share_units (test_metric_contract.ScenarioStability.test_totals_must_be_ordered_and_scenarios_must_share_units) ... ok
+test_unit_whose_raw_order_is_reversed_never_breaks_the_physical_order (test_metric_contract.ScenarioStability.test_unit_whose_raw_order_is_reversed_never_breaks_the_physical_order) ... ok
+test_metric_contract_motor_v2 (unittest.loader._FailedTest.test_metric_contract_motor_v2) ... ERROR
+test_temporal (unittest.loader._FailedTest.test_temporal) ... ERROR
+test_competence_not_yet_published_is_unavailable_not_guessed (test_vintage.EarlierCompetenceTests.test_competence_not_yet_published_is_unavailable_not_guessed) ... ok
+test_data_never_comes_from_the_target_year_or_later (test_vintage.EarlierCompetenceTests.test_data_never_comes_from_the_target_year_or_later) ... ok
+test_dates_are_never_altered (test_vintage.EarlierCompetenceTests.test_dates_are_never_altered) ... ok
+test_earlier_competence_published_before_origin_is_used_with_its_first_vintage (test_vintage.EarlierCompetenceTests.test_earlier_competence_published_before_origin_is_used_with_its_first_vintage) ... ok
+test_impossible_or_malformed_dates_are_refused (test_vintage.EarlierCompetenceTests.test_impossible_or_malformed_dates_are_refused) ... ok
+test_later_origin_reads_newer_vintages_and_shorter_horizon (test_vintage.EarlierCompetenceTests.test_later_origin_reads_newer_vintages_and_shorter_horizon) ... ok
+test_later_revision_of_an_earlier_competence_is_rejected (test_vintage.EarlierCompetenceTests.test_later_revision_of_an_earlier_competence_is_rejected) ... ok
+test_revision_becomes_usable_only_once_published (test_vintage.EarlierCompetenceTests.test_revision_becomes_usable_only_once_published) ... ok
+test_same_day_vintages_are_ordered_by_revision (test_vintage.EarlierCompetenceTests.test_same_day_vintages_are_ordered_by_revision) ... ok
+test_target_already_published_is_a_leak_not_a_forecast (test_vintage.EarlierCompetenceTests.test_target_already_published_is_a_leak_not_a_forecast) ... ok
+test_default_clock_is_unchanged (test_vintage.UsableWithExplicitOriginDateTests.test_default_clock_is_unchanged) ... ok
+test_explicit_origin_date_admits_what_was_published_by_then (test_vintage.UsableWithExplicitOriginDateTests.test_explicit_origin_date_admits_what_was_published_by_then) ... ok
+test_explicit_origin_date_does_not_open_the_reconciled_mode_or_the_future (test_vintage.UsableWithExplicitOriginDateTests.test_explicit_origin_date_does_not_open_the_reconciled_mode_or_the_future) ... ok
+test_later_revision_is_rejected_even_with_a_late_origin_date (test_vintage.UsableWithExplicitOriginDateTests.test_later_revision_is_rejected_even_with_a_late_origin_date) ... ok
+test_generation_stamps_and_inferred_dates_are_candidates_only (test_vintage.VintageClaimTests.test_generation_stamps_and_inferred_dates_are_candidates_only) ... ok
+test_nothing_read_proves_nothing (test_vintage.VintageClaimTests.test_nothing_read_proves_nothing) ... ok
+test_publication_records_prove_the_vintage (test_vintage.VintageClaimTests.test_publication_records_prove_the_vintage) ... ok
+test_reconciled_retrospective_never_acquires_credentials (test_vintage.VintageClaimTests.test_reconciled_retrospective_never_acquires_credentials) ... ok
+test_a_suite_that_loads_nothing_fails_the_run (test_suites.Classification.test_a_suite_that_loads_nothing_fails_the_run) ... suites sem nenhum teste: test_inexistente_xyz
+ok
+test_every_test_file_has_exactly_one_group (test_suites.Classification.test_every_test_file_has_exactly_one_group) ... ok
+test_synthetic_suites_name_no_local_path (test_suites.Classification.test_synthetic_suites_name_no_local_path) ... ok
+test_the_full_local_audit_reads_the_same_classification (test_suites.Classification.test_the_full_local_audit_reads_the_same_classification) ... ERROR
+test_workflow_runs_the_synthetic_runner_and_never_a_blind_discover (test_suites.Classification.test_workflow_runs_the_synthetic_runner_and_never_a_blind_discover) ... ok
+test_cobertura (unittest.loader._FailedTest.test_cobertura) ... ERROR
+test_plausibilidade (unittest.loader._FailedTest.test_plausibilidade) ... ERROR
+
+======================================================================
+ERROR: test_hierarquia (unittest.loader._FailedTest.test_hierarquia)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_hierarquia
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_hierarquia.py", line 4, in <module>
+    from motor_v2.nacional import hierarquia as H
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/nacional/hierarquia.py", line 32, in <module>
+    import pyarrow.parquet as pq
+ModuleNotFoundError: No module named 'pyarrow'
+
+
+======================================================================
+ERROR: test_erro_retrospectivo (unittest.loader._FailedTest.test_erro_retrospectivo)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_erro_retrospectivo
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_erro_retrospectivo.py", line 6, in <module>
+    import pyarrow as pa
+ModuleNotFoundError: No module named 'pyarrow'
+
+
+======================================================================
+ERROR: test_auditoria_final (unittest.loader._FailedTest.test_auditoria_final)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_auditoria_final
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_auditoria_final.py", line 9, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_nacional (unittest.loader._FailedTest.test_nacional)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_nacional
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_nacional.py", line 8, in <module>
+    from motor_v2 import convert_zips
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/convert_zips.py", line 26, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_baselines (unittest.loader._FailedTest.test_baselines)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_baselines
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_baselines.py", line 5, in <module>
+    from motor_v2.comparison import summarise
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/comparison.py", line 6, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_conj_plan (unittest.loader._FailedTest.test_conj_plan)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_conj_plan
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_conj_plan.py", line 6, in <module>
+    from motor_v2 import bridges, conj_bridge, plan_2021
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/bridges.py", line 8, in <module>
+    from .runner import fingerprint
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/runner.py", line 4, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_future (unittest.loader._FailedTest.test_future)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_future
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_future.py", line 5, in <module>
+    from motor_v2 import future
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/future.py", line 17, in <module>
+    from .feature_registry import SPECS
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/feature_registry.py", line 6, in <module>
+    from .features import FEATURES
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/features.py", line 5, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_metric_contract_motor_v2 (unittest.loader._FailedTest.test_metric_contract_motor_v2)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_metric_contract_motor_v2
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_metric_contract_motor_v2.py", line 9, in <module>
+    from motor_v2.assets import ASSETS
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/assets.py", line 18, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_temporal (unittest.loader._FailedTest.test_temporal)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_temporal
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_temporal.py", line 3, in <module>
+    from motor_v2.comparison import summarise,scope_pool,options
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/comparison.py", line 6, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_the_full_local_audit_reads_the_same_classification (test_suites.Classification.test_the_full_local_audit_reads_the_same_classification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_suites.py", line 23, in test_the_full_local_audit_reads_the_same_classification
+    from motor_v2.nacional import testes
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/nacional/testes.py", line 17, in <module>
+    from ..runner import ROOT, atomic, digest
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/runner.py", line 4, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+======================================================================
+ERROR: test_cobertura (unittest.loader._FailedTest.test_cobertura)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_cobertura
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_cobertura.py", line 5, in <module>
+    from motor_v2.nacional import cobertura as C
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/nacional/cobertura.py", line 38, in <module>
+    from ..runner import atomic, digest
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/runner.py", line 4, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+======================================================================
+ERROR: test_plausibilidade (unittest.loader._FailedTest.test_plausibilidade)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_plausibilidade
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/tests/test_plausibilidade.py", line 5, in <module>
+    from motor_v2.nacional import plausibilidade as P
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/nacional/plausibilidade.py", line 32, in <module>
+    from . import cobertura as COB
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/nacional/cobertura.py", line 38, in <module>
+    from ..runner import atomic, digest
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_v2/runner.py", line 4, in <module>
+    import duckdb
+ModuleNotFoundError: No module named 'duckdb'
+
+
+----------------------------------------------------------------------
+Ran 59 tests in 0.170s
+
+FAILED (errors=12)
+suites sinteticas: 14; testes: 59; falhas: 0; erros: 12; ignorados: 0

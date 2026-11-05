@@ -1,0 +1,17 @@
+{"etapa": "alimentadores/quantidade", "cache": false, "segundos": 2.44478, "pico_rss_mib": 139.09375}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/__main__.py", line 138, in <module>
+    main()
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/__main__.py", line 135, in main
+    executar(args.modo,args.nome,args.metrica)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/__main__.py", line 90, in executar
+    bundle=construir(key,pm,motor,motor_x)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/inventario.py", line 49, in construir
+    reproduction = verificar_reproducao(pm, met, cen, prev)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/inventario.py", line 25, in verificar_reproducao
+    raise ValueError(f'WAPE publicado não reproduzido: {name}; atual={w}; publicado={expected}; limite_absoluto=1e-9')
+ValueError: WAPE publicado não reproduzido: random_forest_painel; atual=0.06005597829053297; publicado=0.0600573022094799; limite_absoluto=1e-9

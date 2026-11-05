@@ -1,0 +1,12 @@
+{"etapa": "consumidores/quantidade", "cache": true, "segundos": 0.249104, "pico_rss_mib": 125.98828125}
+{"nivel": "nacional", "chave": "TODAS", "series": 98, "antes": {"PARCIAL": 88, "SEM_PREVISAO": 10}, "depois": {"COMPLETA": 84, "SEM_PREVISAO": 10, "PARCIAL": 4}, "ganho_completas": 84, "recuperadas": 84, "perderam_completude": 0}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/__main__.py", line 138, in <module>
+    main()
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/__main__.py", line 135, in main
+    executar(args.modo,args.nome,args.metrica)
+  File "/workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/recuperacao/__main__.py", line 125, in executar
+    raise ValueError(f"Gabarito divergiu em {len(oracle['divergencias'])} campos; ver {output/'gabarito.json'}")
+ValueError: Gabarito divergiu em 113 campos; ver /workspace/BDGD-recuperacao/nucleo-dados-bdgd/motor_cenarios/experimental/recuperacao/piloto-final-condicionais/gabarito.json
