@@ -1,0 +1,394 @@
+{
+ "cenario": "ulp:3",
+ "resumo": {
+  "metricas": 27,
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape_x1e9": 1658615,
+  "series": 2202,
+  "valores_diferentes": 37,
+  "contagens_diferentes_em_1_unidade": 7,
+  "contagens_diferentes_mais_de_1_unidade": 23,
+  "classe_diferente": 8,
+  "modelo_diferente": 18
+ },
+ "metricas": {
+  "alimentadores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.00012489554257128638
+   }
+  },
+  "bancos_capacitores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.7755575615628914e-17,
+    "ridge_painel_ext": 5.551115123125783e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.00045922828832913043
+   }
+  },
+  "barramentos/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 6.938893903907228e-18,
+    "ridge_painel_ext": 2.0816681711721685e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0016586155037607228
+   }
+  },
+  "chaves/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 6.938893903907228e-18,
+    "ridge_painel_ext": 3.122502256758253e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "circuitos_at/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.0816681711721685e-17,
+    "ridge_painel_ext": 6.938893903907228e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "conjuntos/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 4.835126000071743e-05
+   }
+  },
+  "consumidores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0003596100028810875
+   }
+  },
+  "disjuntores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.3877787807814457e-17,
+    "ridge_painel_ext": 5.551115123125783e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 9.717691503340065e-05
+   }
+  },
+  "geradores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.7755575615628914e-17,
+    "ridge_painel_ext": 1.3877787807814457e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "iluminacao/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.3877787807814457e-17,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0002295380777485312
+   }
+  },
+  "medidores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 3.469446951953614e-18,
+    "ridge_painel_ext": 1.0408340855860843e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "postes/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.734723475976807e-18,
+    "ridge_painel_ext": 3.469446951953614e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "ramais/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.0816681711721685e-17,
+    "ridge_painel_ext": 2.0816681711721685e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "reatores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0,
+    "ridge_painel_ext": 0,
+    "knn_analogos": 0,
+    "random_forest_painel": 0,
+    "hgb_painel": 0
+   }
+  },
+  "rede_at/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "rede_bt/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 3.469446951953614e-18,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "rede_mt/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 8.673617379884035e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "reguladores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.3877787807814457e-17,
+    "ridge_painel_ext": 7.632783294297951e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0005234724465390875
+   }
+  },
+  "religadores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.7755575615628914e-17,
+    "ridge_painel_ext": 2.7755575615628914e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0011307258624846245
+   }
+  },
+  "seccionalizadores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 1.3877787807814457e-16,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "subestacoes/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.0816681711721685e-17,
+    "ridge_painel_ext": 1.3877787807814457e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 1.2954022357777872e-05
+   }
+  },
+  "torres/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 6.938893903907228e-18,
+    "ridge_painel_ext": 5.551115123125783e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 1.043424509104135e-05
+   }
+  },
+  "trafo_dist/potencia_kva": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 3.469446951953614e-17,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_dist/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.7755575615628914e-17,
+    "ridge_painel_ext": 6.938893903907228e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_forca/potencia_kva": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 8.326672684688674e-17,
+    "ridge_painel_ext": 1.3877787807814457e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 4.308828851726232e-05
+   }
+  },
+  "trafo_forca/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.0816681711721685e-17,
+    "ridge_painel_ext": 2.0816681711721685e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.00021731722227832234
+   }
+  },
+  "trafo_medida/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 4.163336342344337e-17,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0010624783985054564
+   }
+  }
+ }
+}

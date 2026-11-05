@@ -1,0 +1,129 @@
+nivel,chave,series,antes,depois,ganho_completas,recuperadas,perderam_completude
+distribuidora,103,25,"{""SEM_PREVISAO"": 25}","{""SEM_PREVISAO"": 25}",0,0,0
+distribuidora,11825,21,"{""COMPLETA"": 8, ""PARCIAL"": 13}","{""COMPLETA"": 5, ""PARCIAL"": 16}",-3,3,6
+distribuidora,2351,23,"{""SEM_PREVISAO"": 23}","{""SEM_PREVISAO"": 23}",0,0,0
+distribuidora,2381,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 9, ""PARCIAL"": 16}",-1,5,6
+distribuidora,26,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 13, ""PARCIAL"": 13}",3,6,3
+distribuidora,2763,23,"{""COMPLETA"": 8, ""PARCIAL"": 14, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 5, ""PARCIAL"": 17, ""SEM_PREVISAO"": 1}",-3,3,6
+distribuidora,2783,22,"{""COMPLETA"": 8, ""PARCIAL"": 12, ""SEM_PREVISAO"": 2}","{""COMPLETA"": 5, ""PARCIAL"": 15, ""SEM_PREVISAO"": 2}",-3,3,6
+distribuidora,2866,26,"{""COMPLETA"": 8, ""PARCIAL"": 14, ""SEM_PREVISAO"": 4}","{""COMPLETA"": 11, ""PARCIAL"": 11, ""SEM_PREVISAO"": 4}",3,5,2
+distribuidora,2937,26,"{""COMPLETA"": 8, ""PARCIAL"": 13, ""SEM_PREVISAO"": 5}","{""COMPLETA"": 10, ""PARCIAL"": 11, ""SEM_PREVISAO"": 5}",2,4,2
+distribuidora,31,26,"{""COMPLETA"": 9, ""PARCIAL"": 14, ""SEM_PREVISAO"": 3}","{""COMPLETA"": 9, ""PARCIAL"": 14, ""SEM_PREVISAO"": 3}",0,3,3
+distribuidora,32,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 11, ""PARCIAL"": 14}",1,7,6
+distribuidora,3223,24,"{""SEM_PREVISAO"": 24}","{""SEM_PREVISAO"": 24}",0,0,0
+distribuidora,3627,23,"{""COMPLETA"": 9, ""PARCIAL"": 14}","{""COMPLETA"": 5, ""PARCIAL"": 18}",-4,3,7
+distribuidora,369,27,"{""COMPLETA"": 10, ""PARCIAL"": 17}","{""COMPLETA"": 13, ""PARCIAL"": 14}",3,5,2
+distribuidora,37,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 12, ""PARCIAL"": 14}",2,3,1
+distribuidora,370,25,"{""COMPLETA"": 10, ""PARCIAL"": 14, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 10, ""PARCIAL"": 14, ""SEM_PREVISAO"": 1}",0,3,3
+distribuidora,371,27,"{""COMPLETA"": 10, ""PARCIAL"": 17}","{""COMPLETA"": 9, ""PARCIAL"": 18}",-1,4,5
+distribuidora,38,26,"{""COMPLETA"": 10, ""PARCIAL"": 13, ""SEM_PREVISAO"": 3}","{""COMPLETA"": 12, ""PARCIAL"": 11, ""SEM_PREVISAO"": 3}",2,4,2
+distribuidora,380,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 11, ""PARCIAL"": 15}",1,5,4
+distribuidora,381,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 9, ""PARCIAL"": 16}",-1,3,4
+distribuidora,382,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 9, ""PARCIAL"": 17}",-1,5,6
+distribuidora,383,25,"{""COMPLETA"": 9, ""PARCIAL"": 15, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 9, ""PARCIAL"": 15, ""SEM_PREVISAO"": 1}",0,5,5
+distribuidora,385,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 11, ""PARCIAL"": 15}",1,4,3
+distribuidora,39,25,"{""COMPLETA"": 10, ""PARCIAL"": 14, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 10, ""PARCIAL"": 14, ""SEM_PREVISAO"": 1}",0,3,3
+distribuidora,390,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 7, ""PARCIAL"": 18}",-3,4,7
+distribuidora,391,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 9, ""PARCIAL"": 17}",-1,5,6
+distribuidora,396,27,"{""COMPLETA"": 8, ""PARCIAL"": 14, ""SEM_PREVISAO"": 5}","{""COMPLETA"": 13, ""PARCIAL"": 9, ""SEM_PREVISAO"": 5}",5,6,1
+distribuidora,398,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 7, ""PARCIAL"": 18}",-3,4,7
+distribuidora,399,23,"{""COMPLETA"": 9, ""PARCIAL"": 14}","{""COMPLETA"": 7, ""PARCIAL"": 16}",-2,3,5
+distribuidora,40,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 8, ""PARCIAL"": 18}",-2,3,5
+distribuidora,400,22,"{""COMPLETA"": 9, ""PARCIAL"": 13}","{""COMPLETA"": 8, ""PARCIAL"": 14}",-1,5,6
+distribuidora,401,20,"{""COMPLETA"": 6, ""PARCIAL"": 9, ""SEM_PREVISAO"": 5}","{""COMPLETA"": 4, ""PARCIAL"": 11, ""SEM_PREVISAO"": 5}",-2,2,4
+distribuidora,404,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 8, ""PARCIAL"": 18}",-2,4,6
+distribuidora,405,27,"{""COMPLETA"": 10, ""PARCIAL"": 17}","{""COMPLETA"": 11, ""PARCIAL"": 16}",1,5,4
+distribuidora,4248,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 2, ""PARCIAL"": 15}",-4,1,5
+distribuidora,43,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 14, ""PARCIAL"": 12}",4,7,3
+distribuidora,44,24,"{""COMPLETA"": 10, ""PARCIAL"": 14}","{""COMPLETA"": 13, ""PARCIAL"": 11}",3,5,2
+distribuidora,46,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 11, ""PARCIAL"": 14}",1,6,5
+distribuidora,47,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 12, ""PARCIAL"": 14}",2,5,3
+distribuidora,4950,26,"{""COMPLETA"": 7, ""PARCIAL"": 13, ""SEM_PREVISAO"": 6}","{""COMPLETA"": 10, ""PARCIAL"": 10, ""SEM_PREVISAO"": 6}",3,5,2
+distribuidora,504,21,"{""COMPLETA"": 8, ""PARCIAL"": 13}","{""COMPLETA"": 4, ""PARCIAL"": 17}",-4,3,7
+distribuidora,51,26,"{""COMPLETA"": 10, ""PARCIAL"": 15, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 7, ""PARCIAL"": 18, ""SEM_PREVISAO"": 1}",-3,4,7
+distribuidora,5160,25,"{""COMPLETA"": 8, ""PARCIAL"": 14, ""SEM_PREVISAO"": 3}","{""COMPLETA"": 11, ""PARCIAL"": 11, ""SEM_PREVISAO"": 3}",3,5,2
+distribuidora,5216,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 9, ""PARCIAL"": 16}",-1,5,6
+distribuidora,527,23,"{""COMPLETA"": 9, ""PARCIAL"": 14}","{""COMPLETA"": 6, ""PARCIAL"": 17}",-3,3,6
+distribuidora,5343,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 7, ""PARCIAL"": 10}",1,5,4
+distribuidora,5345,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 5, ""PARCIAL"": 12}",-1,2,3
+distribuidora,5346,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 7, ""PARCIAL"": 10}",1,4,3
+distribuidora,5351,17,"{""SEM_PREVISAO"": 17}","{""SEM_PREVISAO"": 17}",0,0,0
+distribuidora,5352,16,"{""COMPLETA"": 6, ""PARCIAL"": 10}","{""COMPLETA"": 7, ""PARCIAL"": 9}",1,2,1
+distribuidora,5353,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 7, ""PARCIAL"": 10}",1,4,3
+distribuidora,5355,18,"{""COMPLETA"": 6, ""PARCIAL"": 12}","{""COMPLETA"": 5, ""PARCIAL"": 13}",-1,2,3
+distribuidora,5356,23,"{""COMPLETA"": 9, ""PARCIAL"": 13, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 5, ""PARCIAL"": 17, ""SEM_PREVISAO"": 1}",-4,3,7
+distribuidora,5363,16,"{""COMPLETA"": 6, ""PARCIAL"": 9, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 5, ""PARCIAL"": 10, ""SEM_PREVISAO"": 1}",-1,3,4
+distribuidora,5364,24,"{""SEM_PREVISAO"": 24}","{""SEM_PREVISAO"": 24}",0,0,0
+distribuidora,5365,21,"{""COMPLETA"": 8, ""PARCIAL"": 13}","{""COMPLETA"": 5, ""PARCIAL"": 16}",-3,2,5
+distribuidora,5366,16,"{""COMPLETA"": 6, ""PARCIAL"": 10}","{""COMPLETA"": 5, ""PARCIAL"": 11}",-1,2,3
+distribuidora,5367,23,"{""COMPLETA"": 8, ""PARCIAL"": 15}","{""COMPLETA"": 8, ""PARCIAL"": 15}",0,5,5
+distribuidora,5368,24,"{""COMPLETA"": 10, ""PARCIAL"": 14}","{""COMPLETA"": 2, ""PARCIAL"": 22}",-8,2,10
+distribuidora,5369,18,"{""COMPLETA"": 7, ""PARCIAL"": 11}","{""COMPLETA"": 6, ""PARCIAL"": 12}",-1,2,3
+distribuidora,5370,22,"{""COMPLETA"": 10, ""PARCIAL"": 12}","{""COMPLETA"": 8, ""PARCIAL"": 14}",-2,3,5
+distribuidora,5371,22,"{""SEM_PREVISAO"": 22}","{""SEM_PREVISAO"": 22}",0,0,0
+distribuidora,5372,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 3, ""PARCIAL"": 14}",-3,1,4
+distribuidora,5373,16,"{""COMPLETA"": 6, ""PARCIAL"": 10}","{""COMPLETA"": 5, ""PARCIAL"": 11}",-1,2,3
+distribuidora,5374,19,"{""COMPLETA"": 6, ""PARCIAL"": 9, ""SEM_PREVISAO"": 4}","{""COMPLETA"": 7, ""PARCIAL"": 8, ""SEM_PREVISAO"": 4}",1,4,3
+distribuidora,5375,19,"{""COMPLETA"": 7, ""PARCIAL"": 12}","{""COMPLETA"": 7, ""PARCIAL"": 12}",0,4,4
+distribuidora,5377,16,"{""COMPLETA"": 5, ""PARCIAL"": 9, ""SEM_PREVISAO"": 2}","{""COMPLETA"": 5, ""PARCIAL"": 9, ""SEM_PREVISAO"": 2}",0,3,3
+distribuidora,5378,23,"{""COMPLETA"": 9, ""PARCIAL"": 14}","{""COMPLETA"": 8, ""PARCIAL"": 15}",-1,4,5
+distribuidora,5379,22,"{""SEM_PREVISAO"": 22}","{""SEM_PREVISAO"": 22}",0,0,0
+distribuidora,5381,19,"{""COMPLETA"": 6, ""PARCIAL"": 13}","{""COMPLETA"": 5, ""PARCIAL"": 14}",-1,2,3
+distribuidora,5382,15,"{""COMPLETA"": 6, ""PARCIAL"": 9}","{""COMPLETA"": 6, ""PARCIAL"": 9}",0,2,2
+distribuidora,5384,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 6, ""PARCIAL"": 11}",0,3,3
+distribuidora,5385,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 6, ""PARCIAL"": 11}",0,2,2
+distribuidora,5386,22,"{""COMPLETA"": 9, ""PARCIAL"": 13}","{""COMPLETA"": 11, ""PARCIAL"": 11}",2,7,5
+distribuidora,5697,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 15, ""PARCIAL"": 11}",5,6,1
+distribuidora,5707,25,"{""COMPLETA"": 10, ""PARCIAL"": 15}","{""COMPLETA"": 12, ""PARCIAL"": 13}",2,6,4
+distribuidora,598,17,"{""COMPLETA"": 7, ""PARCIAL"": 10}","{""COMPLETA"": 7, ""PARCIAL"": 10}",0,3,3
+distribuidora,6072,25,"{""COMPLETA"": 3, ""PARCIAL"": 13, ""SEM_PREVISAO"": 9}","{""COMPLETA"": 2, ""PARCIAL"": 14, ""SEM_PREVISAO"": 9}",-1,2,3
+distribuidora,63,27,"{""COMPLETA"": 10, ""PARCIAL"": 16, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 9, ""PARCIAL"": 17, ""SEM_PREVISAO"": 1}",-1,4,5
+distribuidora,6585,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 11, ""PARCIAL"": 15}",1,4,3
+distribuidora,6587,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 10, ""PARCIAL"": 16}",0,5,5
+distribuidora,6600,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 10, ""PARCIAL"": 16}",0,3,3
+distribuidora,6603,17,"{""SEM_PREVISAO"": 17}","{""SEM_PREVISAO"": 17}",0,0,0
+distribuidora,6609,21,"{""COMPLETA"": 8, ""PARCIAL"": 12, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 7, ""PARCIAL"": 13, ""SEM_PREVISAO"": 1}",-1,5,6
+distribuidora,6610,16,"{""COMPLETA"": 6, ""PARCIAL"": 10}","{""COMPLETA"": 7, ""PARCIAL"": 9}",1,2,1
+distribuidora,6897,17,"{""COMPLETA"": 7, ""PARCIAL"": 10}","{""COMPLETA"": 6, ""PARCIAL"": 11}",-1,3,4
+distribuidora,6898,22,"{""COMPLETA"": 8, ""PARCIAL"": 13, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 5, ""PARCIAL"": 16, ""SEM_PREVISAO"": 1}",-3,4,7
+distribuidora,69,26,"{""COMPLETA"": 10, ""PARCIAL"": 16}","{""COMPLETA"": 12, ""PARCIAL"": 14}",2,4,2
+distribuidora,7016,17,"{""COMPLETA"": 6, ""PARCIAL"": 11}","{""COMPLETA"": 5, ""PARCIAL"": 12}",-1,3,4
+distribuidora,7019,25,"{""COMPLETA"": 10, ""PARCIAL"": 13, ""SEM_PREVISAO"": 2}","{""COMPLETA"": 13, ""PARCIAL"": 10, ""SEM_PREVISAO"": 2}",3,6,3
+distribuidora,7371,24,"{""COMPLETA"": 10, ""PARCIAL"": 14}","{""COMPLETA"": 6, ""PARCIAL"": 18}",-4,3,7
+distribuidora,7467,23,"{""COMPLETA"": 10, ""PARCIAL"": 13}","{""COMPLETA"": 8, ""PARCIAL"": 15}",-2,3,5
+distribuidora,7883,20,"{""COMPLETA"": 8, ""PARCIAL"": 12}","{""COMPLETA"": 4, ""PARCIAL"": 16}",-4,2,6
+distribuidora,82,22,"{""COMPLETA"": 8, ""PARCIAL"": 14}","{""COMPLETA"": 9, ""PARCIAL"": 13}",1,4,3
+distribuidora,83,19,"{""COMPLETA"": 7, ""PARCIAL"": 12}","{""COMPLETA"": 5, ""PARCIAL"": 14}",-2,2,4
+distribuidora,86,20,"{""COMPLETA"": 7, ""PARCIAL"": 12, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 4, ""PARCIAL"": 15, ""SEM_PREVISAO"": 1}",-3,2,5
+distribuidora,87,17,"{""COMPLETA"": 5, ""PARCIAL"": 10, ""SEM_PREVISAO"": 2}","{""COMPLETA"": 4, ""PARCIAL"": 11, ""SEM_PREVISAO"": 2}",-1,2,3
+distribuidora,88,16,"{""COMPLETA"": 6, ""PARCIAL"": 9, ""SEM_PREVISAO"": 1}","{""COMPLETA"": 5, ""PARCIAL"": 10, ""SEM_PREVISAO"": 1}",-1,2,3
+distribuidora,95,22,"{""COMPLETA"": 10, ""PARCIAL"": 12}","{""COMPLETA"": 5, ""PARCIAL"": 17}",-5,2,7
+metrica,alimentadores/quantidade,99,"{""COMPLETA"": 89, ""PARCIAL"": 1, ""SEM_PREVISAO"": 9}","{""COMPLETA"": 38, ""PARCIAL"": 52, ""SEM_PREVISAO"": 9}",-51,0,51
+metrica,bancos_capacitores/quantidade,98,"{""COMPLETA"": 87, ""SEM_PREVISAO"": 11}","{""COMPLETA"": 39, ""PARCIAL"": 48, ""SEM_PREVISAO"": 11}",-48,0,48
+metrica,barramentos/quantidade,70,"{""PARCIAL"": 60, ""SEM_PREVISAO"": 10}","{""PARCIAL"": 60, ""SEM_PREVISAO"": 10}",0,0,0
+metrica,chaves/quantidade,99,"{""COMPLETA"": 85, ""SEM_PREVISAO"": 14}","{""COMPLETA"": 44, ""PARCIAL"": 41, ""SEM_PREVISAO"": 14}",-41,0,41
+metrica,circuitos_at/quantidade,38,"{""PARCIAL"": 34, ""SEM_PREVISAO"": 4}","{""COMPLETA"": 15, ""PARCIAL"": 19, ""SEM_PREVISAO"": 4}",15,15,0
+metrica,conjuntos/quantidade,99,"{""PARCIAL"": 90, ""SEM_PREVISAO"": 9}","{""COMPLETA"": 1, ""PARCIAL"": 89, ""SEM_PREVISAO"": 9}",1,1,0
+metrica,consumidores/quantidade,98,"{""PARCIAL"": 88, ""SEM_PREVISAO"": 10}","{""COMPLETA"": 60, ""PARCIAL"": 28, ""SEM_PREVISAO"": 10}",60,60,0
+metrica,disjuntores/quantidade,63,"{""COMPLETA"": 52, ""SEM_PREVISAO"": 11}","{""COMPLETA"": 27, ""PARCIAL"": 25, ""SEM_PREVISAO"": 11}",-25,0,25
+metrica,geradores/quantidade,98,"{""PARCIAL"": 90, ""SEM_PREVISAO"": 8}","{""PARCIAL"": 90, ""SEM_PREVISAO"": 8}",0,0,0
+metrica,iluminacao/quantidade,99,"{""PARCIAL"": 90, ""SEM_PREVISAO"": 9}","{""PARCIAL"": 90, ""SEM_PREVISAO"": 9}",0,0,0
+metrica,medidores/quantidade,99,"{""PARCIAL"": 91, ""SEM_PREVISAO"": 8}","{""COMPLETA"": 10, ""PARCIAL"": 81, ""SEM_PREVISAO"": 8}",10,10,0
+metrica,postes/quantidade,99,"{""PARCIAL"": 91, ""SEM_PREVISAO"": 8}","{""COMPLETA"": 82, ""PARCIAL"": 9, ""SEM_PREVISAO"": 8}",82,82,0
+metrica,ramais/extensao_km,99,"{""PARCIAL"": 91, ""SEM_PREVISAO"": 8}","{""COMPLETA"": 46, ""PARCIAL"": 45, ""SEM_PREVISAO"": 8}",46,46,0
+metrica,reatores/quantidade,13,"{""PARCIAL"": 11, ""SEM_PREVISAO"": 2}","{""PARCIAL"": 11, ""SEM_PREVISAO"": 2}",0,0,0
+metrica,rede_at/extensao_km,53,"{""COMPLETA"": 48, ""PARCIAL"": 1, ""SEM_PREVISAO"": 4}","{""COMPLETA"": 32, ""PARCIAL"": 17, ""SEM_PREVISAO"": 4}",-16,0,16
+metrica,rede_bt/extensao_km,99,"{""COMPLETA"": 91, ""SEM_PREVISAO"": 8}","{""COMPLETA"": 67, ""PARCIAL"": 24, ""SEM_PREVISAO"": 8}",-24,0,24
+metrica,rede_mt/extensao_km,99,"{""COMPLETA"": 91, ""SEM_PREVISAO"": 8}","{""COMPLETA"": 55, ""PARCIAL"": 36, ""SEM_PREVISAO"": 8}",-36,0,36
+metrica,reguladores/quantidade,91,"{""PARCIAL"": 82, ""SEM_PREVISAO"": 9}","{""COMPLETA"": 39, ""PARCIAL"": 43, ""SEM_PREVISAO"": 9}",39,39,0
+metrica,religadores/quantidade,99,"{""PARCIAL"": 85, ""SEM_PREVISAO"": 14}","{""COMPLETA"": 31, ""PARCIAL"": 54, ""SEM_PREVISAO"": 14}",31,31,0
+metrica,seccionalizadores/quantidade,32,"{""PARCIAL"": 28, ""SEM_PREVISAO"": 4}","{""PARCIAL"": 28, ""SEM_PREVISAO"": 4}",0,0,0
+metrica,subestacoes/quantidade,71,"{""COMPLETA"": 65, ""SEM_PREVISAO"": 6}","{""COMPLETA"": 10, ""PARCIAL"": 55, ""SEM_PREVISAO"": 6}",-55,0,55
+metrica,torres/quantidade,58,"{""PARCIAL"": 50, ""SEM_PREVISAO"": 8}","{""PARCIAL"": 50, ""SEM_PREVISAO"": 8}",0,0,0
+metrica,trafo_dist/potencia_kva,99,"{""COMPLETA"": 87, ""SEM_PREVISAO"": 12}","{""COMPLETA"": 43, ""PARCIAL"": 44, ""SEM_PREVISAO"": 12}",-44,0,44
+metrica,trafo_dist/quantidade,99,"{""PARCIAL"": 88, ""SEM_PREVISAO"": 11}","{""PARCIAL"": 88, ""SEM_PREVISAO"": 11}",0,0,0
+metrica,trafo_forca/potencia_kva,70,"{""PARCIAL"": 60, ""SEM_PREVISAO"": 10}","{""COMPLETA"": 21, ""PARCIAL"": 39, ""SEM_PREVISAO"": 10}",21,21,0
+metrica,trafo_forca/quantidade,71,"{""COMPLETA"": 60, ""SEM_PREVISAO"": 11}","{""COMPLETA"": 23, ""PARCIAL"": 37, ""SEM_PREVISAO"": 11}",-37,0,37
+metrica,trafo_medida/quantidade,90,"{""PARCIAL"": 75, ""SEM_PREVISAO"": 15}","{""COMPLETA"": 28, ""PARCIAL"": 47, ""SEM_PREVISAO"": 15}",28,28,0
+nacional,SEM_KVA,2033,"{""COMPLETA"": 668, ""PARCIAL"": 1146, ""SEM_PREVISAO"": 219}","{""COMPLETA"": 647, ""PARCIAL"": 1167, ""SEM_PREVISAO"": 219}",-21,312,333
+nacional,TODAS,2202,"{""COMPLETA"": 755, ""PARCIAL"": 1206, ""SEM_PREVISAO"": 241}","{""COMPLETA"": 711, ""PARCIAL"": 1250, ""SEM_PREVISAO"": 241}",-44,333,377

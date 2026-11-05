@@ -1,0 +1,2 @@
+cenario,conceito,metrica,DIST,lado,modelo_ref,modelo,classe_ref,classe,max_dif_absoluta,max_dif_relativa
+ruido:3:0.001,medidores,quantidade,401,agressivo,random_forest_painel,random_forest_painel,PARCIAL,PARCIAL,4,0.0002569043031470777

@@ -1,0 +1,518 @@
+conceito,metrica,unidade,candidato,categoria,algoritmo,papel,status,justificativa,wape_produto,razao_wape_moderado,reproducao_windows,series_conservador,series_agressivo,dif_wape_ruido_realista_max,mudancas_escolha_ruido_realista,dif_wape_libm_x,dif_wape_estresse_ulp_x,classe_referencia
+consumidores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.042025,1.136,OK,88,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.057813,1.5628,OK,0,0,0.0,0,,,REJEITADO
+consumidores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.059122,1.5982,OK,0,0,0.0,0,,,REJEITADO
+consumidores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.059814,1.6169,OK,0,0,0.0,0,,,REJEITADO
+consumidores,quantidade,itens,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.036993,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+consumidores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.037919,1.025,OK,0,18,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.037884,1.0241,OK,0,35,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.038855,1.0503,OK,0,5,3.1514129791854195e-08,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.040799,1.1029,OK,0,2,1.3877787807814457e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.036825,0.9955,OK,0,20,,,0.0,2.0816681711721685e-17,VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,BLOQUEADO,resultado definido pelo desempate de vizinhos à mesma distância (empates exatos); não reprodutível,0.03514,0.9499,OK,0,36,,,0.0,0.00025617588650449566,VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.037,1.0002,OK,0,8,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.03775,1.0205,OK,0,11,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.05334,1.4419,,,,,,,,REJEITADO
+consumidores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.039365,1.0641,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+consumidores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.055182,1.4917,,,,,,,,REJEITADO
+consumidores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,5,,,,,REGRA_CONDICIONAL
+consumidores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+consumidores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+alimentadores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.049933,1.3668,OK,0,0,0.0,0,,,REJEITADO
+alimentadores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.061377,1.68,OK,0,0,0.0,0,,,REJEITADO
+alimentadores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.06276,1.7179,OK,0,0,0.0,0,,,REJEITADO
+alimentadores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.062317,1.7058,OK,0,0,0.0,0,,,REJEITADO
+alimentadores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.039467,1.0803,OK,6,26,1.3877787807814457e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.040454,1.1073,OK,0,2,1.3877787807814457e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.038562,1.0555,OK,44,5,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,random_forest_painel,O,random_forest_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.036533,1.0,OK,0,0,6.385693096064293e-06,0,,,MODERADO_PUBLICADO
+alimentadores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.043006,1.1772,OK,10,9,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.03593,0.9835,OK,7,8,,,0.0,3.469446951953614e-18,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.037412,1.024,OK,6,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4); WAPE muda > 1e-6 com outra libm (falharia o portão v1 fora do Windows),0.03888,1.0642,OK,2,7,,,1.081923497719961e-05,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.039915,1.0926,OK,2,3,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+alimentadores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.055579,1.5213,,,,,,,,REJEITADO
+alimentadores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.048218,1.3198,,,,,,,,REJEITADO
+alimentadores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.046562,1.2745,,,,,,,,REJEITADO
+alimentadores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,1,9,,,,,REGRA_CONDICIONAL
+alimentadores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+alimentadores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+bancos_capacitores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.067906,1.1846,OK,57,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.053663,0.9361,OK,0,0,0.0,0,,,REJEITADO
+bancos_capacitores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.053378,0.9312,OK,0,0,0.0,0,,,REJEITADO
+bancos_capacitores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (6/87 séries fora de (0.5, 3.0))",0.067869,1.184,OK,0,0,0.0,0,,,REJEITADO
+bancos_capacitores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.069578,1.2138,OK,0,1,2.7755575615628914e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.065432,1.1414,OK,0,42,2.7755575615628914e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.065413,1.1411,OK,0,3,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.060057,1.0477,OK,3,13,1.3239189469299584e-06,0,,,VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,hgb_painel,O,hgb_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.057324,1.0,OK,0,0,6.938893903907228e-18,0,,,MODERADO_PUBLICADO
+bancos_capacitores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.070325,1.2268,OK,0,0,,,0.0,4.163336342344337e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.064322,1.1221,OK,3,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4); WAPE muda > 1e-6 com outra libm (falharia o portão v1 fora do Windows),0.056623,0.9878,OK,3,12,,,5.104561538252228e-06,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+bancos_capacitores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.063503,1.1078,OK,0,0,,,0.0,0.0,REJEITADO
+bancos_capacitores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (5/87),0.062686,1.0935,,,,,,,,REJEITADO
+bancos_capacitores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (5/87),0.056928,0.9931,,,,,,,,REJEITADO
+bancos_capacitores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (5/87),0.056364,0.9833,,,,,,,,REJEITADO
+bancos_capacitores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,3,6,,,,,REGRA_CONDICIONAL
+bancos_capacitores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+bancos_capacitores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+barramentos,quantidade,itens,persistencia,O,persistencia,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.030052,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+barramentos,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.063346,2.1079,OK,0,0,0.0,0,,,REJEITADO
+barramentos,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.064293,2.1394,OK,0,0,0.0,0,,,REJEITADO
+barramentos,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.105125,3.4982,OK,0,0,0.0,0,,,REJEITADO
+barramentos,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.044859,1.4927,OK,0,0,2.0816681711721685e-17,0,,,REJEITADO
+barramentos,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.052871,1.7593,OK,0,0,2.0816681711721685e-17,0,,,REJEITADO
+barramentos,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.030872,1.0273,OK,0,27,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+barramentos,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.038029,1.2655,OK,0,0,0.0,0,,,REJEITADO
+barramentos,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.041209,1.3713,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+barramentos,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.039974,1.3302,OK,0,0,,,0.0,2.0816681711721685e-17,REJEITADO
+barramentos,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.02815,0.9367,OK,0,4,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+barramentos,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.028733,0.9561,OK,0,17,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+barramentos,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.040367,1.3433,OK,0,0,,,0.0,0.0,REJEITADO
+barramentos,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.071432,2.377,,,,,,,,REJEITADO
+barramentos,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.040214,1.3382,,,,,,,,REJEITADO
+barramentos,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.041378,1.3769,,,,,,,,REJEITADO
+barramentos,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,15,0,,,,,REGRA_CONDICIONAL
+barramentos,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+barramentos,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+chaves,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.060821,2.0769,OK,0,0,0.0,0,,,REJEITADO
+chaves,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.064516,2.2031,OK,0,0,0.0,0,,,REJEITADO
+chaves,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.064906,2.2164,OK,0,0,0.0,0,,,REJEITADO
+chaves,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.055956,1.9108,OK,0,0,0.0,0,,,REJEITADO
+chaves,quantidade,itens,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.029284,1.0,OK,0,0,1.0408340855860843e-17,0,,,MODERADO_PUBLICADO
+chaves,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.030213,1.0317,OK,34,13,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.031596,1.0789,OK,12,2,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.031282,1.0682,OK,0,41,3.0714570053991253e-09,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.029482,1.0068,OK,25,2,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.028536,0.9744,OK,15,14,,,6.938893903907228e-18,3.122502256758253e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,BLOQUEADO,resultado definido pelo desempate de vizinhos à mesma distância (empates exatos); não reprodutível,0.02929,1.0002,OK,7,2,,,0.0,0.0002132535842309241,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.030148,1.0295,OK,2,0,,,1.0408340855860843e-17,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.028442,0.9712,OK,17,13,,,0.0,0.0003682215300666175,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+chaves,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.048318,1.65,,,,,,,,REJEITADO
+chaves,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.037666,1.2862,,,,,,,,REJEITADO
+chaves,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.052484,1.7922,,,,,,,,REJEITADO
+chaves,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,1,2,,,,,REGRA_CONDICIONAL
+chaves,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+chaves,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+circuitos_at,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.064263,1.1757,OK,30,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.281711,5.1539,OK,0,0,0.0,0,,,REJEITADO
+circuitos_at,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.294555,5.3889,OK,0,0,0.0,0,,,REJEITADO
+circuitos_at,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,2.710173,49.5829,OK,0,0,0.0,0,,,REJEITADO
+circuitos_at,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.055849,1.0218,OK,1,11,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.054659,1.0,OK,0,0,2.7755575615628914e-17,0,,,MODERADO_PUBLICADO
+circuitos_at,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.056495,1.0336,OK,0,2,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.059576,1.09,OK,0,3,6.975905249492764e-07,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.07727,1.4137,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+circuitos_at,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.059798,1.094,OK,0,4,,,0.0,9.71445146547012e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.051147,0.9357,OK,0,11,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.056198,1.0281,OK,0,4,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.060649,1.1096,OK,0,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+circuitos_at,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,1.178838,21.567,,,,,,,,REJEITADO
+circuitos_at,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.208732,3.8188,,,,,,,,REJEITADO
+circuitos_at,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.210528,3.8516,,,,,,,,REJEITADO
+circuitos_at,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,3,,,,,REGRA_CONDICIONAL
+circuitos_at,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+circuitos_at,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+conjuntos,quantidade,itens,persistencia,O,persistencia,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.019213,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+conjuntos,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.031887,1.6597,OK,0,0,0.0,0,,,REJEITADO
+conjuntos,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.03098,1.6125,OK,0,0,0.0,0,,,REJEITADO
+conjuntos,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.03243,1.6879,OK,0,0,0.0,0,,,REJEITADO
+conjuntos,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.020904,1.088,OK,1,2,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+conjuntos,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.020865,1.086,OK,0,14,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+conjuntos,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.019213,1.0,OK,0,0,0.0,0,,,VALIDO_APENAS_RETROSPECTIVAMENTE
+conjuntos,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.020856,1.0855,OK,0,4,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+conjuntos,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.021063,1.0963,OK,0,1,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+conjuntos,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.020994,1.0927,OK,0,0,,,0.0,0.0,REJEITADO
+conjuntos,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.019213,1.0,OK,0,0,,,0.0,0.0,VALIDO_APENAS_RETROSPECTIVAMENTE
+conjuntos,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.020723,1.0786,OK,0,0,,,0.0,0.0,REJEITADO
+conjuntos,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.02068,1.0764,OK,0,0,,,0.0,0.0001980919821131192,REJEITADO
+conjuntos,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.029413,1.5309,,,,,,,,REJEITADO
+conjuntos,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.023133,1.204,,,,,,,,REJEITADO
+conjuntos,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.023133,1.204,,,,,,,,REJEITADO
+conjuntos,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,0,,,,,REGRA_CONDICIONAL
+conjuntos,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+conjuntos,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+disjuntores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.060598,1.4003,OK,0,0,0.0,0,,,REJEITADO
+disjuntores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.072299,1.6706,OK,0,0,0.0,0,,,REJEITADO
+disjuntores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.073474,1.6978,OK,0,0,0.0,0,,,REJEITADO
+disjuntores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (4/53 séries fora de (0.5, 3.0))",0.083644,1.9328,OK,0,0,0.0,0,,,REJEITADO
+disjuntores,quantidade,itens,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.043276,1.0,OK,0,0,1.3877787807814457e-17,0,,,MODERADO_PUBLICADO
+disjuntores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.050151,1.1589,OK,6,8,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.05075,1.1727,OK,35,1,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.049006,1.1324,OK,2,20,8.900278453682908e-07,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.072795,1.6821,OK,0,0,0.0,0,,,REJEITADO
+disjuntores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.042017,0.9709,OK,1,10,,,0.0,2.0816681711721685e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.056071,1.2957,OK,0,0,,,0.0,0.0,REJEITADO
+disjuntores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.048533,1.1215,OK,1,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.057541,1.3296,OK,0,0,,,0.0,0.0,REJEITADO
+disjuntores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.070034,1.6183,,,,,,,,REJEITADO
+disjuntores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.05092,1.1766,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.051769,1.1963,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+disjuntores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,2,3,,,,,REGRA_CONDICIONAL
+disjuntores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+disjuntores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+geradores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.314559,3.0752,OK,0,0,0.0,0,,,REJEITADO
+geradores,quantidade,itens,deriva,O,deriva,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.102288,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+geradores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.104061,1.0173,OK,48,16,0.0,0,,,VALIDO_NA_DISTRIBUIDORA
+geradores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (74/90 séries fora de (0.5, 3.0))",0.164022,1.6035,OK,0,0,0.0,0,,,REJEITADO
+geradores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (66/90 séries fora de (0.5, 3.0))",0.104037,1.0171,OK,0,0,2.7755575615628914e-17,0,,,REJEITADO
+geradores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (66/90 séries fora de (0.5, 3.0))",0.106236,1.0386,OK,0,0,2.7755575615628914e-17,0,,,REJEITADO
+geradores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (62/90 séries fora de (0.5, 3.0))",0.131945,1.2899,OK,0,0,0.0,0,,,REJEITADO
+geradores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (67/90 séries fora de (0.5, 3.0))",0.127394,1.2454,OK,0,0,5.059378096194944e-07,0,,,REJEITADO
+geradores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (61/90 séries fora de (0.5, 3.0))",0.125794,1.2298,OK,0,0,0.0,0,,,REJEITADO
+geradores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (66/90),0.102958,1.0065,OK,0,0,,,0.0,5.551115123125783e-17,REJEITADO
+geradores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (78/90),0.151978,1.4858,OK,0,0,,,0.0,4.5913086252347135e-07,REJEITADO
+geradores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (69/90),0.137967,1.3488,OK,0,0,,,0.0,0.0,REJEITADO
+geradores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (65/90),0.132876,1.299,OK,0,0,,,0.0,0.005089292619470803,REJEITADO
+geradores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (55/90),0.11405,1.115,,,,,,,,REJEITADO
+geradores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (79/90),0.14902,1.4569,,,,,,,,REJEITADO
+geradores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (79/90),0.16411,1.6044,,,,,,,,REJEITADO
+geradores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,1,5,,,,,REGRA_CONDICIONAL
+geradores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+geradores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+iluminacao,quantidade,itens,persistencia,O,persistencia,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.048131,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+iluminacao,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.089409,1.8576,OK,0,0,0.0,0,,,REJEITADO
+iluminacao,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.090418,1.8786,OK,0,0,0.0,0,,,REJEITADO
+iluminacao,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.160382,3.3322,OK,0,0,0.0,0,,,REJEITADO
+iluminacao,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.068845,1.4304,OK,0,0,2.7755575615628914e-17,0,,,REJEITADO
+iluminacao,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.068002,1.4129,OK,0,0,0.0,0,,,REJEITADO
+iluminacao,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.055783,1.159,OK,4,76,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+iluminacao,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.070896,1.473,OK,0,0,1.430046437794763e-07,0,,,REJEITADO
+iluminacao,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.07072,1.4693,OK,0,0,0.0,0,,,REJEITADO
+iluminacao,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.068339,1.4199,OK,0,0,,,0.0,6.938893903907228e-18,REJEITADO
+iluminacao,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.046763,0.9716,OK,3,12,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+iluminacao,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.065151,1.3536,OK,0,0,,,0.0,0.0,REJEITADO
+iluminacao,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.064964,1.3497,OK,0,0,,,0.0,0.000480959269918077,REJEITADO
+iluminacao,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.110337,2.2924,,,,,,,,REJEITADO
+iluminacao,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.059706,1.2405,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+iluminacao,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.090239,1.8749,,,,,,,,REJEITADO
+iluminacao,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,22,1,,,,,REGRA_CONDICIONAL
+iluminacao,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+iluminacao,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+medidores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.031014,2.5109,OK,0,0,0.0,0,,,REJEITADO
+medidores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.026041,2.1083,OK,0,0,0.0,0,,,REJEITADO
+medidores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.026545,2.1491,OK,0,0,0.0,0,,,REJEITADO
+medidores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.026261,2.1261,OK,0,0,0.0,0,,,REJEITADO
+medidores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.018724,1.5159,OK,0,0,6.938893903907228e-18,0,,,REJEITADO
+medidores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.017356,1.4051,OK,0,0,6.938893903907228e-18,0,,,REJEITADO
+medidores,quantidade,itens,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.012352,1.0,OK,0,0,3.469446951953614e-18,0,,,MODERADO_PUBLICADO
+medidores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.0134,1.0849,OK,40,39,8.487093200587603e-07,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+medidores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.014632,1.1846,OK,12,9,1.214306433183765e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+medidores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.012317,0.9972,OK,3,22,,,0.0,1.214306433183765e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+medidores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.010795,0.874,OK,14,35,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+medidores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.012802,1.0364,OK,5,9,,,0.0,0.0,VALIDO_NA_DISTRIBUIDORA
+medidores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.015879,1.2856,OK,0,0,,,0.0,0.00018341441713968544,REJEITADO
+medidores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.024914,2.017,,,,,,,,REJEITADO
+medidores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.014912,1.2073,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+medidores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.018272,1.4793,,,,,,,,REJEITADO
+medidores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,9,5,,,,,REGRA_CONDICIONAL
+medidores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+medidores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+medidores,quantidade,itens,N6_ELASTICIDADE,N6,MQO g_ativo ~ g_UC,CONDICIONAL,REPROVADO,CONDICIONAL_REPROVADO,,,,,,,,,,CONDICIONAL_REPROVADO
+postes,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.026739,3.003,OK,0,0,0.0,0,,,REJEITADO
+postes,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.010434,1.1718,OK,3,5,0.0,0,,,VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.010629,1.1937,OK,0,0,0.0,0,,,VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.011328,1.2722,OK,0,0,0.0,0,,,REJEITADO
+postes,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009567,1.0745,OK,39,6,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009336,1.0485,OK,3,27,1.214306433183765e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009801,1.1007,OK,23,4,1.214306433183765e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,random_forest_painel,O,random_forest_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.008904,1.0,OK,0,0,1.350301749324101e-06,0,,,MODERADO_PUBLICADO
+postes,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009011,1.012,OK,22,41,3.469446951953614e-18,0,,,VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.009713,1.0909,OK,0,0,,,0.0,1.1275702593849246e-17,REJEITADO
+postes,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.010072,1.1312,OK,0,0,,,0.0,0.0,REJEITADO
+postes,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4); WAPE muda > 1e-6 com outra libm (falharia o portão v1 fora do Windows),0.008685,0.9754,OK,24,40,,,4.076789663135655e-06,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.009821,1.103,OK,0,0,,,0.0,8.233714366660122e-05,REJEITADO
+postes,quantidade,itens,N1,N,N1,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.010711,1.2029,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.00982,1.1029,,,,,,,,VALIDO_NA_DISTRIBUIDORA
+postes,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.009975,1.1203,,,,,,,,REJEITADO
+postes,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,1,5,,,,,REGRA_CONDICIONAL
+postes,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+postes,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+postes,quantidade,itens,N6_ELASTICIDADE,N6,MQO g_ativo ~ g_UC,CONDICIONAL,REPROVADO,CONDICIONAL_REPROVADO,,,,,,,,,,CONDICIONAL_REPROVADO
+ramais,extensao_km,km,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.048608,1.336,OK,0,0,0.0,0,,,REJEITADO
+ramais,extensao_km,km,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.062461,1.7167,OK,0,0,0.0,0,,,REJEITADO
+ramais,extensao_km,km,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.063841,1.7546,OK,0,0,0.0,0,,,REJEITADO
+ramais,extensao_km,km,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.077868,2.1401,OK,0,0,0.0,0,,,REJEITADO
+ramais,extensao_km,km,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.037891,1.0414,OK,23,21,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.041678,1.1455,OK,7,1,1.3877787807814457e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.036385,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+ramais,extensao_km,km,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.038258,1.0515,OK,18,57,1.982188586498179e-06,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.041491,1.1403,OK,6,4,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.037495,1.0305,OK,10,12,,,0.0,2.7755575615628914e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.03926,1.079,OK,15,0,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.039983,1.0989,OK,0,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.035885,0.9863,OK,32,11,,,0.0,1.6766827141641294e-05,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.060533,1.6637,,,,,,,,REJEITADO
+ramais,extensao_km,km,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.037757,1.0377,,,,,,,,VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,N2g,N,N2g,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.044502,1.2231,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+ramais,extensao_km,km,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,11,3,,,,,REGRA_CONDICIONAL
+ramais,extensao_km,km,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+ramais,extensao_km,km,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+ramais,extensao_km,km,N6_ELASTICIDADE,N6,MQO g_ativo ~ g_UC,CONDICIONAL,REPROVADO,CONDICIONAL_REPROVADO,,,,,,,,,,CONDICIONAL_REPROVADO
+reatores,quantidade,itens,persistencia,O,persistencia,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.06867,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+reatores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.165773,2.4141,OK,0,0,0.0,0,,,REJEITADO
+reatores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.168455,2.4531,OK,0,0,0.0,0,,,REJEITADO
+reatores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.256735,3.7387,OK,0,0,0.0,0,,,REJEITADO
+reatores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,BLOQUEADO,SEM_EVIDENCIA_SUFICIENTE,,,OK,0,0,0.0,0,,,SEM_EVIDENCIA_SUFICIENTE
+reatores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,BLOQUEADO,SEM_EVIDENCIA_SUFICIENTE,,,OK,0,0,0.0,0,,,SEM_EVIDENCIA_SUFICIENTE
+reatores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,BLOQUEADO,SEM_EVIDENCIA_SUFICIENTE,,,OK,0,0,0.0,0,,,SEM_EVIDENCIA_SUFICIENTE
+reatores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,BLOQUEADO,SEM_EVIDENCIA_SUFICIENTE,,,OK,0,0,0.0,0,,,SEM_EVIDENCIA_SUFICIENTE
+reatores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,BLOQUEADO,SEM_EVIDENCIA_SUFICIENTE,,,OK,0,0,0.0,0,,,SEM_EVIDENCIA_SUFICIENTE
+reatores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.194346,2.8302,,,,,,,,REJEITADO
+reatores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.106771,1.5549,,,,,,,,REJEITADO
+reatores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.106771,1.5549,,,,,,,,REJEITADO
+reatores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,3,,,,,REGRA_CONDICIONAL
+reatores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+reatores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+rede_at,extensao_km,km,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.028505,1.0703,OK,47,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.038988,1.4639,OK,0,0,0.0,0,,,REJEITADO
+rede_at,extensao_km,km,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.039291,1.4753,OK,0,0,0.0,0,,,REJEITADO
+rede_at,extensao_km,km,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.042949,1.6127,OK,0,0,0.0,0,,,REJEITADO
+rede_at,extensao_km,km,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.026632,1.0,OK,0,0,1.0408340855860843e-17,0,,,MODERADO_PUBLICADO
+rede_at,extensao_km,km,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.027529,1.0337,OK,2,22,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.027106,1.0178,OK,0,4,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.027129,1.0186,OK,0,4,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.029436,1.1053,OK,0,2,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.025419,0.9544,OK,0,1,,,0.0,2.7755575615628914e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.023839,0.8951,OK,0,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.024775,0.9303,OK,0,6,,,6.938893903907228e-18,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.027734,1.0414,OK,0,1,,,3.469446951953614e-18,0.00043668036868618754,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.035035,1.3155,,,,,,,,REJEITADO
+rede_at,extensao_km,km,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.026074,0.979,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,N2g,N,N2g,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.030116,1.1308,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_at,extensao_km,km,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,2,,,,,REGRA_CONDICIONAL
+rede_at,extensao_km,km,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+rede_at,extensao_km,km,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+rede_bt,extensao_km,km,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.01991,1.1747,OK,90,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.023641,1.3949,OK,0,0,0.0,0,,,REJEITADO
+rede_bt,extensao_km,km,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.023691,1.3978,OK,0,0,0.0,0,,,REJEITADO
+rede_bt,extensao_km,km,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.024654,1.4547,OK,0,0,0.0,0,,,REJEITADO
+rede_bt,extensao_km,km,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.016948,1.0,OK,0,0,3.469446951953614e-18,0,,,MODERADO_PUBLICADO
+rede_bt,extensao_km,km,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.01757,1.0367,OK,0,43,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.019467,1.1486,OK,0,4,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.017988,1.0613,OK,0,18,1.3024659563376506e-06,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.01849,1.091,OK,0,3,3.469446951953614e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.017191,1.0143,OK,0,11,,,0.0,4.5102810375396984e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.017584,1.0375,OK,0,11,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_bt,extensao_km,km,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.018872,1.1135,OK,0,0,,,3.469446951953614e-18,0.0,REJEITADO
+rede_bt,extensao_km,km,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,GUARDA_F_REPROVADA,0.020622,1.2168,OK,0,0,,,0.0,0.0003680465142916825,REJEITADO
+rede_bt,extensao_km,km,N1,N,N1,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.019579,1.1552,,,,,,,,REJEITADO
+rede_bt,extensao_km,km,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.018677,1.102,,,,,,,,REJEITADO
+rede_bt,extensao_km,km,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.019404,1.1449,,,,,,,,REJEITADO
+rede_bt,extensao_km,km,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,0,,,,,REGRA_CONDICIONAL
+rede_bt,extensao_km,km,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+rede_bt,extensao_km,km,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+rede_bt,extensao_km,km,N6_ELASTICIDADE,N6,MQO g_ativo ~ g_UC,CONDICIONAL,REPROVADO,CONDICIONAL_REPROVADO,,,,,,,,,,CONDICIONAL_REPROVADO
+rede_bt,extensao_km,km,H_G_HIER_rede_bt,H,"piloto granular (conjunto × ano), configuração congelada 9be843b",EXTREMO_POR_SERIE,BLOQUEADO,NAO_APLICAVEL_AO_PAINEL_DIST,,,,,,,,,,NAO_APLICAVEL_AO_PAINEL_DIST
+rede_mt,extensao_km,km,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.02077,2.5059,OK,0,0,0.0,0,,,REJEITADO
+rede_mt,extensao_km,km,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.010474,1.2637,OK,0,0,0.0,0,,,REJEITADO
+rede_mt,extensao_km,km,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.01077,1.2994,OK,0,0,0.0,0,,,REJEITADO
+rede_mt,extensao_km,km,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.011258,1.3583,OK,0,0,0.0,0,,,REJEITADO
+rede_mt,extensao_km,km,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009943,1.1996,OK,0,4,1.734723475976807e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009657,1.1651,OK,6,41,5.204170427930421e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.009415,1.1359,OK,59,3,3.469446951953614e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,random_forest_painel,O,random_forest_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.008289,1.0001,OK,0,0,6.938893903907228e-18,0,,,MODERADO_PUBLICADO
+rede_mt,extensao_km,km,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,BLOQUEADO,escolha por série muda sob ruído realista de libm,0.008321,1.0039,OK,15,18,0.0,1,,,VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.008527,1.0288,OK,1,3,,,0.0,2.862293735361732e-17,VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.008639,1.0423,OK,0,1,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.007331,0.8845,OK,14,17,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.008117,0.9793,OK,4,5,,,5.204170427930421e-18,0.00019813382061917555,VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,N1,N,N1,NOVO_CONGELADO,REPROVADO,GUARDA_F_REPROVADA,0.009064,1.0936,,,,,,,,REJEITADO
+rede_mt,extensao_km,km,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.006824,0.8233,,,,,,,,VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,N2g,N,N2g,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.006991,0.8434,,,,,,,,VALIDO_NA_DISTRIBUIDORA
+rede_mt,extensao_km,km,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,4,5,,,,,REGRA_CONDICIONAL
+rede_mt,extensao_km,km,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+rede_mt,extensao_km,km,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+rede_mt,extensao_km,km,N6_ELASTICIDADE,N6,MQO g_ativo ~ g_UC,CONDICIONAL,REPROVADO,CONDICIONAL_REPROVADO,,,,,,,,,,CONDICIONAL_REPROVADO
+reguladores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.078542,1.7711,OK,0,0,0.0,0,,,REJEITADO
+reguladores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.059413,1.3397,OK,0,0,0.0,0,,,REJEITADO
+reguladores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.06019,1.3572,OK,0,0,0.0,0,,,REJEITADO
+reguladores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.072322,1.6308,OK,0,0,0.0,0,,,REJEITADO
+reguladores,quantidade,itens,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.044347,1.0,OK,0,0,2.0816681711721685e-17,0,,,MODERADO_PUBLICADO
+reguladores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.047608,1.0735,OK,6,11,6.245004513516506e-17,0,,,VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.049285,1.1113,OK,14,11,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.046465,1.0478,OK,4,28,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.052138,1.1757,OK,41,3,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.044392,1.001,OK,8,17,,,1.3877787807814457e-17,3.469446951953614e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.048784,1.1,OK,10,2,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.048609,1.0961,OK,5,8,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.052324,1.1799,OK,2,1,,,0.0,0.0010729504720552105,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.06128,1.3818,,,,,,,,REJEITADO
+reguladores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.059463,1.3408,,,,,,,,REJEITADO
+reguladores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.054739,1.2343,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+reguladores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,2,4,,,,,REGRA_CONDICIONAL
+reguladores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+reguladores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+religadores,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.109806,1.5799,OK,0,0,0.0,0,,,REJEITADO
+religadores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.074767,1.0757,OK,30,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.074998,1.0791,OK,3,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (12/86 séries fora de (0.5, 3.0))",0.084061,1.2095,OK,0,0,0.0,0,,,REJEITADO
+religadores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.07985,1.1489,OK,1,5,1.1102230246251565e-16,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.093164,1.3404,OK,0,0,1.1102230246251565e-16,0,,,REJEITADO
+religadores,quantidade,itens,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.069503,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+religadores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.082141,1.1818,OK,0,76,2.3113995814560973e-08,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.099099,1.4258,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+religadores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.084724,1.219,OK,0,0,,,1.3877787807814457e-17,4.163336342344337e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.078835,1.1343,OK,13,0,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4); WAPE muda > 1e-6 com outra libm (falharia o portão v1 fora do Windows),0.070527,1.0147,OK,5,1,,,7.565519908561691e-06,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.069983,1.0069,OK,14,5,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.075577,1.0874,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.068039,0.9789,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.068156,0.9806,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+religadores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,5,1,,,,,REGRA_CONDICIONAL
+religadores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+religadores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+seccionalizadores,quantidade,itens,persistencia,O,persistencia,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.070784,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+seccionalizadores,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.100247,1.4162,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.103185,1.4577,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (11/28 séries fora de (0.5, 3.0))",0.076474,1.0804,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.118821,1.6786,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (2/28 séries fora de (0.5, 3.0))",0.104322,1.4738,OK,0,0,2.7755575615628914e-17,0,,,REJEITADO
+seccionalizadores,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (2/28 séries fora de (0.5, 3.0))",0.112228,1.5855,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (5/28 séries fora de (0.5, 3.0))",0.121719,1.7196,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (8/28 séries fora de (0.5, 3.0))",0.09654,1.3639,OK,0,0,0.0,0,,,REJEITADO
+seccionalizadores,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (3/28),0.074079,1.0465,OK,0,0,,,0.0,8.326672684688674e-17,REJEITADO
+seccionalizadores,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (2/28),0.071599,1.0115,OK,0,0,,,0.0,0.0,REJEITADO
+seccionalizadores,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.057565,0.8132,OK,7,16,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+seccionalizadores,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,TRAJETORIA_IMPLAUSIVEL (3/28),0.108796,1.537,OK,0,0,,,0.0,0.014275555185098626,REJEITADO
+seccionalizadores,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (3/28),0.065513,0.9255,,,,,,,,REJEITADO
+seccionalizadores,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (2/28),0.055593,0.7854,,,,,,,,REJEITADO
+seccionalizadores,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (9/28),0.07702,1.0881,,,,,,,,REJEITADO
+seccionalizadores,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,4,1,,,,,REGRA_CONDICIONAL
+seccionalizadores,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+seccionalizadores,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+subestacoes,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.03598,1.0173,OK,23,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.055425,1.567,OK,0,0,0.0,0,,,REJEITADO
+subestacoes,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.056133,1.5871,OK,0,0,0.0,0,,,REJEITADO
+subestacoes,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.059445,1.6807,OK,0,0,0.0,0,,,REJEITADO
+subestacoes,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.044557,1.2598,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+subestacoes,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.046965,1.3278,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+subestacoes,quantidade,itens,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.035369,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+subestacoes,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.0426,1.2044,OK,1,27,4.4246475959311415e-06,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.045605,1.2894,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+subestacoes,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.040248,1.1379,OK,0,3,,,0.0,6.938893903907228e-18,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.034626,0.979,OK,0,4,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.040023,1.1316,OK,2,0,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.038206,1.0802,OK,3,5,,,0.0,0.00017854855633014227,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.051068,1.4439,,,,,,,,REJEITADO
+subestacoes,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.038951,1.1013,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+subestacoes,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.047482,1.3425,,,,,,,,REJEITADO
+subestacoes,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,4,5,,,,,REGRA_CONDICIONAL
+subestacoes,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+subestacoes,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+torres,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.034206,1.1374,OK,33,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+torres,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.09719,3.2317,OK,0,0,0.0,0,,,REJEITADO
+torres,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.100329,3.3361,OK,0,0,0.0,0,,,REJEITADO
+torres,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (4/50 séries fora de (0.5, 3.0))",0.28259,9.3966,OK,0,0,0.0,0,,,REJEITADO
+torres,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.047484,1.5789,OK,0,0,6.938893903907228e-18,0,,,REJEITADO
+torres,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.057311,1.9057,OK,0,0,2.0816681711721685e-17,0,,,REJEITADO
+torres,quantidade,itens,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.030074,1.0,OK,0,0,3.469446951953614e-18,0,,,MODERADO_PUBLICADO
+torres,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.047956,1.5946,OK,0,0,6.938893903907228e-18,0,,,REJEITADO
+torres,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.05607,1.8644,OK,0,0,1.3877787807814457e-17,0,,,REJEITADO
+torres,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.036938,1.2283,OK,0,25,,,0.0,3.469446951953614e-18,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+torres,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.027127,0.902,OK,0,12,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+torres,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.0416,1.3833,OK,0,0,,,0.0,0.0,REJEITADO
+torres,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.046563,1.5483,OK,0,0,,,0.0,0.0,REJEITADO
+torres,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.166624,5.5405,,,,,,,,REJEITADO
+torres,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.059332,1.9729,,,,,,,,REJEITADO
+torres,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.061289,2.038,,,,,,,,REJEITADO
+torres,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,1,2,,,,,REGRA_CONDICIONAL
+torres,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+torres,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+trafo_dist,potencia_kva,kVA,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.076541,1.3433,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,potencia_kva,kVA,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.180309,3.1645,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,potencia_kva,kVA,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.186687,3.2764,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,potencia_kva,kVA,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.256458,4.501,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,potencia_kva,kVA,ridge_painel,O,ridge_painel,MODERADO,EXPERIMENTAL,Moderado publicado preservado; métrica kVA experimental,0.056979,1.0,OK,0,0,1.3877787807814457e-17,0,,,MODERADO_PUBLICADO
+trafo_dist,potencia_kva,kVA,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.058618,1.0288,OK,11,36,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.057536,1.0098,OK,50,15,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.059439,1.0432,OK,2,7,3.3977406613969197e-05,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.069071,1.2122,OK,3,6,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.056541,0.9923,OK,5,14,,,0.0,1.5959455978986625e-16,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.052218,0.9164,OK,20,14,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.060216,1.0568,OK,2,0,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.069495,1.2197,OK,1,0,,,2.7755575615628914e-17,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,potencia_kva,kVA,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.19172,3.3648,,,,,,,,REJEITADO
+trafo_dist,potencia_kva,kVA,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.091492,1.6057,,,,,,,,REJEITADO
+trafo_dist,potencia_kva,kVA,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.123843,2.1735,,,,,,,,REJEITADO
+trafo_dist,potencia_kva,kVA,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),,,,0,1,,,,,REGRA_CONDICIONAL
+trafo_dist,potencia_kva,kVA,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+trafo_dist,potencia_kva,kVA,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+trafo_dist,potencia_kva,kVA,H_G_RIDGE_kva,H,"piloto granular (conjunto × ano), configuração congelada 9be843b",EXTREMO_POR_SERIE,BLOQUEADO,NAO_APLICAVEL_AO_PAINEL_DIST,,,,,,,,,,NAO_APLICAVEL_AO_PAINEL_DIST
+trafo_dist,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.033235,3.0017,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.02712,2.4494,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.028237,2.5503,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.029789,2.6905,OK,0,0,0.0,0,,,REJEITADO
+trafo_dist,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.01785,1.6122,OK,0,0,1.0408340855860843e-17,0,,,REJEITADO
+trafo_dist,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.018159,1.6401,OK,0,0,1.734723475976807e-17,0,,,REJEITADO
+trafo_dist,quantidade,itens,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.011072,1.0,OK,0,0,1.734723475976807e-18,0,,,MODERADO_PUBLICADO
+trafo_dist,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.014,1.2644,OK,0,0,3.469446951953614e-18,0,,,REJEITADO
+trafo_dist,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.016307,1.4728,OK,0,0,3.469446951953614e-18,0,,,REJEITADO
+trafo_dist,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.010783,0.9739,OK,26,59,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.011092,1.0018,OK,16,5,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.011914,1.076,OK,1,5,,,1.734723475976807e-18,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.015266,1.3788,OK,0,0,,,0.0,0.0,REJEITADO
+trafo_dist,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.023768,2.1467,,,,,,,,REJEITADO
+trafo_dist,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.011694,1.0562,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_dist,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.021643,1.9547,,,,,,,,REJEITADO
+trafo_dist,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,19,8,,,,,REGRA_CONDICIONAL
+trafo_dist,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+trafo_dist,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+trafo_dist,quantidade,itens,N6_ELASTICIDADE,N6,MQO g_ativo ~ g_UC,CONDICIONAL,REPROVADO,CONDICIONAL_REPROVADO,,,,,,,,,,CONDICIONAL_REPROVADO
+trafo_forca,potencia_kva,kVA,persistencia,O,persistencia,MODERADO,EXPERIMENTAL,Moderado publicado preservado; métrica kVA experimental,0.099462,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+trafo_forca,potencia_kva,kVA,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.240821,2.4212,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,potencia_kva,kVA,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.245951,2.4728,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,potencia_kva,kVA,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (8/60 séries fora de (0.5, 3.0))",10.19465,102.4975,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,potencia_kva,kVA,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.121148,1.218,OK,3,45,2.7755575615628914e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.117426,1.1806,OK,3,0,1.3877787807814457e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.10091,1.0146,OK,2,4,1.3877787807814457e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.103893,1.0445,OK,13,4,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.107477,1.0806,OK,6,1,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.10795,1.0853,OK,0,0,,,0.0,8.326672684688674e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.101242,1.0179,OK,1,1,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.097032,0.9756,OK,13,11,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),0.104607,1.0517,OK,0,0,,,0.0,0.0005778598699617138,VALIDO_NA_DISTRIBUIDORA
+trafo_forca,potencia_kva,kVA,N1,N,N1,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (5/60),2.465402,24.7873,,,,,,,,REJEITADO
+trafo_forca,potencia_kva,kVA,N2n,N,N2n,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (4/60),0.27419,2.7567,,,,,,,,REJEITADO
+trafo_forca,potencia_kva,kVA,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,TRAJETORIA_IMPLAUSIVEL (4/60),0.363552,3.6552,,,,,,,,REJEITADO
+trafo_forca,potencia_kva,kVA,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,métrica kVA experimental (EXPERIMENTAL_KVA),,,,7,0,,,,,REGRA_CONDICIONAL
+trafo_forca,potencia_kva,kVA,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+trafo_forca,potencia_kva,kVA,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+trafo_forca,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.040501,1.0773,OK,35,0,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.072494,1.9283,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.073646,1.959,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.074186,1.9734,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,quantidade,itens,ridge_painel,O,ridge_painel,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.037594,1.0,OK,0,0,6.938893903907228e-18,0,,,MODERADO_PUBLICADO
+trafo_forca,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.04083,1.0861,OK,0,7,6.938893903907228e-18,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,knn_analogos,O,knn_analogos,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.042389,1.1276,OK,0,2,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.04423,1.1765,OK,0,16,2.837207655620455e-08,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.048461,1.2891,OK,0,0,0.0,0,,,REJEITADO
+trafo_forca,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.036407,0.9684,OK,0,7,,,0.0,3.122502256758253e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.04504,1.1981,OK,0,0,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.039414,1.0484,OK,0,3,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.045702,1.2157,OK,1,3,,,0.0,0.0004468642237724918,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.06256,1.6641,,,,,,,,REJEITADO
+trafo_forca,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.044978,1.1964,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_forca,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.051222,1.3625,,,,,,,,REJEITADO
+trafo_forca,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,0,6,,,,,REGRA_CONDICIONAL
+trafo_forca,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+trafo_forca,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,REPROVADO,CONDICIONAL_NAO_CALIBRADO,,,,,,,,,,CONDICIONAL_NAO_CALIBRADO
+trafo_medida,quantidade,itens,persistencia,O,persistencia,EXTREMO_POR_SERIE,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.130005,1.323,OK,0,0,0.0,0,,,REJEITADO
+trafo_medida,quantidade,itens,deriva,O,deriva,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.177269,1.804,OK,0,0,0.0,0,,,REJEITADO
+trafo_medida,quantidade,itens,tendencia_ols,O,tendencia_ols,EXTREMO_POR_SERIE,REPROVADO,PROJECAO_NEGATIVA_OU_NAO_FINITA,0.18028,1.8346,OK,0,0,0.0,0,,,REJEITADO
+trafo_medida,quantidade,itens,crescimento_geometrico,O,crescimento_geometrico,EXTREMO_POR_SERIE,REPROVADO,"TRAJETORIA_IMPLAUSIVEL (14/75 séries fora de (0.5, 3.0))",0.1835,1.8674,OK,0,0,0.0,0,,,REJEITADO
+trafo_medida,quantidade,itens,ridge_painel,O,ridge_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.108128,1.1004,OK,1,57,2.7755575615628914e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,ridge_painel_ext,O,ridge_painel_ext,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.105354,1.0721,OK,13,0,2.7755575615628914e-17,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,knn_analogos,O,knn_analogos,MODERADO,APROVADO,Moderado publicado preservado byte a byte; reprodução exata no Windows; não é homologação,0.098265,1.0,OK,0,0,0.0,0,,,MODERADO_PUBLICADO
+trafo_medida,quantidade,itens,random_forest_painel,O,random_forest_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.104996,1.0685,OK,14,12,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,hgb_painel,O,hgb_painel,EXTREMO_POR_SERIE,APROVADO,"original competitivo, reprodução exata no Windows, escolhas estáveis sob ruído realista; integração depende de D2 e do aceite",0.114708,1.1673,OK,5,1,0.0,0,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,ridge_painel_otim,X,ridge,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.10414,1.0598,OK,2,0,,,0.0,2.7755575615628914e-17,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,knn_analogos_otim,X,knn,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.097836,0.9956,OK,27,7,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,random_forest_painel_otim,X,rf,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.100805,1.0259,OK,1,7,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,hgb_painel_otim,X,hgb,EXTREMO_POR_SERIE,EXPERIMENTAL,configuração otimizada: só na 1.1 após revisão (D4),0.109866,1.1181,OK,1,0,,,0.0,0.0,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,N1,N,N1,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.162073,1.6494,,,,,,,,REJEITADO
+trafo_medida,quantidade,itens,N2n,N,N2n,NOVO_CONGELADO,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),0.119493,1.216,,,,,,,,VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA
+trafo_medida,quantidade,itens,N2g,N,N2g,NOVO_CONGELADO,REPROVADO,WAPE_ACIMA_DA_TOLERANCIA,0.124001,1.2619,,,,,,,,REJEITADO
+trafo_medida,quantidade,itens,B_HIST,B-HIST,"regra condicional (otimização 6.4, guardas recuperacao-1)",CONDICIONAL,EXPERIMENTAL,simulação condicional (D5); não é intervalo de confiança,,,,12,0,,,,,REGRA_CONDICIONAL
+trafo_medida,quantidade,itens,N5_QUANTIL_0.2,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO
+trafo_medida,quantidade,itens,N5_QUANTIL_0.8,N5,"QuantileRegressor (highs, alpha=0)",CONDICIONAL,EXPERIMENTAL,congelado até a confirmação com a competência 2026 (D7),,,,,,,,,,CONDICIONAL_CALIBRADO

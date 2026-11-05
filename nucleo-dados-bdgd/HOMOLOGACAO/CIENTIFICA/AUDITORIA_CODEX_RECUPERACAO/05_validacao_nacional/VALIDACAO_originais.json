@@ -1,0 +1,26 @@
+{
+ "execucao": "motor_cenarios\\experimental\\recuperacao\\win-nacional-originais",
+ "modo": "originais",
+ "contagens": {
+  "categoria_A_ORIGINAL": 885,
+  "categoria_A_PUBLICADO_MANTIDO": 1411,
+  "classe_COMPLETA_INDEPENDENTE": 711,
+  "classe_PARCIAL": 1250,
+  "classe_SEM_PREVISAO": 241,
+  "estado_APROVADO": 2295,
+  "estado_DIFERENCA_IMATERIAL": 1,
+  "extremos": 2296,
+  "series": 2202
+ },
+ "falhas_por_verificacao": {
+  "V2": 1
+ },
+ "falhas": [
+  {
+   "verificacao": "V2",
+   "chave": "reguladores/quantidade/6587",
+   "detalhe": "agressivo: DIFERENCA_IMATERIAL ['Q7_DIFERENCA_MENOR_0_05PP']"
+  }
+ ],
+ "aprovado": false
+}

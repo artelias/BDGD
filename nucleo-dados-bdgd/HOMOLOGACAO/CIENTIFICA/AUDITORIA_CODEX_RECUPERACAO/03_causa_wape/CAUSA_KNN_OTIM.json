@@ -1,0 +1,178 @@
+[
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "ridge_painel_otim",
+  "etapa": "S",
+  "wape": 0.03547963644708838,
+  "registrado": 0.03548,
+  "dif_registrado": 3.6355291161555003e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "ridge_painel_otim",
+  "etapa": "F",
+  "wape": 0.025499042311263147,
+  "registrado": 0.025499,
+  "dif_registrado": 4.231126314591105e-08,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "knn_analogos_otim",
+  "etapa": "S",
+  "wape": 0.03620675417165332,
+  "registrado": 0.036207,
+  "dif_registrado": 2.458283466857947e-07,
+  "linux": 0.03620207211997554,
+  "dif_linux": 4.68205167777902e-06,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "knn_analogos_otim",
+  "etapa": "F",
+  "wape": 0.023106423264105568,
+  "registrado": 0.023106,
+  "dif_registrado": 4.2326410556667304e-07,
+  "linux": 0.023107202334389846,
+  "dif_linux": 7.790702842777608e-07,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "random_forest_painel_otim",
+  "etapa": "S",
+  "wape": 0.03642667762217775,
+  "registrado": 0.036427,
+  "dif_registrado": 3.223778222496976e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "random_forest_painel_otim",
+  "etapa": "F",
+  "wape": 0.0233516821011203,
+  "registrado": 0.023352,
+  "dif_registrado": 3.178988796995186e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "hgb_painel_otim",
+  "etapa": "S",
+  "wape": 0.03692528157272186,
+  "registrado": 0.036925,
+  "dif_registrado": 2.8157272186080107e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E0_ucrt",
+  "modelo": "hgb_painel_otim",
+  "etapa": "F",
+  "wape": 0.0250735738114993,
+  "registrado": 0.025074,
+  "dif_registrado": 4.261885006989763e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "ridge_painel_otim",
+  "etapa": "S",
+  "wape": 0.03547963644708838,
+  "registrado": 0.03548,
+  "dif_registrado": 3.6355291161555003e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "ridge_painel_otim",
+  "etapa": "F",
+  "wape": 0.025499042311263147,
+  "registrado": 0.025499,
+  "dif_registrado": 4.231126314591105e-08,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "knn_analogos_otim",
+  "etapa": "S",
+  "wape": 0.03620675417165332,
+  "registrado": 0.036207,
+  "dif_registrado": 2.458283466857947e-07,
+  "linux": 0.03620207211997554,
+  "dif_linux": 4.68205167777902e-06,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "knn_analogos_otim",
+  "etapa": "F",
+  "wape": 0.023106423264105568,
+  "registrado": 0.023106,
+  "dif_registrado": 4.2326410556667304e-07,
+  "linux": 0.023107202334389846,
+  "dif_linux": 7.790702842777608e-07,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "random_forest_painel_otim",
+  "etapa": "S",
+  "wape": 0.03642667762217775,
+  "registrado": 0.036427,
+  "dif_registrado": 3.223778222496976e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "random_forest_painel_otim",
+  "etapa": "F",
+  "wape": 0.0233516821011203,
+  "registrado": 0.023352,
+  "dif_registrado": 3.178988796995186e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "hgb_painel_otim",
+  "etapa": "S",
+  "wape": 0.03692528157272186,
+  "registrado": 0.036925,
+  "dif_registrado": 2.8157272186080107e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ },
+ {
+  "experimento": "E1_log_exp_corretos",
+  "modelo": "hgb_painel_otim",
+  "etapa": "F",
+  "wape": 0.0250735738114993,
+  "registrado": 0.025074,
+  "dif_registrado": 4.261885006989763e-07,
+  "linux": null,
+  "dif_linux": null,
+  "dentro_1e6": true
+ }
+]

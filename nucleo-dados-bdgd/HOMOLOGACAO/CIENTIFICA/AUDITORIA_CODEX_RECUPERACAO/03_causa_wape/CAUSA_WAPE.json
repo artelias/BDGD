@@ -1,0 +1,364 @@
+{
+ "linhas": [
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "persistencia",
+   "wape": 0.06790620177788717,
+   "wape_publicado": 0.06790620177788717,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "deriva",
+   "wape": 0.05366322386420653,
+   "wape_publicado": 0.05366322386420653,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "tendencia_ols",
+   "wape": 0.053377638508895764,
+   "wape_publicado": 0.053377638508895764,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "crescimento_geometrico",
+   "wape": 0.0678690825789064,
+   "wape_publicado": 0.0678690825789064,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel",
+   "wape": 0.06957763490569908,
+   "wape_publicado": 0.06957763490569908,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel_ext",
+   "wape": 0.06543248603625895,
+   "wape_publicado": 0.06543248603625895,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "knn_analogos",
+   "wape": 0.06541330079435397,
+   "wape_publicado": 0.06541330079435397,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "random_forest_painel",
+   "wape": 0.0600573022094799,
+   "wape_publicado": 0.0600573022094799,
+   "dif_publicado": 0.0,
+   "wape_linux": 0.06005597829053297,
+   "dif_linux": 1.3239189469299584e-06,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "hgb_painel",
+   "wape": 0.05732366480562652,
+   "wape_publicado": 0.05732366480562652,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "persistencia",
+   "wape": 0.06790620177788717,
+   "wape_publicado": 0.06790620177788717,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "deriva",
+   "wape": 0.05366322386420653,
+   "wape_publicado": 0.05366322386420653,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "tendencia_ols",
+   "wape": 0.053377638508895764,
+   "wape_publicado": 0.053377638508895764,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "crescimento_geometrico",
+   "wape": 0.0678690825789064,
+   "wape_publicado": 0.0678690825789064,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel",
+   "wape": 0.06957763490569908,
+   "wape_publicado": 0.06957763490569908,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel_ext",
+   "wape": 0.06543248603625895,
+   "wape_publicado": 0.06543248603625895,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "knn_analogos",
+   "wape": 0.06541330079435397,
+   "wape_publicado": 0.06541330079435397,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "random_forest_painel",
+   "wape": 0.06005597829053297,
+   "wape_publicado": 0.0600573022094799,
+   "dif_publicado": 1.3239189469299584e-06,
+   "wape_linux": 0.06005597829053297,
+   "dif_linux": 0.0,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "hgb_painel",
+   "wape": 0.05732366480562652,
+   "wape_publicado": 0.05732366480562652,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "persistencia",
+   "wape": 0.06790620177788717,
+   "wape_publicado": 0.06790620177788717,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "deriva",
+   "wape": 0.05366322386420653,
+   "wape_publicado": 0.05366322386420653,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "tendencia_ols",
+   "wape": 0.053377638508895764,
+   "wape_publicado": 0.053377638508895764,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "crescimento_geometrico",
+   "wape": 0.0678690825789064,
+   "wape_publicado": 0.0678690825789064,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel",
+   "wape": 0.06957763490569908,
+   "wape_publicado": 0.06957763490569908,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel_ext",
+   "wape": 0.06543248603625895,
+   "wape_publicado": 0.06543248603625895,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "knn_analogos",
+   "wape": 0.06541330079435397,
+   "wape_publicado": 0.06541330079435397,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "random_forest_painel",
+   "wape": 0.06005597829053297,
+   "wape_publicado": 0.0600573022094799,
+   "dif_publicado": 1.3239189469299584e-06,
+   "wape_linux": 0.06005597829053297,
+   "dif_linux": 0.0,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "modelo": "hgb_painel",
+   "wape": 0.05732366480562652,
+   "wape_publicado": 0.05732366480562652,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  }
+ ],
+ "log_ucrt_vs_correto": {
+  "chamadas": 35522,
+  "diferentes": 24,
+  "exemplos": [
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "1.0909090909090908",
+    "ucrt": "0.08701137698962969",
+    "correto": "0.0870113769896297",
+    "ulps": -1
+   }
+  ]
+ }
+}

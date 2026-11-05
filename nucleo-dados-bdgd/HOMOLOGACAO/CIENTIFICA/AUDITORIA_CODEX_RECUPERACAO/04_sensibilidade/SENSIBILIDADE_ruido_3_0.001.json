@@ -1,0 +1,391 @@
+{
+ "cenario": "ruido:3:0.001",
+ "resumo": {
+  "metricas": 27,
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape_x1e9": 0,
+  "series": 2202,
+  "valores_diferentes": 1,
+  "contagens_diferentes_mais_de_1_unidade": 1
+ },
+ "metricas": {
+  "alimentadores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.3877787807814457e-17,
+    "ridge_painel_ext": 1.3877787807814457e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "bancos_capacitores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "barramentos/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.0816681711721685e-17,
+    "ridge_painel_ext": 6.938893903907228e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "chaves/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "circuitos_at/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "conjuntos/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "consumidores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "disjuntores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "geradores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 2.7755575615628914e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "iluminacao/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.3877787807814457e-17,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "medidores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "postes/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 5.204170427930421e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "ramais/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "reatores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0,
+    "ridge_painel_ext": 0,
+    "knn_analogos": 0,
+    "random_forest_painel": 0,
+    "hgb_painel": 0
+   }
+  },
+  "rede_at/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 3.469446951953614e-18,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "rede_bt/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "rede_mt/extensao_km": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "reguladores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 2.0816681711721685e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "religadores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "seccionalizadores/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "subestacoes/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "torres/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 6.938893903907228e-18,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_dist/potencia_kva": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.3877787807814457e-17,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_dist/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 1.0408340855860843e-17,
+    "ridge_painel_ext": 1.734723475976807e-17,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_forca/potencia_kva": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_forca/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 0.0,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  },
+  "trafo_medida/quantidade": {
+   "escolha_igual": true,
+   "dif_wape": {
+    "persistencia": 0.0,
+    "deriva": 0.0,
+    "tendencia_ols": 0.0,
+    "crescimento_geometrico": 0.0,
+    "ridge_painel": 2.7755575615628914e-17,
+    "ridge_painel_ext": 0.0,
+    "knn_analogos": 0.0,
+    "random_forest_painel": 0.0,
+    "hgb_painel": 0.0
+   }
+  }
+ }
+}

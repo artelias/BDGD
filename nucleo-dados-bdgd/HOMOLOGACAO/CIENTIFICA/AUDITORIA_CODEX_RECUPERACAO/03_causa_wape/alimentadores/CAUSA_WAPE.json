@@ -1,0 +1,364 @@
+{
+ "linhas": [
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "persistencia",
+   "wape": 0.04993291038651434,
+   "wape_publicado": 0.04993291038651434,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "deriva",
+   "wape": 0.061377226007321234,
+   "wape_publicado": 0.061377226007321234,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "tendencia_ols",
+   "wape": 0.06276027079018152,
+   "wape_publicado": 0.06276027079018152,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "crescimento_geometrico",
+   "wape": 0.06231657405760088,
+   "wape_publicado": 0.06231657405760088,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel",
+   "wape": 0.03946730242352634,
+   "wape_publicado": 0.03946730242352634,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel_ext",
+   "wape": 0.04045373890452463,
+   "wape_publicado": 0.04045373890452463,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "knn_analogos",
+   "wape": 0.0385620344602674,
+   "wape_publicado": 0.0385620344602674,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "random_forest_painel",
+   "wape": 0.03653342198238773,
+   "wape_publicado": 0.03653342198238773,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E0_ucrt",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "hgb_painel",
+   "wape": 0.043005561329598,
+   "wape_publicado": 0.043005561329598,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "persistencia",
+   "wape": 0.04993291038651434,
+   "wape_publicado": 0.04993291038651434,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "deriva",
+   "wape": 0.061377226007321234,
+   "wape_publicado": 0.061377226007321234,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "tendencia_ols",
+   "wape": 0.06276027079018152,
+   "wape_publicado": 0.06276027079018152,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "crescimento_geometrico",
+   "wape": 0.06231657405760088,
+   "wape_publicado": 0.06231657405760088,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel",
+   "wape": 0.03946730242352634,
+   "wape_publicado": 0.03946730242352634,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel_ext",
+   "wape": 0.04045373890452463,
+   "wape_publicado": 0.04045373890452463,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "knn_analogos",
+   "wape": 0.0385620344602674,
+   "wape_publicado": 0.0385620344602674,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "random_forest_painel",
+   "wape": 0.036539807675483794,
+   "wape_publicado": 0.03653342198238773,
+   "dif_publicado": 6.385693096064293e-06,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E1_log_exp_corretos",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "hgb_painel",
+   "wape": 0.043005561329598,
+   "wape_publicado": 0.043005561329598,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "persistencia",
+   "wape": 0.04993291038651434,
+   "wape_publicado": 0.04993291038651434,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "deriva",
+   "wape": 0.061377226007321234,
+   "wape_publicado": 0.061377226007321234,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "tendencia_ols",
+   "wape": 0.06276027079018152,
+   "wape_publicado": 0.06276027079018152,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "crescimento_geometrico",
+   "wape": 0.06231657405760088,
+   "wape_publicado": 0.06231657405760088,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel",
+   "wape": 0.039467302423526335,
+   "wape_publicado": 0.03946730242352634,
+   "dif_publicado": 6.938893903907228e-18,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "ridge_painel_ext",
+   "wape": 0.04045373890452463,
+   "wape_publicado": 0.04045373890452463,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "knn_analogos",
+   "wape": 0.0385620344602674,
+   "wape_publicado": 0.0385620344602674,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "random_forest_painel",
+   "wape": 0.036539807675483794,
+   "wape_publicado": 0.03653342198238773,
+   "dif_publicado": 6.385693096064293e-06,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  },
+  {
+   "experimento": "E2_log_correto",
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "modelo": "hgb_painel",
+   "wape": 0.043005561329598,
+   "wape_publicado": 0.043005561329598,
+   "dif_publicado": 0.0,
+   "wape_linux": null,
+   "dif_linux": null,
+   "escolha_igual_publicada": true
+  }
+ ],
+ "log_ucrt_vs_correto": {
+  "chamadas": 35862,
+  "diferentes": 44,
+  "exemplos": [
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "44965.694682675814",
+    "ucrt": "10.713655137638277",
+    "correto": "10.713655137638279",
+    "ulps": -1
+   },
+   {
+    "x": "1.0787671232876712",
+    "ucrt": "0.07581883655735129",
+    "correto": "0.0758188365573513",
+    "ulps": -1
+   }
+  ]
+ }
+}

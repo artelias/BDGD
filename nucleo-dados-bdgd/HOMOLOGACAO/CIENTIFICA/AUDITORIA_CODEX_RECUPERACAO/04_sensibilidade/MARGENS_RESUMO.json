@@ -1,0 +1,14 @@
+{
+ "P1_contagem_a_menos_1e-6_do_meio": 0,
+ "P1_decisoes": 2495,
+ "P1_margem_lt_1e-3": 270,
+ "P1_margem_lt_1e-3_com_arvores": 97,
+ "P1_margem_lt_1e-6": 92,
+ "P1_margem_lt_1e-9": 92,
+ "P2_escolhido_contagem_a_menos_1e-6_do_meio": 48,
+ "P2_escolhido_decisoes": 885,
+ "P2_escolhido_margem_lt_1e-3": 70,
+ "P2_escolhido_margem_lt_1e-3_com_arvores": 50,
+ "P2_escolhido_margem_lt_1e-6": 0,
+ "P2_escolhido_margem_lt_1e-9": 0
+}

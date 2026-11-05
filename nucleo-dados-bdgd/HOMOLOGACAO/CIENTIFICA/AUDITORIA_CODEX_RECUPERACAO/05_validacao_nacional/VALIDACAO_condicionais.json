@@ -1,0 +1,30 @@
+{
+ "execucao": "motor_cenarios\\experimental\\recuperacao\\win-nacional-condicionais",
+ "modo": "condicionais",
+ "contagens": {
+  "categoria_A_ORIGINAL": 374,
+  "categoria_A_OTIMIZADO": 1005,
+  "categoria_A_PUBLICADO_MANTIDO": 1411,
+  "categoria_B_HIST": 209,
+  "classe_COMPLETA_CONDICIONAL": 1,
+  "classe_COMPLETA_INDEPENDENTE": 1039,
+  "classe_COMPLETA_MISTA": 199,
+  "classe_PARCIAL": 722,
+  "classe_SEM_PREVISAO": 241,
+  "estado_APROVADO": 2998,
+  "estado_DIFERENCA_IMATERIAL": 1,
+  "extremos": 2999,
+  "series": 2202
+ },
+ "falhas_por_verificacao": {
+  "V2": 1
+ },
+ "falhas": [
+  {
+   "verificacao": "V2",
+   "chave": "reguladores/quantidade/6587",
+   "detalhe": "agressivo: DIFERENCA_IMATERIAL ['Q7_DIFERENCA_MENOR_0_05PP']"
+  }
+ ],
+ "aprovado": false
+}

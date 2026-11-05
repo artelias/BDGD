@@ -1,0 +1,27 @@
+{
+ "commit": "dba5fdfa1ae2e5f086555e8c03edb5aeebe67af9",
+ "blob_json": "9fa6ca1a6cba2b2b71d6b3f78befa43098123bbc",
+ "arquivo": "nucleo-dados-bdgd/web/public/data/previsoes/cenarios-motor.json",
+ "schema": "cenarios-motor-1",
+ "contagens": {
+  "com_moderado": 1961,
+  "completas_defensaveis": 194,
+  "completas_publicadas": 755,
+  "ext_APROVADO": 1467,
+  "ext_APROVADO_agressivo": 694,
+  "ext_APROVADO_conservador": 773,
+  "ext_DIFERENCA_IMATERIAL": 61,
+  "ext_DIFERENCA_IMATERIAL_agressivo": 24,
+  "ext_DIFERENCA_IMATERIAL_conservador": 37,
+  "ext_IDENTICO": 292,
+  "ext_IDENTICO_agressivo": 178,
+  "ext_IDENTICO_conservador": 114,
+  "ext_IMPLAUSIVEL": 2,
+  "ext_IMPLAUSIVEL_agressivo": 2,
+  "ext_LADO_OPOSTO": 673,
+  "ext_LADO_OPOSTO_agressivo": 406,
+  "ext_LADO_OPOSTO_conservador": 267,
+  "extremos_publicados": 2495,
+  "series": 2202
+ }
+}

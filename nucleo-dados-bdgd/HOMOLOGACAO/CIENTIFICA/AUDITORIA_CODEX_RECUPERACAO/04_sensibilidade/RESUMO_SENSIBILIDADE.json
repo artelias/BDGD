@@ -1,0 +1,132 @@
+{
+ "libm": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 6.385e-06,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 0,
+  "B_classe_mudou": 0,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 1
+ },
+ "ruido_1_0.001": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 2.21e-07,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 0,
+  "B_classe_mudou": 0,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 0
+ },
+ "ruido_2_0.001": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.0,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 0,
+  "B_classe_mudou": 0,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 0
+ },
+ "ruido_3_0.001": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.0,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 0,
+  "B_classe_mudou": 0,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 1
+ },
+ "ruido_4_0.001": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.0,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 0,
+  "B_classe_mudou": 0,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 0
+ },
+ "ruido_5_0.01": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 3.3977e-05,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 0,
+  "B_classe_mudou": 0,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 18
+ },
+ "ruido_6_0.01": {
+  "tipo": "realista",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 8.9e-07,
+  "A_decisao_mudou": 0,
+  "B_modelo_mudou": 1,
+  "B_classe_mudou": 1,
+  "B_valor_fora_tolerancia_check": 0,
+  "B_valor_dentro_tolerancia_check": 7
+ },
+ "ulp_1": {
+  "tipo": "estresse_desfaz_duplicatas",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.00226961,
+  "A_decisao_mudou": 5,
+  "B_modelo_mudou": 9,
+  "B_classe_mudou": 5,
+  "B_valor_fora_tolerancia_check": 20,
+  "B_valor_dentro_tolerancia_check": 13
+ },
+ "ulp_2": {
+  "tipo": "estresse_desfaz_duplicatas",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.001709944,
+  "A_decisao_mudou": 9,
+  "B_modelo_mudou": 20,
+  "B_classe_mudou": 12,
+  "B_valor_fora_tolerancia_check": 19,
+  "B_valor_dentro_tolerancia_check": 17
+ },
+ "ulp_3": {
+  "tipo": "estresse_desfaz_duplicatas",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.001658615,
+  "A_decisao_mudou": 8,
+  "B_modelo_mudou": 18,
+  "B_classe_mudou": 8,
+  "B_valor_fora_tolerancia_check": 25,
+  "B_valor_dentro_tolerancia_check": 13
+ },
+ "ulp_4": {
+  "tipo": "estresse_desfaz_duplicatas",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.001263733,
+  "A_decisao_mudou": 3,
+  "B_modelo_mudou": 14,
+  "B_classe_mudou": 11,
+  "B_valor_fora_tolerancia_check": 19,
+  "B_valor_dentro_tolerancia_check": 16
+ },
+ "ulp_5": {
+  "tipo": "estresse_desfaz_duplicatas",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.001035221,
+  "A_decisao_mudou": 8,
+  "B_modelo_mudou": 14,
+  "B_classe_mudou": 6,
+  "B_valor_fora_tolerancia_check": 22,
+  "B_valor_dentro_tolerancia_check": 17
+ },
+ "ulp_6": {
+  "tipo": "estresse_desfaz_duplicatas",
+  "escolha_agregada_diferente": 0,
+  "max_dif_wape": 0.002674061,
+  "A_decisao_mudou": 3,
+  "B_modelo_mudou": 14,
+  "B_classe_mudou": 9,
+  "B_valor_fora_tolerancia_check": 22,
+  "B_valor_dentro_tolerancia_check": 11
+ }
+}

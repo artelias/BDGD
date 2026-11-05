@@ -1,0 +1,73 @@
+{
+ "rc": {
+  "commit": "dba5fdfa1ae2e5f086555e8c03edb5aeebe67af9",
+  "blob_json": "9fa6ca1a6cba2b2b71d6b3f78befa43098123bbc",
+  "extremos_publicados": 2495,
+  "reprovados_so_valores_publicados": 1028,
+  "por_estado_valores_publicados": {
+   "APROVADO": 1467,
+   "LADO_OPOSTO": 673,
+   "IDENTICO": 292,
+   "DIFERENCA_IMATERIAL": 61,
+   "IMPLAUSIVEL": 2
+  },
+  "lado_oposto_invertido_5_anos": 602,
+  "lado_oposto_invertido_1a4_anos": 71,
+  "linhas_anuais_com_ordem_violada": 3015,
+  "series_com_ordem_violada": 631,
+  "valores_anuais_A_abaixo_de_M": 1933,
+  "valores_anuais_C_acima_de_M": 1283,
+  "reprovados_protocolo_recuperacao_1": 1084,
+  "reprovados_so_detectaveis_com_trajetoria_continua": 56,
+  "tabela_cruzada_valores_publicados_x_protocolo": {
+   "APROVADO": {
+    "COERENTE": 1411,
+    "COINCIDE": 56
+   },
+   "DIFERENCA_IMATERIAL": {
+    "COINCIDE": 61
+   },
+   "IDENTICO": {
+    "COINCIDE": 233,
+    "LADO_OPOSTO": 59
+   },
+   "IMPLAUSIVEL": {
+    "IMPLAUSIVEL": 2
+   },
+   "LADO_OPOSTO": {
+    "LADO_OPOSTO": 673
+   }
+  },
+  "completas_publicadas": 755,
+  "completas_defensaveis_protocolo": 185,
+  "completas_defensaveis_so_valores_publicados": 194
+ },
+ "producao": {
+  "commit": "74190e2861e249f9e05f0bc610f733d052708bab",
+  "blob_json": "574167ecf2565a4b76bdc4a39b22c36ee3b91235",
+  "arquivo": "nucleo-dados-bdgd/web/public/data/previsoes/cenarios-motor.json",
+  "schema": "cenarios-motor-1",
+  "contagens": {
+   "com_moderado": 1961,
+   "completas_defensaveis": 102,
+   "completas_publicadas": 755,
+   "ext_APROVADO": 490,
+   "ext_APROVADO_agressivo": 244,
+   "ext_APROVADO_conservador": 246,
+   "ext_DIFERENCA_IMATERIAL": 254,
+   "ext_DIFERENCA_IMATERIAL_agressivo": 137,
+   "ext_DIFERENCA_IMATERIAL_conservador": 117,
+   "ext_IDENTICO": 98,
+   "ext_IDENTICO_agressivo": 43,
+   "ext_IDENTICO_conservador": 55,
+   "ext_IMPLAUSIVEL": 923,
+   "ext_IMPLAUSIVEL_agressivo": 424,
+   "ext_IMPLAUSIVEL_conservador": 499,
+   "ext_LADO_OPOSTO": 730,
+   "ext_LADO_OPOSTO_agressivo": 456,
+   "ext_LADO_OPOSTO_conservador": 274,
+   "extremos_publicados": 2495,
+   "series": 2202
+  }
+ }
+}

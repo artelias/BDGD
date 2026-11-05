@@ -1,0 +1,59 @@
+{
+ "descricao": "Duas execucoes nacionais (modo originais) do zero, em processos separados, sem cache, no Windows de referencia",
+ "artefatos": {
+  "cenarios.csv": {
+   "sha256_execucao_1": "7d6bb524c8955eedcc97c782aef7f9c60e474745044eee9042ebbec0a5316e3e",
+   "sha256_execucao_2": "7d6bb524c8955eedcc97c782aef7f9c60e474745044eee9042ebbec0a5316e3e",
+   "identico": true
+  },
+  "cobertura.csv": {
+   "sha256_execucao_1": "6e8d2b821a3e0ac60ef5aa46c086b17407ad950489abc8bb485cd4681ce01c92",
+   "sha256_execucao_2": "6e8d2b821a3e0ac60ef5aa46c086b17407ad950489abc8bb485cd4681ce01c92",
+   "identico": true
+  },
+  "cobertura.json": {
+   "sha256_execucao_1": "29d7abee2d818d5c4ca9dded106a29048f5f69a8df926aab240fd37be9c76d0d",
+   "sha256_execucao_2": "29d7abee2d818d5c4ca9dded106a29048f5f69a8df926aab240fd37be9c76d0d",
+   "identico": true
+  },
+  "comparacao.csv": {
+   "sha256_execucao_1": "d4119acec2db4b7e73bc737e0098acb894cd874ff990ccf77917265b4395d308",
+   "sha256_execucao_2": "d4119acec2db4b7e73bc737e0098acb894cd874ff990ccf77917265b4395d308",
+   "identico": true
+  },
+  "elegibilidade.csv": {
+   "sha256_execucao_1": "9188821ded18421cd5bb8d6a7dad1290e0ade6ca42d93b46e84c78e2d5872a91",
+   "sha256_execucao_2": "9188821ded18421cd5bb8d6a7dad1290e0ade6ca42d93b46e84c78e2d5872a91",
+   "identico": true
+  },
+  "execucao.json": {
+   "sha256_execucao_1": "951e43acf5c4baa271eb9c3c1fafbd081af1518c01ce6a22e65d9198106235b5",
+   "sha256_execucao_2": "dbf9a5a6934f58216b11026093b43df86a7b7f0ff434f58dbc54c516bc559ec0",
+   "identico": false
+  },
+  "gabarito.json": {
+   "sha256_execucao_1": "88f0e4ed5cec1fc07d617963519167c9547ed02c1c9fdd4a3d6a2e00984a50e6",
+   "sha256_execucao_2": "88f0e4ed5cec1fc07d617963519167c9547ed02c1c9fdd4a3d6a2e00984a50e6",
+   "identico": true
+  },
+  "inventario.json": {
+   "sha256_execucao_1": "5c16f78939c01cbcb1f8f1b54121c160fe2997fe9ee2cdd722dc8bcc7df8915d",
+   "sha256_execucao_2": "5c16f78939c01cbcb1f8f1b54121c160fe2997fe9ee2cdd722dc8bcc7df8915d",
+   "identico": true
+  },
+  "produto.json": {
+   "sha256_execucao_1": "da43a1ec32b83e7e18ef50aa05b2060f37ed128c62f6d81ef79e8e7e9d3417a0",
+   "sha256_execucao_2": "da43a1ec32b83e7e18ef50aa05b2060f37ed128c62f6d81ef79e8e7e9d3417a0",
+   "identico": true
+  },
+  "proveniencia.json": {
+   "sha256_execucao_1": "2934845b148e292e51ad31f10dd75f03705be61dc437356fbe283ec9cf2799d4",
+   "sha256_execucao_2": "2934845b148e292e51ad31f10dd75f03705be61dc437356fbe283ec9cf2799d4",
+   "identico": true
+  }
+ },
+ "cache_inventario": {
+  "arquivos": 27,
+  "identicos": true
+ }
+}

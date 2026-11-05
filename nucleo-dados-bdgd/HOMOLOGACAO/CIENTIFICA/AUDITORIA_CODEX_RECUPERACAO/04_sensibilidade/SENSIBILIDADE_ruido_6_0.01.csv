@@ -1,0 +1,9 @@
+cenario,conceito,metrica,DIST,lado,modelo_ref,modelo,classe_ref,classe,max_dif_absoluta,max_dif_relativa
+ruido:6:0.01,bancos_capacitores,quantidade,2763,agressivo,random_forest_painel,random_forest_painel,COMPLETA_INDEPENDENTE,COMPLETA_INDEPENDENTE,1,0.006993006993006993
+ruido:6:0.01,medidores,quantidade,380,agressivo,random_forest_painel,random_forest_painel,PARCIAL,PARCIAL,123,5.646936972837774e-05
+ruido:6:0.01,medidores,quantidade,398,agressivo,random_forest_painel,random_forest_painel,PARCIAL,PARCIAL,3,6.652917304237908e-05
+ruido:6:0.01,medidores,quantidade,5377,agressivo,random_forest_painel,random_forest_painel,COMPLETA_INDEPENDENTE,COMPLETA_INDEPENDENTE,2,0.00024024024024024023
+ruido:6:0.01,rede_bt,extensao_km,2866,agressivo,random_forest_painel,random_forest_painel,COMPLETA_INDEPENDENTE,COMPLETA_INDEPENDENTE,6.169000000001688,9.897530318308823e-05
+ruido:6:0.01,rede_mt,extensao_km,5355,agressivo,hgb_painel,,COMPLETA_INDEPENDENTE,PARCIAL,,
+ruido:6:0.01,trafo_forca,potencia_kva,6072,conservador,random_forest_painel,random_forest_painel,PARCIAL,PARCIAL,18399.876000000164,0.0035535327666986485
+ruido:6:0.01,trafo_medida,quantidade,5370,conservador,random_forest_painel,random_forest_painel,COMPLETA_INDEPENDENTE,COMPLETA_INDEPENDENTE,1,0.002197802197802198
