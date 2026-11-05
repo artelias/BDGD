@@ -1,0 +1,1278 @@
+{
+ "metricas": {
+  "alimentadores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.23333333333333334,
+     "frac_S": 0.17647058823529413,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "frac_F": 0.08888888888888889,
+     "frac_S": 0.24705882352941178,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.04090350870588416,
+      "phi=0.9": 0.043143766460426905
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.04090350870588416
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.036633435751610044,
+      "kappa=3": 0.03273312009040221
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.03273312009040221
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.03487269115207488,
+      "kappa=3": 0.030646592652690544
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.030646592652690544
+    }
+   }
+  },
+  "bancos_capacitores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.1724137931034483,
+     "frac_S": 0.25925925925925924,
+     "pares_S": 85,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.21839080459770116,
+     "frac_S": 0.24691358024691357,
+     "pares_S": 85,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.043546280957204316,
+      "phi=0.9": 0.04173801693807931
+     },
+     "variante": "phi=0.9",
+     "wape_S": 0.04173801693807931
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.046665571541238265,
+      "kappa=3": 0.05330331630247012
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.046665571541238265
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.0492541175981327,
+      "kappa=3": 0.05430922626538834
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.0492541175981327
+    }
+   }
+  },
+  "barramentos/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.26666666666666666,
+     "frac_S": 0.14285714285714285,
+     "pares_S": 62,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.15,
+     "frac_S": 0.25,
+     "pares_S": 62,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.07156112170057163,
+      "phi=0.9": 0.07872299203061241
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.07156112170057163
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.05380329072197885,
+      "kappa=3": 0.04102574900851385
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.04102574900851385
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.05306028758326303,
+      "kappa=3": 0.03987898897652044
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.03987898897652044
+    }
+   }
+  },
+  "chaves/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "frac_F": 0.45348837209302323,
+     "frac_S": 0.15789473684210525,
+     "pares_S": 81,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.11627906976744186,
+     "frac_S": 0.23684210526315788,
+     "pares_S": 81,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.014066303474909555,
+      "phi=0.9": 0.015045830038486927
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.014066303474909555
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.01358968758040172,
+      "kappa=3": 0.015035299930503728
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.01358968758040172
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.013511773643245023,
+      "kappa=3": 0.01648622727526797
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.013511773643245023
+    }
+   }
+  },
+  "circuitos_at/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 40,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 40,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.8265516540419197,
+      "phi=0.9": 1.0198802740458448
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.8265516540419197
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.4060228417752359,
+      "kappa=3": 0.17843963074016309
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.17843963074016309
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.4057917132524271,
+      "kappa=3": 0.1781885998438211
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.1781885998438211
+    }
+   }
+  },
+  "conjuntos/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "frac_F": 0.022222222222222223,
+     "frac_S": 0.12941176470588237,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "frac_F": 0.011111111111111112,
+     "frac_S": 0.047058823529411764,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.02634462868283096,
+      "phi=0.9": 0.026916661872289558
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.02634462868283096
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.024660749114491114,
+      "kappa=3": 0.023293574793014443
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.023293574793014443
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.024660749114491114,
+      "kappa=3": 0.023293574793014443
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.023293574793014443
+    }
+   }
+  },
+  "consumidores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.29545454545454547,
+     "frac_S": 0.20481927710843373,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "frac_F": 0.09090909090909091,
+     "frac_S": 0.26506024096385544,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.05448108221300453,
+      "phi=0.9": 0.057056437805591886
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.05448108221300453
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.05619181015949994,
+      "kappa=3": 0.05508426999075586
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.05508426999075586
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.04775463235410199,
+      "kappa=3": 0.04239933449026728
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.04239933449026728
+    }
+   }
+  },
+  "disjuntores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 47,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 47,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.06245467890396296,
+      "phi=0.9": 0.0678916423169945
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.06245467890396296
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.052790819682387566,
+      "kappa=3": 0.044224676537161466
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.044224676537161466
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.04926928217816435,
+      "kappa=3": 0.04002544832155792
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.04002544832155792
+    }
+   }
+  },
+  "geradores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.13333333333333333,
+     "frac_S": 0.21176470588235294,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "frac_F": 0.2222222222222222,
+     "frac_S": 0.43529411764705883,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.08469622352119671,
+      "phi=0.9": 0.08151474241693668
+     },
+     "variante": "phi=0.9",
+     "wape_S": 0.08151474241693668
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.09672167870856865,
+      "kappa=3": 0.10229709333199528
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.09672167870856865
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.08662226342850472,
+      "kappa=3": 0.08878487454152775
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.08662226342850472
+    }
+   }
+  },
+  "iluminacao/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.26666666666666666,
+     "frac_S": 0.2235294117647059,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "frac_F": 0.2222222222222222,
+     "frac_S": 0.32941176470588235,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.08572051463210871,
+      "phi=0.9": 0.0971167978035312
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.08572051463210871
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.07932744739566575,
+      "kappa=3": 0.07009876689444555
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.07009876689444555
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.059016541390576834,
+      "kappa=3": 0.04077831210002608
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.04077831210002608
+    }
+   }
+  },
+  "medidores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.24175824175824176,
+     "frac_S": 0.20930232558139536,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.17582417582417584,
+     "frac_S": 0.22093023255813954,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": {
+    "aprovado": false,
+    "beta": 0.26032213062891696,
+    "beta_S": 0.3499867296516926,
+    "ic95": [
+     0.10352725309299286,
+     0.5048644682173802
+    ],
+    "ic95_S": [
+     -0.2632174242960221,
+     0.7867034249740568
+    ]
+   },
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.021313243769960376,
+      "phi=0.9": 0.022032657895099936
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.021313243769960376
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.01781006683018824,
+      "kappa=3": 0.015455801417095929
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.015455801417095929
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.015982334462846415,
+      "kappa=3": 0.012965410427192525
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.012965410427192525
+    }
+   }
+  },
+  "postes/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.1978021978021978,
+     "frac_S": 0.2823529411764706,
+     "pares_S": 87,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.15384615384615385,
+     "frac_S": 0.16470588235294117,
+     "pares_S": 87,
+     "tau": 0.2
+    }
+   },
+   "N6": {
+    "aprovado": false,
+    "beta": 0.05418863401392667,
+    "beta_S": 0.02500957551952344,
+    "ic95": [
+     -0.016256668226994224,
+     0.18392575492114802
+    ],
+    "ic95_S": [
+     -0.11803612396297351,
+     0.24730598046481272
+    ]
+   },
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.010128951478187964,
+      "phi=0.9": 0.009799860808949123
+     },
+     "variante": "phi=0.9",
+     "wape_S": 0.009799860808949123
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.008479305905147417,
+      "kappa=3": 0.00836849185395703
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.00836849185395703
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.00948863297999368,
+      "kappa=3": 0.010396740472960997
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.00948863297999368
+    }
+   }
+  },
+  "ramais/extensao_km": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.25274725274725274,
+     "frac_S": 0.16279069767441862,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.16483516483516483,
+     "frac_S": 0.1511627906976744,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": {
+    "aprovado": false,
+    "beta": 0.20136071616301798,
+    "beta_S": 0.39171005087917765,
+    "ic95": [
+     -0.019873114827995017,
+     0.7106770922868282
+    ],
+    "ic95_S": [
+     0.025732449673729934,
+     1.2586791682683385
+    ]
+   },
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.039610809617878745,
+      "phi=0.9": 0.04504630319119718
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.039610809617878745
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.033310778170820544,
+      "kappa=3": 0.02928886619494554
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.02928886619494554
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.02848879107478008,
+      "kappa=3": 0.02455009190911833
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.02455009190911833
+    }
+   }
+  },
+  "reatores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "TREINO_INSUFICIENTE",
+     "pares_S": 11,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "TREINO_INSUFICIENTE",
+     "pares_S": 11,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.1624124434294456,
+      "phi=0.9": 0.17754775294243771
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.1624124434294456
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.121478013096028,
+      "kappa=3": 0.09194632352294209
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.09194632352294209
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.121478013096028,
+      "kappa=3": 0.09194632352294209
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.09194632352294209
+    }
+   }
+  },
+  "rede_at/extensao_km": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 49,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 49,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.028379235239808454,
+      "phi=0.9": 0.030456366088081846
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.028379235239808454
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.027381855805485942,
+      "kappa=3": 0.025918452314121276
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.025918452314121276
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.024319485152055363,
+      "kappa=3": 0.023089037004931017
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.023089037004931017
+    }
+   }
+  },
+  "rede_bt/extensao_km": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.17582417582417584,
+     "frac_S": 0.2235294117647059,
+     "pares_S": 87,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.2857142857142857,
+     "frac_S": 0.23529411764705882,
+     "pares_S": 87,
+     "tau": 0.2
+    }
+   },
+   "N6": {
+    "aprovado": false,
+    "beta": 0.1435639561928642,
+    "beta_S": 0.07143966447380243,
+    "ic95": [
+     0.03661775819475619,
+     0.3018393271156076
+    ],
+    "ic95_S": [
+     -0.017870764725737252,
+     0.36531014842309717
+    ]
+   },
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.014391641358682775,
+      "phi=0.9": 0.015424533804343752
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.014391641358682775
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.015270843598568104,
+      "kappa=3": 0.014853637851374899
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.014853637851374899
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.013920696605988223,
+      "kappa=3": 0.01460226951541554
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.013920696605988223
+    }
+   }
+  },
+  "rede_mt/extensao_km": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.23076923076923078,
+     "frac_S": 0.16279069767441862,
+     "pares_S": 88,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.2087912087912088,
+     "frac_S": 0.18604651162790697,
+     "pares_S": 88,
+     "tau": 0.2
+    }
+   },
+   "N6": {
+    "aprovado": false,
+    "beta": 0.028346596869276406,
+    "beta_S": 0.01375656901958737,
+    "ic95": [
+     -0.0594916605765612,
+     0.1413488410602639
+    ],
+    "ic95_S": [
+     -0.15635735198328934,
+     0.2255148789354206
+    ]
+   },
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.006538243182680956,
+      "phi=0.9": 0.006925738843352882
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.006538243182680956
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.005071177072169124,
+      "kappa=3": 0.006096939581372036
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.005071177072169124
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.004805387928600471,
+      "kappa=3": 0.006405591394663388
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.004805387928600471
+    }
+   }
+  },
+  "reguladores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.21951219512195122,
+     "frac_S": 0.23684210526315788,
+     "pares_S": 79,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.25609756097560976,
+     "frac_S": 0.15789473684210525,
+     "pares_S": 79,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.0450969539113342,
+      "phi=0.9": 0.04773200012352279
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.0450969539113342
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.041126952781740056,
+      "kappa=3": 0.04032177391206713
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.04032177391206713
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.04505435085255045,
+      "kappa=3": 0.050947446345355245
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.04505435085255045
+    }
+   }
+  },
+  "religadores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "frac_F": 0.313953488372093,
+     "frac_S": 0.13333333333333333,
+     "pares_S": 79,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.11627906976744186,
+     "frac_S": 0.22666666666666666,
+     "pares_S": 79,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.05012221795459242,
+      "phi=0.9": 0.05215326582811863
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.05012221795459242
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.03939957434879888,
+      "kappa=3": 0.03431713422576267
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.03431713422576267
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.04399571989308376,
+      "kappa=3": 0.0415441611316428
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.0415441611316428
+    }
+   }
+  },
+  "seccionalizadores/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 26,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 26,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.05191696832696317,
+      "phi=0.9": 0.05522931468155829
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.05191696832696317
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.06468256436617732,
+      "kappa=3": 0.06855492397404343
+     },
+     "variante": "kappa=1",
+     "wape_S": 0.06468256436617732
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.04524234492757562,
+      "kappa=3": 0.04283246556517211
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.04283246556517211
+    }
+   }
+  },
+  "subestacoes/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "frac_F": 0.27692307692307694,
+     "frac_S": 0.08064516129032258,
+     "pares_S": 65,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.23076923076923078,
+     "frac_S": 0.22580645161290322,
+     "pares_S": 65,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.044134481515879516,
+      "phi=0.9": 0.04711487131766476
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.044134481515879516
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.0393373024479667,
+      "kappa=3": 0.03730880164495477
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.03730880164495477
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.035543921836754776,
+      "kappa=3": 0.02997506413747712
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.02997506413747712
+    }
+   }
+  },
+  "torres/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 45,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 45,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.1282305481646796,
+      "phi=0.9": 0.14840676596486918
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.1282305481646796
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.08014320392266251,
+      "kappa=3": 0.05027626032941424
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.05027626032941424
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.07990065317790322,
+      "kappa=3": 0.050197828927397874
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.050197828927397874
+    }
+   }
+  },
+  "trafo_dist/potencia_kva": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "frac_F": 0.23863636363636365,
+     "frac_S": 0.32098765432098764,
+     "pares_S": 84,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "frac_F": 0.2159090909090909,
+     "frac_S": 0.08641975308641975,
+     "pares_S": 84,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.17241595327055367,
+      "phi=0.9": 0.1915912295795491
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.17241595327055367
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.13397559113580912,
+      "kappa=3": 0.09914406967624916
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.09914406967624916
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.11732037106219932,
+      "kappa=3": 0.07650762507578274
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.07650762507578274
+    }
+   }
+  },
+  "trafo_dist/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.2727272727272727,
+     "frac_S": 0.1728395061728395,
+     "pares_S": 84,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.20454545454545456,
+     "frac_S": 0.13580246913580246,
+     "pares_S": 84,
+     "tau": 0.2
+    }
+   },
+   "N6": {
+    "aprovado": false,
+    "beta": 0.06998628244264449,
+    "beta_S": -0.009263485899728204,
+    "ic95": [
+     -0.03693924765986426,
+     0.2652995230912402
+    ],
+    "ic95_S": [
+     -0.226251346686738,
+     0.18873338141457446
+    ]
+   },
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.0228795633010029,
+      "phi=0.9": 0.025171617591679005
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.0228795633010029
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.021251183648966367,
+      "kappa=3": 0.01929370192352957
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.01929370192352957
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.016011651167375622,
+      "kappa=3": 0.010838794098419036
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.010838794098419036
+    }
+   }
+  },
+  "trafo_forca/potencia_kva": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 59,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": false,
+     "motivo": "pares na etapa S < 60",
+     "pares_S": 59,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.9995400818228628,
+      "phi=0.9": 1.3393953260210885
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.9995400818228628
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.45052907485328925,
+      "kappa=3": 0.1979299511651776
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.1979299511651776
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.39203181292688183,
+      "kappa=3": 0.15169310732954386
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.15169310732954386
+    }
+   }
+  },
+  "trafo_forca/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": false,
+     "frac_F": 0.3114754098360656,
+     "frac_S": 0.16071428571428573,
+     "pares_S": 60,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.13114754098360656,
+     "frac_S": 0.14285714285714285,
+     "pares_S": 60,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.04501243581513366,
+      "phi=0.9": 0.048919554035656426
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.04501243581513366
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.037689241846865625,
+      "kappa=3": 0.03140792759283818
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.03140792759283818
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.03414235164437774,
+      "kappa=3": 0.02664663272413664
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.02664663272413664
+    }
+   }
+  },
+  "trafo_medida/quantidade": {
+   "N5": {
+    "agressivo": {
+     "calibrado": true,
+     "frac_F": 0.24,
+     "frac_S": 0.2,
+     "pares_S": 72,
+     "tau": 0.8
+    },
+    "conservador": {
+     "calibrado": true,
+     "frac_F": 0.18666666666666668,
+     "frac_S": 0.13846153846153847,
+     "pares_S": 72,
+     "tau": 0.2
+    }
+   },
+   "N6": null,
+   "N_escolhas_S": {
+    "N1": {
+     "alternativas": {
+      "phi=0.8": 0.0752143129561622,
+      "phi=0.9": 0.07897354181799401
+     },
+     "variante": "phi=0.8",
+     "wape_S": 0.0752143129561622
+    },
+    "N2g": {
+     "alternativas": {
+      "kappa=1": 0.06433810526727961,
+      "kappa=3": 0.059156866677652076
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.059156866677652076
+    },
+    "N2n": {
+     "alternativas": {
+      "kappa=1": 0.06082674490713453,
+      "kappa=3": 0.05446814415514028
+     },
+     "variante": "kappa=3",
+     "wape_S": 0.05446814415514028
+    }
+   }
+  }
+ },
+ "protocolo": "recuperacao-1"
+}

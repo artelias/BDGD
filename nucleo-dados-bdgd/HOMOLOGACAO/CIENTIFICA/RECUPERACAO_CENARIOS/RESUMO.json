@@ -1,0 +1,1704 @@
+{
+ "universo": {
+  "series": 2202,
+  "PARCIAL": 1206,
+  "SEM_PREVISAO": 241,
+  "COMPLETA": 755
+ },
+ "gateA_extremos_ausentes_com_moderado": {
+  "total": 1427,
+  "por_causa": {
+   "I": 477,
+   "A2": 441,
+   "D": 208,
+   "E": 11,
+   "C": 36,
+   "B": 254
+  },
+  "por_lado": {
+   "agressivo": {
+    "I": 276,
+    "A2": 184,
+    "D": 49,
+    "E": 5,
+    "C": 16,
+    "B": 127
+   },
+   "conservador": {
+    "D": 159,
+    "A2": 257,
+    "I": 201,
+    "C": 20,
+    "E": 6,
+    "B": 127
+   }
+  }
+ },
+ "gateA_publicados": {
+  "total": 2495,
+  "aprovados": {
+   "conservador": 745,
+   "agressivo": 666
+  },
+  "reprovados": {
+   "A2": 732,
+   "D": 350,
+   "E": 2
+  },
+  "reprovados_por_lado": {
+   "agressivo": {
+    "A2": 458,
+    "D": 178,
+    "E": 2
+   },
+   "conservador": {
+    "A2": 274,
+    "D": 172
+   }
+  }
+ },
+ "gateA_moderado_ausente": {
+  "total": 241,
+  "por_causa": {
+   "G": 169,
+   "F": 66,
+   "E": 6
+  },
+  "recuperavel_sob_decisao_de_contrato": 121,
+  "detalhes": {
+   "competência não homologada (BLOQUEIO_COMPETENCIA)": 123,
+   "ausente (PUBLICACAO_NAO_LOCALIZADA)": 37,
+   "ruptura desde o ano anterior (alteracao_classificacao)": 21,
+   "sem registro": 15,
+   "ruptura desde o ano anterior (alteracao_cadastral)": 13,
+   "zero_verificado": 12,
+   "trajetória do Moderado com razão 2030/2025 fora de [0,5; 3]": 6,
+   "ruptura desde o ano anterior (sem tipo)": 6,
+   "ruptura desde o ano anterior (sem_evidencia_suficiente)": 4,
+   "ruptura desde o ano anterior (anomalia_fonte)": 2,
+   "ausente (ENTIDADE_VAZIA_NA_ORIGEM)": 2
+  }
+ },
+ "gateA_agrupamento_ausencias_extremos": {
+  "selecao": 477,
+  "evidencia_de_modelo": 950,
+  "dados": 482
+ },
+ "cobertura": {
+  "completude_publicada": {
+   "PARCIAL": 1206,
+   "SEM_PREVISAO": 241,
+   "COMPLETA": 755
+  },
+  "completude_defensavel_antes": {
+   "PARCIAL": 1776,
+   "SEM_PREVISAO": 241,
+   "COMPLETA": 185
+  },
+  "classe_gateB_so_originais": {
+   "COMPLETA": 711,
+   "SEM_PREVISAO": 241,
+   "PARCIAL": 1250
+  },
+  "classe_gateB_originais_e_otimizados": {
+   "COMPLETA": 1039,
+   "SEM_PREVISAO": 241,
+   "PARCIAL": 922
+  },
+  "classe_gateB": {
+   "COMPLETA": 1239,
+   "SEM_PREVISAO": 241,
+   "PARCIAL": 722
+  },
+  "classe_final": {
+   "COMPLETA": 1419,
+   "SEM_PREVISAO": 241,
+   "PARCIAL": 542
+  },
+  "classe_final_detalhe": {
+   "COMPLETA_INDEPENDENTE": 1081,
+   "SEM_PREVISAO": 241,
+   "COMPLETA_MISTA": 335,
+   "PARCIAL": 542,
+   "COMPLETA_CONDICIONAL": 3
+  },
+  "classe_gateB_detalhe": {
+   "COMPLETA_INDEPENDENTE": 1039,
+   "SEM_PREVISAO": 241,
+   "PARCIAL": 722,
+   "COMPLETA_MISTA": 199,
+   "COMPLETA_CONDICIONAL": 1
+  },
+  "sem_kva": {
+   "series": 2033,
+   "publicado_completa": 668,
+   "defensavel_antes": 170,
+   "gateB": 1130,
+   "final": 1310,
+   "final_independente": 980
+  },
+  "origem_da_completude_final": {
+   "recuperada_so_originais": 526,
+   "continua_sem_previsao": 241,
+   "recuperada_com_otimizados": 328,
+   "recuperada_com_modelos_ou_condicionais_novos": 180,
+   "recuperada_com_condicional_existente_B_HIST": 200,
+   "ja_completa_defensavel": 185,
+   "continua_parcial": 542
+  },
+  "extremos_final_por_categoria": {
+   "A_PUBLICADO_MANTIDO": 1411,
+   "A_OTIMIZADO": 1005,
+   "B_QUANTIL": 182,
+   "A_ORIGINAL": 374,
+   "B_HIST": 189,
+   "INDISPONIVEL": 712,
+   "A_NOVO": 49
+  },
+  "extremos_bloqueados_por_causa": {
+   "D": 407,
+   "A2": 254,
+   "C": 27,
+   "B": 19,
+   "E": 5
+  }
+ },
+ "perdas": {
+  "completa_publicada_nao_defensavel_antes": 570,
+  "completa_publicada_que_fica_parcial": 161
+ },
+ "por_metrica": {
+  "consumidores/quantidade": {
+   "series": 98,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 85,
+   "final": 88,
+   "independente": 80,
+   "condicional": 8,
+   "sem_previsao": 10
+  },
+  "alimentadores/quantidade": {
+   "series": 99,
+   "publicado": 89,
+   "defensavel_antes": 15,
+   "gateB": 57,
+   "final": 62,
+   "independente": 47,
+   "condicional": 15,
+   "sem_previsao": 9
+  },
+  "bancos_capacitores/quantidade": {
+   "series": 98,
+   "publicado": 87,
+   "defensavel_antes": 20,
+   "gateB": 55,
+   "final": 68,
+   "independente": 46,
+   "condicional": 22,
+   "sem_previsao": 11
+  },
+  "barramentos/quantidade": {
+   "series": 70,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 15,
+   "final": 32,
+   "independente": 0,
+   "condicional": 32,
+   "sem_previsao": 10
+  },
+  "chaves/quantidade": {
+   "series": 99,
+   "publicado": 85,
+   "defensavel_antes": 11,
+   "gateB": 73,
+   "final": 78,
+   "independente": 70,
+   "condicional": 8,
+   "sem_previsao": 14
+  },
+  "circuitos_at/quantidade": {
+   "series": 38,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 29,
+   "final": 29,
+   "independente": 26,
+   "condicional": 3,
+   "sem_previsao": 4
+  },
+  "conjuntos/quantidade": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 1,
+   "final": 1,
+   "independente": 1,
+   "condicional": 0,
+   "sem_previsao": 9
+  },
+  "disjuntores/quantidade": {
+   "series": 63,
+   "publicado": 52,
+   "defensavel_antes": 13,
+   "gateB": 35,
+   "final": 37,
+   "independente": 34,
+   "condicional": 3,
+   "sem_previsao": 11
+  },
+  "geradores/quantidade": {
+   "series": 98,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 4,
+   "final": 4,
+   "independente": 0,
+   "condicional": 4,
+   "sem_previsao": 8
+  },
+  "iluminacao/quantidade": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 27,
+   "final": 31,
+   "independente": 9,
+   "condicional": 22,
+   "sem_previsao": 9
+  },
+  "medidores/quantidade": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 65,
+   "final": 88,
+   "independente": 55,
+   "condicional": 33,
+   "sem_previsao": 8
+  },
+  "postes/quantidade": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 91,
+   "final": 91,
+   "independente": 86,
+   "condicional": 5,
+   "sem_previsao": 8
+  },
+  "ramais/extensao_km": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 78,
+   "final": 89,
+   "independente": 68,
+   "condicional": 21,
+   "sem_previsao": 8
+  },
+  "reatores/quantidade": {
+   "series": 13,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 2
+  },
+  "rede_at/extensao_km": {
+   "series": 53,
+   "publicado": 48,
+   "defensavel_antes": 22,
+   "gateB": 39,
+   "final": 39,
+   "independente": 38,
+   "condicional": 1,
+   "sem_previsao": 4
+  },
+  "rede_bt/extensao_km": {
+   "series": 99,
+   "publicado": 91,
+   "defensavel_antes": 43,
+   "gateB": 72,
+   "final": 87,
+   "independente": 72,
+   "condicional": 15,
+   "sem_previsao": 8
+  },
+  "rede_mt/extensao_km": {
+   "series": 99,
+   "publicado": 91,
+   "defensavel_antes": 22,
+   "gateB": 82,
+   "final": 89,
+   "independente": 75,
+   "condicional": 14,
+   "sem_previsao": 8
+  },
+  "reguladores/quantidade": {
+   "series": 91,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 60,
+   "final": 78,
+   "independente": 57,
+   "condicional": 21,
+   "sem_previsao": 9
+  },
+  "religadores/quantidade": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 54,
+   "final": 63,
+   "independente": 53,
+   "condicional": 10,
+   "sem_previsao": 14
+  },
+  "seccionalizadores/quantidade": {
+   "series": 32,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 5,
+   "final": 5,
+   "independente": 0,
+   "condicional": 5,
+   "sem_previsao": 4
+  },
+  "subestacoes/quantidade": {
+   "series": 71,
+   "publicado": 65,
+   "defensavel_antes": 10,
+   "gateB": 31,
+   "final": 33,
+   "independente": 23,
+   "condicional": 10,
+   "sem_previsao": 6
+  },
+  "torres/quantidade": {
+   "series": 58,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 32,
+   "final": 32,
+   "independente": 30,
+   "condicional": 2,
+   "sem_previsao": 8
+  },
+  "trafo_dist/potencia_kva": {
+   "series": 99,
+   "publicado": 87,
+   "defensavel_antes": 15,
+   "gateB": 69,
+   "final": 69,
+   "independente": 68,
+   "condicional": 1,
+   "sem_previsao": 12
+  },
+  "trafo_dist/quantidade": {
+   "series": 99,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 51,
+   "final": 81,
+   "independente": 34,
+   "condicional": 47,
+   "sem_previsao": 11
+  },
+  "trafo_forca/potencia_kva": {
+   "series": 70,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 40,
+   "final": 40,
+   "independente": 33,
+   "condicional": 7,
+   "sem_previsao": 10
+  },
+  "trafo_forca/quantidade": {
+   "series": 71,
+   "publicado": 60,
+   "defensavel_antes": 14,
+   "gateB": 32,
+   "final": 33,
+   "independente": 27,
+   "condicional": 6,
+   "sem_previsao": 11
+  },
+  "trafo_medida/quantidade": {
+   "series": 90,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 57,
+   "final": 72,
+   "independente": 49,
+   "condicional": 23,
+   "sem_previsao": 15
+  }
+ },
+ "por_familia": {
+  "Clientes": {
+   "series": 295,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 116,
+   "final": 123,
+   "independente": 89,
+   "condicional": 34,
+   "sem_previsao": 27
+  },
+  "Subestações e circuitos": {
+   "series": 377,
+   "publicado": 154,
+   "defensavel_antes": 25,
+   "gateB": 133,
+   "final": 157,
+   "independente": 97,
+   "condicional": 60,
+   "sem_previsao": 38
+  },
+  "Regulação e compensação": {
+   "series": 202,
+   "publicado": 87,
+   "defensavel_antes": 20,
+   "gateB": 115,
+   "final": 146,
+   "independente": 103,
+   "condicional": 43,
+   "sem_previsao": 22
+  },
+  "Seccionamento e proteção": {
+   "series": 293,
+   "publicado": 137,
+   "defensavel_antes": 24,
+   "gateB": 167,
+   "final": 183,
+   "independente": 157,
+   "condicional": 26,
+   "sem_previsao": 43
+  },
+  "Medição": {
+   "series": 189,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 122,
+   "final": 160,
+   "independente": 104,
+   "condicional": 56,
+   "sem_previsao": 23
+  },
+  "Estruturas": {
+   "series": 157,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 123,
+   "final": 123,
+   "independente": 116,
+   "condicional": 7,
+   "sem_previsao": 16
+  },
+  "Redes": {
+   "series": 350,
+   "publicado": 230,
+   "defensavel_antes": 87,
+   "gateB": 271,
+   "final": 304,
+   "independente": 253,
+   "condicional": 51,
+   "sem_previsao": 28
+  },
+  "Transformação": {
+   "series": 339,
+   "publicado": 147,
+   "defensavel_antes": 29,
+   "gateB": 192,
+   "final": 223,
+   "independente": 162,
+   "condicional": 61,
+   "sem_previsao": 44
+  }
+ },
+ "por_empresa": {
+  "26 Energisa AC": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 18,
+   "final": 19,
+   "independente": 19,
+   "condicional": 0,
+   "sem_previsao": 0
+  },
+  "31 CEA Equatorial": {
+   "series": 26,
+   "publicado": 9,
+   "defensavel_antes": 4,
+   "gateB": 15,
+   "final": 19,
+   "independente": 14,
+   "condicional": 5,
+   "sem_previsao": 3
+  },
+  "32 Energisa TO": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 17,
+   "final": 19,
+   "independente": 14,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "37 Equatorial MA": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 8,
+   "gateB": 17,
+   "final": 20,
+   "independente": 17,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "38 Equatorial PI": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 6,
+   "gateB": 19,
+   "final": 20,
+   "independente": 19,
+   "condicional": 1,
+   "sem_previsao": 3
+  },
+  "39 Enel CE": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 6,
+   "gateB": 17,
+   "final": 18,
+   "independente": 16,
+   "condicional": 2,
+   "sem_previsao": 1
+  },
+  "40 Neoenergia Cosern": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 21,
+   "final": 22,
+   "independente": 18,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "43 Neoenergia Pernambuco": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 5,
+   "gateB": 20,
+   "final": 21,
+   "independente": 18,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "44 Equatorial AL": {
+   "series": 24,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 19,
+   "final": 20,
+   "independente": 17,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "46 Sulgipe": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 16,
+   "final": 17,
+   "independente": 17,
+   "condicional": 0,
+   "sem_previsao": 0
+  },
+  "47 Neoenergia Coelba": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 5,
+   "gateB": 19,
+   "final": 22,
+   "independente": 18,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "51 Dmed": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 16,
+   "independente": 12,
+   "condicional": 4,
+   "sem_previsao": 1
+  },
+  "63 CPFL Paulista": {
+   "series": 27,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 19,
+   "final": 21,
+   "independente": 18,
+   "condicional": 3,
+   "sem_previsao": 1
+  },
+  "69 CPFL Santa Cruz": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 20,
+   "final": 21,
+   "independente": 18,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "82 Cocel": {
+   "series": 22,
+   "publicado": 8,
+   "defensavel_antes": 3,
+   "gateB": 13,
+   "final": 15,
+   "independente": 9,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "83 Forcel": {
+   "series": 19,
+   "publicado": 7,
+   "defensavel_antes": 1,
+   "gateB": 10,
+   "final": 11,
+   "independente": 7,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "86 Eflul": {
+   "series": 20,
+   "publicado": 7,
+   "defensavel_antes": 1,
+   "gateB": 7,
+   "final": 9,
+   "independente": 8,
+   "condicional": 1,
+   "sem_previsao": 1
+  },
+  "87 Dcelt": {
+   "series": 17,
+   "publicado": 5,
+   "defensavel_antes": 2,
+   "gateB": 7,
+   "final": 12,
+   "independente": 7,
+   "condicional": 5,
+   "sem_previsao": 2
+  },
+  "88 Joao Cesa": {
+   "series": 16,
+   "publicado": 6,
+   "defensavel_antes": 1,
+   "gateB": 7,
+   "final": 9,
+   "independente": 6,
+   "condicional": 3,
+   "sem_previsao": 1
+  },
+  "95 Demei": {
+   "series": 22,
+   "publicado": 10,
+   "defensavel_antes": 1,
+   "gateB": 11,
+   "final": 12,
+   "independente": 7,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "103 Chesp": {
+   "series": 25,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 25
+  },
+  "369 Energisa RO": {
+   "series": 27,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 19,
+   "final": 21,
+   "independente": 19,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "370 Roraima Energia": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 18,
+   "final": 19,
+   "independente": 18,
+   "condicional": 1,
+   "sem_previsao": 1
+  },
+  "371 Equatorial PA": {
+   "series": 27,
+   "publicado": 10,
+   "defensavel_antes": 4,
+   "gateB": 19,
+   "final": 21,
+   "independente": 16,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "380 EDP ES": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 17,
+   "final": 20,
+   "independente": 12,
+   "condicional": 8,
+   "sem_previsao": 0
+  },
+  "381 Santa Maria": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 17,
+   "final": 19,
+   "independente": 12,
+   "condicional": 7,
+   "sem_previsao": 0
+  },
+  "382 Light": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 1,
+   "gateB": 20,
+   "final": 23,
+   "independente": 18,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "383 Enel RJ": {
+   "series": 25,
+   "publicado": 9,
+   "defensavel_antes": 1,
+   "gateB": 17,
+   "final": 20,
+   "independente": 17,
+   "condicional": 3,
+   "sem_previsao": 1
+  },
+  "385 Neoenergia Elektro": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 5,
+   "gateB": 19,
+   "final": 21,
+   "independente": 19,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "390 Enel SP": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 1,
+   "gateB": 17,
+   "final": 19,
+   "independente": 16,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "391 EDP SP": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 17,
+   "final": 22,
+   "independente": 13,
+   "condicional": 9,
+   "sem_previsao": 0
+  },
+  "396 RGE": {
+   "series": 27,
+   "publicado": 8,
+   "defensavel_antes": 3,
+   "gateB": 15,
+   "final": 17,
+   "independente": 15,
+   "condicional": 2,
+   "sem_previsao": 5
+  },
+  "398 Eletrocar": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 15,
+   "final": 17,
+   "independente": 11,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "399 Hidropan": {
+   "series": 23,
+   "publicado": 9,
+   "defensavel_antes": 0,
+   "gateB": 12,
+   "final": 14,
+   "independente": 10,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "400 Nova Palma": {
+   "series": 22,
+   "publicado": 9,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 15,
+   "independente": 11,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "401 Mux Energia": {
+   "series": 20,
+   "publicado": 6,
+   "defensavel_antes": 1,
+   "gateB": 6,
+   "final": 8,
+   "independente": 5,
+   "condicional": 3,
+   "sem_previsao": 5
+  },
+  "404 Energisa MS": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 16,
+   "final": 20,
+   "independente": 13,
+   "condicional": 7,
+   "sem_previsao": 0
+  },
+  "405 Energisa MT": {
+   "series": 27,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 19,
+   "final": 19,
+   "independente": 14,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "504 Cerfox": {
+   "series": 21,
+   "publicado": 8,
+   "defensavel_antes": 1,
+   "gateB": 11,
+   "final": 11,
+   "independente": 9,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "527 Certhil": {
+   "series": 23,
+   "publicado": 9,
+   "defensavel_antes": 0,
+   "gateB": 12,
+   "final": 14,
+   "independente": 9,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "598 Creluz-D": {
+   "series": 17,
+   "publicado": 7,
+   "defensavel_antes": 2,
+   "gateB": 10,
+   "final": 12,
+   "independente": 9,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "2351 Coprel": {
+   "series": 23,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 23
+  },
+  "2381 Cermissoes": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 1,
+   "gateB": 16,
+   "final": 17,
+   "independente": 14,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "2763 Ceriluz": {
+   "series": 23,
+   "publicado": 8,
+   "defensavel_antes": 0,
+   "gateB": 9,
+   "final": 11,
+   "independente": 7,
+   "condicional": 4,
+   "sem_previsao": 1
+  },
+  "2783 Creral": {
+   "series": 22,
+   "publicado": 8,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 14,
+   "independente": 11,
+   "condicional": 3,
+   "sem_previsao": 2
+  },
+  "2866 Copel-Dis": {
+   "series": 26,
+   "publicado": 8,
+   "defensavel_antes": 3,
+   "gateB": 18,
+   "final": 19,
+   "independente": 16,
+   "condicional": 3,
+   "sem_previsao": 4
+  },
+  "2937 CPFL Piratininga": {
+   "series": 26,
+   "publicado": 8,
+   "defensavel_antes": 2,
+   "gateB": 17,
+   "final": 17,
+   "independente": 14,
+   "condicional": 3,
+   "sem_previsao": 5
+  },
+  "3223 Certaja Energia": {
+   "series": 24,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 24
+  },
+  "3627 Cooperluz": {
+   "series": 23,
+   "publicado": 9,
+   "defensavel_antes": 2,
+   "gateB": 12,
+   "final": 13,
+   "independente": 12,
+   "condicional": 1,
+   "sem_previsao": 0
+  },
+  "4248 Ceral-Dis": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 0,
+   "gateB": 12,
+   "final": 13,
+   "independente": 8,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "4950 Cemig-D": {
+   "series": 26,
+   "publicado": 7,
+   "defensavel_antes": 2,
+   "gateB": 15,
+   "final": 16,
+   "independente": 13,
+   "condicional": 3,
+   "sem_previsao": 6
+  },
+  "5160 Neoenergia Brasilia": {
+   "series": 25,
+   "publicado": 8,
+   "defensavel_antes": 1,
+   "gateB": 16,
+   "final": 18,
+   "independente": 16,
+   "condicional": 2,
+   "sem_previsao": 3
+  },
+  "5216 Energisa Sul-Sudeste": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 1,
+   "gateB": 20,
+   "final": 21,
+   "independente": 16,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "5343 Celetro": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 14,
+   "independente": 10,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5345 Coopernorte": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 14,
+   "independente": 9,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "5346 Coopersul": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 1,
+   "gateB": 10,
+   "final": 13,
+   "independente": 7,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "5351 Ceral Anitapolis": {
+   "series": 17,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 17
+  },
+  "5352 Cerej": {
+   "series": 16,
+   "publicado": 6,
+   "defensavel_antes": 3,
+   "gateB": 9,
+   "final": 13,
+   "independente": 9,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5353 Cergal": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 1,
+   "gateB": 9,
+   "final": 12,
+   "independente": 8,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5355 Cergapa": {
+   "series": 18,
+   "publicado": 6,
+   "defensavel_antes": 0,
+   "gateB": 9,
+   "final": 10,
+   "independente": 9,
+   "condicional": 1,
+   "sem_previsao": 0
+  },
+  "5356 Cegero": {
+   "series": 23,
+   "publicado": 9,
+   "defensavel_antes": 1,
+   "gateB": 11,
+   "final": 12,
+   "independente": 9,
+   "condicional": 3,
+   "sem_previsao": 1
+  },
+  "5363 Cergral": {
+   "series": 16,
+   "publicado": 6,
+   "defensavel_antes": 2,
+   "gateB": 8,
+   "final": 9,
+   "independente": 7,
+   "condicional": 2,
+   "sem_previsao": 1
+  },
+  "5364 Cermoful": {
+   "series": 24,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 24
+  },
+  "5365 Cerpalo": {
+   "series": 21,
+   "publicado": 8,
+   "defensavel_antes": 1,
+   "gateB": 10,
+   "final": 13,
+   "independente": 11,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "5366 Cedri": {
+   "series": 16,
+   "publicado": 6,
+   "defensavel_antes": 3,
+   "gateB": 7,
+   "final": 10,
+   "independente": 6,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5367 Ceprag": {
+   "series": 23,
+   "publicado": 8,
+   "defensavel_antes": 2,
+   "gateB": 14,
+   "final": 15,
+   "independente": 11,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5368 Cersul": {
+   "series": 24,
+   "publicado": 10,
+   "defensavel_antes": 0,
+   "gateB": 11,
+   "final": 15,
+   "independente": 9,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "5369 Certrel": {
+   "series": 18,
+   "publicado": 7,
+   "defensavel_antes": 0,
+   "gateB": 12,
+   "final": 13,
+   "independente": 9,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5371 Coopercocal": {
+   "series": 22,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 22
+  },
+  "5372 Cejama": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 0,
+   "gateB": 8,
+   "final": 10,
+   "independente": 6,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5373 Coopermila": {
+   "series": 16,
+   "publicado": 6,
+   "defensavel_antes": 2,
+   "gateB": 9,
+   "final": 9,
+   "independente": 7,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "5374 Cooperzem": {
+   "series": 19,
+   "publicado": 6,
+   "defensavel_antes": 2,
+   "gateB": 9,
+   "final": 10,
+   "independente": 9,
+   "condicional": 1,
+   "sem_previsao": 4
+  },
+  "5375 Cervam": {
+   "series": 19,
+   "publicado": 7,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 14,
+   "independente": 11,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "5377 Cercos": {
+   "series": 16,
+   "publicado": 5,
+   "defensavel_antes": 2,
+   "gateB": 6,
+   "final": 8,
+   "independente": 6,
+   "condicional": 2,
+   "sem_previsao": 2
+  },
+  "5378 Ceripa": {
+   "series": 23,
+   "publicado": 9,
+   "defensavel_antes": 3,
+   "gateB": 14,
+   "final": 17,
+   "independente": 13,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5379 Cetril": {
+   "series": 22,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 22
+  },
+  "5381 Cedrap": {
+   "series": 19,
+   "publicado": 6,
+   "defensavel_antes": 3,
+   "gateB": 8,
+   "final": 9,
+   "independente": 7,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "5382 Ceris": {
+   "series": 15,
+   "publicado": 6,
+   "defensavel_antes": 3,
+   "gateB": 10,
+   "final": 12,
+   "independente": 7,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "5384 Cerpro": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 1,
+   "gateB": 8,
+   "final": 11,
+   "independente": 9,
+   "condicional": 2,
+   "sem_previsao": 0
+  },
+  "5385 Cerrp": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 3,
+   "gateB": 11,
+   "final": 14,
+   "independente": 8,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "5386 Cerim": {
+   "series": 22,
+   "publicado": 9,
+   "defensavel_antes": 0,
+   "gateB": 13,
+   "final": 15,
+   "independente": 11,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5697 Celesc-Dis": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 5,
+   "gateB": 20,
+   "final": 22,
+   "independente": 18,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "5707 CEEE Equatorial": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 21,
+   "final": 22,
+   "independente": 19,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "6072 Equatorial GO": {
+   "series": 25,
+   "publicado": 3,
+   "defensavel_antes": 0,
+   "gateB": 10,
+   "final": 11,
+   "independente": 7,
+   "condicional": 4,
+   "sem_previsao": 9
+  },
+  "6585 Energisa Minas Rio": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 4,
+   "gateB": 19,
+   "final": 20,
+   "independente": 16,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "6587 Energisa SE": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 4,
+   "gateB": 19,
+   "final": 22,
+   "independente": 16,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "6600 Energisa PB": {
+   "series": 26,
+   "publicado": 10,
+   "defensavel_antes": 5,
+   "gateB": 18,
+   "final": 21,
+   "independente": 17,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "6603 Ceral Araruama": {
+   "series": 17,
+   "publicado": 0,
+   "defensavel_antes": 0,
+   "gateB": 0,
+   "final": 0,
+   "independente": 0,
+   "condicional": 0,
+   "sem_previsao": 17
+  },
+  "6609 Cernhe": {
+   "series": 21,
+   "publicado": 8,
+   "defensavel_antes": 0,
+   "gateB": 12,
+   "final": 15,
+   "independente": 9,
+   "condicional": 6,
+   "sem_previsao": 1
+  },
+  "6610 Cermc": {
+   "series": 16,
+   "publicado": 6,
+   "defensavel_antes": 3,
+   "gateB": 9,
+   "final": 12,
+   "independente": 8,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "6897 Ceraca": {
+   "series": 17,
+   "publicado": 7,
+   "defensavel_antes": 2,
+   "gateB": 8,
+   "final": 12,
+   "independente": 7,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "6898 Cerbranorte": {
+   "series": 22,
+   "publicado": 8,
+   "defensavel_antes": 1,
+   "gateB": 11,
+   "final": 15,
+   "independente": 9,
+   "condicional": 6,
+   "sem_previsao": 1
+  },
+  "7016 Coorsel": {
+   "series": 17,
+   "publicado": 6,
+   "defensavel_antes": 1,
+   "gateB": 8,
+   "final": 12,
+   "independente": 6,
+   "condicional": 6,
+   "sem_previsao": 0
+  },
+  "7019 Amazonas Energia": {
+   "series": 25,
+   "publicado": 10,
+   "defensavel_antes": 4,
+   "gateB": 19,
+   "final": 20,
+   "independente": 18,
+   "condicional": 2,
+   "sem_previsao": 2
+  },
+  "7371 Certel Energia": {
+   "series": 24,
+   "publicado": 10,
+   "defensavel_antes": 2,
+   "gateB": 15,
+   "final": 17,
+   "independente": 12,
+   "condicional": 5,
+   "sem_previsao": 0
+  },
+  "7467 Cemirim": {
+   "series": 23,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 14,
+   "final": 15,
+   "independente": 11,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "7883 Cersad": {
+   "series": 20,
+   "publicado": 8,
+   "defensavel_antes": 0,
+   "gateB": 10,
+   "final": 11,
+   "independente": 7,
+   "condicional": 4,
+   "sem_previsao": 0
+  },
+  "11825 Castro-Dis": {
+   "series": 21,
+   "publicado": 8,
+   "defensavel_antes": 2,
+   "gateB": 8,
+   "final": 13,
+   "independente": 10,
+   "condicional": 3,
+   "sem_previsao": 0
+  },
+  "5370 Coopera": {
+   "series": 22,
+   "publicado": 10,
+   "defensavel_antes": 3,
+   "gateB": 11,
+   "final": 13,
+   "independente": 11,
+   "condicional": 2,
+   "sem_previsao": 0
+  }
+ },
+ "modelos_que_recuperam_por_familia": {
+  "Clientes": {
+   "tendencia_ols": 64,
+   "knn_analogos_otim": 51,
+   "B_HIST": 33,
+   "ridge_painel_otim": 20,
+   "hgb_painel_otim": 11
+  },
+  "Subestações e circuitos": {
+   "B_HIST": 37,
+   "random_forest_painel_otim": 32,
+   "knn_analogos_otim": 27,
+   "N5_QUANTIL_0.8": 24,
+   "ridge_painel_otim": 22
+  },
+  "Regulação e compensação": {
+   "random_forest_painel": 29,
+   "random_forest_painel_otim": 28,
+   "ridge_painel_otim": 25,
+   "N5_QUANTIL_0.8": 21,
+   "B_HIST": 17
+  },
+  "Seccionamento e proteção": {
+   "hgb_painel_otim": 49,
+   "ridge_painel_otim": 40,
+   "random_forest_painel_otim": 34,
+   "knn_analogos_otim": 22,
+   "deriva": 17
+  },
+  "Medição": {
+   "knn_analogos_otim": 83,
+   "ridge_painel_otim": 27,
+   "N5_QUANTIL_0.2": 25,
+   "random_forest_painel_otim": 22,
+   "B_HIST": 22
+  },
+  "Estruturas": {
+   "random_forest_painel_otim": 64,
+   "hgb_painel": 28,
+   "ridge_painel_otim": 25,
+   "ridge_painel_ext": 21,
+   "knn_analogos": 15
+  },
+  "Redes": {
+   "hgb_painel_otim": 53,
+   "random_forest_painel_otim": 39,
+   "ridge_painel_otim": 38,
+   "knn_analogos_otim": 29,
+   "N5_QUANTIL_0.8": 22
+  },
+  "Transformação": {
+   "ridge_painel_otim": 111,
+   "knn_analogos_otim": 57,
+   "B_HIST": 38,
+   "random_forest_painel_otim": 35,
+   "N5_QUANTIL_0.2": 22
+  }
+ },
+ "novos_modelos": {
+  "N1_F": {
+   "metricas": 27,
+   "wape_menor_que_moderado": 2,
+   "ic95_totalmente_abaixo_do_moderado": 0,
+   "ic95_totalmente_acima_do_moderado": 7,
+   "r2_crescimento_maior_que_moderado": 2,
+   "r2_crescimento_positivo": 3,
+   "competitivas": 2
+  },
+  "N1_PRODUTO": {
+   "metricas": 27,
+   "wape_menor_que_moderado": 1,
+   "ic95_totalmente_abaixo_do_moderado": 0,
+   "ic95_totalmente_acima_do_moderado": 14,
+   "r2_crescimento_maior_que_moderado": 1,
+   "r2_crescimento_positivo": 3,
+   "competitivas": 2
+  },
+  "N2n_F": {
+   "metricas": 27,
+   "wape_menor_que_moderado": 5,
+   "ic95_totalmente_abaixo_do_moderado": 0,
+   "ic95_totalmente_acima_do_moderado": 6,
+   "r2_crescimento_maior_que_moderado": 7,
+   "r2_crescimento_positivo": 4,
+   "competitivas": 13
+  },
+  "N2n_PRODUTO": {
+   "metricas": 27,
+   "wape_menor_que_moderado": 5,
+   "ic95_totalmente_abaixo_do_moderado": 1,
+   "ic95_totalmente_acima_do_moderado": 6,
+   "r2_crescimento_maior_que_moderado": 4,
+   "r2_crescimento_positivo": 5,
+   "competitivas": 13
+  },
+  "N2g_F": {
+   "metricas": 27,
+   "wape_menor_que_moderado": 3,
+   "ic95_totalmente_abaixo_do_moderado": 0,
+   "ic95_totalmente_acima_do_moderado": 7,
+   "r2_crescimento_maior_que_moderado": 6,
+   "r2_crescimento_positivo": 4,
+   "competitivas": 6
+  },
+  "N2g_PRODUTO": {
+   "metricas": 27,
+   "wape_menor_que_moderado": 3,
+   "ic95_totalmente_abaixo_do_moderado": 0,
+   "ic95_totalmente_acima_do_moderado": 9,
+   "r2_crescimento_maior_que_moderado": 4,
+   "r2_crescimento_positivo": 2,
+   "competitivas": 6
+  }
+ },
+ "r2_crescimento_F": {
+  "O_competitivo": {
+   "n": 87,
+   "mediana": -0.016804,
+   "positivos": 28,
+   "max": 0.134146
+  },
+  "O": {
+   "n": 124,
+   "mediana": -0.300943,
+   "positivos": 16,
+   "max": 0.113952
+  },
+  "moderado": {
+   "n": 27,
+   "mediana": -0.023976,
+   "positivos": 7,
+   "max": 0.126929
+  },
+  "X_competitivo": {
+   "n": 77,
+   "mediana": -0.036859,
+   "positivos": 20,
+   "max": 0.157748
+  },
+  "N": {
+   "n": 60,
+   "mediana": -0.394087,
+   "positivos": 6,
+   "max": 0.307945
+  },
+  "N_competitivo": {
+   "n": 21,
+   "mediana": -0.21842,
+   "positivos": 5,
+   "max": 0.156386
+  },
+  "X": {
+   "n": 27,
+   "mediana": -0.023412,
+   "positivos": 4,
+   "max": 0.049654
+  }
+ },
+ "inventario_classes": {
+  "O|REJEITADO": 124,
+  "O|VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA": 79,
+  "X|VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA": 70,
+  "N|REJEITADO": 60,
+  "N5|CONDICIONAL_CALIBRADO": 28,
+  "O|MODERADO_PUBLICADO": 27,
+  "B-HIST|REGRA_CONDICIONAL": 27,
+  "X|REJEITADO": 27,
+  "N5|CONDICIONAL_NAO_CALIBRADO": 26,
+  "N|VALIDO_PARA_MEDIA_NACIONAL|VALIDO_NA_DISTRIBUIDORA": 17,
+  "O|VALIDO_NA_DISTRIBUIDORA": 7,
+  "X|VALIDO_NA_DISTRIBUIDORA": 6,
+  "N6|CONDICIONAL_REPROVADO": 6,
+  "O|SEM_EVIDENCIA_SUFICIENTE": 5,
+  "N|VALIDO_NA_DISTRIBUIDORA": 4,
+  "H|NAO_APLICAVEL_AO_PAINEL_DIST": 2,
+  "O|VALIDO_APENAS_RETROSPECTIVAMENTE": 1,
+  "X|VALIDO_APENAS_RETROSPECTIVAMENTE": 1
+ },
+ "conciliacao_otimizacao": {
+  "completas_no_registro_da_otimizacao": 1343,
+  "completa_aqui": 1255,
+  "nao_completa_aqui:A2": 41,
+  "nao_completa_aqui:D": 39,
+  "nao_completa_aqui:A2+D": 5,
+  "nao_completa_aqui:E": 2,
+  "nao_completa_aqui:C": 1,
+  "completas_aqui_e_nao_na_otimizacao": 164
+ }
+}
