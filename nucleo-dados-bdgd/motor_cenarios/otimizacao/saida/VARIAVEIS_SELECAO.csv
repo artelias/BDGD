@@ -1,0 +1,487 @@
+conceito,metrica,variavel,status_filtro,motivo_filtro,importancia_S_ridge,importancia_S_knn,importancia_S_rf,importancia_S_hgb,selecionada_ridge,selecionada_knn,selecionada_rf,selecionada_hgb
+alimentadores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.024414,-0.001116,0.001647,0.000968,True,False,True,False
+alimentadores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.000422,-9.6e-05,0.001268,0.001628,False,True,True,False
+alimentadores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.014297,-0.001488,0.000247,0.000859,False,False,False,False
+alimentadores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.962),,,,,False,False,False,False
+alimentadores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.02131,2.2e-05,0.00081,-0.003528,False,True,True,False
+alimentadores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.001911,-0.000878,0.000747,0.00233,False,False,False,True
+alimentadores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.000834,-0.000154,0.001141,0.000618,False,True,True,False
+alimentadores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.001088,-0.000258,0.000776,-0.002021,False,False,True,False
+alimentadores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.000279,0.000179,-0.00027,-0.000715,False,True,False,False
+alimentadores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.962),,,,,False,False,False,False
+alimentadores,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+alimentadores,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.972),,,,,False,False,False,False
+alimentadores,quantidade,int_ln_km_at,CANDIDATA,disponível em 57%,0.000419,0.000937,0.003514,-0.002549,False,True,True,False
+alimentadores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+alimentadores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+alimentadores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+alimentadores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+alimentadores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+bancos_capacitores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.042607,0.008401,0.007934,0.013448,True,True,True,False
+bancos_capacitores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.003282,0.003938,0.002247,0.005113,False,True,True,False
+bancos_capacitores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.026685,0.004094,0.009354,0.027884,False,True,True,True
+bancos_capacitores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.962),,,,,False,False,False,False
+bancos_capacitores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.055965,0.004657,2.4e-05,0.00813,True,True,False,False
+bancos_capacitores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,-2e-05,0.004702,0.002519,0.002749,False,True,True,False
+bancos_capacitores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.001661,0.000837,-0.000635,-0.001043,False,False,False,False
+bancos_capacitores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.002166,0.004351,0.002025,0.003445,False,True,True,False
+bancos_capacitores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.001062,0.003134,0.000196,0.003063,False,False,False,False
+bancos_capacitores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.958),,,,,False,False,False,False
+bancos_capacitores,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.002194,0.003505,0.001657,0.003241,False,False,False,False
+bancos_capacitores,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.951),,,,,False,False,False,False
+bancos_capacitores,quantidade,int_ln_km_at,CANDIDATA,disponível em 58%,0.001094,0.003211,0.000331,0.001447,False,False,False,False
+bancos_capacitores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+bancos_capacitores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+bancos_capacitores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+bancos_capacitores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+bancos_capacitores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+barramentos,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-0.000877,0.001483,0.000135,0.005023,False,True,True,False
+barramentos,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.007587,0.000343,0.009979,0.033966,False,True,True,True
+barramentos,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,-0.000367,-0.000782,-0.002569,0.001126,False,True,False,False
+barramentos,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.959),,,,,False,False,False,False
+barramentos,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.001222,0.002045,-0.002938,-0.001686,False,True,False,False
+barramentos,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.001584,-0.003468,-0.00045,0.011744,False,False,False,True
+barramentos,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.000527,0.000955,-0.000745,0.003397,False,True,False,False
+barramentos,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.000209,0.000545,0.000851,0.006577,False,True,True,False
+barramentos,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.006483,-0.00067,-0.000613,-0.000764,True,True,False,False
+barramentos,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.959),,,,,False,False,False,False
+barramentos,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.960),,,,,False,False,False,False
+barramentos,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.967),,,,,False,False,False,False
+barramentos,quantidade,int_ln_km_at,CANDIDATA,disponível em 77%,0.003807,-0.000108,-0.001168,-0.001662,False,True,False,False
+barramentos,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+barramentos,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+barramentos,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+barramentos,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+barramentos,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+chaves,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.015456,-0.000935,2e-05,0.000349,True,False,False,False
+chaves,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.000368,-0.001211,0.000211,0.000784,False,False,False,False
+chaves,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.007844,-0.00259,-0.000638,0.00036,False,False,False,False
+chaves,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.960),,,,,False,False,False,False
+chaves,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.030539,-0.00255,-0.002471,0.003138,True,False,False,True
+chaves,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000248,-0.001094,0.000234,0.000575,False,False,True,False
+chaves,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-2.6e-05,-1.8e-05,6.4e-05,0.000822,False,False,False,False
+chaves,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,-0.000317,7.2e-05,0.000161,0.000381,False,True,False,False
+chaves,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.000303,0.000673,0.000476,0.002899,False,True,True,True
+chaves,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.956),,,,,False,False,False,False
+chaves,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.005846,-0.002301,0.000233,0.00747,False,False,False,True
+chaves,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_alimentadores (r=0.972),,,,,False,False,False,False
+chaves,quantidade,int_ln_km_at,CANDIDATA,disponível em 53%,-0.000188,-0.001501,-0.000423,-5.6e-05,False,False,False,False
+chaves,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+chaves,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+chaves,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+chaves,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+chaves,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+circuitos_at,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-0.006292,-0.001867,-0.000798,-0.001804,False,False,False,False
+circuitos_at,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.00635,-0.003659,0.000299,0.001544,False,False,True,False
+circuitos_at,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.979),,,,,False,False,False,False
+circuitos_at,quantidade,int_ln_km_bt,CANDIDATA,disponível em 100%,-0.001985,-0.001404,-0.003193,0.0,False,True,False,False
+circuitos_at,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.000386,-0.001397,-3.7e-05,0.002086,False,True,False,False
+circuitos_at,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,8.6e-05,-0.002429,6.5e-05,-0.007927,False,False,True,False
+circuitos_at,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.00117,-0.002142,-0.003493,0.00036,False,False,False,False
+circuitos_at,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.006473,-0.00405,-0.001929,0.00249,True,False,False,False
+circuitos_at,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.01235,-0.007183,-0.001451,0.006955,True,False,False,True
+circuitos_at,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.961),,,,,False,False,False,False
+circuitos_at,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.962),,,,,False,False,False,False
+circuitos_at,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.956),,,,,False,False,False,False
+circuitos_at,quantidade,int_ln_km_at,CANDIDATA,disponível em 100%,0.01752,-0.00091,-0.003375,-0.009036,True,True,False,False
+circuitos_at,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+circuitos_at,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+circuitos_at,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+circuitos_at,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+circuitos_at,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+conjuntos,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,True,True,True,True
+conjuntos,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.964),,,,,False,False,False,False
+conjuntos,quantidade,int_ln_km_bt,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_km_bt (r=0.950),,,,,False,False,False,False
+conjuntos,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.951),,,,,False,False,False,False
+conjuntos,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.954),,,,,False,False,False,False
+conjuntos,quantidade,int_ln_km_at,CANDIDATA,disponível em 57%,0.0,0.0,0.0,0.0,False,False,False,False
+conjuntos,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+conjuntos,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+conjuntos,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+conjuntos,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+conjuntos,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+consumidores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.000448,-0.000422,-0.000138,-6.8e-05,True,False,False,False
+consumidores,quantidade,ln_estoque_por_uc,DESCARTADA,CONSTANTE_NO_TREINO,,,,,False,False,False,False
+consumidores,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+consumidores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.962),,,,,False,False,False,False
+consumidores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.005248,-0.001112,-0.000238,-8.3e-05,True,False,False,False
+consumidores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,-0.00025,-0.000113,-0.000806,-0.001406,False,False,False,False
+consumidores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.000655,-0.000262,-0.000875,-0.00271,True,False,False,False
+consumidores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.000558,-0.000655,-3.4e-05,-0.000987,True,False,True,False
+consumidores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.000104,-0.00147,-0.000627,-0.000308,False,False,False,False
+consumidores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.957),,,,,False,False,False,False
+consumidores,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,7.7e-05,6.6e-05,-8e-05,-0.000623,True,True,False,False
+consumidores,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.951),,,,,False,False,False,False
+consumidores,quantidade,int_ln_km_at,CANDIDATA,disponível em 57%,-2.9e-05,-0.000863,-0.000207,6.3e-05,True,False,False,True
+consumidores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+consumidores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+consumidores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+consumidores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+consumidores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+disjuntores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.020336,-0.002054,0.000259,0.000872,True,False,True,False
+disjuntores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.010947,-0.001103,0.005335,0.019981,True,False,True,True
+disjuntores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.009284,-0.001295,-0.000169,-0.000496,True,False,False,False
+disjuntores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.959),,,,,False,False,False,False
+disjuntores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.01471,-0.001605,-0.00013,0.000436,True,False,False,False
+disjuntores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000303,-0.002864,-0.000646,-0.003394,False,False,False,False
+disjuntores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,6.7e-05,-0.001302,-0.000384,-0.00222,False,False,False,False
+disjuntores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.003105,0.000533,0.001474,0.003813,True,True,True,False
+disjuntores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.001895,-0.001458,-0.001237,0.001017,False,False,False,False
+disjuntores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.960),,,,,False,False,False,False
+disjuntores,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.974),,,,,False,False,False,False
+disjuntores,quantidade,int_ln_subestacoes,CANDIDATA,disponível em 91%,0.00806,-0.00244,-0.000284,-5e-05,True,False,False,False
+disjuntores,quantidade,int_ln_km_at,CANDIDATA,disponível em 77%,-0.000651,-0.000208,-0.00012,5.8e-05,False,False,False,False
+disjuntores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+disjuntores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+disjuntores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+disjuntores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+disjuntores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+geradores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.059218,-0.004157,0.001009,0.01311,True,False,True,True
+geradores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.004854,-0.003625,-0.002254,0.000837,True,False,False,False
+geradores,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.963),,,,,False,False,False,False
+geradores,quantidade,int_ln_km_bt,CANDIDATA,disponível em 100%,0.048787,-0.004373,-0.000193,0.00103,True,False,False,True
+geradores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.118525,-0.001411,-0.000866,0.008597,True,False,False,True
+geradores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000206,0.000786,0.000153,-0.000813,True,False,False,False
+geradores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.001399,0.001065,0.000944,0.000833,False,False,False,False
+geradores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,-0.000212,0.003852,0.000879,0.002771,False,False,False,True
+geradores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.002472,0.005646,0.001078,0.002777,True,True,True,True
+geradores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_km_bt (r=0.950),,,,,False,False,False,False
+geradores,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.002504,-0.005566,-0.000513,0.000986,True,False,False,False
+geradores,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.951),,,,,False,False,False,False
+geradores,quantidade,int_ln_km_at,CANDIDATA,disponível em 57%,-0.001218,-0.001174,3.1e-05,0.000182,False,False,False,False
+geradores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+geradores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+geradores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+geradores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+geradores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+iluminacao,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-0.011901,-0.003261,0.000659,0.003599,False,False,True,False
+iluminacao,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.003402,-0.0037,-0.004445,-0.006867,False,False,False,False
+iluminacao,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.983),,,,,False,False,False,False
+iluminacao,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.956),,,,,False,False,False,False
+iluminacao,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.00288,0.000849,-0.001585,0.000815,False,True,False,False
+iluminacao,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.002187,-0.001323,-0.000838,-0.00213,False,False,False,False
+iluminacao,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.008827,-0.003011,-0.002696,-0.000574,False,False,False,False
+iluminacao,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,-0.000336,-0.007158,-7.2e-05,0.000651,False,False,False,False
+iluminacao,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.000949,-0.014438,-0.005874,-0.007438,False,False,False,False
+iluminacao,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.988),,,,,False,False,False,False
+iluminacao,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.019714,-0.001796,-0.000311,0.014004,True,False,False,True
+iluminacao,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.951),,,,,False,False,False,False
+iluminacao,quantidade,int_ln_km_at,CANDIDATA,disponível em 57%,0.001673,-0.003405,-0.002349,-0.002145,False,False,False,False
+iluminacao,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+iluminacao,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+iluminacao,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+iluminacao,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+iluminacao,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+medidores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.008573,-0.000149,0.000197,0.000337,True,False,False,False
+medidores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.000796,-0.000202,0.001003,0.002828,False,False,True,True
+medidores,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+medidores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.961),,,,,False,False,False,False
+medidores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,-0.000434,-8.9e-05,0.000206,-0.000271,False,False,False,False
+medidores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.001269,0.000383,8.4e-05,0.000226,True,True,False,False
+medidores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-3.2e-05,-7e-06,0.00024,0.002206,False,True,False,True
+medidores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.001679,4.1e-05,-4e-06,0.001536,True,True,False,False
+medidores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.002308,0.000639,-0.000592,0.000126,True,True,False,False
+medidores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.957),,,,,False,False,False,False
+medidores,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.004664,-0.000127,0.000246,0.000504,True,False,True,False
+medidores,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.951),,,,,False,False,False,False
+medidores,quantidade,int_ln_km_at,CANDIDATA,disponível em 57%,3.8e-05,-0.000408,0.000259,0.002909,True,False,True,True
+medidores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+medidores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+medidores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+medidores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+medidores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+postes,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-7.1e-05,0.000552,-2.8e-05,-0.000426,False,True,False,False
+postes,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.000276,0.00043,0.000252,0.000619,False,True,True,True
+postes,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.974),,,,,False,False,False,False
+postes,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.974),,,,,False,False,False,False
+postes,quantidade,int_ln_km_mt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.981),,,,,False,False,False,False
+postes,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,1.3e-05,0.0003,0.00015,0.000791,False,False,True,True
+postes,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,8.8e-05,0.000222,4.1e-05,-6e-06,False,False,False,False
+postes,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.001026,0.000249,0.000226,0.000206,True,False,True,False
+postes,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.00122,0.000745,0.001269,0.00199,True,True,True,True
+postes,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.987),,,,,False,False,False,False
+postes,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.961),,,,,False,False,False,False
+postes,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.969),,,,,False,False,False,False
+postes,quantidade,int_ln_km_at,CANDIDATA,disponível em 56%,0.000145,5e-06,-2.1e-05,0.000395,False,False,False,False
+postes,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+postes,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+postes,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+postes,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+postes,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+ramais,extensao_km,ln_estoque,CANDIDATA,disponível em 100%,0.01288,0.000922,0.003363,0.000787,True,False,False,False
+ramais,extensao_km,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.011021,0.000959,0.005979,0.007658,True,True,True,False
+ramais,extensao_km,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.990),,,,,False,False,False,False
+ramais,extensao_km,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.968),,,,,False,False,False,False
+ramais,extensao_km,int_ln_km_mt,CANDIDATA,disponível em 100%,-0.001592,-0.003224,-0.002985,-0.000895,False,False,False,False
+ramais,extensao_km,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000269,-0.000585,0.000708,0.005557,True,False,False,False
+ramais,extensao_km,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.000117,-0.000237,-0.001011,0.001608,True,False,False,False
+ramais,extensao_km,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.001183,-0.000131,0.000836,0.010438,True,False,False,True
+ramais,extensao_km,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.000214,-0.004445,-0.001497,0.005768,False,False,False,False
+ramais,extensao_km,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.964),,,,,False,False,False,False
+ramais,extensao_km,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.950),,,,,False,False,False,False
+ramais,extensao_km,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.950),,,,,False,False,False,False
+ramais,extensao_km,int_ln_km_at,CANDIDATA,disponível em 57%,-0.000191,-0.00022,-0.000992,0.000899,False,False,False,False
+ramais,extensao_km,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+ramais,extensao_km,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+ramais,extensao_km,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+ramais,extensao_km,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+ramais,extensao_km,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+reatores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_km_bt,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_trafo_dist,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.964),,,,,False,False,False,False
+reatores,quantidade,int_ln_subestacoes,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,int_ln_km_at,CANDIDATA,disponível em 100%,,,,,False,False,False,False
+reatores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+reatores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+reatores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+reatores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+reatores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+rede_at,extensao_km,ln_estoque,CANDIDATA,disponível em 100%,0.001581,-0.00037,0.000505,0.001588,False,False,True,True
+rede_at,extensao_km,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.000623,-0.000102,-7.6e-05,-0.000541,False,True,False,False
+rede_at,extensao_km,int_ln_uc,CANDIDATA,disponível em 100%,-0.000189,-0.000296,-2e-06,0.000204,False,False,False,False
+rede_at,extensao_km,int_ln_km_bt,CANDIDATA,disponível em 100%,-0.000209,-0.000319,-6.4e-05,0.0,False,False,False,False
+rede_at,extensao_km,int_ln_km_mt,CANDIDATA,disponível em 100%,0.007589,-0.000293,2.8e-05,0.001442,True,True,False,True
+rede_at,extensao_km,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,1.1e-05,-0.000952,-0.000117,0.000427,False,False,False,False
+rede_at,extensao_km,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.002656,-0.000926,0.000259,0.000414,False,False,False,False
+rede_at,extensao_km,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,1e-06,-0.001289,-0.000417,0.000544,False,False,False,False
+rede_at,extensao_km,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.00366,4.8e-05,0.002139,0.00208,True,True,True,True
+rede_at,extensao_km,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.977),,,,,False,False,False,False
+rede_at,extensao_km,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.966),,,,,False,False,False,False
+rede_at,extensao_km,int_ln_subestacoes,CANDIDATA,disponível em 100%,0.010206,-0.000817,0.000276,0.001548,True,False,True,True
+rede_at,extensao_km,int_ln_km_at,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+rede_at,extensao_km,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+rede_at,extensao_km,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+rede_at,extensao_km,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+rede_at,extensao_km,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+rede_at,extensao_km,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+rede_bt,extensao_km,ln_estoque,CANDIDATA,disponível em 100%,0.010642,2.5e-05,0.000497,0.000968,True,False,False,False
+rede_bt,extensao_km,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.000489,-0.00035,0.000364,-0.000429,True,False,False,False
+rede_bt,extensao_km,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.963),,,,,False,False,False,False
+rede_bt,extensao_km,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+rede_bt,extensao_km,int_ln_km_mt,CANDIDATA,disponível em 100%,-0.000339,0.00079,9.5e-05,0.000762,False,False,False,False
+rede_bt,extensao_km,int_ln_uc_por_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque_por_uc (r=-1.000),,,,,False,False,False,False
+rede_bt,extensao_km,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.000284,-4.2e-05,0.000607,0.001773,True,False,True,True
+rede_bt,extensao_km,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,-0.000292,0.000847,0.000197,0.001524,False,False,False,True
+rede_bt,extensao_km,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.003192,0.001096,0.002253,0.002987,True,True,True,True
+rede_bt,extensao_km,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.950),,,,,False,False,False,False
+rede_bt,extensao_km,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.002925,0.00053,4.8e-05,0.000795,True,False,False,False
+rede_bt,extensao_km,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.951),,,,,False,False,False,False
+rede_bt,extensao_km,int_ln_km_at,CANDIDATA,disponível em 56%,-0.000107,0.000181,0.00027,-8.8e-05,False,False,False,False
+rede_bt,extensao_km,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+rede_bt,extensao_km,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+rede_bt,extensao_km,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+rede_bt,extensao_km,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+rede_bt,extensao_km,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+rede_mt,extensao_km,ln_estoque,CANDIDATA,disponível em 100%,0.001926,-0.000578,0.000129,0.000763,True,False,True,True
+rede_mt,extensao_km,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-1e-06,-0.000252,6.5e-05,0.000241,False,False,True,True
+rede_mt,extensao_km,int_ln_uc,CANDIDATA,disponível em 100%,0.000746,-0.000943,0.000188,0.000142,False,False,True,False
+rede_mt,extensao_km,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.962),,,,,False,False,False,False
+rede_mt,extensao_km,int_ln_km_mt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+rede_mt,extensao_km,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000119,-0.000443,-0.000153,0.000206,False,False,False,False
+rede_mt,extensao_km,int_mwh_por_uc,CANDIDATA,disponível em 100%,5.8e-05,0.000317,-1.6e-05,0.000302,False,True,False,True
+rede_mt,extensao_km,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.000414,-0.00016,4.1e-05,0.000322,False,False,False,True
+rede_mt,extensao_km,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.001203,0.000535,0.001215,0.001277,True,True,True,True
+rede_mt,extensao_km,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.988),,,,,False,False,False,False
+rede_mt,extensao_km,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.002352,-0.000635,2.3e-05,0.000283,True,False,False,True
+rede_mt,extensao_km,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.951),,,,,False,False,False,False
+rede_mt,extensao_km,int_ln_km_at,CANDIDATA,disponível em 57%,0.000102,-0.000381,6.1e-05,0.000386,False,False,False,True
+rede_mt,extensao_km,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+rede_mt,extensao_km,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+rede_mt,extensao_km,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+rede_mt,extensao_km,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+rede_mt,extensao_km,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+reguladores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.064446,0.002472,0.003255,0.001266,True,False,True,True
+reguladores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.002874,0.001902,0.001189,0.004049,False,False,False,True
+reguladores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.026604,0.002567,0.00115,-0.001482,False,True,False,False
+reguladores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.961),,,,,False,False,False,False
+reguladores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.075906,0.002931,-2.3e-05,0.006695,True,True,False,True
+reguladores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,-0.001412,0.004894,0.000672,0.004502,False,True,False,True
+reguladores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.000246,0.000828,-0.001134,-0.000942,False,False,False,False
+reguladores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.006889,0.000629,0.002712,0.001999,False,False,True,True
+reguladores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.002232,-0.002803,0.000261,-0.005289,False,False,False,False
+reguladores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.962),,,,,False,False,False,False
+reguladores,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.952),,,,,False,False,False,False
+reguladores,quantidade,int_ln_subestacoes,CANDIDATA,disponível em 78%,0.030725,5.7e-05,0.007797,0.012082,False,False,True,True
+reguladores,quantidade,int_ln_km_at,CANDIDATA,disponível em 61%,-0.000235,0.002518,-0.001035,0.000192,False,False,False,True
+reguladores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+reguladores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+reguladores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+reguladores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+reguladores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+religadores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.003878,0.005824,0.000898,0.001963,True,False,False,False
+religadores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.000878,0.006667,0.003004,0.015192,False,True,True,True
+religadores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,-0.001492,0.004353,-0.004816,-0.010943,False,False,False,False
+religadores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.960),,,,,False,False,False,False
+religadores,quantidade,int_ln_km_mt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.950),,,,,False,False,False,False
+religadores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,-0.003056,-0.002795,-0.002647,0.002271,False,False,False,False
+religadores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.002282,0.001903,0.007345,0.010173,False,False,True,False
+religadores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.004245,0.00599,0.002858,0.005052,True,True,True,False
+religadores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.009234,-0.000842,0.005085,0.012166,True,False,True,False
+religadores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.968),,,,,False,False,False,False
+religadores,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.957),,,,,False,False,False,False
+religadores,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.965),,,,,False,False,False,False
+religadores,quantidade,int_ln_km_at,CANDIDATA,disponível em 54%,5.9e-05,0.001211,-0.001266,0.000354,False,False,False,False
+religadores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+religadores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+religadores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+religadores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+religadores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+seccionalizadores,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.041792,-0.013349,-0.012191,0.017303,False,False,False,False
+seccionalizadores,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.000553,-0.000522,-0.000613,0.0,False,False,True,False
+seccionalizadores,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.073951,-0.000316,-0.020523,0.017836,True,False,False,False
+seccionalizadores,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.963),,,,,False,False,False,False
+seccionalizadores,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.070208,-0.003397,-0.007251,0.057722,True,False,False,False
+seccionalizadores,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,-0.011758,0.002298,0.00595,-0.001303,False,True,True,False
+seccionalizadores,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.025232,0.001566,-0.001463,0.0,False,True,False,False
+seccionalizadores,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.068987,0.001871,0.005505,0.066758,True,True,True,True
+seccionalizadores,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.00416,-0.004298,-0.000141,0.003923,False,False,True,False
+seccionalizadores,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.959),,,,,False,False,False,False
+seccionalizadores,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.959),,,,,False,False,False,False
+seccionalizadores,quantidade,int_ln_subestacoes,CANDIDATA,disponível em 92%,0.032958,-0.000166,-0.001726,0.004611,False,False,False,False
+seccionalizadores,quantidade,int_ln_km_at,CANDIDATA,disponível em 92%,-0.005774,-0.001008,-0.000596,0.0,False,False,True,False
+seccionalizadores,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+seccionalizadores,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+seccionalizadores,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+seccionalizadores,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+seccionalizadores,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+subestacoes,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-0.002662,0.001794,-7.2e-05,0.004594,False,True,True,True
+subestacoes,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.001085,0.001353,-0.000315,-0.002028,False,True,False,False
+subestacoes,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,-0.001557,0.003095,8e-05,-0.000807,False,True,True,False
+subestacoes,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.957),,,,,False,False,False,False
+subestacoes,quantidade,int_ln_km_mt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.951),,,,,False,False,False,False
+subestacoes,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000453,0.000161,-0.000346,0.003311,False,True,False,False
+subestacoes,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.000759,-0.000368,-0.003472,-0.000413,False,False,False,False
+subestacoes,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.00524,-0.000143,0.000412,0.001018,False,False,True,False
+subestacoes,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.001039,0.000131,-0.003464,0.000214,False,True,False,False
+subestacoes,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.967),,,,,False,False,False,False
+subestacoes,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.972),,,,,False,False,False,False
+subestacoes,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+subestacoes,quantidade,int_ln_km_at,CANDIDATA,disponível em 77%,0.006713,0.000681,0.000753,0.001473,True,True,True,False
+subestacoes,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+subestacoes,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+subestacoes,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+subestacoes,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+subestacoes,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+torres,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-0.003996,0.000222,0.000583,0.001206,False,False,True,False
+torres,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.002388,-0.000334,-0.001352,-0.00068,False,False,False,False
+torres,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,-0.005014,-0.000638,-0.002303,-0.000535,False,False,False,False
+torres,quantidade,int_ln_km_bt,CANDIDATA,disponível em 100%,-0.005603,0.001406,-0.002382,2.5e-05,False,True,False,False
+torres,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.01109,0.001888,-3.6e-05,0.017142,False,True,False,True
+torres,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000201,0.000447,-0.000328,0.002233,False,False,False,False
+torres,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.014677,0.000842,0.00013,0.000762,True,True,False,False
+torres,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.000375,-0.000504,0.000105,0.002166,False,False,False,False
+torres,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.007598,-0.002101,0.000628,0.0002,False,False,True,False
+torres,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.971),,,,,False,False,False,False
+torres,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.978),,,,,False,False,False,False
+torres,quantidade,int_ln_subestacoes,CANDIDATA,disponível em 93%,0.00336,-0.001133,0.000341,-0.000984,False,False,True,False
+torres,quantidade,int_ln_km_at,CANDIDATA,disponível em 89%,0.000875,-0.000943,-0.000321,0.003833,False,False,False,False
+torres,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+torres,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+torres,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+torres,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+torres,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+trafo_dist,potencia_kva,ln_estoque,CANDIDATA,disponível em 100%,0.093582,-0.00381,0.009214,0.028636,True,False,True,True
+trafo_dist,potencia_kva,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.000786,-0.011807,-0.001838,0.004076,True,False,False,False
+trafo_dist,potencia_kva,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.982),,,,,False,False,False,False
+trafo_dist,potencia_kva,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.950),,,,,False,False,False,False
+trafo_dist,potencia_kva,int_ln_km_mt,CANDIDATA,disponível em 100%,0.044252,-0.007541,-0.002257,-0.002159,True,False,False,False
+trafo_dist,potencia_kva,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,4.4e-05,-0.00418,-0.001521,0.007272,False,False,False,False
+trafo_dist,potencia_kva,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.002197,-0.000736,0.000915,0.01215,True,True,True,False
+trafo_dist,potencia_kva,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.000187,-0.00245,-0.00073,-0.007157,False,False,True,False
+trafo_dist,potencia_kva,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.002665,-0.011221,-0.001496,0.000376,False,False,False,False
+trafo_dist,potencia_kva,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.977),,,,,False,False,False,False
+trafo_dist,potencia_kva,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.965),,,,,False,False,False,False
+trafo_dist,potencia_kva,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.956),,,,,False,False,False,False
+trafo_dist,potencia_kva,int_ln_km_at,CANDIDATA,disponível em 55%,0.0007,-0.000745,-0.002365,-0.006642,False,True,False,False
+trafo_dist,potencia_kva,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_dist,potencia_kva,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_dist,potencia_kva,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+trafo_dist,potencia_kva,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+trafo_dist,potencia_kva,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+trafo_dist,quantidade,ln_estoque,CANDIDATA,disponível em 100%,-0.002967,-0.000201,-0.002151,-0.001484,False,True,False,False
+trafo_dist,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.001025,-0.002382,-0.000209,-0.000382,False,False,True,False
+trafo_dist,quantidade,int_ln_uc,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.957),,,,,False,False,False,False
+trafo_dist,quantidade,int_ln_km_bt,CANDIDATA,disponível em 100%,-0.003968,-0.001643,-0.002338,-0.002038,False,False,False,False
+trafo_dist,quantidade,int_ln_km_mt,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.987),,,,,False,False,False,False
+trafo_dist,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.000505,-0.002889,-0.000294,-0.00081,False,False,False,False
+trafo_dist,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.001004,-0.000557,-0.000868,0.001189,True,True,False,True
+trafo_dist,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.000549,-0.002379,0.00021,9.9e-05,True,False,True,False
+trafo_dist,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.002351,-0.003535,-0.001676,-0.000894,False,False,False,False
+trafo_dist,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=1.000),,,,,False,False,False,False
+trafo_dist,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.962),,,,,False,False,False,False
+trafo_dist,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.967),,,,,False,False,False,False
+trafo_dist,quantidade,int_ln_km_at,CANDIDATA,disponível em 55%,0.000427,-0.001821,-0.000414,-0.00061,False,False,False,False
+trafo_dist,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_dist,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_dist,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+trafo_dist,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+trafo_dist,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+trafo_forca,potencia_kva,ln_estoque,CANDIDATA,disponível em 100%,0.058652,-0.001193,0.013477,0.157076,True,False,True,True
+trafo_forca,potencia_kva,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.023572,-0.000397,0.004695,0.007171,False,True,False,False
+trafo_forca,potencia_kva,int_ln_uc,CANDIDATA,disponível em 100%,0.040139,-0.002387,-0.000177,0.00718,True,False,False,False
+trafo_forca,potencia_kva,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.954),,,,,False,False,False,False
+trafo_forca,potencia_kva,int_ln_km_mt,CANDIDATA,disponível em 100%,0.098462,-0.002661,-0.00136,0.003115,True,False,False,False
+trafo_forca,potencia_kva,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.003735,-0.001886,0.000236,0.010067,False,False,False,False
+trafo_forca,potencia_kva,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.005564,-0.00083,-0.002013,0.002614,False,True,False,False
+trafo_forca,potencia_kva,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,-0.000149,-0.001127,0.005867,0.004184,False,False,True,False
+trafo_forca,potencia_kva,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.003437,-0.001016,-0.001171,-0.001233,False,True,False,False
+trafo_forca,potencia_kva,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.951),,,,,False,False,False,False
+trafo_forca,potencia_kva,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.958),,,,,False,False,False,False
+trafo_forca,potencia_kva,int_ln_subestacoes,CANDIDATA,disponível em 98%,0.026919,-0.000164,0.003869,0.000704,True,True,False,False
+trafo_forca,potencia_kva,int_ln_km_at,CANDIDATA,disponível em 76%,0.048794,-0.0011,0.000197,0.0099,True,False,False,False
+trafo_forca,potencia_kva,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_forca,potencia_kva,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_forca,potencia_kva,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+trafo_forca,potencia_kva,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+trafo_forca,potencia_kva,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+trafo_forca,quantidade,ln_estoque,CANDIDATA,disponível em 100%,0.01904,-0.000977,0.004004,0.021231,True,False,True,True
+trafo_forca,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,0.000817,-0.001481,-0.000365,0.001171,False,False,False,False
+trafo_forca,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.014342,0.000519,0.001872,-0.001917,True,True,True,False
+trafo_forca,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.954),,,,,False,False,False,False
+trafo_forca,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.026866,-0.001267,5.4e-05,0.000863,True,False,False,False
+trafo_forca,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,0.00149,-0.000349,0.000658,0.000183,False,True,True,False
+trafo_forca,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,-0.000245,-0.000383,-0.00044,-0.001761,False,False,False,False
+trafo_forca,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.001497,-0.000247,0.001062,0.003662,False,True,True,False
+trafo_forca,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,-0.002755,-0.001514,-0.002652,-0.00275,False,False,False,False
+trafo_forca,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.964),,,,,False,False,False,False
+trafo_forca,quantidade,int_ln_alimentadores,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.975),,,,,False,False,False,False
+trafo_forca,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_ln_estoque (r=0.978),,,,,False,False,False,False
+trafo_forca,quantidade,int_ln_km_at,CANDIDATA,disponível em 75%,0.002849,0.000246,0.000139,-0.000699,True,True,True,False
+trafo_forca,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_forca,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_forca,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+trafo_forca,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+trafo_forca,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,
+trafo_medida,quantidade,ln_estoque,CANDIDATA,disponível em 100%,1.9e-05,0.000891,0.000555,-0.000761,False,False,True,False
+trafo_medida,quantidade,ln_estoque_por_uc,CANDIDATA,disponível em 100%,-0.000792,0.000304,0.00113,0.001718,False,False,True,True
+trafo_medida,quantidade,int_ln_uc,CANDIDATA,disponível em 100%,0.000107,-0.000562,0.001239,0.007628,False,False,True,True
+trafo_medida,quantidade,int_ln_km_bt,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.963),,,,,False,False,False,False
+trafo_medida,quantidade,int_ln_km_mt,CANDIDATA,disponível em 100%,0.000226,0.002385,-0.000353,-0.000783,False,True,True,False
+trafo_medida,quantidade,int_ln_uc_por_km_bt,CANDIDATA,disponível em 100%,-0.001547,0.001344,0.000535,0.004014,False,False,True,True
+trafo_medida,quantidade,int_mwh_por_uc,CANDIDATA,disponível em 100%,0.000496,-0.000693,0.002297,0.00396,True,False,True,True
+trafo_medida,quantidade,ext_cresc_pop_2010_2022,CANDIDATA,disponível em 100%,0.014797,0.000994,-0.00032,-0.004597,True,False,True,False
+trafo_medida,quantidade,ext_ln_pib_pc_2021,CANDIDATA,disponível em 100%,0.005271,-0.001089,-0.000159,0.004871,True,False,True,True
+trafo_medida,quantidade,int_ln_trafo_dist,DESCARTADA,REDUNDANTE_COM_int_ln_uc (r=0.954),,,,,False,False,False,False
+trafo_medida,quantidade,int_ln_alimentadores,CANDIDATA,disponível em 100%,0.000538,0.000109,-0.001239,-0.004571,True,False,False,False
+trafo_medida,quantidade,int_ln_subestacoes,DESCARTADA,REDUNDANTE_COM_int_ln_km_mt (r=0.959),,,,,False,False,False,False
+trafo_medida,quantidade,int_ln_km_at,CANDIDATA,disponível em 58%,-0.002237,0.001223,-0.001388,0.000347,False,False,False,False
+trafo_medida,quantidade,lag_g_proprio,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_medida,quantidade,lag_g_uc,DESCARTADA,INDISPONIVEL_NA_ORIGEM (disponível em 0% dos pares de treino até 2023),,,,,False,False,False,False
+trafo_medida,quantidade,municipio,NAO_APLICAVEL,painel por distribuidora: o município entra só nas externas ponderadas por UC,,,,,,,,
+trafo_medida,quantidade,conjunto,NAO_APLICAVEL,painel por distribuidora: não há série por conjunto no contrato nacional,,,,,,,,
+trafo_medida,quantidade,potencia_instalada,NAO_APLICAVEL,potência via EQ→UN é experimental (não homologada); não usada como explicativa,,,,,,,,

@@ -1,0 +1,572 @@
+{
+ "q1_metricas_com_tres_cenarios_antes": 10,
+ "estados_antes": {
+  "tres_cenarios": 10,
+  "dois_cenarios": 13,
+  "somente_moderado": 2,
+  "somente_baseline": 2
+ },
+ "q1b_series_com_tres_cenarios_antes": 755,
+ "q2_series_com_tres_cenarios_depois_registro_tecnico": 1343,
+ "q2b_metricas_com_90pct_das_series_completas_depois": 4,
+ "moderado_substituido_por_otimizado": {
+  "medidores/quantidade": 91,
+  "rede_at/extensao_km": 49,
+  "torres/quantidade": 50
+ },
+ "q3_modelos_que_melhoraram_fora_da_amostra": [
+  "alimentadores/quantidade:ridge_painel_otim",
+  "barramentos/quantidade:random_forest_painel_otim",
+  "consumidores/quantidade:knn_analogos_otim",
+  "consumidores/quantidade:random_forest_painel_otim",
+  "iluminacao/quantidade:ridge_painel_otim",
+  "medidores/quantidade:knn_analogos_otim",
+  "medidores/quantidade:ridge_painel_otim",
+  "ramais/extensao_km:hgb_painel_otim",
+  "rede_at/extensao_km:knn_analogos_otim",
+  "reguladores/quantidade:hgb_painel_otim",
+  "seccionalizadores/quantidade:random_forest_painel_otim",
+  "torres/quantidade:knn_analogos_otim",
+  "trafo_forca/quantidade:hgb_painel_otim",
+  "trafo_forca/quantidade:random_forest_painel_otim"
+ ],
+ "q4_variaveis_descartadas": {
+  "ocorrencias": 157,
+  "por_variavel": {
+   "int_ln_km_bt": 20,
+   "int_ln_trafo_dist": 26,
+   "int_ln_alimentadores": 18,
+   "int_ln_subestacoes": 20,
+   "lag_g_proprio": 27,
+   "lag_g_uc": 27,
+   "int_ln_uc": 11,
+   "ln_estoque_por_uc": 1,
+   "int_ln_km_mt": 5,
+   "int_ln_km_at": 1,
+   "int_ln_uc_por_km_bt": 1
+  }
+ },
+ "q5_variaveis_mais_relevantes_por_familia_S": {
+  "Subestações e circuitos": [
+   "ext_cresc_pop_2010_2022",
+   "int_ln_uc_por_km_bt",
+   "ln_estoque"
+  ],
+  "Regulação e compensação": [
+   "int_ln_subestacoes",
+   "ln_estoque",
+   "int_ln_uc"
+  ],
+  "Seccionamento e proteção": [
+   "int_ln_alimentadores",
+   "ext_cresc_pop_2010_2022",
+   "ln_estoque"
+  ],
+  "Clientes": [
+   "int_ln_km_bt",
+   "int_ln_km_mt",
+   "ln_estoque"
+  ],
+  "Medição": [
+   "int_ln_uc",
+   "ln_estoque_por_uc",
+   "ext_cresc_pop_2010_2022"
+  ],
+  "Estruturas": [
+   "int_ln_km_mt",
+   "ext_ln_pib_pc_2021",
+   "ln_estoque_por_uc"
+  ],
+  "Redes": [
+   "ext_ln_pib_pc_2021",
+   "int_ln_subestacoes",
+   "ln_estoque"
+  ],
+  "Transformação": [
+   "ln_estoque",
+   "int_ln_subestacoes",
+   "int_ln_uc"
+  ]
+ },
+ "q6_cenarios_modelo_independente": 2987,
+ "q7_cenarios_condicionais_do_moderado": 246,
+ "q8_cenarios_sem_evidencia": 689,
+ "cenarios_sem_moderado": 482,
+ "q9_modelos_que_pioraram_fora_da_amostra": [
+  "alimentadores/quantidade:hgb_painel_otim",
+  "alimentadores/quantidade:random_forest_painel_otim",
+  "bancos_capacitores/quantidade:hgb_painel_otim",
+  "bancos_capacitores/quantidade:knn_analogos_otim",
+  "bancos_capacitores/quantidade:random_forest_painel_otim",
+  "bancos_capacitores/quantidade:ridge_painel_otim",
+  "barramentos/quantidade:hgb_painel_otim",
+  "barramentos/quantidade:knn_analogos_otim",
+  "chaves/quantidade:hgb_painel_otim",
+  "chaves/quantidade:knn_analogos_otim",
+  "chaves/quantidade:random_forest_painel_otim",
+  "chaves/quantidade:ridge_painel_otim",
+  "circuitos_at/quantidade:hgb_painel_otim",
+  "circuitos_at/quantidade:knn_analogos_otim",
+  "circuitos_at/quantidade:random_forest_painel_otim",
+  "circuitos_at/quantidade:ridge_painel_otim",
+  "conjuntos/quantidade:ridge_painel_otim",
+  "consumidores/quantidade:hgb_painel_otim",
+  "disjuntores/quantidade:hgb_painel_otim",
+  "disjuntores/quantidade:knn_analogos_otim",
+  "disjuntores/quantidade:random_forest_painel_otim",
+  "geradores/quantidade:hgb_painel_otim",
+  "geradores/quantidade:knn_analogos_otim",
+  "geradores/quantidade:random_forest_painel_otim",
+  "iluminacao/quantidade:knn_analogos_otim",
+  "iluminacao/quantidade:random_forest_painel_otim",
+  "medidores/quantidade:hgb_painel_otim",
+  "postes/quantidade:hgb_painel_otim",
+  "postes/quantidade:knn_analogos_otim",
+  "postes/quantidade:random_forest_painel_otim",
+  "postes/quantidade:ridge_painel_otim",
+  "ramais/extensao_km:knn_analogos_otim",
+  "ramais/extensao_km:random_forest_painel_otim",
+  "rede_bt/extensao_km:hgb_painel_otim",
+  "rede_bt/extensao_km:random_forest_painel_otim",
+  "rede_bt/extensao_km:ridge_painel_otim",
+  "reguladores/quantidade:knn_analogos_otim",
+  "reguladores/quantidade:random_forest_painel_otim",
+  "religadores/quantidade:hgb_painel_otim",
+  "religadores/quantidade:knn_analogos_otim",
+  "religadores/quantidade:random_forest_painel_otim",
+  "religadores/quantidade:ridge_painel_otim",
+  "seccionalizadores/quantidade:hgb_painel_otim",
+  "seccionalizadores/quantidade:knn_analogos_otim",
+  "subestacoes/quantidade:hgb_painel_otim",
+  "subestacoes/quantidade:knn_analogos_otim",
+  "subestacoes/quantidade:random_forest_painel_otim",
+  "subestacoes/quantidade:ridge_painel_otim",
+  "torres/quantidade:random_forest_painel_otim",
+  "trafo_dist/potencia_kva:hgb_painel_otim",
+  "trafo_dist/potencia_kva:random_forest_painel_otim",
+  "trafo_dist/quantidade:hgb_painel_otim",
+  "trafo_dist/quantidade:knn_analogos_otim",
+  "trafo_dist/quantidade:random_forest_painel_otim",
+  "trafo_forca/potencia_kva:knn_analogos_otim",
+  "trafo_forca/quantidade:knn_analogos_otim",
+  "trafo_medida/quantidade:knn_analogos_otim",
+  "trafo_medida/quantidade:random_forest_painel_otim",
+  "trafo_medida/quantidade:ridge_painel_otim"
+ ],
+ "q9b_sem_ganho_significativo": 31,
+ "q10_variacao_F_otimizado_menos_original": {
+  "wape_mediana": 0.00025650000000000065,
+  "wape_melhorou_em": 44,
+  "wape_piorou_em": 59,
+  "r2_crescimento_mediana": -0.0056585,
+  "r2_definido_em": 104,
+  "pares": 104
+ },
+ "por_metrica": [
+  {
+   "conceito": "alimentadores",
+   "metrica": "quantidade",
+   "segundos": 49.1,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 152,
+    "SEM_MODERADO": 9,
+    "CONDICIONAL_DO_MODERADO": 6,
+    "SEM_EVIDENCIA_COINCIDENTE": 22
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "bancos_capacitores",
+   "metrica": "quantidade",
+   "segundos": 13.6,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 162,
+    "SEM_EVIDENCIA_COINCIDENTE": 9,
+    "SEM_MODERADO": 11,
+    "CONDICIONAL_DO_MODERADO": 3
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "barramentos",
+   "metrica": "quantidade",
+   "segundos": 6.8,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 41,
+    "MODELO_INDEPENDENTE": 60,
+    "SEM_MODERADO": 10,
+    "CONDICIONAL_DO_MODERADO": 19
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "chaves",
+   "metrica": "quantidade",
+   "segundos": 11.4,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 156,
+    "SEM_EVIDENCIA_COINCIDENTE": 12,
+    "SEM_MODERADO": 14,
+    "CONDICIONAL_DO_MODERADO": 2
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "circuitos_at",
+   "metrica": "quantidade",
+   "segundos": 10.2,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 60,
+    "SEM_EVIDENCIA_COINCIDENTE": 5,
+    "SEM_MODERADO": 4,
+    "CONDICIONAL_DO_MODERADO": 3
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "conjuntos",
+   "metrica": "quantidade",
+   "segundos": 12.3,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 103,
+    "MODELO_INDEPENDENTE": 77,
+    "SEM_MODERADO": 9
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "consumidores",
+   "metrica": "quantidade",
+   "segundos": 9.3,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 168,
+    "SEM_MODERADO": 10,
+    "SEM_EVIDENCIA_COINCIDENTE": 3,
+    "CONDICIONAL_DO_MODERADO": 5
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "disjuntores",
+   "metrica": "quantidade",
+   "segundos": 11.3,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 88,
+    "SEM_EVIDENCIA_COINCIDENTE": 13,
+    "CONDICIONAL_DO_MODERADO": 3,
+    "SEM_MODERADO": 11
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "geradores",
+   "metrica": "quantidade",
+   "segundos": 15.0,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 125,
+    "MODELO_INDEPENDENTE": 49,
+    "SEM_MODERADO": 8,
+    "CONDICIONAL_DO_MODERADO": 6
+   },
+   "estado_publicado": "somente_moderado"
+  },
+  {
+   "conceito": "iluminacao",
+   "metrica": "quantidade",
+   "segundos": 10.1,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "CONDICIONAL_DO_MODERADO": 38,
+    "MODELO_INDEPENDENTE": 86,
+    "SEM_EVIDENCIA_COINCIDENTE": 56,
+    "SEM_MODERADO": 9
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "medidores",
+   "metrica": "quantidade",
+   "segundos": 13.3,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 141,
+    "SEM_EVIDENCIA_COINCIDENTE": 14,
+    "CONDICIONAL_DO_MODERADO": 27,
+    "SEM_MODERADO": 8
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "postes",
+   "metrica": "quantidade",
+   "segundos": 9.5,
+   "tentativas": 0,
+   "variaveis_vivas": 7,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 177,
+    "SEM_MODERADO": 8,
+    "CONDICIONAL_DO_MODERADO": 5
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "ramais",
+   "metrica": "extensao_km",
+   "segundos": 11.4,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 177,
+    "CONDICIONAL_DO_MODERADO": 5,
+    "SEM_MODERADO": 8
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "reatores",
+   "metrica": "quantidade",
+   "segundos": 0.1,
+   "tentativas": 0,
+   "variaveis_vivas": 12,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 18,
+    "SEM_MODERADO": 2,
+    "CONDICIONAL_DO_MODERADO": 4
+   },
+   "estado_publicado": "somente_baseline"
+  },
+  {
+   "conceito": "rede_at",
+   "metrica": "extensao_km",
+   "segundos": 11.9,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 87,
+    "CONDICIONAL_DO_MODERADO": 6,
+    "SEM_EVIDENCIA_COINCIDENTE": 5,
+    "SEM_MODERADO": 4
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "rede_bt",
+   "metrica": "extensao_km",
+   "segundos": 11.7,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 25,
+    "MODELO_INDEPENDENTE": 154,
+    "CONDICIONAL_DO_MODERADO": 3,
+    "SEM_MODERADO": 8
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "rede_mt",
+   "metrica": "extensao_km",
+   "segundos": 17.7,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 170,
+    "SEM_EVIDENCIA_COINCIDENTE": 7,
+    "SEM_MODERADO": 8,
+    "CONDICIONAL_DO_MODERADO": 5
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "reguladores",
+   "metrica": "quantidade",
+   "segundos": 24.5,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 151,
+    "SEM_EVIDENCIA_COINCIDENTE": 10,
+    "SEM_MODERADO": 9,
+    "CONDICIONAL_DO_MODERADO": 3
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "religadores",
+   "metrica": "quantidade",
+   "segundos": 12.0,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 133,
+    "SEM_EVIDENCIA_COINCIDENTE": 30,
+    "CONDICIONAL_DO_MODERADO": 7,
+    "SEM_MODERADO": 14
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "seccionalizadores",
+   "metrica": "quantidade",
+   "segundos": 9.8,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 35,
+    "SEM_EVIDENCIA_COINCIDENTE": 20,
+    "SEM_MODERADO": 4,
+    "CONDICIONAL_DO_MODERADO": 1
+   },
+   "estado_publicado": "somente_baseline"
+  },
+  {
+   "conceito": "subestacoes",
+   "metrica": "quantidade",
+   "segundos": 12.5,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 32,
+    "MODELO_INDEPENDENTE": 88,
+    "CONDICIONAL_DO_MODERADO": 10,
+    "SEM_MODERADO": 6
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "torres",
+   "metrica": "quantidade",
+   "segundos": 9.3,
+   "tentativas": 0,
+   "variaveis_vivas": 11,
+   "tipos": {
+    "CONDICIONAL_DO_MODERADO": 21,
+    "MODELO_INDEPENDENTE": 56,
+    "SEM_EVIDENCIA_COINCIDENTE": 23,
+    "SEM_MODERADO": 8
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "trafo_dist",
+   "metrica": "potencia_kva",
+   "segundos": 13.6,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 159,
+    "SEM_EVIDENCIA_COINCIDENTE": 14,
+    "SEM_MODERADO": 12,
+    "CONDICIONAL_DO_MODERADO": 1
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "trafo_dist",
+   "metrica": "quantidade",
+   "segundos": 7.9,
+   "tentativas": 0,
+   "variaveis_vivas": 8,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 112,
+    "SEM_EVIDENCIA_COINCIDENTE": 29,
+    "CONDICIONAL_DO_MODERADO": 35,
+    "SEM_MODERADO": 11
+   },
+   "estado_publicado": "somente_moderado"
+  },
+  {
+   "conceito": "trafo_forca",
+   "metrica": "potencia_kva",
+   "segundos": 14.4,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "SEM_EVIDENCIA_COINCIDENTE": 34,
+    "MODELO_INDEPENDENTE": 75,
+    "CONDICIONAL_DO_MODERADO": 11,
+    "SEM_MODERADO": 10
+   },
+   "estado_publicado": "dois_cenarios"
+  },
+  {
+   "conceito": "trafo_forca",
+   "metrica": "quantidade",
+   "segundos": 16.2,
+   "tentativas": 0,
+   "variaveis_vivas": 9,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 93,
+    "SEM_EVIDENCIA_COINCIDENTE": 22,
+    "SEM_MODERADO": 11,
+    "CONDICIONAL_DO_MODERADO": 5
+   },
+   "estado_publicado": "tres_cenarios"
+  },
+  {
+   "conceito": "trafo_medida",
+   "metrica": "quantidade",
+   "segundos": 15.8,
+   "tentativas": 0,
+   "variaveis_vivas": 10,
+   "tipos": {
+    "MODELO_INDEPENDENTE": 121,
+    "SEM_EVIDENCIA_COINCIDENTE": 17,
+    "SEM_MODERADO": 15,
+    "CONDICIONAL_DO_MODERADO": 12
+   },
+   "estado_publicado": "dois_cenarios"
+  }
+ ],
+ "tentativas_total": 1504,
+ "reproducao_ridge_original_max_dif": 0.0,
+ "protocolo": {
+  "versao": "otimizacao-1",
+  "origem_selecao": 2023,
+  "origem_final": 2024,
+  "disponibilidade_min": 0.5,
+  "desvio_min": 1e-09,
+  "corr_max": 0.95,
+  "perm_repeticoes": 5,
+  "semente": 42,
+  "max_subconjuntos": 8,
+  "parada_sem_melhora": 2,
+  "melhora_rel": 0.05,
+  "melhora_abs": 0.0005,
+  "r2_tolerancia": 0.02,
+  "r2_min_pontos": 5,
+  "tolerancia_cenario": 1.25,
+  "razao_plausivel": [
+   0.5,
+   3.0
+  ],
+  "diferenca_minima_ano": 0.0005,
+  "min_transicoes_condicional": 2,
+  "percentis_condicional": [
+   1,
+   99
+  ]
+ },
+ "segundos_total": 362.6,
+ "tentativas_origem": "BUSCA_TENTATIVAS.csv da execução que fez os ajustes (esta reexecução usou só o cache)"
+}
