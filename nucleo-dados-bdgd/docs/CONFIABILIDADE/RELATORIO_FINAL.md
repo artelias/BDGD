@@ -1,7 +1,7 @@
 # Relatório final: retomada e conclusão do módulo de Confiabilidade
 
 Data: 12/11/2026 · Repositório `artelias/BDGD` · Branch `feat/inteligencia-confiabilidade-dec-fec-20261111`
-Commit inicial `c234089` → final indicado no fim deste documento. **Sem merge e sem deploy.** RC `rc/1.0-20261101`,
+Commit inicial `c234089` → HEAD da branch (o commit que contém este relatório). **Sem merge e sem deploy.** RC `rc/1.0-20261101`,
 produção, Motor de Expansão e bases BDGD originais não foram tocados; as 379 cargas da BDGD não foram reexecutadas.
 
 ## 1. P0: HTTP 500 em `/confiabilidade`
