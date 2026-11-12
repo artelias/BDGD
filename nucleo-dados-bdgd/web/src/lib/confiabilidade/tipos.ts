@@ -74,5 +74,5 @@ export interface Fatores {
   amostra: { conjunto_anos: number; conjuntos: number; distribuidoras: number; anos: number[]; excluidos: Record<string, number> };
   alvos: EstudoAlvo[]; hipoteses: Hipotese[];
   /** referência ajustada por contexto: observado × esperado (fora da amostra) por conjunto, ano mais recente */
-  referencia: { ano: number; alvo: Indicador; modelo: string; r2_fora: number | null; campos: string[]; linhas: Array<Array<number | null>> } | null;
+  referencia: { ano: number; alvo: Indicador; modelo: string; r2_fora: number | null; campos: string[]; linhas: Array<Array<number | string | null>> } | null;
 }
