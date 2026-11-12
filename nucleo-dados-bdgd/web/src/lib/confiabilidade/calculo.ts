@@ -130,7 +130,7 @@ export function comparar(a: Infra | null, b: Infra | null, metricas: MetricaDef[
   return metricas.filter((m) => !ids || ids.includes(m.id)).map((m) => {
     const va = a?.[m.id] ?? null, vb = b?.[m.id] ?? null;
     const ok = num(va) && num(vb);
-    return { id: m.id, nome: m.nome, unidade: m.unidade, tipo: m.tipo, grupo: m.grupo, a: va, b: vb, dif: ok ? va - vb : null, rel: ok && vb !== 0 ? (va - vb) / Math.abs(vb) : null };
+    return { id: m.id, nome: m.nome, unidade: m.unidade, tipo: m.tipo, grupo: m.grupo, a: va, b: vb, dif: ok ? va - vb : null, rel: ok && vb !== 0 && m.tipo !== "pct" ? (va - vb) / Math.abs(vb) : null };
   });
 }
 
@@ -160,7 +160,7 @@ export function frasesComparacao(p: {
       if (!m || !num(x) || !num(y)) continue;
       const maior = Math.max(x, y), menor = Math.min(x, y);
       if (maior === 0 || (maior - menor) / maior < 0.2) continue;   // só diferenças de pelo menos 20%
-      out.push(`${x > y ? p.nomeA : p.nomeB} tem ${m.nome.toLowerCase()} maior que ${x > y ? p.nomeB : p.nomeA}.`);
+      out.push(`${x > y ? p.nomeA : p.nomeB} tem ${m.nome.charAt(0).toLowerCase()}${m.nome.slice(1)} maior que ${x > y ? p.nomeB : p.nomeA}.`);
     }
     if (num(p.distancia) && p.distancia > 2) out.push("Os conjuntos têm perfis de porte, densidade e ruralidade diferentes; a comparação direta requer cautela.");
   } else out.push("Pelo menos um dos conjuntos está sem infraestrutura da BDGD no ano escolhido; só a continuidade pode ser comparada.");

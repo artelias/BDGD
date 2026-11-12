@@ -69,10 +69,13 @@ export interface EstudoAlvo {
   variacao: Array<{ variavel: string; n: number; spearman: number | null; ic95: [number, number] | null }>;
 }
 export interface Hipotese { id: string; enunciado: string; veredito: "COMPATIVEL" | "NAO_SUSTENTADA" | "INCONCLUSIVA" | "SEM_DADOS"; evidencia: string }
+export interface ReferenciaAjustada { ano: number; alvo: Indicador; modelo: string; r2_fora: number | null; campos: string[]; linhas: Array<Array<number | string | null>> }
 export interface Fatores {
   contrato: string; gerado_em: string; estado: EstadoDado; demonstrativo: boolean; metodo: string; limitacoes: string[];
   amostra: { conjunto_anos: number; conjuntos: number; distribuidoras: number; anos: number[]; excluidos: Record<string, number> };
   alvos: EstudoAlvo[]; hipoteses: Hipotese[];
   /** referência ajustada por contexto: observado × esperado (fora da amostra) por conjunto, ano mais recente */
-  referencia: { ano: number; alvo: Indicador; modelo: string; r2_fora: number | null; campos: string[]; linhas: Array<Array<number | string | null>> } | null;
+  referencia: ReferenciaAjustada | null;
+  /** uma referência por indicador (DEC e FEC); `referencia` repete a primeira por compatibilidade */
+  referencias?: ReferenciaAjustada[];
 }

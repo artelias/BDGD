@@ -37,7 +37,7 @@ export function Fatores({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const alvo = d.alvos.find((a) => a.alvo === e.ind);
   const I = NOME_IND[e.ind];
   const distSel = e.dist !== null ? indice.distribuidoras.find((x) => x.dist === e.dist) ?? null : null;
-  const ref = d.referencia && d.referencia.alvo === e.ind ? d.referencia : null;
+  const ref = (d.referencias ?? (d.referencia ? [d.referencia] : [])).find((r) => r.alvo === e.ind) ?? null;
   const ix = ref ? new Map(ref.campos.map((c, i) => [c, i])) : null;
   const linhasRef = ref && ix && distSel ? ref.linhas.filter((r) => r[ix.get("dist")!] === distSel.dist).sort((a, b) => ((b[ix.get("residuo")!] as number) ?? 0) - ((a[ix.get("residuo")!] as number) ?? 0)) : [];
 
