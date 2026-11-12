@@ -23,7 +23,7 @@ export function MetodologiaConf({ indice }: { indice: Indice }) {
         <li>{n(t.distribuidoras)} distribuidoras e {n(t.conjuntos)} conjuntos com DEC/FEC em pelo menos um ano de {indice.anos[0]} a {indice.anos[indice.anos.length - 1]}; {n(t.conjunto_ano)} combinações conjunto × ano.</li>
         <li>{n(t.conjunto_ano_com_infra)} combinações têm infraestrutura da BDGD do mesmo ano; nas demais a infraestrutura aparece como N/D, com o motivo.</li>
         <li>{n(t.conjuntos_com_geo)} conjuntos têm polígono oficial em 31/12/2025. Conjuntos extintos antes disso ficam sem polígono; nenhum limite é desenhado para eles.</li>
-        <li>Reconstrução do DEC/FEC pelos DIC/FIC da BDGD: calculada em {n(t.rec_calculado)} combinações e reconciliada com o oficial em {n(t.rec_validado)} (diferença de até {Math.round(indice.tolerancia_reconstrucao.relativa * 100)}% ou {indice.tolerancia_reconstrucao.absoluta.toLocaleString("pt-BR")} em valor absoluto).</li>
+        <li>Reconstrução do DEC/FEC pelos DIC/FIC da BDGD: calculada em {n(t.rec_calculado)} combinações; DEC e FEC reconciliados com o oficial ao mesmo tempo em {n(t.rec_validado)} (diferença de até {Math.round(indice.tolerancia_reconstrucao.relativa * 100)}% ou {indice.tolerancia_reconstrucao.absoluta.toLocaleString("pt-BR")} em valor absoluto).</li>
       </ul>
 
       <h3>Como o DEC e o FEC são calculados e agregados</h3>
@@ -32,7 +32,7 @@ export function MetodologiaConf({ indice }: { indice: Indice }) {
         <li>O valor anual do conjunto é a soma dos 12 valores mensais apurados. Com menos de 12 meses, o ano aparece como apuração parcial.</li>
         <li>O valor de uma distribuidora ou grupo é a média dos conjuntos ponderada pelos consumidores de cada mês, somada nos meses. Nunca a média simples dos conjuntos. Esse agregado é derivado aqui e pode diferir em centésimos do global publicado pela ANEEL.</li>
         <li>Desempenho regulatório = apurado ÷ limite anual do conjunto. Os limites são anuais; por isso o mapa mensal só mostra valor absoluto.</li>
-        <li>Os componentes mostram a origem (interna ou externa, programada ou não). Parcelas expurgadas (dia crítico, situação de emergência) não compõem o indicador apurado.</li>
+        <li>Os componentes mostram a origem (interna ou externa, programada ou não). O indicador apurado é a soma das componentes internas: DEC = DECIP + DECIND e FEC = FECIP + FECIND em todos os 150.033 conjunto-meses de 2022 a 2025. Interrupções de origem externa e parcelas expurgadas (dia crítico, situação de emergência) são informadas, mas não compõem o indicador.</li>
       </ul>
 
       <h3>Oficial × reconstruído</h3>

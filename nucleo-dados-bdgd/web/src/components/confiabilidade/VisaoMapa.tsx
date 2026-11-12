@@ -22,6 +22,8 @@ const pct = (v: number | null) => (v === null ? "N/D" : `${Math.round(v * 100)}%
 export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const { resolved: tema } = useTheme();
   const mapa = useRef<MapaHandle>(null);
+  const ficha = useRef<HTMLDivElement>(null);
+  const rolarFicha = useRef(false);
   const [hover, setHover] = useState<HoverMapa | null>(null);
   const [mapaPronto, setMapaPronto] = useState(false);
   const [ordem, setOrdem] = useState<Ordem>({ col: "valor", desc: true });
@@ -91,6 +93,16 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [conjuntos, e.sit, e.ind, ano]);
   const conjSel = e.conj !== null ? doc.dados?.conjuntos.find((c) => c.c === e.conj) ?? null : null;
+  // escolha pela lista em layout de uma coluna (celular/tablet): a ficha abre abaixo da lista, então leva o usuário até ela
+  const escolherDaLista = (c: number) => {
+    rolarFicha.current = window.matchMedia("(max-width: 1100px)").matches;
+    e.set({ conj: c });
+  };
+  useEffect(() => {
+    if (!rolarFicha.current || !conjSel || !ficha.current) return;
+    rolarFicha.current = false;
+    ficha.current.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }, [conjSel]);
 
   const itensLegenda = distSel ? legenda(quebrasConj, modo, tema, fmtInd) : legenda(quebrasDist, "absoluto", tema, (v) => (modo === "regulatorio" ? pct(v) : fmtInd(v)));
   const tituloLegenda = distSel
@@ -148,7 +160,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     <>
       <div className={s.filtros} role="toolbar" aria-label="Filtros do mapa de confiabilidade">
         <Picker label="Grupo" compact value={e.grupo ?? "todos"} width={210} testId="conf-grupo" onChange={(v) => e.set({ grupo: v === "todos" ? null : v, dist: null, conj: null })}
-          options={[{ value: "todos", label: "Todos os grupos" }, ...grupos.map(([id, nome]) => ({ value: id, label: nome }))]} />
+          options={[{ value: "todos", label: "Todos" }, ...grupos.map(([id, nome]) => ({ value: id, label: nome }))]} />
         <Picker label="Distribuidora" compact value={distSel ? String(distSel.dist) : "brasil"} width={250} testId="conf-dist" searchPlaceholder="Buscar distribuidora" onChange={(v) => e.set({ dist: v === "brasil" ? null : v, conj: null }, true)}
           options={[{ value: "brasil", label: e.grupo ? "Todas do grupo" : "Brasil (todas)" }, ...[...dists].sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR")).map((d) => ({ value: String(d.dist), label: d.nome, meta: `${d.conjuntos} conj.`, keywords: `${d.sigla} ${d.agente_aneel} ${d.dist}` }))]} />
         {distSel && <Picker label="Conjunto" compact value={conjSel ? String(conjSel.c) : "nenhum"} width={240} testId="conf-conj" searchPlaceholder="Buscar conjunto" onChange={(v) => e.set({ conj: v === "nenhum" ? null : v })}
@@ -226,7 +238,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
                 <table className={s.linhas} data-testid="conf-lista-conj">
                   <thead><tr>{cab("nome", "Conjunto")}{cab("valor", mensal ? `${I} ${MESES[e.mes! - 1]}` : I)}{cab("razao", "% limite")}{cab("nuc", "Consum.")}</tr></thead>
                   <tbody>{listaConj.map(({ c, valor, razao, nuc }) => (
-                    <tr key={c.c} data-sel={c.c === conjSel?.c} onClick={() => e.set({ conj: c.c })} tabIndex={0} onKeyDown={(ev) => { if (ev.key === "Enter") e.set({ conj: c.c }); }}>
+                    <tr key={c.c} data-sel={c.c === conjSel?.c} onClick={() => escolherDaLista(c.c)} tabIndex={0} onKeyDown={(ev) => { if (ev.key === "Enter") escolherDaLista(c.c); }}>
                       <td><i className={s.amostra} style={{ background: coresConj.get(c.c) ?? COR_ND[tema] }} aria-hidden /><span className={s.nomeConj}>{c.n}</span>{!c.geo && <span className={s.sub}>sem polígono na BDGD 2025</span>}</td>
                       <td>{fmtInd(valor)}</td>
                       <td className={razao === null ? s.nd : razao > 1 ? s.acima : s.dentro}>{pct(razao)}</td>
@@ -242,8 +254,8 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
       </p>
 
       {distSel && conjSel && doc.dados && (
-        <FichaConjunto indice={indice} doc={doc.dados} conj={conjSel} ano={e.ano} ind={e.ind}
-          onA={() => e.set({ a: `${distSel.dist}-${conjSel.c}`, aba: "comparar" }, true)} onB={() => e.set({ b: `${distSel.dist}-${conjSel.c}`, aba: "comparar" }, true)} onFechar={() => e.set({ conj: null })} />
+        <div ref={ficha} className={s.ancoraFicha}><FichaConjunto indice={indice} doc={doc.dados} conj={conjSel} ano={e.ano} ind={e.ind}
+          onA={() => e.set({ a: `${distSel.dist}-${conjSel.c}`, aba: "comparar" }, true)} onB={() => e.set({ b: `${distSel.dist}-${conjSel.c}`, aba: "comparar" }, true)} onFechar={() => e.set({ conj: null })} /></div>
       )}
       {distSel && e.conj !== null && doc.dados && !conjSel && <EmptyState title="Conjunto não encontrado">O código {e.conj} não pertence a {distSel.nome}.</EmptyState>}
     </>

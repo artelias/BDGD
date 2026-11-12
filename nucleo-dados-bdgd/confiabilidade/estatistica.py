@@ -301,6 +301,11 @@ def veredito(assoc, sinal):
     return 'INCONCLUSIVA'
 
 
+def _r(x):
+    """Coeficiente com sinal e vírgula decimal (texto exibido ao usuário)."""
+    return f"{x:+.2f}".replace('.', ',')
+
+
 def hipoteses(alvos):
     out = []
     por = {a['alvo']: {x['variavel']: x for x in a['associacoes']} for a in alvos}
@@ -308,8 +313,8 @@ def hipoteses(alvos):
         a = por.get(ind, {}).get(var)
         v = veredito(a, sinal)
         ev = 'Sem amostra suficiente.' if v == 'SEM_DADOS' else (
-            f"{ind.upper()}: bruta {a['spearman']:+.2f}, parcial (contexto) {a['parcial']:+.2f} [IC95% {a['parcial_ic95'][0]:+.2f}; {a['parcial_ic95'][1]:+.2f}], "
-            f"dentro da distribuidora {a['dentro_dist']:+.2f} [{a['dentro_dist_ic95'][0]:+.2f}; {a['dentro_dist_ic95'][1]:+.2f}]; n = {a['n']:,}".replace(',', '.') +
+            f"{ind.upper()}: bruta {_r(a['spearman'])}; parcial (contexto) {_r(a['parcial'])} [IC 95% {_r(a['parcial_ic95'][0])}; {_r(a['parcial_ic95'][1])}]; "
+            f"dentro da distribuidora {_r(a['dentro_dist'])} [{_r(a['dentro_dist_ic95'][0])}; {_r(a['dentro_dist_ic95'][1])}]; n = {format(a['n'], ',').replace(',', '.')}" +
             ('; mesmo sinal nos quatro anos.' if a['estavel_por_ano'] else '; o sinal ou a força mudam entre os anos.'))
         out.append(dict(id=hid, enunciado=enun, veredito=v, evidencia=ev))
     # H7: evolução da infraestrutura × evolução posterior do indicador
@@ -319,7 +324,7 @@ def hipoteses(alvos):
     if not com:
         v7, ev7 = 'SEM_DADOS', 'Amostra insuficiente de conjuntos comparáveis entre 2022 e 2025.'
     elif sig:
-        v7, ev7 = 'INCONCLUSIVA', 'Associações defasadas com IC 95% sem zero: ' + '; '.join(f"{x['variavel']} {x['spearman']:+.2f}" for x in sig) + '. Quatro anos e mudanças cadastrais limitam a leitura temporal.'
+        v7, ev7 = 'INCONCLUSIVA', 'Associações defasadas com IC 95% sem zero: ' + '; '.join(f"{x['variavel']} {_r(x['spearman'])}" for x in sig) + '. Quatro anos e mudanças cadastrais limitam a leitura temporal.'
     else:
         v7, ev7 = 'NAO_SUSTENTADA', 'Nenhuma variação de religadores, telecomando, extensão ou carga por alimentador em 2022→2023 tem associação com IC 95% sem zero com a variação posterior do indicador (2023→2025).'
     out.append(dict(id='H7', enunciado='Mudanças da infraestrutura entre 2022 e 2023 estão associadas a mudanças posteriores de DEC/FEC (2023→2025).', veredito=v7, evidencia=ev7))

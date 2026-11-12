@@ -117,15 +117,17 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
         <div className={s.duas} style={{ marginTop: 16 }}>
           <div className={s.bloco}>
             <p className={s.blocoTitulo}>Origem das interrupções no {I} de {ano}</p>
-            <p className={s.blocoSub}>Componentes publicados pela ANEEL. As parcelas expurgadas (dia crítico, situação de emergência e afins) não compõem o indicador apurado.</p>
+            <p className={s.blocoSub}>Componentes publicados pela ANEEL. O {I} apurado é a soma das interrupções de origem interna; as de origem externa e as parcelas expurgadas (dia crítico, situação de emergência e afins) são informadas, mas não compõem o indicador.</p>
             {comp ? (
               <table className={s.tabela}>
                 <thead><tr><th scope="col">Componente</th><th scope="col">{UNIDADE_IND[ind]}</th><th scope="col">Parcela do {I}</th></tr></thead>
                 <tbody>
-                  {([["Interna, não programada", comp.ind], ["Interna, programada", comp.ip], ["Externa, não programada", comp.xn], ["Externa, programada", comp.xp]] as Array<[string, number | null]>).map(([nome, x]) => (
+                  {([["Interna, não programada", comp.ind], ["Interna, programada", comp.ip]] as Array<[string, number | null]>).map(([nome, x]) => (
                     <tr key={nome}><td>{nome}</td><td>{fmtInd(x)}</td><td>{num(x) && num(v) && v > 0 ? <><span className={s.barra} style={{ width: `${Math.round((60 * x) / v)}px` }} aria-hidden /> {pct(x / v)}</> : <span className="faint">N/D</span>}</td></tr>
                   ))}
-                  <tr><td>Expurgado (fora do {I})</td><td>{fmtInd(comp.exp)}</td><td className="faint">não compõe</td></tr>
+                  {([["Externa, não programada", comp.xn], ["Externa, programada", comp.xp], [`Expurgado`, comp.exp]] as Array<[string, number | null]>).map(([nome, x]) => (
+                    <tr key={nome}><td>{nome} <span className="faint">(fora do {I})</span></td><td>{fmtInd(x)}</td><td className="faint">não compõe</td></tr>
+                  ))}
                 </tbody>
               </table>
             ) : <span className="faint">N/D</span>}

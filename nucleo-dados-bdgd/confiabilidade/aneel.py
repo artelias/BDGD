@@ -104,7 +104,9 @@ def preparar(trabalho=TRABALHO, anos=ANOS):
     C = f"read_parquet('{(out / 'continuidade.parquet').as_posix()}')"
     resumo = [dict(ano=a, conjuntos=n, conjunto_meses=m, agentes=g, sem_fec=sf, sem_numcon=sn) for a, n, m, g, sf, sn in con.execute(
         f"SELECT ano, COUNT(DISTINCT conj), COUNT(*), COUNT(DISTINCT agente), SUM((FEC IS NULL)::INT), SUM((NumCon IS NULL OR NumCon <= 0)::INT) FROM {C} GROUP BY 1 ORDER BY 1").fetchall()]
-    identidade = con.execute(f"SELECT COUNT(*), SUM((abs(DEC - (DECXP + DECXN + DECIP + DECIND)) <= 0.011)::INT) FROM {C} WHERE DEC IS NOT NULL").fetchone()
+    # DEC/FEC apurados = componentes internas (IP + IND); externas (XP, XN) e expurgos são informativos e não compõem o indicador.
+    identidade = con.execute(f"""SELECT COUNT(*), SUM((abs(DEC - (DECIP + DECIND)) <= 0.011)::INT), SUM((abs(FEC - (FECIP + FECIND)) <= 0.011)::INT)
+        FROM {C} WHERE DEC IS NOT NULL AND FEC IS NOT NULL""").fetchone()
     estado_p = raw / 'recursos.json'
     prov = dict(contrato=VERSAO_CONTRATO, dataset=DATASET, licenca='Open Data Commons Open Database License (ODbL)',
                 url='https://dadosabertos.aneel.gov.br/dataset/' + DATASET, anos=list(anos),
@@ -112,11 +114,12 @@ def preparar(trabalho=TRABALHO, anos=ANOS):
                 recursos=json.loads(estado_p.read_text(encoding='utf-8')) if estado_p.exists() else {
                     f.name: dict(bytes=f.stat().st_size, sha256=sha256(f)) for f in (ind, lim)},
                 duplicatas_exatas_removidas=True, conflitos=0, resumo_por_ano=resumo,
-                identidade_dec=dict(conjunto_meses=identidade[0], dec_igual_soma_componentes=identidade[1],
-                                    nota='DEC = DECXP + DECXN + DECIP + DECIND dentro do arredondamento de 2 casas'),
+                identidade_componentes=dict(conjunto_meses=identidade[0], dec_igual_internas=identidade[1], fec_igual_internas=identidade[2],
+                                            nota='DEC = DECIP + DECIND e FEC = FECIP + FECIND dentro do arredondamento de 2 casas; '
+                                                 'componentes externas (XP, XN) e expurgos não compõem o indicador apurado'),
                 preparado_em=datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'))
     (out / 'PROVENIENCIA_ANEEL.json').write_text(json.dumps(prov, ensure_ascii=False, indent=1), encoding='utf-8')
-    print(json.dumps(dict(resumo=resumo, identidade=prov['identidade_dec']), ensure_ascii=False))
+    print(json.dumps(dict(resumo=resumo, identidade=prov['identidade_componentes']), ensure_ascii=False))
     return prov
 
 

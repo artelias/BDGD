@@ -49,6 +49,8 @@ test.describe("Confiabilidade", () => {
     await expect(page.getByTestId("conf-kpi-dec")).toContainText("30,06");
     await expect(page.getByTestId("conf-infra")).toContainText("Rede MT por mil consumidores");
     await expect(page.getByTestId("conf-reconstrucao")).toBeVisible();
+    // DEC apurado = componentes internas; externas e expurgos não recebem parcela do indicador
+    await expect(ficha.getByRole("row", { name: /Externa, não programada \(fora do DEC\).*não compõe/ })).toBeVisible();
     await expect(page.getByTestId("conf-alimentadores").locator("tbody tr")).not.toHaveCount(0);
     expect(erros()).toEqual([]);
   });
@@ -80,6 +82,33 @@ test.describe("Confiabilidade", () => {
     await expect(page.getByTestId("conf-fat-n")).not.toHaveText("0");
     await page.goto("/confiabilidade/?aba=metodologia");
     await expect(page.getByTestId("conf-metodologia")).toContainText("Σ DIC ÷ Cc");
+  });
+
+  test("mapa: hover mostra a dica, clique abre a ficha, zoom e volta ao Brasil", async ({ page }) => {
+    const erros = semErros(page);
+    await page.goto("/confiabilidade/?dist=26&ind=fec&mes=3");
+    await expect(page.getByTestId("conf-mapa-pronto")).toHaveAttribute("data-ready", "true");
+    await expect(page.getByTestId("conf-mapa-pronto")).toHaveAttribute("data-conjuntos", "15");
+    await expect(page.getByTestId("conf-legenda")).toContainText("FEC de mar/2025");
+    const canvas = page.locator("canvas.maplibregl-canvas");
+    await canvas.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1200);   // enquadramento animado (800 ms)
+    const caixa = (await canvas.boundingBox())!;
+    // procura um ponto sobre um conjunto em uma grade do canvas
+    let achou = false;
+    for (let i = 3; i <= 7 && !achou; i++) for (let j = 3; j <= 7 && !achou; j++) {
+      await page.mouse.move(caixa.x + (caixa.width * i) / 10, caixa.y + (caixa.height * j) / 10);
+      achou = await page.getByRole("status").filter({ hasText: /conjunto \d+ · Energisa AC/ }).isVisible().catch(() => false);
+      if (achou) { await page.mouse.down(); await page.mouse.up(); }
+    }
+    expect(achou).toBe(true);
+    await expect(page).toHaveURL(/dist=26&.*conj=\d+/);
+    await expect(page.getByTestId("conf-ficha")).toBeVisible();
+    await page.getByRole("button", { name: "Zoom in" }).click();
+    await page.getByRole("button", { name: "Brasil", exact: true }).click();
+    await expect(page).not.toHaveURL(/dist=/);
+    await expect(page.getByTestId("conf-lista-dist")).toBeVisible();
+    expect(erros()).toEqual([]);
   });
 
   test("tema escuro e claro mudam o fundo do mapa sem recriá-lo", async ({ page }) => {
