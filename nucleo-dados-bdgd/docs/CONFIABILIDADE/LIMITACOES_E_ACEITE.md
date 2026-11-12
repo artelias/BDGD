@@ -30,7 +30,7 @@
 
 | # | Critério | Como verificar | Situação em 12/11/2026 |
 |---|---|---|---|
-| 1 | `/confiabilidade` responde 200, renderiza, sobrevive a recarga, sem exceção nem erro de console | e2e `confiabilidade.spec.ts` + `hidratacao.spec.ts` | atendido |
+| 1 | `/confiabilidade` responde 200, renderiza, sobrevive a recarga, sem exceção nem erro de console | e2e "P0: responde 200, sobrevive a recarga…" | atendido |
 | 2 | Só dados reais; nenhum demonstrativo | auditoria A3 (`demonstrativo: false`), Vitest "índice real" | atendido |
 | 3 | Manifesto íntegro | auditoria A1 (204 arquivos, 0 divergentes) | atendido |
 | 4 | Chave DIST + CONJ + ano única; conjunto em uma só distribuidora por ano | auditoria A2 (12.502 chaves, 0 duplicadas) | atendido |
@@ -43,6 +43,6 @@
 | 11 | Celular sem rolagem horizontal; tema claro e escuro | e2e `@mobile` e "tema" | atendido |
 | 12 | Frases sem linguagem causal | Vitest + e2e | atendido |
 | 13 | Estatística reprodutível, com vereditos pré-definidos e SEM_DADOS/INCONCLUSIVA quando cabe | `fatores.json`, teste de contrato, reexecução idêntica | atendido |
-| 14 | `typecheck`, `lint`, `test`, `build`, `e2e` | ver TESTES_E_DESEMPENHO.md | ver evidências |
+| 14 | `typecheck`, `lint`, `test`, `build`, `e2e` | RELATORIO_FINAL.md, seção 8 | atendido (e2e no build de homologação, como a CI) |
 | 15 | RC, produção, Motor de Expansão e bases BDGD intocados; sem merge nem deploy | `git log`, nenhum push fora da branch | atendido |
 | 16 | Revisão de conteúdo por especialista de regulação (componentes, expurgos, limites) | homologação humana | **pendente** |

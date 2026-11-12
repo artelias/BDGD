@@ -24,6 +24,20 @@ test.describe("Confiabilidade", () => {
     expect(erros()).toEqual([]);
   });
 
+  test("P0: responde 200, sobrevive a recarga completa com estado na URL, sem erro e sem id duplicado", async ({ page }) => {
+    const erros = semErros(page);
+    const resp = await page.goto("/confiabilidade/?dist=6600&conj=16849&ind=fec");
+    expect(resp?.status()).toBe(200);
+    await expect(page.getByTestId("conf-ficha-nome")).toHaveText("Mataraca");
+    await page.reload({ waitUntil: "load" });
+    await expect(page.getByTestId("conf-ficha-nome")).toHaveText("Mataraca");
+    await expect(page.getByTestId("conf-legenda")).toContainText("FEC");
+    await expect(page.getByTestId("conf-mapa-pronto")).toHaveAttribute("data-ready", "true");
+    const dup = await page.evaluate(() => { const ids = [...document.querySelectorAll("[id]")].map((e) => e.id); return ids.filter((v, i) => ids.indexOf(v) !== i); });
+    expect(dup).toEqual([]);
+    expect(erros()).toEqual([]);
+  });
+
   test("alternar DEC/FEC, ano, mês e cor regulatória atualiza legenda e URL", async ({ page }) => {
     await page.goto("/confiabilidade/?dist=6600");
     await expect(page.getByTestId("conf-lista-conj")).toBeVisible();
