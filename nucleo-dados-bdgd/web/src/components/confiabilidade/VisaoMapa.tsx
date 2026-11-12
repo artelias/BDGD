@@ -35,7 +35,8 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const dists = useMemo(() => indice.distribuidoras.filter((d) => !e.grupo || d.grupo === e.grupo), [indice, e.grupo]);
   const distSel = e.dist !== null ? indice.distribuidoras.find((d) => d.dist === e.dist) ?? null : null;
   const doc = useDist(distSel ? distSel.dist : null);
-  const nacional = useNacional(e.ano);
+  // o arquivo nacional (~1 MB) só serve às quebras da escala "Conjuntos do Brasil": não é baixado no nível Brasil nem no recorte mensal
+  const nacional = useNacional(distSel && e.ref === "brasil" && !mensal && modo === "absoluto" ? e.ano : null);
   const grupos = useMemo(() => [...new Map(indice.distribuidoras.filter((d) => d.grupo).map((d) => [d.grupo!, d.grupo_nome ?? d.grupo!])).entries()].sort((a, b) => a[1].localeCompare(b[1])), [indice]);
 
   // geometria dos conjuntos sob demanda
