@@ -8,7 +8,7 @@ export interface MetricaDef { id: string; nome: string; unidade: string; tipo: T
 /** Métricas de infraestrutura de um conjunto num ano; ausência é null, nunca zero. */
 export type Infra = Record<string, number | null>;
 
-export interface AnualDist { dec: number | null; fec: number | null; completo: boolean; nuc: number; conjuntos: number; acima_dec: number; acima_fec: number; com_infra: number; estado: EstadoDado; regra: string }
+export interface AnualDist { dec: number | null; fec: number | null; completo: boolean; completo_dec?: boolean; completo_fec?: boolean; nuc: number; conjuntos: number; acima_dec: number; acima_fec: number; com_infra: number; estado: EstadoDado; regra: string }
 
 export interface DistResumo {
   dist: number; nome: string; sigla: string; agente_aneel: string; grupo: string | null; grupo_nome: string | null; ufs: string[];
@@ -29,7 +29,7 @@ export interface Indice {
 }
 
 export interface Componentes { ip: number | null; ind: number | null; xp: number | null; xn: number | null; exp: number | null }
-export interface Reconstrucao { dec: number | null; fec: number | null; dec_bdgd: number | null; fec_bdgd: number | null; dif_dec: number | null; dif_fec: number | null; cobertura: number | null; estado: EstadoDado; denominador: string }
+export interface Reconstrucao { dec: number | null; fec: number | null; dec_bdgd: number | null; fec_bdgd: number | null; dif_dec: number | null; dif_fec: number | null; cobertura: number | null; estado: EstadoDado; denominador: string; meses_dec?: number; meses_fec?: number }
 
 export interface BlocoAno {
   dec: number | null; fec: number | null; ld: number | null; lf: number | null; nuc: number | null; nuc_dez: number | null; meses_dec: number; meses_fec: number;

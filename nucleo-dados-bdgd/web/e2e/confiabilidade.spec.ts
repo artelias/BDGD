@@ -69,6 +69,29 @@ test.describe("Confiabilidade", () => {
     expect(erros()).toEqual([]);
   });
 
+  test("apuração parcial: FEC 2025 da Elektro (sem junho na ANEEL) não é comparado ao limite anual", async ({ page }) => {
+    // regressão da auditoria de 12/11/2026: soma de 11 meses aparecia como FEC anual, sem aviso, e entrava em "% do limite"
+    const erros = semErros(page);
+    await page.goto("/confiabilidade/?dist=385&ind=fec&conj=13449");
+    await expect(page.getByTestId("conf-ficha")).toBeVisible();
+    await expect(page.getByTestId("conf-kpi-fec")).toContainText("apuração parcial (11 de 12 meses): sem comparação com o limite anual");
+    await expect(page.getByTestId("conf-kpi-dec")).toContainText("do limite");
+    await expect(page.getByTestId("conf-ficha")).toContainText("não é comparado ao limite anual");
+    await expect(page.getByTestId("conf-dist-fec").locator("..")).toContainText("parcial: menos de 12 meses");
+    await expect(page.getByTestId("conf-legenda")).toContainText("inclui 130 com apuração parcial de FEC");
+    const linha = page.getByTestId("conf-lista-conj").getByRole("row", { name: /AGUA VERMELHA/i });
+    await expect(linha).toContainText("parcial");
+    await expect(linha.getByRole("cell").nth(2)).toHaveText("N/D");
+    expect(erros()).toEqual([]);
+  });
+
+  test("ano anterior a 2025 avisa que os polígonos são os de 2025", async ({ page }) => {
+    await page.goto("/confiabilidade/?dist=6600&ano=2023");
+    await expect(page.getByText("Os valores de 2023 são desenhados sobre esses limites de 2025")).toBeVisible();
+    await page.goto("/confiabilidade/?dist=6600");
+    await expect(page.getByText(/são desenhados sobre esses limites de 2025/)).toHaveCount(0);
+  });
+
   test("comparador A × B entre empresas: tabela, frases sem causalidade e CSV", async ({ page }) => {
     await page.goto("/confiabilidade/?aba=comparar&a=6600-16849&b=26-12591");
     await expect(page.getByTestId("conf-comp-qualidade")).toContainText("30,06");

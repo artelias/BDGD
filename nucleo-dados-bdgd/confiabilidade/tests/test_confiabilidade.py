@@ -123,6 +123,15 @@ class Reconstrucao(unittest.TestCase):
         r = reconstrucao(dic, [None] * 12, [None] * 12, [100] * 11 + [None], 1.2, 0.6, 100)
         self.assertIsNone(r['dec'])
 
+    def test_mes_sem_oficial_fica_fora_dos_dois_lados(self):
+        # regressão (auditoria de 12/11/2026): FEC de jun/2025 da Elektro ausente na ANEEL; o FIC de junho não pode entrar
+        dic = dict(soma_dic=[10.0] * 12, soma_fic=[5.0] * 12, linhas=100, linhas_com_dic=100, entidades=['UCBT'])
+        fec_m = [0.05] * 5 + [None] + [0.05] * 6
+        r = reconstrucao(dic, [0.1] * 12, fec_m, [100] * 12, 1.2, 0.55, 100)
+        self.assertAlmostEqual(r['fec'], 0.55)
+        self.assertEqual((r['meses_dec'], r['meses_fec']), (12, 11))
+        self.assertEqual(r['estado'], K.RECONSTRUIDO_VALIDADO)
+
 
 class ValidacaoProduto(unittest.TestCase):
     def _produto(self, conjuntos, demonstrativo=False):
@@ -157,6 +166,44 @@ class ProdutoReal(unittest.TestCase):
         self.assertEqual(r['falhas'], [])
         self.assertEqual(r['A4_piloto_contra_portal_2025'][6600]['trafos']['igual'], True)
         self.assertEqual(r['A6_geometria']['poligonos_de_conjunto_sem_apuracao_2025'], 0)
+
+    def test_apuracao_parcial_sinalizada_e_fora_do_limite(self):
+        # regressão (auditoria de 12/11/2026): FEC com menos de 12 meses sem alerta e comparado ao limite anual
+        parciais = 0
+        for f in (PRODUTO / 'distribuidoras').glob('*.json'):
+            d = json.loads(f.read_text(encoding='utf-8'))
+            acima = {}
+            for c in d['conjuntos']:
+                for a, b in c['a'].items():
+                    if b['meses_dec'] < 12 or b['meses_fec'] < 12:
+                        parciais += 1
+                        self.assertIn('apuracao_parcial', b['alertas'], f"{d['dist']}/{c['c']}/{a}")
+                    s = acima.setdefault(a, [0, 0])
+                    s[0] += b['meses_dec'] == 12 and K.situacao_limite(b['dec'], b['ld']) == 'ACIMA'
+                    s[1] += b['meses_fec'] == 12 and K.situacao_limite(b['fec'], b['lf']) == 'ACIMA'
+            for a, (ad, af) in acima.items():
+                self.assertEqual((d['anual'][a]['acima_dec'], d['anual'][a]['acima_fec']), (ad, af), f"{d['dist']}/{a}")
+        self.assertGreater(parciais, 0)
+        el = json.loads((PRODUTO / 'distribuidoras/385.json').read_text(encoding='utf-8'))
+        self.assertIs(el['anual']['2025']['completo_fec'], False)
+        self.assertIs(el['anual']['2025']['completo_dec'], True)
+        nac = json.loads((PRODUTO / 'nacional/2025.json').read_text(encoding='utf-8'))
+        self.assertIn('meses_fec', nac['campos'])
+
+    def test_componentes_internas_somam_o_indicador_no_mesmo_periodo(self):
+        # regressão (auditoria de 12/11/2026): FEC 2025 da Elektro com parcelas internas somando 104% (componentes de junho sem FEC)
+        n = 0
+        for f in (PRODUTO / 'distribuidoras').glob('*.json'):
+            d = json.loads(f.read_text(encoding='utf-8'))
+            for c in d['conjuntos']:
+                for a, b in c['a'].items():
+                    for ind in ('dec', 'fec'):
+                        comp = (b.get('comp') or {}).get(ind) or {}
+                        if b[ind] is None or comp.get('ip') is None or comp.get('ind') is None:
+                            continue
+                        n += 1
+                        self.assertAlmostEqual(comp['ip'] + comp['ind'], b[ind], delta=0.02 + 0.006 * 12, msg=f"{d['dist']}/{c['c']}/{a}/{ind}")
+        self.assertGreater(n, 20000)
 
     def test_fatores_respeita_contrato(self):
         p = PRODUTO / 'fatores.json'
@@ -213,6 +260,17 @@ class Estatistica(unittest.TestCase):
         self.assertEqual(veredito(dict(a, n=50), +1), 'SEM_DADOS')
         ruido = dict(n=n, spearman=0.01, parcial=0.01, parcial_ic95=[-0.05, 0.06], dentro_dist=0.0, dentro_dist_ic95=[-0.04, 0.05])
         self.assertEqual(veredito(ruido, +1), 'NAO_SUSTENTADA')
+
+    def test_veredito_h7_usa_a_mesma_regra(self):
+        # regressão (auditoria de 12/11/2026): H7 dava NAO_SUSTENTADA com |ρ| = 0,10 e IC largo contendo zero
+        from confiabilidade.estatistica import veredito_variacao
+        fraco = dict(variavel='a', n=500, spearman=0.02, ic95=[-0.04, 0.05])
+        largo = dict(variavel='b', n=500, spearman=-0.10, ic95=[-0.24, 0.04])
+        firme = dict(variavel='c', n=500, spearman=-0.15, ic95=[-0.23, -0.03])
+        self.assertEqual(veredito_variacao([fraco])[0], 'NAO_SUSTENTADA')
+        self.assertEqual(veredito_variacao([fraco, largo])[0], 'INCONCLUSIVA')
+        self.assertEqual(veredito_variacao([fraco, firme])[0], 'INCONCLUSIVA')
+        self.assertEqual(veredito_variacao([dict(fraco, ic95=None)])[0], 'SEM_DADOS')
 
 
 if __name__ == '__main__':

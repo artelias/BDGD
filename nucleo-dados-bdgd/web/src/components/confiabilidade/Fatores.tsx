@@ -94,7 +94,7 @@ export function Fatores({ indice, e }: { indice: Indice; e: EstadoConf }) {
               <thead><tr><th scope="col">Modelo</th><th scope="col">R² fora da amostra</th><th scope="col">Erro absoluto médio (log)</th><th scope="col">n</th></tr></thead>
               <tbody>{alvo.modelos.map((m) => <tr key={m.modelo} title={m.nota}><td>{m.modelo}</td><td>{m.r2_fora === null ? "N/D" : m.r2_fora.toLocaleString("pt-BR", { maximumFractionDigits: 3 })}</td><td>{m.mae_fora === null ? "N/D" : m.mae_fora.toLocaleString("pt-BR", { maximumFractionDigits: 3 })}</td><td>{m.n.toLocaleString("pt-BR")}</td></tr>)}</tbody>
             </table>
-            <p className={s.nota}><Info size={13} aria-hidden />R² baixo fora da amostra indica que a infraestrutura cadastrada explica pouco das diferenças entre distribuidoras: clima, vegetação, operação e manutenção não estão nos dados.</p>
+            <p className={s.nota}><Info size={13} aria-hidden />Os quatro modelos usam as mesmas partições por distribuidora. Para medir o que a infraestrutura acrescenta, compare modelos do mesmo tipo (Ridge com Ridge, floresta com floresta): o ganho é pequeno. O que não é explicado inclui clima, vegetação, operação e manutenção, que não estão nos dados.</p>
           </div>
           <div className={`${s.bloco} ${s.rolagem}`}>
             <p className={s.blocoTitulo}>Regressão regularizada (coeficientes padronizados)</p>

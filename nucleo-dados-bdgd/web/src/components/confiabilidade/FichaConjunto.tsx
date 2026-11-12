@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/Feedback";
 import { Segmented } from "@/components/ui/Segmented";
 import { Pill } from "@/components/ui/Value";
-import { MESES, NOME_IND, ROTULO_ALERTA, UNIDADE_IND, acumulado, faixasDeExtensao, fmtInd, fmtMetrica, histograma, limiteInd, num, percentilDe, razaoLimite, resumo, situacao, valorInd, variacao } from "@/lib/confiabilidade/calculo";
+import { MESES, NOME_IND, ROTULO_ALERTA, UNIDADE_IND, acumulado, anualCompleto, faixasDeExtensao, fmtInd, fmtMetrica, histograma, limiteInd, num, percentilDe, razaoLimite, resumo, situacao, valorComparavel, valorInd, variacao } from "@/lib/confiabilidade/calculo";
 import { acumuladoNoAno, anualContraLimite, barrasSimples } from "@/lib/confiabilidade/graficos";
 import type { Conjunto, DistDoc, Indicador, Indice } from "@/lib/confiabilidade/tipos";
 import s from "./conf.module.css";
@@ -27,20 +27,21 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
   const [limiares, setLimiares] = useState<[number, number]>([10, 40]);
   const b = conj.a[String(ano)] ?? null, ant = conj.a[String(ano - 1)] ?? null;
   const I = NOME_IND[ind];
-  const v = valorInd(b, ind), lim = limiteInd(b, ind), r = razaoLimite(v, lim), sit = situacao(v, lim);
-  const dv = variacao(v, valorInd(ant, ind));
+  // valor parcial (menos de 12 meses) é exibido, mas não é comparado ao limite anual, ao ano anterior nem aos outros conjuntos
+  const v = valorInd(b, ind), vc = valorComparavel(b, ind), lim = limiteInd(b, ind), r = razaoLimite(vc, lim), sit = situacao(vc, lim);
+  const dv = variacao(vc, valorComparavel(ant, ind));
   const irmaos = useMemo(() => doc.conjuntos.map((c) => c.a[String(ano)]).filter(Boolean), [doc, ano]);
-  const posInd = percentilDe(v, irmaos.map((x) => valorInd(x, ind)));
-  const resDist = resumo(irmaos.map((x) => valorInd(x, ind)));
+  const posInd = percentilDe(vc, irmaos.map((x) => valorComparavel(x, ind)));
+  const resDist = resumo(irmaos.map((x) => valorComparavel(x, ind)));
   const anos = useMemo(() => indice.anos.map(String), [indice]);
 
   const gAcum = useCallback((t: ChartTokens) => {
     const atual = conj.a[String(ano)] ?? null, anterior = conj.a[String(ano - 1)] ?? null, nome = NOME_IND[ind];
-    return acumuladoNoAno(t, { meses: MESES, atual: acumulado(atual?.m[ind] ?? []), anterior: anterior ? acumulado(anterior.m[ind]) : null, limite: limiteInd(atual, ind),
+    return acumuladoNoAno(t, { meses: MESES, atual: acumulado(atual?.m[ind] ?? []), anterior: anterior ? acumulado(anterior.m[ind]) : null, limite: anualCompleto(atual, ind) ? limiteInd(atual, ind) : null,
       rotAtual: `${nome} acumulado em ${ano}`, rotAnterior: `${nome} acumulado em ${ano - 1}`, unidade: UNIDADE_IND[ind] });
   }, [conj, ano, ind]);
   const gAnual = useCallback((t: ChartTokens) => anualContraLimite(t, {
-    anos, obs: anos.map((a) => valorInd(conj.a[a], ind)), lim: anos.map((a) => limiteInd(conj.a[a], ind)), unidade: UNIDADE_IND[ind], nome: NOME_IND[ind],
+    anos, obs: anos.map((a) => valorInd(conj.a[a], ind)), lim: anos.map((a) => (anualCompleto(conj.a[a], ind) ? limiteInd(conj.a[a], ind) : null)), unidade: UNIDADE_IND[ind], nome: NOME_IND[ind],
   }), [anos, conj, ind]);
 
   const metricas = indice.metricas.filter((m) => (vistaInfra === "relativas" ? m.tipo === "razao" || m.tipo === "pct" : m.tipo === "contagem" || m.tipo === "continua"));
@@ -72,13 +73,13 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
           <p className={s.blocoTitulo}>Qualidade do fornecimento <Pill tone="ok" title="Publicado pela ANEEL nos dados abertos de continuidade">oficial ANEEL</Pill></p>
           <div className={s.kpis}>
             {(["dec", "fec"] as Indicador[]).map((k) => {
-              const vv = valorInd(b, k), ll = limiteInd(b, k), rr = razaoLimite(vv, ll), st = situacao(vv, ll);
+              const vv = valorInd(b, k), ll = limiteInd(b, k), parcial = !!b && !anualCompleto(b, k), rr = razaoLimite(valorComparavel(b, k), ll), st = situacao(valorComparavel(b, k), ll);
               return (
                 <div className={s.kpi} key={k} data-testid={`conf-kpi-${k}`}>
                   <div className={s.kpiRotulo}>{NOME_IND[k]} apurado · {UNIDADE_IND[k]}</div>
                   <div className={s.kpiValor}>{fmtInd(vv)}</div>
                   <div className={`${s.kpiSub} ${st === "acima" ? s.acima : st === "dentro" ? s.dentro : s.nd}`}>
-                    {ll === null ? "sem limite publicado" : <>limite {fmtInd(ll)} · {rr === null ? "N/D" : `${pct(rr)} do limite`}</>}
+                    {parcial ? `apuração parcial (${k === "dec" ? b!.meses_dec : b!.meses_fec} de 12 meses): sem comparação com o limite anual` : ll === null ? "sem limite publicado" : <>limite {fmtInd(ll)} · {rr === null ? "N/D" : `${pct(rr)} do limite`}</>}
                   </div>
                 </div>
               );
@@ -86,12 +87,12 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
             <div className={s.kpi}>
               <div className={s.kpiRotulo}>{I} contra {ano - 1}</div>
               <div className={s.kpiValor}>{dv ? `${dv.abs > 0 ? "+" : ""}${fmtInd(dv.abs)}` : "N/D"}</div>
-              <div className={s.kpiSub}>{dv?.rel != null ? `${dv.rel > 0 ? "+" : ""}${pct(dv.rel, 1)}` : ant ? "sem valor no ano anterior" : "ano anterior fora do período"}</div>
+              <div className={s.kpiSub}>{dv?.rel != null ? `${dv.rel > 0 ? "+" : ""}${pct(dv.rel, 1)}` : b && !anualCompleto(b, ind) ? "apuração parcial: sem comparação" : ant && !anualCompleto(ant, ind) ? "ano anterior com apuração parcial" : ant ? "sem valor no ano anterior" : "ano anterior fora do período"}</div>
             </div>
             <div className={s.kpi}>
               <div className={s.kpiRotulo}>Consumidores (NumCon médio)</div>
               <div className={s.kpiValor}>{num(b.nuc) ? b.nuc.toLocaleString("pt-BR") : "N/D"}</div>
-              <div className={s.kpiSub}>denominador regulatório · {b.meses_dec} de 12 meses apurados</div>
+              <div className={s.kpiSub}>denominador regulatório · {ind === "dec" ? b.meses_dec : b.meses_fec} de 12 meses de {I} apurados</div>
             </div>
             <div className={s.kpi}>
               <div className={s.kpiRotulo}>Posição do {I} na distribuidora</div>

@@ -29,10 +29,10 @@ export function MetodologiaConf({ indice }: { indice: Indice }) {
       <h3>Como o DEC e o FEC são calculados e agregados</h3>
       <ul>
         <li>DEC e FEC do conjunto são médias por consumidor: <code>DEC = Σ DIC ÷ Cc</code> e <code>FEC = Σ FIC ÷ Cc</code>, em que Cc é o número de consumidores do conjunto no período (PRODIST, Módulo 8). Somar DIC ou FIC dá só o numerador.</li>
-        <li>O valor anual do conjunto é a soma dos 12 valores mensais apurados. Com menos de 12 meses, o ano aparece como apuração parcial.</li>
+        <li>O valor anual do conjunto é a soma dos 12 valores mensais apurados. Com menos de 12 meses (de DEC ou de FEC), o ano aparece como apuração parcial: o valor é exibido, mas não é comparado ao limite anual, às posições, às quebras do mapa nem aos rankings. Em 2025 a ANEEL não publicou o FEC de junho da Elektro (130 conjuntos).</li>
         <li>O valor de uma distribuidora ou grupo é a média dos conjuntos ponderada pelos consumidores de cada mês, somada nos meses. Nunca a média simples dos conjuntos. Esse agregado é derivado aqui e pode diferir em centésimos do global publicado pela ANEEL.</li>
         <li>Desempenho regulatório = apurado ÷ limite anual do conjunto. Os limites são anuais; por isso o mapa mensal só mostra valor absoluto.</li>
-        <li>Os componentes mostram a origem (interna ou externa, programada ou não). O indicador apurado é a soma das componentes internas: DEC = DECIP + DECIND e FEC = FECIP + FECIND em todos os 150.033 conjunto-meses de 2022 a 2025. Interrupções de origem externa e parcelas expurgadas (dia crítico, situação de emergência) são informadas, mas não compõem o indicador.</li>
+        <li>Os componentes mostram a origem (interna ou externa, programada ou não). O indicador apurado é a soma das componentes internas: DEC = DECIP + DECIND em todos os 150.163 conjunto-meses com DEC e FEC = FECIP + FECIND em todos os 150.033 com FEC, de 2022 a 2025. Interrupções de origem externa e parcelas expurgadas (dia crítico, situação de emergência) são informadas, mas não compõem o indicador.</li>
       </ul>
 
       <h3>Oficial × reconstruído</h3>

@@ -7,7 +7,7 @@ import { EmptyState, LoadingBlock, downloadText } from "@/components/ui/Feedback
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { toCSV } from "@/lib/format";
-import { NOME_IND, UNIDADE_IND, chave, comparar, fmtInd, fmtMetrica, frasesComparacao, limiteInd, linhasNacionais, num, paresSemelhantes, razaoLimite, resumo, valorInd, type Linha } from "@/lib/confiabilidade/calculo";
+import { NOME_IND, UNIDADE_IND, chave, comparar, fmtInd, fmtMetrica, frasesComparacao, limiteInd, linhasNacionais, num, paresSemelhantes, razaoLimite, resumo, valorComparavel, valorInd, type Linha } from "@/lib/confiabilidade/calculo";
 import { useDist, useNacional } from "@/lib/confiabilidade/dados";
 import type { EstadoConf, Lado } from "@/lib/confiabilidade/estado";
 import { linhasAnuais } from "@/lib/confiabilidade/graficos";
@@ -105,9 +105,10 @@ export function Comparador({ indice, e }: { indice: Indice; e: EstadoConf }) {
               <thead><tr><th scope="col">Indicador</th><th scope="col"><span className={s.vA}>A</span></th><th scope="col"><span className={s.vB}>B</span></th><th scope="col">A − B</th></tr></thead>
               <tbody>
                 {(["dec", "fec"] as Indicador[]).flatMap((k) => {
-                  const a = valorInd(bA, k), b = valorInd(bB, k), ra = razaoLimite(a, limiteInd(bA, k)), rb = razaoLimite(b, limiteInd(bB, k));
+                  const a = valorInd(bA, k), b = valorInd(bB, k), ca = valorComparavel(bA, k), cb = valorComparavel(bB, k), ra = razaoLimite(ca, limiteInd(bA, k)), rb = razaoLimite(cb, limiteInd(bB, k));
+                  const parc = (v: number | null, c: number | null) => (num(v) && c === null ? <span className={s.sub}>apuração parcial</span> : null);
                   return [
-                    <tr key={k}><td>{NOME_IND[k]} apurado <span className="faint">({UNIDADE_IND[k]})</span></td><td className={s.vA}>{fmtInd(a)}</td><td className={s.vB}>{fmtInd(b)}</td><td>{num(a) && num(b) ? fmtInd(a - b) : "N/D"}</td></tr>,
+                    <tr key={k}><td>{NOME_IND[k]} apurado <span className="faint">({UNIDADE_IND[k]})</span></td><td className={s.vA}>{fmtInd(a)}{parc(a, ca)}</td><td className={s.vB}>{fmtInd(b)}{parc(b, cb)}</td><td>{num(ca) && num(cb) ? fmtInd(ca - cb) : "N/D"}</td></tr>,
                     <tr key={`${k}l`}><td>{NOME_IND[k]} limite</td><td>{fmtInd(limiteInd(bA, k))}</td><td>{fmtInd(limiteInd(bB, k))}</td><td className="faint">—</td></tr>,
                     <tr key={`${k}r`}><td>{NOME_IND[k]} ÷ limite</td><td className={ra === null ? s.nd : ra > 1 ? s.acima : s.dentro}>{ra === null ? "N/D" : `${Math.round(ra * 100)}%`}</td><td className={rb === null ? s.nd : rb > 1 ? s.acima : s.dentro}>{rb === null ? "N/D" : `${Math.round(rb * 100)}%`}</td><td>{ra !== null && rb !== null ? `${Math.round((ra - rb) * 100)} p.p.` : "N/D"}</td></tr>,
                   ];

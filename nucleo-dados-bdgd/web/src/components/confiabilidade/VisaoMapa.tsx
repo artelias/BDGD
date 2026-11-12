@@ -5,7 +5,7 @@ import { DataError, EmptyState, LoadingBlock } from "@/components/ui/Feedback";
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { Pill } from "@/components/ui/Value";
-import { MESES, NOME_IND, UNIDADE_IND, fmtInd, limiteInd, linhasNacionais, mediaPonderada, num, razaoLimite, situacao, valorInd, variacao } from "@/lib/confiabilidade/calculo";
+import { MESES, NOME_IND, UNIDADE_IND, anualCompleto, completoDist, fmtInd, limiteInd, linhasNacionais, mediaPonderada, num, razaoLimite, situacao, valorComparavel, valorInd, variacao } from "@/lib/confiabilidade/calculo";
 import { carregarGeo, useDist, useNacional } from "@/lib/confiabilidade/dados";
 import { COR_ND, corDe, legenda, quebrasQuantis } from "@/lib/confiabilidade/escala";
 import type { EstadoConf } from "@/lib/confiabilidade/estado";
@@ -64,15 +64,18 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
 
   // valor exibido de um conjunto, conforme indicador, período e modo de cor
   const valorDe = (b: BlocoAno | undefined) => (!b ? null : mensal ? b.m[e.ind][e.mes! - 1] : valorInd(b, e.ind));
-  const medidaDe = (b: BlocoAno | undefined) => (modo === "regulatorio" ? razaoLimite(valorInd(b, e.ind), limiteInd(b, e.ind)) : valorDe(b));
+  // cor, quebras e % do limite: valor anual parcial (menos de 12 meses) fica N/D; a lista ainda mostra o valor, marcado como parcial
+  const valorCor = (b: BlocoAno | undefined) => (!b ? null : mensal ? b.m[e.ind][e.mes! - 1] : valorComparavel(b, e.ind));
+  const parcialDe = (b: BlocoAno | undefined) => !mensal && !!b && !anualCompleto(b, e.ind);
+  const medidaDe = (b: BlocoAno | undefined) => (modo === "regulatorio" ? razaoLimite(valorComparavel(b, e.ind), limiteInd(b, e.ind)) : valorCor(b));
 
   // nível Brasil: valor por distribuidora (derivado dos conjuntos, ponderado por consumidores) ou parcela de conjuntos acima do limite
   const valorDist = (d: (typeof dists)[number]) => {
     const a = d.anual[ano];
     if (!a) return null;
-    return modo === "regulatorio" ? (a.conjuntos ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) / a.conjuntos : null) : a[e.ind];
+    return modo === "regulatorio" ? (a.conjuntos ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) / a.conjuntos : null) : completoDist(a, e.ind) ? a[e.ind] : null;
   };
-  const quebrasDist = useMemo(() => quebrasQuantis(indice.distribuidoras.map((d) => { const a = d.anual[ano]; return !a ? null : modo === "regulatorio" ? (a.conjuntos ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) / a.conjuntos : null) : a[e.ind]; })), [indice, ano, modo, e.ind]);
+  const quebrasDist = useMemo(() => quebrasQuantis(indice.distribuidoras.map((d) => { const a = d.anual[ano]; return !a ? null : modo === "regulatorio" ? (a.conjuntos ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) / a.conjuntos : null) : completoDist(a, e.ind) ? a[e.ind] : null; })), [indice, ano, modo, e.ind]);
   const coresDist = useMemo(() => new Map(dists.map((d) => [d.dist, corDe(valorDist(d), quebrasDist, "absoluto", tema)] as [number, string])),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dists, quebrasDist, tema, ano, modo, e.ind]);
@@ -82,14 +85,14 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const quebrasConj = useMemo(() => {
     if (modo === "regulatorio") return [];
     if (e.ref === "brasil" && !mensal && nacional.dados) return quebrasQuantis(linhasNacionais(nacional.dados).map((l) => l[e.ind]));
-    return quebrasQuantis(conjuntos.map((c) => valorDe(c.a[ano])));
+    return quebrasQuantis(conjuntos.map((c) => valorCor(c.a[ano])));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modo, e.ref, e.ind, e.mes, nacional.dados, conjuntos, ano]);
   const refEfetiva = modo === "regulatorio" ? null : e.ref === "brasil" && !mensal && nacional.dados ? "brasil" : "dist";
   const coresConj = useMemo(() => new Map(conjuntos.map((c) => [c.c, corDe(medidaDe(c.a[ano]), quebrasConj, modo, tema)] as [number, string])),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [conjuntos, quebrasConj, modo, tema, ano, e.ind, e.mes]);
-  const passa = (c: Conjunto) => e.sit === "todos" || situacao(valorInd(c.a[ano], e.ind), limiteInd(c.a[ano], e.ind)) === e.sit;
+  const passa = (c: Conjunto) => e.sit === "todos" || situacao(valorComparavel(c.a[ano], e.ind), limiteInd(c.a[ano], e.ind)) === e.sit;
   const esmaecer = useMemo(() => (e.sit === "todos" ? null : new Set(conjuntos.filter((c) => !passa(c)).map((c) => c.c))),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [conjuntos, e.sit, e.ind, ano]);
@@ -105,13 +108,15 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     ficha.current.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }, [conjSel]);
 
+  // apuração parcial (menos de 12 meses) fica sem cor; a legenda diz quantos, para o N/D não parecer falta de dado
+  const nParciais = distSel && !mensal ? conjuntos.filter((c) => parcialDe(c.a[ano])).length : !distSel && modo === "absoluto" ? dists.filter((d) => d.anual[ano] && !completoDist(d.anual[ano], e.ind)).length : 0;
   const itensLegenda = distSel ? legenda(quebrasConj, modo, tema, fmtInd) : legenda(quebrasDist, "absoluto", tema, (v) => (modo === "regulatorio" ? pct(v) : fmtInd(v)));
   const tituloLegenda = distSel
     ? modo === "regulatorio" ? `${I} apurado ÷ limite, ${ano}` : `${I} ${mensal ? `de ${MESES[e.mes! - 1]}/${ano}` : `anual ${ano}`} · ${UNIDADE_IND[e.ind]}`
     : modo === "regulatorio" ? `Conjuntos acima do limite de ${I}, ${ano}` : `${I} ${ano} da distribuidora · ${UNIDADE_IND[e.ind]}`;
 
   const listaConj = useMemo(() => {
-    const linhas = conjuntos.filter(passa).map((c) => { const b = c.a[ano]; return { c, valor: valorDe(b), razao: razaoLimite(valorInd(b, e.ind), limiteInd(b, e.ind)), nuc: b.nuc }; });
+    const linhas = conjuntos.filter(passa).map((c) => { const b = c.a[ano]; return { c, valor: valorDe(b), parcial: parcialDe(b), razao: razaoLimite(valorComparavel(b, e.ind), limiteInd(b, e.ind)), nuc: b.nuc }; });
     const k = ordem.col; const sinal = ordem.desc ? -1 : 1;
     return linhas.sort((x, y) => {
       if (k === "nome") return sinal * x.c.n.localeCompare(y.c.n, "pt-BR");
@@ -132,7 +137,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     const comAno = dists.filter((d) => d.anual[ano]);
     const total = comAno.reduce((t, d) => t + d.anual[ano].conjuntos, 0);
     const acima = comAno.reduce((t, d) => t + (e.ind === "dec" ? d.anual[ano].acima_dec : d.anual[ano].acima_fec), 0);
-    return { n: comAno.length, total, acima, media: mediaPonderada(comAno.map((d) => ({ v: d.anual[ano][e.ind], w: d.anual[ano].nuc }))), nuc: comAno.reduce((t, d) => t + d.anual[ano].nuc, 0) };
+    return { n: comAno.length, total, acima, media: mediaPonderada(comAno.map((d) => ({ v: completoDist(d.anual[ano], e.ind) ? d.anual[ano][e.ind] : null, w: d.anual[ano].nuc }))), nuc: comAno.reduce((t, d) => t + d.anual[ano].nuc, 0) };
   }, [dists, ano, e.ind]);
 
   const cab = (col: Ordem["col"], rotulo: string) => (
@@ -189,7 +194,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
           <div className={s.legenda} data-testid="conf-legenda">
             <div className={s.legendaTitulo}>{tituloLegenda}</div>
             {itensLegenda.map((it) => <div key={it.rotulo} className={s.legendaItem}><i style={{ background: it.cor }} />{it.rotulo}</div>)}
-            <div className={s.legendaItem}><i style={{ background: COR_ND[tema] }} />N/D{!distSel && e.grupo ? " ou fora do grupo" : ""}</div>
+            <div className={s.legendaItem}><i style={{ background: COR_ND[tema] }} />N/D{!distSel && e.grupo ? " ou fora do grupo" : ""}{nParciais ? ` (inclui ${nParciais} com apuração parcial de ${I})` : ""}</div>
             <div className={s.legendaNota}>
               {distSel ? (modo === "regulatorio" ? "Classes fixas de apurado ÷ limite." : `Classes por quintis dos conjuntos ${refEfetiva === "brasil" ? "do Brasil" : "desta distribuidora"}.`) : "Classes por quintis das distribuidoras."} Mais {tema === "dark" && modo === "absoluto" ? "claro" : "escuro"}{modo === "regulatorio" && distSel ? "/vermelho" : ""} = pior continuidade.
             </div>
@@ -216,8 +221,8 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
               <p className={s.lateralTitulo}>{distSel.nome} <Pill tone="nd" title="Média dos conjuntos ponderada pelo NumCon de cada mês, somada nos 12 meses. Derivado dos dados oficiais por conjunto.">derivado dos conjuntos</Pill></p>
               {distSel.anual[ano] ? (
                 <div className={s.kpis}>
-                  <div className={s.kpi}><div className={s.kpiRotulo}>DEC {ano}</div><div className={s.kpiValor} data-testid="conf-dist-dec">{fmtInd(distSel.anual[ano].dec)}<small>h</small></div></div>
-                  <div className={s.kpi}><div className={s.kpiRotulo}>FEC {ano}</div><div className={s.kpiValor}>{fmtInd(distSel.anual[ano].fec)}<small>int.</small></div></div>
+                  <div className={s.kpi}><div className={s.kpiRotulo}>DEC {ano}</div><div className={s.kpiValor} data-testid="conf-dist-dec">{fmtInd(distSel.anual[ano].dec)}<small>h</small></div>{!completoDist(distSel.anual[ano], "dec") && <div className={s.kpiSub}>parcial: menos de 12 meses</div>}</div>
+                  <div className={s.kpi}><div className={s.kpiRotulo}>FEC {ano}</div><div className={s.kpiValor} data-testid="conf-dist-fec">{fmtInd(distSel.anual[ano].fec)}<small>int.</small></div>{!completoDist(distSel.anual[ano], "fec") && <div className={s.kpiSub}>parcial: menos de 12 meses</div>}</div>
                   <div className={s.kpi}><div className={s.kpiRotulo}>Acima do limite de {I}</div><div className={s.kpiValor}>{e.ind === "dec" ? distSel.anual[ano].acima_dec : distSel.anual[ano].acima_fec}<small>de {distSel.anual[ano].conjuntos}</small></div></div>
                 </div>
               ) : <p className={s.kpiSub}>Sem apuração de continuidade em {ano}.</p>}
@@ -230,7 +235,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
                 <tbody>{listaDist.map((d) => { const a = d.anual[ano]; return (
                   <tr key={d.dist} onClick={() => e.set({ dist: d.dist, conj: null }, true)} tabIndex={0} onKeyDown={(ev) => { if (ev.key === "Enter") e.set({ dist: d.dist, conj: null }, true); }}>
                     <td><i className={s.amostra} style={{ background: coresDist.get(d.dist) ?? COR_ND[tema] }} aria-hidden /><span className={s.nomeConj}>{d.nome}</span></td>
-                    <td>{fmtInd(a[e.ind])}</td><td>{e.ind === "dec" ? a.acima_dec : a.acima_fec} de {a.conjuntos}</td>
+                    <td>{fmtInd(a[e.ind])}{!completoDist(a, e.ind) && <span className={s.sub}>parcial</span>}</td><td>{e.ind === "dec" ? a.acima_dec : a.acima_fec} de {a.conjuntos}</td>
                   </tr>); })}</tbody>
               </table>
             ) : doc.carregando ? <div style={{ padding: 18 }}><LoadingBlock label="Carregando conjuntos" /></div>
@@ -238,10 +243,10 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
               : !listaConj.length ? <div style={{ padding: 18 }}><EmptyState title="Nenhum conjunto neste filtro">Mude a situação ou o ano.</EmptyState></div> : (
                 <table className={s.linhas} data-testid="conf-lista-conj">
                   <thead><tr>{cab("nome", "Conjunto")}{cab("valor", mensal ? `${I} ${MESES[e.mes! - 1]}` : I)}{cab("razao", "% limite")}{cab("nuc", "Consum.")}</tr></thead>
-                  <tbody>{listaConj.map(({ c, valor, razao, nuc }) => (
+                  <tbody>{listaConj.map(({ c, valor, parcial, razao, nuc }) => (
                     <tr key={c.c} data-sel={c.c === conjSel?.c} onClick={() => escolherDaLista(c.c)} tabIndex={0} onKeyDown={(ev) => { if (ev.key === "Enter") escolherDaLista(c.c); }}>
                       <td><i className={s.amostra} style={{ background: coresConj.get(c.c) ?? COR_ND[tema] }} aria-hidden /><span className={s.nomeConj}>{c.n}</span>{!c.geo && <span className={s.sub}>sem polígono na BDGD 2025</span>}</td>
-                      <td>{fmtInd(valor)}</td>
+                      <td>{fmtInd(valor)}{parcial && <span className={s.sub}>parcial</span>}</td>
                       <td className={razao === null ? s.nd : razao > 1 ? s.acima : s.dentro}>{pct(razao)}</td>
                       <td>{num(nuc) ? nuc.toLocaleString("pt-BR") : "N/D"}</td>
                     </tr>))}</tbody>
@@ -251,7 +256,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
         </aside>
       </div>
       <p className={s.nota}><Info size={13} aria-hidden />
-        DEC e FEC por conjunto são os valores publicados pela ANEEL. {distSel ? "Os polígonos são os conjuntos da camada CONJ da BDGD de 31/12/2025, simplificados para visualização; conjuntos extintos antes dessa data não têm polígono." : "No nível Brasil o mapa usa as áreas de atuação das distribuidoras; o valor de cada distribuidora é derivado dos seus conjuntos, ponderado por consumidores. Selecione uma distribuidora para ver os conjuntos."}
+        DEC e FEC por conjunto são os valores publicados pela ANEEL. {distSel ? `Os polígonos são os conjuntos da camada CONJ da BDGD de 31/12/2025, simplificados para visualização; conjuntos extintos antes dessa data não têm polígono.${Number(ano) < 2025 ? ` Os valores de ${ano} são desenhados sobre esses limites de 2025: conjuntos reconfigurados desde então podem ter tido outra delimitação, e a área usada na densidade é a de 2025.` : ""}` : "No nível Brasil o mapa usa as áreas de atuação das distribuidoras; o valor de cada distribuidora é derivado dos seus conjuntos, ponderado por consumidores. Selecione uma distribuidora para ver os conjuntos."}
       </p>
 
       {distSel && conjSel && doc.dados && (

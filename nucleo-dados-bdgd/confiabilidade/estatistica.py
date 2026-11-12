@@ -301,6 +301,24 @@ def veredito(assoc, sinal):
     return 'INCONCLUSIVA'
 
 
+def veredito_variacao(itens):
+    """Veredito do H7 com a mesma regra do H1–H6: NAO_SUSTENTADA só quando todas as associações são fracas (|ρ| < 0,05) com IC
+    contendo zero; IC sem zero -> INCONCLUSIVA (quatro anos não bastam para precedência); o resto também é INCONCLUSIVA
+    (ausência de evidência não é evidência de ausência)."""
+    com = [x for x in itens if x['ic95'] and x['spearman'] is not None]
+    sig = [x for x in com if x['ic95'][0] > 0 or x['ic95'][1] < 0]
+    if not com:
+        return 'SEM_DADOS', 'Amostra insuficiente de conjuntos comparáveis entre 2022 e 2025.'
+    if sig:
+        return 'INCONCLUSIVA', 'Associações defasadas com IC 95% sem zero: ' + '; '.join(f"{x['variavel']} {_r(x['spearman'])}" for x in sig) + '. Quatro anos e mudanças cadastrais limitam a leitura temporal.'
+    fortes = [x for x in com if abs(x['spearman']) >= 0.05]
+    if not fortes:
+        return 'NAO_SUSTENTADA', 'Todas as variações de religadores, telecomando, extensão e carga por alimentador em 2022→2023 têm associação fraca (|ρ| < 0,05) e IC 95% com zero com a variação posterior do indicador (2023→2025).'
+    return 'INCONCLUSIVA', ('Nenhuma associação defasada tem IC 95% sem zero, mas há associações de |ρ| ≥ 0,05 com IC largo: '
+                            + '; '.join(f"{x['variavel']} {_r(x['spearman'])} [{_r(x['ic95'][0])}; {_r(x['ic95'][1])}]" for x in fortes)
+                            + '. A amostra não permite afirmar nem descartar a associação.')
+
+
 def _r(x):
     """Coeficiente com sinal e vírgula decimal (texto exibido ao usuário)."""
     return f"{x:+.2f}".replace('.', ',')
@@ -318,15 +336,8 @@ def hipoteses(alvos):
             ('; mesmo sinal nos quatro anos.' if a['estavel_por_ano'] else '; o sinal ou a força mudam entre os anos.'))
         out.append(dict(id=hid, enunciado=enun, veredito=v, evidencia=ev))
     # H7: evolução da infraestrutura × evolução posterior do indicador
-    var7 = [x for a in alvos for x in a['variacao'] if '2022→2023 ×' in x['variavel'] and x['variavel'].split(' (')[0] in ('relig_por_100km', 'tlcd_por_100km', 'km_mt_por_alim', 'uc_por_alim')]
-    com = [x for x in var7 if x['ic95']]
-    sig = [x for x in com if x['ic95'][0] > 0 or x['ic95'][1] < 0]
-    if not com:
-        v7, ev7 = 'SEM_DADOS', 'Amostra insuficiente de conjuntos comparáveis entre 2022 e 2025.'
-    elif sig:
-        v7, ev7 = 'INCONCLUSIVA', 'Associações defasadas com IC 95% sem zero: ' + '; '.join(f"{x['variavel']} {_r(x['spearman'])}" for x in sig) + '. Quatro anos e mudanças cadastrais limitam a leitura temporal.'
-    else:
-        v7, ev7 = 'NAO_SUSTENTADA', 'Nenhuma variação de religadores, telecomando, extensão ou carga por alimentador em 2022→2023 tem associação com IC 95% sem zero com a variação posterior do indicador (2023→2025).'
+    var7 = [dict(x, variavel=f"{a['alvo'].upper()}, {x['variavel']}") for a in alvos for x in a['variacao'] if '2022→2023 ×' in x['variavel'] and x['variavel'].split(' (')[0] in ('relig_por_100km', 'tlcd_por_100km', 'km_mt_por_alim', 'uc_por_alim')]
+    v7, ev7 = veredito_variacao(var7)
     out.append(dict(id='H7', enunciado='Mudanças da infraestrutura entre 2022 e 2023 estão associadas a mudanças posteriores de DEC/FEC (2023→2025).', veredito=v7, evidencia=ev7))
     return out
 

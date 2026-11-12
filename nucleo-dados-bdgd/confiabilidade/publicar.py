@@ -88,9 +88,12 @@ def continuidade_ano(e, limite):
                  nuc_dez=int(nuc_m[11]) if K.finito(nuc_m[11]) else None, meses_dec=n_dec, meses_fec=n_fec,
                  m=dict(dec=[r2(v) for v in dec_m], fec=[r2(v) for v in fec_m], nuc=[int(v) if K.finito(v) else None for v in nuc_m]))
     comp = {}
-    for ind in ('DEC', 'FEC'):
-        c = {k: r2(K.anual(serie_mensal(e, ind + s))[0]) for k, s in COMP}
-        exp = [K.anual(serie_mensal(e, ind + s))[0] for s in EXPURGOS]
+    for ind, ind_m in (('DEC', dec_m), ('FEC', fec_m)):
+        # componentes no mesmo período do indicador: mês sem DEC/FEC oficial não entra (ex.: FEC de jun/2025 da Elektro,
+        # cujas componentes existem); sem isso as parcelas somariam mais de 100%
+        no_periodo = lambda serie: [v if K.finito(ind_m[i]) else None for i, v in enumerate(serie)]
+        c = {k: r2(K.anual(no_periodo(serie_mensal(e, ind + s)))[0]) for k, s in COMP}
+        exp = [K.anual(no_periodo(serie_mensal(e, ind + s)))[0] for s in EXPURGOS]
         c['exp'] = r2(math.fsum(v for v in exp if v is not None)) if any(v is not None for v in exp) else None
         comp[ind.lower()] = c
     bloco['comp'] = comp
@@ -101,17 +104,20 @@ def reconstrucao(dic_fic, dec_m, fec_m, nuc_m, dec, fec, uc_bdgd):
     """DEC/FEC reconstruídos dos DIC/FIC da BDGD. Denominador oficial (NumCon do mês) e, à parte, o da fotografia de 31/12."""
     if not dic_fic:
         return None
-    def rec(somas, den):
-        v = [K.razao(s, d) for s, d in zip(somas, den)]
+    # só os meses em que o oficial existe: um mês sem DEC/FEC oficial (ex.: FEC de jun/2025 da Elektro) não entra dos dois lados
+    meses_d = [i for i in range(12) if K.finito(dec_m[i])] or list(range(12))
+    meses_f = [i for i in range(12) if K.finito(fec_m[i])] or list(range(12))
+    def rec(somas, den, meses):
+        v = [K.razao(somas[i], den[i]) for i in meses]
         return K.anual(v)[0] if all(x is not None for x in v) else None
-    rd, rf = rec(dic_fic['soma_dic'], nuc_m), rec(dic_fic['soma_fic'], nuc_m)
-    bd = rec(dic_fic['soma_dic'], [uc_bdgd] * 12) if uc_bdgd else None
-    bf = rec(dic_fic['soma_fic'], [uc_bdgd] * 12) if uc_bdgd else None
+    rd, rf = rec(dic_fic['soma_dic'], nuc_m, meses_d), rec(dic_fic['soma_fic'], nuc_m, meses_f)
+    bd = rec(dic_fic['soma_dic'], [uc_bdgd] * 12, meses_d) if uc_bdgd else None
+    bf = rec(dic_fic['soma_fic'], [uc_bdgd] * 12, meses_f) if uc_bdgd else None
     ok_d, ok_f = K.reconciliado(rd, dec), K.reconciliado(rf, fec)
     estado = K.RECONSTRUIDO_VALIDADO if ok_d and ok_f else K.DERIVADO_EXPLORATORIO
     cob = K.razao(dic_fic['linhas_com_dic'], dic_fic['linhas'])
     return dict(dec=r2(rd), fec=r2(rf), dec_bdgd=r2(bd), fec_bdgd=r2(bf), dif_dec=r2(None if rd is None or dec is None else rd - dec),
-                dif_fec=r2(None if rf is None or fec is None else rf - fec), cobertura=r2(cob, 4), estado=estado,
+                dif_fec=r2(None if rf is None or fec is None else rf - fec), cobertura=r2(cob, 4), estado=estado, meses_dec=len(meses_d), meses_fec=len(meses_f),
                 denominador='NumCon mensal oficial (ANEEL); *_bdgd usa as unidades ativas em 31/12 da BDGD')
 
 
@@ -197,7 +203,7 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
                 bloco, dec_m, fec_m, nuc_m = continuidade_ano(e, lim.get((c, a)))
                 bloco['estado'] = K.OBSERVADO_OFICIAL
                 alertas = []
-                if bloco['meses_dec'] < 12:
+                if bloco['meses_dec'] < 12 or bloco['meses_fec'] < 12:
                     alertas.append('apuracao_parcial')
                 if bloco['ld'] is None or bloco['lf'] is None:
                     alertas.append('sem_limite')
@@ -228,13 +234,14 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
                 ent['a'][str(a)] = bloco
                 rs = resumo[a]
                 rs['n'] += 1
-                rs['acima_dec'] += K.situacao_limite(bloco['dec'], bloco['ld']) == 'ACIMA'
-                rs['acima_fec'] += K.situacao_limite(bloco['fec'], bloco['lf']) == 'ACIMA'
+                # o limite é anual: valor com menos de 12 meses não é comparado a ele
+                rs['acima_dec'] += bloco['meses_dec'] == 12 and K.situacao_limite(bloco['dec'], bloco['ld']) == 'ACIMA'
+                rs['acima_fec'] += bloco['meses_fec'] == 12 and K.situacao_limite(bloco['fec'], bloco['lf']) == 'ACIMA'
                 rs['nuc'] += bloco['nuc'] or 0
                 for i in range(12):
                     rs['meses'][i].append((dec_m[i], nuc_m[i])); rs['meses_fec'][i].append((fec_m[i], nuc_m[i]))
                 inf = bloco['infra'] or {}
-                nacional[a].append([d, c, e['nome'], bloco['dec'], bloco['fec'], bloco['ld'], bloco['lf'], bloco['nuc']] + [inf.get(i) for i in IDS])
+                nacional[a].append([d, c, e['nome'], bloco['dec'], bloco['fec'], bloco['ld'], bloco['lf'], bloco['nuc'], bloco['meses_dec'], bloco['meses_fec']] + [inf.get(i) for i in IDS])
                 tot['conjunto_ano'] += 1; tot['conjunto_ano_com_infra'] += bool(bloco['infra'])
                 tot['rec_validado'] += bool(bloco['rec'] and bloco['rec']['estado'] == K.RECONSTRUIDO_VALIDADO); tot['rec_calculado'] += bool(bloco['rec'] and bloco['rec']['dec'] is not None)
             conjuntos.append(ent)
@@ -245,7 +252,7 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
             if not rs['n']:
                 continue
             dec, _, cd = K.agregado_anual(rs['meses']); fec, _, cf = K.agregado_anual(rs['meses_fec'])
-            anual[str(a)] = dict(dec=r2(dec), fec=r2(fec), completo=cd and cf, nuc=rs['nuc'], conjuntos=rs['n'], acima_dec=rs['acima_dec'], acima_fec=rs['acima_fec'], com_infra=rs['com_infra'],
+            anual[str(a)] = dict(dec=r2(dec), fec=r2(fec), completo=cd and cf, completo_dec=cd, completo_fec=cf, nuc=rs['nuc'], conjuntos=rs['n'], acima_dec=rs['acima_dec'], acima_fec=rs['acima_fec'], com_infra=rs['com_infra'],
                                  estado=K.DERIVADO_EXPLORATORIO, regra='média dos conjuntos ponderada pelo NumCon de cada mês; soma dos 12 meses')
         agentes = Counter(cont[(c, a)]['agente'] for c in por_dist[d] for a in por_dist[d][c])
         fontes = {str(a): dict(item=infra[(d, a)]['meta']['fonte']['item'], sha256_gdb=infra[(d, a)]['meta']['fonte']['sha256_gdb'],
@@ -264,7 +271,7 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
                                  conjuntos=len(conjuntos), conjuntos_com_geo=sum(c['geo'] for c in conjuntos)))
         tot['distribuidoras'] += 1; tot['conjuntos'] += len(conjuntos); tot['conjuntos_com_geo'] += sum(c['geo'] for c in conjuntos)
 
-    campos = ['dist', 'c', 'n', 'dec', 'fec', 'ld', 'lf', 'nuc'] + IDS
+    campos = ['dist', 'c', 'n', 'dec', 'fec', 'ld', 'lf', 'nuc', 'meses_dec', 'meses_fec'] + IDS
     for a, rows in nacional.items():
         (novo / 'nacional' / f'{a}.json').write_text(json.dumps(dict(ano=a, campos=campos, linhas=rows), ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     agora = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')

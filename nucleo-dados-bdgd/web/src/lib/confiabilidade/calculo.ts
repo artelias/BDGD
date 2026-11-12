@@ -2,7 +2,7 @@
  *  - ausência (null) nunca vira zero e nunca entra em soma, média ou ordenação;
  *  - o valor anual do conjunto é a soma dos meses; agregados de conjuntos são ponderados por consumidores;
  *  - nenhuma função daqui afirma causa: as frases comparam valores e posições, só isso. */
-import type { BlocoAno, Indicador, Infra, MetricaDef, NacionalAno } from "./tipos";
+import type { AnualDist, BlocoAno, Indicador, Infra, MetricaDef, NacionalAno } from "./tipos";
 
 export const num = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
 
@@ -36,6 +36,11 @@ export function mediaPonderada(itens: Array<{ v: number | null | undefined; w: n
 }
 export const valorInd = (b: BlocoAno | undefined | null, ind: Indicador) => (b ? b[ind] : null);
 export const limiteInd = (b: BlocoAno | undefined | null, ind: Indicador) => (b ? (ind === "dec" ? b.ld : b.lf) : null);
+/** O limite é anual: só o valor com os 12 meses apurados é comparado a ele, aos quantis, às posições e aos rankings.
+ *  Um valor parcial continua exibido, com aviso, mas não entra em comparações (ex.: FEC de 2025 da Elektro, sem junho na ANEEL). */
+export const anualCompleto = (b: { meses_dec?: number; meses_fec?: number } | undefined | null, ind: Indicador) => !!b && ((ind === "dec" ? b.meses_dec : b.meses_fec) ?? 12) >= 12;
+export const valorComparavel = (b: BlocoAno | undefined | null, ind: Indicador) => (anualCompleto(b, ind) ? valorInd(b, ind) : null);
+export const completoDist = (a: AnualDist | undefined | null, ind: Indicador) => !!a && ((ind === "dec" ? a.completo_dec : a.completo_fec) ?? true);
 
 // ------------------------------------------------------------------ estatística descritiva
 export function quantil(ordenado: number[], p: number): number | null {
@@ -68,16 +73,20 @@ export function histograma(valores: Array<number | null | undefined>, classes = 
 }
 
 // ------------------------------------------------------------------ tabela nacional
-export interface Linha { dist: number; c: number; n: string; dec: number | null; fec: number | null; ld: number | null; lf: number | null; nuc: number | null; infra: Infra }
-const FIXOS = ["dist", "c", "n", "dec", "fec", "ld", "lf", "nuc"];
+/** Linha da tabela nacional, usada só em comparações: indicador com menos de 12 meses vem como null e fica listado em `parcial`. */
+export interface Linha { dist: number; c: number; n: string; dec: number | null; fec: number | null; ld: number | null; lf: number | null; nuc: number | null; infra: Infra; parcial?: Indicador[] }
+const FIXOS = ["dist", "c", "n", "dec", "fec", "ld", "lf", "nuc", "meses_dec", "meses_fec"];
 export function linhasNacionais(t: NacionalAno): Linha[] {
   const ix = new Map(t.campos.map((c, i) => [c, i]));
   const extras = t.campos.filter((c) => !FIXOS.includes(c));
   return t.linhas.map((r) => {
     const infra: Infra = {};
     for (const c of extras) infra[c] = r[ix.get(c)!] as number | null;
-    return { dist: r[ix.get("dist")!] as number, c: r[ix.get("c")!] as number, n: String(r[ix.get("n")!] ?? ""), dec: r[ix.get("dec")!] as number | null, fec: r[ix.get("fec")!] as number | null,
-      ld: r[ix.get("ld")!] as number | null, lf: r[ix.get("lf")!] as number | null, nuc: r[ix.get("nuc")!] as number | null, infra };
+    const meses = { meses_dec: ix.has("meses_dec") ? (r[ix.get("meses_dec")!] as number) : 12, meses_fec: ix.has("meses_fec") ? (r[ix.get("meses_fec")!] as number) : 12 };
+    const parcial = (["dec", "fec"] as Indicador[]).filter((k) => !anualCompleto(meses, k));
+    const val = (k: Indicador) => (parcial.includes(k) ? null : (r[ix.get(k)!] as number | null));
+    return { dist: r[ix.get("dist")!] as number, c: r[ix.get("c")!] as number, n: String(r[ix.get("n")!] ?? ""), dec: val("dec"), fec: val("fec"),
+      ld: r[ix.get("ld")!] as number | null, lf: r[ix.get("lf")!] as number | null, nuc: r[ix.get("nuc")!] as number | null, infra, parcial };
   });
 }
 export const chave = (l: { dist: number; c: number }) => `${l.dist}:${l.c}`;
@@ -140,14 +149,17 @@ export function frasesComparacao(p: {
   medianaParesA?: number | null; medianaParesB?: number | null; distancia?: number | null;
 }): string[] {
   const out: string[] = [];
-  const I = p.ind.toUpperCase(), va = valorInd(p.a, p.ind), vb = valorInd(p.b, p.ind);
+  // só valores anuais completos são comparados; um lado com apuração parcial é dito explicitamente
+  const I = p.ind.toUpperCase(), va = valorComparavel(p.a, p.ind), vb = valorComparavel(p.b, p.ind);
+  const parciais = ([[p.nomeA, p.a], [p.nomeB, p.b]] as const).filter(([, b]) => num(valorInd(b, p.ind)) && !anualCompleto(b, p.ind)).map(([n]) => n);
   const dec = (v: number) => v.toLocaleString("pt-BR", { maximumFractionDigits: 2 });
   if (num(va) && num(vb)) {
     if (Math.abs(va - vb) < 0.005) out.push(`${p.nomeA} e ${p.nomeB} têm o mesmo ${I} apurado no ano.`);
     else out.push(`O ${I} de ${va > vb ? p.nomeA : p.nomeB} (${dec(Math.max(va, vb))}) é maior que o de ${va > vb ? p.nomeB : p.nomeA} (${dec(Math.min(va, vb))}).`);
-  } else out.push(`Sem ${I} apurado nos dois conjuntos para o ano escolhido: a comparação de continuidade não é possível.`);
+  } else if (parciais.length) out.push(`${parciais.join(" e ")} ${parciais.length > 1 ? "têm" : "tem"} apuração parcial de ${I} no ano (menos de 12 meses): a comparação de continuidade não é possível.`);
+  else out.push(`Sem ${I} apurado nos dois conjuntos para o ano escolhido: a comparação de continuidade não é possível.`);
   for (const [nome, bloco] of [[p.nomeA, p.a], [p.nomeB, p.b]] as const) {
-    const r = razaoLimite(valorInd(bloco, p.ind), limiteInd(bloco, p.ind));
+    const r = razaoLimite(valorComparavel(bloco, p.ind), limiteInd(bloco, p.ind));
     if (r !== null) out.push(`${nome} está ${r > 1 ? `${Math.round((r - 1) * 100)}% acima` : r === 1 ? "exatamente no" : `${Math.round((1 - r) * 100)}% abaixo`}${r === 1 ? "" : " do"} limite regulatório de ${I}.`);
   }
   for (const [nome, v, med] of [[p.nomeA, va, p.medianaParesA], [p.nomeB, vb, p.medianaParesB]] as const) {
@@ -226,7 +238,7 @@ export const UNIDADE_IND: Record<Indicador, string> = { dec: "h por consumidor",
 export const NOME_IND: Record<Indicador, string> = { dec: "DEC", fec: "FEC" };
 export const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 export const ROTULO_ALERTA: Record<string, string> = {
-  apuracao_parcial: "Apuração com menos de 12 meses no ano; o valor anual é parcial.",
+  apuracao_parcial: "Apuração com menos de 12 meses no ano (DEC ou FEC): o valor anual é parcial e não é comparado ao limite anual, às posições nem aos rankings.",
   sem_limite: "Sem limite regulatório publicado para o ano.",
   consumidores_divergentes: "O número de consumidores da BDGD (31/12) difere em mais de 15% do NumCon de dezembro da ANEEL; as métricas por consumidor pedem cautela.",
   variacao_cadastral_uc: "Os consumidores cadastrados mudaram mais de 30% em relação ao ano anterior: possível reconfiguração do conjunto, não crescimento físico.",

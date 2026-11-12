@@ -2,8 +2,8 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  acumulado, anualDeMeses, comparar, faixasDeExtensao, fmtInd, fmtMetrica, frasesComparacao, histograma, linhasNacionais, mediaPonderada,
-  paresSemelhantes, percentilDe, perfilPorQuartil, ranking, razaoLimite, resumo, situacao, variacao, type Linha,
+  acumulado, anualCompleto, anualDeMeses, comparar, completoDist, faixasDeExtensao, fmtInd, fmtMetrica, frasesComparacao, histograma, linhasNacionais, mediaPonderada,
+  paresSemelhantes, percentilDe, perfilPorQuartil, ranking, razaoLimite, resumo, situacao, valorComparavel, variacao, type Linha,
 } from "@/lib/confiabilidade/calculo";
 import { COR_ND, DIV, QUEBRAS_REG, SEQ, classeDe, corDe, legenda, quebrasQuantis } from "@/lib/confiabilidade/escala";
 import { escreverLado, lerLado } from "@/lib/confiabilidade/estado";
@@ -117,6 +117,38 @@ describe("comparação e pares", () => {
   });
 });
 
+describe("apuração parcial (regressão da auditoria de 12/11/2026)", () => {
+  it("valor com menos de 12 meses é exibido, mas não é comparado ao limite anual", () => {
+    const b = { ...bloco(12, 10), meses_fec: 11 };
+    expect(anualCompleto(b, "dec")).toBe(true);
+    expect(anualCompleto(b, "fec")).toBe(false);
+    expect(valorComparavel(b, "fec")).toBeNull();
+    expect(situacao(valorComparavel(b, "fec"), b.lf)).toBe("nd");
+    expect(valorComparavel(b, "dec")).toBe(12);
+  });
+  it("tabela nacional: indicador parcial vira N/D só nas comparações; arquivo sem meses continua igual", () => {
+    const t: NacionalAno = { ano: 2025, campos: ["dist", "c", "n", "dec", "fec", "ld", "lf", "nuc", "meses_dec", "meses_fec", "uc"],
+      linhas: [[1, 10, "A", 5, 3, 8, 6, 100, 12, 11, 100], [1, 11, "B", 9, 4, 8, 6, 100, 12, 12, 100]] };
+    const [a, b] = linhasNacionais(t);
+    expect([a.dec, a.fec, a.parcial]).toEqual([5, null, ["fec"]]);
+    expect([b.fec, b.parcial, b.infra]).toEqual([4, [], { uc: 100 }]);
+    expect(ranking([a, b], null, "fec", "melhores").map((x) => x.linha.c)).toEqual([11]);
+    expect(ranking([a, b], null, "fec", "acima_limite").map((x) => x.linha.c)).toEqual([11]);
+    const antigo = linhasNacionais({ ano: 2025, campos: ["dist", "c", "n", "dec", "fec", "ld", "lf", "nuc"], linhas: [[1, 10, "A", 5, 3, 8, 6, 100]] })[0];
+    expect([antigo.fec, antigo.parcial]).toEqual([3, []]);
+  });
+  it("comparador não compara valor parcial e diz o motivo", () => {
+    const f = frasesComparacao({ nomeA: "A", nomeB: "B", ind: "fec", a: { ...bloco(12, 10), meses_fec: 11 }, b: bloco(4, 10), metricas: [], medianaParesA: 1 }).join(" ");
+    expect(f).toMatch(/A tem apuração parcial de FEC no ano/);
+    expect(f).not.toMatch(/é maior que|O FEC de A|A está/);
+    expect(f).toMatch(/B está .* limite regulatório de FEC/);
+  });
+  it("agregado da distribuidora sem 12 meses não entra nas quebras", () => {
+    expect(completoDist({ dec: 1, fec: 1, completo: false, completo_dec: true, completo_fec: false, nuc: 1, conjuntos: 1, acima_dec: 0, acima_fec: 0, com_infra: 1, estado: "DERIVADO_EXPLORATORIO", regra: "" }, "fec")).toBe(false);
+    expect(completoDist({ dec: 1, fec: 1, completo: true, nuc: 1, conjuntos: 1, acima_dec: 0, acima_fec: 0, com_infra: 1, estado: "DERIVADO_EXPLORATORIO", regra: "" }, "dec")).toBe(true);
+  });
+});
+
 describe("formatação e utilidades", () => {
   it("contagem não inteira é sinalizada, ausência é N/D", () => {
     expect(fmtMetrica(1234, { tipo: "contagem" })).toBe("1.234");
@@ -163,6 +195,22 @@ describe.skipIf(!real)("produto publicado (dados reais)", () => {
     const l = linhasNacionais(t);
     const k = new Set(l.map((x) => `${x.c}`));
     expect(k.size).toBe(l.length);
+  });
+  it("Elektro 2025: FEC sem junho na ANEEL fica fora de rankings, quebras e limite; DEC continua comparável", () => {
+    const l = linhasNacionais(ler<NacionalAno>("nacional/2025.json")).filter((x) => x.dist === 385);
+    expect(l.length).toBe(130);
+    expect(l.every((x) => x.fec === null && x.parcial?.includes("fec") && x.dec !== null)).toBe(true);
+    const d = ler<DistDoc>("distribuidoras/385.json");
+    expect(d.anual["2025"].completo_fec).toBe(false);
+    expect(d.anual["2025"].acima_fec).toBe(0);
+    const com2025 = d.conjuntos.filter((c) => c.a["2025"]);
+    expect(com2025.length).toBe(130);
+    for (const c of com2025) {
+      const b = c.a["2025"];
+      expect(b.meses_fec).toBe(11);
+      expect(b.alertas).toContain("apuracao_parcial");
+      expect(b.fec).not.toBeNull();   // o valor oficial dos 11 meses continua publicado
+    }
   });
   it("geometria de cada distribuidora só tem conjuntos dela", () => {
     for (const f of readdirSync(join(PRODUTO, "geo")).slice(0, 25)) {

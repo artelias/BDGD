@@ -125,7 +125,7 @@ export function Benchmarking({ indice, e }: { indice: Indice; e: EstadoConf }) {
             <table className={s.tabela} data-testid="conf-pares">
               <thead><tr><th scope="col">Conjunto</th><th scope="col">Distância</th><th scope="col">{I}</th>{pares.usados.map((id) => <th key={id} scope="col">{met.get(id)?.nome}</th>)}</tr></thead>
               <tbody>
-                <tr><td><b>{alvo.n}</b><span className={s.sub}>{nomeDist.get(alvo.dist)?.nome} · em foco</span></td><td>—</td><td><b>{fmtInd(alvo[e.ind])}</b></td>{pares.usados.map((id) => <td key={id}>{fmtMetrica(alvo.infra[id], met.get(id)!)}</td>)}</tr>
+                <tr><td><b>{alvo.n}</b><span className={s.sub}>{nomeDist.get(alvo.dist)?.nome} · em foco</span></td><td>—</td><td><b>{fmtInd(alvo[e.ind])}</b>{alvo.parcial?.includes(e.ind) && <span className={s.sub}>apuração parcial: fora das comparações</span>}</td>{pares.usados.map((id) => <td key={id}>{fmtMetrica(alvo.infra[id], met.get(id)!)}</td>)}</tr>
                 {pares.pares.map((p) => (
                   <tr key={chave(p.linha)} style={{ cursor: "pointer" }} onClick={() => e.set({ a: `${alvo.dist}-${alvo.c}`, b: `${p.linha.dist}-${p.linha.c}`, aba: "comparar" }, true)} title="Comparar com o conjunto em foco">
                     <td>{p.linha.n}<span className={s.sub}>{nomeDist.get(p.linha.dist)?.nome}</span></td><td>{p.distancia.toLocaleString("pt-BR", { maximumFractionDigits: 2 })}</td><td>{fmtInd(p.linha[e.ind])}</td>
