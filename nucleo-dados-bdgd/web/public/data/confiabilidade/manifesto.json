@@ -1016,6 +1016,11 @@
    "caminho": "nacional/2025.json",
    "bytes": 1028391,
    "sha256": "5a4c65ce8fbda4f2085bd63d7ff8e3b7a9446907013beffad380e9a4ed77837b"
+  },
+  {
+   "caminho": "fatores.json",
+   "bytes": 479750,
+   "sha256": "1a3d70f9c0952381dd7d1f4f4151e326f3a8692aae11a191d8f78f1faf3c2f1b"
   }
  ]
 }
