@@ -2,7 +2,7 @@
  "A1_manifesto": {
   "arquivos": 204,
   "divergentes": [],
-  "bytes": 50794268
+  "bytes": 51268926
  },
  "A2_chaves": {
   "combinacoes": 12502,
@@ -90,14 +90,14 @@
  "A4_nota": "Soma dos conjuntos com continuidade apurada em 2025 contra o total da distribuidora no portal. Diferenças vêm de registros sem conjunto válido ou de conjuntos sem apuração ANEEL (ficam fora do módulo); a auditoria de cada DIST-ano está em fontes_bdgd.",
  "A5_reconciliacao": {
   "criterio": "|reconstruído − oficial| ≤ 0.05 ou ≤ 5% do oficial (experimental, não homologação)",
-  "pares": 24340,
+  "pares": 24350,
   "dec": {
-   "ok": 11454,
-   "total": 12170
+   "ok": 11458,
+   "total": 12175
   },
   "fec": {
-   "ok": 11336,
-   "total": 12170
+   "ok": 11424,
+   "total": 12175
   },
   "dist_ano_indicador_abaixo_de_80pct": [
    {
@@ -421,7 +421,7 @@
     "mediana": 0.6816
    }
   ],
-  "n_dist_ano_indicador_abaixo_de_80pct": 82
+  "n_dist_ano_indicador_abaixo_de_80pct": 83
  },
  "A6_geometria": {
   "conjuntos_2025": 3147,

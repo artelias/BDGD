@@ -228,7 +228,7 @@ dist,distribuidora,ano,indicador,conjuntos,reconciliados,pct_reconciliados,media
 385,Neoenergia Elektro,2024,DEC,130,130,1.0,0.0069,0.0156,-0.0558
 385,Neoenergia Elektro,2024,FEC,130,130,1.0,0.0075,0.0155,-0.027
 385,Neoenergia Elektro,2025,DEC,130,130,1.0,0.0035,0.0117,-0.0246
-385,Neoenergia Elektro,2025,FEC,130,46,0.3538,0.0634,0.1409,0.2375
+385,Neoenergia Elektro,2025,FEC,130,130,1.0,0.0046,0.0133,-0.0122
 390,Enel SP,2022,DEC,143,143,1.0,0.0018,0.005,-0.0046
 390,Enel SP,2022,FEC,143,143,1.0,0.0026,0.0084,-0.0021
 390,Enel SP,2023,DEC,143,143,1.0,0.0014,0.003,-0.0007
@@ -431,6 +431,8 @@ dist,distribuidora,ano,indicador,conjuntos,reconciliados,pct_reconciliados,media
 5346,Coopersul,2024,FEC,1,0,0.0,0.0606,0.0606,-0.96
 5346,Coopersul,2025,DEC,1,1,1.0,0.0035,0.0035,-0.1
 5346,Coopersul,2025,FEC,1,1,1.0,0.0031,0.0031,-0.05
+5351,Ceral Anitapolis,2025,DEC,1,1,1.0,0.0038,0.0038,0.05
+5351,Ceral Anitapolis,2025,FEC,1,1,1.0,0.0063,0.0063,0.03
 5352,Cerej,2022,DEC,1,1,1.0,0.0004,0.0004,-0.01
 5352,Cerej,2022,FEC,1,1,1.0,0.001,0.001,-0.01
 5352,Cerej,2023,DEC,1,0,0.0,0.1271,0.1271,-3.19
@@ -575,6 +577,8 @@ dist,distribuidora,ano,indicador,conjuntos,reconciliados,pct_reconciliados,media
 5378,Ceripa,2023,FEC,1,1,1.0,0.0023,0.0023,-0.02
 5378,Ceripa,2024,DEC,1,1,1.0,0.0,0.0,0.0
 5378,Ceripa,2024,FEC,1,1,1.0,0.0096,0.0096,-0.05
+5378,Ceripa,2025,DEC,1,1,1.0,0.0023,0.0023,-0.03
+5378,Ceripa,2025,FEC,1,1,1.0,0.0016,0.0016,0.01
 5379,Cetril,2022,DEC,1,1,1.0,0.0006,0.0006,-0.01
 5379,Cetril,2022,FEC,1,1,1.0,0.0008,0.0008,0.01
 5379,Cetril,2024,DEC,1,1,1.0,0.009,0.009,-0.14
@@ -697,6 +701,8 @@ dist,distribuidora,ano,indicador,conjuntos,reconciliados,pct_reconciliados,media
 6897,Ceraca,2023,FEC,1,1,1.0,0.0046,0.0046,-0.05
 6897,Ceraca,2024,DEC,1,1,1.0,0.0069,0.0069,-0.09
 6897,Ceraca,2024,FEC,1,1,1.0,0.004,0.004,-0.06
+6897,Ceraca,2025,DEC,1,1,1.0,0.0006,0.0006,-0.01
+6897,Ceraca,2025,FEC,1,1,1.0,0.0032,0.0032,-0.05
 6898,Cerbranorte,2022,DEC,1,1,1.0,0.0232,0.0232,-0.1
 6898,Cerbranorte,2022,FEC,1,1,1.0,0.0255,0.0255,-0.12
 6898,Cerbranorte,2023,DEC,1,0,0.0,0.0541,0.0541,-0.2
@@ -735,6 +741,8 @@ dist,distribuidora,ano,indicador,conjuntos,reconciliados,pct_reconciliados,media
 7467,Cemirim,2024,FEC,1,1,1.0,0.0,0.0,0.0
 7467,Cemirim,2025,DEC,1,1,1.0,0.009,0.009,-0.07
 7467,Cemirim,2025,FEC,1,1,1.0,0.0042,0.0042,-0.02
+7883,Cersad,2022,DEC,1,0,0.0,0.2819,0.2819,-4.6
+7883,Cersad,2022,FEC,1,0,0.0,0.2553,0.2553,-3.4
 7883,Cersad,2023,DEC,1,0,0.0,0.0615,0.0615,-0.15
 7883,Cersad,2023,FEC,1,1,1.0,0.0294,0.0294,-0.14
 7883,Cersad,2024,DEC,1,1,1.0,0.006,0.006,-0.01
@@ -747,3 +755,5 @@ dist,distribuidora,ano,indicador,conjuntos,reconciliados,pct_reconciliados,media
 11825,Castro-Dis,2023,FEC,1,0,0.0,0.2848,0.2848,-1.7
 11825,Castro-Dis,2024,DEC,1,0,0.0,0.085,0.085,-0.47
 11825,Castro-Dis,2024,FEC,1,1,1.0,0.0328,0.0328,-0.12
+11825,Castro-Dis,2025,DEC,1,1,1.0,0.009,0.009,-0.04
+11825,Castro-Dis,2025,FEC,1,1,1.0,0.0141,0.0141,-0.05

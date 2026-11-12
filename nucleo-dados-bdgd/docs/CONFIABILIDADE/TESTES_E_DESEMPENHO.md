@@ -4,9 +4,9 @@
 
 | Camada | Arquivo | Testes | O que cobre |
 |---|---|---:|---|
-| Python | `confiabilidade/tests/test_confiabilidade.py` | 22 | fórmulas PRODIST, métricas, zero × N/D, supressão, reconstrução, validação do produto, auditoria do produto real, contrato do `fatores.json`, idempotência (EPB 2025 → INALTERADO), geometria, estatística sintética e vereditos |
-| Vitest | `web/tests/confiabilidade.test.ts` | 20 | soma mensal, acumulado, ponderação por NumCon, situação × limite, quantis e cores por tema, modo regulatório, comparação (N/D preservado, % sem relativa), frases sem causalidade, pares, ranking, perfil, URL A/B, produto real (EPB 74.625 transformadores, chaves únicas, geometria por distribuidora) |
-| Playwright | `web/e2e/confiabilidade.spec.ts` | 9 desktop + 1 `@mobile` | Brasil → EPB; DEC/FEC, ano, mês, % do limite; ficha (componentes internas × externas); comparador + CSV; benchmarking; fatores e metodologia; mapa (hover, clique, zoom, volta ao Brasil) com Energisa AC; tema claro/escuro; celular sem rolagem horizontal; sem erro de console |
+| Python | `confiabilidade/tests/test_confiabilidade.py` | 26 | apuração parcial e componentes no mesmo período, reconstrução nos meses com oficial, regra do H7; fórmulas PRODIST, métricas, zero × N/D, supressão, reconstrução, validação do produto, auditoria do produto real, contrato do `fatores.json`, idempotência (EPB 2025 → INALTERADO), geometria, estatística sintética e vereditos |
+| Vitest | `web/tests/confiabilidade.test.ts` | 24 | apuração parcial fora das comparações (Elektro 2025); soma mensal, acumulado, ponderação por NumCon, situação × limite, quantis e cores por tema, modo regulatório, comparação (N/D preservado, % sem relativa), frases sem causalidade, pares, ranking, perfil, URL A/B, produto real (EPB 74.625 transformadores, chaves únicas, geometria por distribuidora) |
+| Playwright | `web/e2e/confiabilidade.spec.ts` | 11 desktop + 1 `@mobile` | FEC parcial da Elektro; aviso de geometria 2025 em anos anteriores; Brasil → EPB; DEC/FEC, ano, mês, % do limite; ficha (componentes internas × externas); comparador + CSV; benchmarking; fatores e metodologia; mapa (hover, clique, zoom, volta ao Brasil) com Energisa AC; tema claro/escuro; celular sem rolagem horizontal; sem erro de console |
 | Auditoria | `python -m confiabilidade.auditoria` | A1–A6 | manifesto, chaves, contrato, totais × portal, reconciliação, geometria |
 
 Comandos em OPERACAO.md. Nenhum teste existente foi desativado ou alterado.
@@ -55,6 +55,8 @@ ficha visível, tabela de pares preenchida etc.
 
 Leitura: no desktop tudo fica pronto em até 2,5 s. No celular o tempo é dominado pelos bytes sem compressão. Com gzip, os
 dados da EPB caem de 2.086 para ~695 kB, e o nacional (479 kB com gzip) passa a ser o maior item na escala padrão.
+
+Medição com gzip (como a hospedagem) e verificação de viabilidade das quebras no índice: HOMOLOGACAO_TECNICA.md, seção 4.
 
 ### Recomendação (não aplicada: exige republicar o produto)
 

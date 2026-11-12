@@ -29,7 +29,8 @@ sobrevive a recarga completa: verificados no navegador e cobertos pelo e2e (test
 * A4 piloto: EPB (6600), ESE (6587) e Energisa AC (26) com transformadores, km MT e km BT iguais ao portal; consumidores
   com diferença pequena e explicada (+22, +10, −4).
 * A5 reconciliação DIC/FIC × oficial (critério experimental 5%): DEC 94,1%, FEC 93,1%, ambos 92,3%; 82 combinações
-  DIST × ano × indicador abaixo de 80%, listadas no CSV.
+  DIST × ano × indicador abaixo de 80%, listadas no CSV. *Após a auditoria de homologação (reconstrução só nos meses com
+  oficial): DEC 94,1%, FEC 93,8%, ambos 93,0%; 83 combinações. Ver HOMOLOGACAO_TECNICA.md.*
 * A6 geometria: 3.147 conjuntos de 2025, 3.147 polígonos.
 * Dados demonstrativos e reais nunca se misturam: o produto só tem estado oficial ou derivado; testes falham se aparecer
   `DEMONSTRATIVO_SINTETICO`.
@@ -70,9 +71,10 @@ distintos (75 conjuntos no litoral/sertão × 15 conjuntos amazônicos com redes
 ## 5. Estatística
 
 Ver MODELOS_ESTATISTICOS.md. Compatíveis com os dados: H2 (rede MT por alimentador ↑ ⇔ DEC ↑), H6a (densidade ↑ ⇔ DEC ↓),
-H6b (ruralidade ↑ ⇔ DEC ↑). Inconclusivas: H1, H3, H4, H5, H5b. Não sustentada: H7 (precedência temporal). R² fora da
-amostra por distribuidora: DEC 0,43 (contexto) → 0,53 (contexto + infraestrutura, floresta); FEC 0,31 → 0,42. Nenhuma
-afirmação causal.
+H6b (ruralidade ↑ ⇔ DEC ↑). Inconclusivas: H1, H3, H4, H5, H5b e H7 (corrigido na auditoria de homologação: antes saía
+"não sustentada", contra a regra das demais). R² fora da amostra por distribuidora: DEC 0,43–0,53 e FEC 0,31–0,42 conforme
+o modelo; o ganho da infraestrutura, entre modelos do mesmo tipo e nas mesmas partições, é pequeno e incerto (Ridge +0,02;
+floresta +0,05/+0,06). Nenhuma afirmação causal. Auditoria de homologação: HOMOLOGACAO_TECNICA.md.
 
 ## 6. Testes novos
 

@@ -33,7 +33,7 @@ Execução: ~6 min (`.venv-motor`, numpy/scipy/scikit-learn). Rodar duas vezes d
 | H5b | religadores por 100 km ↑ ⇔ DEC ↓ | DEC | −0,55 | −0,03 [−0,15; +0,15] | −0,50 [−0,61; −0,38] | inconclusiva |
 | H6a | densidade ↑ ⇔ DEC ↓ | DEC | −0,70 | −0,35 [−0,46; −0,24] | −0,72 [−0,77; −0,66] | **compatível** |
 | H6b | parcela não urbana ↑ ⇔ DEC ↑ | DEC | +0,68 | +0,26 [+0,11; +0,39] | +0,70 [+0,63; +0,75] | **compatível** |
-| H7 | variação da infraestrutura 2022→2023 ⇔ variação posterior do indicador 2023→2025 | DEC/FEC | | | | não sustentada |
+| H7 | variação da infraestrutura 2022→2023 ⇔ variação posterior do indicador 2023→2025 | DEC/FEC | | | | inconclusiva |
 
 Leitura: ruralidade, densidade e extensão de rede por alimentador mantêm associação depois do contexto e dentro das
 empresas. As associações brutas fortes de seccionamento, religadores e rede por consumidor quase desaparecem depois do
@@ -41,7 +41,12 @@ contexto: elas acompanham o território (redes rurais longas têm mais equipamen
 (religadores instalados onde o DEC já era alto) é plausível e não é separável com estes dados.
 
 **Evolução da infraestrutura (H7 e complementos).** A regra do H7 usa as variações defasadas de quatro razões
-(religadores e telecomando por 100 km, rede e consumidores por alimentador): nenhuma tem IC sem zero. Nas variações
+(religadores e telecomando por 100 km, rede e consumidores por alimentador): nenhuma tem IC sem zero, mas religadores
+por 100 km tem ρ = −0,08 (DEC) e −0,10 (FEC) com IC largo. Até 12/11/2026 o H7 saía "não sustentada"; a auditoria mostrou
+que isso contrariava a regra do H1–H6 (não sustentada só com |ρ| < 0,05 e IC com zero) e confundia ausência de evidência
+com evidência de ausência. Com a mesma regra, o H7 é **inconclusiva** (`veredito_variacao`, com teste). Fora do conjunto
+pré-definido do H7, as variações defasadas de km MT e de consumidores têm IC sem zero; são exploratórias e não mudam o
+veredito (escolher a variável depois de ver o resultado seria pesca de significância). Nas variações
 **contemporâneas** 2022→2025 das contagens, o aumento de pontos telecomandados (DEC ρ = −0,23 [−0,38; −0,08]; FEC −0,24) e
 de religadores (DEC −0,16 [−0,27; −0,01]) acompanha a queda do indicador no mesmo período. Isso é coincidência temporal,
 não precedência: não sustenta efeito.
@@ -55,7 +60,20 @@ não precedência: não sustenta efeito.
 | Contexto + infraestrutura (floresta aleatória) | 0,533 | 0,420 |
 | Referência de contexto (floresta aleatória) | 0,485 | 0,365 |
 
-A infraestrutura cadastrada acrescenta 2–5 pontos de R² ao contexto. Importância por permutação (floresta, DEC): rede MT
+**Comparação equivalente (auditoria de 12/11/2026, `auditoria/R2_PAREADO.json`).** Os quatro modelos usam as mesmas
+cinco partições `GroupKFold` por distribuidora (18–20 distribuidoras por dobra, nenhuma no treino e no teste), o mesmo alvo
+e as mesmas 11.381 linhas; os R² acima foram reproduzidos exatamente. O ganho da infraestrutura só se lê entre modelos
+do mesmo tipo:
+
+| Ganho de R² | DEC [IC 95%] | FEC [IC 95%] | Dobras com ganho |
+|---|---|---|---|
+| Ridge: contexto → + infraestrutura | +0,025 [−0,052; +0,094] | +0,021 [−0,058; +0,092] | 3 de 5 / 2 de 5 |
+| Floresta: contexto → + infraestrutura | +0,048 [+0,003; +0,096] | +0,056 [−0,005; +0,113] | 4 de 5 / 4 de 5 |
+
+IC por reamostragem de distribuidoras sobre as previsões fora da amostra (1.000 réplicas; não inclui a variação do
+reajuste). Leitura: o ganho é **pequeno e incerto**; só o da floresta no DEC tem IC acima de zero, e por pouco. A passagem
+"0,43 → 0,53" que constava do relatório comparava Ridge com floresta e misturava o efeito da infraestrutura com o do tipo
+de modelo (+0,10, dos quais cerca de metade vem da troca de modelo). Importância por permutação (floresta, DEC): rede MT
 trifásica 0,167; densidade 0,099; parcela não urbana 0,077; rede MT por alimentador 0,016. Importância mede uso pelo
 modelo, não efeito físico; variáveis correlacionadas dividem a importância.
 

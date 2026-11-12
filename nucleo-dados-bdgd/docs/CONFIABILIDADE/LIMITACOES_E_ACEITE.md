@@ -8,8 +8,13 @@
 * A BDGD é a fotografia de 31/12; o DEC/FEC é apurado ao longo do ano. Mudanças no meio do ano não aparecem.
 * Polígonos só de 31/12/2025: conjuntos extintos antes disso ficam sem mapa (aparecem na lista com aviso). Os Parquets
   2022–2024 foram convertidos sem geometria.
-* A reconstrução por DIC/FIC usa critério experimental de 5% / 0,05; 82 combinações DIST × ano × indicador (34 empresas)
-  ficam abaixo de 80% reconciliados (detalhe em FORMULAS_E_RECONCILIACAO.md). O valor oficial nunca é substituído.
+* A reconstrução por DIC/FIC usa critério experimental de 5% / 0,05; 83 combinações DIST × ano × indicador (33 empresas)
+  ficam abaixo de 80% reconciliados, 49 delas de empresas com um só conjunto (detalhe em FORMULAS_E_RECONCILIACAO.md). O valor oficial nunca é substituído.
+* Apuração parcial: a ANEEL não publicou o FEC de jun/2025 da Elektro (130 conjuntos); o FEC anual soma 11 meses e fica fora
+  de limite, quebras, posições, rankings e reconstrução (alerta `apuracao_parcial`). O mesmo vale para os conjunto-anos com
+  DEC de menos de 12 meses.
+* Densidade (UC/km²) usa a área do polígono de 2025 em todos os anos; o mapa de 2022–2024 desenha esses limites e avisa.
+* Pares semelhantes tratam rede MT por consumidor como contexto; o estudo estatístico a trata como infraestrutura (H1).
 * Consumidores somados por conjunto diferem levemente da união do portal (EPB +22, ESE +10, EAC −4 em 2025).
 * A proveniência ANEEL gravada antes de 12/11/2026 registra a identidade DEC = soma de quatro componentes; a correta é
   DEC = DECIP + DECIND (corrigido no código; vale na próxima preparação). Nenhum valor publicado dependia dela.
@@ -17,7 +22,9 @@
 **Estatística**
 * Observacional: associação não é causa; causalidade reversa é plausível (religadores onde o DEC já era alto).
 * Clima, vegetação, descargas, idade de ativos, manutenção e automação efetiva não estão nos dados. O R² fora da amostra
-  é 0,43–0,53 (DEC) e 0,31–0,42 (FEC).
+  é 0,43–0,53 (DEC) e 0,31–0,42 (FEC), conforme o modelo; o ganho atribuível à infraestrutura, entre modelos do mesmo tipo
+  e nas mesmas partições, é pequeno e incerto (+0,02 a +0,06; IC 95% contém zero, exceto floresta/DEC). Ver MODELOS_ESTATISTICOS.md.
+* Os 8 vereditos não têm correção para comparações múltiplas; o IC de 95% vale por hipótese.
 * Quatro anos não bastam para precedência temporal robusta; variações sofrem com mudanças cadastrais.
 
 **Interface**

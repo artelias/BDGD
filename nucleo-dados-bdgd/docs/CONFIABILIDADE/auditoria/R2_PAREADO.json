@@ -1,0 +1,15 @@
+{
+ "gerado_em": "2026-11-12",
+ "script": "auditoria/homologacao/a3_r2.py (saida bruta em a3_r2_saida.txt)",
+ "particoes": {"tipo": "GroupKFold(5) por distribuidora", "identicas_entre_modelos": true, "distribuidoras_por_dobra": [20, 20, 20, 18, 20], "sobreposicao_treino_teste": false, "n": 11381},
+ "r2_reproduzido_igual_ao_publicado": true,
+ "dec": {"ridge_contexto": 0.4312, "ridge_completo": 0.4561, "floresta_contexto": 0.4848, "floresta_completo": 0.5327,
+         "ganho_ridge": {"valor": 0.0249, "ic95": [-0.0516, 0.0938], "por_dobra": [-0.095, 0.056, 0.064, -0.007, 0.099]},
+         "ganho_floresta": {"valor": 0.0479, "ic95": [0.0029, 0.0964], "por_dobra": [-0.021, 0.063, 0.084, 0.015, 0.115]},
+         "comparacao_nao_equivalente_ridge_ctx_x_floresta_completo": 0.1014},
+ "fec": {"ridge_contexto": 0.3095, "ridge_completo": 0.3302, "floresta_contexto": 0.3647, "floresta_completo": 0.4202,
+         "ganho_ridge": {"valor": 0.0207, "ic95": [-0.0578, 0.0918], "por_dobra": [-0.094, 0.115, 0.095, -0.005, -0.047]},
+         "ganho_floresta": {"valor": 0.0555, "ic95": [-0.005, 0.1129], "por_dobra": [-0.005, 0.09, 0.094, 0.035, 0.052]},
+         "comparacao_nao_equivalente_ridge_ctx_x_floresta_completo": 0.1107},
+ "ic": "reamostragem de distribuidoras (1.000) sobre as previsoes fora da amostra fixas; nao inclui a variacao do reajuste"
+}

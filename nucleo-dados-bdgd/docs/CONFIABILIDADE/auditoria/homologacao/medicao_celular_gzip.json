@@ -1,0 +1,118 @@
+{
+ "base": "http://127.0.0.1:3233",
+ "medido_em": "2026-11-12T10:03:52.635Z",
+ "resultados": [
+  {
+   "perfil": "desktop",
+   "caso": "Brasil",
+   "ms": 1636,
+   "kB_dados_modulo": 16,
+   "kB_total": 889,
+   "erros": []
+  },
+  {
+   "perfil": "desktop",
+   "caso": "EPB 6600 (75 conjuntos)",
+   "ms": 2467,
+   "kB_dados_modulo": 686,
+   "kB_total": 1801,
+   "erros": []
+  },
+  {
+   "perfil": "desktop",
+   "caso": "Energisa AC 26 (15 conjuntos)",
+   "ms": 2349,
+   "kB_dados_modulo": 568,
+   "kB_total": 1683,
+   "erros": []
+  },
+  {
+   "perfil": "desktop",
+   "caso": "Maior distribuidora 4950",
+   "ms": 2652,
+   "kB_dados_modulo": 1474,
+   "kB_total": 2590,
+   "erros": []
+  },
+  {
+   "perfil": "desktop",
+   "caso": "Ficha EPB Mataraca",
+   "ms": 1556,
+   "kB_dados_modulo": 686,
+   "kB_total": 2075,
+   "erros": []
+  },
+  {
+   "perfil": "desktop",
+   "caso": "Benchmarking EPB",
+   "ms": 1049,
+   "kB_dados_modulo": 965,
+   "kB_total": 1843,
+   "erros": []
+  },
+  {
+   "perfil": "desktop",
+   "caso": "Fatores",
+   "ms": 763,
+   "kB_dados_modulo": 197,
+   "kB_total": 805,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "Brasil",
+   "ms": 2620,
+   "kB_dados_modulo": 16,
+   "kB_total": 384,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "EPB 6600 (75 conjuntos)",
+   "ms": 7124,
+   "kB_dados_modulo": 686,
+   "kB_total": 1701,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "Energisa AC 26 (15 conjuntos)",
+   "ms": 6579,
+   "kB_dados_modulo": 568,
+   "kB_total": 1583,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "Maior distribuidora 4950",
+   "ms": 7893,
+   "kB_dados_modulo": 1474,
+   "kB_total": 2490,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "Ficha EPB Mataraca",
+   "ms": 6264,
+   "kB_dados_modulo": 686,
+   "kB_total": 2087,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "Benchmarking EPB",
+   "ms": 4754,
+   "kB_dados_modulo": 965,
+   "kB_total": 1477,
+   "erros": []
+  },
+  {
+   "perfil": "celular 4G + CPU 4×",
+   "caso": "Fatores",
+   "ms": 3778,
+   "kB_dados_modulo": 197,
+   "kB_total": 705,
+   "erros": []
+  }
+ ]
+}

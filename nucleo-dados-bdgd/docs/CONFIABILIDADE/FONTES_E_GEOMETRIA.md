@@ -14,6 +14,9 @@
   pela ANEEL mas não compõem o indicador apurado. A proveniência gravada antes desta data registrava a soma com as
   externas (válida em 95,8% dos casos, quando a externa é zero); `aneel.py` foi corrigido para gravar a identidade certa
   na próxima preparação.
+* Lacuna da fonte (auditoria de 12/11/2026): a ANEEL não publicou o **FEC de junho de 2025 da Elektro** (130 conjuntos; o
+  DEC do mês existe). Por isso há 150.163 conjunto-meses com DEC e 150.033 com FEC. O FEC anual desses conjuntos soma 11
+  meses, recebe o alerta `apuracao_parcial` e fica fora das comparações (limite, quebras, posições, rankings, reconstrução).
 * O arquivo de atributos físico-elétricos dos conjuntos da ANEEL só vai até 2014: não é usado.
 
 ## BDGD (estado `DERIVADO_EXPLORATORIO`)

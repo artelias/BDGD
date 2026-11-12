@@ -14,6 +14,7 @@ Estado: **pronto para homologação** (não integrado à RC `rc/1.0-20261101`, s
 | [OPERACAO.md](OPERACAO.md) | comandos de atualização, nova distribuidora, novo ano |
 | [LIMITACOES_E_ACEITE.md](LIMITACOES_E_ACEITE.md) | limitações conhecidas e critérios de aceite da homologação |
 | [RELATORIO_FINAL.md](RELATORIO_FINAL.md) | relatório da retomada: P0, correções, evidências, pendências |
+| [HOMOLOGACAO_TECNICA.md](HOMOLOGACAO_TECNICA.md) | auditoria final de homologação: matriz, defeitos corrigidos, CI, recomendação |
 | `auditoria/` | saída de `python -m confiabilidade.auditoria` (JSON + CSV por DIST × ano × indicador) |
 
 Regra que atravessa tudo: **associação não é causa**. O módulo descreve diferenças e associações; nenhuma tela ou
