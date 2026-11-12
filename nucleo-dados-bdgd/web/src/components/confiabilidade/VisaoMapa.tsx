@@ -23,6 +23,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const { resolved: tema } = useTheme();
   const mapa = useRef<MapaHandle>(null);
   const [hover, setHover] = useState<HoverMapa | null>(null);
+  const [mapaPronto, setMapaPronto] = useState(false);
   const [ordem, setOrdem] = useState<Ordem>({ col: "valor", desc: true });
   const [geoCarregada, setGeo] = useState<{ dist: number; fc: GeoJSON.FeatureCollection | null; erro?: string } | null>(null);
   const I = NOME_IND[e.ind], ano = String(e.ano);
@@ -49,7 +50,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     if (geo?.dist !== distSel.dist) return;
     const b = (geo.fc && bboxDe(geo.fc)) || distSel.bbox;
     if (b) mapa.current?.enquadrar(b);
-  }, [distSel, geo]);
+  }, [distSel, geo, mapaPronto]);
 
   // valor exibido de um conjunto, conforme indicador, período e modo de cor
   const valorDe = (b: BlocoAno | undefined) => (!b ? null : mensal ? b.m[e.ind][e.mes! - 1] : valorInd(b, e.ind));
@@ -146,15 +147,15 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
         {distSel && <Picker label="Conjunto" compact value={conjSel ? String(conjSel.c) : "nenhum"} width={240} testId="conf-conj" searchPlaceholder="Buscar conjunto" onChange={(v) => e.set({ conj: v === "nenhum" ? null : v })}
           options={[{ value: "nenhum", label: "Todos os conjuntos" }, ...[...conjuntos].sort((a, b) => a.n.localeCompare(b.n, "pt-BR")).map((c) => ({ value: String(c.c), label: c.n, meta: String(c.c) }))]} />}
         <Segmented label="Indicador" value={e.ind} onChange={(v) => e.set({ ind: v === "dec" ? null : v })} options={[{ value: "dec", label: "DEC", title: "Duração equivalente de interrupção por consumidor (horas)" }, { value: "fec", label: "FEC", title: "Frequência equivalente de interrupção por consumidor (interrupções)" }]} />
-        <Picker label="Ano" compact value={ano} width={110} testId="conf-ano" onChange={(v) => e.set({ ano: v })} options={indice.anos.map((a) => ({ value: String(a), label: String(a) }))} />
-        <Picker label="Período" compact value={e.mes === null ? "ano" : String(e.mes)} width={150} testId="conf-periodo" onChange={(v) => e.set({ mes: v === "ano" ? null : v })}
+        <Picker label="Ano" compact value={ano} width={118} testId="conf-ano" onChange={(v) => e.set({ ano: v })} options={indice.anos.map((a) => ({ value: String(a), label: String(a) }))} />
+        <Picker label="Período" compact value={e.mes === null ? "ano" : String(e.mes)} width={176} testId="conf-periodo" onChange={(v) => e.set({ mes: v === "ano" ? null : v })}
           options={[{ value: "ano", label: "Ano inteiro" }, ...MESES.map((nome, i) => ({ value: String(i + 1), label: `${nome}/${ano}` }))]} />
         <Segmented label="Cor do mapa" value={modo === "regulatorio" ? "limite" : "valor"} onChange={(v) => e.set({ cor: v === "limite" ? "limite" : null })}
           options={[{ value: "valor", label: "Valor" }, { value: "limite", label: "% do limite", disabled: mensal, title: mensal ? "Os limites regulatórios são anuais; escolha o ano inteiro" : "Apurado dividido pelo limite regulatório" }]} />
         {distSel && <Picker label="Situação" compact value={e.sit} width={190} testId="conf-sit" onChange={(v) => e.set({ sit: v === "todos" ? null : v })}
           options={[{ value: "todos", label: "Todas" }, { value: "acima", label: `Acima do limite de ${I}` }, { value: "dentro", label: `Dentro do limite de ${I}` }]} />}
-        {distSel && modo === "absoluto" && <Picker label="Escala de cor" compact value={e.ref} width={190} testId="conf-ref" onChange={(v) => e.set({ ref: v === "dist" ? "dist" : null })}
-          options={[{ value: "brasil", label: "Conjuntos do Brasil", disabled: mensal }, { value: "dist", label: "Só desta distribuidora" }]} />}
+        {distSel && modo === "absoluto" && <Picker label="Escala" compact value={e.ref} width={236} testId="conf-ref" onChange={(v) => e.set({ ref: v === "dist" ? "dist" : null })}
+          options={[{ value: "brasil", label: "Conjuntos do Brasil", disabled: mensal }, { value: "dist", label: "Só desta empresa" }]} />}
       </div>
 
       <div className={s.palco}>
@@ -162,7 +163,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
           <MapaConfiabilidade ref={mapa} coresDist={coresDist} corNd={COR_ND[tema]} dist={distSel?.dist ?? null}
             conjuntos={distSel && geo?.dist === distSel.dist ? geo.fc : null} coresConj={coresConj} selecionado={conjSel?.c ?? null}
             ladoA={e.a && e.a.dist === distSel?.dist ? e.a.conj : null} ladoB={e.b && e.b.dist === distSel?.dist ? e.b.conj : null} esmaecer={esmaecer}
-            onDist={(d) => e.set({ dist: d, conj: null }, true)} onConj={(c) => e.set({ conj: c })} onHover={setHover}
+            onDist={(d) => e.set({ dist: d, conj: null }, true)} onConj={(c) => e.set({ conj: c })} onHover={setHover} onPronto={() => setMapaPronto(true)}
             rotulo={`Mapa de ${I} ${ano}. ${distSel ? `Conjuntos elétricos de ${distSel.nome}` : "Distribuidoras do Brasil"}. Use a lista ao lado para selecionar pelo teclado.`} />
           {hover && dica && <div className={`${m.hoverTip} ${s.dica}`} style={{ left: hover.x, top: hover.y }} role="status">{dica}</div>}
           <div className={s.legenda} data-testid="conf-legenda">

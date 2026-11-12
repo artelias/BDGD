@@ -27,7 +27,7 @@ export const MapaConfiabilidade = forwardRef<MapaHandle, {
   coresDist: Map<number, string>; corNd: string;
   dist: number | null; conjuntos: GeoJSON.FeatureCollection | null; coresConj: Map<number, string>;
   selecionado: number | null; ladoA: number | null; ladoB: number | null; esmaecer: Set<number> | null;
-  onDist: (d: number) => void; onConj: (c: number) => void; onHover: (h: HoverMapa | null) => void;
+  onDist: (d: number) => void; onConj: (c: number) => void; onHover: (h: HoverMapa | null) => void; onPronto?: () => void;
   rotulo: string;
 }>(function MapaConfiabilidade(p, ref) {
   const caixa = useRef<HTMLDivElement>(null);
@@ -110,7 +110,7 @@ export const MapaConfiabilidade = forwardRef<MapaHandle, {
           const fd = mapaAtual.queryRenderedFeatures(e.point, { layers: ["arat-fill"] })[0];
           if (fd && Number(fd.properties?.d) !== cb.current.dist) cb.current.onDist(Number(fd.properties?.d));
         });
-        mapaAtual.on("load", () => { if (vivo) setPronto(true); });
+        mapaAtual.on("load", () => { if (vivo) { setPronto(true); cb.current.onPronto?.(); } });
       } catch (e) { if (vivo) setFalha((e as Error).message); }
     })();
     return () => { vivo = false; mm?.remove(); mapa.current = null; };
