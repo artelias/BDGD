@@ -28,6 +28,32 @@ COMP = (('ip', 'IP'), ('ind', 'IND'), ('xp', 'XP'), ('xn', 'XN'))
 EXPURGOS = ('INC', 'INE', 'INO', 'IPC', 'XNC', 'XPC')
 
 
+# chave-base de infra.py -> camada da BDGD que a produz. Se a camada foi lida no DIST-ano (não está em `ausencias`)
+# e o conjunto não tem registros dela, o valor é ZERO observado; se a camada está ausente, continua N/D.
+ZERO_SE_LIDA = {
+    'uc_bt': 'UCBT', 'uc_bt_rural': 'UCBT', 'uc_mt': 'UCMT', 'uc_mt_rural': 'UCMT', 'uc_at': 'UCAT',
+    'km_mt': 'SSDMT', 'km_mt_tri': 'SSDMT', 'km_mt_rural': 'SSDMT', 'alim': 'SSDMT', 'alim_pred': 'SSDMT', 'km_bt': 'SSDBT',
+    'trafos': 'UNTRMT', 'trafo_un': 'UNTRMT', 'trafo_pot_kva': 'UNTRMT', 'trafo_un_mrt': 'UNTRMT', 'trafo_un_rural': 'UNTRMT',
+    'sec': 'UNSEMT', 'sec_fusivel': 'UNSEMT', 'sec_religador': 'UNSEMT', 'sec_seccionalizador': 'UNSEMT', 'sec_disjuntor': 'UNSEMT',
+    'sec_manobra': 'UNSEMT', 'sec_na': 'UNSEMT', 'eq160': 'EQSE', 'eq210': 'EQSE', 'eq345': 'EQSE',
+    'reg_un': 'UNREMT', 'reg_eq': 'EQRE', 'ug': 'UGBT',
+}
+ZERO_ALIM = {'uc_bt': 'UCBT', 'uc_mt': 'UCMT', 'trafos': 'UNTRMT', 'sec': 'UNSEMT', 'religadores': 'UNSEMT', 'km_bt': 'SSDBT'}
+
+
+def camadas_ausentes(doc):
+    return {x.split(':')[0].strip() for x in doc['auditoria'].get('ausencias', [])}
+
+
+def completar_zeros(metricas, ausentes, mapa=ZERO_SE_LIDA):
+    """Preenche com 0 as chaves sem registro no conjunto quando a camada de origem foi lida; mantém None se ela faltou."""
+    out = dict(metricas)
+    for k, ent in mapa.items():
+        if out.get(k) is None and ent not in ausentes:
+            out[k] = 0
+    return out
+
+
 def r2(v, n=2):
     return None if v is None or not K.finito(v) else round(v, n)
 
@@ -182,7 +208,8 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
                     bloco['infra_motivo'] = ('distribuidora sem BDGD utilizável neste ano' if doc is None else 'conjunto sem registros na BDGD deste ano')
                     bloco['rec'] = None
                 else:
-                    met = derivar(bruto['metricas'], area)
+                    ausentes = camadas_ausentes(doc)
+                    met = derivar(completar_zeros(bruto['metricas'], ausentes), area)
                     bloco['infra'] = met
                     bloco['infra_estado'] = K.DERIVADO_EXPLORATORIO
                     bloco['rec'] = reconstrucao(bruto['dic_fic'], dec_m, fec_m, nuc_m, bloco['dec'], bloco['fec'], met['uc'])
@@ -195,7 +222,8 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
                                 alertas.append('variacao_cadastral_' + k)
                     ant[c] = (a, met)
                     resumo[a]['com_infra'] += 1
-                    ent['al'] = dict(ano=a, lista=[{k: (round(v, 3) if isinstance(v, float) else v) for k, v in al.items()} for al in bruto['alimentadores'] if al.get('km_mt') or al.get('uc_bt')])
+                    ent['al'] = dict(ano=a, lista=[{k: (round(v, 3) if isinstance(v, float) else v) for k, v in completar_zeros(al, ausentes, {k: e for k, e in ZERO_ALIM.items() if not (al.get('uc_suprimido') and k.startswith('uc_'))}).items()}
+                                                   for al in bruto['alimentadores'] if al.get('km_mt') or al.get('uc_bt')])
                 bloco['alertas'] = alertas
                 ent['a'][str(a)] = bloco
                 rs = resumo[a]

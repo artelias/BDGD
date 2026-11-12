@@ -1,0 +1,438 @@
+{
+ "A1_manifesto": {
+  "arquivos": 203,
+  "divergentes": [],
+  "bytes": 50314510
+ },
+ "A2_chaves": {
+  "combinacoes": 12502,
+  "duplicadas": 0,
+  "conjunto_em_mais_de_uma_dist": [],
+  "por_ano": {
+   "2022": 3110,
+   "2023": 3116,
+   "2024": 3129,
+   "2025": 3147
+  }
+ },
+ "A3_contrato": {
+  "violacoes": {},
+  "demonstrativo": false
+ },
+ "A4_piloto_contra_portal_2025": {
+  "6600": {
+   "trafos": {
+    "conjuntos": 74625.0,
+    "portal": 74625,
+    "igual": true
+   },
+   "km_mt": {
+    "conjuntos": 47063.629,
+    "portal": 47063.631135,
+    "igual": true
+   },
+   "km_bt": {
+    "conjuntos": 39063.368,
+    "portal": 39063.369318,
+    "igual": true
+   },
+   "uc": {
+    "conjuntos": 1902147.0,
+    "portal": 1902125,
+    "igual": false
+   }
+  },
+  "6587": {
+   "trafos": {
+    "conjuntos": 53403.0,
+    "portal": 53403,
+    "igual": true
+   },
+   "km_mt": {
+    "conjuntos": 20020.912,
+    "portal": 20020.912045,
+    "igual": true
+   },
+   "km_bt": {
+    "conjuntos": 8922.943,
+    "portal": 8922.942936,
+    "igual": true
+   },
+   "uc": {
+    "conjuntos": 908189.0,
+    "portal": 908179,
+    "igual": false
+   }
+  },
+  "26": {
+   "trafos": {
+    "conjuntos": 48300.0,
+    "portal": 48300,
+    "igual": true
+   },
+   "km_mt": {
+    "conjuntos": 20705.206,
+    "portal": 20705.206181,
+    "igual": true
+   },
+   "km_bt": {
+    "conjuntos": 3582.399,
+    "portal": 3582.397628,
+    "igual": true
+   },
+   "uc": {
+    "conjuntos": 295857.0,
+    "portal": 295861,
+    "igual": false
+   }
+  }
+ },
+ "A4_nota": "Soma dos conjuntos com continuidade apurada em 2025 contra o total da distribuidora no portal. Diferenças vêm de registros sem conjunto válido ou de conjuntos sem apuração ANEEL (ficam fora do módulo); a auditoria de cada DIST-ano está em fontes_bdgd.",
+ "A5_reconciliacao": {
+  "criterio": "|reconstruído − oficial| ≤ 0.05 ou ≤ 5% do oficial (experimental, não homologação)",
+  "pares": 24340,
+  "dec": {
+   "ok": 11454,
+   "total": 12170
+  },
+  "fec": {
+   "ok": 11336,
+   "total": 12170
+  },
+  "dist_ano_indicador_abaixo_de_80pct": [
+   {
+    "dist": 31,
+    "distribuidora": "CEA Equatorial",
+    "ano": "2022",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0994
+   },
+   {
+    "dist": 31,
+    "distribuidora": "CEA Equatorial",
+    "ano": "2022",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.1022
+   },
+   {
+    "dist": 83,
+    "distribuidora": "Forcel",
+    "ano": "2025",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0815
+   },
+   {
+    "dist": 86,
+    "distribuidora": "Eflul",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.4251
+   },
+   {
+    "dist": 86,
+    "distribuidora": "Eflul",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.3822
+   },
+   {
+    "dist": 86,
+    "distribuidora": "Eflul",
+    "ano": "2024",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0567
+   },
+   {
+    "dist": 88,
+    "distribuidora": "Joao Cesa",
+    "ano": "2022",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.1022
+   },
+   {
+    "dist": 88,
+    "distribuidora": "Joao Cesa",
+    "ano": "2024",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.2872
+   },
+   {
+    "dist": 88,
+    "distribuidora": "Joao Cesa",
+    "ano": "2024",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.1915
+   },
+   {
+    "dist": 527,
+    "distribuidora": "Certhil",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.4874
+   },
+   {
+    "dist": 527,
+    "distribuidora": "Certhil",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.3175
+   },
+   {
+    "dist": 3627,
+    "distribuidora": "Cooperluz",
+    "ano": "2024",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0575
+   },
+   {
+    "dist": 3627,
+    "distribuidora": "Cooperluz",
+    "ano": "2024",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0937
+   },
+   {
+    "dist": 5345,
+    "distribuidora": "Coopernorte",
+    "ano": "2022",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 1.0
+   },
+   {
+    "dist": 5345,
+    "distribuidora": "Coopernorte",
+    "ano": "2022",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 1.0
+   },
+   {
+    "dist": 5345,
+    "distribuidora": "Coopernorte",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.1037
+   },
+   {
+    "dist": 5345,
+    "distribuidora": "Coopernorte",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.1846
+   },
+   {
+    "dist": 5346,
+    "distribuidora": "Coopersul",
+    "ano": "2022",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.1185
+   },
+   {
+    "dist": 5346,
+    "distribuidora": "Coopersul",
+    "ano": "2022",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0696
+   },
+   {
+    "dist": 5346,
+    "distribuidora": "Coopersul",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0724
+   },
+   {
+    "dist": 5346,
+    "distribuidora": "Coopersul",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.1578
+   },
+   {
+    "dist": 5346,
+    "distribuidora": "Coopersul",
+    "ano": "2024",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0606
+   },
+   {
+    "dist": 5352,
+    "distribuidora": "Cerej",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.1271
+   },
+   {
+    "dist": 5352,
+    "distribuidora": "Cerej",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0844
+   },
+   {
+    "dist": 5366,
+    "distribuidora": "Cedri",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0516
+   },
+   {
+    "dist": 5370,
+    "distribuidora": "Coopera",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0631
+   },
+   {
+    "dist": 5370,
+    "distribuidora": "Coopera",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0561
+   },
+   {
+    "dist": 5370,
+    "distribuidora": "Coopera",
+    "ano": "2025",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.9926
+   },
+   {
+    "dist": 5370,
+    "distribuidora": "Coopera",
+    "ano": "2025",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.9927
+   },
+   {
+    "dist": 5374,
+    "distribuidora": "Cooperzem",
+    "ano": "2022",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 1.0
+   },
+   {
+    "dist": 5374,
+    "distribuidora": "Cooperzem",
+    "ano": "2022",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 1.0
+   },
+   {
+    "dist": 5374,
+    "distribuidora": "Cooperzem",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0913
+   },
+   {
+    "dist": 5374,
+    "distribuidora": "Cooperzem",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.1484
+   },
+   {
+    "dist": 5374,
+    "distribuidora": "Cooperzem",
+    "ano": "2024",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0519
+   },
+   {
+    "dist": 5381,
+    "distribuidora": "Cedrap",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0687
+   },
+   {
+    "dist": 5381,
+    "distribuidora": "Cedrap",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0687
+   },
+   {
+    "dist": 5385,
+    "distribuidora": "Cerrp",
+    "ano": "2025",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0552
+   },
+   {
+    "dist": 6898,
+    "distribuidora": "Cerbranorte",
+    "ano": "2023",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.0541
+   },
+   {
+    "dist": 6898,
+    "distribuidora": "Cerbranorte",
+    "ano": "2023",
+    "indicador": "FEC",
+    "pct": 0.0,
+    "mediana": 0.0788
+   },
+   {
+    "dist": 6898,
+    "distribuidora": "Cerbranorte",
+    "ano": "2024",
+    "indicador": "DEC",
+    "pct": 0.0,
+    "mediana": 0.6816
+   }
+  ],
+  "n_dist_ano_indicador_abaixo_de_80pct": 82
+ },
+ "A6_geometria": {
+  "conjuntos_2025": 3147,
+  "conjuntos_2025_com_poligono": 3147,
+  "poligonos_publicados": 3147,
+  "poligonos_de_conjunto_sem_apuracao_2025": 0,
+  "fonte": {
+   "nome": "BDGD 2025 — camada CONJ (polígonos dos conjuntos)",
+   "tipo": "POLIGONO_OFICIAL_SIMPLIFICADO",
+   "data_base": "2025-12-31"
+  }
+ },
+ "falhas": []
+}

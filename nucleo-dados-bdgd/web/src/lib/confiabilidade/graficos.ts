@@ -11,11 +11,14 @@ const eixoCat = (t: ChartTokens, data: string[]) => ({ type: "category" as const
 const eixoVal = (t: ChartTokens, nome?: string) => ({ type: "value" as const, name: nome, nameTextStyle: { color: t.text3, fontSize: 11, align: "left" as const }, splitLine: { lineStyle: { color: t.hairline, opacity: 0.6 } }, axisLabel: { color: t.text3, fontSize: 11, formatter: (v: number) => v.toLocaleString("pt-BR") } });
 const br = (v: unknown, d = 2) => (typeof v === "number" ? v.toLocaleString("pt-BR", { maximumFractionDigits: d }) : "N/D");
 const legendaTopo = (t: ChartTokens) => ({ top: 0, left: 0, itemWidth: 14, itemHeight: 8, textStyle: { color: t.text2, fontSize: 11 } });
+/** legenda embaixo: o nome do eixo (unidade) fica livre no topo */
+const legendaBaixo = (t: ChartTokens) => ({ bottom: 0, left: 0, itemWidth: 14, itemHeight: 8, textStyle: { color: t.text2, fontSize: 11 } });
+const gradeComLegenda = (t: ChartTokens) => ({ ...base(t).grid, bottom: 30 });
 
 /** Acumulado no ano contra o limite anual (mesma unidade, um eixo). */
 export function acumuladoNoAno(t: ChartTokens, p: { meses: string[]; atual: Array<number | null>; anterior: Array<number | null> | null; limite: number | null; rotAtual: string; rotAnterior: string; unidade: string }): EChartsCoreOption {
   return {
-    ...base(t), legend: legendaTopo(t), xAxis: eixoCat(t, p.meses), yAxis: eixoVal(t, p.unidade),
+    ...base(t), grid: gradeComLegenda(t), legend: legendaBaixo(t), xAxis: eixoCat(t, p.meses), yAxis: eixoVal(t, p.unidade),
     tooltip: { ...base(t).tooltip, valueFormatter: (v: unknown) => br(v) },
     series: [
       { name: p.rotAtual, type: "line", data: p.atual, symbolSize: 6, lineStyle: { width: 2, color: t.accent }, itemStyle: { color: t.accent }, connectNulls: false,
@@ -28,7 +31,7 @@ export function acumuladoNoAno(t: ChartTokens, p: { meses: string[]; atual: Arra
 /** Apurado por ano e o limite de cada ano (barras e marcadores na mesma escala). */
 export function anualContraLimite(t: ChartTokens, p: { anos: string[]; obs: Array<number | null>; lim: Array<number | null>; unidade: string; nome: string }): EChartsCoreOption {
   return {
-    ...base(t), legend: legendaTopo(t), xAxis: eixoCat(t, p.anos), yAxis: eixoVal(t, p.unidade),
+    ...base(t), grid: gradeComLegenda(t), legend: legendaBaixo(t), xAxis: eixoCat(t, p.anos), yAxis: eixoVal(t, p.unidade),
     tooltip: { ...base(t).tooltip, valueFormatter: (v: unknown) => br(v) },
     series: [
       { name: `${p.nome} apurado`, type: "bar", data: p.obs, barMaxWidth: 34, itemStyle: { color: t.accent, borderRadius: [4, 4, 0, 0] }, label: { show: true, position: "top", color: t.text2, fontSize: 11, formatter: (x: { value: unknown }) => br(x.value) } },
@@ -48,7 +51,7 @@ export function barrasSimples(t: ChartTokens, p: { rotulos: string[]; valores: n
 /** Séries anuais sobrepostas (A × B ou conjunto × referência), mesma unidade. */
 export function linhasAnuais(t: ChartTokens, p: { anos: string[]; series: Array<{ nome: string; dados: Array<number | null>; cor: string; tracejada?: boolean }>; unidade: string }): EChartsCoreOption {
   return {
-    ...base(t), legend: legendaTopo(t), xAxis: eixoCat(t, p.anos), yAxis: eixoVal(t, p.unidade), tooltip: { ...base(t).tooltip, valueFormatter: (v: unknown) => br(v) },
+    ...base(t), grid: gradeComLegenda(t), legend: legendaBaixo(t), xAxis: eixoCat(t, p.anos), yAxis: eixoVal(t, p.unidade), tooltip: { ...base(t).tooltip, valueFormatter: (v: unknown) => br(v) },
     series: p.series.map((s) => ({ name: s.nome, type: "line", data: s.dados, symbolSize: 7, connectNulls: false, lineStyle: { width: 2, color: s.cor, type: s.tracejada ? "dashed" : "solid" }, itemStyle: { color: s.cor } })),
   };
 }
@@ -58,7 +61,7 @@ export type Ponto = [number, number, string];
 export function dispersao(t: ChartTokens, p: { fundo: Ponto[]; destaque: Ponto[]; marcados: Array<{ ponto: Ponto; cor: string }>; nomeX: string; nomeY: string; logX: boolean; rotFundo: string; rotDestaque: string }): EChartsCoreOption {
   const comum = { name: p.nomeX, nameLocation: "middle" as const, nameGap: 26, nameTextStyle: { color: t.text3, fontSize: 11 }, splitLine: { lineStyle: { color: t.hairline, opacity: 0.5 } }, axisLabel: { color: t.text3, fontSize: 11, formatter: (v: number) => v.toLocaleString("pt-BR") } };
   return {
-    textStyle: { fontFamily: t.font, color: t.text2 }, grid: { left: 8, right: 18, top: 30, bottom: 30, containLabel: true }, legend: { ...legendaTopo(t), itemWidth: 10, itemHeight: 10 },
+    textStyle: { fontFamily: t.font, color: t.text2 }, grid: { left: 8, right: 18, top: 48, bottom: 30, containLabel: true }, legend: { ...legendaTopo(t), itemWidth: 10, itemHeight: 10 },
     tooltip: { trigger: "item", backgroundColor: t.surface, borderColor: t.hairline, textStyle: { color: t.text, fontSize: 12 }, confine: true,
       formatter: (x: { value: Ponto }) => `<b>${x.value[2]}</b><br/>${p.nomeX}: ${br(x.value[0])}<br/>${p.nomeY}: ${br(x.value[1])}` },
     xAxis: p.logX ? { type: "log", ...comum } : { type: "value", ...comum }, yAxis: eixoVal(t, p.nomeY),

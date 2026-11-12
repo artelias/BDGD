@@ -59,7 +59,7 @@ export const MapaConfiabilidade = forwardRef<MapaHandle, {
         mm = new gl.Map({
           container: caixa.current, bounds: BR, fitBoundsOptions: { padding: 28 },
           attributionControl: { compact: true, customAttribution: "Conjuntos e ARAT: BDGD 2025 / ANEEL · DEC e FEC: ANEEL · Base: Natural Earth" },
-          dragRotate: false, pitchWithRotate: false, touchPitch: false, maxZoom: 13, minZoom: 2.2,
+          dragRotate: false, pitchWithRotate: false, touchPitch: false, maxZoom: 13, minZoom: 2.2, cooperativeGestures: true,
           style: {
             version: 8,
             sources: {

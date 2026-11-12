@@ -196,7 +196,7 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
               <table className={s.tabela} data-testid="conf-alimentadores">
                 <thead><tr><th scope="col">Alimentador</th><th scope="col">km MT</th><th scope="col">Consumidores</th><th scope="col">Trafos</th><th scope="col">Seccion.</th><th scope="col">Relig.</th><th scope="col">Telecom.</th></tr></thead>
                 <tbody>{al.map((a) => {
-                  const uc = a.uc_suprimido ? null : (a.uc_bt ?? 0) + (a.uc_mt ?? 0);
+                  const uc = a.uc_suprimido || (a.uc_bt === null && a.uc_mt === null) ? null : (a.uc_bt ?? 0) + (a.uc_mt ?? 0);
                   return (
                     <tr key={a.ctmt}>
                       <td><span className={s.nomeConj}>{a.nome || a.ctmt}</span><span className={s.sub}>{a.sub_nome ?? "subestação N/D"}{a.predominante ? "" : " · predominante em outro conjunto"}</span></td>

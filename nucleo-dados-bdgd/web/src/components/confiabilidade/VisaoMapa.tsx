@@ -52,6 +52,13 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     if (b) mapa.current?.enquadrar(b);
   }, [distSel, geo, mapaPronto]);
 
+  // conjunto selecionado: enquadra o polígono dele (sem polígono, mantém a distribuidora)
+  useEffect(() => {
+    if (!mapaPronto || !geo?.fc || e.conj === null) return;
+    const b = bboxDe(geo.fc, (f) => Number(f.properties?.c) === e.conj);
+    if (b) mapa.current?.enquadrar(b);
+  }, [e.conj, geo, mapaPronto]);
+
   // valor exibido de um conjunto, conforme indicador, período e modo de cor
   const valorDe = (b: BlocoAno | undefined) => (!b ? null : mensal ? b.m[e.ind][e.mes! - 1] : valorInd(b, e.ind));
   const medidaDe = (b: BlocoAno | undefined) => (modo === "regulatorio" ? razaoLimite(valorInd(b, e.ind), limiteInd(b, e.ind)) : valorDe(b));
