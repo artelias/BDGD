@@ -1,0 +1,11 @@
+meses distintos: ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],)
+DEC IP+IND (150163, 150163)
+DEC IP+IND+XP+XN (150163, 143884)
+DEC IP+IND+expurgos (150163, 62955)
+DEC IP ou IND nulos com indicador presente (0,)
+FEC IP+IND (150033, 150033)
+FEC IP+IND+XP+XN (150033, 143441)
+FEC IP+IND+expurgos (150033, 70390)
+FEC IP ou IND nulos com indicador presente (0,)
+conjunto-anos no produto: 12502 divergencias: {'dec': 0, 'fec': 0, 'ld': 0, 'lf': 0, 'meses': 0, 'mensal': 0, 'nuc': 0, 'comp': 0}
+Mataraca 2025 bruto: (30.06, 8.14, 12, 12, 12) 18.0 10.0 [1.98, 28.08, 0.0, 0.0, 5.45]

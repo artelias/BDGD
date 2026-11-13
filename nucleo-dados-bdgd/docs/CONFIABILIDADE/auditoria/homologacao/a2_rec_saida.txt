@@ -1,0 +1,111 @@
+linhas CSV 758 abaixo de 80%: 83 distribuidoras 33
+por ano Counter({'2023': 34, '2022': 18, '2025': 17, '2024': 14})
+por indicador Counter({'DEC': 42, 'FEC': 41})
+conjuntos nas combinações baixas: soma 1957 | com 1 conjunto: 49 | <=3: 57
+
+conjunto-indicadores nas combinações abaixo de 80%, por diagnóstico:
+  ok: 847
+  reconstruído menor (outro): 617
+  reconstruído maior (outro): 432
+  rec≈oficial+expurgos: 36
+  rec≈oficial+externas: 20
+  DIC/FIC zerado na BDGD: 4
+  rec≈oficial+ext+exp: 1
+cobertura DIC dos divergentes: mediana 1.0 | <0.9: 0
+UC BDGD / NumCon dos divergentes: mediana 1.026 | fora de 0.95–1.05: 470 de 1110
+
+causa dominante por combinação: [('reconstruído menor (outro)', 50), ('reconstruído maior (outro)', 22), ('DIC/FIC zerado na BDGD', 4), ('rec≈oficial+expurgos', 3), ('rec≈oficial+externas', 3), ('rec≈oficial+ext+exp', 1)]
+  ex ((11825, 2022, 'fec'), 16692, 7.02, 6.01, -1.01, 1.0, 6.0, 0.83, 2282, 2249)
+  ex ((11825, 2023, 'dec'), 16692, 10.9, 7.39, -3.51, 1.0, 7.3, 4.0, 2322, 2341)
+  ex ((11825, 2023, 'fec'), 16692, 5.97, 4.27, -1.7, 1.0, 4.67, 1.33, 2322, 2341)
+  ex ((11825, 2024, 'dec'), 16692, 5.53, 5.06, -0.47, 1.0, 17.66, 1.19, 2360, 2329)
+  ex ((2866, 2022, 'dec'), 14578, 17.85, 18.78, 0.93, 1.0, 0, 10.95, 31919, 31804)
+  ex ((2866, 2022, 'dec'), 14579, 11.97, 12.63, 0.66, 1.0, 0, 4.26, 23949, 23645)
+  ex ((2866, 2022, 'fec'), 14579, 7.67, 8.09, 0.42, 1.0, 0, 1.71, 23949, 23645)
+  ex ((2866, 2022, 'dec'), 14581, 4.94, 5.28, 0.34, 1.0, 0, 1.6, 39128, 38907)
+
+por combinação: n, ok, mediana rec/of, IQR, rótulo
+  (31, 2022, 'dec') CEA Equatorial         n= 12 ok=  0 med=0.901 iqr=[0.873;0.909] sistemático (todos do mesmo lado)
+  (31, 2022, 'fec') CEA Equatorial         n= 12 ok=  0 med=0.898 iqr=[0.881;0.912] sistemático (todos do mesmo lado)
+  (31, 2023, 'dec') CEA Equatorial         n= 12 ok=  9 med=1.005 iqr=[0.988;1.070] disperso
+  (31, 2023, 'fec') CEA Equatorial         n= 12 ok=  9 med=1.008 iqr=[0.980;1.047] disperso
+  (31, 2025, 'dec') CEA Equatorial         n= 12 ok=  8 med=1.000 iqr=[0.991;1.082] disperso
+  (31, 2025, 'fec') CEA Equatorial         n= 12 ok=  8 med=1.000 iqr=[0.998;1.071] disperso
+  (44, 2025, 'dec') Equatorial AL          n= 47 ok= 36 med=0.998 iqr=[0.982;1.021] disperso
+  (51, 2022, 'dec') Dmed                   n=  3 ok=  2 med=0.989 iqr=[0.879;1.025] disperso
+  (51, 2022, 'fec') Dmed                   n=  3 ok=  2 med=0.996 iqr=[0.791;1.002] disperso
+  (51, 2023, 'fec') Dmed                   n=  3 ok=  1 med=1.019 iqr=[0.945;1.105] disperso
+  (51, 2025, 'dec') Dmed                   n=  3 ok=  1 med=0.953 iqr=[0.945;1.057] disperso
+  (51, 2025, 'fec') Dmed                   n=  3 ok=  1 med=0.995 iqr=[0.938;1.083] disperso
+  (63, 2025, 'dec') CPFL Paulista          n=176 ok= 52 med=0.939 iqr=[0.919;0.954] disperso
+  (63, 2025, 'fec') CPFL Paulista          n=176 ok= 70 med=0.944 iqr=[0.923;0.962] disperso
+  (83, 2025, 'dec') Forcel                 n=  1 ok=  0 med=0.919 iqr=[0.919;0.919] conjunto único
+  (86, 2023, 'dec') Eflul                  n=  1 ok=  0 med=0.575 iqr=[0.575;0.575] conjunto único
+  (86, 2023, 'fec') Eflul                  n=  1 ok=  0 med=0.618 iqr=[0.618;0.618] conjunto único
+  (86, 2024, 'fec') Eflul                  n=  1 ok=  0 med=0.943 iqr=[0.943;0.943] conjunto único
+  (88, 2022, 'dec') Joao Cesa              n=  1 ok=  0 med=1.102 iqr=[1.102;1.102] conjunto único
+  (88, 2024, 'dec') Joao Cesa              n=  1 ok=  0 med=1.287 iqr=[1.287;1.287] conjunto único
+  (88, 2024, 'fec') Joao Cesa              n=  1 ok=  0 med=1.191 iqr=[1.191;1.191] conjunto único
+  (95, 2024, 'dec') Demei                  n=  2 ok=  1 med=0.886 iqr=[0.800;0.971] disperso
+  (95, 2024, 'fec') Demei                  n=  2 ok=  1 med=0.940 iqr=[0.893;0.986] disperso
+  (370, 2022, 'fec') Roraima Energia        n= 17 ok= 12 med=0.969 iqr=[0.948;0.988] disperso
+  (371, 2025, 'fec') Equatorial PA          n=149 ok=118 med=1.000 iqr=[0.993;1.006] disperso
+  (380, 2023, 'dec') EDP ES                 n= 44 ok=  1 med=1.105 iqr=[1.083;1.140] disperso
+  (380, 2023, 'fec') EDP ES                 n= 44 ok=  1 med=1.111 iqr=[1.091;1.143] disperso
+  (391, 2023, 'dec') EDP SP                 n= 48 ok=  4 med=1.102 iqr=[1.084;1.146] disperso
+  (391, 2023, 'fec') EDP SP                 n= 48 ok=  4 med=1.112 iqr=[1.085;1.145] disperso
+  (398, 2022, 'dec') Eletrocar              n=  2 ok=  1 med=1.035 iqr=[1.009;1.061] disperso
+  (527, 2023, 'dec') Certhil                n=  1 ok=  0 med=0.513 iqr=[0.513;0.513] conjunto único
+  (527, 2023, 'fec') Certhil                n=  1 ok=  0 med=0.682 iqr=[0.682;0.682] conjunto único
+  (2866, 2022, 'dec') Copel-Dis              n=156 ok=118 med=1.041 iqr=[1.035;1.049] disperso
+  (2866, 2022, 'fec') Copel-Dis              n=156 ok=118 med=1.042 iqr=[1.035;1.050] disperso
+  (3627, 2024, 'dec') Cooperluz              n=  1 ok=  0 med=0.942 iqr=[0.942;0.942] conjunto único
+  (3627, 2024, 'fec') Cooperluz              n=  1 ok=  0 med=0.906 iqr=[0.906;0.906] conjunto único
+  (5160, 2023, 'dec') Neoenergia Brasilia    n= 26 ok= 14 med=1.047 iqr=[1.015;1.075] disperso
+  (5160, 2023, 'fec') Neoenergia Brasilia    n= 26 ok= 14 med=1.047 iqr=[1.011;1.074] disperso
+  (5216, 2023, 'fec') Energisa Sul-Sudeste   n= 40 ok= 25 med=0.954 iqr=[0.945;0.961] disperso
+  (5345, 2022, 'dec') Coopernorte            n=  1 ok=  0 med=0.000 iqr=[0.000;0.000] conjunto único
+  (5345, 2022, 'fec') Coopernorte            n=  1 ok=  0 med=0.000 iqr=[0.000;0.000] conjunto único
+  (5345, 2023, 'dec') Coopernorte            n=  1 ok=  0 med=0.896 iqr=[0.896;0.896] conjunto único
+  (5345, 2023, 'fec') Coopernorte            n=  1 ok=  0 med=0.815 iqr=[0.815;0.815] conjunto único
+  (5346, 2022, 'dec') Coopersul              n=  1 ok=  0 med=0.882 iqr=[0.882;0.882] conjunto único
+  (5346, 2022, 'fec') Coopersul              n=  1 ok=  0 med=0.930 iqr=[0.930;0.930] conjunto único
+  (5346, 2023, 'dec') Coopersul              n=  1 ok=  0 med=0.928 iqr=[0.928;0.928] conjunto único
+  (5346, 2023, 'fec') Coopersul              n=  1 ok=  0 med=0.842 iqr=[0.842;0.842] conjunto único
+  (5346, 2024, 'fec') Coopersul              n=  1 ok=  0 med=0.939 iqr=[0.939;0.939] conjunto único
+  (5352, 2023, 'dec') Cerej                  n=  1 ok=  0 med=0.873 iqr=[0.873;0.873] conjunto único
+  (5352, 2023, 'fec') Cerej                  n=  1 ok=  0 med=0.916 iqr=[0.916;0.916] conjunto único
+  (5366, 2023, 'dec') Cedri                  n=  1 ok=  0 med=1.052 iqr=[1.052;1.052] conjunto único
+  (5370, 2023, 'dec') Coopera                n=  1 ok=  0 med=0.937 iqr=[0.937;0.937] conjunto único
+  (5370, 2023, 'fec') Coopera                n=  1 ok=  0 med=0.944 iqr=[0.944;0.944] conjunto único
+  (5370, 2025, 'dec') Coopera                n=  1 ok=  0 med=0.007 iqr=[0.007;0.007] conjunto único
+  (5370, 2025, 'fec') Coopera                n=  1 ok=  0 med=0.007 iqr=[0.007;0.007] conjunto único
+  (5374, 2022, 'dec') Cooperzem              n=  1 ok=  0 med=0.000 iqr=[0.000;0.000] conjunto único
+  (5374, 2022, 'fec') Cooperzem              n=  1 ok=  0 med=0.000 iqr=[0.000;0.000] conjunto único
+  (5374, 2023, 'dec') Cooperzem              n=  1 ok=  0 med=0.909 iqr=[0.909;0.909] conjunto único
+  (5374, 2023, 'fec') Cooperzem              n=  1 ok=  0 med=0.852 iqr=[0.852;0.852] conjunto único
+  (5374, 2024, 'fec') Cooperzem              n=  1 ok=  0 med=0.948 iqr=[0.948;0.948] conjunto único
+  (5381, 2023, 'dec') Cedrap                 n=  1 ok=  0 med=0.931 iqr=[0.931;0.931] conjunto único
+  (5381, 2023, 'fec') Cedrap                 n=  1 ok=  0 med=0.931 iqr=[0.931;0.931] conjunto único
+  (5385, 2025, 'dec') Cerrp                  n=  1 ok=  0 med=1.055 iqr=[1.055;1.055] conjunto único
+  (5697, 2025, 'dec') Celesc-Dis             n=121 ok= 61 med=1.050 iqr=[1.040;1.059] disperso
+  (5697, 2025, 'fec') Celesc-Dis             n=121 ok= 37 med=1.057 iqr=[1.048;1.071] disperso
+  (5707, 2024, 'dec') CEEE Equatorial        n= 62 ok= 48 med=1.002 iqr=[0.988;1.026] disperso
+  (5707, 2024, 'fec') CEEE Equatorial        n= 62 ok= 46 med=1.003 iqr=[0.992;1.035] disperso
+  (6072, 2025, 'dec') Equatorial GO          n=147 ok= 11 med=0.869 iqr=[0.836;0.890] disperso
+  (6072, 2025, 'fec') Equatorial GO          n=147 ok= 11 med=0.885 iqr=[0.836;0.916] disperso
+  (6898, 2023, 'dec') Cerbranorte            n=  1 ok=  0 med=0.946 iqr=[0.946;0.946] conjunto único
+  (6898, 2023, 'fec') Cerbranorte            n=  1 ok=  0 med=0.921 iqr=[0.921;0.921] conjunto único
+  (6898, 2024, 'dec') Cerbranorte            n=  1 ok=  0 med=1.682 iqr=[1.682;1.682] conjunto único
+  (6898, 2024, 'fec') Cerbranorte            n=  1 ok=  0 med=1.251 iqr=[1.251;1.251] conjunto único
+  (6898, 2025, 'dec') Cerbranorte            n=  1 ok=  0 med=1.062 iqr=[1.062;1.062] conjunto único
+  (7016, 2023, 'dec') Coorsel                n=  1 ok=  0 med=1.086 iqr=[1.086;1.086] conjunto único
+  (7016, 2023, 'fec') Coorsel                n=  1 ok=  0 med=1.079 iqr=[1.079;1.079] conjunto único
+  (7883, 2022, 'dec') Cersad                 n=  1 ok=  0 med=0.718 iqr=[0.718;0.718] conjunto único
+  (7883, 2022, 'fec') Cersad                 n=  1 ok=  0 med=0.745 iqr=[0.745;0.745] conjunto único
+  (7883, 2023, 'dec') Cersad                 n=  1 ok=  0 med=0.939 iqr=[0.939;0.939] conjunto único
+  (11825, 2022, 'fec') Castro-Dis             n=  1 ok=  0 med=0.856 iqr=[0.856;0.856] conjunto único
+  (11825, 2023, 'dec') Castro-Dis             n=  1 ok=  0 med=0.678 iqr=[0.678;0.678] conjunto único
+  (11825, 2023, 'fec') Castro-Dis             n=  1 ok=  0 med=0.715 iqr=[0.715;0.715] conjunto único
+  (11825, 2024, 'dec') Castro-Dis             n=  1 ok=  0 med=0.915 iqr=[0.915;0.915] conjunto único
+tipos: [('conjunto único', 49), ('disperso', 32), ('sistemático (todos do mesmo lado)', 2)]

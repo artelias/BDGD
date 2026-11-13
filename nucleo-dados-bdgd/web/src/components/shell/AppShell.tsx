@@ -1,5 +1,5 @@
 "use client";
-import { BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
+import { Activity, BookOpen, ChartSpline, Ellipsis, GitCompareArrows, History, Layers3, Mail, Map as MapIcon, Moon, PanelLeftClose, PanelLeftOpen, Search, Sun, Table2, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -22,6 +22,7 @@ const NAV: NavItem[] = [
   { href: "/evolucao/", label: "Evolução histórica", short: "Evolução", icon: History, mobileMore: true },
   { href: "/comparar/", label: "Comparador", short: "Comparar", icon: GitCompareArrows },
   { href: "/explorar/", label: "Explorar ativos", short: "Explorar", icon: Layers3 },
+  { href: "/confiabilidade/", label: "Confiabilidade", icon: Activity, mobileMore: true },
 ];
 const TABS = NAV.filter((n) => !n.mobileMore);
 const MORE = [...NAV.filter((n) => n.mobileMore)];
