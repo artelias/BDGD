@@ -1,0 +1,49 @@
+name: Confiabilidade DEC/FEC — testes Python e auditoria do produto
+# Só arquivos versionados: o produto publicado (web/public/data/confiabilidade) e o pacote do portal 2025-12-31.
+# Os testes que exigem a BDGD local (Parquets em D:\) se declaram pulados; nada aqui reprocessa dados.
+on:
+  pull_request:
+    paths:
+      - "nucleo-dados-bdgd/confiabilidade/**"
+      - "nucleo-dados-bdgd/web/public/data/confiabilidade/**"
+      - "nucleo-dados-bdgd/docs/CONFIABILIDADE/auditoria/**"
+      - ".github/workflows/confiabilidade.yml"
+permissions:
+  contents: read
+concurrency:
+  group: confiabilidade-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  confiabilidade:
+    name: Testes Python e auditoria reprodutível
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: nucleo-dados-bdgd
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Commit avaliado
+        run: git rev-parse HEAD
+      - name: Dependências fixadas (numpy e scipy via scikit-learn)
+        run: |
+          python3 -m venv "$RUNNER_TEMP/conf-env"
+          "$RUNNER_TEMP/conf-env/bin/python" -m pip install -r motor_universal/requirements-ml.txt
+      - name: Testes do módulo (fórmulas, zero × N/D, reconstrução, apuração parcial, vereditos, produto real)
+        run: '"$RUNNER_TEMP/conf-env/bin/python" -m unittest discover -s confiabilidade/tests -t . -v'
+      - name: Auditoria A1–A6 do produto, sem falhas e idêntica à evidência versionada
+        run: |
+          "$RUNNER_TEMP/conf-env/bin/python" -m confiabilidade.auditoria --saida "$RUNNER_TEMP/auditoria" > /dev/null
+          "$RUNNER_TEMP/conf-env/bin/python" -c 'import json,sys; r=json.load(open(sys.argv[1],encoding="utf-8")); print("falhas:", r["falhas"]); sys.exit(1 if r["falhas"] else 0)' "$RUNNER_TEMP/auditoria/AUDITORIA_PRODUTO.json"
+          for f in AUDITORIA_PRODUTO.json RECONCILIACAO_POR_DIST_ANO_INDICADOR.csv; do
+            diff <(tr -d '\r' < "$RUNNER_TEMP/auditoria/$f") <(tr -d '\r' < "docs/CONFIABILIDADE/auditoria/$f") > /dev/null \
+              || { echo "::error::$f regenerado difere da evidência versionada"; diff <(tr -d '\r' < "$RUNNER_TEMP/auditoria/$f") <(tr -d '\r' < "docs/CONFIABILIDADE/auditoria/$f") | head -40; exit 1; }
+            echo "$f idêntico à evidência versionada"
+          done
