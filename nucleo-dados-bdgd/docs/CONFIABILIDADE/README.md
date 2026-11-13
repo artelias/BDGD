@@ -14,6 +14,7 @@ Estado: **pronto para homologação** (não integrado à RC `rc/1.0-20261101`, s
 | [OPERACAO.md](OPERACAO.md) | comandos de atualização, nova distribuidora, novo ano |
 | [LIMITACOES_E_ACEITE.md](LIMITACOES_E_ACEITE.md) | limitações conhecidas e critérios de aceite da homologação |
 | [RELATORIO_FINAL.md](RELATORIO_FINAL.md) | relatório da retomada: P0, correções, evidências, pendências |
+| [CHECKLIST_REGULATORIO.md](CHECKLIST_REGULATORIO.md) | checklist para o especialista em regulação (decisão e assinatura em branco) |
 | [HOMOLOGACAO_TECNICA.md](HOMOLOGACAO_TECNICA.md) | auditoria final de homologação: matriz, defeitos corrigidos, CI, recomendação |
 | `auditoria/` | saída de `python -m confiabilidade.auditoria` (JSON + CSV por DIST × ano × indicador) |
 

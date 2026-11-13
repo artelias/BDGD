@@ -34,7 +34,7 @@ comparava ao limite anual, aos rankings e às quebras nacionais. O defeito foi c
 | 15 | Testes locais | seção 5 | ver seção 5 |
 | 16 | CI no SHA exato | **nenhuma execução do GitHub Actions** em `4ba0710`: a branch não está nos gatilhos de push e não há `workflow_dispatch`. Só o preview da Vercel (build Linux) passou | **pendente (bloqueia o aceite final)** |
 | 17 | RC, produção, Motor de Expansão, bases BDGD e dados originais intocados | `git diff 4ba0710..HEAD --stat` só em `confiabilidade/`, `web/` do módulo e `docs/CONFIABILIDADE`; brutos ANEEL só lidos | atendido |
-| 18 | Revisão de especialista de regulação | homologação humana | **pendente** |
+| 18 | Revisão de especialista de regulação | homologação humana com CHECKLIST_REGULATORIO.md | **pendente** |
 
 ## 3. Defeitos comprovados e corrigidos
 
@@ -95,6 +95,12 @@ Execuções locais no Windows sobre a árvore final (build `NEXT_PUBLIC_MOTOR_V2
   `components/confiabilidade` (verificado com `grep`). Último resultado completo: 361/361 em `4ba0710`.
 * Sem `-X utf8`, o teste da auditoria quebra no console cp1252 do Windows (`UnicodeEncodeError` ao imprimir "−"); é do
   ambiente, não do código.
+
+**Cobertura da CI.** O workflow `nucleo-bdgd-web.yml` roda lint, tipos, Vitest (`tests/**`, inclui `confiabilidade.test.ts`), os
+dois builds e a suíte Playwright inteira (inclui `confiabilidade.spec.ts`, desktop e `@mobile`). Nenhum workflow rodava
+`confiabilidade/tests`; o workflow novo e isolado `confiabilidade.yml` roda os testes Python (os que exigem a BDGD local
+se declaram pulados) e regenera a auditoria A1–A6 a partir dos arquivos versionados, exigindo `falhas: []` e igualdade
+com a evidência versionada. Resultados da CI: no PR.
 
 **CI no SHA exato.** `GET /repos/artelias/BDGD/actions/runs?head_sha=4ba07100…` → `total_count: 0`. Os gatilhos de push de
 `nucleo-bdgd-web.yml`, `nucleo-dados-bdgd.yml` e `patrimonio.yml` não incluem `feat/inteligencia-*` e nenhum workflow tem
