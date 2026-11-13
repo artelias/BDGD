@@ -8,7 +8,9 @@ export interface MetricaDef { id: string; nome: string; unidade: string; tipo: T
 /** Métricas de infraestrutura de um conjunto num ano; ausência é null, nunca zero. */
 export type Infra = Record<string, number | null>;
 
-export interface AnualDist { dec: number | null; fec: number | null; completo: boolean; completo_dec?: boolean; completo_fec?: boolean; nuc: number; conjuntos: number; acima_dec: number; acima_fec: number; com_infra: number; estado: EstadoDado; regra: string }
+export interface AnualDist { dec: number | null; fec: number | null; completo: boolean; completo_dec?: boolean; completo_fec?: boolean; nuc: number; conjuntos: number; acima_dec: number; acima_fec: number;
+  /** conjuntos com 12 meses e limite publicado: denominador da parcela acima do limite (auditoria de 13/11/2026) */
+  comparaveis_dec?: number; comparaveis_fec?: number; com_infra: number; estado: EstadoDado; regra: string }
 
 export interface DistResumo {
   dist: number; nome: string; sigla: string; agente_aneel: string; grupo: string | null; grupo_nome: string | null; ufs: string[];

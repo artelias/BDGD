@@ -5,7 +5,7 @@ import { DataError, EmptyState, LoadingBlock } from "@/components/ui/Feedback";
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { Pill } from "@/components/ui/Value";
-import { MESES, NOME_IND, UNIDADE_IND, anualCompleto, completoDist, fmtInd, limiteInd, linhasNacionais, mediaPonderada, num, razaoLimite, situacao, valorComparavel, valorInd, variacao } from "@/lib/confiabilidade/calculo";
+import { MESES, NOME_IND, UNIDADE_IND, acimaDoLimite, anualCompleto, completoDist, fmtInd, limiteInd, linhasNacionais, mediaPonderada, num, parcelaAcima, razaoLimite, situacao, valorComparavel, valorInd, variacao } from "@/lib/confiabilidade/calculo";
 import { carregarGeo, useDist, useNacional } from "@/lib/confiabilidade/dados";
 import { COR_ND, corDe, legenda, quebrasQuantis } from "@/lib/confiabilidade/escala";
 import type { EstadoConf } from "@/lib/confiabilidade/estado";
@@ -73,9 +73,11 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const valorDist = (d: (typeof dists)[number]) => {
     const a = d.anual[ano];
     if (!a) return null;
-    return modo === "regulatorio" ? (a.conjuntos ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) / a.conjuntos : null) : completoDist(a, e.ind) ? a[e.ind] : null;
+    return modo === "regulatorio" ? parcelaAcima(a, e.ind) : completoDist(a, e.ind) ? a[e.ind] : null;
   };
-  const quebrasDist = useMemo(() => quebrasQuantis(indice.distribuidoras.map((d) => { const a = d.anual[ano]; return !a ? null : modo === "regulatorio" ? (a.conjuntos ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) / a.conjuntos : null) : completoDist(a, e.ind) ? a[e.ind] : null; })), [indice, ano, modo, e.ind]);
+  const quebrasDist = useMemo(() => quebrasQuantis(indice.distribuidoras.map((d) => { const a = d.anual[ano]; return !a ? null : modo === "regulatorio" ? parcelaAcima(a, e.ind) : completoDist(a, e.ind) ? a[e.ind] : null; })), [indice, ano, modo, e.ind]);
+  // "X de N comparáveis" (12 meses e limite publicado) ou o motivo de não haver comparação
+  const txtAcima = (a: (typeof dists)[number]["anual"][string] | undefined) => { const r = acimaDoLimite(a, e.ind); return r ? `${r.acima} de ${r.base}` : "N/D"; };
   const coresDist = useMemo(() => new Map(dists.map((d) => [d.dist, corDe(valorDist(d), quebrasDist, "absoluto", tema)] as [number, string])),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [dists, quebrasDist, tema, ano, modo, e.ind]);
@@ -136,8 +138,9 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const brasil = useMemo(() => {
     const comAno = dists.filter((d) => d.anual[ano]);
     const total = comAno.reduce((t, d) => t + d.anual[ano].conjuntos, 0);
-    const acima = comAno.reduce((t, d) => t + (e.ind === "dec" ? d.anual[ano].acima_dec : d.anual[ano].acima_fec), 0);
-    return { n: comAno.length, total, acima, media: mediaPonderada(comAno.map((d) => ({ v: completoDist(d.anual[ano], e.ind) ? d.anual[ano][e.ind] : null, w: d.anual[ano].nuc }))), nuc: comAno.reduce((t, d) => t + d.anual[ano].nuc, 0) };
+    const acima = comAno.reduce((t, d) => t + (acimaDoLimite(d.anual[ano], e.ind)?.acima ?? 0), 0);
+    const comparaveis = comAno.reduce((t, d) => t + (acimaDoLimite(d.anual[ano], e.ind)?.base ?? 0), 0);
+    return { n: comAno.length, total, acima, comparaveis, media: mediaPonderada(comAno.map((d) => ({ v: completoDist(d.anual[ano], e.ind) ? d.anual[ano][e.ind] : null, w: d.anual[ano].nuc }))), nuc: comAno.reduce((t, d) => t + d.anual[ano].nuc, 0) };
   }, [dists, ano, e.ind]);
 
   const cab = (col: Ordem["col"], rotulo: string) => (
@@ -150,7 +153,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
     if (hover.tipo === "dist") {
       const d = indice.distribuidoras.find((x) => x.dist === hover.id), a = d?.anual[ano];
       if (!d) return null;
-      return <><b>{d.nome}</b><div className={s.dicaGrade}><span>DEC {ano}</span><span>{fmtInd(a?.dec)}</span><span>FEC {ano}</span><span>{fmtInd(a?.fec)}</span><span>Conjuntos</span><span>{a?.conjuntos ?? "N/D"}</span><span>Acima do limite de {I}</span><span>{a ? (e.ind === "dec" ? a.acima_dec : a.acima_fec) : "N/D"}</span></div></>;
+      return <><b>{d.nome}</b><div className={s.dicaGrade}><span>DEC {ano}</span><span>{fmtInd(a?.dec)}</span><span>FEC {ano}</span><span>{fmtInd(a?.fec)}</span><span>Conjuntos</span><span>{a?.conjuntos ?? "N/D"}</span><span>Acima do limite de {I}</span><span>{txtAcima(a)}</span></div></>;
     }
     const c = doc.dados?.conjuntos.find((x) => x.c === hover.id), b = c?.a[ano], ant = c?.a[String(e.ano - 1)];
     if (!c) return null;
@@ -214,7 +217,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
               <p className={s.lateralTitulo}>{e.grupo ? grupos.find(([id]) => id === e.grupo)?.[1] : "Brasil"} · {ano}</p>
               <div className={s.kpis}>
                 <div className={s.kpi}><div className={s.kpiRotulo}>Conjuntos com {I}</div><div className={s.kpiValor} data-testid="conf-total-conjuntos">{brasil.total.toLocaleString("pt-BR")}</div><div className={s.kpiSub}>{brasil.n} distribuidoras</div></div>
-                <div className={s.kpi}><div className={s.kpiRotulo}>Acima do limite de {I}</div><div className={s.kpiValor}>{brasil.acima.toLocaleString("pt-BR")}<small>{brasil.total ? pct(brasil.acima / brasil.total) : ""}</small></div><div className={s.kpiSub}>conjuntos</div></div>
+                <div className={s.kpi}><div className={s.kpiRotulo}>Acima do limite de {I}</div><div className={s.kpiValor}>{brasil.acima.toLocaleString("pt-BR")}<small>{brasil.comparaveis ? pct(brasil.acima / brasil.comparaveis) : ""}</small></div><div className={s.kpiSub} data-testid="conf-brasil-comparaveis">de {brasil.comparaveis.toLocaleString("pt-BR")} conjuntos comparáveis (12 meses e limite)</div></div>
                 <div className={s.kpi}><div className={s.kpiRotulo}>{I} médio ponderado</div><div className={s.kpiValor}>{fmtInd(brasil.media.v)}</div><div className={s.kpiSub}>pelas distribuidoras do recorte</div></div>
               </div>
             </> : <>
@@ -223,7 +226,9 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
                 <div className={s.kpis}>
                   <div className={s.kpi}><div className={s.kpiRotulo}>DEC {ano}</div><div className={s.kpiValor} data-testid="conf-dist-dec">{fmtInd(distSel.anual[ano].dec)}<small>h</small></div>{!completoDist(distSel.anual[ano], "dec") && <div className={s.kpiSub}>parcial: menos de 12 meses</div>}</div>
                   <div className={s.kpi}><div className={s.kpiRotulo}>FEC {ano}</div><div className={s.kpiValor} data-testid="conf-dist-fec">{fmtInd(distSel.anual[ano].fec)}<small>int.</small></div>{!completoDist(distSel.anual[ano], "fec") && <div className={s.kpiSub}>parcial: menos de 12 meses</div>}</div>
-                  <div className={s.kpi}><div className={s.kpiRotulo}>Acima do limite de {I}</div><div className={s.kpiValor}>{e.ind === "dec" ? distSel.anual[ano].acima_dec : distSel.anual[ano].acima_fec}<small>de {distSel.anual[ano].conjuntos}</small></div></div>
+                  <div className={s.kpi}><div className={s.kpiRotulo}>Acima do limite de {I}</div>{(() => { const r = acimaDoLimite(distSel.anual[ano], e.ind); return r
+                    ? <div className={s.kpiValor} data-testid="conf-dist-acima">{r.acima}<small>de {r.base} comparáveis</small></div>
+                    : <><div className={s.kpiValor} data-testid="conf-dist-acima">N/D</div><div className={s.kpiSub}>nenhum conjunto com 12 meses e limite publicado</div></>; })()}</div>
                 </div>
               ) : <p className={s.kpiSub}>Sem apuração de continuidade em {ano}.</p>}
             </>}
@@ -235,7 +240,7 @@ export function VisaoMapa({ indice, e }: { indice: Indice; e: EstadoConf }) {
                 <tbody>{listaDist.map((d) => { const a = d.anual[ano]; return (
                   <tr key={d.dist} onClick={() => e.set({ dist: d.dist, conj: null }, true)} tabIndex={0} onKeyDown={(ev) => { if (ev.key === "Enter") e.set({ dist: d.dist, conj: null }, true); }}>
                     <td><i className={s.amostra} style={{ background: coresDist.get(d.dist) ?? COR_ND[tema] }} aria-hidden /><span className={s.nomeConj}>{d.nome}</span></td>
-                    <td>{fmtInd(a[e.ind])}{!completoDist(a, e.ind) && <span className={s.sub}>parcial</span>}</td><td>{e.ind === "dec" ? a.acima_dec : a.acima_fec} de {a.conjuntos}</td>
+                    <td>{fmtInd(a[e.ind])}{!completoDist(a, e.ind) && <span className={s.sub}>parcial</span>}</td><td>{txtAcima(a)}</td>
                   </tr>); })}</tbody>
               </table>
             ) : doc.carregando ? <div style={{ padding: 18 }}><LoadingBlock label="Carregando conjuntos" /></div>

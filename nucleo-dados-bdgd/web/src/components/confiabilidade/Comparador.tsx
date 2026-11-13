@@ -7,7 +7,7 @@ import { EmptyState, LoadingBlock, downloadText } from "@/components/ui/Feedback
 import { Picker } from "@/components/ui/Picker";
 import { Segmented } from "@/components/ui/Segmented";
 import { toCSV } from "@/lib/format";
-import { NOME_IND, UNIDADE_IND, chave, comparar, fmtInd, fmtMetrica, frasesComparacao, limiteInd, linhasNacionais, num, paresSemelhantes, razaoLimite, resumo, valorComparavel, valorInd, type Linha } from "@/lib/confiabilidade/calculo";
+import { NOME_IND, UNIDADE_IND, anualCompleto, chave, comparar, fmtInd, fmtMetrica, frasesComparacao, limiteInd, linhasNacionais, num, paresSemelhantes, razaoLimite, resumo, valorComparavel, valorInd, type Linha } from "@/lib/confiabilidade/calculo";
 import { useDist, useNacional } from "@/lib/confiabilidade/dados";
 import type { EstadoConf, Lado } from "@/lib/confiabilidade/estado";
 import { linhasAnuais } from "@/lib/confiabilidade/graficos";
@@ -65,18 +65,25 @@ export function Comparador({ indice, e }: { indice: Indice; e: EstadoConf }) {
   const linhas = useMemo(() => comparar(bA?.infra ?? null, bB?.infra ?? null, indice.metricas).filter((l) => (vista === "relativas" ? l.tipo === "razao" || l.tipo === "pct" : l.tipo === "contagem" || l.tipo === "continua")), [bA, bB, indice, vista]);
   const frases = useMemo(() => (cA && cB ? frasesComparacao({ nomeA: cA.n, nomeB: cB.n, ind: e.ind, a: bA, b: bB, metricas: indice.metricas, medianaParesA: pares.a.mediana, medianaParesB: pares.b.mediana, distancia: dist2 }) : []), [cA, cB, bA, bB, e.ind, indice, pares, dist2]);
   const anos = indice.anos.map(String);
+  // ano com apuração parcial fica fora da linha (lacuna), como no resto do comparador; a nota abaixo do gráfico diz quais
+  const parciaisEvol = ([["A", cA], ["B", cB]] as const).flatMap(([lado, c]) => anos.filter((a) => c?.a[a] && num(valorInd(c.a[a], e.ind)) && !anualCompleto(c.a[a], e.ind)).map((a) => `${lado} em ${a}`));
   const gEvol = useCallback((t: ChartTokens) => linhasAnuais(t, { anos, unidade: UNIDADE_IND[e.ind], series: [
-    { nome: nomeA, dados: anos.map((a) => valorInd(cA?.a[a], e.ind)), cor: t.sideA }, { nome: nomeB, dados: anos.map((a) => valorInd(cB?.a[a], e.ind)), cor: t.sideB },
+    { nome: nomeA, dados: anos.map((a) => valorComparavel(cA?.a[a], e.ind)), cor: t.sideA }, { nome: nomeB, dados: anos.map((a) => valorComparavel(cB?.a[a], e.ind)), cor: t.sideB },
     { nome: "Limite de A", dados: anos.map((a) => limiteInd(cA?.a[a], e.ind)), cor: t.sideA, tracejada: true }, { nome: "Limite de B", dados: anos.map((a) => limiteInd(cB?.a[a], e.ind)), cor: t.sideB, tracejada: true },
   ] }), [anos, cA, cB, e.ind, nomeA, nomeB]);
 
   const exportar = () => {
-    const cab = ["metrica", "unidade", "A", "B", "A_menos_B", "diferenca_relativa", "conjunto_A", "conjunto_B", "ano"];
-    const qual: Array<Array<string | number | null>> = (["dec", "fec"] as Indicador[]).flatMap((k) => [
-      [`${NOME_IND[k]} apurado (oficial ANEEL)`, UNIDADE_IND[k], valorInd(bA, k), valorInd(bB, k), num(valorInd(bA, k)) && num(valorInd(bB, k)) ? Number((valorInd(bA, k)! - valorInd(bB, k)!).toFixed(2)) : null, null, cA?.n ?? "", cB?.n ?? "", ano],
-      [`${NOME_IND[k]} limite`, UNIDADE_IND[k], limiteInd(bA, k), limiteInd(bB, k), null, null, cA?.n ?? "", cB?.n ?? "", ano],
-    ]);
-    const inf = comparar(bA?.infra ?? null, bB?.infra ?? null, indice.metricas).map((l) => [l.nome, l.unidade, l.a, l.b, l.dif === null ? null : Number(l.dif.toFixed(4)), l.rel === null ? null : Number(l.rel.toFixed(4)), cA?.n ?? "", cB?.n ?? "", ano]);
+    // A − B só entre valores anuais completos, como na tela (auditoria de 13/11/2026: o CSV subtraía o FEC parcial da Elektro 2025)
+    const cab = ["metrica", "unidade", "A", "B", "A_menos_B", "diferenca_relativa", "conjunto_A", "conjunto_B", "ano", "observacao"];
+    const parcial = (k: Indicador) => ([["A", bA], ["B", bB]] as const).flatMap(([lado, b]) => (b && num(valorInd(b, k)) && valorComparavel(b, k) === null ? [`apuração parcial em ${lado} (${k === "dec" ? b.meses_dec : b.meses_fec} de 12 meses): fora da diferença e do limite`] : [])).join("; ");
+    const qual: Array<Array<string | number | null>> = (["dec", "fec"] as Indicador[]).flatMap((k) => {
+      const ca = valorComparavel(bA, k), cb = valorComparavel(bB, k);
+      return [
+        [`${NOME_IND[k]} apurado (oficial ANEEL)`, UNIDADE_IND[k], valorInd(bA, k), valorInd(bB, k), num(ca) && num(cb) ? Number((ca - cb).toFixed(2)) : null, null, cA?.n ?? "", cB?.n ?? "", ano, parcial(k)],
+        [`${NOME_IND[k]} limite`, UNIDADE_IND[k], limiteInd(bA, k), limiteInd(bB, k), null, null, cA?.n ?? "", cB?.n ?? "", ano, ""],
+      ];
+    });
+    const inf = comparar(bA?.infra ?? null, bB?.infra ?? null, indice.metricas).map((l) => [l.nome, l.unidade, l.a, l.b, l.dif === null ? null : Number(l.dif.toFixed(4)), l.rel === null ? null : Number(l.rel.toFixed(4)), cA?.n ?? "", cB?.n ?? "", ano, "derivado BDGD"]);
     downloadText(`confiabilidade_comparacao_${e.a?.dist}-${e.a?.conj}_x_${e.b?.dist}-${e.b?.conj}_${ano}.csv`, toCSV(cab, [...qual, ...inf]));
   };
   const maxRel = (a: number | null, b: number | null) => (num(a) && num(b) ? Math.max(Math.abs(a), Math.abs(b)) : null);
@@ -122,6 +129,7 @@ export function Comparador({ indice, e }: { indice: Indice; e: EstadoConf }) {
             <p className={s.blocoTitulo}>{I} e limites, 2022–2025</p>
             <p className={s.blocoSub}>Linhas cheias: apurado. Tracejadas: limite regulatório de cada conjunto.</p>
             <EChart build={gEvol} height={236} ariaLabel={`${I} anual dos conjuntos A e B de 2022 a 2025, com os limites`} testId="conf-g-comp" />
+            {parciaisEvol.length > 0 && <p className={s.nota} data-testid="conf-g-comp-parcial"><Info size={13} aria-hidden />Fora da linha por apuração parcial (menos de 12 meses): {parciaisEvol.join(", ")}.</p>}
           </div>
         </div>
 

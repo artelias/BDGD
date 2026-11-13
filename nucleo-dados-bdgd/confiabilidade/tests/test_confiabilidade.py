@@ -178,11 +178,15 @@ class ProdutoReal(unittest.TestCase):
                     if b['meses_dec'] < 12 or b['meses_fec'] < 12:
                         parciais += 1
                         self.assertIn('apuracao_parcial', b['alertas'], f"{d['dist']}/{c['c']}/{a}")
-                    s = acima.setdefault(a, [0, 0])
+                    s = acima.setdefault(a, [0, 0, 0, 0])
                     s[0] += b['meses_dec'] == 12 and K.situacao_limite(b['dec'], b['ld']) == 'ACIMA'
                     s[1] += b['meses_fec'] == 12 and K.situacao_limite(b['fec'], b['lf']) == 'ACIMA'
-            for a, (ad, af) in acima.items():
-                self.assertEqual((d['anual'][a]['acima_dec'], d['anual'][a]['acima_fec']), (ad, af), f"{d['dist']}/{a}")
+                    # auditoria de 13/11/2026: denominador = conjuntos com 12 meses e limite publicado
+                    s[2] += b['meses_dec'] == 12 and b['dec'] is not None and b['ld'] is not None
+                    s[3] += b['meses_fec'] == 12 and b['fec'] is not None and b['lf'] is not None
+            for a, (ad, af, cd, cf) in acima.items():
+                an = d['anual'][a]
+                self.assertEqual((an['acima_dec'], an['acima_fec'], an['comparaveis_dec'], an['comparaveis_fec']), (ad, af, cd, cf), f"{d['dist']}/{a}")
         self.assertGreater(parciais, 0)
         el = json.loads((PRODUTO / 'distribuidoras/385.json').read_text(encoding='utf-8'))
         self.assertIs(el['anual']['2025']['completo_fec'], False)

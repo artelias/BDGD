@@ -191,7 +191,7 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
         if d not in por_dist:
             continue
         gd = geo.get(d, {}).get('conjuntos', {})
-        conjuntos, resumo = [], {a: dict(meses=[[] for _ in range(12)], meses_fec=[[] for _ in range(12)], n=0, acima_dec=0, acima_fec=0, com_infra=0, nuc=0) for a in K.ANOS}
+        conjuntos, resumo = [], {a: dict(meses=[[] for _ in range(12)], meses_fec=[[] for _ in range(12)], n=0, acima_dec=0, acima_fec=0, comparaveis_dec=0, comparaveis_fec=0, com_infra=0, nuc=0) for a in K.ANOS}
         ant = {}
         for c in sorted(por_dist[d]):
             g = gd.get(str(c), {})
@@ -237,6 +237,11 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
                 # o limite é anual: valor com menos de 12 meses não é comparado a ele
                 rs['acima_dec'] += bloco['meses_dec'] == 12 and K.situacao_limite(bloco['dec'], bloco['ld']) == 'ACIMA'
                 rs['acima_fec'] += bloco['meses_fec'] == 12 and K.situacao_limite(bloco['fec'], bloco['lf']) == 'ACIMA'
+                # denominador da parcela acima do limite: só conjuntos comparáveis (12 meses e limite publicado). Auditoria de
+                # 13/11/2026: com "conjuntos" no denominador, Elektro 2025 FEC (0 de 130 parciais) e 17 cooperativas sem limite
+                # apareciam com 0% acima do limite
+                rs['comparaveis_dec'] += bloco['meses_dec'] == 12 and bloco['dec'] is not None and bloco['ld'] is not None
+                rs['comparaveis_fec'] += bloco['meses_fec'] == 12 and bloco['fec'] is not None and bloco['lf'] is not None
                 rs['nuc'] += bloco['nuc'] or 0
                 for i in range(12):
                     rs['meses'][i].append((dec_m[i], nuc_m[i])); rs['meses_fec'][i].append((fec_m[i], nuc_m[i]))
@@ -252,7 +257,7 @@ def publicar(trabalho=TRABALHO, saida=SAIDA, dists=None):
             if not rs['n']:
                 continue
             dec, _, cd = K.agregado_anual(rs['meses']); fec, _, cf = K.agregado_anual(rs['meses_fec'])
-            anual[str(a)] = dict(dec=r2(dec), fec=r2(fec), completo=cd and cf, completo_dec=cd, completo_fec=cf, nuc=rs['nuc'], conjuntos=rs['n'], acima_dec=rs['acima_dec'], acima_fec=rs['acima_fec'], com_infra=rs['com_infra'],
+            anual[str(a)] = dict(dec=r2(dec), fec=r2(fec), completo=cd and cf, completo_dec=cd, completo_fec=cf, nuc=rs['nuc'], conjuntos=rs['n'], acima_dec=rs['acima_dec'], acima_fec=rs['acima_fec'], comparaveis_dec=rs['comparaveis_dec'], comparaveis_fec=rs['comparaveis_fec'], com_infra=rs['com_infra'],
                                  estado=K.DERIVADO_EXPLORATORIO, regra='média dos conjuntos ponderada pelo NumCon de cada mês; soma dos 12 meses')
         agentes = Counter(cont[(c, a)]['agente'] for c in por_dist[d] for a in por_dist[d][c])
         fontes = {str(a): dict(item=infra[(d, a)]['meta']['fonte']['item'], sha256_gdb=infra[(d, a)]['meta']['fonte']['sha256_gdb'],

@@ -2,12 +2,12 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  acumulado, anualCompleto, anualDeMeses, comparar, completoDist, faixasDeExtensao, fmtInd, fmtMetrica, frasesComparacao, histograma, linhasNacionais, mediaPonderada,
-  paresSemelhantes, percentilDe, perfilPorQuartil, ranking, razaoLimite, resumo, situacao, valorComparavel, variacao, type Linha,
+  acimaDoLimite, acumulado, anualCompleto, anualDeMeses, comparar, completoDist, faixasDeExtensao, fmtInd, fmtMetrica, frasesComparacao, histograma, linhasNacionais, mediaPonderada,
+  paresSemelhantes, parcelaAcima, parcelasInternas, percentilDe, perfilPorQuartil, ranking, razaoLimite, resumo, situacao, valorComparavel, variacao, type Linha,
 } from "@/lib/confiabilidade/calculo";
 import { COR_ND, DIV, QUEBRAS_REG, SEQ, classeDe, corDe, legenda, quebrasQuantis } from "@/lib/confiabilidade/escala";
 import { escreverLado, lerLado } from "@/lib/confiabilidade/estado";
-import type { BlocoAno, DistDoc, Indice, MetricaDef, NacionalAno } from "@/lib/confiabilidade/tipos";
+import type { AnualDist, BlocoAno, DistDoc, Indice, MetricaDef, NacionalAno } from "@/lib/confiabilidade/tipos";
 
 const PRODUTO = join(__dirname, "..", "public", "data", "confiabilidade");
 const real = existsSync(join(PRODUTO, "indice.json"));
@@ -146,6 +146,57 @@ describe("apuração parcial (regressão da auditoria de 12/11/2026)", () => {
   it("agregado da distribuidora sem 12 meses não entra nas quebras", () => {
     expect(completoDist({ dec: 1, fec: 1, completo: false, completo_dec: true, completo_fec: false, nuc: 1, conjuntos: 1, acima_dec: 0, acima_fec: 0, com_infra: 1, estado: "DERIVADO_EXPLORATORIO", regra: "" }, "fec")).toBe(false);
     expect(completoDist({ dec: 1, fec: 1, completo: true, nuc: 1, conjuntos: 1, acima_dec: 0, acima_fec: 0, com_infra: 1, estado: "DERIVADO_EXPLORATORIO", regra: "" }, "dec")).toBe(true);
+  });
+});
+
+describe("acima do limite sobre os comparáveis (regressão da auditoria de 13/11/2026)", () => {
+  const anual = (o: Partial<AnualDist>): AnualDist => ({ dec: 1, fec: 1, completo: true, nuc: 1, conjuntos: 130, acima_dec: 19, acima_fec: 0, com_infra: 1, estado: "DERIVADO_EXPLORATORIO", regra: "", ...o });
+  it("nenhum conjunto comparável → null, nunca 0%", () => {
+    expect(acimaDoLimite(anual({ completo_fec: false, comparaveis_fec: 0, comparaveis_dec: 130 }), "fec")).toBeNull();
+    expect(parcelaAcima(anual({ completo_fec: false, comparaveis_fec: 0, comparaveis_dec: 130 }), "fec")).toBeNull();
+    expect(acimaDoLimite(anual({ comparaveis_dec: 130 }), "dec")).toEqual({ acima: 19, base: 130 });
+    expect(parcelaAcima(anual({ conjuntos: 1, acima_dec: 0, comparaveis_dec: 0 }), "dec")).toBeNull(); // cooperativa sem limite
+    expect(acimaDoLimite(anual({ completo_fec: false }), "fec")).toBeNull(); // dado antigo sem o campo: parcial → sem base
+  });
+  it.skipIf(!real)("no produto real: Elektro 2025 FEC e as 17 cooperativas sem limite ficam sem parcela; acima ≤ comparáveis ≤ conjuntos", () => {
+    const idx = ler<Indice>("indice.json");
+    const sem = new Set<string>();
+    for (const d of idx.distribuidoras) for (const [a, x] of Object.entries(d.anual)) for (const k of ["dec", "fec"] as const) {
+      const base = k === "dec" ? x.comparaveis_dec : x.comparaveis_fec;
+      expect(typeof base).toBe("number");
+      expect(base!).toBeLessThanOrEqual(x.conjuntos);
+      expect(k === "dec" ? x.acima_dec : x.acima_fec).toBeLessThanOrEqual(base!);
+      if (parcelaAcima(x, k) === null) sem.add(`${d.dist}-${a}-${k}`);
+    }
+    expect(sem.has("385-2025-fec")).toBe(true);
+    expect(sem.has("385-2025-dec")).toBe(false);
+    expect(sem.has("5343-2022-dec") && sem.has("7467-2023-fec")).toBe(true);
+  });
+});
+
+describe("parcelas das componentes internas (regressão da auditoria de 13/11/2026)", () => {
+  it("as duas parcelas somam 100% mesmo quando IP + IND difere do indicador por arredondamento", () => {
+    // conjunto 12841 (dist 390), FEC 2022: indicador 0,43; IP 0,07 + IND 0,39 = 0,46 → antes 16% + 91% = 107%
+    const p = parcelasInternas(0.07, 0.39)!;
+    expect(p.ip + p.ind).toBeCloseTo(1, 12);
+    expect(p.ind).toBeCloseTo(0.39 / 0.46, 12);
+    expect(parcelasInternas(0, 0)).toBeNull();
+    expect(parcelasInternas(null, 1)).toBeNull();
+    expect(parcelasInternas(-0.01, 1)).toBeNull();
+  });
+  it.skipIf(!real)("no produto real, IP + IND fica a no máximo 0,06 do indicador (arredondamento mensal da ANEEL)", () => {
+    const idx = ler<Indice>("indice.json");
+    let n = 0;
+    for (const dist of idx.distribuidoras.map((x) => x.dist)) {
+      const d = ler<DistDoc>(`distribuidoras/${dist}.json`);
+      for (const c of d.conjuntos) for (const b of Object.values(c.a)) for (const ind of ["dec", "fec"] as const) {
+        const cp = b.comp[ind], v = b[ind];
+        if (!cp || cp.ip === null || cp.ind === null || v === null) continue;
+        n++;
+        expect(Math.abs(cp.ip + cp.ind - v)).toBeLessThanOrEqual(0.06 + 1e-9);
+      }
+    }
+    expect(n).toBeGreaterThan(20000);
   });
 });
 

@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
 
 /** Fluxos reais do módulo de Confiabilidade com o produto publicado (EPB 6600 e Energisa AC 26). */
@@ -78,6 +79,8 @@ test.describe("Confiabilidade", () => {
     await expect(page.getByTestId("conf-kpi-dec")).toContainText("do limite");
     await expect(page.getByTestId("conf-ficha")).toContainText("não é comparado ao limite anual");
     await expect(page.getByTestId("conf-dist-fec").locator("..")).toContainText("parcial: menos de 12 meses");
+    // auditoria de 13/11/2026: antes "0 de 130" (0% acima do limite) com os 130 conjuntos parciais
+    await expect(page.getByTestId("conf-dist-acima")).toHaveText("N/D");
     await expect(page.getByTestId("conf-legenda")).toContainText("inclui 130 com apuração parcial de FEC");
     const linha = page.getByTestId("conf-lista-conj").getByRole("row", { name: /AGUA VERMELHA/i });
     await expect(linha).toContainText("parcial");
@@ -102,6 +105,24 @@ test.describe("Confiabilidade", () => {
     const download = page.waitForEvent("download");
     await page.getByTestId("conf-csv").click();
     expect((await download).suggestedFilename()).toMatch(/^confiabilidade_comparacao_6600-16849_x_26-12591_2025\.csv$/);
+  });
+
+  test("comparador com apuração parcial: CSV e gráfico não comparam o FEC 2025 da Elektro", async ({ page }) => {
+    // regressão da auditoria de 13/11/2026: a tela já omitia A − B, mas o CSV subtraía o FEC de 11 meses e o gráfico o ligava aos anos completos
+    const erros = semErros(page);
+    await page.goto("/confiabilidade/?aba=comparar&ind=fec&a=385-13449&b=6600-16849");
+    await expect(page.getByTestId("conf-comp-qualidade")).toContainText("apuração parcial");
+    await expect(page.getByTestId("conf-g-comp-parcial")).toContainText("A em 2025");
+    const download = page.waitForEvent("download");
+    await page.getByTestId("conf-csv").click();
+    const csv = readFileSync((await (await download).path())!, "utf8").split("\n");
+    expect(csv[0].endsWith(",observacao")).toBe(true);
+    const fec = csv.find((l) => l.startsWith("FEC apurado"))!;
+    const dec = csv.find((l) => l.startsWith("DEC apurado"))!;
+    expect(fec.split(",")[4]).toBe("");
+    expect(fec).toContain("apuração parcial em A (11 de 12 meses)");
+    expect(dec.split(",")[4]).not.toBe("");
+    expect(erros()).toEqual([]);
   });
 
   test("benchmarking: pares semelhantes, perfil e ranking com dados reais", async ({ page }) => {

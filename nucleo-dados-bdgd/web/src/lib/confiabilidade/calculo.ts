@@ -34,6 +34,13 @@ export function mediaPonderada(itens: Array<{ v: number | null | undefined; w: n
   for (const i of itens) { if (num(i.v) && num(i.w) && i.w > 0) { s += i.v * i.w; w += i.w; n++; } else fora++; }
   return { v: w > 0 ? s / w : null, n, fora };
 }
+/** Parcelas das componentes internas (IP e IND). A ANEEL arredonda cada componente mensal em 0,01, então
+ *  IP + IND anual difere do indicador apurado em até alguns centésimos: a parcela usa a soma das internas como
+ *  denominador para que as duas somem 100% (auditoria de 13/11/2026: com o indicador como denominador, 90% a 107%). */
+export function parcelasInternas(ip: number | null | undefined, ind: number | null | undefined): { ip: number; ind: number } | null {
+  if (!num(ip) || !num(ind) || ip < 0 || ind < 0 || ip + ind <= 0) return null;
+  return { ip: ip / (ip + ind), ind: ind / (ip + ind) };
+}
 export const valorInd = (b: BlocoAno | undefined | null, ind: Indicador) => (b ? b[ind] : null);
 export const limiteInd = (b: BlocoAno | undefined | null, ind: Indicador) => (b ? (ind === "dec" ? b.ld : b.lf) : null);
 /** O limite é anual: só o valor com os 12 meses apurados é comparado a ele, aos quantis, às posições e aos rankings.
@@ -41,6 +48,15 @@ export const limiteInd = (b: BlocoAno | undefined | null, ind: Indicador) => (b 
 export const anualCompleto = (b: { meses_dec?: number; meses_fec?: number } | undefined | null, ind: Indicador) => !!b && ((ind === "dec" ? b.meses_dec : b.meses_fec) ?? 12) >= 12;
 export const valorComparavel = (b: BlocoAno | undefined | null, ind: Indicador) => (anualCompleto(b, ind) ? valorInd(b, ind) : null);
 export const completoDist = (a: AnualDist | undefined | null, ind: Indicador) => !!a && ((ind === "dec" ? a.completo_dec : a.completo_fec) ?? true);
+/** Conjuntos acima do limite sobre os comparáveis (12 meses e limite publicado); null quando nenhum é comparável.
+ *  Auditoria de 13/11/2026: com todos os conjuntos no denominador, Elektro 2025 FEC (130 parciais) e 17 cooperativas
+ *  sem limite apareciam com "0 de N" e 0% acima do limite, na melhor faixa do mapa. */
+export function acimaDoLimite(a: AnualDist | undefined | null, ind: Indicador): { acima: number; base: number } | null {
+  if (!a) return null;
+  const base = (ind === "dec" ? a.comparaveis_dec : a.comparaveis_fec) ?? (completoDist(a, ind) ? a.conjuntos : 0);
+  return base > 0 ? { acima: ind === "dec" ? a.acima_dec : a.acima_fec, base } : null;
+}
+export const parcelaAcima = (a: AnualDist | undefined | null, ind: Indicador) => { const r = acimaDoLimite(a, ind); return r ? r.acima / r.base : null; };
 
 // ------------------------------------------------------------------ estatística descritiva
 export function quantil(ordenado: number[], p: number): number | null {

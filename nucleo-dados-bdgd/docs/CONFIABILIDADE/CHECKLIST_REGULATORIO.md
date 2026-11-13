@@ -8,7 +8,7 @@ Legenda da decisão: **C** conforme · **CR** conforme com ressalva · **NC** n�
 
 | # | Ponto | O que o módulo faz | Onde conferir | Decisão | Observação |
 |---|---|---|---|---|---|
-| 1 | Identidade DEC/FEC | DEC apurado = DECIP + DECIND; FEC = FECIP + FECIND (verificado em 100% dos conjunto-meses 2022–2025 do arquivo ANEEL) | FONTES_E_GEOMETRIA.md; ficha → "Origem das interrupções" | | |
+| 1 | Identidade DEC/FEC | DEC apurado = DECIP + DECIND; FEC = FECIP + FECIND (verificado em 100% dos conjunto-meses 2022–2025 do arquivo ANEEL, a menos do arredondamento de 0,01 por mês; na soma anual, até 0,06; as parcelas da ficha usam a soma das internas) | FONTES_E_GEOMETRIA.md; ficha → "Origem das interrupções" | | |
 | 2 | Componentes externas | XP e XN exibidas como "fora do DEC/FEC", sem parcela do indicador | ficha de qualquer conjunto | | |
 | 3 | Expurgos | INC, INE, INO, IPC, XNC, XPC somados em "Expurgado", exibidos como "não compõe" | `publicar.EXPURGOS`; domínio `dominio-indicadores.csv` | | |
 | 4 | Período anual | Valor anual do conjunto = soma dos 12 valores mensais publicados | Metodologia; FORMULAS_E_RECONCILIACAO.md | | |

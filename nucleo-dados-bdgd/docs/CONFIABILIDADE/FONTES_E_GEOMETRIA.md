@@ -9,8 +9,11 @@
   e os limites anuais (`limites.parquet`).
 * As linhas do arquivo oficial vêm duplicadas: duplicatas exatas são removidas; valores conflitantes para a mesma chave
   (conjunto, indicador, ano, mês) **interrompem** a preparação (nada é gravado). Limites conflitantes também.
-* Identidade verificada (12/11/2026, `continuidade.parquet`): **DEC = DECIP + DECIND** e **FEC = FECIP + FECIND** em
-  150.033 de 150.033 conjunto-meses com DEC e FEC. As componentes externas (`XP`, `XN`) e os expurgos são informados
+* Identidade verificada (12/11/2026, `continuidade.parquet`; refeita em 13/11/2026): **DEC = DECIP + DECIND** em
+  150.163 de 150.163 conjunto-meses com DEC e **FEC = FECIP + FECIND** em 150.033 de 150.033 com FEC, **a menos do
+  arredondamento da ANEEL**: em 6.208 meses de DEC e 6.089 de FEC a diferença é exatamente 0,01 (nunca maior). Na soma
+  anual, IP + IND fica a no máximo 0,06 do indicador (p99 = 0,03); por isso a ficha calcula as parcelas sobre a soma das
+  internas. As componentes externas (`XP`, `XN`) e os expurgos são informados
   pela ANEEL mas não compõem o indicador apurado. A proveniência gravada antes desta data registrava a soma com as
   externas (válida em 95,8% dos casos, quando a externa é zero); `aneel.py` foi corrigido para gravar a identidade certa
   na próxima preparação.

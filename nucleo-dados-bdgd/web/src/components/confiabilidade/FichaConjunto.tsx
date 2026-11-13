@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/Feedback";
 import { Segmented } from "@/components/ui/Segmented";
 import { Pill } from "@/components/ui/Value";
-import { MESES, NOME_IND, ROTULO_ALERTA, UNIDADE_IND, acumulado, anualCompleto, faixasDeExtensao, fmtInd, fmtMetrica, histograma, limiteInd, num, percentilDe, razaoLimite, resumo, situacao, valorComparavel, valorInd, variacao } from "@/lib/confiabilidade/calculo";
+import { MESES, NOME_IND, ROTULO_ALERTA, UNIDADE_IND, acumulado, anualCompleto, faixasDeExtensao, fmtInd, fmtMetrica, histograma, limiteInd, num, parcelasInternas, percentilDe, razaoLimite, resumo, situacao, valorComparavel, valorInd, variacao } from "@/lib/confiabilidade/calculo";
 import { acumuladoNoAno, anualContraLimite, barrasSimples } from "@/lib/confiabilidade/graficos";
 import type { Conjunto, DistDoc, Indicador, Indice } from "@/lib/confiabilidade/tipos";
 import s from "./conf.module.css";
@@ -51,6 +51,7 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
   const hist = useMemo(() => histograma(al.map((a) => a.km_mt), Math.min(10, Math.max(3, al.length))), [al]);
   const gHist = useCallback((t: ChartTokens) => barrasSimples(t, { rotulos: hist.map((h) => `${h.de.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}–${h.ate.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`), valores: hist.map((h) => h.n), unidade: "alimentadores" }), [hist]);
   const comp = b?.comp[ind];
+  const parc = comp ? parcelasInternas(comp.ip, comp.ind) : null;
 
   return (
     <section className={s.secao} aria-label={`Diagnóstico técnico do conjunto ${conj.n}`} data-testid="conf-ficha">
@@ -118,13 +119,13 @@ export function FichaConjunto({ indice, doc, conj, ano, ind, onA, onB, onFechar 
         <div className={s.duas} style={{ marginTop: 16 }}>
           <div className={s.bloco}>
             <p className={s.blocoTitulo}>Origem das interrupções no {I} de {ano}</p>
-            <p className={s.blocoSub}>Componentes publicados pela ANEEL. O {I} apurado é a soma das interrupções de origem interna; as de origem externa e as parcelas expurgadas (dia crítico, situação de emergência e afins) são informadas, mas não compõem o indicador.</p>
+            <p className={s.blocoSub}>Componentes publicados pela ANEEL. O {I} apurado é a soma das interrupções de origem interna; as de origem externa e as parcelas expurgadas (dia crítico, situação de emergência e afins) são informadas, mas não compõem o indicador. A ANEEL arredonda cada valor mensal em 0,01: a soma anual das internas pode diferir do {I} em alguns centésimos, e a parcela é calculada sobre essa soma.</p>
             {comp ? (
               <table className={s.tabela}>
                 <thead><tr><th scope="col">Componente</th><th scope="col">{UNIDADE_IND[ind]}</th><th scope="col">Parcela do {I}</th></tr></thead>
                 <tbody>
-                  {([["Interna, não programada", comp.ind], ["Interna, programada", comp.ip]] as Array<[string, number | null]>).map(([nome, x]) => (
-                    <tr key={nome}><td>{nome}</td><td>{fmtInd(x)}</td><td>{num(x) && num(v) && v > 0 ? <><span className={s.barra} style={{ width: `${Math.round((60 * x) / v)}px` }} aria-hidden /> {pct(x / v)}</> : <span className="faint">N/D</span>}</td></tr>
+                  {([["Interna, não programada", comp.ind, parc?.ind ?? null], ["Interna, programada", comp.ip, parc?.ip ?? null]] as Array<[string, number | null, number | null]>).map(([nome, x, p]) => (
+                    <tr key={nome}><td>{nome}</td><td>{fmtInd(x)}</td><td>{num(p) ? <><span className={s.barra} style={{ width: `${Math.round(60 * p)}px` }} aria-hidden /> {pct(p)}</> : <span className="faint">N/D</span>}</td></tr>
                   ))}
                   {([["Externa, não programada", comp.xn], ["Externa, programada", comp.xp], [`Expurgado`, comp.exp]] as Array<[string, number | null]>).map(([nome, x]) => (
                     <tr key={nome}><td>{nome} <span className="faint">(fora do {I})</span></td><td>{fmtInd(x)}</td><td className="faint">não compõe</td></tr>
